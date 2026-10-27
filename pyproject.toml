@@ -25,7 +25,8 @@ polyforge = ["py.typed", "contracts/*.json", "data/*.json", "data/*.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra"
+addopts = "-ra -m 'not blender'"
+markers = ["blender: real Blender application integration gate; run separately with -m blender"]
 
 [tool.ruff]
 target-version = "py311"
@@ -40,7 +41,7 @@ strict = true
 files = ["polyforge", "tools"]
 
 [tool.coverage.run]
-source = ["polyforge.contracts", "polyforge.security"]
+source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes"]
 branch = true
 
 [tool.coverage.report]

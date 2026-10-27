@@ -74,6 +74,12 @@ def dispatch(args: argparse.Namespace) -> Result:
         return Result(data={"capabilities": catalog()})
     if spec.path == ("capability", "show"):
         return Result(data={"capability": lookup(args.id)})
+    if spec.path == ("build",):
+        from polyforge.blender.build import build_assets
+
+        return build_assets(
+            Path(args.workspace), through=args.through, only=args.only, dry_run=args.dry_run
+        )
     if spec.path in {("validate",), ("plan",), ("compile-contract",)}:
         from polyforge.compiler.commands import manifest_command
 
@@ -110,6 +116,12 @@ def dispatch(args: argparse.Namespace) -> Result:
     context = RunContext(workspace=Path(args.workspace), dry_run=args.dry_run)
     if args.id == "contract.capability.validate.v1":
         return RegistryValidator().execute(inputs, context)
+    from polyforge.blender.adapter import BlenderCapability
+    from polyforge.blender.recipes import RECIPES
+
+    if args.id in RECIPES.values():
+        kind = next(key for key, value in RECIPES.items() if value == args.id)
+        return BlenderCapability(kind).execute(inputs, context)
     operation = {
         "contract.manifest.validate.v1": "validate",
         "contract.scene.compile.v1": "compile",

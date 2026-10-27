@@ -2,6 +2,10 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add five bounded static Blender recipes, semantic attachments and managed S0–S2 builds.
+- Preserve/reopen editable Blender sources and validate geometry, UVs, pivots and budgets.
+- Add reproducible oriented geometry hashes, real application tests and fault probes.
+
 - Add v1 manifest/recipe/scenario validation with safe paths and semantic references.
 - Add deterministic scene/feature contracts, source provenance and explicit blockers.
 - Add S0–S5 dependency planning, scoped digest invalidation and verified artifact lookup.

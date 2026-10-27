@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "name": "cli-init",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "init",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+        "--json"
+      ],
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-build-dry",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+        "--through",
+        "S2",
+        "--dry-run",
+        "--json"
+      ],
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+        "--through",
+        "S2",
+        "--json"
+      ],
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-material-change",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+        "--through",
+        "S2",
+        "--only",
+        "robot_a",
+        "--json"
+      ],
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-restored-plan",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "plan",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+        "--json"
+      ],
+      "actual_exit": 0
+    }
+  ],
+  "workspace": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase3-cli-20261027-194343",
+  "source_inputs_preserved": true,
+  "dry_run_zero_writes": true,
+  "material_edit_preserves_geometry": true,
+  "blueprint_sha256": "9d92fea8880b03b6d00e0bbe69b6fb8c1bf3f22f4c1ff16c1de7ae1f42970505"
+}

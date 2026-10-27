@@ -5,6 +5,15 @@ contract.manifest.validate.v1, contract.scene.compile.v1 and plan.scene.v1.
 They validate bounded JSON under the workspace and emit results on stdout,
 without creating files or executing Blender/Unity.
 
+The catalog also exposes mesh.robot.modular.v1, mesh.props.crate.v1,
+mesh.architecture.wall.v1, mesh.architecture.doorway.v1 and mesh.environment.tile.v1.
+These accept recipe requests with schema_version, asset_id and parameters.size_m
+in Unity XYZ meters. They require Blender 5.2.2 and write isolated run evidence;
+--dry-run validates without launching or writing. Source .blend, logical geometry
+and metrics must all validate before PASS. These operations are TRUSTED_LOCAL.
+Managed build supports S0 precheck, S1 contracts and S2 generation. Later stages
+stay NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
+
 CLI validate is read-only. CLI compile-contract --manifest FILE and plan
 --workspace ROOT normally publish scene_contract.json, feature_contract.json,
 requirement_coverage.json and (for plan) plan.json. Both accept --dry-run with

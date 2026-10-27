@@ -49,7 +49,7 @@ Original blueprint baseline versions are not silently advertised as tested.
 
 ## Deferred capability claims
 
-No asset-generation worker, Unity importer, gameplay, animation, sprite baker,
+Static Blender asset generation is implemented in Phase 3. No Unity importer, gameplay, animation, sprite baker,
 repair executor, sandbox, profiler, MCP server, or benchmark runner is implemented.
 Registered future CLI commands fail explicitly with NOT_RUN/5.
 

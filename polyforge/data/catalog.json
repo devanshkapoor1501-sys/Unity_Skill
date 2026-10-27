@@ -74,5 +74,120 @@
       "plan"
     ],
     "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.robot.modular.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.static.robot",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "bounds_and_budget",
+      "saved_source_roundtrip",
+      "uv_faces"
+    ],
+    "output_types": [
+      "blend",
+      "mesh_metrics"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.props.crate.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.static.crate",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "bounds_and_budget",
+      "saved_source_roundtrip",
+      "uv_faces"
+    ],
+    "output_types": [
+      "blend",
+      "mesh_metrics"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.architecture.wall.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.static.wall",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "bounds_and_budget",
+      "saved_source_roundtrip",
+      "uv_faces"
+    ],
+    "output_types": [
+      "blend",
+      "mesh_metrics"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.architecture.doorway.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.static.doorway",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "bounds_and_budget",
+      "saved_source_roundtrip",
+      "uv_faces"
+    ],
+    "output_types": [
+      "blend",
+      "mesh_metrics"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.environment.tile.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.static.ground",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "bounds_and_budget",
+      "saved_source_roundtrip",
+      "uv_faces"
+    ],
+    "output_types": [
+      "blend",
+      "mesh_metrics"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

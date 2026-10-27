@@ -82,6 +82,17 @@
               "exclusiveMinimum": 0,
               "maximum": 1000
             }
+          },
+          "attach_to": {
+            "$ref": "#/$defs/id"
+          },
+          "material_id": {
+            "$ref": "#/$defs/id"
+          },
+          "bevel_m": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10
           }
         },
         "required": [
@@ -128,6 +139,37 @@
       "type": "integer",
       "minimum": 4,
       "maximum": 100000
+    },
+    "pivot": {
+      "const": "base_center"
+    },
+    "materials": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "color_rgba"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "color_rgba": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      }
     }
   },
   "required": [

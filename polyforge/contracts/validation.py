@@ -39,13 +39,15 @@ def _reject_constant(value: str) -> None:
     raise InputError(f"Non-finite JSON number: {value}")
 
 
-def load_json(path: Path) -> Any:
+def load_json(path: Path, *, max_bytes: int = 1_048_576) -> Any:
     """Read a bounded UTF-8 JSON document; reject duplicate fields and NaN."""
+    if type(max_bytes) is not int or not 1 <= max_bytes <= 33_554_432:
+        raise InputError("Invalid bounded JSON read budget")
     try:
         with path.open("rb") as stream:
-            content = stream.read(1_048_577)
-        if len(content) > 1_048_576:
-            raise InputError("Input exceeds the 1 MiB JSON limit")
+            content = stream.read(max_bytes + 1)
+        if len(content) > max_bytes:
+            raise InputError(f"Input exceeds the {max_bytes}-byte JSON limit")
         return json.loads(
             content.decode("utf-8"),
             object_pairs_hook=_unique_object,
@@ -74,6 +76,7 @@ def schema_document(name: str) -> dict[str, Any]:
         "benchmark_task.schema.json",
         "game_manifest.schema.json",
         "recipe.schema.json",
+        "recipe_request.schema.json",
         "scenario.schema.json",
     }
     if name not in allowed:

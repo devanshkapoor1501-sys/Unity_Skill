@@ -70,7 +70,8 @@ COMMANDS = (
             DRY_RUN,
         ),
         phase=3,
-        example=("build", "--workspace", "workspace/arena_demo", "--through", "S3", "--json"),
+        implemented=True,
+        example=("build", "--workspace", "workspace/arena_demo", "--through", "S2", "--json"),
     ),
     CommandSpec(
         ("audit",),
@@ -97,7 +98,7 @@ COMMANDS = (
         ("resume",),
         "Resume a recorded run",
         (WORKSPACE, RUN_ID),
-        phase=3,
+        phase=9,
         example=("resume", "--workspace", "workspace/arena_demo", "--run-id", "example", "--json"),
     ),
     CommandSpec(

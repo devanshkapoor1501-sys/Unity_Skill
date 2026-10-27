@@ -105,4 +105,41 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   CLI documentation, dependency/package checks, fresh offline editable/wheel
   installs and a seven-command actual workspace smoke workflow all passed.
 
-Phase 3 is next. No Blender geometry or Unity game project has been generated.
+## Phase 3 work
+
+- User continued Phase 3 on the existing branch and installed toolchain. No
+  downloads or new runtime dependencies were needed.
+- Added five reusable static families with bounded primitive DSL expansion,
+  deterministic seed, parent/socket attachments, materials, UVs and base pivots.
+- Added owned background Blender worker with pinned version precheck, actual
+  editable source roundtrip, geometry diagnostics, logical payloads and artifact
+  hashes. Source frames and socket spaces are explicit.
+- Added CLI build through S0/S1/S2 and five executable mesh capabilities. All
+  effective overrides/config validate before publication; invalid and dry runs
+  write nothing. Later stages still return NOT_RUN. No game is accepted.
+- Real golden/reuse tests passed after identifying LTS version-label suffixes,
+  retained palette resources and nondeterministic sphere face ordering. Geometry
+  hashes now canonicalize oriented face coordinates/UVs, preserving winding.
+- Actual saved-source probes detect missing UV, collapsed faces, reversed sockets,
+  polygon budget violations, translated roots, shifted geometry and changed units.
+- Independent review found material override preflight, unmeasured pivots and a
+  valid output exceeding the input JSON budget. Each has RED/GREEN regression
+  evidence; logical output reads have a distinct bounded 32 MiB limit while user
+  input JSON remains 1 MiB. Root/units and base bounds are measured after reload.
+- Ruling: generic resume scheduling remains NOT_RUN until managed retry/repair
+  transactions in Phase 9. The normative Phase 3 gate is static generation;
+  earlier provisional CLI phase numbering is corrected rather than advertising
+  unsafe partial resume. Existing library journal recovery remains functional.
+- Ruling: builds generate fresh immutable run outputs and do not populate the
+  planner cache. Logical repeatability is demonstrated by actual regeneration,
+  not claimed from cache equality. Cross-app/game geometry features stay blocked
+  until Unity binding evidence exists.
+- Final phase verification is recorded in reports/phase-3.md and phase-3-evidence/.
+- Phase 3 complete: 107 offline tests and 4 real Blender tests passed with no
+  skips. Security/contracts plus recipe DSL coverage is 94.99% combined and
+  91.43% branches, with the unchanged 90% gate extended to the new module. Ruff,
+  typing, package/resource checks, fresh offline editable/wheel installs and real
+  installed-wheel generation passed. Three golden fixture types repeat logically;
+  wall/door connectors align; all seven saved-source fault probes are rejected.
+
+Phase 4 is next: actual audit views and export. Unity/game gates remain NOT_RUN.

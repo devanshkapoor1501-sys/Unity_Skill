@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
 
+from polyforge.blender.recipes import validate_recipe
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
 from polyforge.planner.dag import topological_order
 from polyforge.security.paths import WorkspacePolicy
@@ -142,34 +143,9 @@ def parse_manifest(data: Any, workspace: Path) -> Manifest:
         spellings[key] = item["recipe"]
         path = relative_file(policy, item["recipe"], location + ".recipe")
         recipe = load_json(path)
-        validate_schema(recipe, "recipe.schema.json")
-        declared = {
-            "ground": "mesh.environment.tile.v1",
-            "crate": "mesh.props.crate.v1",
-            "robot": "mesh.robot.modular.v1",
-            "wall": "mesh.architecture.wall.v1",
-            "doorway": "mesh.architecture.doorway.v1",
-        }
-        if recipe["capability_id"] != declared[recipe["kind"]]:
-            raise InputError(
-                f"{location}.recipe.capability_id: unknown or mismatched recipe interface"
-            )
+        validate_recipe(recipe)
         if recipe["asset_id"] != item["id"]:
             raise InputError(f"{location}.recipe.asset_id: must match owning asset")
-        modules = {module["id"]: module for module in recipe["modules"]}
-        if len(modules) != len(recipe["modules"]):
-            raise InputError(f"{location}.recipe.modules: duplicate module ID")
-        topological_order(
-            {
-                key: [module["parent"]] if "parent" in module else []
-                for key, module in modules.items()
-            }
-        )
-        sockets = recipe.get("sockets", [])
-        if len({socket["id"] for socket in sockets}) != len(sockets):
-            raise InputError(f"{location}.recipe.sockets: duplicate socket ID")
-        if any(socket["module_id"] not in modules for socket in sockets):
-            raise InputError(f"{location}.recipe.sockets: missing parent module")
         recipes[item["id"]], hashes[item["id"]] = recipe, canonical_digest(recipe)
     bounds = data["scene"]["bounds_m"]
     for index, actor in enumerate(data["actors"]):

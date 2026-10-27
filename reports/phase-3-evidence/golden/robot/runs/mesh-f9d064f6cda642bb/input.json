@@ -1,0 +1,489 @@
+{
+  "recipe": {
+    "schema_version": "1.0.0",
+    "asset_id": "robot",
+    "kind": "robot",
+    "capability_id": "mesh.robot.modular.v1",
+    "parameters": {
+      "size_m": [
+        1,
+        1.8,
+        0.8
+      ]
+    },
+    "modules": [
+      {
+        "id": "body",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.45,
+          0.63,
+          0.48
+        ],
+        "location": [
+          0,
+          0.9900000000000001,
+          0
+        ],
+        "material_id": "base",
+        "bevel_m": 0.017004841186120955
+      },
+      {
+        "id": "head",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.35,
+          0.54,
+          0.48
+        ],
+        "location": [
+          0,
+          0.27,
+          0
+        ],
+        "material_id": "trim",
+        "parent": "body",
+        "attach_to": "neck",
+        "bevel_m": 0.013225987589205186
+      },
+      {
+        "id": "hips",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.4,
+          0.18000000000000002,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.396,
+          0
+        ],
+        "material_id": "base",
+        "parent": "body",
+        "bevel_m": 0.006801936474448382
+      },
+      {
+        "id": "core",
+        "primitive": "cylinder",
+        "size_m": [
+          0.18,
+          0.216,
+          0.064
+        ],
+        "location": [
+          0,
+          0,
+          0.248
+        ],
+        "material_id": "accent",
+        "parent": "body"
+      },
+      {
+        "id": "upper_arm_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.2,
+          0.396,
+          0.4
+        ],
+        "location": [
+          -0.1,
+          -0.14400000000000002,
+          0
+        ],
+        "material_id": "base",
+        "parent": "body",
+        "attach_to": "shoulder_l",
+        "bevel_m": 0.007557707193831535
+      },
+      {
+        "id": "forearm_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.17,
+          0.36000000000000004,
+          0.36000000000000004
+        ],
+        "location": [
+          0,
+          -0.18000000000000002,
+          0
+        ],
+        "material_id": "trim",
+        "parent": "upper_arm_l",
+        "attach_to": "elbow_l",
+        "bevel_m": 0.006424051114756806
+      },
+      {
+        "id": "hand_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.22,
+          0.14400000000000002,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.07200000000000001,
+          0
+        ],
+        "material_id": "base",
+        "parent": "forearm_l",
+        "attach_to": "wrist_l",
+        "bevel_m": 0.005441549179558706
+      },
+      {
+        "id": "thigh_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.18,
+          0.432,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.216,
+          0
+        ],
+        "material_id": "base",
+        "parent": "hips",
+        "attach_to": "hip_l",
+        "bevel_m": 0.006801936474448381
+      },
+      {
+        "id": "shin_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.18,
+          0.36000000000000004,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.18000000000000002,
+          0
+        ],
+        "material_id": "trim",
+        "parent": "thigh_l",
+        "attach_to": "knee_l",
+        "bevel_m": 0.006801936474448381
+      },
+      {
+        "id": "foot_l",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.25,
+          0.12600000000000003,
+          0.8
+        ],
+        "location": [
+          0,
+          -0.24300000000000002,
+          0.12
+        ],
+        "material_id": "base",
+        "parent": "shin_l",
+        "bevel_m": 0.004761355532113868
+      },
+      {
+        "id": "eye_l",
+        "primitive": "sphere",
+        "size_m": [
+          0.08,
+          0.09000000000000001,
+          0.064
+        ],
+        "location": [
+          -0.08,
+          0.07200000000000001,
+          0.24
+        ],
+        "material_id": "accent",
+        "parent": "head"
+      },
+      {
+        "id": "upper_arm_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.2,
+          0.396,
+          0.4
+        ],
+        "location": [
+          0.1,
+          -0.14400000000000002,
+          0
+        ],
+        "material_id": "base",
+        "parent": "body",
+        "attach_to": "shoulder_r",
+        "bevel_m": 0.007557707193831535
+      },
+      {
+        "id": "forearm_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.17,
+          0.36000000000000004,
+          0.36000000000000004
+        ],
+        "location": [
+          0,
+          -0.18000000000000002,
+          0
+        ],
+        "material_id": "trim",
+        "parent": "upper_arm_r",
+        "attach_to": "elbow_r",
+        "bevel_m": 0.006424051114756806
+      },
+      {
+        "id": "hand_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.22,
+          0.14400000000000002,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.07200000000000001,
+          0
+        ],
+        "material_id": "base",
+        "parent": "forearm_r",
+        "attach_to": "wrist_r",
+        "bevel_m": 0.005441549179558706
+      },
+      {
+        "id": "thigh_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.18,
+          0.432,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.216,
+          0
+        ],
+        "material_id": "base",
+        "parent": "hips",
+        "attach_to": "hip_r",
+        "bevel_m": 0.006801936474448381
+      },
+      {
+        "id": "shin_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.18,
+          0.36000000000000004,
+          0.4
+        ],
+        "location": [
+          0,
+          -0.18000000000000002,
+          0
+        ],
+        "material_id": "trim",
+        "parent": "thigh_r",
+        "attach_to": "knee_r",
+        "bevel_m": 0.006801936474448381
+      },
+      {
+        "id": "foot_r",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.25,
+          0.12600000000000003,
+          0.8
+        ],
+        "location": [
+          0,
+          -0.24300000000000002,
+          0.12
+        ],
+        "material_id": "base",
+        "parent": "shin_r",
+        "bevel_m": 0.004761355532113868
+      },
+      {
+        "id": "eye_r",
+        "primitive": "sphere",
+        "size_m": [
+          0.08,
+          0.09000000000000001,
+          0.064
+        ],
+        "location": [
+          0.08,
+          0.07200000000000001,
+          0.24
+        ],
+        "material_id": "accent",
+        "parent": "head"
+      }
+    ],
+    "sockets": [
+      {
+        "id": "neck",
+        "module_id": "body",
+        "position": [
+          0,
+          0.315,
+          0
+        ]
+      },
+      {
+        "id": "shoulder_l",
+        "module_id": "body",
+        "position": [
+          -0.225,
+          0.18000000000000002,
+          0
+        ]
+      },
+      {
+        "id": "elbow_l",
+        "module_id": "upper_arm_l",
+        "position": [
+          0,
+          -0.198,
+          0
+        ]
+      },
+      {
+        "id": "wrist_l",
+        "module_id": "forearm_l",
+        "position": [
+          0,
+          -0.18000000000000002,
+          0
+        ]
+      },
+      {
+        "id": "hand_l",
+        "module_id": "hand_l",
+        "position": [
+          0,
+          -0.07200000000000001,
+          0
+        ]
+      },
+      {
+        "id": "hip_l",
+        "module_id": "hips",
+        "position": [
+          -0.11,
+          -0.09000000000000001,
+          0
+        ]
+      },
+      {
+        "id": "knee_l",
+        "module_id": "thigh_l",
+        "position": [
+          0,
+          -0.216,
+          0
+        ]
+      },
+      {
+        "id": "shoulder_r",
+        "module_id": "body",
+        "position": [
+          0.225,
+          0.18000000000000002,
+          0
+        ]
+      },
+      {
+        "id": "elbow_r",
+        "module_id": "upper_arm_r",
+        "position": [
+          0,
+          -0.198,
+          0
+        ]
+      },
+      {
+        "id": "wrist_r",
+        "module_id": "forearm_r",
+        "position": [
+          0,
+          -0.18000000000000002,
+          0
+        ]
+      },
+      {
+        "id": "hand_r",
+        "module_id": "hand_r",
+        "position": [
+          0,
+          -0.07200000000000001,
+          0
+        ]
+      },
+      {
+        "id": "hip_r",
+        "module_id": "hips",
+        "position": [
+          0.11,
+          -0.09000000000000001,
+          0
+        ]
+      },
+      {
+        "id": "knee_r",
+        "module_id": "thigh_r",
+        "position": [
+          0,
+          -0.216,
+          0
+        ]
+      }
+    ],
+    "pivot": "base_center",
+    "max_polygons": 25000,
+    "materials": [
+      {
+        "id": "base",
+        "color_rgba": [
+          0.12,
+          0.3,
+          0.5,
+          1
+        ]
+      },
+      {
+        "id": "trim",
+        "color_rgba": [
+          0.05,
+          0.07,
+          0.09,
+          1
+        ]
+      },
+      {
+        "id": "accent",
+        "color_rgba": [
+          0.9,
+          0.55,
+          0.05,
+          1
+        ]
+      }
+    ]
+  },
+  "seed": 42,
+  "input_digest": "9563519750aa65ef1f65becc8f4bba89fc0f9aa911175a9b23fdd53e95ec0092",
+  "toolchain": {
+    "worker_sha256": "6ebdf777ff53c70c87eaec69b4ad47d90e767cc8ed68cd023e8dc11da7478add",
+    "executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+    "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "required_version": "5.2.2",
+    "validator": "geometry.v1"
+  }
+}

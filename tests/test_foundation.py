@@ -69,6 +69,11 @@ class CLIAcceptanceTests(unittest.TestCase):
                 "contract.manifest.validate.v1",
                 "contract.scene.compile.v1",
                 "plan.scene.v1",
+                "mesh.robot.modular.v1",
+                "mesh.props.crate.v1",
+                "mesh.architecture.wall.v1",
+                "mesh.architecture.doorway.v1",
+                "mesh.environment.tile.v1",
             ],
         )
 

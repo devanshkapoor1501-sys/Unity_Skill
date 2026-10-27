@@ -59,6 +59,7 @@ def compile_contract(manifest: Manifest) -> dict[str, Any]:
                     "id": socket_id,
                     "kind": "socket",
                     "position_m": socket["position"],
+                    "position_space": "MODULE_LOCAL_UNITY",
                     "module_id": socket["module_id"],
                     "binding_status": "NOT_RUN",
                 }
@@ -126,7 +127,9 @@ def compile_contract(manifest: Manifest) -> dict[str, Any]:
                 "capability_id": requirement["feature_id"] if template else None,
                 "capability_version": "1.0.0" if template else None,
                 "support_state": "BLOCKED" if template else "UNSUPPORTED",
-                "reason": f"Execution worker scheduled for Phase {template['phase']}"
+                "reason": "Blender generation available; scene-level Unity bindings await Phase 5"
+                if requirement["feature_id"] == "geometry.static_assets.v1"
+                else f"Execution worker scheduled for Phase {template['phase']}"
                 if template
                 else "No declared capability template",
                 "expected_component": template["component"] if template else None,

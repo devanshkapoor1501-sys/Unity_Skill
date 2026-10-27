@@ -13,11 +13,11 @@ are syntax fixtures, not evidence of execution or functionality.
 | `init` | Implemented | `polyforge init workspace/arena_demo --template simple_arena --json` |
 | `validate` | Implemented | `polyforge validate --workspace workspace/arena_demo --json` |
 | `plan` | Implemented | `polyforge plan --workspace workspace/arena_demo --dry-run --json` |
-| `build` | NOT_RUN; Phase 3 | `polyforge build --workspace workspace/arena_demo --through S3 --json` |
+| `build` | Implemented | `polyforge build --workspace workspace/arena_demo --through S2 --json` |
 | `audit` | NOT_RUN; Phase 4 | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
 | `verify` | NOT_RUN; Phase 6 | `polyforge verify --workspace workspace/arena_demo --json` |
 | `status` | Implemented | `polyforge status --workspace workspace/arena_demo --json` |
-| `resume` | NOT_RUN; Phase 3 | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
+| `resume` | NOT_RUN; Phase 9 | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
 | `report` | Implemented | `polyforge report --workspace workspace/arena_demo --run-id example --json` |
 | `clean` | NOT_RUN; Phase 11 | `polyforge clean --workspace workspace/arena_demo --dry-run --json` |
 | `capability list` | Implemented | `polyforge capability list --json` |

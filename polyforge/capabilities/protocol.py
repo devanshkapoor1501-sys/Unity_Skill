@@ -44,7 +44,16 @@ class RunContext:
                 kind=ErrorKind.POLICY_DENIED,
                 code="PF-POLICY-NETWORK",
             )
-        if self.timeout_seconds <= 0 or self.max_output_bytes <= 0 or self.retry_limit < 0:
+        if (
+            type(self.timeout_seconds) is not int
+            or self.timeout_seconds <= 0
+            or type(self.max_output_bytes) is not int
+            or self.max_output_bytes <= 0
+            or type(self.seed) is not int
+            or not 0 <= self.seed <= 2**32 - 1
+            or type(self.retry_limit) is not int
+            or not 0 <= self.retry_limit <= 2
+        ):
             raise InputError("Execution budgets must be positive; retries must be nonnegative")
 
 

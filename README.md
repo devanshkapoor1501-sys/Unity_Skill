@@ -2,10 +2,11 @@
 
 A local, model-independent Blender-to-Unity capability engine. Apache-2.0.
 
-**Current delivery: Phase 2 contracts and planning.** Discovery, descriptor and
+**Current delivery: Phase 3 static Blender assets.** Discovery, descriptor and
 manifest validation, scene/feature compilation, and dependency planning work
 without a model, Blender, or Unity. Workspace init, doctor, status and report
-are implemented. Game generation, repair, benchmarks and MCP remain future
+are implemented. Five headless Blender recipes and managed S0–S2 builds generate
+editable sources and checked geometry. Unity/game generation, repair, benchmarks and MCP remain future
 commands and return `NOT_RUN`/5.
 Trusted-local process protections do not claim untrusted OS containment.
 
@@ -74,6 +75,8 @@ New-Item -ItemType Directory -Force workspace
 .\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --dry-run --json
 .\.venv\Scripts\polyforge.exe compile-contract --manifest workspace/arena_demo/game_manifest.json --json
 .\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --json
+.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S2 --dry-run --json
+.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S2 --json
 ```
 
 Doctor honors explicit TOML executable paths, then conventional installations,
@@ -98,6 +101,19 @@ handoff checks and scenario validation do not execute application tests.
 See [manifest and planning rules](docs/manifests.md) for publication, frozen-brief
 and cache behavior. Pure catalog capabilities return contracts without files;
 the normal compile/plan CLI commands publish derived JSON in the workspace.
+Blender capabilities are execution operations: they create unique run directories,
+logs, source.blend, metrics.json and logical-geometry.json. Use --dry-run for
+zero writes. Build stops at S2; requesting S3–S5 returns NOT_RUN/5.
+
+The real Blender gate is separate from offline Python tests:
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/test_phase3_blender.py -m blender -o addopts=-ra
+```
+
+It requires installed Blender 5.2.2 and fails when the dependency is unavailable.
+Default pytest excludes that application gate explicitly. See
+[recipe contracts](docs/recipes.md) for parameters, coordinate spaces and limits.
 
 ## Ownership and next delivery
 
@@ -112,6 +128,6 @@ the normal compile/plan CLI commands publish derived JSON in the workspace.
 
 See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
 [security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-The next delivery is Phase 3: Blender recipes and actual golden geometry.
+The next delivery is Phase 4: four-view audit, diagnostics and FBX/material export.
 Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.
