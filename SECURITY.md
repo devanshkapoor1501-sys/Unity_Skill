@@ -2,15 +2,15 @@
 
 ## Current scope
 
-Phase 0 implements read-only descriptor validation. Its input must resolve inside
+Descriptor validation is read-only. Its input must resolve inside
 the supplied existing workspace. It reads bounded UTF-8 JSON, rejects duplicate
 fields and non-finite numbers, uses bundled schemas, and never dynamically
 imports or executes a descriptor's runner string. Network operations are absent.
 
 `TRUSTED_LOCAL` is the only available context. It does not contain malicious
 Blender scripts, Unity packages, plugins, or arbitrary local code. OS isolation,
-worker ACLs, environment filtering, subprocess ownership, and denial probes are
-not implemented yet. `SANDBOXED_UNTRUSTED` requests are denied, never downgraded.
+worker filesystem ACLs and denial probes are not implemented yet.
+`SANDBOXED_UNTRUSTED` requests are denied, never downgraded.
 Read-only path checks are not a TOCTOU-resistant OS security boundary.
 
 The approved repository root authorizes development of this engine. Executing
@@ -18,6 +18,15 @@ future generated or imported code needs a separately recorded trusted project
 scope; third-party plugins are not silently enabled.
 
 ## Operational defaults
+
+Phase 1 adds strict trusted-local write paths (including junction/reparse denial),
+OS-exclusive PID/host/birth locks, durable event replay, atomic state replacement,
+and explicit binary allowlists. Workers receive a minimal environment. Bounded
+logs redact credentials, including quoted assignments and truncated known values.
+Windows Job Objects own suspended-then-resumed process trees with kill-on-close,
+memory and process-count limits. POSIX process groups provide cleanup; POSIX
+memory-limit enforcement remains unverified. These controls do not restrict a
+trusted worker's ambient filesystem or network privileges.
 
 - No runtime network access, package downloads, arbitrary shell, or remote model.
 - Invalid input and dry-run validation perform no workspace writes.

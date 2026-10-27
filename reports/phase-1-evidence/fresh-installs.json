@@ -1,0 +1,195 @@
+{
+  "timestamp_utc": "2026-10-27T10:48:02.744821+00:00",
+  "network_disabled": true,
+  "checks": [
+    {
+      "name": "fresh-editable-install",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--find-links",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+        "-e",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-install.txt"
+    },
+    {
+      "name": "fresh-editable-help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\polyforge.exe",
+        "--help"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-help.txt"
+    },
+    {
+      "name": "fresh-editable-catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\polyforge.exe",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-catalog.txt"
+    },
+    {
+      "name": "fresh-editable-validate",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\polyforge.exe",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-validate.txt"
+    },
+    {
+      "name": "fresh-editable-init",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\polyforge.exe",
+        "init",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\install-outside-phase1-final\\game-editable",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-init.txt"
+    },
+    {
+      "name": "fresh-editable-doctor-dry",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-editable\\Scripts\\polyforge.exe",
+        "doctor",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\install-outside-phase1-final\\game-editable",
+        "--dry-run",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-editable-doctor-dry.txt"
+    },
+    {
+      "name": "fresh-wheel-install",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--find-links",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-install.txt"
+    },
+    {
+      "name": "fresh-wheel-help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\polyforge.exe",
+        "--help"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-help.txt"
+    },
+    {
+      "name": "fresh-wheel-catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\polyforge.exe",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-catalog.txt"
+    },
+    {
+      "name": "fresh-wheel-validate",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\polyforge.exe",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-validate.txt"
+    },
+    {
+      "name": "fresh-wheel-init",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\polyforge.exe",
+        "init",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\install-outside-phase1-final\\game-wheel",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-init.txt"
+    },
+    {
+      "name": "fresh-wheel-doctor-dry",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\polyforge.exe",
+        "doctor",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\install-outside-phase1-final\\game-wheel",
+        "--dry-run",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-doctor-dry.txt"
+    },
+    {
+      "name": "fresh-wheel-location",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\python.exe",
+        "-c",
+        "import polyforge; print(polyforge.__file__)"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\fresh-wheel-location.txt"
+    },
+    {
+      "name": "final-wheel-refresh",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--no-deps",
+        "--force-reinstall",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\final-wheel-refresh.txt"
+    },
+    {
+      "name": "final-wheel-import",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase1-final-fresh-wheel\\Scripts\\python.exe",
+        "-c",
+        "import polyforge; from polyforge.doctor import inspect_project; print(polyforge.__file__)"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\phase-1-evidence\\final-wheel-import.txt"
+    }
+  ]
+}

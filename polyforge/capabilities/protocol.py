@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
@@ -12,7 +13,7 @@ from polyforge.contracts.validation import InputError
 
 @dataclass(frozen=True)
 class RunContext:
-    """Authorized execution context. Untrusted execution is unavailable in Phase 0."""
+    """Authorized execution context. Untrusted execution requires verified OS isolation."""
 
     workspace: Path
     seed: int = 42
@@ -28,6 +29,7 @@ class RunContext:
     isolation_verified: bool = False
     artifact_registry: dict[str, Any] = field(default_factory=dict)
     lock_path: Path | None = None
+    logger: logging.Logger = field(default_factory=lambda: logging.getLogger("polyforge"))
 
     def __post_init__(self) -> None:
         if self.security_scope != "TRUSTED_LOCAL" or self.isolation_verified:
@@ -38,7 +40,7 @@ class RunContext:
             )
         if self.allow_network:
             raise InputError(
-                "Phase 0 capabilities do not permit network access",
+                "Core capabilities do not permit network access",
                 kind=ErrorKind.POLICY_DENIED,
                 code="PF-POLICY-NETWORK",
             )

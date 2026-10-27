@@ -18,6 +18,7 @@ from polyforge.commands import COMMANDS, CommandSpec
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, load_json
 from polyforge.security.paths import workspace_input
+from polyforge.security.policy import redact
 
 
 class Parser(argparse.ArgumentParser):
@@ -73,6 +74,27 @@ def dispatch(args: argparse.Namespace) -> Result:
         return Result(data={"capabilities": catalog()})
     if spec.path == ("capability", "show"):
         return Result(data={"capability": lookup(args.id)})
+    if spec.path == ("doctor",):
+        from polyforge.doctor import doctor
+
+        return doctor(
+            Path(args.workspace),
+            config_path=Path(args.config) if args.config else None,
+            project=Path(args.project) if args.project else None,
+            dry_run=args.dry_run,
+        )
+    if spec.path == ("init",):
+        from polyforge.workspace import init_workspace
+
+        return init_workspace(Path(args.path), args.template, dry_run=args.dry_run)
+    if spec.path == ("status",):
+        from polyforge.workspace import status_workspace
+
+        return status_workspace(Path(args.workspace))
+    if spec.path == ("report",):
+        from polyforge.workspace import report_run
+
+        return report_run(Path(args.workspace), args.run_id)
     lookup(args.id)
     path = workspace_input(Path(args.workspace), Path(args.input))
     inputs = load_json(path)
@@ -94,7 +116,9 @@ def main(argv: Sequence[str] | None = None) -> int:
         json_output = args.json or args.format == "json"
         result = dispatch(args)
     except InputError as exc:
-        result = failure(exc.kind, exc.code, str(exc))
+        result = failure(exc.kind, exc.code, redact(str(exc)))
+    except OSError as exc:
+        result = failure(ErrorKind.PRODUCER_FAILURE, "PF-IO-FAILURE", redact(str(exc)))
     except KeyboardInterrupt:
         result = failure(ErrorKind.INTERRUPTED, "PF-RUN-INTERRUPTED", "Operation interrupted")
     result = replace(result, duration_ms=round((time.monotonic() - started) * 1000, 3))

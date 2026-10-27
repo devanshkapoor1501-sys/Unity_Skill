@@ -28,13 +28,20 @@ COMMANDS = (
     CommandSpec(
         ("doctor",),
         "Probe local tools and execution policies",
-        ((("--config",), {"metavar": "PATH"}),),
+        (
+            (("--config",), {"metavar": "PATH"}),
+            (("--workspace",), {"default": ".", "metavar": "PATH"}),
+            (("--project",), {"metavar": "PATH"}),
+            DRY_RUN,
+        ),
+        implemented=True,
         example=("doctor", "--json"),
     ),
     CommandSpec(
         ("init",),
         "Initialize a new managed workspace",
         ((("path",), {}), (("--template",), {"default": "simple_arena"}), DRY_RUN),
+        implemented=True,
         example=("init", "workspace/arena_demo", "--template", "simple_arena", "--json"),
     ),
     CommandSpec(
@@ -81,18 +88,21 @@ COMMANDS = (
         ("status",),
         "Read recorded run state",
         (WORKSPACE,),
+        implemented=True,
         example=("status", "--workspace", "workspace/arena_demo", "--json"),
     ),
     CommandSpec(
         ("resume",),
         "Resume a recorded run",
         (WORKSPACE, RUN_ID),
+        phase=3,
         example=("resume", "--workspace", "workspace/arena_demo", "--run-id", "example", "--json"),
     ),
     CommandSpec(
         ("report",),
         "Report one recorded run",
         (WORKSPACE, RUN_ID),
+        implemented=True,
         example=("report", "--workspace", "workspace/arena_demo", "--run-id", "example", "--json"),
     ),
     CommandSpec(

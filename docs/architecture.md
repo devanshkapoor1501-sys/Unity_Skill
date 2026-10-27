@@ -49,6 +49,31 @@ Original blueprint baseline versions are not silently advertised as tested.
 
 ## Deferred capability claims
 
-No Blender worker, Unity importer, gameplay, animation, sprite baker, repair
-executor, sandbox, profiler, MCP server, or benchmark runner is implemented by
-the foundation. Registered future CLI commands fail explicitly with NOT_RUN/5.
+No asset-generation worker, Unity importer, gameplay, animation, sprite baker,
+repair executor, sandbox, profiler, MCP server, or benchmark runner is implemented.
+Registered future CLI commands fail explicitly with NOT_RUN/5.
+
+## Phase 1 runtime
+
+Config is bounded TOML with explicit executable overrides and default-denied
+network/outside-root/untrusted settings. Doctor prefers installed application
+roots over PATH (the generic Unity CLI can be unrelated to the Editor), probes
+versions without opening projects, records limits/hardware/provenance, and writes
+a structured report even when tools are missing. License and rendering readiness
+remain independently NOT_RUN. Optional project checks are static known-file reads.
+
+Each run has a durable append-only sequence of complete state snapshots plus an
+atomic state.json cache. A killed cache write is recovered from events; incomplete
+final event bytes are ignored until explicit recovery. Stage success requires
+real nonempty evidence. Attempts, ownership locks and crash recovery are bounded.
+State recovery is a library operation; CLI producer retry scheduling remains
+unavailable until actual build stages exist. Manifest validation is Phase 2.
+
+Trusted workers use allowlisted binaries and owned process trees. Windows launches
+suspend before job assignment and resume only after limits are set. Project locks
+live at one physical project path so nested workspace roots cannot admit two Unity
+workers. These resource/cleanup controls do not claim filesystem/network isolation.
+
+API references: [Python subprocess](https://docs.python.org/3.11/library/subprocess.html),
+[Windows Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects),
+[Unity Editor arguments](https://docs.unity3d.com/6000.6/Documentation/Manual/EditorCommandLineArguments.html).

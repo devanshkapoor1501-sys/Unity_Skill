@@ -241,8 +241,8 @@ class BoundaryTests(unittest.TestCase):
             self.assertEqual(main(["capability", "list", "--json"]), 9)
         self.assertEqual(json.loads(stream.getvalue())["status"], "FAIL")
         with contextlib.redirect_stdout(io.StringIO()) as stream:
-            self.assertEqual(main(["report", "--workspace", ".", "--run-id", "none"]), 5)
-        self.assertIn("PF-CAPABILITY-NOT-IMPLEMENTED", stream.getvalue())
+            self.assertEqual(main(["report", "--workspace", ".", "--run-id", "none"]), 2)
+        self.assertIn("PF-INPUT-CONTRACT", stream.getvalue())
 
 
 if __name__ == "__main__":

@@ -38,6 +38,34 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   without network access, including actual console commands outside the checkout.
 - Phase 0: complete. Evidence is in reports/phase-0.md and reports/evidence/.
 
-## Next phase
+## Phase 1 work
 
-Phase 1 remains NOT_RUN. No Blender or Unity generation has been attempted.
+- User continued Phase 1. Existing branch/checkout reused; Phase 0 baseline had
+  33 passing tests. No additional dependency downloads were needed.
+- Config/path/policy, durable state/locks, native owned process runner, workspace
+  init, doctor/status/report implemented in tested slices.
+- Actual version probes passed for Blender 5.2.2 and Unity 6000.6.3f1. The initial
+  Unity PATH candidate was a different CLI; conventional installed Editor roots
+  now precede PATH and explicit overrides still win.
+- Real worker tests cover secret env filtering, timeouts, cancellation, output
+  caps and descendant cleanup. Real Windows junction rejection passed with the
+  access needed to create a disposable test junction; the default sandbox denied
+  junction creation. No test was skipped to satisfy the gate.
+- Ruling: manifest validation is Phase 2 despite the older Phase 1 deliverable
+  summary; CLI producer resume scheduling is Phase 3. Library journal recovery
+  and retry budgets work now. Neither future command claims to have executed.
+- Ruling: Windows Job Objects enforce resource/process ownership without claiming
+  filesystem/network containment. Untrusted workflows stay denied. POSIX runtime
+  and memory enforcement claims remain unverified on this Windows host.
+- Independent review identified truncated/quoted credential redaction and invalid
+  static project metadata. Failing regressions were added and fixes passed.
+- Observed transient Windows atomic-replace denial now has two bounded retries
+  and a permanent-denial regression preserving the old file and durable events.
+- Phase 1 complete: full suite 66 passed, no skipped junction test; security/
+  contracts coverage 97.79%. Ruff, format, strict Windows/Linux target mypy,
+  package builds, dependency/CLI docs checks and fresh offline editable/wheel
+  installs (including installed init and doctor dry-run) passed.
+- Exact evidence is under reports/phase-1-evidence/ and reports/phase-1.md.
+  No remote CI or public publication is implied.
+
+Phase 2 is next. No Blender geometry or Unity game project has been generated.

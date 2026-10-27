@@ -1,0 +1,33 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 66 items
+
+tests\test_contract_boundaries.py ................                       [ 24%]
+tests\test_foundation.py .................                               [ 50%]
+tests\test_phase1_cli.py .....                                           [ 57%]
+tests\test_phase1_failures.py ...........                                [ 74%]
+tests\test_phase1_policy.py ......                                       [ 83%]
+tests\test_phase1_review.py ....                                         [ 89%]
+tests\test_phase1_runner.py .......                                      [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\reports\phase-1-evidence\python-tests.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------
+polyforge\contracts\__init__.py         0      0      0      0   100%
+polyforge\contracts\results.py         54      0     14      0   100%
+polyforge\contracts\validation.py      53      0     10      0   100%
+polyforge\security\__init__.py          0      0      0      0   100%
+polyforge\security\paths.py            72      3     30      3    94%   36, 76, 81
+polyforge\security\policy.py           33      0      6      0   100%
+-------------------------------------------------------------------------------
+TOTAL                                 212      3     60      3    98%
+Coverage JSON written to file reports/phase-1-evidence/coverage.json
+Required test coverage of 90.0% reached. Total coverage: 97.79%
+======================== 66 passed in 62.87s (0:01:02) ========================

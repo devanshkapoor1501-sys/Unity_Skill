@@ -21,7 +21,7 @@ polyforge = "polyforge.cli:main"
 include = ["polyforge*"]
 
 [tool.setuptools.package-data]
-polyforge = ["py.typed", "contracts/*.json", "data/*.json"]
+polyforge = ["py.typed", "contracts/*.json", "data/*.json", "data/*.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

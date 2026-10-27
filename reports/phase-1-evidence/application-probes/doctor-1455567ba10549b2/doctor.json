@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "tools": {
+      "blender": {
+        "status": "PASS",
+        "path": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+        "version": "5.2.2",
+        "worker": {
+          "returncode": 0,
+          "reason": "exit",
+          "pid": 21084,
+          "ownership": "WINDOWS_JOB",
+          "duration_seconds": 0.235,
+          "stdout_path": "runs\\doctor-1455567ba10549b2\\log\\blender\\stdout.txt",
+          "stderr_path": "runs\\doctor-1455567ba10549b2\\log\\blender\\stderr.txt",
+          "memory_limit_verified": true
+        },
+        "error_code": null
+      },
+      "unity": {
+        "status": "PASS",
+        "path": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Unity.exe",
+        "version": "6000.6.3f1",
+        "worker": {
+          "returncode": 0,
+          "reason": "exit",
+          "pid": 29448,
+          "ownership": "WINDOWS_JOB",
+          "duration_seconds": 1.875,
+          "stdout_path": "runs\\doctor-1455567ba10549b2\\log\\unity\\stdout.txt",
+          "stderr_path": "runs\\doctor-1455567ba10549b2\\log\\unity\\stderr.txt",
+          "memory_limit_verified": true
+        },
+        "error_code": null
+      }
+    },
+    "project": {
+      "status": "NOT_RUN",
+      "packages": {}
+    },
+    "hardware": {
+      "os": "Windows-11-10.0.26300-SP0",
+      "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+      "logical_cpus": 16,
+      "physical_memory_bytes": 24841998336,
+      "gpu": "NOT_RUN",
+      "graphics_render_probe": "NOT_RUN",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+    },
+    "isolation": {
+      "security_scope": "TRUSTED_LOCAL",
+      "status": "UNSANDBOXED",
+      "isolation_verified": false,
+      "untrusted_execution_allowed": false,
+      "os": "Windows",
+      "windows_sandbox_available": false,
+      "container_cli_available": false,
+      "secret_variable_names": [],
+      "network_policy": "no_requested_network; egress containment NOT_RUN",
+      "os_denial_probes": "NOT_RUN"
+    },
+    "config_digest": "ce3b8f8195d17728bf4188d61fa0a9d339769373e6a60587d7ea3b6846bd96d6",
+    "workspace_writable": true,
+    "license": {
+      "status": "NOT_RUN",
+      "reason": "Version output does not verify activation"
+    },
+    "integrations": {
+      "blender_mcp_cli": null,
+      "unity_mcp_cli": null,
+      "host_sessions": "NOT_RUN",
+      "offline_core": true
+    },
+    "execution_limits": {
+      "timeout_seconds": 30,
+      "max_output_bytes": 10485760,
+      "memory_limit_mb": 8192
+    }
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "doctor-1455567ba10549b2",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "ce3b8f8195d17728bf4188d61fa0a9d339769373e6a60587d7ea3b6846bd96d6",
+  "artifact_ids": [],
+  "evidence_paths": [
+    "doctor.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "NOT_RUN",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

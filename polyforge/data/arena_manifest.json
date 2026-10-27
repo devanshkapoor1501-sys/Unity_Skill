@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "project": {"id": "arena_demo", "name": "Isometric Robot Arena", "kind": "3d", "seed": 42, "render_pipeline": "urp"},
+  "units": {"length": "meter", "up": "Y", "forward": "Z"},
+  "target": {"unity_major": 6, "quality": "prototype", "platform": "standalone_windows"},
+  "scene": {"id": "main", "camera": "isometric", "bounds_m": [20, 3, 20]},
+  "materials": [{"id": "metal_blue", "base_color_rgba": [0.14, 0.38, 0.70, 1], "metallic": 0.4, "roughness": 0.55}],
+  "assets": [
+    {"id": "ground_a", "kind": "modular_mesh", "source": "procedural", "recipe": "recipes/ground_a.json", "target_size_m": [20, 0.2, 20], "material_ids": ["metal_blue"], "collider": "box", "animation_ids": [], "dependencies": []},
+    {"id": "crate_a", "kind": "modular_mesh", "source": "procedural", "recipe": "recipes/crate_a.json", "target_size_m": [1, 1, 1], "material_ids": ["metal_blue"], "collider": "box", "animation_ids": [], "dependencies": []},
+    {"id": "robot_a", "kind": "modular_mesh", "source": "procedural", "recipe": "recipes/robot_a.json", "target_size_m": [1, 1.8, 0.8], "material_ids": ["metal_blue"], "collider": "capsule", "animation_ids": [], "dependencies": []}
+  ],
+  "actors": [{"id": "enemy_01", "asset_id": "robot_a", "controller": "PatrolEnemy", "spawn_xyz": [3, 0, 3]}],
+  "gameplay": {"win_condition": "survive_30_seconds", "controls": "wasd", "restart_key": "r"},
+  "audit": {"required_views": ["front", "side", "top", "iso"], "review_mode": "manual_or_host_vision", "max_retries": 2}
+}

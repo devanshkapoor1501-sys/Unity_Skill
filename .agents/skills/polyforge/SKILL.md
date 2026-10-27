@@ -12,6 +12,10 @@ read-only capability-descriptor validator. Game-generation commands are future
 interfaces and return NOT_RUN with a nonzero exit; do not substitute invented
 tool output or claim a game exists.
 
+Phase 1 also provides init, doctor, status and report. Doctor's --dry-run writes
+nothing. An actual doctor run writes version-probe logs and state, including
+blocked dependencies. It never proves Unity activation, rendering or gameplay.
+
 ```console
 polyforge capability list --json
 polyforge capability show contract.capability.validate.v1 --json

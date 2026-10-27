@@ -3,3 +3,7 @@
 *.png binary
 *.fbx binary
 *.blend binary
+# Preserve captured application bytes, including vendor whitespace/line endings.
+reports/phase-1-evidence/application-probes/**/log/** binary
+# Historical Phase 0 inventory predates LF normalization; retain its original bytes.
+reports/evidence/created-files.txt -text
