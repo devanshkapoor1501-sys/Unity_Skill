@@ -1,0 +1,208 @@
+{
+  "agreement": {
+    "status": "PASS",
+    "issues": [],
+    "evidence_graph": {
+      "nodes": [
+        {
+          "id": "contract:asset:crate_a",
+          "kind": "expected",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "source:asset:crate_a",
+          "kind": "source",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "imported:asset:crate_a",
+          "kind": "imported",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "contract:asset:ground_a",
+          "kind": "expected",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "source:asset:ground_a",
+          "kind": "source",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "imported:asset:ground_a",
+          "kind": "imported",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "contract:asset:robot_a",
+          "kind": "expected",
+          "asset_id": "asset:robot_a"
+        },
+        {
+          "id": "source:asset:robot_a",
+          "kind": "source",
+          "asset_id": "asset:robot_a"
+        },
+        {
+          "id": "imported:asset:robot_a",
+          "kind": "imported",
+          "asset_id": "asset:robot_a"
+        }
+      ],
+      "edges": [
+        {
+          "source": "contract:asset:crate_a",
+          "target": "source:asset:crate_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:crate_a",
+          "target": "imported:asset:crate_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "contract:asset:ground_a",
+          "target": "source:asset:ground_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:ground_a",
+          "target": "imported:asset:ground_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "contract:asset:robot_a",
+          "target": "source:asset:robot_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:robot_a",
+          "target": "imported:asset:robot_a",
+          "relation": "handoff"
+        }
+      ]
+    },
+    "relative_tolerance": 0.02,
+    "application_execution": "NOT_RUN"
+  },
+  "fault": {
+    "status": "FAIL",
+    "issues": [
+      {
+        "category": "scale",
+        "asset_id": "asset:crate_a",
+        "expected": [
+          1,
+          1,
+          1
+        ],
+        "actual": [
+          100,
+          100,
+          100
+        ],
+        "location": "imported"
+      },
+      {
+        "category": "socket",
+        "asset_id": "asset:crate_a",
+        "expected": [
+          "top"
+        ],
+        "actual": [],
+        "location": "imported"
+      },
+      {
+        "category": "binding",
+        "asset_id": "asset:crate_a",
+        "expected": "prefab binding",
+        "actual": "",
+        "location": "imported"
+      }
+    ],
+    "evidence_graph": {
+      "nodes": [
+        {
+          "id": "contract:asset:crate_a",
+          "kind": "expected",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "source:asset:crate_a",
+          "kind": "source",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "imported:asset:crate_a",
+          "kind": "imported",
+          "asset_id": "asset:crate_a"
+        },
+        {
+          "id": "contract:asset:ground_a",
+          "kind": "expected",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "source:asset:ground_a",
+          "kind": "source",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "imported:asset:ground_a",
+          "kind": "imported",
+          "asset_id": "asset:ground_a"
+        },
+        {
+          "id": "contract:asset:robot_a",
+          "kind": "expected",
+          "asset_id": "asset:robot_a"
+        },
+        {
+          "id": "source:asset:robot_a",
+          "kind": "source",
+          "asset_id": "asset:robot_a"
+        },
+        {
+          "id": "imported:asset:robot_a",
+          "kind": "imported",
+          "asset_id": "asset:robot_a"
+        }
+      ],
+      "edges": [
+        {
+          "source": "contract:asset:crate_a",
+          "target": "source:asset:crate_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:crate_a",
+          "target": "imported:asset:crate_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "contract:asset:ground_a",
+          "target": "source:asset:ground_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:ground_a",
+          "target": "imported:asset:ground_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "contract:asset:robot_a",
+          "target": "source:asset:robot_a",
+          "relation": "handoff"
+        },
+        {
+          "source": "source:asset:robot_a",
+          "target": "imported:asset:robot_a",
+          "relation": "handoff"
+        }
+      ]
+    },
+    "relative_tolerance": 0.02,
+    "application_execution": "NOT_RUN"
+  }
+}

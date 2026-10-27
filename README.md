@@ -2,10 +2,11 @@
 
 A local, model-independent Blender-to-Unity capability engine. Apache-2.0.
 
-**Current delivery: Phase 1 runtime foundation.** Capability discovery and
-descriptor validation work without a model, Blender, or Unity. Workspace init,
-doctor, status and report are implemented. Game generation, manifest compilation,
-repair, benchmarks and MCP remain future commands and return `NOT_RUN`/5.
+**Current delivery: Phase 2 contracts and planning.** Discovery, descriptor and
+manifest validation, scene/feature compilation, and dependency planning work
+without a model, Blender, or Unity. Workspace init, doctor, status and report
+are implemented. Game generation, repair, benchmarks and MCP remain future
+commands and return `NOT_RUN`/5.
 Trusted-local process protections do not claim untrusted OS containment.
 
 ## Windows setup
@@ -38,7 +39,7 @@ polyforge capability run contract.capability.validate.v1 --input tests/fixtures/
 polyforge doctor --dry-run --json
 ```
 
-Normal execution and dry-run validation only read input files. Invalid input
+Descriptor execution and dry-run validation only read input files. Invalid input
 returns exit 2; outside-workspace input returns exit 4. Neither writes artifacts.
 `status=PASS` means descriptor validation succeeded; it does not mean a game was
 tested. `evaluated_test_status=NOT_RUN` and `game_status=PARTIAL` remain explicit.
@@ -62,13 +63,17 @@ may require additional test execution access; do not skip it to pass the gate.
 
 Create the parent directory first. Initialization refuses existing targets;
 --dry-run writes nothing. The default template carries a development design
-manifest whose semantic validation is implemented in Phase 2.
+manifest, annotated original brief, and three declarative recipe inputs.
 
 ```powershell
 New-Item -ItemType Directory -Force workspace
 .\.venv\Scripts\polyforge.exe init workspace/arena_demo --json
 .\.venv\Scripts\polyforge.exe doctor --workspace workspace/arena_demo --json
 .\.venv\Scripts\polyforge.exe status --workspace workspace/arena_demo --json
+.\.venv\Scripts\polyforge.exe validate --workspace workspace/arena_demo --json
+.\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --dry-run --json
+.\.venv\Scripts\polyforge.exe compile-contract --manifest workspace/arena_demo/game_manifest.json --json
+.\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --json
 ```
 
 Doctor honors explicit TOML executable paths, then conventional installations,
@@ -85,6 +90,15 @@ are explicitly unverified. Locks use OS exclusion plus PID/host/birth metadata.
 Journal replay recovers a cache interrupted after a durable append. Resume
 scheduling stays unavailable until actual build producers exist.
 
+Compilation preserves original source ranges and creates development-only scene,
+feature and coverage contracts. Planning records S0–S5 task dependencies and
+content hashes. Both operations can PASS while game status remains PARTIAL:
+all requested gameplay producers are still BLOCKED or UNSUPPORTED. Synthetic
+handoff checks and scenario validation do not execute application tests.
+See [manifest and planning rules](docs/manifests.md) for publication, frozen-brief
+and cache behavior. Pure catalog capabilities return contracts without files;
+the normal compile/plan CLI commands publish derived JSON in the workspace.
+
 ## Ownership and next delivery
 
 - `polyforge/`: trusted engine, bundled contracts, and implemented catalog.
@@ -98,6 +112,6 @@ scheduling stays unavailable until actual build producers exist.
 
 See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
 [security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-The next delivery is Phase 2: semantic manifest validation, intent/contracts,
-dependency planning and cache invalidation. Phases stop at their acceptance
+The next delivery is Phase 3: Blender recipes and actual golden geometry.
+Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.

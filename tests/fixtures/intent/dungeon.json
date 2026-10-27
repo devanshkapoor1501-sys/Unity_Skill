@@ -1,0 +1,21 @@
+{
+  "ownership": "DEV_FIXTURE",
+  "brief": "Collect a key and unlock the dungeon exit.",
+  "requirements": [
+    {
+      "id": "dungeon_requirement",
+      "feature_id": "dungeon.key_door.v1",
+      "required": true,
+      "source_span": {
+        "start": 0,
+        "end": 42
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Requested mechanic must be observed independently"
+      ]
+    }
+  ]
+}

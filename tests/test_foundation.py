@@ -62,7 +62,15 @@ class CLIAcceptanceTests(unittest.TestCase):
         body = json.loads(result.stdout)
         self.assertEqual(body["status"], "PASS")
         self.assertEqual(body["game_status"], "PARTIAL")
-        self.assertEqual([c["id"] for c in body["data"]["capabilities"]], [CAPABILITY])
+        self.assertEqual(
+            [c["id"] for c in body["data"]["capabilities"]],
+            [
+                CAPABILITY,
+                "contract.manifest.validate.v1",
+                "contract.scene.compile.v1",
+                "plan.scene.v1",
+            ],
+        )
 
     def test_show_exposes_schema_and_requirements(self) -> None:
         result = cli("capability", "show", CAPABILITY, "--json")

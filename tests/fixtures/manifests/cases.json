@@ -1,0 +1,12 @@
+[
+  {"id":"arena_valid","valid":true,"patches":[]},
+  {"id":"minor_compatible","valid":true,"patches":[[["schema_version"],"1.1.0"]]},
+  {"id":"major_migration","valid":false,"patches":[[["schema_version"],"2.0.0"]]},
+  {"id":"duplicate_asset_id","valid":false,"patches":[[["assets",1,"id"],"ground_a"]]},
+  {"id":"dependency_cycle","valid":false,"patches":[[["assets",0,"dependencies"],["crate_a"]],[["assets",1,"dependencies"],["ground_a"]]]},
+  {"id":"dangling_material","valid":false,"patches":[[["assets",0,"material_ids"],["missing"]]]},
+  {"id":"unsafe_recipe_path","valid":false,"patches":[[["assets",0,"recipe"],"../escape.json"]]},
+  {"id":"invalid_dimension","valid":false,"patches":[[["assets",0,"target_size_m"],[1,0,1]]]},
+  {"id":"spawn_outside_scene","valid":false,"patches":[[["actors",0,"spawn_xyz"],[10000,0,0]]]},
+  {"id":"dangling_actor_asset","valid":false,"patches":[[["actors",0,"asset_id"],"missing"]]}
+]

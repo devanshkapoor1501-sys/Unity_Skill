@@ -5,9 +5,74 @@
     "input_schema": "contracts/capability.schema.json",
     "runner": "python.registry_validator",
     "deterministic": true,
-    "requires": ["python>=3.11"],
-    "tests": ["valid_descriptor", "invalid_descriptor", "dry_run_no_writes"],
-    "output_types": ["validation_result"],
+    "requires": [
+      "python>=3.11"
+    ],
+    "tests": [
+      "valid_descriptor",
+      "invalid_descriptor",
+      "dry_run_no_writes"
+    ],
+    "output_types": [
+      "validation_result"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "contract.manifest.validate.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/game_manifest.schema.json",
+    "runner": "python.manifest_validator",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11"
+    ],
+    "tests": [
+      "valid_manifest",
+      "invalid_manifest",
+      "read_only_result"
+    ],
+    "output_types": [
+      "validation_result"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "contract.scene.compile.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/game_manifest.schema.json",
+    "runner": "python.contract_compiler",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11"
+    ],
+    "tests": [
+      "valid_manifest",
+      "invalid_manifest",
+      "read_only_result"
+    ],
+    "output_types": [
+      "scene_contract"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "plan.scene.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/game_manifest.schema.json",
+    "runner": "python.scene_planner",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11"
+    ],
+    "tests": [
+      "valid_manifest",
+      "invalid_manifest",
+      "read_only_result"
+    ],
+    "output_types": [
+      "plan"
+    ],
     "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

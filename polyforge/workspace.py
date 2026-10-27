@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from importlib.resources import files
 from pathlib import Path
 from uuid import uuid4
@@ -49,6 +50,8 @@ def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Res
     # Read and validate bundled inputs before creating any destination.
     brief = files("polyforge").joinpath("data/arena_brief.md").read_text("utf-8")
     manifest = files("polyforge").joinpath("data/arena_manifest.json").read_text("utf-8")
+    recipes = json.loads(files("polyforge").joinpath("data/arena_recipes.json").read_text("utf-8"))
+    planned.extend(f"recipes/{identifier}.json" for identifier in recipes)
     if dry_run:
         return Result(data={"workspace": str(target), "planned_writes": planned, "dry_run": True})
     target.mkdir(exist_ok=False)
@@ -58,7 +61,9 @@ def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Res
         ("game_manifest.json", manifest),
         ("polyforge.toml", DEFAULT_TOML),
     ):
-        policy.path(name).write_text(content, encoding="utf-8")
+        policy.path(name).write_text(content, encoding="utf-8", newline="\n")
+    for identifier, recipe in recipes.items():
+        atomic_json(policy, f"recipes/{identifier}.json", recipe)
     atomic_json(
         policy,
         ".polyforge/workspace.json",

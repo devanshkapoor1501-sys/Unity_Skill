@@ -61,14 +61,21 @@ def canonical_digest(value: Any) -> str:
         encoded = json.dumps(
             value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False
         ).encode("utf-8")
-    except (TypeError, ValueError) as exc:
+    except (TypeError, ValueError, RecursionError) as exc:
         raise InputError(f"Input is not finite JSON: {exc}") from exc
     return hashlib.sha256(encoded).hexdigest()
 
 
 def schema_document(name: str) -> dict[str, Any]:
     """Read a known packaged schema; never resolve user-provided URLs."""
-    allowed = {"capability.schema.json", "result.schema.json", "benchmark_task.schema.json"}
+    allowed = {
+        "capability.schema.json",
+        "result.schema.json",
+        "benchmark_task.schema.json",
+        "game_manifest.schema.json",
+        "recipe.schema.json",
+        "scenario.schema.json",
+    }
     if name not in allowed:
         raise InputError(f"Unknown bundled schema: {name}")
     value: dict[str, Any] = json.loads(

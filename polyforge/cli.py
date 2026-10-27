@@ -13,7 +13,7 @@ from typing import Any, Never
 
 from polyforge import __version__
 from polyforge.capabilities.protocol import RunContext
-from polyforge.capabilities.registry import RegistryValidator, catalog, lookup
+from polyforge.capabilities.registry import ManifestCapability, RegistryValidator, catalog, lookup
 from polyforge.commands import COMMANDS, CommandSpec
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, load_json
@@ -74,6 +74,15 @@ def dispatch(args: argparse.Namespace) -> Result:
         return Result(data={"capabilities": catalog()})
     if spec.path == ("capability", "show"):
         return Result(data={"capability": lookup(args.id)})
+    if spec.path in {("validate",), ("plan",), ("compile-contract",)}:
+        from polyforge.compiler.commands import manifest_command
+
+        path = (
+            Path(args.manifest)
+            if spec.path == ("compile-contract",)
+            else Path(args.workspace) / "game_manifest.json"
+        )
+        return manifest_command(path, spec.path[0], dry_run=getattr(args, "dry_run", False))
     if spec.path == ("doctor",):
         from polyforge.doctor import doctor
 
@@ -99,7 +108,14 @@ def dispatch(args: argparse.Namespace) -> Result:
     path = workspace_input(Path(args.workspace), Path(args.input))
     inputs = load_json(path)
     context = RunContext(workspace=Path(args.workspace), dry_run=args.dry_run)
-    return RegistryValidator().execute(inputs, context)
+    if args.id == "contract.capability.validate.v1":
+        return RegistryValidator().execute(inputs, context)
+    operation = {
+        "contract.manifest.validate.v1": "validate",
+        "contract.scene.compile.v1": "compile",
+        "plan.scene.v1": "plan",
+    }[args.id]
+    return ManifestCapability(operation).execute(inputs, context)
 
 
 def main(argv: Sequence[str] | None = None) -> int:

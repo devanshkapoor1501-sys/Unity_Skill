@@ -49,6 +49,7 @@ COMMANDS = (
         "Validate a game manifest",
         (WORKSPACE,),
         phase=2,
+        implemented=True,
         example=("validate", "--workspace", "workspace/arena_demo", "--json"),
     ),
     CommandSpec(
@@ -56,6 +57,7 @@ COMMANDS = (
         "Plan dependency stages without launching tools",
         (WORKSPACE, DRY_RUN),
         phase=2,
+        implemented=True,
         example=("plan", "--workspace", "workspace/arena_demo", "--dry-run", "--json"),
     ),
     CommandSpec(
@@ -148,8 +150,9 @@ COMMANDS = (
     CommandSpec(
         ("compile-contract",),
         "Compile the semantic scene contract",
-        ((("--manifest",), {"required": True}),),
+        ((("--manifest",), {"required": True}), DRY_RUN),
         phase=2,
+        implemented=True,
         example=(
             "compile-contract",
             "--manifest",

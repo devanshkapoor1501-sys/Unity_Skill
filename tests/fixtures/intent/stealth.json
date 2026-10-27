@@ -1,0 +1,21 @@
+{
+  "ownership": "DEV_FIXTURE",
+  "brief": "Enemies investigate noise beyond the door.",
+  "requirements": [
+    {
+      "id": "stealth_requirement",
+      "feature_id": "stealth.sound_alert.v1",
+      "required": true,
+      "source_span": {
+        "start": 0,
+        "end": 42
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Requested mechanic must be observed independently"
+      ]
+    }
+  ]
+}

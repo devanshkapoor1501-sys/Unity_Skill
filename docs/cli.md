@@ -11,8 +11,8 @@ are syntax fixtures, not evidence of execution or functionality.
 | --- | --- | --- |
 | `doctor` | Implemented | `polyforge doctor --json` |
 | `init` | Implemented | `polyforge init workspace/arena_demo --template simple_arena --json` |
-| `validate` | NOT_RUN; Phase 2 | `polyforge validate --workspace workspace/arena_demo --json` |
-| `plan` | NOT_RUN; Phase 2 | `polyforge plan --workspace workspace/arena_demo --dry-run --json` |
+| `validate` | Implemented | `polyforge validate --workspace workspace/arena_demo --json` |
+| `plan` | Implemented | `polyforge plan --workspace workspace/arena_demo --dry-run --json` |
 | `build` | NOT_RUN; Phase 3 | `polyforge build --workspace workspace/arena_demo --through S3 --json` |
 | `audit` | NOT_RUN; Phase 4 | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
 | `verify` | NOT_RUN; Phase 6 | `polyforge verify --workspace workspace/arena_demo --json` |
@@ -23,7 +23,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `capability list` | Implemented | `polyforge capability list --json` |
 | `capability show` | Implemented | `polyforge capability show contract.capability.validate.v1 --json` |
 | `capability run` | Implemented | `polyforge capability run contract.capability.validate.v1 --input input.json --workspace workspace/arena_demo --dry-run --json` |
-| `compile-contract` | NOT_RUN; Phase 2 | `polyforge compile-contract --manifest workspace/arena_demo/game_manifest.json --json` |
+| `compile-contract` | Implemented | `polyforge compile-contract --manifest workspace/arena_demo/game_manifest.json --json` |
 | `reconcile` | NOT_RUN; Phase 5 | `polyforge reconcile --workspace workspace/arena_demo --strict --json` |
 | `scenario run` | NOT_RUN; Phase 6 | `polyforge scenario run --workspace workspace/arena_demo --suite core_gameplay --json` |
 | `diagnose` | NOT_RUN; Phase 5 | `polyforge diagnose --workspace workspace/arena_demo --evidence-dir runs/example --json` |

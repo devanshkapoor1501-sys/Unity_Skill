@@ -2,6 +2,11 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add v1 manifest/recipe/scenario validation with safe paths and semantic references.
+- Add deterministic scene/feature contracts, source provenance and explicit blockers.
+- Add S0–S5 dependency planning, scoped digest invalidation and verified artifact lookup.
+- Add synthetic handoff evidence and development-only intent fixtures.
+
 - Add trusted-local config, workspace initialization, doctor/status/report commands.
 - Add owned worker processes, bounded redacted logs, locks and durable run recovery.
 - Probe installed Blender/Unity versions without opening original projects.

@@ -68,4 +68,41 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
 - Exact evidence is under reports/phase-1-evidence/ and reports/phase-1.md.
   No remote CI or public publication is implied.
 
-Phase 2 is next. No Blender geometry or Unity game project has been generated.
+## Phase 2 work
+
+- User continued Phase 2. The existing checkout and installed dependencies were
+  reused. No new network access, Blender worker or Unity project was required.
+- Added strict v1 manifest/recipe/scenario schemas, canonical serialization,
+  global IDs, reference/path/budget checks and deterministic dependency ordering.
+- Added pure scene/feature/coverage compilation with source ranges, stable graph
+  bindings and DEVELOPMENT_ONLY authority. Known future producers stay BLOCKED,
+  unknown features UNSUPPORTED and every game PARTIAL. Public stealth/dungeon
+  fixtures are development probes, never evaluator holdouts.
+- Added S0–S5 DAGs with scoped local/transitive input hashes, artifact-verified
+  cache lookup and explicit NOT_RUN execution. No measured seconds or completed
+  producer output is invented. Material/texture edits preserve mesh/export and
+  gameplay-code fingerprints; rig/appearance edits invalidate dependent bakes.
+- CLI validate is read-only; compile-contract/plan publish under a planning lock
+  with an original-brief freeze, atomic JSON and artifact hashes. Dry runs and
+  invalid input write nothing. Pure catalog operations remain JSON-in/JSON-out.
+- Synthetic handoff invariants produce evidence graphs and retain NOT_RUN
+  application execution. Scenario and external evaluator interfaces stay separate.
+- Ten named static good/bad manifest fixtures and additional adversarial tests
+  cover unsafe paths, cycles, duplicate IDs, invalid numeric data, missing
+  references, unsupported mandatory features, stale cache and frozen input edits.
+- Independent review found input/output overwrites and omitted appearance
+  dependencies for sprite bakes. Both were reproduced RED, fixed and verified
+  GREEN. Input identity now covers recipe/brief/file inputs too. Windows LF
+  initialization has a reproduced source-offset regression and verified fix.
+- Ruling: source-range coverage is conservative traceability, not NLP completeness
+  or evaluator acceptance. Future worker tool fingerprints and actual cache
+  producers belong to their integration phases; no current cache evidence claims
+  execution. Multi-file publication uses a COMMITTED inventory marker; failed
+  PREPARING output is not a committed contract set.
+- Acceptance evidence is in reports/phase-2.md and reports/phase-2-evidence/.
+- Phase 2 complete: 94 tests passed with no skips; security/contracts coverage
+  96.31% combined and 93.57% branches. Ruff, strict Windows/Linux target mypy,
+  CLI documentation, dependency/package checks, fresh offline editable/wheel
+  installs and a seven-command actual workspace smoke workflow all passed.
+
+Phase 3 is next. No Blender geometry or Unity game project has been generated.

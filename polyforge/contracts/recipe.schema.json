@@ -1,0 +1,152 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+    },
+    "asset_id": {
+      "$ref": "#/$defs/id"
+    },
+    "kind": {
+      "enum": [
+        "ground",
+        "crate",
+        "robot",
+        "wall",
+        "doorway"
+      ]
+    },
+    "capability_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "size_m": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 1000
+          }
+        }
+      },
+      "required": [
+        "size_m"
+      ]
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "primitive": {
+            "enum": [
+              "cube",
+              "beveled_box",
+              "sphere",
+              "cylinder",
+              "plane"
+            ]
+          },
+          "parent": {
+            "$ref": "#/$defs/id"
+          },
+          "location": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number",
+              "minimum": -10000,
+              "maximum": 10000
+            }
+          },
+          "size_m": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1000
+            }
+          }
+        },
+        "required": [
+          "id",
+          "primitive"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "sockets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "module_id": {
+            "$ref": "#/$defs/id"
+          },
+          "position": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "number",
+              "minimum": -10000,
+              "maximum": 10000
+            }
+          }
+        },
+        "required": [
+          "id",
+          "module_id",
+          "position"
+        ]
+      },
+      "minItems": 0,
+      "maxItems": 128
+    },
+    "max_polygons": {
+      "type": "integer",
+      "minimum": 4,
+      "maximum": 100000
+    }
+  },
+  "required": [
+    "schema_version",
+    "asset_id",
+    "kind",
+    "capability_id",
+    "parameters",
+    "modules",
+    "sockets",
+    "max_polygons"
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9]*(?:_[a-z0-9]+)*(?![\\s\\S])"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:polyforge:recipe:1.0.0"
+}

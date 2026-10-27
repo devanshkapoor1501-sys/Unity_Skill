@@ -7,14 +7,19 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 0 catalog contains only the
-read-only capability-descriptor validator. Game-generation commands are future
+Discover available capabilities first. The Phase 2 catalog contains read-only
+descriptor/manifest validation, scene-contract compilation and planning. Game-generation commands are future
 interfaces and return NOT_RUN with a nonzero exit; do not substitute invented
 tool output or claim a game exists.
 
 Phase 1 also provides init, doctor, status and report. Doctor's --dry-run writes
 nothing. An actual doctor run writes version-probe logs and state, including
 blocked dependencies. It never proves Unity activation, rendering or gameplay.
+
+Validate a managed manifest before planning. CLI compile-contract and plan publish
+derived JSON and freeze the original brief unless --dry-run is supplied. Catalog
+capability execution is pure. Treat generator annotations as development intent;
+BLOCKED/UNSUPPORTED features and missing evaluator evidence keep games PARTIAL.
 
 ```console
 polyforge capability list --json

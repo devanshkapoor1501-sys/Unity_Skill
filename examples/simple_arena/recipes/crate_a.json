@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "crate_a",
+  "kind": "crate",
+  "capability_id": "mesh.props.crate.v1",
+  "parameters": {
+    "size_m": [
+      1,
+      1,
+      1
+    ]
+  },
+  "modules": [
+    {
+      "id": "body",
+      "primitive": "beveled_box",
+      "location": [
+        0,
+        0,
+        0
+      ],
+      "size_m": [
+        1,
+        1,
+        1
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "top",
+      "module_id": "body",
+      "position": [
+        0,
+        0.5,
+        0
+      ]
+    }
+  ],
+  "max_polygons": 25000
+}

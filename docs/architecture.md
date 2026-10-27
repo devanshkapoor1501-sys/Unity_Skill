@@ -67,7 +67,8 @@ atomic state.json cache. A killed cache write is recovered from events; incomple
 final event bytes are ignored until explicit recovery. Stage success requires
 real nonempty evidence. Attempts, ownership locks and crash recovery are bounded.
 State recovery is a library operation; CLI producer retry scheduling remains
-unavailable until actual build stages exist. Manifest validation is Phase 2.
+unavailable until actual build stages exist. Manifest validation is implemented
+in Phase 2.
 
 Trusted workers use allowlisted binaries and owned process trees. Windows launches
 suspend before job assignment and resume only after limits are set. Project locks
@@ -77,3 +78,24 @@ workers. These resource/cleanup controls do not claim filesystem/network isolati
 API references: [Python subprocess](https://docs.python.org/3.11/library/subprocess.html),
 [Windows Job Objects](https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects),
 [Unity Editor arguments](https://docs.unity3d.com/6000.6/Documentation/Manual/EditorCommandLineArguments.html).
+
+## ADR-002: deterministic contracts and planning
+
+Validate shape, bounded finite JSON, unique IDs, source paths, references and DAGs
+before publication. User-owned manifests are serialized canonically; derived
+contracts preserve semantic IDs and raw brief hashes. Future feature declarations
+are separate from the executable capability catalog. Every known future producer
+is BLOCKED, unknown producers UNSUPPORTED, and acceptance remains DEVELOPMENT_ONLY.
+
+Task fingerprints include only relevant local inputs plus upstream fingerprints.
+Geometry contracts do not depend on global appearance. Material/texture edits
+invalidate appearance, audit and import, preserving mesh/export and runtime-code
+hashes. Rig animation edits invalidate dependent sprite bakes. Execution workers
+must add actual tool fingerprints before their cache records become eligible.
+Current planner tasks have NOT_RUN execution and unmeasured duration estimates.
+An unchanged input is never sufficient evidence of completed output.
+
+Scenario validation and handoff invariants are pure libraries, separate from
+AcceptanceEvaluator. Synthetic report PASS means payload agreement only;
+application_execution remains NOT_RUN. No hidden rubric is created or amended
+by the compiler. See [manifest rules](manifests.md).

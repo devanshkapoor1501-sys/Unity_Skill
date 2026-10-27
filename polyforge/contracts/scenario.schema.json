@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "pattern": "^1\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?![\\s\\S])"
+    },
+    "id": {
+      "$ref": "#/$defs/id"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "setup": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scene_id": {
+          "$ref": "#/$defs/id"
+        },
+        "entity_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "minItems": 0,
+          "maxItems": 1024,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "scene_id",
+        "entity_ids"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "enum": [
+              "move",
+              "wait",
+              "restart",
+              "attack",
+              "interact"
+            ]
+          },
+          "ticks": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "actor_id": {
+            "$ref": "#/$defs/id"
+          },
+          "direction": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "minimum": -1,
+              "maximum": 1
+            }
+          }
+        },
+        "required": [
+          "action",
+          "ticks"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "expected": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "event": {
+            "$ref": "#/$defs/id"
+          },
+          "count_gte": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "event",
+          "count_gte"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 128
+    },
+    "tolerance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position_m": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "time_frames": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60
+        }
+      },
+      "required": [
+        "position_m",
+        "time_frames"
+      ]
+    },
+    "fixed_delta_seconds": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 0.1
+    },
+    "timeout_s": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 600
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "seed",
+    "setup",
+    "steps",
+    "expected",
+    "tolerance",
+    "fixed_delta_seconds",
+    "timeout_s"
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9]*(?:_[a-z0-9]+)*(?![\\s\\S])"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:polyforge:scenario:1.0.0"
+}

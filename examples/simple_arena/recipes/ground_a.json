@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "ground_a",
+  "kind": "ground",
+  "capability_id": "mesh.environment.tile.v1",
+  "parameters": {
+    "size_m": [
+      20,
+      0.2,
+      20
+    ]
+  },
+  "modules": [
+    {
+      "id": "body",
+      "primitive": "beveled_box",
+      "location": [
+        0,
+        0,
+        0
+      ],
+      "size_m": [
+        20,
+        0.2,
+        20
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "top",
+      "module_id": "body",
+      "position": [
+        0,
+        0.1,
+        0
+      ]
+    }
+  ],
+  "max_polygons": 25000
+}

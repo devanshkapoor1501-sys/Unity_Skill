@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0.0",
+  "id": "arena_demo:main",
+  "manifest_digest": "983b1d1512e91d9821a4126a06fbe78f9e8f2589258e1e8168b75d6541ac8f44",
+  "input_digest": "58d3b29cc5c3df50e86300deb0f4bf1644caaadbfb23214a13bd39b45454dc9d",
+  "input_fingerprints": {
+    "manifest": "983b1d1512e91d9821a4126a06fbe78f9e8f2589258e1e8168b75d6541ac8f44",
+    "recipes": {
+      "ground_a": "00fcf6555329530e740e0acb47ce0ca5ea9814b70882fb06216cef1bf2ea7ed1",
+      "crate_a": "a8a34c92ffba8b17ddfee7846505ee019a215de02632ab19cb4b42a46ba8cbe4",
+      "robot_a": "2c0cf87ef810b4a3cd6aff9258a59b5c9cda2ec56b64acfca9f4d2817d23c278"
+    },
+    "files": {},
+    "original_brief": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "coordinate_basis": {
+    "up": "Y",
+    "forward": "Z"
+  },
+  "source_basis": {
+    "up": "Z",
+    "forward": "-Y"
+  },
+  "meters_per_unit": 1,
+  "objects": [
+    {
+      "id": "material:metal_blue",
+      "kind": "material",
+      "parameters": {
+        "id": "metal_blue",
+        "base_color_rgba": [
+          0.14,
+          0.38,
+          0.7,
+          1
+        ],
+        "metallic": 0.4,
+        "roughness": 0.55
+      },
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:crate_a",
+      "kind": "asset",
+      "source_id": "crate_a",
+      "asset_capability": "mesh.props.crate.v1",
+      "bounds_m": [
+        1,
+        1,
+        1
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "top"
+      ],
+      "animations": [],
+      "collider": "box",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:crate_a:top",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.5,
+        0
+      ],
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:ground_a",
+      "kind": "asset",
+      "source_id": "ground_a",
+      "asset_capability": "mesh.environment.tile.v1",
+      "bounds_m": [
+        20,
+        0.2,
+        20
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "top"
+      ],
+      "animations": [],
+      "collider": "box",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:ground_a:top",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.1,
+        0
+      ],
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:robot_a",
+      "kind": "asset",
+      "source_id": "robot_a",
+      "asset_capability": "mesh.robot.modular.v1",
+      "bounds_m": [
+        1,
+        1.8,
+        0.8
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "top"
+      ],
+      "animations": [],
+      "collider": "capsule",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:top",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.9,
+        0
+      ],
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "actor:enemy_01",
+      "kind": "actor",
+      "source_id": "enemy_01",
+      "pose": {
+        "position_m": [
+          3,
+          0,
+          3
+        ]
+      },
+      "controller": "PatrolEnemy",
+      "binding_status": "NOT_RUN"
+    }
+  ],
+  "links": [
+    {
+      "source_id": "asset:crate_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:crate_a",
+      "target_id": "socket:crate_a:top",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "socket:ground_a:top",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:top",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "actor:enemy_01",
+      "target_id": "asset:robot_a",
+      "relation": "instance_of",
+      "required": true,
+      "invariant_id": "prefab_binding"
+    }
+  ],
+  "scenarios": [],
+  "spritesheets": [],
+  "game_status": "PARTIAL"
+}
