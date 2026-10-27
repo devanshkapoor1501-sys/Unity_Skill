@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:polyforge:result:1.0.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "operation_status",
+    "exit_code",
+    "error_code",
+    "data",
+    "diagnostics",
+    "operation_id",
+    "run_id",
+    "version",
+    "contract_version",
+    "input_digest",
+    "artifact_ids",
+    "evidence_paths",
+    "metrics",
+    "duration_ms",
+    "rollback_id",
+    "evaluated_test_status",
+    "game_status"
+  ],
+  "$defs": {
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "NOT_RUN",
+        "REVIEW"
+      ]
+    },
+    "nullable_string": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "properties": {
+    "status": {
+      "$ref": "#/$defs/status"
+    },
+    "operation_status": {
+      "$ref": "#/$defs/status"
+    },
+    "exit_code": {
+      "enum": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "error_code": {
+      "$ref": "#/$defs/nullable_string"
+    },
+    "data": {
+      "type": "object"
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "operation_id": {
+      "$ref": "#/$defs/nullable_string"
+    },
+    "run_id": {
+      "$ref": "#/$defs/nullable_string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "contract_version": {
+      "const": "1.0.0"
+    },
+    "input_digest": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}(?![\\s\\S])"
+    },
+    "artifact_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "duration_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rollback_id": {
+      "$ref": "#/$defs/nullable_string"
+    },
+    "evaluated_test_status": {
+      "$ref": "#/$defs/status"
+    },
+    "game_status": {
+      "enum": [
+        "ACCEPTED",
+        "PARTIAL",
+        "REJECTED"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exit_code": {
+            "const": 0
+          },
+          "operation_status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "exit_code": {
+            "not": {
+              "const": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "BLOCKED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exit_code": {
+            "enum": [
+              3,
+              4
+            ]
+          },
+          "operation_status": {
+            "const": "BLOCKED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "REVIEW"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "exit_code": {
+            "const": 4
+          },
+          "operation_status": {
+            "const": "REVIEW"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "FAIL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation_status": {
+            "const": "FAIL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NOT_RUN"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "operation_status": {
+            "const": "NOT_RUN"
+          }
+        }
+      }
+    }
+  ]
+}

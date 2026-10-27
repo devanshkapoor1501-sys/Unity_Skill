@@ -1,0 +1,27 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 33 items
+
+tests\test_contract_boundaries.py ................                       [ 48%]
+tests\test_foundation.py .................                               [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\reports\evidence\python-tests.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------
+polyforge\contracts\__init__.py         0      0      0      0   100%
+polyforge\contracts\results.py         54      0     14      0   100%
+polyforge\contracts\validation.py      53      0     10      0   100%
+polyforge\security\__init__.py          0      0      0      0   100%
+polyforge\security\paths.py            14      0      6      0   100%
+-------------------------------------------------------------------------------
+TOTAL                                 121      0     30      0   100%
+Coverage JSON written to file reports/evidence/coverage.json
+Required test coverage of 90.0% reached. Total coverage: 100.00%
+============================= 33 passed in 56.00s =============================

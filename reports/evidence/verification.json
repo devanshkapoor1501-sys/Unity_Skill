@@ -1,0 +1,201 @@
+{
+  "timestamp_utc": "2026-10-27T09:55:00.024006+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "name": "ruff",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.219,
+      "log": "reports\\evidence\\ruff.txt"
+    },
+    {
+      "name": "format",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.203,
+      "log": "reports\\evidence\\format.txt"
+    },
+    {
+      "name": "mypy",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.766,
+      "log": "reports\\evidence\\mypy.txt"
+    },
+    {
+      "name": "pytest",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov",
+        "--cov-report=term-missing",
+        "--cov-report=json:reports/evidence/coverage.json",
+        "--junitxml=reports/evidence/python-tests.xml"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 57.453,
+      "log": "reports\\evidence\\pytest.txt"
+    },
+    {
+      "name": "cli-docs",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "tools.generate_cli_docs",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.312,
+      "log": "reports\\evidence\\cli-docs.txt"
+    },
+    {
+      "name": "build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--no-isolation"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 7.907,
+      "log": "reports\\evidence\\build.txt"
+    },
+    {
+      "name": "pip-check",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 1.687,
+      "log": "reports\\evidence\\pip-check.txt"
+    },
+    {
+      "name": "help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.344,
+      "log": "reports\\evidence\\help.txt"
+    },
+    {
+      "name": "catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.703,
+      "log": "reports\\evidence\\catalog.txt"
+    },
+    {
+      "name": "descriptor",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        ".",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.766,
+      "log": "reports\\evidence\\descriptor.txt"
+    },
+    {
+      "name": "negative-descriptor",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_invalid.json",
+        "--workspace",
+        ".",
+        "--json"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "matched": true,
+      "duration_seconds": 0.75,
+      "log": "reports\\evidence\\negative-descriptor.txt"
+    },
+    {
+      "name": "future-build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        ".",
+        "--through",
+        "S3",
+        "--json"
+      ],
+      "expected_exit": 5,
+      "actual_exit": 5,
+      "matched": true,
+      "duration_seconds": 0.375,
+      "log": "reports\\evidence\\future-build.txt"
+    }
+  ],
+  "all_matched": true
+}

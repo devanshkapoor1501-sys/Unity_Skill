@@ -1,0 +1,11 @@
+{
+  "id": "mesh.robot.modular.v1",
+  "version": "1.0.0",
+  "input_schema": "schemas/robot_recipe.schema.json",
+  "runner": "blender.recipe",
+  "deterministic": true,
+  "requires": ["blender>=5.0"],
+  "tests": ["robot_part_count", "pivot_alignment"],
+  "output_types": ["blend", "fbx", "geometry_report"],
+  "trust_requirement": "TRUSTED_LOCAL"
+}

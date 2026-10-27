@@ -1,0 +1,293 @@
+{
+  "contract_version": "1.0.0",
+  "commands": [
+    {
+      "argv": [
+        "doctor",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 1
+    },
+    {
+      "argv": [
+        "init",
+        "workspace/arena_demo",
+        "--template",
+        "simple_arena",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 1
+    },
+    {
+      "argv": [
+        "validate",
+        "--workspace",
+        "workspace/arena_demo",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 2
+    },
+    {
+      "argv": [
+        "plan",
+        "--workspace",
+        "workspace/arena_demo",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 2
+    },
+    {
+      "argv": [
+        "build",
+        "--workspace",
+        "workspace/arena_demo",
+        "--through",
+        "S3",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 3
+    },
+    {
+      "argv": [
+        "audit",
+        "--workspace",
+        "workspace/arena_demo",
+        "--asset",
+        "robot_a",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 4
+    },
+    {
+      "argv": [
+        "verify",
+        "--workspace",
+        "workspace/arena_demo",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 6
+    },
+    {
+      "argv": [
+        "status",
+        "--workspace",
+        "workspace/arena_demo",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 1
+    },
+    {
+      "argv": [
+        "resume",
+        "--workspace",
+        "workspace/arena_demo",
+        "--run-id",
+        "example",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 1
+    },
+    {
+      "argv": [
+        "report",
+        "--workspace",
+        "workspace/arena_demo",
+        "--run-id",
+        "example",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 1
+    },
+    {
+      "argv": [
+        "clean",
+        "--workspace",
+        "workspace/arena_demo",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 11
+    },
+    {
+      "argv": [
+        "capability",
+        "list",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 0
+    },
+    {
+      "argv": [
+        "capability",
+        "show",
+        "contract.capability.validate.v1",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 0
+    },
+    {
+      "argv": [
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "input.json",
+        "--workspace",
+        "workspace/arena_demo",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 0
+    },
+    {
+      "argv": [
+        "compile-contract",
+        "--manifest",
+        "workspace/arena_demo/game_manifest.json",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 2
+    },
+    {
+      "argv": [
+        "reconcile",
+        "--workspace",
+        "workspace/arena_demo",
+        "--strict",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 5
+    },
+    {
+      "argv": [
+        "scenario",
+        "run",
+        "--workspace",
+        "workspace/arena_demo",
+        "--suite",
+        "core_gameplay",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 6
+    },
+    {
+      "argv": [
+        "diagnose",
+        "--workspace",
+        "workspace/arena_demo",
+        "--evidence-dir",
+        "runs/example",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 5
+    },
+    {
+      "argv": [
+        "repair",
+        "plan",
+        "--workspace",
+        "workspace/arena_demo",
+        "--issue",
+        "ISSUE-001",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 5
+    },
+    {
+      "argv": [
+        "repair",
+        "apply",
+        "--workspace",
+        "workspace/arena_demo",
+        "--plan",
+        "repair.json",
+        "--approved",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 5
+    },
+    {
+      "argv": [
+        "repair",
+        "rollback",
+        "--workspace",
+        "workspace/arena_demo",
+        "--transaction-id",
+        "tx-example",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 9
+    },
+    {
+      "argv": [
+        "benchmark",
+        "run",
+        "--suite",
+        "benchmark_core",
+        "--arm",
+        "D",
+        "--output",
+        "workspace/benchmarks",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 6
+    },
+    {
+      "argv": [
+        "benchmark",
+        "report",
+        "--run",
+        "benchmark-example",
+        "--format",
+        "json"
+      ],
+      "implemented": false,
+      "phase": 6
+    },
+    {
+      "argv": [
+        "inspect-project",
+        "--project",
+        "workspace/existing_project",
+        "--read-only",
+        "--json"
+      ],
+      "implemented": false,
+      "phase": 11
+    },
+    {
+      "argv": [
+        "mcp",
+        "serve",
+        "--transport",
+        "stdio"
+      ],
+      "implemented": false,
+      "phase": 10
+    }
+  ]
+}

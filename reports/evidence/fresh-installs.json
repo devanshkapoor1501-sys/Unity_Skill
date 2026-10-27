@@ -1,0 +1,121 @@
+{
+  "timestamp_utc": "2026-10-27T09:55:20.264791+00:00",
+  "network_disabled": true,
+  "checks": [
+    {
+      "name": "fresh-editable-install",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-editable\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--find-links",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+        "-e",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-editable-install.txt"
+    },
+    {
+      "name": "fresh-editable-help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-editable\\Scripts\\polyforge.exe",
+        "--help"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-editable-help.txt"
+    },
+    {
+      "name": "fresh-editable-catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-editable\\Scripts\\polyforge.exe",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-editable-catalog.txt"
+    },
+    {
+      "name": "fresh-editable-validate",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-editable\\Scripts\\polyforge.exe",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-editable-validate.txt"
+    },
+    {
+      "name": "fresh-wheel-install",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-wheel\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--disable-pip-version-check",
+        "--no-index",
+        "--find-links",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-wheel-install.txt"
+    },
+    {
+      "name": "fresh-wheel-help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-wheel\\Scripts\\polyforge.exe",
+        "--help"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-wheel-help.txt"
+    },
+    {
+      "name": "fresh-wheel-catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-wheel\\Scripts\\polyforge.exe",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-wheel-catalog.txt"
+    },
+    {
+      "name": "fresh-wheel-validate",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-wheel\\Scripts\\polyforge.exe",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+        "--json"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-wheel-validate.txt"
+    },
+    {
+      "name": "fresh-wheel-location",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\fresh-wheel\\Scripts\\python.exe",
+        "-c",
+        "import polyforge; print(polyforge.__file__)"
+      ],
+      "actual_exit": 0,
+      "log": "reports\\evidence\\fresh-wheel-location.txt"
+    }
+  ]
+}
