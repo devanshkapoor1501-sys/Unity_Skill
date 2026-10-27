@@ -2,6 +2,9 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Fix Windows workspace authorization for equivalent NTFS short/long paths;
+  preserve junction rejection and independent CI matrix outcomes.
+
 - Add four transparent audit views with independent bounded PNG checks.
 - Add module-level geometry diagnostics, selected static FBX and material/handoff sidecars.
 - Add managed source audits, Blender FBX roundtrip evidence and separate review/import statuses.

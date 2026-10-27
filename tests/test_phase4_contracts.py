@@ -181,7 +181,7 @@ class S3Tests(unittest.TestCase):
                     }
                 )
             )
-            self.assertEqual(managed_source(root, "crate")[1], source)
+            self.assertEqual(managed_source(root, "crate")[1], source.resolve())
             state = root / "runs/old/state.json"
             value = json.loads(state.read_text())
             value["updated_utc"] = None

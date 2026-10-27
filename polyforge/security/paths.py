@@ -49,10 +49,10 @@ class WorkspacePolicy:
                 if PureWindowsPath(raw).drive or raw.startswith(("/", "\\")):
                     raise _deny("Drive-relative and network paths are not allowed")
                 candidate = self.root / raw.replace("\\", "/")
-            if not candidate.is_relative_to(self.root):
-                raise _deny("Path must remain inside the authorized workspace")
-            relative = candidate.relative_to(self.root)
-            current = self.root
+            # Windows can spell the same directory with an 8.3 name or a long name.
+            # Inspect every original component before resolving aliases, so a junction
+            # cannot become an apparently safe canonical child of the workspace.
+            current = Path(candidate.anchor)
             _check_link(current)
             reserved = {
                 "CON",
@@ -62,7 +62,7 @@ class WorkspacePolicy:
                 *(f"COM{i}" for i in range(1, 10)),
                 *(f"LPT{i}" for i in range(1, 10)),
             }
-            for part in relative.parts:
+            for part in candidate.parts[1:]:
                 if (
                     ":" in part
                     or part.endswith((".", " "))

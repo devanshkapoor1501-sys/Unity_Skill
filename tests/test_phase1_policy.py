@@ -61,7 +61,9 @@ class PolicyTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="PolyForge Δ ") as directory:
             root = Path(directory)
             policy = WorkspacePolicy(root)
-            self.assertEqual(policy.path("runs/demo/state.json"), root / "runs/demo/state.json")
+            self.assertEqual(
+                policy.path("runs/demo/state.json"), root.resolve() / "runs/demo/state.json"
+            )
             for value in (
                 "../bad",
                 "a/../../bad",
@@ -119,6 +121,19 @@ class PolicyTests(unittest.TestCase):
             with self.assertRaises(InputError):
                 WorkspacePolicy(root).path("link/escaped.json")
             self.assertEqual(list(outside.iterdir()), [])
+            back = base / "back_inside"
+            if os.name == "nt":
+                result = subprocess.run(
+                    [os.environ["COMSPEC"], "/d", "/c", "mklink", "/J", str(back), str(root)],
+                    capture_output=True,
+                    text=True,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+            else:
+                back.symlink_to(root, target_is_directory=True)
+            # Even a junction leading back inside must not bypass the link policy.
+            with self.assertRaises(InputError):
+                WorkspacePolicy(root).path(back / "forbidden.json")
 
     def test_redaction_and_environment_do_not_forward_secret_canaries(self) -> None:
         from polyforge.security.policy import isolation_profile, redact, worker_environment

@@ -1,0 +1,216 @@
+{
+  "timestamp_utc": "2026-10-27T17:00:08.645816+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "name": "ruff",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.266,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\ruff.txt"
+    },
+    {
+      "name": "format",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.188,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\format.txt"
+    },
+    {
+      "name": "mypy",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 6.609,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\mypy.txt"
+    },
+    {
+      "name": "mypy-linux",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--platform",
+        "linux"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 6.625,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\mypy-linux.txt"
+    },
+    {
+      "name": "pytest",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov",
+        "--cov-report=term-missing",
+        "--cov-report=json:reports/ci-windows-short-temp-final-evidence/coverage.json",
+        "--junitxml=reports/ci-windows-short-temp-final-evidence/python-tests.xml"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 120.281,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\pytest.txt"
+    },
+    {
+      "name": "cli-docs",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "tools.generate_cli_docs",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.203,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\cli-docs.txt"
+    },
+    {
+      "name": "build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--no-isolation"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 6.688,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\build.txt"
+    },
+    {
+      "name": "pip-check",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 1.031,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\pip-check.txt"
+    },
+    {
+      "name": "help",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.234,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\help.txt"
+    },
+    {
+      "name": "catalog",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "list",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.454,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\catalog.txt"
+    },
+    {
+      "name": "descriptor",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_valid.json",
+        "--workspace",
+        ".",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "matched": true,
+      "duration_seconds": 0.437,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\descriptor.txt"
+    },
+    {
+      "name": "negative-descriptor",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "capability",
+        "run",
+        "contract.capability.validate.v1",
+        "--input",
+        "tests/fixtures/capability_invalid.json",
+        "--workspace",
+        ".",
+        "--json"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "matched": true,
+      "duration_seconds": 0.422,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\negative-descriptor.txt"
+    },
+    {
+      "name": "future-build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        ".",
+        "--through",
+        "S4",
+        "--json"
+      ],
+      "expected_exit": 5,
+      "actual_exit": 5,
+      "matched": true,
+      "duration_seconds": 0.344,
+      "log": "reports\\ci-windows-short-temp-final-evidence\\future-build.txt"
+    }
+  ],
+  "all_matched": true
+}

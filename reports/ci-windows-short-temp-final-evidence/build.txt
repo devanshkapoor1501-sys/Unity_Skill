@@ -1,0 +1,434 @@
+* Getting build dependencies for sdist...
+running egg_info
+writing polyforge.egg-info\PKG-INFO
+writing dependency_links to polyforge.egg-info\dependency_links.txt
+writing entry points to polyforge.egg-info\entry_points.txt
+writing requirements to polyforge.egg-info\requires.txt
+writing top-level names to polyforge.egg-info\top_level.txt
+reading manifest file 'polyforge.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'polyforge.egg-info\SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing polyforge.egg-info\PKG-INFO
+writing dependency_links to polyforge.egg-info\dependency_links.txt
+writing entry points to polyforge.egg-info\entry_points.txt
+writing requirements to polyforge.egg-info\requires.txt
+writing top-level names to polyforge.egg-info\top_level.txt
+reading manifest file 'polyforge.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'polyforge.egg-info\SOURCES.txt'
+running check
+creating polyforge-0.0.1
+creating polyforge-0.0.1\.agents\skills\polyforge
+creating polyforge-0.0.1\.agents\skills\polyforge\references
+creating polyforge-0.0.1\.github\workflows
+creating polyforge-0.0.1\benchmarks
+creating polyforge-0.0.1\benchmarks\tasks
+creating polyforge-0.0.1\capabilities
+creating polyforge-0.0.1\docs
+creating polyforge-0.0.1\examples\simple_arena
+creating polyforge-0.0.1\examples\simple_arena\recipes
+creating polyforge-0.0.1\examples\static_recipes
+creating polyforge-0.0.1\polyforge
+creating polyforge-0.0.1\polyforge.egg-info
+creating polyforge-0.0.1\polyforge\benchmark
+creating polyforge-0.0.1\polyforge\blender
+creating polyforge-0.0.1\polyforge\capabilities
+creating polyforge-0.0.1\polyforge\compiler
+creating polyforge-0.0.1\polyforge\composition
+creating polyforge-0.0.1\polyforge\contracts
+creating polyforge-0.0.1\polyforge\data
+creating polyforge-0.0.1\polyforge\invariants
+creating polyforge-0.0.1\polyforge\planner
+creating polyforge-0.0.1\polyforge\runner
+creating polyforge-0.0.1\polyforge\scenarios
+creating polyforge-0.0.1\polyforge\security
+creating polyforge-0.0.1\tests
+creating polyforge-0.0.1\tests\fixtures
+creating polyforge-0.0.1\tests\fixtures\intent
+creating polyforge-0.0.1\tests\fixtures\manifests
+creating polyforge-0.0.1\tests\fixtures\recipes
+creating polyforge-0.0.1\tools
+creating polyforge-0.0.1\unity_package
+copying files to polyforge-0.0.1...
+copying CHANGELOG.md -> polyforge-0.0.1
+copying CONTRIBUTING.md -> polyforge-0.0.1
+copying LICENSE -> polyforge-0.0.1
+copying MANIFEST.in -> polyforge-0.0.1
+copying NOTICE -> polyforge-0.0.1
+copying README.md -> polyforge-0.0.1
+copying SECURITY.md -> polyforge-0.0.1
+copying pyproject.toml -> polyforge-0.0.1
+copying requirements-dev.lock -> polyforge-0.0.1
+copying .agents\skills\polyforge\SKILL.md -> polyforge-0.0.1\.agents\skills\polyforge
+copying .agents\skills\polyforge\references\workflow.md -> polyforge-0.0.1\.agents\skills\polyforge\references
+copying .github\workflows\ci.yml -> polyforge-0.0.1\.github\workflows
+copying benchmarks\README.md -> polyforge-0.0.1\benchmarks
+copying benchmarks\tasks\arena_development.json -> polyforge-0.0.1\benchmarks\tasks
+copying capabilities\README.md -> polyforge-0.0.1\capabilities
+copying docs\architecture.md -> polyforge-0.0.1\docs
+copying docs\audit-export.md -> polyforge-0.0.1\docs
+copying docs\cli.md -> polyforge-0.0.1\docs
+copying docs\implementation-plan.md -> polyforge-0.0.1\docs
+copying docs\manifests.md -> polyforge-0.0.1\docs
+copying docs\progress.md -> polyforge-0.0.1\docs
+copying docs\recipes.md -> polyforge-0.0.1\docs
+copying examples\simple_arena\README.md -> polyforge-0.0.1\examples\simple_arena
+copying examples\simple_arena\brief.md -> polyforge-0.0.1\examples\simple_arena
+copying examples\simple_arena\game_manifest.json -> polyforge-0.0.1\examples\simple_arena
+copying examples\simple_arena\recipes\crate_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+copying examples\simple_arena\recipes\ground_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+copying examples\simple_arena\recipes\robot_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+copying examples\static_recipes\audit.json -> polyforge-0.0.1\examples\static_recipes
+copying examples\static_recipes\crate.json -> polyforge-0.0.1\examples\static_recipes
+copying examples\static_recipes\doorway.json -> polyforge-0.0.1\examples\static_recipes
+copying examples\static_recipes\ground.json -> polyforge-0.0.1\examples\static_recipes
+copying examples\static_recipes\robot.json -> polyforge-0.0.1\examples\static_recipes
+copying examples\static_recipes\wall.json -> polyforge-0.0.1\examples\static_recipes
+copying polyforge\__init__.py -> polyforge-0.0.1\polyforge
+copying polyforge\__main__.py -> polyforge-0.0.1\polyforge
+copying polyforge\cli.py -> polyforge-0.0.1\polyforge
+copying polyforge\commands.py -> polyforge-0.0.1\polyforge
+copying polyforge\config.py -> polyforge-0.0.1\polyforge
+copying polyforge\doctor.py -> polyforge-0.0.1\polyforge
+copying polyforge\py.typed -> polyforge-0.0.1\polyforge
+copying polyforge\workspace.py -> polyforge-0.0.1\polyforge
+copying polyforge.egg-info\PKG-INFO -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge.egg-info\SOURCES.txt -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge.egg-info\dependency_links.txt -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge.egg-info\entry_points.txt -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge.egg-info\requires.txt -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge.egg-info\top_level.txt -> polyforge-0.0.1\polyforge.egg-info
+copying polyforge\benchmark\__init__.py -> polyforge-0.0.1\polyforge\benchmark
+copying polyforge\benchmark\protocol.py -> polyforge-0.0.1\polyforge\benchmark
+copying polyforge\blender\__init__.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\adapter.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\audit.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\audit_worker.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\build.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\recipes.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\blender\worker.py -> polyforge-0.0.1\polyforge\blender
+copying polyforge\capabilities\__init__.py -> polyforge-0.0.1\polyforge\capabilities
+copying polyforge\capabilities\protocol.py -> polyforge-0.0.1\polyforge\capabilities
+copying polyforge\capabilities\registry.py -> polyforge-0.0.1\polyforge\capabilities
+copying polyforge\compiler\__init__.py -> polyforge-0.0.1\polyforge\compiler
+copying polyforge\compiler\commands.py -> polyforge-0.0.1\polyforge\compiler
+copying polyforge\compiler\contract_compiler.py -> polyforge-0.0.1\polyforge\compiler
+copying polyforge\composition\__init__.py -> polyforge-0.0.1\polyforge\composition
+copying polyforge\composition\grammar.py -> polyforge-0.0.1\polyforge\composition
+copying polyforge\contracts\__init__.py -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\audit_request.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\benchmark_task.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\capability.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\game_manifest.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\images.py -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\manifest.py -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\recipe.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\recipe_request.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\result.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\results.py -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\scenario.schema.json -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\contracts\validation.py -> polyforge-0.0.1\polyforge\contracts
+copying polyforge\data\arena_brief.md -> polyforge-0.0.1\polyforge\data
+copying polyforge\data\arena_manifest.json -> polyforge-0.0.1\polyforge\data
+copying polyforge\data\arena_recipes.json -> polyforge-0.0.1\polyforge\data
+copying polyforge\data\catalog.json -> polyforge-0.0.1\polyforge\data
+copying polyforge\invariants\__init__.py -> polyforge-0.0.1\polyforge\invariants
+copying polyforge\invariants\handoff.py -> polyforge-0.0.1\polyforge\invariants
+copying polyforge\planner\__init__.py -> polyforge-0.0.1\polyforge\planner
+copying polyforge\planner\cache.py -> polyforge-0.0.1\polyforge\planner
+copying polyforge\planner\dag.py -> polyforge-0.0.1\polyforge\planner
+copying polyforge\planner\plans.py -> polyforge-0.0.1\polyforge\planner
+copying polyforge\runner\__init__.py -> polyforge-0.0.1\polyforge\runner
+copying polyforge\runner\locks.py -> polyforge-0.0.1\polyforge\runner
+copying polyforge\runner\ownership.py -> polyforge-0.0.1\polyforge\runner
+copying polyforge\runner\processes.py -> polyforge-0.0.1\polyforge\runner
+copying polyforge\runner\state.py -> polyforge-0.0.1\polyforge\runner
+copying polyforge\scenarios\__init__.py -> polyforge-0.0.1\polyforge\scenarios
+copying polyforge\scenarios\schema.py -> polyforge-0.0.1\polyforge\scenarios
+copying polyforge\security\__init__.py -> polyforge-0.0.1\polyforge\security
+copying polyforge\security\paths.py -> polyforge-0.0.1\polyforge\security
+copying polyforge\security\policy.py -> polyforge-0.0.1\polyforge\security
+copying tests\blender_audit_fault_probe.py -> polyforge-0.0.1\tests
+copying tests\blender_fault_probe.py -> polyforge-0.0.1\tests
+copying tests\test_contract_boundaries.py -> polyforge-0.0.1\tests
+copying tests\test_foundation.py -> polyforge-0.0.1\tests
+copying tests\test_phase1_cli.py -> polyforge-0.0.1\tests
+copying tests\test_phase1_failures.py -> polyforge-0.0.1\tests
+copying tests\test_phase1_policy.py -> polyforge-0.0.1\tests
+copying tests\test_phase1_review.py -> polyforge-0.0.1\tests
+copying tests\test_phase1_runner.py -> polyforge-0.0.1\tests
+copying tests\test_phase2_boundaries.py -> polyforge-0.0.1\tests
+copying tests\test_phase2_contracts.py -> polyforge-0.0.1\tests
+copying tests\test_phase3_blender.py -> polyforge-0.0.1\tests
+copying tests\test_phase3_cli.py -> polyforge-0.0.1\tests
+copying tests\test_phase3_recipes.py -> polyforge-0.0.1\tests
+copying tests\test_phase4_blender.py -> polyforge-0.0.1\tests
+copying tests\test_phase4_contracts.py -> polyforge-0.0.1\tests
+copying tests\test_windows_alias_paths.py -> polyforge-0.0.1\tests
+copying tests\fixtures\capability_invalid.json -> polyforge-0.0.1\tests\fixtures
+copying tests\fixtures\capability_valid.json -> polyforge-0.0.1\tests\fixtures
+copying tests\fixtures\cli_commands.json -> polyforge-0.0.1\tests\fixtures
+copying tests\fixtures\intent\dungeon.json -> polyforge-0.0.1\tests\fixtures\intent
+copying tests\fixtures\intent\stealth.json -> polyforge-0.0.1\tests\fixtures\intent
+copying tests\fixtures\manifests\cases.json -> polyforge-0.0.1\tests\fixtures\manifests
+copying tests\fixtures\recipes\asymmetric.json -> polyforge-0.0.1\tests\fixtures\recipes
+copying tools\__init__.py -> polyforge-0.0.1\tools
+copying tools\generate_cli_docs.py -> polyforge-0.0.1\tools
+copying unity_package\README.md -> polyforge-0.0.1\unity_package
+copying polyforge.egg-info\SOURCES.txt -> polyforge-0.0.1\polyforge.egg-info
+Writing polyforge-0.0.1\setup.cfg
+Creating tar archive
+removing 'polyforge-0.0.1' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing polyforge.egg-info\PKG-INFO
+writing dependency_links to polyforge.egg-info\dependency_links.txt
+writing entry points to polyforge.egg-info\entry_points.txt
+writing requirements to polyforge.egg-info\requires.txt
+writing top-level names to polyforge.egg-info\top_level.txt
+reading manifest file 'polyforge.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'polyforge.egg-info\SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build\lib\polyforge
+copying polyforge\cli.py -> build\lib\polyforge
+copying polyforge\commands.py -> build\lib\polyforge
+copying polyforge\config.py -> build\lib\polyforge
+copying polyforge\doctor.py -> build\lib\polyforge
+copying polyforge\workspace.py -> build\lib\polyforge
+copying polyforge\__init__.py -> build\lib\polyforge
+copying polyforge\__main__.py -> build\lib\polyforge
+creating build\lib\polyforge\benchmark
+copying polyforge\benchmark\protocol.py -> build\lib\polyforge\benchmark
+copying polyforge\benchmark\__init__.py -> build\lib\polyforge\benchmark
+creating build\lib\polyforge\blender
+copying polyforge\blender\adapter.py -> build\lib\polyforge\blender
+copying polyforge\blender\audit.py -> build\lib\polyforge\blender
+copying polyforge\blender\audit_worker.py -> build\lib\polyforge\blender
+copying polyforge\blender\build.py -> build\lib\polyforge\blender
+copying polyforge\blender\recipes.py -> build\lib\polyforge\blender
+copying polyforge\blender\worker.py -> build\lib\polyforge\blender
+copying polyforge\blender\__init__.py -> build\lib\polyforge\blender
+creating build\lib\polyforge\capabilities
+copying polyforge\capabilities\protocol.py -> build\lib\polyforge\capabilities
+copying polyforge\capabilities\registry.py -> build\lib\polyforge\capabilities
+copying polyforge\capabilities\__init__.py -> build\lib\polyforge\capabilities
+creating build\lib\polyforge\compiler
+copying polyforge\compiler\commands.py -> build\lib\polyforge\compiler
+copying polyforge\compiler\contract_compiler.py -> build\lib\polyforge\compiler
+copying polyforge\compiler\__init__.py -> build\lib\polyforge\compiler
+creating build\lib\polyforge\composition
+copying polyforge\composition\grammar.py -> build\lib\polyforge\composition
+copying polyforge\composition\__init__.py -> build\lib\polyforge\composition
+creating build\lib\polyforge\contracts
+copying polyforge\contracts\images.py -> build\lib\polyforge\contracts
+copying polyforge\contracts\manifest.py -> build\lib\polyforge\contracts
+copying polyforge\contracts\results.py -> build\lib\polyforge\contracts
+copying polyforge\contracts\validation.py -> build\lib\polyforge\contracts
+copying polyforge\contracts\__init__.py -> build\lib\polyforge\contracts
+creating build\lib\polyforge\invariants
+copying polyforge\invariants\handoff.py -> build\lib\polyforge\invariants
+copying polyforge\invariants\__init__.py -> build\lib\polyforge\invariants
+creating build\lib\polyforge\planner
+copying polyforge\planner\cache.py -> build\lib\polyforge\planner
+copying polyforge\planner\dag.py -> build\lib\polyforge\planner
+copying polyforge\planner\plans.py -> build\lib\polyforge\planner
+copying polyforge\planner\__init__.py -> build\lib\polyforge\planner
+creating build\lib\polyforge\runner
+copying polyforge\runner\locks.py -> build\lib\polyforge\runner
+copying polyforge\runner\ownership.py -> build\lib\polyforge\runner
+copying polyforge\runner\processes.py -> build\lib\polyforge\runner
+copying polyforge\runner\state.py -> build\lib\polyforge\runner
+copying polyforge\runner\__init__.py -> build\lib\polyforge\runner
+creating build\lib\polyforge\scenarios
+copying polyforge\scenarios\schema.py -> build\lib\polyforge\scenarios
+copying polyforge\scenarios\__init__.py -> build\lib\polyforge\scenarios
+creating build\lib\polyforge\security
+copying polyforge\security\paths.py -> build\lib\polyforge\security
+copying polyforge\security\policy.py -> build\lib\polyforge\security
+copying polyforge\security\__init__.py -> build\lib\polyforge\security
+running egg_info
+writing polyforge.egg-info\PKG-INFO
+writing dependency_links to polyforge.egg-info\dependency_links.txt
+writing entry points to polyforge.egg-info\entry_points.txt
+writing requirements to polyforge.egg-info\requires.txt
+writing top-level names to polyforge.egg-info\top_level.txt
+reading manifest file 'polyforge.egg-info\SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+adding license file 'LICENSE'
+adding license file 'NOTICE'
+writing manifest file 'polyforge.egg-info\SOURCES.txt'
+copying polyforge\py.typed -> build\lib\polyforge
+copying polyforge\contracts\audit_request.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\benchmark_task.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\capability.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\game_manifest.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\recipe.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\recipe_request.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\result.schema.json -> build\lib\polyforge\contracts
+copying polyforge\contracts\scenario.schema.json -> build\lib\polyforge\contracts
+creating build\lib\polyforge\data
+copying polyforge\data\arena_manifest.json -> build\lib\polyforge\data
+copying polyforge\data\arena_recipes.json -> build\lib\polyforge\data
+copying polyforge\data\catalog.json -> build\lib\polyforge\data
+copying polyforge\data\arena_brief.md -> build\lib\polyforge\data
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\polyforge
+creating build\bdist.win-amd64\wheel\polyforge\benchmark
+copying build\lib\polyforge\benchmark\protocol.py -> build\bdist.win-amd64\wheel\.\polyforge\benchmark
+copying build\lib\polyforge\benchmark\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\benchmark
+creating build\bdist.win-amd64\wheel\polyforge\blender
+copying build\lib\polyforge\blender\adapter.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\audit.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\audit_worker.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\build.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\recipes.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\worker.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+copying build\lib\polyforge\blender\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+creating build\bdist.win-amd64\wheel\polyforge\capabilities
+copying build\lib\polyforge\capabilities\protocol.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+copying build\lib\polyforge\capabilities\registry.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+copying build\lib\polyforge\capabilities\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+copying build\lib\polyforge\cli.py -> build\bdist.win-amd64\wheel\.\polyforge
+copying build\lib\polyforge\commands.py -> build\bdist.win-amd64\wheel\.\polyforge
+creating build\bdist.win-amd64\wheel\polyforge\compiler
+copying build\lib\polyforge\compiler\commands.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+copying build\lib\polyforge\compiler\contract_compiler.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+copying build\lib\polyforge\compiler\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+creating build\bdist.win-amd64\wheel\polyforge\composition
+copying build\lib\polyforge\composition\grammar.py -> build\bdist.win-amd64\wheel\.\polyforge\composition
+copying build\lib\polyforge\composition\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\composition
+copying build\lib\polyforge\config.py -> build\bdist.win-amd64\wheel\.\polyforge
+creating build\bdist.win-amd64\wheel\polyforge\contracts
+copying build\lib\polyforge\contracts\audit_request.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\benchmark_task.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\capability.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\game_manifest.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\images.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\manifest.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\recipe.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\recipe_request.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\result.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\results.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\scenario.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\validation.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+copying build\lib\polyforge\contracts\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+creating build\bdist.win-amd64\wheel\polyforge\data
+copying build\lib\polyforge\data\arena_brief.md -> build\bdist.win-amd64\wheel\.\polyforge\data
+copying build\lib\polyforge\data\arena_manifest.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+copying build\lib\polyforge\data\arena_recipes.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+copying build\lib\polyforge\data\catalog.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+copying build\lib\polyforge\doctor.py -> build\bdist.win-amd64\wheel\.\polyforge
+creating build\bdist.win-amd64\wheel\polyforge\invariants
+copying build\lib\polyforge\invariants\handoff.py -> build\bdist.win-amd64\wheel\.\polyforge\invariants
+copying build\lib\polyforge\invariants\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\invariants
+creating build\bdist.win-amd64\wheel\polyforge\planner
+copying build\lib\polyforge\planner\cache.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+copying build\lib\polyforge\planner\dag.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+copying build\lib\polyforge\planner\plans.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+copying build\lib\polyforge\planner\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+copying build\lib\polyforge\py.typed -> build\bdist.win-amd64\wheel\.\polyforge
+creating build\bdist.win-amd64\wheel\polyforge\runner
+copying build\lib\polyforge\runner\locks.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+copying build\lib\polyforge\runner\ownership.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+copying build\lib\polyforge\runner\processes.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+copying build\lib\polyforge\runner\state.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+copying build\lib\polyforge\runner\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+creating build\bdist.win-amd64\wheel\polyforge\scenarios
+copying build\lib\polyforge\scenarios\schema.py -> build\bdist.win-amd64\wheel\.\polyforge\scenarios
+copying build\lib\polyforge\scenarios\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\scenarios
+creating build\bdist.win-amd64\wheel\polyforge\security
+copying build\lib\polyforge\security\paths.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+copying build\lib\polyforge\security\policy.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+copying build\lib\polyforge\security\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+copying build\lib\polyforge\workspace.py -> build\bdist.win-amd64\wheel\.\polyforge
+copying build\lib\polyforge\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge
+copying build\lib\polyforge\__main__.py -> build\bdist.win-amd64\wheel\.\polyforge
+running install_egg_info
+Copying polyforge.egg-info to build\bdist.win-amd64\wheel\.\polyforge-0.0.1-py3.12.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\polyforge-0.0.1.dist-info\WHEEL
+creating 'C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\dist\.tmp-t56r2htj\polyforge-0.0.1-py3-none-any.whl' and adding 'build\bdist.win-amd64\wheel' to it
+adding 'polyforge/__init__.py'
+adding 'polyforge/__main__.py'
+adding 'polyforge/cli.py'
+adding 'polyforge/commands.py'
+adding 'polyforge/config.py'
+adding 'polyforge/doctor.py'
+adding 'polyforge/py.typed'
+adding 'polyforge/workspace.py'
+adding 'polyforge/benchmark/__init__.py'
+adding 'polyforge/benchmark/protocol.py'
+adding 'polyforge/blender/__init__.py'
+adding 'polyforge/blender/adapter.py'
+adding 'polyforge/blender/audit.py'
+adding 'polyforge/blender/audit_worker.py'
+adding 'polyforge/blender/build.py'
+adding 'polyforge/blender/recipes.py'
+adding 'polyforge/blender/worker.py'
+adding 'polyforge/capabilities/__init__.py'
+adding 'polyforge/capabilities/protocol.py'
+adding 'polyforge/capabilities/registry.py'
+adding 'polyforge/compiler/__init__.py'
+adding 'polyforge/compiler/commands.py'
+adding 'polyforge/compiler/contract_compiler.py'
+adding 'polyforge/composition/__init__.py'
+adding 'polyforge/composition/grammar.py'
+adding 'polyforge/contracts/__init__.py'
+adding 'polyforge/contracts/audit_request.schema.json'
+adding 'polyforge/contracts/benchmark_task.schema.json'
+adding 'polyforge/contracts/capability.schema.json'
+adding 'polyforge/contracts/game_manifest.schema.json'
+adding 'polyforge/contracts/images.py'
+adding 'polyforge/contracts/manifest.py'
+adding 'polyforge/contracts/recipe.schema.json'
+adding 'polyforge/contracts/recipe_request.schema.json'
+adding 'polyforge/contracts/result.schema.json'
+adding 'polyforge/contracts/results.py'
+adding 'polyforge/contracts/scenario.schema.json'
+adding 'polyforge/contracts/validation.py'
+adding 'polyforge/data/arena_brief.md'
+adding 'polyforge/data/arena_manifest.json'
+adding 'polyforge/data/arena_recipes.json'
+adding 'polyforge/data/catalog.json'
+adding 'polyforge/invariants/__init__.py'
+adding 'polyforge/invariants/handoff.py'
+adding 'polyforge/planner/__init__.py'
+adding 'polyforge/planner/cache.py'
+adding 'polyforge/planner/dag.py'
+adding 'polyforge/planner/plans.py'
+adding 'polyforge/runner/__init__.py'
+adding 'polyforge/runner/locks.py'
+adding 'polyforge/runner/ownership.py'
+adding 'polyforge/runner/processes.py'
+adding 'polyforge/runner/state.py'
+adding 'polyforge/scenarios/__init__.py'
+adding 'polyforge/scenarios/schema.py'
+adding 'polyforge/security/__init__.py'
+adding 'polyforge/security/paths.py'
+adding 'polyforge/security/policy.py'
+adding 'polyforge-0.0.1.dist-info/licenses/LICENSE'
+adding 'polyforge-0.0.1.dist-info/licenses/NOTICE'
+adding 'polyforge-0.0.1.dist-info/METADATA'
+adding 'polyforge-0.0.1.dist-info/WHEEL'
+adding 'polyforge-0.0.1.dist-info/entry_points.txt'
+adding 'polyforge-0.0.1.dist-info/top_level.txt'
+adding 'polyforge-0.0.1.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built polyforge-0.0.1.tar.gz and polyforge-0.0.1-py3-none-any.whl
