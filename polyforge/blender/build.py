@@ -24,16 +24,19 @@ def build_assets(
     workspace: Path, *, through: str | None = None, only: str | None = None, dry_run: bool = False
 ) -> Result:
     through = through or "S2"
-    if through not in {"S0", "S1", "S2"}:
+    if through not in {"S0", "S1", "S2", "S3"}:
         return failure(
             ErrorKind.PRODUCER_FAILURE,
             "PF-STAGE-NOT-IMPLEMENTED",
-            "Only S0–S2 static asset generation is implemented; audit/export begins in Phase 4",
+            "Only S0–S3 generation/audit/export is implemented; "
+            "Unity integration begins in Phase 5",
             status="NOT_RUN",
         )
     policy = WorkspacePolicy(workspace)
     config_path = policy.path("polyforge.toml")
-    load_config(config_path if config_path.is_file() else None)
+    config = load_config(config_path if config_path.is_file() else None)
+    if through == "S3" and config.preview_resolution > 1024:
+        raise InputError("Audit previews are limited to 1024 pixels")
     path = policy.path("game_manifest.json")
     model = load_manifest(path)
     # Include publication destination validation before any execution side effects.
@@ -45,6 +48,13 @@ def build_assets(
         raise InputError("$.only: unknown asset ID")
     assets = {a["id"]: a for a in model.data["assets"]}
     materials = {m["id"]: m for m in model.data["materials"]}
+    if through == "S3" and any(m.get("textures") for m in materials.values()):
+        return failure(
+            ErrorKind.PRODUCER_FAILURE,
+            "PF-EXPORT-TEXTURES-NOT-IMPLEMENTED",
+            "Texture interchange is not implemented; color/metallic/roughness only",
+            status="NOT_RUN",
+        )
     prepared = {}
     for identifier, source in model.recipes.items():
         recipe = copy.deepcopy(source)
@@ -53,7 +63,13 @@ def build_assets(
         if wanted:
             old = [m["id"] for m in recipe.get("materials", [])]
             recipe["materials"] = [
-                {"id": key, "color_rgba": materials[key]["base_color_rgba"]} for key in wanted
+                {
+                    "id": key,
+                    "color_rgba": materials[key]["base_color_rgba"],
+                    "metallic": materials[key]["metallic"],
+                    "roughness": materials[key]["roughness"],
+                }
+                for key in wanted
             ]
             for module in recipe["modules"]:
                 index = old.index(module["material_id"]) if module.get("material_id") in old else 0
@@ -87,10 +103,10 @@ def build_assets(
     compiled = manifest_command(path, "plan")
     results: dict[str, Any] = {}
     for identifier in identifiers:
-        result = execute_recipe(prepared[identifier], context)
+        result = execute_recipe(prepared[identifier], context, audit_export=through == "S3")
         results[identifier] = result.to_dict()
         if result.status != "PASS":
-            return replace(result, data={**result.data, "assets": results, "through": "S2"})
+            return replace(result, data={**result.data, "assets": results, "through": through})
     run_id = "build-" + uuid4().hex[:16]
     summary = atomic_json(
         policy,
@@ -98,15 +114,25 @@ def build_assets(
         {
             "input_digest": model.input_digest,
             "input_fingerprints": model.input_fingerprints,
-            "through": "S2",
+            "through": through,
             "assets": results,
+            "asset_bindings": {
+                identifier: {
+                    "source_blend": value["data"]["source_blend"],
+                    "fbx_path": value["data"].get("fbx_path"),
+                    "material_ids": assets[identifier]["material_ids"],
+                    "collider_intent": assets[identifier]["collider"],
+                    "collider_validation_status": "NOT_RUN",
+                }
+                for identifier, value in results.items()
+            },
             "game_status": "PARTIAL",
         },
     )
     return Result(
         run_id=run_id,
         input_digest=model.input_digest,
-        data={"through": "S2", "assets": results, "later_stages": "NOT_RUN"},
+        data={"through": through, "assets": results, "later_stages": "NOT_RUN"},
         artifact_ids=list(context.artifact_registry),
         evidence_paths=[str(summary.relative_to(policy.root)), *compiled.evidence_paths],
     )

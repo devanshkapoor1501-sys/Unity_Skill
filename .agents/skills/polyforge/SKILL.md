@@ -7,9 +7,9 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 3 catalog contains read-only
+Discover available capabilities first. The Phase 4 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
-Blender mesh recipes. Unity/game-generation commands are future
+Blender mesh recipes and managed static audit/export. Unity/game-generation commands are future
 interfaces and return NOT_RUN with a nonzero exit; do not substitute invented
 tool output or claim a game exists.
 
@@ -23,8 +23,11 @@ capability execution is pure. Treat generator annotations as development intent;
 BLOCKED/UNSUPPORTED features and missing evaluator evidence keep games PARTIAL.
 
 Static mesh capabilities write editable .blend and checked geometry evidence.
-Use build --workspace ROOT --through S2 for managed assets, with --dry-run first
-when previewing. S3–S5 are unavailable. Never call source generation game acceptance.
+Use build --workspace ROOT --through S3 for source, four-view audit and FBX;
+audit --workspace ROOT --asset ID audits a registered saved source. Both accept
+--dry-run with zero writes. S4–S5 are unavailable. Visual quality stays REVIEW
+until separately reviewed; Blender FBX roundtrip is not Unity import evidence.
+Never call source generation game acceptance.
 
 ```console
 polyforge capability list --json

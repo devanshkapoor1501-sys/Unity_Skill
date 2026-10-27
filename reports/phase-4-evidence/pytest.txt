@@ -1,0 +1,41 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 127 items / 9 deselected / 118 selected
+
+tests\test_contract_boundaries.py ................                       [ 13%]
+tests\test_foundation.py .................                               [ 27%]
+tests\test_phase1_cli.py .....                                           [ 32%]
+tests\test_phase1_failures.py ...........                                [ 41%]
+tests\test_phase1_policy.py ......                                       [ 46%]
+tests\test_phase1_review.py ....                                         [ 50%]
+tests\test_phase1_runner.py .......                                      [ 55%]
+tests\test_phase2_boundaries.py ..............                           [ 67%]
+tests\test_phase2_contracts.py ..............                            [ 79%]
+tests\test_phase3_cli.py ......                                          [ 84%]
+tests\test_phase3_recipes.py .......                                     [ 90%]
+tests\test_phase4_contracts.py ...........                               [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\reports\phase-4-evidence\python-tests.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                Stmts   Miss Branch BrPart  Cover   Missing
+-------------------------------------------------------------------------------
+polyforge\blender\recipes.py          142      7     76      8    93%   33, 43, 53, 61, 64, 241, 294->exit, 302
+polyforge\contracts\__init__.py         0      0      0      0   100%
+polyforge\contracts\images.py          84      0     40      0   100%
+polyforge\contracts\manifest.py       152      7     72      6    94%   66-67, 75->78, 123, 159, 166, 169, 171
+polyforge\contracts\results.py         54      0     14      0   100%
+polyforge\contracts\validation.py      55      1     12      1    97%   45
+polyforge\security\__init__.py          0      0      0      0   100%
+polyforge\security\paths.py            72      3     30      3    94%   36, 76, 81
+polyforge\security\policy.py           35      0      8      0   100%
+-------------------------------------------------------------------------------
+TOTAL                                 594     18    252     18    96%
+Coverage JSON written to file reports/phase-4-evidence/coverage.json
+Required test coverage of 90.0% reached. Total coverage: 95.74%
+================ 118 passed, 9 deselected in 125.75s (0:02:05) ================

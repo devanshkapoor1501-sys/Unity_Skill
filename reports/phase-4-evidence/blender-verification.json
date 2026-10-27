@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_phase3_blender.py",
+    "tests/test_phase4_blender.py",
+    "-m",
+    "blender",
+    "-o",
+    "addopts=-ra",
+    "--basetemp=C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-qualification-20261027-220845",
+    "--junitxml=reports/phase-4-evidence/blender-tests.xml"
+  ],
+  "expected_exit": 0,
+  "actual_exit": 0,
+  "duration_seconds": 222.969,
+  "basetemp": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-qualification-20261027-220845",
+  "test_xml": {
+    "tests": 9,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "golden_assets": [
+    "robot",
+    "crate",
+    "orientation_arrows"
+  ]
+}

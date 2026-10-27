@@ -77,6 +77,7 @@ def schema_document(name: str) -> dict[str, Any]:
         "game_manifest.schema.json",
         "recipe.schema.json",
         "recipe_request.schema.json",
+        "audit_request.schema.json",
         "scenario.schema.json",
     }
     if name not in allowed:

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import importlib
+import importlib.util
 import json
 import math
 import sys
@@ -53,6 +54,8 @@ def build(recipe: dict[str, Any]) -> None:
         item = bpy.data.materials.new(material["id"])
         item.use_fake_user = True  # Preserve the declared editable palette across source reloads.
         item.diffuse_color = material["color_rgba"]
+        item.metallic = material.get("metallic", 0.0)
+        item.roughness = material.get("roughness", 0.65)
         item["semantic_id"] = material["id"]
         materials[material["id"]] = item
     objects: dict[str, Any] = {}
@@ -270,11 +273,17 @@ def main() -> None:
     if bpy.app.version != (5, 2, 2):
         raise RuntimeError("Pinned Blender 5.2.2 is required; found " + bpy.app.version_string)
     recipe = job["recipe"]
-    build(recipe)
+    if job.get("source"):
+        bpy.ops.wm.open_mainfile(
+            filepath=str(output / "source.blend"), load_ui=False, use_scripts=False
+        )
+    else:
+        build(recipe)
     first = measure(recipe)
-    bpy.ops.wm.save_as_mainfile(
-        filepath=str(output / "source.blend"), check_existing=False, compress=False
-    )
+    if not job.get("source"):
+        bpy.ops.wm.save_as_mainfile(
+            filepath=str(output / "source.blend"), check_existing=False, compress=False
+        )
     bpy.ops.wm.open_mainfile(
         filepath=str(output / "source.blend"), load_ui=False, use_scripts=False
     )
@@ -285,6 +294,15 @@ def main() -> None:
     (output / "metrics.json").write_text(
         json.dumps(second, indent=2, allow_nan=False) + "\n", encoding="utf-8"
     )
+    if job.get("audit_export"):
+        spec = importlib.util.spec_from_file_location(
+            "reviewed_audit", Path(__file__).with_name("audit_worker.py")
+        )
+        if spec is None or spec.loader is None:
+            raise RuntimeError("Reviewed audit worker unavailable")
+        audit = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(audit)
+        audit.run(recipe, second, output, job["preview_resolution"], measure)
 
 
 if __name__ == "__main__":

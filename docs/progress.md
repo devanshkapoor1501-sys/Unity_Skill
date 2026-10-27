@@ -142,4 +142,33 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   installed-wheel generation passed. Three golden fixture types repeat logically;
   wall/door connectors align; all seven saved-source fault probes are rejected.
 
-Phase 4 is next: actual audit views and export. Unity/game gates remain NOT_RUN.
+## Phase 4 work
+
+- User continued Phase 4 after uploading the completed Phase 0–3 history. Existing
+  checkout and pinned dependencies were reused; no new downloads were required.
+- Added fixed CPU audit cameras, transparent RGBA views, bounded independent PNG
+  checks and a local review bundle. Artistic quality remains REVIEW.
+- Added static geometry/transform/UV/material/socket diagnostics with module-level
+  origins, selected FBX, material/handoff sidecars and Blender FBX roundtrip.
+- Added managed saved-source audit, immutable copies, input/output artifact hashes
+  and manifest export bindings. Config/effective recipes and preview limits
+  validate before writes; S4/S5 remain unavailable.
+- Independent review found failed-S3 source selection, preview budget preflight
+  and unused palette/FBX mismatch. All have RED/GREEN regressions. Malformed
+  metadata, pixel corruption, source hash changes and synthetic handoff defects
+  are also checked. No required finding is deferred.
+- Ruling: Blender FBX roundtrip validates source-side interchange only. Actual
+  Unity axis/scale/material verification remains NOT_RUN until Phase 5. Intended
+  importer settings are metadata, not a passing Unity claim. Collider intent is
+  retained separately from unexecuted physics evidence.
+- Ruling: palette sidecars retain unused editable materials; FBX checks require
+  only used materials. Color/metallic/roughness are supported, while texture
+  interchange requests explicitly remain NOT_RUN rather than silently ignored.
+- Final acceptance evidence is recorded in reports/phase-4.md and phase-4-evidence/.
+- Phase 4 complete: 118 offline tests and 9 actual Blender tests passed, with no
+  skips in either executed gate. Coverage is 95.74% combined and 92.86% branches;
+  the new PNG module is fully covered. Lint, format, strict typing, package/CLI
+  checks and 32 fresh offline install commands passed, including installed-wheel
+  S3 execution. Three golden assets retain twelve checked views and exact hashes.
+
+Phase 5 is next: native Unity import and scene construction. Game remains PARTIAL.

@@ -1,0 +1,122 @@
+{
+  "checks": [
+    {
+      "name": "cli-init",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "init",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-build-dry",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--through",
+        "S3",
+        "--only",
+        "robot_a",
+        "--dry-run",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--through",
+        "S3",
+        "--only",
+        "robot_a",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-audit-dry",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "audit",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--asset",
+        "robot_a",
+        "--dry-run",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-audit",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "audit",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--asset",
+        "robot_a",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    },
+    {
+      "name": "cli-future-build",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "build",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--through",
+        "S4",
+        "--json"
+      ],
+      "expected_exit": 5,
+      "actual_exit": 5
+    },
+    {
+      "name": "cli-status",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "polyforge",
+        "status",
+        "--workspace",
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0
+    }
+  ],
+  "workspace": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\workspace\\phase4-cli-20261027-221241",
+  "source_inputs_preserved": true,
+  "dry_runs_zero_writes": true,
+  "source_audit_hash_preserved": true,
+  "blueprint_sha256": "9d92fea8880b03b6d00e0bbe69b6fb8c1bf3f22f4c1ff16c1de7ae1f42970505"
+}

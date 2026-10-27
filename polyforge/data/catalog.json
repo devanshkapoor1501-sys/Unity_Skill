@@ -189,5 +189,30 @@
       "mesh_metrics"
     ],
     "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "audit.static.multiview.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/audit_request.schema.json",
+    "runner": "blender.audit.static",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "four_nonblank_views",
+      "geometry_preflight",
+      "fbx_roundtrip",
+      "source_integrity"
+    ],
+    "output_types": [
+      "png",
+      "fbx",
+      "materials",
+      "audit_report",
+      "review_bundle"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

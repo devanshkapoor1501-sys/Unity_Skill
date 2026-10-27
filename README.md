@@ -2,7 +2,7 @@
 
 A local, model-independent Blender-to-Unity capability engine. Apache-2.0.
 
-**Current delivery: Phase 3 static Blender assets.** Discovery, descriptor and
+**Current delivery: Phase 4 audit and export.** Discovery, descriptor and
 manifest validation, scene/feature compilation, and dependency planning work
 without a model, Blender, or Unity. Workspace init, doctor, status and report
 are implemented. Five headless Blender recipes and managed S0–S2 builds generate
@@ -103,12 +103,22 @@ and cache behavior. Pure catalog capabilities return contracts without files;
 the normal compile/plan CLI commands publish derived JSON in the workspace.
 Blender capabilities are execution operations: they create unique run directories,
 logs, source.blend, metrics.json and logical-geometry.json. Use --dry-run for
-zero writes. Build stops at S2; requesting S3–S5 returns NOT_RUN/5.
+zero writes. Build through S3 adds four transparent views, geometric diagnostics,
+FBX, material and coordinate sidecars, and a visual-review bundle. Requesting
+S4–S5 returns NOT_RUN/5. Visual quality remains REVIEW; Unity import stays NOT_RUN.
+
+```powershell
+.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --dry-run --json
+.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --json
+.\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --dry-run --json
+.\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --json
+```
 
 The real Blender gate is separate from offline Python tests:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest tests/test_phase3_blender.py -m blender -o addopts=-ra
+.\.venv\Scripts\python.exe -m pytest tests/test_phase4_blender.py -m blender -o addopts=-ra
 ```
 
 It requires installed Blender 5.2.2 and fails when the dependency is unavailable.
@@ -128,6 +138,6 @@ Default pytest excludes that application gate explicitly. See
 
 See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
 [security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-The next delivery is Phase 4: four-view audit, diagnostics and FBX/material export.
+The next delivery is Phase 5: native Unity import, materials, prefabs and scene construction.
 Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.

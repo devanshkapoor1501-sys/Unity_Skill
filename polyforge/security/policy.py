@@ -66,6 +66,8 @@ def worker_environment(
         PYTHONUTF8="1",
         PYTHONDONTWRITEBYTECODE="1",
     )
+    for suffix in ("CONFIG", "SCRIPTS", "DATAFILES", "EXTENSIONS"):
+        env["BLENDER_USER_" + suffix] = str(temporary / "blender" / suffix.lower())
     return env
 
 

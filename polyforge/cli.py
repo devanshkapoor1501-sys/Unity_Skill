@@ -80,6 +80,10 @@ def dispatch(args: argparse.Namespace) -> Result:
         return build_assets(
             Path(args.workspace), through=args.through, only=args.only, dry_run=args.dry_run
         )
+    if spec.path == ("audit",):
+        from polyforge.blender.audit import audit_asset
+
+        return audit_asset(Path(args.workspace), args.asset, dry_run=args.dry_run)
     if spec.path in {("validate",), ("plan",), ("compile-contract",)}:
         from polyforge.compiler.commands import manifest_command
 
@@ -114,6 +118,12 @@ def dispatch(args: argparse.Namespace) -> Result:
     path = workspace_input(Path(args.workspace), Path(args.input))
     inputs = load_json(path)
     context = RunContext(workspace=Path(args.workspace), dry_run=args.dry_run)
+    if args.id == "audit.static.multiview.v1":
+        from polyforge.blender.audit import audit_asset
+        from polyforge.contracts.validation import validate_schema
+
+        validate_schema(inputs, "audit_request.schema.json")
+        return audit_asset(context.workspace, inputs["asset_id"], dry_run=context.dry_run)
     if args.id == "contract.capability.validate.v1":
         return RegistryValidator().execute(inputs, context)
     from polyforge.blender.adapter import BlenderCapability

@@ -14,7 +14,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `validate` | Implemented | `polyforge validate --workspace workspace/arena_demo --json` |
 | `plan` | Implemented | `polyforge plan --workspace workspace/arena_demo --dry-run --json` |
 | `build` | Implemented | `polyforge build --workspace workspace/arena_demo --through S2 --json` |
-| `audit` | NOT_RUN; Phase 4 | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
+| `audit` | Implemented | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
 | `verify` | NOT_RUN; Phase 6 | `polyforge verify --workspace workspace/arena_demo --json` |
 | `status` | Implemented | `polyforge status --workspace workspace/arena_demo --json` |
 | `resume` | NOT_RUN; Phase 9 | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |

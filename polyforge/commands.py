@@ -76,7 +76,8 @@ COMMANDS = (
     CommandSpec(
         ("audit",),
         "Audit a generated asset",
-        (WORKSPACE, (("--asset",), {"required": True})),
+        (WORKSPACE, (("--asset",), {"required": True}), DRY_RUN),
+        implemented=True,
         phase=4,
         example=("audit", "--workspace", "workspace/arena_demo", "--asset", "robot_a", "--json"),
     ),

@@ -1,0 +1,130 @@
+{
+  "recipe": {
+    "schema_version": "1.0.0",
+    "asset_id": "orientation_arrows",
+    "kind": "ground",
+    "capability_id": "mesh.environment.tile.v1",
+    "parameters": {
+      "size_m": [
+        1,
+        2,
+        3
+      ]
+    },
+    "pivot": "base_center",
+    "materials": [
+      {
+        "id": "axis",
+        "color_rgba": [
+          0.8,
+          0.1,
+          0.05,
+          1
+        ]
+      }
+    ],
+    "modules": [
+      {
+        "id": "x_shaft",
+        "primitive": "cube",
+        "location": [
+          0,
+          0.1,
+          0
+        ],
+        "size_m": [
+          1,
+          0.2,
+          0.2
+        ],
+        "material_id": "axis"
+      },
+      {
+        "id": "up_shaft",
+        "primitive": "cylinder",
+        "location": [
+          0,
+          1,
+          0
+        ],
+        "size_m": [
+          0.2,
+          2,
+          0.2
+        ],
+        "material_id": "axis"
+      },
+      {
+        "id": "forward_shaft",
+        "primitive": "cube",
+        "location": [
+          0,
+          0.2,
+          0.7
+        ],
+        "size_m": [
+          0.15,
+          0.15,
+          1.6
+        ],
+        "material_id": "axis"
+      },
+      {
+        "id": "front_tip",
+        "primitive": "sphere",
+        "location": [
+          0,
+          0.2,
+          1.4
+        ],
+        "size_m": [
+          0.25,
+          0.25,
+          0.2
+        ],
+        "material_id": "axis"
+      },
+      {
+        "id": "rear_marker",
+        "primitive": "cube",
+        "location": [
+          0,
+          0.2,
+          -1.4
+        ],
+        "size_m": [
+          0.3,
+          0.3,
+          0.2
+        ],
+        "material_id": "axis"
+      }
+    ],
+    "sockets": [
+      {
+        "id": "front",
+        "module_id": "front_tip",
+        "position": [
+          0,
+          0,
+          0.1
+        ]
+      }
+    ],
+    "max_polygons": 25000
+  },
+  "seed": 42,
+  "input_digest": "aeaefaa068ceb3d5dd51723303758300483f3cbe1026d72ed3d29c33ad20bbfb",
+  "toolchain": {
+    "worker_sha256": "57d250fc5afe08f3595195532c9b986161d51fdaf41d01c7c6b6b599b1aaa034",
+    "audit_worker_sha256": "fafa97acdd17af2ba640111fdaba50cc565b4933c7731e28fae23062e01f55a2",
+    "executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+    "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "required_version": "5.2.2",
+    "validator": "geometry.v1"
+  },
+  "audit_export": true,
+  "preview_resolution": 512,
+  "source": null,
+  "source_sha256": null
+}

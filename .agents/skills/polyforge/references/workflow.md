@@ -11,8 +11,15 @@ These accept recipe requests with schema_version, asset_id and parameters.size_m
 in Unity XYZ meters. They require Blender 5.2.2 and write isolated run evidence;
 --dry-run validates without launching or writing. Source .blend, logical geometry
 and metrics must all validate before PASS. These operations are TRUSTED_LOCAL.
-Managed build supports S0 precheck, S1 contracts and S2 generation. Later stages
-stay NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
+Managed build supports S0 precheck, S1 contracts, S2 generation and S3 audit/export.
+S4/S5 stay NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
+
+audit.static.multiview.v1 accepts schema_version and asset_id, locating the latest
+registered successful source and checking its hash before writes. audit CLI exposes
+the same operation. Missing/changed source fails; an incomplete export does not
+hide earlier registered sources. Four PNGs, FBX, material/handoff/roundtrip reports,
+artifact hashes and review.html are written in a fresh run. Original source bytes
+are preserved. Visual artistic quality is REVIEW and actual Unity import NOT_RUN.
 
 CLI validate is read-only. CLI compile-contract --manifest FILE and plan
 --workspace ROOT normally publish scene_contract.json, feature_contract.json,

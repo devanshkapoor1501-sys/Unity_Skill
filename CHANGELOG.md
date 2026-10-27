@@ -2,6 +2,10 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add four transparent audit views with independent bounded PNG checks.
+- Add module-level geometry diagnostics, selected static FBX and material/handoff sidecars.
+- Add managed source audits, Blender FBX roundtrip evidence and separate review/import statuses.
+
 - Add five bounded static Blender recipes, semantic attachments and managed S0–S2 builds.
 - Preserve/reopen editable Blender sources and validate geometry, UVs, pivots and budgets.
 - Add reproducible oriented geometry hashes, real application tests and fault probes.

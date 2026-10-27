@@ -71,7 +71,8 @@ Logical outputs permit at most 32 MiB JSON; user input JSON remains capped at
 Build defaults to S2. S0 probes Blender; S1 publishes validated contracts; S2
 generates selected assets in dependency order. --only includes its dependencies.
 Every effective recipe, including size/material overrides and configuration,
-validates before writes. Dry runs launch nothing. S3–S5 remain NOT_RUN/5.
+validates before writes. Dry runs launch nothing. Phase 4 adds S3 audit/export;
+S4–S5 remain NOT_RUN/5. See [audit and export](audit-export.md).
 Results distinguish successful source generation from game acceptance (PARTIAL)
 and application gameplay tests (NOT_RUN).
 
@@ -82,8 +83,9 @@ earlier evidence. Stage retry limits are not silently consumed by hidden retries
 
 Initial Phase 1/2 workspaces may carry placeholder robot declarations; replace
 those explicitly using the current reviewed recipe data. Existing projects and
-source files are never overwritten by generation. Rendering, visual review,
-FBX/material interchange and actual Unity import begin in later phases.
+source files are never overwritten by generation. Rendering and FBX/material
+interchange are available through S3. Artistic review and actual Unity import
+remain separate gates.
 
 ## Verification and sources
 

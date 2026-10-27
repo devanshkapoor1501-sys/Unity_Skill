@@ -99,3 +99,16 @@ Scenario validation and handoff invariants are pure libraries, separate from
 AcceptanceEvaluator. Synthetic report PASS means payload agreement only;
 application_execution remains NOT_RUN. No hidden rubric is created or amended
 by the compiler. See [manifest rules](manifests.md).
+
+## Phase 4 interchange boundary
+
+Static S3 rendering/export uses reviewed Blender code and independent host-side
+PNG/sidecar validators. Source copies, measured geometry, FBX paths, metadata and
+artifact hashes form a replayable binding set. Blender's own FBX importer validates
+source-side roundtrip only. Unity/native physics and artistic review retain their
+separate NOT_RUN/REVIEW statuses. Original source hashes are checked before saved
+source audits, while Blender user configuration/cache paths stay under the run's
+temporary directory. These controls preserve TRUSTED_LOCAL disclosure.
+
+See [audit and export contracts](audit-export.md) for bounds, geometry taxonomy,
+camera/renderer settings, material scope and the pending Unity import gate.

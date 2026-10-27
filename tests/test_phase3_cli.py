@@ -88,7 +88,7 @@ class BuildTests(unittest.TestCase):
             self.assertEqual(snapshot(root), before)
 
     def test_ineligible_later_stage_stays_not_run(self) -> None:
-        result = cli("build", "--workspace", ".", "--through", "S3", "--json")
+        result = cli("build", "--workspace", ".", "--through", "S4", "--json")
         self.assertEqual(result.returncode, 5, result.stdout)
         self.assertEqual(json.loads(result.stdout)["status"], "NOT_RUN")
 

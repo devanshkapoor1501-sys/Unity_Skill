@@ -5,14 +5,18 @@ from __future__ import annotations
 import copy
 import hashlib
 import re
+import shutil
 from dataclasses import asdict, replace
 from importlib.resources import files
+from pathlib import Path
 from typing import Any
 from uuid import uuid4
 
+from polyforge.blender.audit import VIEWS, validate_audit, validate_exchange
 from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry, validate_recipe
 from polyforge.capabilities.protocol import RunContext
 from polyforge.config import load_config
+from polyforge.contracts.images import inspect_png
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.doctor import discover_tool
@@ -23,7 +27,12 @@ from polyforge.security.paths import WorkspacePolicy
 
 
 def execute_recipe(
-    recipe: dict[str, Any], context: RunContext, *, precheck_only: bool = False
+    recipe: dict[str, Any],
+    context: RunContext,
+    *,
+    precheck_only: bool = False,
+    audit_export: bool = False,
+    source: Path | None = None,
 ) -> Result:
     validate_recipe(recipe)
     recipe = copy.deepcopy(recipe)
@@ -32,7 +41,23 @@ def execute_recipe(
     policy = WorkspacePolicy(context.workspace)
     config_path = policy.path("polyforge.toml")
     config = load_config(config_path if config_path.is_file() else None)
-    input_digest = canonical_digest({"recipe": recipe, "seed": context.seed})
+    if audit_export and config.preview_resolution > 1024:
+        raise InputError("Audit previews are limited to 1024 pixels")
+    source_digest = None
+    if source is not None:
+        source = policy.path(source)
+        if not source.is_file():
+            raise InputError("Audit source must be an existing managed Blender file")
+        source_digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    input_digest = canonical_digest(
+        {
+            "recipe": recipe,
+            "seed": context.seed,
+            "source_sha256": source_digest,
+            "audit_export": audit_export,
+            "preview_resolution": config.preview_resolution if audit_export else None,
+        }
+    )
     if context.dry_run:
         return Result(
             input_digest=input_digest,
@@ -43,6 +68,26 @@ def execute_recipe(
                     "runs/<new-run>/asset/source.blend",
                     "runs/<new-run>/asset/metrics.json",
                     "runs/<new-run>/asset/logical-geometry.json",
+                    *(
+                        [
+                            "runs/<new-run>/asset/" + name
+                            for name in (
+                                "asset.fbx",
+                                "material.json",
+                                "audit_metadata.json",
+                                "handoff.json",
+                                "fbx_roundtrip.json",
+                                "view_checks.json",
+                                "review.html",
+                                "front.png",
+                                "side.png",
+                                "top.png",
+                                "iso.png",
+                            )
+                        ]
+                        if audit_export
+                        else []
+                    ),
                 ],
                 "execution_status": "NOT_RUN",
             },
@@ -57,6 +102,9 @@ def execute_recipe(
     worker = files("polyforge.blender").joinpath("worker.py")
     fingerprint = {
         "worker_sha256": hashlib.sha256(worker.read_bytes()).hexdigest(),
+        "audit_worker_sha256": hashlib.sha256(
+            files("polyforge.blender").joinpath("audit_worker.py").read_bytes()
+        ).hexdigest(),
         "executable_sha256": hashlib.sha256(executable.read_bytes()).hexdigest(),
         "executable": str(executable),
         "required_version": "5.2.2",
@@ -73,6 +121,10 @@ def execute_recipe(
             "seed": context.seed,
             "input_digest": input_digest,
             "toolchain": fingerprint,
+            "audit_export": audit_export,
+            "preview_resolution": config.preview_resolution,
+            "source": str(source) if source is not None else None,
+            "source_sha256": source_digest,
         },
     )
     active_stage = "S0"
@@ -115,6 +167,8 @@ def execute_recipe(
         active_stage = "S2"
         journal.transition(active_stage, "running")
         output = policy.mkdir(relative + "/asset")
+        if source is not None:
+            shutil.copyfile(source, output / "source.blend")
         with FileLock(policy, ".polyforge/locks/blender-worker.lock"):
             process = run_process(
                 [
@@ -143,6 +197,20 @@ def execute_recipe(
             )
         atomic_json(policy, relative + "/process.json", asdict(process))
         if process.reason != "exit" or process.returncode != 0:
+            if audit_export and policy.path(output / "metrics.json").is_file():
+                partial = load_json(policy.path(output / "metrics.json"))
+                validate_geometry(recipe, partial)
+                journal.transition("S2", "passed", evidence=[relative + "/asset/metrics.json"])
+                active_stage = "S3"
+                journal.transition("S3", "running")
+                diagnostic_path = policy.path(output / "diagnostics.json")
+                if diagnostic_path.is_file():
+                    raise InputError(
+                        "Audit geometry diagnostics failed; see "
+                        + str(diagnostic_path.relative_to(policy.root)),
+                        kind=ErrorKind.CONTRACT_FAILURE,
+                        code="PF-AUDIT-DIAGNOSTICS",
+                    )
             kind = (
                 ErrorKind.INTERRUPTED
                 if process.reason == "cancelled"
@@ -175,8 +243,74 @@ def execute_recipe(
                 "Blender version/source roundtrip verification missing",
                 kind=ErrorKind.CONTRACT_FAILURE,
             )
+        s2_files = ("source.blend", "metrics.json", "logical-geometry.json")
+        s3_files: tuple[str, ...] = (
+            (
+                "asset.fbx",
+                "material.json",
+                "audit_metadata.json",
+                "fbx_roundtrip.json",
+                "handoff.json",
+                "front.png",
+                "side.png",
+                "top.png",
+                "iso.png",
+            )
+            if audit_export
+            else ()
+        )
+        if audit_export:
+            active_stage = "S3"
+            journal.transition("S2", "passed", evidence=[relative + "/asset/metrics.json"])
+            journal.transition("S3", "running")
+            metadata = load_json(policy.path(output / "audit_metadata.json"))
+            validate_audit(metadata, metrics)
+            validate_exchange(
+                recipe,
+                metrics,
+                load_json(policy.path(output / "material.json")),
+                load_json(policy.path(output / "handoff.json")),
+                load_json(policy.path(output / "fbx_roundtrip.json")),
+            )
+            image_reports = {}
+            for view in VIEWS:
+                report = inspect_png(
+                    policy.path(output / (view + ".png")).read_bytes(),
+                    expected_size=config.preview_resolution,
+                )
+                if not report["nonblank"] or not report["framing_pass"]:
+                    raise InputError(
+                        "Blank/clipped audit view: " + view, kind=ErrorKind.CONTRACT_FAILURE
+                    )
+                image_reports[view] = report
+            atomic_json(policy, relative + "/asset/view_checks.json", image_reports)
+            s3_files += ("view_checks.json",)
+            if not policy.path(output / "asset.fbx").read_bytes().startswith(b"Kaydara FBX Binary"):
+                raise InputError("Invalid FBX output", kind=ErrorKind.CONTRACT_FAILURE)
+            if (
+                source is not None
+                and hashlib.sha256(source.read_bytes()).hexdigest() != source_digest
+            ):
+                raise InputError(
+                    "Original source changed during audit", kind=ErrorKind.CONTRACT_FAILURE
+                )
+            review = (
+                '<!doctype html><meta charset="utf-8"><title>PolyForge asset review</title>'
+                "<h1>Visual review required</h1><p>Geometry checks passed. "
+                "Artistic quality: REVIEW. Unity import: NOT_RUN.</p>"
+                + "".join(
+                    '<figure><img width="256" src="'
+                    + v
+                    + '.png"><figcaption>'
+                    + v
+                    + "</figcaption></figure>"
+                    for v in VIEWS
+                )
+            )
+            policy.path(output / "review.html").write_text(review, encoding="utf-8")
+            s3_files += ("review.html",)
         artifacts: list[dict[str, Any]] = []
-        for filename in ("source.blend", "metrics.json", "logical-geometry.json"):
+        for filename in (*s2_files, *s3_files):
             path = policy.path(output / filename)
             content = path.read_bytes()
             if not content or (filename == "source.blend" and not content.startswith(b"BLENDER")):
@@ -195,7 +329,26 @@ def execute_recipe(
                 }
             )
         registry = atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
-        journal.transition("S2", "passed", evidence=[str(registry.relative_to(policy.root))])
+        if audit_export:
+            binding = atomic_json(
+                policy,
+                relative + "/export_binding.json",
+                {
+                    "schema_version": "1.0.0",
+                    "asset_id": recipe["asset_id"],
+                    "input_digest": input_digest,
+                    "source_geometry_digest": metrics["geometry_digest"],
+                    "artifacts": artifacts,
+                    "visual_review_status": "REVIEW",
+                    "unity_import_status": "NOT_RUN",
+                },
+            )
+            context.artifact_registry[run_id + ":export_binding.json"] = {
+                "relative_path": str(binding.relative_to(policy.root))
+            }
+        journal.transition(
+            active_stage, "passed", evidence=[str(registry.relative_to(policy.root))]
+        )
         context.artifact_registry.update({a["artifact_id"]: a for a in artifacts})
         return Result(
             run_id=run_id,
@@ -214,6 +367,11 @@ def execute_recipe(
                 "toolchain": fingerprint,
                 "security_scope": "TRUSTED_LOCAL",
                 "isolation_verified": False,
+                "through": "S3" if audit_export else "S2",
+                "visual_review_status": "REVIEW" if audit_export else "NOT_RUN",
+                "unity_import_status": "NOT_RUN",
+                "fbx_path": relative + "/asset/asset.fbx" if audit_export else None,
+                "export_binding": relative + "/export_binding.json" if audit_export else None,
             },
         )
     except (InputError, OSError, KeyboardInterrupt) as exc:

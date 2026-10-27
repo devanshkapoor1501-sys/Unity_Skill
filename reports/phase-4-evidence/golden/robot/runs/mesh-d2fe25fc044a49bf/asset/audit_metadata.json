@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "robot",
+  "geometry_digest": "7d25491fb7282cf354670d455e59075fa692955f18e5e88399835a8e3d6fe659",
+  "diagnostics": {
+    "status": "PASS",
+    "issues": []
+  },
+  "view_ids": [
+    "front",
+    "side",
+    "top",
+    "iso"
+  ],
+  "cameras": {
+    "front": {
+      "position_native_m": [
+        0.0,
+        -6.627216,
+        0.9
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        0.9
+      ],
+      "ortho_scale": 2.16,
+      "resolution": 512
+    },
+    "side": {
+      "position_native_m": [
+        6.627216,
+        0.0,
+        0.9
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        0.9
+      ],
+      "ortho_scale": 2.16,
+      "resolution": 512
+    },
+    "top": {
+      "position_native_m": [
+        0.0,
+        0.0,
+        7.527216
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        0.9
+      ],
+      "ortho_scale": 1.2,
+      "resolution": 512
+    },
+    "iso": {
+      "position_native_m": [
+        3.826225,
+        -3.826225,
+        4.726225
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        0.9
+      ],
+      "ortho_scale": 2.352886,
+      "resolution": 512
+    }
+  },
+  "export": {
+    "axis_forward": "-Z",
+    "axis_up": "Y",
+    "global_scale": 1.0,
+    "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "bake_space_transform": false,
+    "bake_anim": false,
+    "use_selection": true,
+    "use_custom_props": true,
+    "object_types": [
+      "EMPTY",
+      "MESH"
+    ]
+  },
+  "material_ids": [
+    "accent",
+    "base",
+    "trim"
+  ],
+  "socket_ids": [
+    "elbow_l",
+    "elbow_r",
+    "hand_l",
+    "hand_r",
+    "hip_l",
+    "hip_r",
+    "knee_l",
+    "knee_r",
+    "neck",
+    "shoulder_l",
+    "shoulder_r",
+    "wrist_l",
+    "wrist_r"
+  ],
+  "visual_review_status": "REVIEW",
+  "unity_import_status": "NOT_RUN",
+  "source_basis": {
+    "up": "Z",
+    "forward": "-Y"
+  },
+  "canonical_basis": {
+    "up": "Y",
+    "forward": "Z"
+  },
+  "meters_per_unit": 1.0,
+  "unity_import_intent": {
+    "global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false
+  },
+  "renderer": {
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 8,
+    "seed": 42
+  }
+}
