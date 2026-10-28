@@ -1,163 +1,49 @@
 # PolyForge
 
-A portable agent skill backed by a local, model-independent Blender-to-Unity
-capability engine. Apache-2.0. Final Codex/Claude installation and optional MCP
-host qualification are scheduled for Phase 10.
+A skill that helps your AI assistant make 3D objects in Blender and turn them into a playable Unity project. You describe the idea; PolyForge provides the steps and tools to build it, check it, and give you files you can keep editing.
 
-**Current implementation: Phase 6 playable arena; manual review pending.** Discovery, descriptor and
-manifest validation, scene/feature compilation, and dependency planning work
-without a model, Blender, or Unity. Workspace init, doctor, status and report
-are implemented. Five headless Blender recipes and managed S0–S2 builds generate
-editable sources and checked geometry. S3 audits/exports static assets; S4 builds
-a managed URP project with native prefabs, materials, two static scene layouts,
-observed semantic bindings and executed EditMode tests. Native binding diagnosis
-and bounded repair are available. S5 adds movement, patrol, health, survival,
-restart, declarative scenarios and actual Windows build/smoke. Full cross-app
-recovery, benchmark trials and MCP remain future gates. See the phase reports.
-Trusted-local process protections do not claim untrusted OS containment.
+## Available skill
 
-## Windows setup
+| Skill | What it helps you do |
+| --- | --- |
+| [PolyForge](.agents/skills/polyforge/) | Create simple 3D objects and build a small playable survival arena in Unity. |
 
-Use Python 3.11 or newer. Creating the virtual environment does not require a
-network connection. The installation step downloads declared Python dependencies;
-run it only when dependency downloads are allowed.
+**Early preview for Windows.** Simple robots, crates, walls, doorways, floor tiles and a survival arena work today. Animation, 2D games and broader game creation are still being developed.
 
-```powershell
-py -3.11 -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock
-.\.venv\Scripts\python.exe -m pip install --no-build-isolation --no-deps -e .
-.\.venv\Scripts\polyforge.exe --help
+## Install the skill
+
+Paste this into **Codex**, using the same installer as the [OpenAI skills catalog](https://github.com/openai/skills#installing-a-skill):
+
+```text
+$skill-installer install https://github.com/devanshkapoor1501-sys/Unity_Skill/tree/main/.agents/skills/polyforge
 ```
 
-If the Windows sandbox's default temp directory is inaccessible, point `TEMP` and
-`TMP` to an existing writable project-local directory before setup and tests.
+If the skill does not appear after installation, restart Codex. You need access to this GitHub repository to install it.
 
-## Working offline commands
+This installs the skill instructions. Building also needs Blender, Unity and PolyForge's local build tools on your computer. First, ask your assistant:
 
-The following commands execute without model credentials or network access
-after installation. The fixture validates example metadata; it does not execute
-asset generation.
+> Use PolyForge. Check my computer and help me set up anything missing before building.
 
-```console
-polyforge capability list --json
-polyforge capability show contract.capability.validate.v1 --json
-polyforge capability run contract.capability.validate.v1 --input tests/fixtures/capability_valid.json --workspace . --json
-polyforge capability run contract.capability.validate.v1 --input tests/fixtures/capability_valid.json --workspace . --dry-run --json
-polyforge doctor --dry-run --json
-```
+Automatic setup and tested installation for other assistants, including Claude, are still being finished. A packaged plugin is planned.
 
-Descriptor execution and dry-run validation only read input files. Invalid input
-returns exit 2; outside-workspace input returns exit 4. Neither writes artifacts.
-`status=PASS` means descriptor validation succeeded; it does not mean a game was
-tested. `evaluated_test_status=NOT_RUN` and `game_status=PARTIAL` remain explicit.
+## How you use it
 
-## Development checks
+1. **Describe your idea.** Say what you want to make and how it should look or play.
+2. **Check the plan.** Your assistant explains what PolyForge can build and flags anything it cannot do yet.
+3. **Let it build.** It creates the objects in Blender and puts them into Unity.
+4. **Review and play.** It checks the result, shows what worked or failed, and asks you to try the game.
+5. **Keep creating.** You get the Blender files and Unity project to edit and build on.
 
-```powershell
-.\.venv\Scripts\python.exe -m pytest --cov --cov-report=term-missing
-.\.venv\Scripts\python.exe -m ruff check .
-.\.venv\Scripts\python.exe -m mypy
-.\.venv\Scripts\python.exe -m tools.generate_cli_docs --check
-.\.venv\Scripts\python.exe -m build --no-isolation
-```
+For example:
 
-Security/contracts branch coverage must remain at least 90%. Integration tests
-will be separate from offline tests. Missing tooling is not a passing result.
-The Windows junction test creates a disposable local junction. A restricted host
-may require additional test execution access; do not skip it to pass the gate.
+> Use PolyForge to make a blue robot, a crate and a small arena. Let me move with WASD, avoid a patrolling enemy, survive for 30 seconds and restart with R.
 
-## Runtime setup and precheck
+You can also ask for just a supported 3D object, such as a crate, without building a game.
 
-Create the parent directory first. Initialization refuses existing targets;
---dry-run writes nothing. The default template carries a development design
-manifest, annotated original brief, and three declarative recipe inputs.
+## Is it for you?
 
-```powershell
-New-Item -ItemType Directory -Force workspace
-.\.venv\Scripts\polyforge.exe init workspace/arena_demo --json
-.\.venv\Scripts\polyforge.exe doctor --workspace workspace/arena_demo --json
-.\.venv\Scripts\polyforge.exe status --workspace workspace/arena_demo --json
-.\.venv\Scripts\polyforge.exe validate --workspace workspace/arena_demo --json
-.\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --dry-run --json
-.\.venv\Scripts\polyforge.exe compile-contract --manifest workspace/arena_demo/game_manifest.json --json
-.\.venv\Scripts\polyforge.exe plan --workspace workspace/arena_demo --json
-.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S2 --dry-run --json
-.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S2 --json
-```
+Try PolyForge if you want a starting point for simple Blender-to-Unity projects and are comfortable using an early preview. It still needs your feedback and playtesting. It cannot yet build any game you imagine or replace every part of making a game.
 
-Doctor honors explicit TOML executable paths, then conventional installations,
-then PATH. Unity's generic `unity` CLI can differ from the Editor. Probes use
-`Blender --version` and `Unity -version`; original projects never open. Optional
-`--project PATH` reads only known settings/packages/lock files statically.
-Doctor saves doctor.json plus a durable run/log tree even for missing tools.
-Version probes do not prove Unity activation, graphics rendering or gameplay.
+The project is free under the [Apache-2.0 license](LICENSE). Your AI assistant and other software may have their own costs or terms.
 
-The runner provides allowlisted binaries, minimal environments, redacted bounded
-logs, timeouts/cancellation, owned process-tree cleanup and Windows job memory/
-process limits. POSIX process-group cleanup is implemented; POSIX memory ceilings
-are explicitly unverified. Locks use OS exclusion plus PID/host/birth metadata.
-Journal replay recovers a cache interrupted after a durable append. Resume
-scheduling stays unavailable until actual build producers exist.
-
-Compilation preserves original source ranges and creates development-only scene,
-feature and coverage contracts. Planning records S0–S5 task dependencies and
-content hashes. Both operations can PASS while game status remains PARTIAL:
-compilation reports development intent, and S5 separately records executed
-feature evidence. Synthetic handoff checks and scenario validation do not execute
-application tests.
-See [manifest and planning rules](docs/manifests.md) for publication, frozen-brief
-and cache behavior. Pure catalog capabilities return contracts without files;
-the normal compile/plan CLI commands publish derived JSON in the workspace.
-Blender capabilities are execution operations: they create unique run directories,
-logs, source.blend, metrics.json and logical-geometry.json. Use --dry-run for
-zero writes. Build through S3 adds four transparent views, geometric diagnostics,
-FBX, material and coordinate sidecars, and a visual-review bundle. Requesting
-S4 creates the native Unity project and runs separate static EditMode gates;
-S5 now constructs and verifies the bounded survival arena. Use
-`polyforge build --workspace ROOT --through S5 --standalone --json` for actual
-Windows player build/smoke, or omit `--standalone` for Editor-only checks.
-`polyforge verify --workspace ROOT --json` and
-`polyforge scenario run --workspace ROOT --suite core_gameplay --json` rerun
-the native and independent public development checks. Visual quality stays
-REVIEW; game acceptance stays PARTIAL. See [the arena guide](docs/arena.md).
-
-```powershell
-.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --dry-run --json
-.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --json
-.\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --dry-run --json
-.\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --json
-.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S4 --allow-package-downloads --json
-```
-
-The real Blender gate is separate from offline Python tests:
-
-```powershell
-.\.venv\Scripts\python.exe -m pytest tests/test_phase3_blender.py -m blender -o addopts=-ra
-.\.venv\Scripts\python.exe -m pytest tests/test_phase4_blender.py -m blender -o addopts=-ra
-.\.venv\Scripts\python.exe -m pytest tests/test_phase5_unity.py -m unity -o addopts=-ra
-```
-
-It requires installed Blender 5.2.2 and fails when the dependency is unavailable.
-Default pytest excludes Blender and Unity application gates explicitly. See
-[recipe contracts](docs/recipes.md) for parameters, coordinate spaces and limits.
-See [native Unity integration](docs/unity-integration.md) for authorization,
-handedness, binding evidence and minimal repair limits.
-
-## Ownership and next delivery
-
-- `polyforge/`: trusted engine, bundled contracts, and implemented catalog.
-- `unity_package/`: separate UPM Editor/runtime/test assemblies and native APIs.
-- `capabilities/`: future reviewed recipe data; fixtures are not advertised tools.
-- `examples/`: original briefs and requested design contracts.
-- `benchmarks/`: public development tasks and evaluator interfaces, never holdouts.
-- `.agents/skills/polyforge/`: portable host-facing instructions.
-- `workspace/`: ignored generated projects, run logs, caches, and artifacts.
-- `reports/`: exact phase evidence and limitations.
-
-See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
-[security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-Phase 7 starts only after Phase 6's manual gate passes. The reviewed v5.1 roadmap
-adds specialist worker contracts alongside the original rig/animation gates;
-see [the implementation sequence](docs/implementation-plan.md).
-Phases stop at their acceptance
-boundaries. The source blueprint remains unchanged.
+[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-6.md)

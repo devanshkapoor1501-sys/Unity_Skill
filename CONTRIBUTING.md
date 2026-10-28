@@ -1,7 +1,7 @@
 # Contributing
 
 Install the development extra in an isolated Python 3.11+ environment and run
-the checks in README. Write a meaningful failing test before behavior changes.
+the checks in the [development guide](docs/development-guide.md). Write a meaningful failing test before behavior changes.
 Keep security/contracts coverage at least 90%; do not suppress failures to pass.
 
 Capability contributions need a versioned schema, positive/negative fixtures,
