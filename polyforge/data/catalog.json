@@ -248,9 +248,93 @@
     "input_schema": "contracts/game_build.schema.json",
     "runner": "unity.game.arena",
     "deterministic": false,
-    "requires": ["python>=3.11", "blender==5.2.2", "unity==6000.6.3f1"],
-    "tests": ["native_compilation", "core_gameplay", "keyboard_adapter", "collision_and_restart_mutants"],
-    "output_types": ["unity_project", "scene", "editmode_xml", "playmode_xml", "telemetry", "public_oracles"],
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2",
+      "unity==6000.6.3f1"
+    ],
+    "tests": [
+      "native_compilation",
+      "core_gameplay",
+      "keyboard_adapter",
+      "collision_and_restart_mutants"
+    ],
+    "output_types": [
+      "unity_project",
+      "scene",
+      "editmode_xml",
+      "playmode_xml",
+      "telemetry",
+      "public_oracles"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "animation.robot.rig.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/recipe_request.schema.json",
+    "runner": "blender.animation.robot.rigid",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "slotted_actions",
+      "source_reopen",
+      "sampled_skin_and_socket_bindings",
+      "in_place_root",
+      "idle_walk_loop"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "motion_samples",
+      "png"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "artifact.candidate.inspect.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/candidate_review.schema.json",
+    "runner": "workforce.candidate.inspect",
+    "deterministic": false,
+    "requires": [
+      "python>=3.11"
+    ],
+    "tests": [
+      "candidate_identity",
+      "review_binding",
+      "read_only_inspection"
+    ],
+    "output_types": [
+      "review"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "animation.robot.unity.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/animation_import.schema.json",
+    "runner": "unity.animation.robot",
+    "deterministic": false,
+    "requires": [
+      "python>=3.11",
+      "unity==6000.6.3f1"
+    ],
+    "tests": [
+      "native_clips",
+      "skin_bone_mapping",
+      "missing_transition_rejection",
+      "actual_playmode_motion"
+    ],
+    "output_types": [
+      "scene",
+      "prefab",
+      "animator_controller",
+      "test_xml"
+    ],
     "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

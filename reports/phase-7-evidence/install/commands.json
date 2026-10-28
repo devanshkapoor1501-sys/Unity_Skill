@@ -1,0 +1,119 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "venv",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+    "exit_code": 0,
+    "duration_seconds": 4.406,
+    "log": ".tmp\\phase7\\install\\00.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "install",
+      "--no-index",
+      "--find-links",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 7.375,
+    "log": ".tmp\\phase7\\install\\01.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 2.25,
+    "log": ".tmp\\phase7\\install\\02.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "--help"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.469,
+    "log": ".tmp\\phase7\\install\\03.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "show",
+      "animation.robot.rig.v1",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 1.078,
+    "log": ".tmp\\phase7\\install\\04.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "init",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd\\arena",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.562,
+    "log": ".tmp\\phase7\\install\\05.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "build",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd\\arena",
+      "--through",
+      "S5",
+      "--dry-run",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 1.11,
+    "log": ".tmp\\phase7\\install\\06.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-c",
+      "from importlib.resources import files; import json,hashlib; p=files(\"unity_package\"); names=[\"Runtime/RobotAnimationDriver.cs\",\"Editor/AnimationBuilder.cs\",\"Editor/AnimationInspector.cs\",\"Tests/AnimationPlayMode/MotionTests.cs\",\"Tests/AnimationPlayMode/MotionTests.cs.meta\"]; print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in names})); q=files(\"polyforge\"); assert q.joinpath(\"contracts/workforce_task.schema.json\").is_file(); assert q.joinpath(\"contracts/game_build.schema.json\").is_file()"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase7\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.296,
+    "log": ".tmp\\phase7\\install\\07.txt"
+  }
+]

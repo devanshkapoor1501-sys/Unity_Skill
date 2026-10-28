@@ -1,0 +1,22 @@
+import json, os, subprocess, sys, time
+from pathlib import Path
+root=Path.cwd(); out=root/'.tmp/phase7/quality'; out.mkdir(exist_ok=True)
+env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'))
+py=str(root/'.venv/Scripts/python.exe')
+checks=[
+ [py,'-m','ruff','check','.'],[py,'-m','ruff','format','--check','.'],
+ [py,'-m','mypy'],[py,'-m','mypy','--platform','linux'],
+ [py,'-m','tools.generate_cli_docs','--check'],[py,'-m','pip','check'],
+ [py,'-m','build','--no-isolation'],
+ [py,str(root/'.tmp/phase7/check-skill.py')],
+ ['git','diff','--check']]
+records=[]
+for i,args in enumerate(checks):
+ t=time.monotonic()
+ with (out/f'{i:02}.txt').open('w',encoding='utf-8') as f:
+  result=subprocess.run(args,env=env,cwd=root,stdout=f,stderr=subprocess.STDOUT)
+ records.append({'argv':args,'exit_code':result.returncode,'duration_seconds':round(time.monotonic()-t,3),'log':f'{i:02}.txt'})
+ print(i,result.returncode,flush=True)
+ if result.returncode:break
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n')
+sys.exit(any(r['exit_code'] for r in records))

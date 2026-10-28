@@ -17,6 +17,7 @@ SCOPES = (
     "game_manifest.json",
     "recipes",
     ".polyforge/unity-request.json",
+    ".polyforge/owned-package.json",
     "UnityProject/Assets/PolyForgeGenerated",
     "UnityProject/ProjectSettings",
     "UnityProject/Packages/manifest.json",

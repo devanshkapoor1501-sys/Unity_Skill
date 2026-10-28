@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "mesh_op_1b176ce7798f282b796d00832919ee3e",
+  "candidate_digest": "a244c3e9188e8f14a74439530075c2eddf9af402e069fbe21e31cb48a393baa7",
+  "producer_id": "producer",
+  "reviewer_id": "inspector",
+  "verdict": "APPROVED",
+  "independence": "DIFFERENT_ROLE_SAME_HOST",
+  "evidence": [
+    "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/logical-geometry.json",
+    "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/metrics.json",
+    "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/source.blend"
+  ],
+  "request": {
+    "schema_version": "1.0.0",
+    "brief": "Create an industrial crate with editable source.",
+    "task_class": "CREATE_ASSET",
+    "domain_tags": [
+      "blender"
+    ],
+    "feature_ids": [
+      "editable_source"
+    ],
+    "capability_id": "mesh.props.crate.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "asset_id": "industrial_box",
+      "parameters": {
+        "size_m": [
+          1.1,
+          0.8,
+          1.3
+        ]
+      }
+    }
+  }
+}

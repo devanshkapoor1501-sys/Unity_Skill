@@ -1,0 +1,59 @@
+import hashlib
+import json
+from pathlib import Path
+from unittest.mock import patch
+
+from polyforge.animation.adapter import animate_robot
+from polyforge.animation.integration import integrate_animation, launch
+from polyforge.contracts.validation import InputError
+from polyforge.contracts.results import ErrorKind
+from polyforge.workforce.operations import complete, operation_context
+from polyforge.workforce.orchestrator import run_task
+
+p = Path('.tmp/phase6/arena').resolve()
+saved = json.loads(Path('.tmp/phase7/workforce-animation-result.json').read_text())
+request = saved['data']['plan']['original_request']
+task = saved['run_id']
+relative = 'workforce/' + task
+def inventory():
+    return {str(f.relative_to(p)): hashlib.sha256(f.read_bytes()).hexdigest()
+            for f in (p/'UnityProject/Assets/PolyForgeGenerated').rglob('*') if f.is_file()}
+before = inventory()
+resumed = run_task(p, request, mode='sequential')
+assert resumed.status == 'PASS' and resumed.data['candidate'] == saved['data']['candidate']
+assert inventory() == before
+checks = {'committed_resume_preserves_native_assets': 'PASS'}
+controller = p/'UnityProject/Assets/PolyForgeGenerated/Animation/Robot.controller'
+original = controller.read_bytes()
+try:
+    controller.unlink()
+    try:
+        run_task(p, request, mode='sequential')
+    except InputError as exc:
+        assert exc.kind == ErrorKind.CONTRACT_FAILURE, str(exc)
+        checks['missing_controller_invalidates_verified_resume'] = {'status':'PASS','diagnostic':str(exc)}
+    else:
+        raise AssertionError('Stale VERIFIED resume was accepted')
+finally:
+    controller.write_bytes(original)
+produced = json.loads((p/relative/'production.json').read_text())
+context = operation_context(p, task, 'job_1', request.get('seed',42), None)
+with patch('polyforge.animation.adapter.run_process', side_effect=AssertionError('Duplicate Blender launch')):
+    restored = animate_robot(request['input'], context)
+assert restored.status == 'PASS' and restored.run_id == produced['result']['run_id']
+checks['native_blender_completion_reused_without_relaunch'] = 'PASS'
+context = operation_context(p, task, 'job_3', request.get('seed',42), None)
+calls = []
+def guarded(*args, **kwargs):
+    calls.append(args[4])
+    assert args[4] == 'tests', 'Duplicate native asset mutation'
+    return launch(*args, **kwargs)
+with patch('polyforge.animation.integration.launch', side_effect=guarded):
+    result = integrate_animation(p, saved['data']['candidate'], produced['result'], operation_id=context.operation_id)
+assert result.status == 'PASS' and calls == ['tests','tests'], result.to_dict()
+inputs = {'schema_version':'1.0.0','candidate_file':relative+'/handoff.json','review_file':relative+'/review.json','production_file':relative+'/production.json'}
+complete('animation.robot.unity.v1',inputs,context,result)
+assert inventory() == before
+checks['native_unity_completion_skips_second_asset_build'] = {'status':'PASS','launched_modes':calls,'run_id':result.run_id}
+Path('.tmp/phase7/recovery-proof.json').write_text(json.dumps(checks,indent=2)+'\n')
+print(json.dumps(checks,indent=2))

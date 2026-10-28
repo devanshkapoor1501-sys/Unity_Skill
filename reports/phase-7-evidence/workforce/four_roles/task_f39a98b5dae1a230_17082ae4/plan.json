@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "task_f39a98b5dae1a230_17082ae4",
+  "engine_digest": "17082ae4c1fe5b3a611fa5fd31427dc5cb380451551acd371130c12217a65866",
+  "workspace_inputs": {
+    "polyforge.toml": "e22a0a056102835142f07fad9e2d7826cff957d8a4040bdca35297e7bd5a11d4",
+    "game_manifest.json": "3b1edcd791b15ad50e80af951af27cd00b1b0fe4b995d90ab07986b9f6a2cb48",
+    "UnityProject/Assets/PolyForgeGenerated/Game/PlayableArena.unity": "f35023cb02904b38951b3e6740f619b63cd8bdf2bcf58017845acdb83e1632ce",
+    "recipes/crate_a.json": "69739b2e3a122cbff16d4513af142470546826dbcc5758adda068ce9c3a87c92",
+    "recipes/ground_a.json": "125a791308d507a820f605ee48fe7ed5a497d02d6b39e5538d6545ed8336a35f",
+    "recipes/robot_a.json": "dd957dbb2ed916d80efc4457140c542a8ea6130f6d30e8e5288bb56488f809aa",
+    "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+    "unity_binary": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0"
+  },
+  "input_digest": "f39a98b5dae1a230344d4a3a240295cc4ada29d4bbe869015375d6bbe5f76ff6",
+  "original_request": {
+    "schema_version": "1.0.0",
+    "brief": "Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.",
+    "task_class": "ANIMATE",
+    "domain_tags": [
+      "blender",
+      "unity",
+      "animation"
+    ],
+    "feature_ids": [
+      "idle_walk",
+      "in_place",
+      "editable_source"
+    ],
+    "capability_id": "animation.robot.rig.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "asset_id": "robot_a",
+      "parameters": {
+        "size_m": [
+          1,
+          2,
+          1
+        ]
+      }
+    }
+  },
+  "stages": [
+    "S0",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "jobs": [
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_0",
+      "role_id": "intent_analyst",
+      "capability_id": "intent.freeze.v1",
+      "depends_on": [],
+      "stage": "S1",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "idle_walk",
+        "in_place",
+        "editable_source"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_1",
+      "role_id": "rig_animation_artist",
+      "capability_id": "animation.robot.rig.v1",
+      "depends_on": [
+        "job_0"
+      ],
+      "stage": "S2",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "idle_walk",
+        "in_place",
+        "editable_source"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_2",
+      "role_id": "animation_inspector",
+      "capability_id": "artifact.candidate.inspect.v1",
+      "depends_on": [
+        "job_1"
+      ],
+      "stage": "S3",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "idle_walk",
+        "in_place",
+        "editable_source"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_3",
+      "role_id": "unity_integration",
+      "capability_id": "animation.robot.unity.v1",
+      "depends_on": [
+        "job_2"
+      ],
+      "stage": "S4",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "idle_walk",
+        "in_place",
+        "editable_source"
+      ]
+    }
+  ],
+  "execution_status": "NOT_RUN",
+  "support_state": "SUPPORTED",
+  "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+  "requirements_preserved": true
+}

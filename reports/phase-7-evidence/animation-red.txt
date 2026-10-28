@@ -1,0 +1,22 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_motion_contract_accepts_measured_motion_and_rejects_wrong_mapping_detachment_and_root_motion _
+
+    def test_motion_contract_accepts_measured_motion_and_rejects_wrong_mapping_detachment_and_root_motion():
+>       from polyforge.animation.contract import inspect_motion
+E       ModuleNotFoundError: No module named 'polyforge.animation'
+
+tests\test_animation.py:31: ModuleNotFoundError
+______________ test_animation_invalid_and_dry_run_write_nothing _______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-57/test_animation_invalid_and_dry0')
+
+    def test_animation_invalid_and_dry_run_write_nothing(tmp_path):
+>       from polyforge.animation.adapter import animate_robot
+E       ModuleNotFoundError: No module named 'polyforge.animation'
+
+tests\test_animation.py:44: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_animation.py::test_motion_contract_accepts_measured_motion_and_rejects_wrong_mapping_detachment_and_root_motion
+FAILED tests/test_animation.py::test_animation_invalid_and_dry_run_write_nothing
+2 failed in 0.30s

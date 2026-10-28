@@ -1,0 +1,56 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_engine_identity_covers_adapter_and_contract_changes[animation/adapter.py] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-82/test_engine_identity_covers_ad0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000270D99A53A0>
+name = 'animation/adapter.py'
+
+    @pytest.mark.parametrize("name", ["animation/adapter.py", "contracts/handoff.schema.json"])
+    def test_engine_identity_covers_adapter_and_contract_changes(tmp_path, monkeypatch, name):
+        import shutil
+    
+        import polyforge.workforce.router as module
+    
+        original = module.files
+        package = tmp_path / "polyforge"
+        shutil.copytree(original("polyforge"), package, ignore=shutil.ignore_patterns("__pycache__"))
+        target = package / name
+        monkeypatch.setattr(module, "files", lambda key: package if key == "polyforge" else original(key))
+        before = module.engine_digest()
+        target.write_text(target.read_text() + "\nchanged")
+>       assert module.engine_digest() != before
+E       AssertionError: assert '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f' != '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f'
+E        +  where '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f' = <function engine_digest at 0x00000270D99B0220>()
+E        +    where <function engine_digest at 0x00000270D99B0220> = <module 'polyforge.workforce.router' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\workforce\\router.py'>.engine_digest
+
+tests\test_workforce.py:58: AssertionError
+_ test_engine_identity_covers_adapter_and_contract_changes[contracts/handoff.schema.json] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-82/test_engine_identity_covers_ad1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000270D99A7A10>
+name = 'contracts/handoff.schema.json'
+
+    @pytest.mark.parametrize("name", ["animation/adapter.py", "contracts/handoff.schema.json"])
+    def test_engine_identity_covers_adapter_and_contract_changes(tmp_path, monkeypatch, name):
+        import shutil
+    
+        import polyforge.workforce.router as module
+    
+        original = module.files
+        package = tmp_path / "polyforge"
+        shutil.copytree(original("polyforge"), package, ignore=shutil.ignore_patterns("__pycache__"))
+        target = package / name
+        monkeypatch.setattr(module, "files", lambda key: package if key == "polyforge" else original(key))
+        before = module.engine_digest()
+        target.write_text(target.read_text() + "\nchanged")
+>       assert module.engine_digest() != before
+E       AssertionError: assert '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f' != '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f'
+E        +  where '3f06c67475aff631d880f75a2c209ec8d95435a7e84161061c7a862c4b20bf3f' = <function engine_digest at 0x00000270D99B0220>()
+E        +    where <function engine_digest at 0x00000270D99B0220> = <module 'polyforge.workforce.router' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\workforce\\router.py'>.engine_digest
+
+tests\test_workforce.py:58: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_workforce.py::test_engine_identity_covers_adapter_and_contract_changes[animation/adapter.py]
+FAILED tests/test_workforce.py::test_engine_identity_covers_adapter_and_contract_changes[contracts/handoff.schema.json]
+2 failed, 22 deselected in 1.17s

@@ -113,7 +113,61 @@ def execute_recipe(
         "required_version": "5.2.2",
         "validator": "geometry.v1",
     }
-    run_id = "mesh-" + uuid4().hex[:16]
+    run_id = "mesh-" + (context.run_id or uuid4().hex[:16])
+    if context.run_id and not audit_export:
+        completed = policy.path("runs/" + run_id + "/asset/worker-complete.json")
+        if completed.is_file():
+            receipt = load_json(completed)
+            folder = completed.parent
+            if (
+                receipt["input_digest"] != input_digest
+                or receipt["toolchain"] != fingerprint
+                or not all(
+                    hashlib.sha256(policy.path(folder / item["name"]).read_bytes()).hexdigest()
+                    == item["sha256"]
+                    for item in receipt["files"]
+                )
+            ):
+                raise InputError(
+                    "Interrupted mesh output identity/hash mismatch",
+                    kind=ErrorKind.CONTRACT_FAILURE,
+                )
+            metrics = load_json(folder / "metrics.json")
+            validate_geometry(recipe, metrics)
+            recovered_artifacts = [
+                {
+                    "artifact_id": run_id + ":" + item["name"],
+                    "relative_path": (folder / item["name"]).relative_to(policy.root).as_posix(),
+                    "sha256": item["sha256"],
+                    "bytes": (folder / item["name"]).stat().st_size,
+                    "input_digest": input_digest,
+                    "toolchain": fingerprint,
+                }
+                for item in receipt["files"]
+            ]
+            atomic_json(
+                policy, "runs/" + run_id + "/artifacts.json", {"artifacts": recovered_artifacts}
+            )
+            recovered_journal = RunJournal(policy, run_id)
+            if recovered_journal.read()["stages"]["S2"]["status"] == "running":
+                recovered_journal.transition(
+                    "S2",
+                    "passed",
+                    evidence=["runs/" + run_id + "/artifacts.json"],
+                    note="Recovered native worker completion receipt",
+                )
+            return Result(
+                run_id=run_id,
+                input_digest=input_digest,
+                evaluated_test_status="PASS",
+                metrics=metrics,
+                data={
+                    "source_blend": (folder / "source.blend").relative_to(policy.root).as_posix(),
+                    "metrics_path": (folder / "metrics.json").relative_to(policy.root).as_posix(),
+                    "recovered_native_output": True,
+                },
+                evidence_paths=["runs/" + run_id + "/artifacts.json"],
+            )
     journal = RunJournal.create(policy, run_id, retry_limit=0)
     relative = f"runs/{run_id}"
     job = atomic_json(
@@ -143,6 +197,7 @@ def execute_recipe(
                 min(context.max_output_bytes, config.max_output_bytes),
                 config.memory_limit_mb,
             ),
+            cancel=context.cancel,
         )
         atomic_json(policy, relative + "/precheck-process.json", asdict(probe))
         text = policy.path(probe.stdout_path).read_text("utf-8")
@@ -197,6 +252,7 @@ def execute_recipe(
                     min(context.max_output_bytes, config.max_output_bytes),
                     config.memory_limit_mb,
                 ),
+                cancel=context.cancel,
             )
         atomic_json(policy, relative + "/process.json", asdict(process))
         if process.reason != "exit" or process.returncode != 0:

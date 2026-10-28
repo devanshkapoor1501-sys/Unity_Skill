@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import shutil
+import threading
 import zipfile
 from dataclasses import replace
 from importlib.resources import files
@@ -307,7 +308,11 @@ def verify_game(workspace: Path, *, standalone: bool = False) -> Result:
 
 
 def execute_game_checks(
-    policy: WorkspacePolicy, game: dict[str, Any], *, standalone: bool = False
+    policy: WorkspacePolicy,
+    game: dict[str, Any],
+    *,
+    standalone: bool = False,
+    cancel: threading.Event | None = None,
 ) -> Result:
     config = configuration(policy)
     executable = unity_tool(config)
@@ -327,6 +332,7 @@ def execute_game_checks(
                 output=edit,
                 test_filter="PolyForge.Game.Editor.Tests",
                 game_input=request,
+                cancel=cancel,
             )
             verify_test_xml(edit, GAME_EDIT_TESTS)
             play = policy.path(relative + "/playmode.xml")
@@ -340,6 +346,7 @@ def execute_game_checks(
                 test_platform="PlayMode",
                 test_filter="PolyForge.Game.Tests",
                 game_input=request,
+                cancel=cancel,
                 scenario_input=suite,
                 telemetry_directory=policy.path(relative + "/telemetry"),
             )
@@ -370,6 +377,7 @@ def execute_game_checks(
                     relative + "/player-build",
                     "player",
                     game_input=player_request,
+                    cancel=cancel,
                 )
                 player_status = "PASS" if player_path.is_file() else "FAIL"
                 if player_status != "PASS":
@@ -394,6 +402,7 @@ def execute_game_checks(
                         max_output_bytes=config.max_output_bytes,
                         memory_limit_mb=config.memory_limit_mb,
                     ),
+                    cancel=cancel,
                 )
                 atomic_json(
                     policy,
@@ -458,6 +467,7 @@ def build_game(
     dry_run: bool = False,
     allow_package_downloads: bool = False,
     standalone: bool = False,
+    cancel: threading.Event | None = None,
 ) -> Result:
     game = compile_game_request(model)
     core_suite(game)
@@ -473,7 +483,9 @@ def build_game(
         )
     from polyforge.unity.bridge import build_unity
 
-    parent = build_unity(model, recipes, allow_package_downloads=allow_package_downloads)
+    parent = build_unity(
+        model, recipes, allow_package_downloads=allow_package_downloads, cancel=cancel
+    )
     if parent.status != "PASS":
         return parent
     policy = WorkspacePolicy(model.workspace)
@@ -494,7 +506,9 @@ def build_game(
     )
     folder = reusable_export(policy, wall, game["seed"])
     if folder is None:
-        result = execute_recipe(wall, RunContext(policy.root, seed=game["seed"]), audit_export=True)
+        result = execute_recipe(
+            wall, RunContext(policy.root, seed=game["seed"], cancel=cancel), audit_export=True
+        )
         if result.status != "PASS":
             return result
         folder = policy.path(result.data["source_blend"]).parent
@@ -527,6 +541,7 @@ def build_game(
                 relative + "/native",
                 "game",
                 game_input=request,
+                cancel=cancel,
                 output=output,
             )
             bindings = load_json(output)
@@ -570,7 +585,7 @@ def build_game(
             )
         active_stage = "S5"
         journal.transition("S5", "running")
-        checked = execute_game_checks(policy, game, standalone=standalone)
+        checked = execute_game_checks(policy, game, standalone=standalone, cancel=cancel)
         atomic_json(
             policy,
             relative + "/feature-trace.json",

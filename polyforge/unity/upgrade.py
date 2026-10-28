@@ -10,6 +10,7 @@ from uuid import uuid4
 
 from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError, load_json
+from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.transactions import ManagedTransaction
 
@@ -49,6 +50,17 @@ def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = Non
                     if source.getinfo(key).file_size > 1_048_576:
                         raise InputError("Package source exceeds 1MiB")
                     old[name] = source.read(key)
+    provenance = policy.path(".polyforge/owned-package.json")
+    if provenance.is_file():
+        recorded = load_json(provenance)
+        for name, item in recorded["files"].items():
+            source_path = policy.path(item["source"])
+            content = source_path.read_bytes()
+            if hashlib.sha256(content).hexdigest() != item["sha256"]:
+                raise InputError(
+                    "Owned package provenance changed", kind=ErrorKind.CONTRACT_FAILURE
+                )
+            old[name] = content
     for name in changed:
         current = policy.path(package / name)
         if current.is_file() and current.read_bytes() != old.get(name):
@@ -62,7 +74,21 @@ def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = Non
         target = policy.path(package / name)
         policy.mkdir(target.parent)
         target.write_bytes(data)
+    applied = {}
+    for name, data in desired.items():
+        saved = policy.path(transaction.relative + "/applied/" + name)
+        policy.mkdir(saved.parent)
+        saved.write_bytes(data)
+        applied[name] = {
+            "source": saved.relative_to(policy.root).as_posix(),
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }
     # Existing native .meta GUIDs are retained. New scripts receive native GUIDs
     # on import; fresh projects receive the packaged metadata at bootstrap.
     transaction.record("COMMITTED", operation="owned UPM source upgrade")
+    atomic_json(
+        policy,
+        ".polyforge/owned-package.json",
+        {"transaction_id": transaction.identifier, "files": applied},
+    )
     return transaction.identifier

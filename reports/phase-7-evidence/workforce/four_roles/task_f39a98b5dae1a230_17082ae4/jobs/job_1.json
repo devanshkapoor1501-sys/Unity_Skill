@@ -1,0 +1,89 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": "f258a715c9ca46fc984e8dfd8e63de61",
+    "job_id": "job_1",
+    "task_id": "task_f39a98b5dae1a230_17082ae4",
+    "asset_id": "robot_a",
+    "pid": 31292,
+    "identity": "134376604449454900",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793190445.821103,
+    "released": false,
+    "path": ".polyforge/leases/92f95119c8f7579fbf2e3233283446bacff274782cde745c82f5b110436c9282.json"
+  },
+  "result": {
+    "result": {
+      "status": "PASS",
+      "exit_code": 0,
+      "error_code": null,
+      "data": {
+        "fbx_path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/robot.fbx",
+        "motion_path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/motion.json",
+        "source_blend": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/source.blend",
+        "family": "robot.modular.rigid.v1",
+        "visual_review": "REVIEW"
+      },
+      "diagnostics": [],
+      "operation_id": null,
+      "run_id": "rig-op_f7e2be21a41c5639150d0dc8b74ee106",
+      "version": "0.0.1",
+      "contract_version": "1.0.0",
+      "input_digest": "a5ef48f9771599ea6fb804fb8e5e43dddbb57507881e1f903c6b1298cce42c61",
+      "artifact_ids": [],
+      "evidence_paths": [
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/inspection.json",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/artifacts.json"
+      ],
+      "metrics": {},
+      "duration_ms": 0,
+      "rollback_id": null,
+      "evaluated_test_status": "PASS",
+      "game_status": "PARTIAL",
+      "operation_status": "PASS"
+    },
+    "candidate": {
+      "schema_version": "1.0.0",
+      "artifact_id": "rig_op_f7e2be21a41c5639150d0dc8b74ee106",
+      "producer_id": "producer",
+      "brief_digest": "8e3f8d357145e7b4382a8453b0eb7169e26ee23bc946dced0d4d825026bdd090",
+      "revision": 1,
+      "files": [
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/front.png",
+          "sha256": "9b69edc85bdcaa0984eba0fa9cf39a7eb51ec9faf4d91be178d8c1db3d17bfc2"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/iso.png",
+          "sha256": "8c2ff6cdb59e275281a2b1a142856d1821fd7513da61fc9057f6615f7129d40f"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/motion.json",
+          "sha256": "fcc557a488b3978424a9ab048b00fb1b394ebb631971e1fecdb6bdf3a55d6a81"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/robot.fbx",
+          "sha256": "6cb2b313f56d984591f0490ae37eba793afcf6955e2bde6d196ccb3b69c3069c"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/side.png",
+          "sha256": "755c39bad8bff9b237dd2b97475a83059c9e31e855b860450fb257589bb4130e"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/source.blend",
+          "sha256": "aa5849c1f96014f22f3b6168987ae444786deeb5580ece7c3872f79c7d61c172"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/top.png",
+          "sha256": "d1cb3a18b50d2facb40d7f079824165b1cd015e51d5b053029c81acf09bd420e"
+        },
+        {
+          "path": "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/worker-complete.json",
+          "sha256": "8fb02fe9889e84c177cd9ff70f1b7d191b62d17b33f9711e3d86ebf4db967f5c"
+        }
+      ],
+      "candidate_digest": "322989b7e1efdb7b467bc7c3f153145d22b32477d37948894ed2cbf373767f2c"
+    }
+  },
+  "result_digest": "0cdb8f46c02433d33f8f93718f25fec34fac528f871f24f8909731a3c63cc499"
+}

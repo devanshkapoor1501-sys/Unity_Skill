@@ -303,6 +303,18 @@ def main() -> None:
         audit = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(audit)
         audit.run(recipe, second, output, job["preview_resolution"], measure)
+    completed = {
+        "input_digest": job["input_digest"],
+        "toolchain": job["toolchain"],
+        "files": [
+            {"name": p.name, "sha256": hashlib.sha256(p.read_bytes()).hexdigest()}
+            for p in sorted(output.iterdir())
+            if p.is_file() and p.suffix != ".blend1"
+        ],
+    }
+    temporary = output / ".worker-complete.tmp"
+    temporary.write_text(json.dumps(completed, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(output / "worker-complete.json")
 
 
 if __name__ == "__main__":

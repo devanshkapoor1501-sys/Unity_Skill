@@ -1,0 +1,5 @@
+from pathlib import Path
+import json
+from polyforge.workforce.orchestrator import run_task
+request={'schema_version':'1.0.0','brief':'Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.','task_class':'ANIMATE','domain_tags':['blender','unity','animation'],'feature_ids':['idle_walk','in_place','editable_source'],'capability_id':'animation.robot.rig.v1','input':{'schema_version':'1.0.0','asset_id':'robot_a','parameters':{'size_m':[1,2,1]}}}
+p=Path('.tmp/phase6/arena');r=run_task(p,request,mode="single");Path('.tmp/phase7/single-animation-result.json').write_text(json.dumps(r.to_dict(),indent=2),encoding='utf-8');print(r.status,r.exit_code,r.run_id)

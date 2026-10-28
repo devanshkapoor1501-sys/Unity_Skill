@@ -1,0 +1,46 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": "d1a05d7f2dde48aab1b0a0b2d0a0ae2f",
+    "job_id": "job_0",
+    "task_id": "task_f39a98b5dae1a230_17082ae4_single",
+    "asset_id": "robot_a",
+    "pid": 33320,
+    "identity": "134376603765676655",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793190377.3468773,
+    "released": false,
+    "path": ".polyforge/leases/92f95119c8f7579fbf2e3233283446bacff274782cde745c82f5b110436c9282.json"
+  },
+  "result": {
+    "original_request": {
+      "schema_version": "1.0.0",
+      "brief": "Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.",
+      "task_class": "ANIMATE",
+      "domain_tags": [
+        "blender",
+        "unity",
+        "animation"
+      ],
+      "feature_ids": [
+        "idle_walk",
+        "in_place",
+        "editable_source"
+      ],
+      "capability_id": "animation.robot.rig.v1",
+      "input": {
+        "schema_version": "1.0.0",
+        "asset_id": "robot_a",
+        "parameters": {
+          "size_m": [
+            1,
+            2,
+            1
+          ]
+        }
+      }
+    },
+    "brief_digest": "8e3f8d357145e7b4382a8453b0eb7169e26ee23bc946dced0d4d825026bdd090"
+  },
+  "result_digest": "44c88e45ee90b4f67d652158e72dbe4a62277f4b8e6e5120310cb9988de442f3"
+}

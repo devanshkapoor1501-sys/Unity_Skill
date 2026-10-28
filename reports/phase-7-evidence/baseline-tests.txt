@@ -1,0 +1,32 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 212 items / 12 deselected / 200 selected
+
+tests\test_contract_boundaries.py .................                      [  8%]
+tests\test_foundation.py .................                               [ 17%]
+tests\test_phase1_cli.py .....                                           [ 19%]
+tests\test_phase1_failures.py ...........                                [ 25%]
+tests\test_phase1_policy.py ......                                       [ 28%]
+tests\test_phase1_review.py ....                                         [ 30%]
+tests\test_phase1_runner.py .......                                      [ 33%]
+tests\test_phase2_boundaries.py ..............                           [ 40%]
+tests\test_phase2_contracts.py ..............                            [ 47%]
+tests\test_phase3_cli.py ......                                          [ 50%]
+tests\test_phase3_recipes.py .......                                     [ 54%]
+tests\test_phase4_contracts.py ...........                               [ 59%]
+tests\test_phase5_contracts.py ......................................... [ 80%]
+.                                                                        [ 80%]
+tests\test_phase6_contracts.py .....................................     [ 99%]
+tests\test_windows_alias_paths.py ..                                     [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase7\baseline-tests.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Coverage JSON written to file .tmp/phase7/baseline-coverage.json
+Required test coverage of 90.0% reached. Total coverage: 94.99%
+=============== 200 passed, 12 deselected in 134.97s (0:02:14) ================

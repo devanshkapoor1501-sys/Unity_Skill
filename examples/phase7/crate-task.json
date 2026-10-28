@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "brief": "Create an industrial crate with editable source.",
+  "task_class": "CREATE_ASSET",
+  "domain_tags": [
+    "blender"
+  ],
+  "feature_ids": [
+    "editable_source"
+  ],
+  "capability_id": "mesh.props.crate.v1",
+  "input": {
+    "schema_version": "1.0.0",
+    "asset_id": "industrial_box",
+    "parameters": {
+      "size_m": [
+        1.1,
+        0.8,
+        1.3
+      ]
+    }
+  }
+}

@@ -9,6 +9,12 @@ are syntax fixtures, not evidence of execution or functionality.
 
 | Command | Availability | Example |
 | --- | --- | --- |
+| `workforce roles` | Implemented | `polyforge workforce roles --workspace . --json` |
+| `workforce plan` | Implemented | `polyforge workforce plan --workspace workspace/arena_demo --brief brief.md --dry-run --json` |
+| `workforce run` | Implemented | `polyforge workforce run --workspace workspace/arena_demo --plan workforce/plan.json --dry-run --json` |
+| `workforce status` | Implemented | `polyforge workforce status --workspace workspace/arena_demo --run-id task_example --json` |
+| `workforce review` | Implemented | `polyforge workforce review --workspace workspace/arena_demo --artifact-id rig_example --json` |
+| `workforce cancel` | Implemented | `polyforge workforce cancel --workspace workspace/arena_demo --run-id task_example --job-id job_1 --json` |
 | `doctor` | Implemented | `polyforge doctor --json` |
 | `init` | Implemented | `polyforge init workspace/arena_demo --template simple_arena --json` |
 | `validate` | Implemented | `polyforge validate --workspace workspace/arena_demo --json` |

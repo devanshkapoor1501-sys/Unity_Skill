@@ -1,0 +1,514 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "robot_a",
+  "family": "robot.modular.rigid.v1",
+  "blender_version": "5.2.2",
+  "root_motion": "IN_PLACE",
+  "bones": {
+    "root": {
+      "head": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "parent": ""
+    },
+    "body": {
+      "head": [
+        0.0,
+        0.14999999105930328,
+        1.243027687072754
+      ],
+      "parent": "root"
+    },
+    "head": {
+      "head": [
+        0.0,
+        0.14999999105930328,
+        1.760956048965454
+      ],
+      "parent": "body"
+    },
+    "eye_l": {
+      "head": [
+        -0.09195402264595032,
+        -0.15000002086162567,
+        1.824701189994812
+      ],
+      "parent": "head"
+    },
+    "eye_r": {
+      "head": [
+        0.09195402264595032,
+        -0.15000002086162567,
+        1.824701189994812
+      ],
+      "parent": "head"
+    },
+    "hips": {
+      "head": [
+        0.0,
+        0.14999999105930328,
+        0.8924301862716675
+      ],
+      "parent": "body"
+    },
+    "thigh_l": {
+      "head": [
+        -0.12643678486347198,
+        0.14999999105930328,
+        0.812748908996582
+      ],
+      "parent": "hips"
+    },
+    "shin_l": {
+      "head": [
+        -0.12643678486347198,
+        0.14999999105930328,
+        0.43027883768081665
+      ],
+      "parent": "thigh_l"
+    },
+    "foot_l": {
+      "head": [
+        -0.12643678486347198,
+        -1.4901161193847656e-08,
+        0.05577687919139862
+      ],
+      "parent": "shin_l"
+    },
+    "thigh_r": {
+      "head": [
+        0.12643678486347198,
+        0.14999999105930328,
+        0.812748908996582
+      ],
+      "parent": "hips"
+    },
+    "shin_r": {
+      "head": [
+        0.12643678486347198,
+        0.14999999105930328,
+        0.43027883768081665
+      ],
+      "parent": "thigh_r"
+    },
+    "foot_r": {
+      "head": [
+        0.12643678486347198,
+        -1.4901161193847656e-08,
+        0.05577687919139862
+      ],
+      "parent": "shin_r"
+    },
+    "core": {
+      "head": [
+        0.0,
+        -0.1600000113248825,
+        1.243027687072754
+      ],
+      "parent": "body"
+    },
+    "upper_arm_l": {
+      "head": [
+        -0.3735632002353668,
+        0.14999999105930328,
+        1.4501991271972656
+      ],
+      "parent": "body"
+    },
+    "forearm_l": {
+      "head": [
+        -0.3735632002353668,
+        0.14999999105930328,
+        1.0996015071868896
+      ],
+      "parent": "upper_arm_l"
+    },
+    "hand_l": {
+      "head": [
+        -0.3735632002353668,
+        0.14999999105930328,
+        0.717131495475769
+      ],
+      "parent": "forearm_l"
+    },
+    "upper_arm_r": {
+      "head": [
+        0.3735632002353668,
+        0.14999999105930328,
+        1.4501991271972656
+      ],
+      "parent": "body"
+    },
+    "forearm_r": {
+      "head": [
+        0.3735632002353668,
+        0.14999999105930328,
+        1.0996015071868896
+      ],
+      "parent": "upper_arm_r"
+    },
+    "hand_r": {
+      "head": [
+        0.3735632002353668,
+        0.14999999105930328,
+        0.717131495475769
+      ],
+      "parent": "forearm_r"
+    }
+  },
+  "bindings": {
+    "body": "body",
+    "head": "head",
+    "hips": "hips",
+    "core": "core",
+    "upper_arm_l": "upper_arm_l",
+    "upper_arm_r": "upper_arm_r",
+    "forearm_l": "forearm_l",
+    "thigh_l": "thigh_l",
+    "eye_l": "eye_l",
+    "forearm_r": "forearm_r",
+    "thigh_r": "thigh_r",
+    "eye_r": "eye_r",
+    "hand_l": "hand_l",
+    "shin_l": "shin_l",
+    "hand_r": "hand_r",
+    "shin_r": "shin_r",
+    "foot_l": "foot_l",
+    "foot_r": "foot_r"
+  },
+  "clips": {
+    "Idle": {
+      "slot_count": 1,
+      "channelbag_count": 1,
+      "duration_seconds": 1.0,
+      "samples": [
+        {
+          "frame": 1,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        },
+        {
+          "frame": 7,
+          "angles": {
+            "root": 0.0,
+            "body": 0.019999999552965164,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 1.1920928955078125e-07,
+          "socket_error_m": 1.2013700229374393e-07
+        },
+        {
+          "frame": 13,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        },
+        {
+          "frame": 19,
+          "angles": {
+            "root": 0.0,
+            "body": -0.019999999552965164,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 1.1920928955078125e-07,
+          "socket_error_m": 1.2013700229374393e-07
+        },
+        {
+          "frame": 25,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        }
+      ]
+    },
+    "Walk": {
+      "slot_count": 1,
+      "channelbag_count": 1,
+      "duration_seconds": 1.0,
+      "samples": [
+        {
+          "frame": 1,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        },
+        {
+          "frame": 7,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.44999998807907104,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": -0.44999998807907104,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": -0.44999998807907104,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.44999998807907104,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 1.2013700229374393e-07,
+          "socket_error_m": 6.143906154658885e-08
+        },
+        {
+          "frame": 13,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": -0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": -0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        },
+        {
+          "frame": 19,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": -0.44999998807907104,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": 0.44999998807907104,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": 0.44999998807907104,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": -0.44999998807907104,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 1.2013700229374393e-07,
+          "socket_error_m": 6.143906154658885e-08
+        },
+        {
+          "frame": 25,
+          "angles": {
+            "root": 0.0,
+            "body": 0.0,
+            "head": 0.0,
+            "eye_l": 0.0,
+            "eye_r": 0.0,
+            "hips": 0.0,
+            "thigh_l": 0.0,
+            "shin_l": 0.0,
+            "foot_l": 0.0,
+            "thigh_r": -0.0,
+            "shin_r": 0.0,
+            "foot_r": 0.0,
+            "core": 0.0,
+            "upper_arm_l": -0.0,
+            "forearm_l": 0.0,
+            "hand_l": 0.0,
+            "upper_arm_r": 0.0,
+            "forearm_r": 0.0,
+            "hand_r": 0.0
+          },
+          "root_position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "skin_error_m": 5.960464477539063e-08,
+          "socket_error_m": 0.0
+        }
+      ]
+    }
+  },
+  "source_reopened": true,
+  "weights_complete": true,
+  "sockets_preserved": true,
+  "api_probe": {
+    "slot_api": "ActionSlot",
+    "helper": "action_ensure_channelbag_for_slot"
+  }
+}

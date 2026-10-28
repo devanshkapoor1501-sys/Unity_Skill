@@ -7,7 +7,7 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 6 catalog contains read-only
+Discover available capabilities first. The Phase 7 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
 Blender mesh recipes, managed static audit/export and native Unity static scenes.
 S5 builds the bounded playable survival arena and runs independent public checks.
@@ -50,5 +50,19 @@ Report operation_status, evaluated_test_status, and game_status separately.
 A successful descriptor check is not gameplay evidence. Preserve failed and
 unexecuted checks. Hidden evaluator fixtures stay outside the agent workspace.
 
-Phase 6 integration does not qualify portable installation in multiple hosts.
+Phase 7 adds one mechanical robot rig with slotted Idle/Walk actions, sampled
+skin/socket checks, FBX clips and native Unity Animator playback. Use
+animation.robot.rig.v1 for Blender-only animation; Unity integration requires an
+existing managed arena and an approved candidate. Do not force a robot or Unity
+project for a mesh-only or explanation request.
+
+Workforce plan/run accepts explicit task_class, domain_tags and the exact original
+brief. Inspect workforce roles first; use returned task/artifact IDs. Sequential
+roles are the supported fallback. No verified native host delegation adapter is
+available; different role IDs do not establish an independently controlled
+evaluator. Resume verifies completion receipts and file hashes; stale outputs
+invalidate success. See [workforce and animation rules](references/workflow.md)
+for supported capabilities and authority boundaries.
+
+Phase 7 integration does not qualify portable installation in multiple hosts.
 Final Codex/Claude guides, host smoke tests and optional MCP remain Phase 10.

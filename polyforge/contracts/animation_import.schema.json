@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "candidate_file": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "review_file": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "production_file": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    }
+  },
+  "required": [
+    "schema_version",
+    "candidate_file",
+    "review_file",
+    "production_file"
+  ]
+}

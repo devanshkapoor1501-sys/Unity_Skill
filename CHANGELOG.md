@@ -2,6 +2,11 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add bounded worker roles, explicit task routing, sealed handoffs and digest-bound inspection.
+- Add leases, cancellation, durable completion receipts and guarded resume through the shared engine.
+- Add one Blender slotted robot rig with Idle/Walk and native Unity Animator/skin-motion checks.
+- Verify single-mode/sequential-role parity and a non-robot task without claiming host delegation.
+
 - Add the playable survival arena, WASD/R input, patrol/damage/health, HUD and state transitions.
 - Add seven behavior scenarios, actual keyboard tests, two mutants and independent telemetry oracles.
 - Verify loaded scene identity and frozen sources; seal editable game outputs and feature evidence.
@@ -39,4 +44,4 @@
 - Add result schemas, trust defaults, evaluator interfaces, and public fixtures.
 - Add offline tests, quality gates, CI, portable skill scaffold, and phase evidence.
 
-Game generation and release qualification remain future deliveries.
+Broader game generation and release qualification remain future deliveries.

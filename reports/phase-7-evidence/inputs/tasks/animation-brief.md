@@ -1,0 +1,1 @@
+Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.

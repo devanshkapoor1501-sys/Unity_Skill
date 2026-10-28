@@ -1,0 +1,14 @@
+"""Limited frontmatter/link check; not portable host qualification."""
+import json, re
+from pathlib import Path
+p=Path('.agents/skills/polyforge/SKILL.md')
+text=p.read_text('utf-8'); header=text.split('---',2)[1]
+fields=dict(line.split(': ',1) for line in header.strip().splitlines())
+assert set(fields) <= {'name','description','license','compatibility','metadata','allowed-tools'}
+assert re.fullmatch('[a-z0-9]+(?:-[a-z0-9]+)*', fields['name'])
+assert 0 < len(fields['name']) <= 64 and 0 < len(fields['description']) <= 1024
+assert 0 < len(fields.get('compatibility','')) <= 500
+for target in re.findall(r'\]\((references/[^)]+)\)',text):
+ assert (p.parent/target).is_file(), target
+assert '[TODO:' not in text
+print(json.dumps({'status':'PASS','scope':'EXISTING_SINGLE_LINE_FRONTMATTER_AND_LOCAL_REFERENCES','full_skill_host_qualification':'NOT_RUN','system_quick_validator':'BLOCKED: missing PyYAML; helper also predates compatibility field'},indent=2))

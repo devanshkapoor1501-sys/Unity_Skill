@@ -1,0 +1,113 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+________ test_cancelling_expired_job_cannot_release_replacement_owner _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-63/test_cancelling_expired_job_ca0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001962D23F0E0>
+
+    def test_cancelling_expired_job_cannot_release_replacement_owner(tmp_path,monkeypatch):
+        from polyforge.workforce.ledger import JobLedger
+        import polyforge.workforce.ledger as module
+        ledger=JobLedger(tmp_path,"task_a");ledger.claim("old","robot",ttl=1)
+        monkeypatch.setattr(module.time,"time",lambda:10**12)
+        monkeypatch.setattr(module,"process_identity",lambda pid:None)
+        replacement=ledger.claim("new","robot",ttl=60)
+        ledger.cancel("old")
+>       ledger.commit("new",replacement,{"status":"PASS"})
+
+tests\test_workforce.py:202: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\ledger.py:137: in commit
+    current = self._check(job, lease)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <polyforge.workforce.ledger.JobLedger object at 0x000001962D20EA50>
+job = 'new'
+lease = {'asset_id': 'robot', 'host': 'LAPTOP-P7ISERHS', 'identity': None, 'job_id': 'new', ...}
+
+    def _check(self, job: str, lease: dict[str, Any]) -> dict[str, Any]:
+        state = load_json(self.policy.path(self._state(job)))
+        current: dict[str, Any] = load_json(self.policy.path(state["lease"]["path"]))
+        if (
+            state["state"] != "RUNNING"
+            or current["released"]
+            or current["token"] != lease["token"]
+            or current["task_id"] != self.task_id
+            or current["job_id"] != job
+            or current["until"] < time.time()
+            or current["pid"] != os.getpid()
+            or current["identity"] != process_identity(os.getpid())
+        ):
+>           raise InputError(
+                "Stale/cancelled job ownership; commit denied", kind=ErrorKind.POLICY_DENIED
+            )
+E           polyforge.contracts.validation.InputError: Stale/cancelled job ownership; commit denied
+
+polyforge\workforce\ledger.py:127: InputError
+________ test_repeated_owned_upgrades_use_committed_package_provenance ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-63/test_repeated_owned_upgrades_u0')
+
+    def test_repeated_owned_upgrades_use_committed_package_provenance(tmp_path):
+        from polyforge.unity.upgrade import sync_package
+        from polyforge.security.paths import WorkspacePolicy
+        p=WorkspacePolicy(tmp_path)
+        sync_package(p,{"Runtime/New.cs":b"first"})
+>       sync_package(p,{"Runtime/New.cs":b"second"})
+
+tests\test_workforce.py:210: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001962D20E480>
+desired = {'Runtime/New.cs': b'second'}
+
+    def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = None) -> str | None:
+        package = policy.path("UnityProject/Packages/com.polyforge.engine")
+        if desired is None:
+            resources = Path(str(files("unity_package")))
+            desired = {
+                p.relative_to(resources).as_posix(): p.read_bytes()
+                for p in resources.rglob("*")
+                if p.is_file() and (p.suffix in {".cs", ".asmdef"} or p.name == "package.json")
+            }
+        changed = {
+            name: data
+            for name, data in desired.items()
+            if not policy.path(package / name).is_file()
+            or policy.path(package / name).read_bytes() != data
+        }
+        if not changed:
+            return None
+        old: dict[str, bytes] = {}
+        latest = policy.path(".polyforge/unity-latest.json")
+        if latest.is_file():
+            run = load_json(latest)["run_id"]
+            archive = policy.path(f"runs/{run}/native-output.zip")
+            registry = load_json(policy.path(f"runs/{run}/artifacts.json"))["artifacts"]
+            entry = next((a for a in registry if policy.path(a["relative_path"]) == archive), None)
+            if entry is None or hashlib.sha256(archive.read_bytes()).hexdigest() != entry["sha256"]:
+                raise InputError(
+                    "Package upgrade baseline archive hash mismatch", kind=ErrorKind.CONTRACT_FAILURE
+                )
+            with zipfile.ZipFile(archive) as source:
+                for name in desired:
+                    key = "Packages/com.polyforge.engine/" + name
+                    if key in source.namelist():
+                        if source.getinfo(key).file_size > 1_048_576:
+                            raise InputError("Package source exceeds 1MiB")
+                        old[name] = source.read(key)
+        for name in changed:
+            current = policy.path(package / name)
+            if current.is_file() and current.read_bytes() != old.get(name):
+>               raise InputError(
+                    "Managed package code was modified without a matching baseline: " + name,
+                    kind=ErrorKind.POLICY_DENIED,
+                )
+E               polyforge.contracts.validation.InputError: Managed package code was modified without a matching baseline: Runtime/New.cs
+
+polyforge\unity\upgrade.py:55: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_workforce.py::test_cancelling_expired_job_cannot_release_replacement_owner
+FAILED tests/test_workforce.py::test_repeated_owned_upgrades_use_committed_package_provenance
+2 failed, 15 deselected in 0.76s

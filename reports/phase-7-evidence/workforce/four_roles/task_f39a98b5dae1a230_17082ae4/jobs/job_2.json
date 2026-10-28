@@ -1,0 +1,64 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": "3018d80de9de46e5a1cb3e819121670e",
+    "job_id": "job_2",
+    "task_id": "task_f39a98b5dae1a230_17082ae4",
+    "asset_id": "robot_a",
+    "pid": 31292,
+    "identity": "134376604449454900",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793190454.2600694,
+    "released": false,
+    "path": ".polyforge/leases/92f95119c8f7579fbf2e3233283446bacff274782cde745c82f5b110436c9282.json"
+  },
+  "result": {
+    "review": {
+      "schema_version": "1.0.0",
+      "artifact_id": "rig_op_f7e2be21a41c5639150d0dc8b74ee106",
+      "candidate_digest": "322989b7e1efdb7b467bc7c3f153145d22b32477d37948894ed2cbf373767f2c",
+      "producer_id": "producer",
+      "reviewer_id": "inspector",
+      "verdict": "APPROVED",
+      "independence": "DIFFERENT_ROLE_SAME_HOST",
+      "evidence": [
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/front.png",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/iso.png",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/motion.json",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/robot.fbx",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/side.png",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/source.blend",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/top.png",
+        "runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/worker-complete.json"
+      ],
+      "request": {
+        "schema_version": "1.0.0",
+        "brief": "Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.",
+        "task_class": "ANIMATE",
+        "domain_tags": [
+          "blender",
+          "unity",
+          "animation"
+        ],
+        "feature_ids": [
+          "idle_walk",
+          "in_place",
+          "editable_source"
+        ],
+        "capability_id": "animation.robot.rig.v1",
+        "input": {
+          "schema_version": "1.0.0",
+          "asset_id": "robot_a",
+          "parameters": {
+            "size_m": [
+              1,
+              2,
+              1
+            ]
+          }
+        }
+      }
+    }
+  },
+  "result_digest": "d2dee07ce97a6c66d67d4c4cc4192bb3bffb4b21fb8ab9825168cade0c4722ec"
+}

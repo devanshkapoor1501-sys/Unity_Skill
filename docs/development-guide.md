@@ -158,8 +158,9 @@ handedness, binding evidence and minimal repair limits.
 
 See [architecture](architecture.md), [CLI contract](cli.md),
 [security](../SECURITY.md), and [execution plan](implementation-plan.md).
-Phase 7 starts only after Phase 6's manual gate passes. The reviewed v5.1 roadmap
-adds specialist worker contracts alongside the original rig/animation gates;
-see [the implementation sequence](implementation-plan.md).
+Phase 7 adds bounded worker contracts and robot Idle/Walk animation; see the
+[workforce workflow](workforce.md) and [Phase 7 evidence](../reports/phase-7.md).
+The reviewed v5.1 roadmap keeps broader asset, texture, 2D and host integration
+work in later phases; see [the implementation sequence](implementation-plan.md).
 Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.

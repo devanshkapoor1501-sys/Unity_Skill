@@ -1,0 +1,215 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "plan": {
+      "schema_version": "1.0.0",
+      "task_id": "task_1db632c376286d22_1100f752",
+      "engine_digest": "1100f7525ac7d0785f4d12371af4717f8a4974fdef40469c016fd002ed900450",
+      "workspace_inputs": {
+        "polyforge.toml": "MISSING",
+        "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+      },
+      "input_digest": "1db632c376286d22f2a912fde30ca8865d9743c2e71dfed0c384e1afee6cd184",
+      "original_request": {
+        "schema_version": "1.0.0",
+        "brief": "Create an industrial crate with editable source.",
+        "task_class": "CREATE_ASSET",
+        "domain_tags": [
+          "blender"
+        ],
+        "feature_ids": [
+          "editable_source"
+        ],
+        "capability_id": "mesh.props.crate.v1",
+        "input": {
+          "schema_version": "1.0.0",
+          "asset_id": "industrial_box",
+          "parameters": {
+            "size_m": [
+              1.1,
+              0.8,
+              1.3
+            ]
+          }
+        }
+      },
+      "stages": [
+        "S0",
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "jobs": [
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_0",
+          "role_id": "intent_analyst",
+          "capability_id": "intent.freeze.v1",
+          "depends_on": [],
+          "stage": "S1",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ]
+        },
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_1",
+          "role_id": "asset_producer",
+          "capability_id": "mesh.props.crate.v1",
+          "depends_on": [
+            "job_0"
+          ],
+          "stage": "S2",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ]
+        },
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_2",
+          "role_id": "asset_inspector",
+          "capability_id": "artifact.candidate.inspect.v1",
+          "depends_on": [
+            "job_1"
+          ],
+          "stage": "S3",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ]
+        }
+      ],
+      "execution_status": "NOT_RUN",
+      "support_state": "SUPPORTED",
+      "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+      "requirements_preserved": true
+    },
+    "candidate": {
+      "schema_version": "1.0.0",
+      "artifact_id": "mesh_op_1b176ce7798f282b796d00832919ee3e",
+      "producer_id": "producer",
+      "brief_digest": "151ad4cb5008762ad8deaa30bb87f3243d1c5b4dcc5e22ac2f2ae8bbefa1174d",
+      "revision": 1,
+      "files": [
+        {
+          "path": "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/logical-geometry.json",
+          "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+        },
+        {
+          "path": "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/metrics.json",
+          "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+        },
+        {
+          "path": "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/source.blend",
+          "sha256": "4acaf0c170e88c396937b89331e91e50b0350afc2178cbb3b69a8ef3f5444517"
+        }
+      ],
+      "candidate_digest": "a244c3e9188e8f14a74439530075c2eddf9af402e069fbe21e31cb48a393baa7"
+    },
+    "review": {
+      "schema_version": "1.0.0",
+      "artifact_id": "mesh_op_1b176ce7798f282b796d00832919ee3e",
+      "candidate_digest": "a244c3e9188e8f14a74439530075c2eddf9af402e069fbe21e31cb48a393baa7",
+      "producer_id": "producer",
+      "reviewer_id": "inspector",
+      "verdict": "APPROVED",
+      "independence": "DIFFERENT_ROLE_SAME_HOST",
+      "evidence": [
+        "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/logical-geometry.json",
+        "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/metrics.json",
+        "runs/mesh-op_1b176ce7798f282b796d00832919ee3e/asset/source.blend"
+      ],
+      "request": {
+        "schema_version": "1.0.0",
+        "brief": "Create an industrial crate with editable source.",
+        "task_class": "CREATE_ASSET",
+        "domain_tags": [
+          "blender"
+        ],
+        "feature_ids": [
+          "editable_source"
+        ],
+        "capability_id": "mesh.props.crate.v1",
+        "input": {
+          "schema_version": "1.0.0",
+          "asset_id": "industrial_box",
+          "parameters": {
+            "size_m": [
+              1.1,
+              0.8,
+              1.3
+            ]
+          }
+        }
+      }
+    },
+    "lineage": [
+      {
+        "job_id": "job_0",
+        "role_id": "intent_analyst",
+        "stage": "S1",
+        "state": "PRODUCED",
+        "result_digest": "ebb6d764639971bdbd53cd67e84d354370749e41945ced838b718461c7aa1fe4",
+        "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+      },
+      {
+        "job_id": "job_1",
+        "role_id": "asset_producer",
+        "stage": "S2",
+        "state": "PRODUCED",
+        "result_digest": "713683a13cd4420abeb1139c446f7df58b3ebaf2acf1c00d04c74dbfb4a25155",
+        "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+      },
+      {
+        "job_id": "job_2",
+        "role_id": "asset_inspector",
+        "stage": "S3",
+        "state": "APPROVED",
+        "result_digest": "a1b688f60ca70f4ccaaaf3c93abfcab0ad1688a8b89d680553adafb74f4ebc6a",
+        "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+      }
+    ],
+    "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+    "native_subagents": "UNAVAILABLE",
+    "host_delegation_probe": "NOT_IMPLEMENTED",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "task_1db632c376286d22_1100f752",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "1db632c376286d22f2a912fde30ca8865d9743c2e71dfed0c384e1afee6cd184",
+  "artifact_ids": [],
+  "evidence_paths": [
+    "workforce/task_1db632c376286d22_1100f752/lineage.json",
+    "workforce/task_1db632c376286d22_1100f752/handoff.json",
+    "workforce/task_1db632c376286d22_1100f752/review.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

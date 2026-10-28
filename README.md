@@ -6,9 +6,9 @@ A skill that helps your AI assistant make 3D objects in Blender and turn them in
 
 | Skill | What it helps you do |
 | --- | --- |
-| [PolyForge](.agents/skills/polyforge/) | Create simple 3D objects and build a small playable survival arena in Unity. |
+| [PolyForge](.agents/skills/polyforge/) | Create simple 3D objects, animate a robot and build a small playable survival arena in Unity. |
 
-**Early preview for Windows.** Simple robots, crates, walls, doorways, floor tiles and a survival arena work today. Animation, 2D games and broader game creation are still being developed.
+**Early preview for Windows.** Simple robots, crates, walls, doorways, floor tiles and a survival arena work today. Supported robots can idle and walk in Unity. More animation options, 2D games and broader game creation are still being developed.
 
 ## Install the skill
 
@@ -30,7 +30,7 @@ Automatic setup and tested installation for other assistants, including Claude, 
 
 1. **Describe your idea.** Say what you want to make and how it should look or play.
 2. **Check the plan.** Your assistant explains what PolyForge can build and flags anything it cannot do yet.
-3. **Let it build.** It creates the objects in Blender and puts them into Unity.
+3. **Let it build.** It creates the objects in Blender and puts them into Unity. For supported robot animation, it checks the moving parts before importing them.
 4. **Review and play.** It checks the result, shows what worked or failed, and asks you to try the game.
 5. **Keep creating.** You get the Blender files and Unity project to edit and build on.
 
@@ -46,4 +46,4 @@ Try PolyForge if you want a starting point for simple Blender-to-Unity projects 
 
 The project is free under the [Apache-2.0 license](LICENSE). Your AI assistant and other software may have their own costs or terms.
 
-[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-6.md)
+[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-7.md)

@@ -1,0 +1,23 @@
+import json
+from pathlib import Path
+from polyforge.unity.evidence import verify_test_xml
+from polyforge.animation.integration import EDIT_TESTS, PLAY_TESTS
+p=Path('.tmp/phase6/arena'); base=Path('.tmp/phase7'); result={}
+native=[]; motion=[]
+with Path('reports/workforce_evidence.jsonl').open('w',encoding='utf-8') as stream:
+ for name,arm in [('single-animation-result','single'),('workforce-animation-result','four_roles')]:
+  v=json.loads((base/(name+'.json')).read_text()); assert v['status']=='PASS'
+  result[arm]=v['run_id']; directory=p/'workforce'/v['run_id']
+  produced=json.loads((directory/'production.json').read_text())['result']
+  motion.append(json.loads((p/produced['data']['motion_path']).read_text()))
+  final=json.loads((directory/'jobs/job_3.json').read_text())['result']['result']
+  run=p/'runs'/final['run_id']; bindings=final['data']['bindings']
+  verify_test_xml(run/'editmode.xml',EDIT_TESTS);verify_test_xml(run/'playmode.xml',PLAY_TESTS)
+  native.append({key:bindings[key] for key in ['model_guid','prefab_guid','scene_guid','controller_guid','bones','clips'] if key in bindings})
+  for entry in v['data']['lineage']:
+   stream.write(json.dumps({'schema_version':'1.0.0','run_id':v['run_id'],'comparison_arm':arm,'candidate_digest':v['data']['candidate']['candidate_digest'],**entry},sort_keys=True)+'\n')
+assert motion[0]==motion[1]
+assert native[0]==native[1],native
+result.update(status='PASS',scope='DETERMINISTIC_ENGINE_WORKFLOWS; NO MODEL OVERHEAD COMPARISON',sampled_motion_equal=True,native_bindings_equal=True,native_test_outcomes='5 EDITOR + 2 PLAYMODE EACH PASS',host_subagents='UNAVAILABLE',independence='DIFFERENT_ROLE_SAME_HOST')
+(base/'parity.json').write_text(json.dumps(result,indent=2)+'\n')
+print(json.dumps(result,indent=2))

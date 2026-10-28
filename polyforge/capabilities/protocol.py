@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import threading
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol, runtime_checkable
@@ -30,6 +31,7 @@ class RunContext:
     artifact_registry: dict[str, Any] = field(default_factory=dict)
     lock_path: Path | None = None
     logger: logging.Logger = field(default_factory=lambda: logging.getLogger("polyforge"))
+    cancel: threading.Event | None = None
 
     def __post_init__(self) -> None:
         if self.security_scope != "TRUSTED_LOCAL" or self.isolation_verified:

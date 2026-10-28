@@ -63,3 +63,26 @@ S5 optional --standalone produces a local Windows executable and owned smoke run
 Manual play review, full rendered performance qualification and external hidden
 evaluation are distinct gates. Invalid/malformed mutant evidence never counts
 as a detected regression. Reject stale loaded scene identities and saved jobs.
+
+Phase 7 adds animation.robot.rig.v1, artifact.candidate.inspect.v1 and
+animation.robot.unity.v1. Rig input is a robot recipe request; inspection uses
+candidate_file/task_file, and import uses candidate_file/review_file/production_file
+within the authorized workspace. Import requires approval derived from inspection
+of the exact sealed candidate and original request. A caller-supplied label alone
+cannot grant approval. The approved FBX hash must match the source imported.
+
+Workforce task.json carries explicit task_class, domain_tags, feature_ids, brief
+and supported capability/input. Save exact brief text in a workspace file for
+workforce plan --brief FILE. Use --dry-run to validate without writes, then the
+returned plan path for workforce run. Blender-only ANIMATE omits Unity; supported
+BUILD_GAME keeps S0–S5. Ambiguous intent requires host/user interpretation;
+unsupported inspection/repair/mechanic execution remains REVIEW/NOT_RUN.
+
+Workforce execution is LOCAL_MULTIROLE_SEQUENTIAL or the comparison
+LOCAL_SINGLE_ROLE. Native subagent delegation is UNAVAILABLE. The same-host
+technical inspector checks actual samples and imported skin/transition behavior;
+it has no protected evaluator authority. Hidden evaluation stays NOT_RUN.
+Leases, cancellation and completion receipts guard native operations; resume
+rejects changed code/inputs/output hashes. These guards do not imply full Phase 9
+rollback or operating-system isolation. Use workforce status/review for evidence
+and workforce cancel for an active job; cancelled work cannot publish a result.

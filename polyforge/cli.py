@@ -13,7 +13,7 @@ from typing import Any, Never
 
 from polyforge import __version__
 from polyforge.capabilities.protocol import RunContext
-from polyforge.capabilities.registry import ManifestCapability, RegistryValidator, catalog, lookup
+from polyforge.capabilities.registry import catalog, lookup
 from polyforge.commands import COMMANDS, CommandSpec
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, load_json
@@ -63,6 +63,10 @@ def build_parser() -> argparse.ArgumentParser:
 def dispatch(args: argparse.Namespace) -> Result:
     """Dispatch only implemented capabilities; placeholders never claim tool success."""
     spec: CommandSpec = args.spec
+    if spec.path[0] == "workforce":
+        from polyforge.workforce.cli import dispatch as workforce_dispatch
+
+        return workforce_dispatch(args)
     if not spec.implemented:
         return failure(
             ErrorKind.PRODUCER_FAILURE,
@@ -140,49 +144,9 @@ def dispatch(args: argparse.Namespace) -> Result:
     path = workspace_input(Path(args.workspace), Path(args.input))
     inputs = load_json(path)
     context = RunContext(workspace=Path(args.workspace), dry_run=args.dry_run)
-    if args.id == "unity.game.arena.v1":
-        from polyforge.blender.build import build_assets
-        from polyforge.contracts.validation import validate_schema
+    from polyforge.capabilities.dispatch import execute
 
-        validate_schema(inputs, "game_build.schema.json")
-        return build_assets(
-            context.workspace,
-            through="S5",
-            dry_run=context.dry_run,
-            allow_package_downloads=inputs.get("allow_package_downloads", False),
-            standalone=inputs.get("standalone", False),
-        )
-    if args.id == "unity.scene.static.v1":
-        from polyforge.blender.build import build_assets
-        from polyforge.contracts.validation import validate_schema
-
-        validate_schema(inputs, "unity_build.schema.json")
-        return build_assets(
-            context.workspace,
-            through="S4",
-            dry_run=context.dry_run,
-            allow_package_downloads=inputs.get("allow_package_downloads", False),
-        )
-    if args.id == "audit.static.multiview.v1":
-        from polyforge.blender.audit import audit_asset
-        from polyforge.contracts.validation import validate_schema
-
-        validate_schema(inputs, "audit_request.schema.json")
-        return audit_asset(context.workspace, inputs["asset_id"], dry_run=context.dry_run)
-    if args.id == "contract.capability.validate.v1":
-        return RegistryValidator().execute(inputs, context)
-    from polyforge.blender.adapter import BlenderCapability
-    from polyforge.blender.recipes import RECIPES
-
-    if args.id in RECIPES.values():
-        kind = next(key for key, value in RECIPES.items() if value == args.id)
-        return BlenderCapability(kind).execute(inputs, context)
-    operation = {
-        "contract.manifest.validate.v1": "validate",
-        "contract.scene.compile.v1": "compile",
-        "plan.scene.v1": "plan",
-    }[args.id]
-    return ManifestCapability(operation).execute(inputs, context)
+    return execute(args.id, inputs, context)
 
 
 def main(argv: Sequence[str] | None = None) -> int:

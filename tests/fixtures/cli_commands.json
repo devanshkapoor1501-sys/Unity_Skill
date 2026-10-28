@@ -3,6 +3,86 @@
   "commands": [
     {
       "argv": [
+        "workforce",
+        "roles",
+        "--workspace",
+        ".",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
+        "workforce",
+        "plan",
+        "--workspace",
+        "workspace/arena_demo",
+        "--brief",
+        "brief.md",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
+        "workforce",
+        "run",
+        "--workspace",
+        "workspace/arena_demo",
+        "--plan",
+        "workforce/plan.json",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
+        "workforce",
+        "status",
+        "--workspace",
+        "workspace/arena_demo",
+        "--run-id",
+        "task_example",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
+        "workforce",
+        "review",
+        "--workspace",
+        "workspace/arena_demo",
+        "--artifact-id",
+        "rig_example",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
+        "workforce",
+        "cancel",
+        "--workspace",
+        "workspace/arena_demo",
+        "--run-id",
+        "task_example",
+        "--job-id",
+        "job_1",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 7
+    },
+    {
+      "argv": [
         "doctor",
         "--json"
       ],

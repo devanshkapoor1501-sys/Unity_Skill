@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 7,
+  "recorded_at": "2026-10-28T11:36:23.691036+00:00",
+  "phase_acceptance": "PASS",
+  "operation_status": "PASS",
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "python_passed": 243,
+  "application_markers_deselected": 12,
+  "coverage_percent": 95.77850877192982,
+  "tools": {
+    "blender": "5.2.2 LTS",
+    "unity": "6000.6.3f1",
+    "urp": "17.6.0",
+    "input_system": "1.19.0",
+    "test_framework": "1.8.0"
+  },
+  "animation_native_runs": [
+    "animation-646c4cbdd8db44b97701acdbab0ae96c",
+    "animation-692500d08db34f8fbcd039d5adc3997a",
+    "rig-op_f7e2be21a41c5639150d0dc8b74ee106",
+    "rig-op_fd38eb18101572327ba577706992f2bc"
+  ],
+  "arena_regression_run": "game-check-c41a6bc17afc4b6d",
+  "gates": {
+    "python": "PASS",
+    "ruff": "PASS",
+    "mypy_windows": "PASS",
+    "mypy_linux_analysis": "PASS",
+    "package_build": "PASS",
+    "fresh_install": "PASS",
+    "installed_workforce_examples": "PASS",
+    "blender_regression_9": "PASS",
+    "animation_editmode_5_each_arm": "PASS",
+    "animation_playmode_2_each_arm": "PASS",
+    "static_editmode_17": "PASS",
+    "arena_editor_playmode_oracles": "PASS",
+    "native_completion_recovery": "PASS",
+    "wrong_mapping_detachment_transition": "PASS",
+    "same_host_role_parity": "PASS",
+    "host_subagent_execution": "NOT_RUN",
+    "protected_evaluation": "NOT_RUN",
+    "sandbox_enforcement": "NOT_RUN",
+    "phase7_standalone_rebuild": "NOT_RUN",
+    "rendered_performance": "NOT_RUN",
+    "full_skill_host_qualification": "NOT_RUN"
+  },
+  "baseline_commit": "ee490d60abd36cdc407b3a7f8d7cff2a18bba243",
+  "blueprint_sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
+  "system_skill_validator": "BLOCKED: PyYAML absent; limited frontmatter/local-link check only",
+  "source_archive_excludes": [
+    "Library",
+    "Temp",
+    "UserSettings",
+    "player binaries"
+  ]
+}

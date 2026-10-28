@@ -1,0 +1,60 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 255 items / 12 deselected / 243 selected
+
+tests\test_animation.py .........                                        [  3%]
+tests\test_contract_boundaries.py .................                      [ 10%]
+tests\test_foundation.py .................                               [ 17%]
+tests\test_phase1_cli.py .....                                           [ 19%]
+tests\test_phase1_failures.py ...........                                [ 24%]
+tests\test_phase1_policy.py ......                                       [ 26%]
+tests\test_phase1_review.py ....                                         [ 28%]
+tests\test_phase1_runner.py .......                                      [ 31%]
+tests\test_phase2_boundaries.py ..............                           [ 37%]
+tests\test_phase2_contracts.py ..............                            [ 42%]
+tests\test_phase3_cli.py ......                                          [ 45%]
+tests\test_phase3_recipes.py .......                                     [ 48%]
+tests\test_phase4_contracts.py ...........                               [ 52%]
+tests\test_phase5_contracts.py ......................................... [ 69%]
+.                                                                        [ 69%]
+tests\test_phase6_contracts.py .....................................     [ 85%]
+tests\test_phase7_review.py .........                                    [ 88%]
+tests\test_windows_alias_paths.py ..                                     [ 89%]
+tests\test_workforce.py ........................                         [ 99%]
+tests\test_workforce_crash.py .                                          [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase7\tests-final.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                  Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------------------------
+polyforge\animation\contract.py          41      0     30      0   100%
+polyforge\blender\interchange.py          9      0      4      0   100%
+polyforge\blender\recipes.py            142      7     76      8    93%   33, 43, 53, 61, 64, 241, 294->exit, 302
+polyforge\contracts\__init__.py           0      0      0      0   100%
+polyforge\contracts\images.py            84      0     40      0   100%
+polyforge\contracts\manifest.py         152      7     72      6    94%   66-67, 75->78, 123, 159, 166, 169, 171
+polyforge\contracts\results.py           54      0     14      0   100%
+polyforge\contracts\validation.py        55      1     12      1    97%   45
+polyforge\scenarios\arena_oracle.py      95      6     68      8    91%   56, 75, 80, 88, 89->92, 90->89, 91, 189
+polyforge\security\__init__.py            0      0      0      0   100%
+polyforge\security\paths.py              69      2     28      2    96%   36, 81
+polyforge\security\policy.py             40      0     14      0   100%
+polyforge\unity\bootstrap.py             89      9     36      7    86%   26->exit, 28->26, 38-43, 58, 61, 67, 73, 100
+polyforge\unity\evidence.py              81      0     50      0   100%
+polyforge\unity\transactions.py          65      2     22      2    95%   53, 80
+polyforge\unity\upgrade.py               63      1     28      2    97%   49->47, 60
+polyforge\workforce\ledger.py            98      1     34      2    98%   69->81, 76
+polyforge\workforce\models.py            13      0      6      0   100%
+polyforge\workforce\permissions.py       23      0     10      1    97%   58->60
+polyforge\workforce\router.py            71      0     36      0   100%
+---------------------------------------------------------------------------------
+TOTAL                                  1244     36    580     39    96%
+Coverage JSON written to file .tmp/phase7/coverage-final.json
+Required test coverage of 90.0% reached. Total coverage: 95.78%
+=============== 243 passed, 12 deselected in 169.57s (0:02:49) ================

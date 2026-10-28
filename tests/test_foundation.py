@@ -77,6 +77,9 @@ class CLIAcceptanceTests(unittest.TestCase):
                 "audit.static.multiview.v1",
                 "unity.scene.static.v1",
                 "unity.game.arena.v1",
+                "animation.robot.rig.v1",
+                "artifact.candidate.inspect.v1",
+                "animation.robot.unity.v1",
             ],
         )
 

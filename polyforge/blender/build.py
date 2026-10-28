@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import threading
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -28,7 +29,12 @@ def build_assets(
     dry_run: bool = False,
     allow_package_downloads: bool = False,
     standalone: bool = False,
+    cancel: threading.Event | None = None,
 ) -> Result:
+    if cancel is not None and cancel.is_set():
+        return failure(
+            ErrorKind.INTERRUPTED, "PF-BUILD-CANCELLED", "Build cancelled before mutation"
+        )
     through = through or "S2"
     if through not in {"S0", "S1", "S2", "S3", "S4", "S5"}:
         return failure(
@@ -100,6 +106,7 @@ def build_assets(
             dry_run=dry_run,
             allow_package_downloads=allow_package_downloads,
             standalone=standalone,
+            cancel=cancel,
         )
     if through == "S4":
         from polyforge.unity.bridge import build_unity
@@ -107,7 +114,11 @@ def build_assets(
         if only is not None:
             raise InputError("S4 builds complete static scenes; --only is supported through S3")
         return build_unity(
-            model, prepared, dry_run=dry_run, allow_package_downloads=allow_package_downloads
+            model,
+            prepared,
+            dry_run=dry_run,
+            allow_package_downloads=allow_package_downloads,
+            cancel=cancel,
         )
     if dry_run:
         return Result(
@@ -120,7 +131,7 @@ def build_assets(
                 "execution_status": "NOT_RUN",
             },
         )
-    context = RunContext(policy.root, seed=model.data["project"]["seed"])
+    context = RunContext(policy.root, seed=model.data["project"]["seed"], cancel=cancel)
     if through in {"S0", "S1"}:
         probe = execute_recipe(model.recipes[identifiers[0]], context, precheck_only=True)
         if probe.status != "PASS" or through == "S0":

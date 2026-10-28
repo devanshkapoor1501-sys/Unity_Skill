@@ -1,0 +1,25 @@
+import hashlib,json,os,subprocess,time
+from pathlib import Path
+root=Path.cwd();out=root/'.tmp/phase7/installed-workforce';out.mkdir(exist_ok=True)
+workspace=root/'.tmp/phase7/installed-crate';workspace.mkdir(exist_ok=True)
+source=root/'examples/phase7';(workspace/'task.json').write_bytes((source/'crate-task.json').read_bytes());(workspace/'task-brief.md').write_bytes((source/'crate-brief.md').read_bytes())
+py=root/'.tmp/phase7/fresh-wheel/Scripts/python.exe';env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'))
+records=[]
+def call(args):
+ argv=[str(py),'-I','-m','polyforge',*args,'--json'];t=time.monotonic()
+ result=subprocess.run(argv,cwd=out,env=env,capture_output=True,text=True)
+ (out/f'{len(records):02}.json').write_text(result.stdout,encoding='utf-8')
+ (out/f'{len(records):02}.stderr.txt').write_text(result.stderr,encoding='utf-8')
+ records.append({'argv':argv,'exit_code':result.returncode,'duration_seconds':round(time.monotonic()-t,3)})
+ assert result.returncode==0,result.stderr+result.stdout
+ return json.loads(result.stdout)
+def inventory():return {p.relative_to(workspace).as_posix():hashlib.sha256(p.read_bytes()).hexdigest()for p in workspace.rglob('*')if p.is_file()}
+before=inventory()
+call(['workforce','plan','--workspace',str(workspace),'--brief','task-brief.md','--dry-run']);assert inventory()==before
+plan=call(['workforce','plan','--workspace',str(workspace),'--brief','task-brief.md'])['data']['plan']
+run=call(['workforce','run','--workspace',str(workspace),'--plan','workforce/'+plan['task_id']+'/plan.json','--mode','sequential'])
+call(['workforce','status','--workspace',str(workspace),'--run-id',run['run_id']])
+call(['workforce','review','--workspace',str(workspace),'--artifact-id',run['data']['candidate']['artifact_id']])
+assert len(run['data']['lineage'])==3 and 'S4' not in plan['stages']
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n')
+print('Installed wheel command examples and no-write dry run PASS',run['run_id'])

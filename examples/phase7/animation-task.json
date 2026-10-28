@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "brief": "Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.",
+  "task_class": "ANIMATE",
+  "domain_tags": [
+    "blender",
+    "unity",
+    "animation"
+  ],
+  "feature_ids": [
+    "editable_source"
+  ],
+  "capability_id": "animation.robot.rig.v1",
+  "input": {
+    "schema_version": "1.0.0",
+    "asset_id": "robot_a",
+    "parameters": {
+      "size_m": [
+        1,
+        2,
+        1
+      ]
+    }
+  }
+}

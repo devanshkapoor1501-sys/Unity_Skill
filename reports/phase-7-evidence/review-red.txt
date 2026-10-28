@@ -1,0 +1,89 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+__________ test_import_rejects_substituted_fbx_before_native_writes ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_import_rejects_substitute0')
+
+    def test_import_rejects_substituted_fbx_before_native_writes(tmp_path):
+>       from polyforge.animation.integration import validate_import_source
+E       ImportError: cannot import name 'validate_import_source' from 'polyforge.animation.integration' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\animation\integration.py)
+
+tests\test_phase7_review.py:33: ImportError
+____ test_review_rejects_wrong_task_brief_unsealed_motion_and_forged_owner ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_review_rejects_wrong_task0')
+
+    def test_review_rejects_wrong_task_brief_unsealed_motion_and_forged_owner(tmp_path):
+        from polyforge.workforce.workers import inspect_candidate,require_approval
+        p,request,candidate,review,result=approved(tmp_path)
+        for changed in [{"task_class":"EXPLAIN"},{"brief":"Another original brief"}]:
+>           with pytest.raises(InputError):inspect_candidate(p,candidate,{**request,**changed})
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase7_review.py:45: Failed
+______________ test_blender_only_animation_never_requests_unity _______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_blender_only_animation_ne0')
+
+    def test_blender_only_animation_never_requests_unity(tmp_path):
+        from polyforge.workforce.router import plan_task
+        p,request,candidate,review,result=approved(tmp_path)
+        plan=plan_task(request)
+>       assert len(plan["jobs"])==3
+E       AssertionError: assert 4 == 3
+E        +  where 4 = len([{'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'depends_on': [], 'feature_ids': ['idle_walk'], ...}, {...conds': 3600, 'capability_id': 'animation.robot.unity.v1', 'depends_on': ['job_2'], 'feature_ids': ['idle_walk'], ...}])
+
+tests\test_phase7_review.py:56: AssertionError
+____________ test_manifest_changes_invalidate_game_workforce_plan _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_manifest_changes_invalida0')
+
+    def test_manifest_changes_invalidate_game_workforce_plan(tmp_path):
+        from polyforge.workforce.router import plan_task
+        request={"schema_version":"1.0.0","task_class":"BUILD_GAME","domain_tags":["unity","gameplay"],"feature_ids":[],"brief":"Build my arena","capability_id":"unity.game.arena.v1","input":{"schema_version":"1.0.0"}}
+        (tmp_path/"game_manifest.json").write_text('{"seed":1}')
+>       a=plan_task(request,workspace=tmp_path)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: plan_task() got an unexpected keyword argument 'workspace'
+
+tests\test_phase7_review.py:64: TypeError
+_ test_completed_operation_reused_after_crash_before_job_commit_and_detects_mutation _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_completed_operation_reuse0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A3F4BDFEF0>
+
+    def test_completed_operation_reused_after_crash_before_job_commit_and_detects_mutation(tmp_path,monkeypatch):
+        import polyforge.capabilities.dispatch as module
+        from polyforge.capabilities.dispatch import execute
+>       from polyforge.workforce.operations import operation_context
+E       ModuleNotFoundError: No module named 'polyforge.workforce.operations'
+
+tests\test_phase7_review.py:73: ModuleNotFoundError
+_________________ test_game_dispatch_propagates_cancellation __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-74/test_game_dispatch_propagates_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A3F4BF6E70>
+
+    def test_game_dispatch_propagates_cancellation(tmp_path,monkeypatch):
+        import polyforge.blender.build as module
+        from polyforge.capabilities.dispatch import execute
+        event=threading.Event();observed=[]
+        def build(workspace,**kwargs):observed.append(kwargs.get("cancel"));return Result()
+        monkeypatch.setattr(module,"build_assets",build)
+        execute("unity.game.arena.v1",{"schema_version":"1.0.0"},RunContext(tmp_path,cancel=event))
+>       assert observed==[event]
+E       assert [None] == [<threading.E...f59a0: unset>]
+E         
+E         At index 0 diff: None != <threading.Event at 0x1a3f4bf59a0: unset>
+E         Use -v to get more diff
+
+tests\test_phase7_review.py:95: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase7_review.py::test_import_rejects_substituted_fbx_before_native_writes
+FAILED tests/test_phase7_review.py::test_review_rejects_wrong_task_brief_unsealed_motion_and_forged_owner
+FAILED tests/test_phase7_review.py::test_blender_only_animation_never_requests_unity
+FAILED tests/test_phase7_review.py::test_manifest_changes_invalidate_game_workforce_plan
+FAILED tests/test_phase7_review.py::test_completed_operation_reused_after_crash_before_job_commit_and_detects_mutation
+FAILED tests/test_phase7_review.py::test_game_dispatch_propagates_cancellation
+6 failed in 1.03s

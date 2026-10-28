@@ -6,6 +6,7 @@ import copy
 import hashlib
 import json
 import shutil
+import threading
 import zipfile
 from dataclasses import asdict, replace
 from pathlib import Path
@@ -60,11 +61,14 @@ def launch(
     game_input: Path | None = None,
     scenario_input: Path | None = None,
     telemetry_directory: Path | None = None,
+    cancel: threading.Event | None = None,
 ) -> dict[str, Any]:
     if test_platform not in {"EditMode", "PlayMode"} or test_filter not in {
         "PolyForge.Editor.Tests",
         "PolyForge.Game.Editor.Tests",
         "PolyForge.Game.Tests",
+        "PolyForge.Animation.Editor.Tests",
+        "PolyForge.Animation.Tests",
     }:
         raise InputError("Unknown owned Unity test platform/filter")
     policy.mkdir(relative)
@@ -103,6 +107,10 @@ def launch(
             "-testResults",
             str(policy.path(output)),
         ]
+    elif mode == "animation":
+        args += ["-executeMethod", "PolyForge.Animation.Editor.AnimationBuilder.BuildBatch"]
+        if output is not None:
+            args += ["-polyforgeOutput", str(policy.path(output))]
     elif mode in {"game", "player"}:
         method = "BuildBatch" if mode == "game" else "BuildPlayerBatch"
         args += ["-executeMethod", "PolyForge.Game.Editor.GameBuilder." + method]
@@ -129,6 +137,7 @@ def launch(
             config.max_output_bytes,
             config.memory_limit_mb,
         ),
+        cancel=cancel,
     )
     value = {"argv": args, **asdict(outcome)}
     atomic_json(policy, relative + "/process.json", value)
@@ -142,7 +151,9 @@ def launch(
     if outcome.reason != "exit" or outcome.returncode != 0:
         log = policy.path(outcome.stdout_path).read_text("utf-8") if outcome.stdout_path else ""
         kind = (
-            ErrorKind.TEST_FAILURE
+            ErrorKind.INTERRUPTED
+            if outcome.reason == "cancelled"
+            else ErrorKind.TEST_FAILURE
             if mode == "tests" and outcome.returncode == 2
             else ErrorKind.MISSING_DEPENDENCY
             if "No valid Unity Editor license" in log
@@ -254,7 +265,12 @@ def build_unity(
     *,
     dry_run: bool = False,
     allow_package_downloads: bool = False,
+    cancel: threading.Event | None = None,
 ) -> Result:
+    if cancel is not None and cancel.is_set():
+        return failure(
+            ErrorKind.INTERRUPTED, "PF-UNITY-CANCELLED", "Build cancelled before mutation"
+        )
     policy = WorkspacePolicy(model.workspace)
     config = configuration(policy)
     if dry_run:
@@ -312,7 +328,7 @@ def build_unity(
                 if folder is None:
                     result = execute_recipe(
                         recipe,
-                        RunContext(policy.root, seed=model.data["project"]["seed"]),
+                        RunContext(policy.root, seed=model.data["project"]["seed"], cancel=cancel),
                         audit_export=True,
                     )
                     if result.status != "PASS":
@@ -358,7 +374,7 @@ def build_unity(
                     "package_manifest": load_json(project / "Packages/manifest.json"),
                 },
             )
-            launch(policy, executable, config, relative + "/compile", "compile")
+            launch(policy, executable, config, relative + "/compile", "compile", cancel=cancel)
             output = policy.path(relative + "/bindings.json")
             launch(
                 policy,
@@ -368,6 +384,7 @@ def build_unity(
                 "build",
                 request=request_path,
                 output=output,
+                cancel=cancel,
             )
             reconciled = reconcile_report(request, load_json(output))
             if reconciled["status"] != "PASS":
@@ -384,6 +401,7 @@ def build_unity(
                 "tests",
                 request=request_path,
                 output=tests_path,
+                cancel=cancel,
             )
             tests = verify_test_xml(tests_path, EDITMODE_TESTS)
             atomic_json(policy, relative + "/reconcile.json", reconciled)

@@ -1,0 +1,25 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collected 31 items
+
+tests\test_workforce.py .....................                            [ 67%]
+tests\test_workforce_crash.py .                                          [ 70%]
+tests\test_animation.py .........                                        [100%]
+
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                 Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------
+polyforge\animation\contract.py         41      0     30      0   100%
+polyforge\workforce\ledger.py           98      1     34      2    98%   69->81, 76
+polyforge\workforce\models.py           13      0      6      0   100%
+polyforge\workforce\permissions.py      23      0     10      1    97%   58->60
+polyforge\workforce\router.py           42      0     22      0   100%
+--------------------------------------------------------------------------------
+TOTAL                                  217      1    102      3    99%
+Required test coverage of 90% reached. Total coverage: 98.75%
+============================= 31 passed in 6.05s ==============================
