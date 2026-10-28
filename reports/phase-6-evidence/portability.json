@@ -1,0 +1,12 @@
+{
+  "check": "SHA256 of Git-stored benchmark brief bytes",
+  "before_mismatches": [
+    "robot_idle_import",
+    "sprite_survival_game"
+  ],
+  "fix": "Normalize brief bytes to LF and derive matching raw SHA256",
+  "test_command": ".venv/Scripts/python.exe -m pytest tests/test_phase6_contracts.py -k benchmark -q",
+  "exit_code": 0,
+  "result": "1 passed, 36 deselected",
+  "compiler_caches": "Excluded from portable report evidence; native source workspace unchanged"
+}

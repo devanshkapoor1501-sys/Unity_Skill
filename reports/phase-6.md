@@ -57,6 +57,11 @@ checks used `--no-index`, the local wheelhouse and Python `-I`: install, pip che
 help/discovery, init, S5 dry-run and packaged native-resource equality checks.
 No additional dependency download or model service was required.
 
+A final Git-content check found two newly authored benchmark brief hashes used
+Windows CRLF bytes while Git stores LF. Normalized those briefs and their hashes;
+the benchmark inventory test passes against the repository bytes. Disposable
+compiler-cache copies were removed from the portable evidence bundle.
+
 Final expanded branch coverage: **94.99%**, with the unchanged 90% threshold.
 New public oracle coverage is 91.41%; upgrade provenance guard coverage is 98.48%.
 See [raw offline output](phase-6-evidence/offline-final.txt),
