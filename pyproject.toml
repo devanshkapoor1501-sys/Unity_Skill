@@ -42,7 +42,7 @@ strict = true
 files = ["polyforge", "tools"]
 
 [tool.coverage.run]
-source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes", "polyforge.blender.interchange", "polyforge.unity.bootstrap", "polyforge.unity.evidence", "polyforge.unity.transactions"]
+source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes", "polyforge.blender.interchange", "polyforge.unity.bootstrap", "polyforge.unity.evidence", "polyforge.unity.transactions", "polyforge.scenarios.arena_oracle", "polyforge.unity.upgrade"]
 branch = true
 
 [tool.coverage.report]

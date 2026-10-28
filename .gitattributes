@@ -23,3 +23,6 @@ reports/phase-5-evidence/index.json text eol=lf
 # Unity-generated metadata keeps its exact native bytes and GUIDs.
 unity_package/*.meta binary
 unity_package/**/*.meta binary
+# Preserve exact Phase 6 native logs, XML, telemetry, archives and their hashes.
+reports/phase-6-evidence/** binary
+reports/phase-6-evidence/index.json text eol=lf

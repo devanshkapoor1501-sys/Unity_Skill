@@ -1,0 +1,35 @@
+usage: polyforge [-h] [--version]
+                 {doctor,init,validate,plan,build,audit,verify,status,resume,report,clean,capability,compile-contract,reconcile,scenario,diagnose,repair,benchmark,inspect-project,mcp}
+                 ...
+
+Local Blender-to-Unity capability engine
+
+positional arguments:
+  {doctor,init,validate,plan,build,audit,verify,status,resume,report,clean,capability,compile-contract,reconcile,scenario,diagnose,repair,benchmark,inspect-project,mcp}
+    doctor              Probe local tools and execution policies
+    init                Initialize a new managed workspace
+    validate            Validate a game manifest
+    plan                Plan dependency stages without launching tools
+    build               Build eligible stages of a managed workspace
+    audit               Audit a generated asset
+    verify              Execute distinct integration and game verification
+                        gates
+    status              Read recorded run state
+    resume              Resume a recorded run [NOT IMPLEMENTED; Phase 9]
+    report              Report one recorded run
+    clean               Preview owned generated-file cleanup [NOT IMPLEMENTED;
+                        Phase 11]
+    capability          capability operations
+    compile-contract    Compile the semantic scene contract
+    reconcile           Compare source and imported semantic bindings
+    scenario            scenario operations
+    diagnose            Diagnose structured run evidence
+    repair              repair operations
+    benchmark           benchmark operations
+    inspect-project     Statically inspect an original project without opening
+                        Unity [NOT IMPLEMENTED; Phase 11]
+    mcp                 mcp operations
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit

@@ -112,3 +112,21 @@ temporary directory. These controls preserve TRUSTED_LOCAL disclosure.
 
 See [audit and export contracts](audit-export.md) for bounds, geometry taxonomy,
 camera/renderer settings, material scope and the pending Unity import gate.
+
+## Phase 6 runtime and verification
+
+The bounded arena has a separate native scene and test assemblies. Runtime
+primitives accept injected input, while production reads the pinned Input System.
+Restart edges are queued after input updates and consumed once by fixed simulation.
+The public development suite observes actual transforms, health and state through
+real PlayMode frames. Python validates identity/structure before behavior scoring;
+malformed mutants cannot be inverted into successful mutation detection.
+
+Loaded scene identity, seed, actors and spawns must match the compiled request.
+Frozen FBX identities are checked separately. Each declared enemy must patrol.
+Immutable run bundles include source identities, an editable native archive,
+process logs, XML, scenario observations and a development feature trace.
+Package upgrades require hash-verified prior bytes before replacing owned code.
+Modified user code is preserved; full crash/reimport transaction recovery remains
+Phase 9. Manual play, standalone smoke, profiling and evaluator qualification
+are distinct outcomes. See [the arena guide](arena.md).

@@ -1,8 +1,11 @@
 # PolyForge approved implementation sequence
 
-Authority: PolyForge_Codex_Implementation_Blueprint_v4_Logic_Corrected.docx in the
-repository root. Preserve it. Its normative sections override illustrative older
-examples. The original research document was not supplied.
+Authority: PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx,
+reviewed at the user's request on 2026-10-28. SHA256:
+8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6.
+Section 12 preserves the approved v4 Phase 0â€“6 work orders unchanged; their
+paragraph comparison is recorded in the Phase 6 evidence. The v4 source remains
+archived byte-for-byte in docs/source and available in Git history. The original research document was not supplied.
 
 ## Global decisions
 
@@ -28,11 +31,17 @@ examples. The original research document was not supplied.
 | 4 | Four-view audit, FBX/material sidecars, axes and hashes | Nonblank views and reproducible export evidence; real Unity import awaits Phase 5 |
 | 5 | Native Unity import/material/prefab/scene APIs, bindings and early repairs | Compilation/EditMode, stable GUID/counts on repeat build, scale/reference fault and rollback |
 | 6 | Playable arena, input/health/patrol/timer/restart, independent public behavior harness | Five real PlayMode scenarios, two mutants, manual play; player claims need standalone smoke |
-| 7 | One robot rig family, action slots/channelbags, Idle/Walk and Animator | Real Blender frame samples and Unity motion/bone/transition tests |
-| 8 | Six-frame sprite baking, metadata, Unity slicing and flipbook | Alpha/framing/pivot/order checks and real controllable 2D PlayMode fixture |
-| 9 | Eight repair playbooks, full cross-app journal/reimport/rollback, 12 recipes | Twelve faults, six mutants, wrong-manifest/misleading-test rejection, crash/cache recovery |
-| 10 | Validated portable skill, two host guides and bounded stdio MCP bridge | CLI doctests, host evidence, fake MCP client, identity/cancellation, model-disabled operation |
-| 11 | Second genre, external evaluator, benchmarks, profiling, static inspection, release package | Windows E2E, hidden qualification, tool-parity/category results, original hashes, performance/security evidence |
+| 7 | Workforce contracts, classification, discovery, role/authority boundaries, leases; original robot rig, Idle/Walk and Animator | Baseline/migration inventory, sequential-role parity, non-robot orchestration, real animation/binding tests |
+| 8 | Specialist asset/texture handoffs; original six-frame sprite pipeline | Role permissions, handoff inspection, alpha/pivots and real controllable 2D tests |
+| 9 | Supervision, human review, eight repairs, cross-app rollback, 12 recipes | Twelve faults, six mutants, authority/misleading-test challenges, race/crash/cache recovery |
+| 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
+| 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
+| 12 | Advanced Blender modeling, topology, sculpt and procedural geometry | Section-12/v5.1 per-domain good/bad and transfer fixtures |
+| 13 | PBR materials, UV, texturing, rendering and visual consistency | Versioned source/channel provenance and separate technical/aesthetic review |
+| 14 | Characters, creatures and advanced rigging/animation | Rig-family limits, independent deformation/motion and transfer evidence |
+| 15 | Advanced Unity C#, gameplay, physics, AI, UI and architecture | Mechanic-specific runtime, negative and existing-project tests |
+| 16 | Worlds, levels, lighting, audio, performance and integration | Editable integration, measured hardware/profile and independent visual review |
+| 17 | Generalist production orchestra and expert v2 release | Separately controlled holdouts, frozen competency denominators and explicit domain gaps |
 
 ## Non-negotiable qualification
 
@@ -53,3 +62,8 @@ runtime copy with complete before/after original hashes.
 Prepare artifacts locally. Public publishing, remote tags and deployment are
 separate actions. Unavailable external checks prevent full release claims but
 must not be concealed by passing development checks.
+
+Before Phase 7, read Section 12, Chapters 16â€“18 and Appendices E/G together.
+The expanded roadmap introduces no implemented commands or expertise claims by
+itself. Workers may run sequentially; actual subagents and independent evaluator
+ownership require distinct evidence. Phase 6 remains one bounded arena fixture.

@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "review_owner": "USER",
+  "review_type": "MANUAL_PLAY",
+  "reviewed_at": "2026-10-28T09:36:30.391984+00:00",
+  "player": "runs/game-check-d9ccc8eca7304c16/player/PolyForgeArena.exe",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "checks": {
+    "WASD movement": "PASS",
+    "wall collision": "PASS",
+    "enemy patrol": "PASS",
+    "contact damage": "PASS",
+    "win after thirty seconds": "PASS",
+    "health failure": "PASS",
+    "R restart": "PASS"
+  },
+  "user_confirmation": "All listed play checks passed",
+  "agent_observations": [
+    "Arena and HUD rendered",
+    "Player position changed",
+    "Health visibly reduced to 75"
+  ],
+  "hidden_evaluator_qualification": "NOT_RUN"
+}

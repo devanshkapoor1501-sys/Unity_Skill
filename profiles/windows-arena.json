@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "WINDOWS_STANDALONE_QUALIFICATION",
+  "status": "NOT_RUN",
+  "resolution": [1280, 720],
+  "quality_setting": "PC template preset; record actual runtime name",
+  "warmup_seconds": 10,
+  "samples": 3,
+  "sample_seconds": 60,
+  "targets": {"median_fps_min": 30, "p95_frame_ms_max": 50, "peak_rss_bytes_max": 2147483648, "load_seconds_max": 30},
+  "note": "Development telemetry and nographics smoke are not performance qualification. Execute the complete rendered profile in Phase 11."
+}

@@ -241,5 +241,16 @@
       "editmode_xml"
     ],
     "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "unity.game.arena.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/game_build.schema.json",
+    "runner": "unity.game.arena",
+    "deterministic": false,
+    "requires": ["python>=3.11", "blender==5.2.2", "unity==6000.6.3f1"],
+    "tests": ["native_compilation", "core_gameplay", "keyboard_adapter", "collision_and_restart_mutants"],
+    "output_types": ["unity_project", "scene", "editmode_xml", "playmode_xml", "telemetry", "public_oracles"],
+    "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

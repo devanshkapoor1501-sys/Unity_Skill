@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "seed": 42,
+  "scene_id": "main",
+  "player": {
+    "id": "player_01",
+    "asset_id": "robot_a",
+    "spawn_xyz": [
+      -3.0,
+      0,
+      -3.0
+    ]
+  },
+  "enemies": [
+    {
+      "id": "enemy_01",
+      "asset_id": "robot_a",
+      "controller": "PatrolEnemy",
+      "spawn_xyz": [
+        3,
+        0,
+        3
+      ]
+    }
+  ],
+  "static_actors": [],
+  "project_name": "Isometric Robot Arena",
+  "ground_id": "ground_a",
+  "obstacle_ids": [
+    "crate_a"
+  ],
+  "half_extents": [
+    10.0,
+    10.0
+  ],
+  "survival_seconds": 30,
+  "health": 100,
+  "player_speed": 4,
+  "enemy_speed": 1.3,
+  "damage": 25,
+  "fixed_delta_seconds": 0.02,
+  "wall_thickness": 0.5,
+  "player_origin": "DERIVED_FROM_ROBOT_FAMILY",
+  "game_contract_digest": "5bf94b4dfe1711070b1e8d441ea3e11be4f16341187cf1428a2440fdcc66289d",
+  "wall_fbx": "Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx",
+  "wall_material": "Assets/PolyForgeGenerated/Materials/ground_a/metal_blue.mat",
+  "wall_source": "runs/mesh-d842408b490243c0/asset",
+  "wall_sha256": "76fb054bc0473849fe0db44e40d944ecbce42953732fbe1ab7a84322e0cdf914",
+  "player_output": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase6\\arena\\runs\\game-check-d9ccc8eca7304c16\\player\\PolyForgeArena.exe"
+}

@@ -1,0 +1,92 @@
+{
+  "status": "FAIL",
+  "scenarios": {
+    "player_moves": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "wall_collision": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "enemy_patrols": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "contact_damage": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "health_failure": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "survival_win": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "restart_resets": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "keyboard_input": {
+      "status": "FAIL",
+      "issues": [
+        "Player did not move at least 0.5m"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "FAIL"
+    },
+    "collision_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Wall did not stop actual player movement at its inner boundary"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "restart_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Restart did not restore position, health, time and running state"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    }
+  },
+  "hidden_evaluation": "NOT_RUN"
+}

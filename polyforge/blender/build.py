@@ -27,9 +27,10 @@ def build_assets(
     only: str | None = None,
     dry_run: bool = False,
     allow_package_downloads: bool = False,
+    standalone: bool = False,
 ) -> Result:
     through = through or "S2"
-    if through not in {"S0", "S1", "S2", "S3", "S4"}:
+    if through not in {"S0", "S1", "S2", "S3", "S4", "S5"}:
         return failure(
             ErrorKind.PRODUCER_FAILURE,
             "PF-STAGE-NOT-IMPLEMENTED",
@@ -39,7 +40,9 @@ def build_assets(
     policy = WorkspacePolicy(workspace)
     config_path = policy.path("polyforge.toml")
     config = load_config(config_path if config_path.is_file() else None)
-    if through in {"S3", "S4"} and config.preview_resolution > 1024:
+    if standalone and through != "S5":
+        raise InputError("Standalone builds require --through S5")
+    if through in {"S3", "S4", "S5"} and config.preview_resolution > 1024:
         raise InputError("Audit previews are limited to 1024 pixels")
     path = policy.path("game_manifest.json")
     model = load_manifest(path)
@@ -52,7 +55,7 @@ def build_assets(
         raise InputError("$.only: unknown asset ID")
     assets = {a["id"]: a for a in model.data["assets"]}
     materials = {m["id"]: m for m in model.data["materials"]}
-    if through in {"S3", "S4"} and any(m.get("textures") for m in materials.values()):
+    if through in {"S3", "S4", "S5"} and any(m.get("textures") for m in materials.values()):
         return failure(
             ErrorKind.PRODUCER_FAILURE,
             "PF-EXPORT-TEXTURES-NOT-IMPLEMENTED",
@@ -86,6 +89,18 @@ def build_assets(
                 selected.add(dependency)
                 pending.append(dependency)
     identifiers = [key for key in model.asset_order if key in selected]
+    if through == "S5":
+        from polyforge.unity.game import build_game
+
+        if only is not None:
+            raise InputError("S5 builds a complete arena; --only is supported through S3")
+        return build_game(
+            model,
+            prepared,
+            dry_run=dry_run,
+            allow_package_downloads=allow_package_downloads,
+            standalone=standalone,
+        )
     if through == "S4":
         from polyforge.unity.bridge import build_unity
 

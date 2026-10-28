@@ -1,0 +1,57 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ CLIAcceptanceTests.test_catalog_lists_only_available_executable_capabilities _
+
+self = <test_foundation.CLIAcceptanceTests testMethod=test_catalog_lists_only_available_executable_capabilities>
+
+    def test_catalog_lists_only_available_executable_capabilities(self) -> None:
+        result = cli("capability", "list", "--json")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        body = json.loads(result.stdout)
+        self.assertEqual(body["status"], "PASS")
+        self.assertEqual(body["game_status"], "PARTIAL")
+>       self.assertEqual(
+            [c["id"] for c in body["data"]["capabilities"]],
+            [
+                CAPABILITY,
+                "contract.manifest.validate.v1",
+                "contract.scene.compile.v1",
+                "plan.scene.v1",
+                "mesh.robot.modular.v1",
+                "mesh.props.crate.v1",
+                "mesh.architecture.wall.v1",
+                "mesh.architecture.doorway.v1",
+                "mesh.environment.tile.v1",
+                "audit.static.multiview.v1",
+                "unity.scene.static.v1",
+                "unity.game.arena.v1",
+            ],
+        )
+E       AssertionError: Lists differ: ['con[260 chars].multiview.v1', 'unity.scene.static.v1'] != ['con[260 chars].multiview.v1', 'unity.scene.static.v1', 'unity.game.arena.v1']
+E       
+E       Second list contains 1 additional elements.
+E       First extra element 11:
+E       'unity.game.arena.v1'
+E       
+E         ['contract.capability.validate.v1',
+E          'contract.manifest.validate.v1',
+E          'contract.scene.compile.v1',
+E          'plan.scene.v1',
+E          'mesh.robot.modular.v1',
+E          'mesh.props.crate.v1',
+E          'mesh.architecture.wall.v1',
+E          'mesh.architecture.doorway.v1',
+E          'mesh.environment.tile.v1',
+E          'audit.static.multiview.v1',
+E       -  'unity.scene.static.v1']
+E       ?                         ^
+E       
+E       +  'unity.scene.static.v1',
+E       ?                         ^
+E       
+E       +  'unity.game.arena.v1']
+
+tests\test_foundation.py:65: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_foundation.py::CLIAcceptanceTests::test_catalog_lists_only_available_executable_capabilities
+1 failed, 16 deselected in 2.16s

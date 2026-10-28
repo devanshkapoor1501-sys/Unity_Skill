@@ -7,18 +7,18 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 5 catalog contains read-only
+Discover available capabilities first. The Phase 6 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
 Blender mesh recipes, managed static audit/export and native Unity static scenes.
-Gameplay commands remain future interfaces returning NOT_RUN with a nonzero exit.
-Do not substitute invented tool output or claim a playable game exists.
+S5 builds the bounded playable survival arena and runs independent public checks.
+Claim playable output only after actual native build/tests and manual evidence.
 
 Phase 1 also provides init, doctor, status and report. Doctor's --dry-run writes
 nothing. An actual doctor run writes version-probe logs and state, including
 blocked dependencies. It never proves Unity activation, rendering or gameplay.
 
 Validate a managed manifest before planning. CLI compile-contract and plan publish
-derived JSON and freeze the original brief unless --dry-run is supplied. Catalog
+derived JSON and freeze the original brief unless --dry-run is supplied. Validation/planning catalog
 capability execution is pure. Treat generator annotations as development intent;
 BLOCKED/UNSUPPORTED features and missing evaluator evidence keep games PARTIAL.
 
@@ -29,7 +29,9 @@ audit --workspace ROOT --asset ID audits a registered saved source. Both accept
 real S4 build requires --allow-package-downloads after user authorization; that
 authorization persists for this workspace's Unity package resolution. Use
 reconcile for observed bindings, diagnose for evidence-based issues, and repair
-plan for a no-write native-binding patch preview. S5 remains unavailable.
+plan for a no-write native-binding patch preview. S5 runs seven behavioral scenarios, real keyboard input cases and two mutants.
+Use --standalone on build for a Windows player build and smoke run.
+verify and scenario run --suite core_gameplay rerun native checks.
 Visual quality stays REVIEW
 until separately reviewed; Blender FBX roundtrip is not Unity import evidence.
 Never call source generation game acceptance.
@@ -48,5 +50,5 @@ Report operation_status, evaluated_test_status, and game_status separately.
 A successful descriptor check is not gameplay evidence. Preserve failed and
 unexecuted checks. Hidden evaluator fixtures stay outside the agent workspace.
 
-Phase 5 integration does not qualify portable installation in multiple hosts.
+Phase 6 integration does not qualify portable installation in multiple hosts.
 Final Codex/Claude guides, host smoke tests and optional MCP remain Phase 10.

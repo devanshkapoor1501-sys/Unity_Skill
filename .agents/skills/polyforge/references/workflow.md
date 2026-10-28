@@ -12,7 +12,8 @@ in Unity XYZ meters. They require Blender 5.2.2 and write isolated run evidence;
 --dry-run validates without launching or writing. Source .blend, logical geometry
 and metrics must all validate before PASS. These operations are TRUSTED_LOCAL.
 Managed build supports S0 precheck, S1 contracts, S2 generation and S3 audit/export.
-S4 performs native static Unity integration; S5 stays NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
+S4 performs native static Unity integration. S5 builds the bounded playable arena
+and verifies seven behavior scenarios, actual W/R input and two smoke mutants. Resume scheduling remains unavailable pending managed retry work.
 
 audit.static.multiview.v1 accepts schema_version and asset_id, locating the latest
 registered successful source and checking its hash before writes. audit CLI exposes
@@ -50,9 +51,15 @@ Do not enable downloads, third-party plugins, or external services implicitly.
 
 S4 is now implemented for new managed URP projects. It compiles, builds native
 static prefabs/scenes and executes seventeen required EditMode cases. Public test
-status remains separate from gameplay, which is NOT_RUN. Native missing-reference
+status remains separate from gameplay. S5 executes separate native PlayMode
+and independent public telemetry oracles; game acceptance still stays PARTIAL. Native missing-reference
 and scale repairs are bounded to frozen source identity and managed outputs.
 Full cross-application rollback/resume remains Phase 9. Explicit Unity package
 download approval is retained per workspace; OS activation profile access is
 required, and trusted Unity licensing services may write profile state. No
 sandbox or egress-containment claim follows from this development profile.
+
+S5 optional --standalone produces a local Windows executable and owned smoke run.
+Manual play review, full rendered performance qualification and external hidden
+evaluation are distinct gates. Invalid/malformed mutant evidence never counts
+as a detected regression. Reject stale loaded scene identities and saved jobs.

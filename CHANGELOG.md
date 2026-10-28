@@ -2,6 +2,12 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add the playable survival arena, WASD/R input, patrol/damage/health, HUD and state transitions.
+- Add seven behavior scenarios, actual keyboard tests, two mutants and independent telemetry oracles.
+- Verify loaded scene identity and frozen sources; seal editable game outputs and feature evidence.
+- Build and smoke-test a Windows standalone; keep manual, performance and external qualification separate.
+- Review v5.1: retain Phase 0–6 gates and expand the later specialist-workforce roadmap.
+
 - Add managed native Unity URP import, materials, prefabs and two static scene layouts.
 - Add semantic GUID/local-ID reports, seventeen EditMode cases and separate application gates.
 - Preserve geometry/code on material-only rebuilds; reject stale source hashes and scene/collider defects.

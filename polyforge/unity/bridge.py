@@ -55,7 +55,18 @@ def launch(
     request: Path | None = None,
     output: Path | None = None,
     allow_contract_failure: bool = False,
+    test_platform: str = "EditMode",
+    test_filter: str = "PolyForge.Editor.Tests",
+    game_input: Path | None = None,
+    scenario_input: Path | None = None,
+    telemetry_directory: Path | None = None,
 ) -> dict[str, Any]:
+    if test_platform not in {"EditMode", "PlayMode"} or test_filter not in {
+        "PolyForge.Editor.Tests",
+        "PolyForge.Game.Editor.Tests",
+        "PolyForge.Game.Tests",
+    }:
+        raise InputError("Unknown owned Unity test platform/filter")
     policy.mkdir(relative)
     args = [
         str(executable),
@@ -72,6 +83,13 @@ def launch(
     ]
     if request is not None:
         args += ["-polyforgeInput", str(policy.path(request))]
+    for key, path_value in (
+        ("-polyforgeGameInput", game_input),
+        ("-polyforgeScenarioInput", scenario_input),
+        ("-polyforgeTelemetry", telemetry_directory),
+    ):
+        if path_value is not None:
+            args += [key, str(policy.path(path_value))]
     if mode == "compile":
         args += ["-quit"]
     elif mode == "tests":
@@ -79,12 +97,17 @@ def launch(
         args += [
             "-runTests",
             "-testPlatform",
-            "EditMode",
+            test_platform,
             "-testFilter",
-            "PolyForge.Editor.Tests",
+            test_filter,
             "-testResults",
             str(policy.path(output)),
         ]
+    elif mode in {"game", "player"}:
+        method = "BuildBatch" if mode == "game" else "BuildPlayerBatch"
+        args += ["-executeMethod", "PolyForge.Game.Editor.GameBuilder." + method]
+        if output is not None:
+            args += ["-polyforgeOutput", str(policy.path(output))]
     else:
         assert mode in {"build", "reconcile", "restore"} and output is not None
         method = {"build": "BuildBatch", "reconcile": "ReconcileBatch", "restore": "ReimportBatch"}[
@@ -267,6 +290,9 @@ def build_unity(
     try:
         with FileLock(policy, ".polyforge/locks/unity-project.lock"):
             prepare_project(policy, template)
+            from polyforge.unity.upgrade import sync_package
+
+            sync_package(policy)
             atomic_json(
                 policy,
                 marker,

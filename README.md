@@ -4,15 +4,16 @@ A portable agent skill backed by a local, model-independent Blender-to-Unity
 capability engine. Apache-2.0. Final Codex/Claude installation and optional MCP
 host qualification are scheduled for Phase 10.
 
-**Current implementation: Phase 5 native Unity integration.** Discovery, descriptor and
+**Current implementation: Phase 6 playable arena; manual review pending.** Discovery, descriptor and
 manifest validation, scene/feature compilation, and dependency planning work
 without a model, Blender, or Unity. Workspace init, doctor, status and report
 are implemented. Five headless Blender recipes and managed S0–S2 builds generate
 editable sources and checked geometry. S3 audits/exports static assets; S4 builds
 a managed URP project with native prefabs, materials, two static scene layouts,
 observed semantic bindings and executed EditMode tests. Native binding diagnosis
-and bounded repair are available. Gameplay, full cross-app recovery, benchmarks
-and MCP remain future gates. See the phase reports for acceptance evidence.
+and bounded repair are available. S5 adds movement, patrol, health, survival,
+restart, declarative scenarios and actual Windows build/smoke. Full cross-app
+recovery, benchmark trials and MCP remain future gates. See the phase reports.
 Trusted-local process protections do not claim untrusted OS containment.
 
 ## Windows setup
@@ -101,8 +102,9 @@ scheduling stays unavailable until actual build producers exist.
 Compilation preserves original source ranges and creates development-only scene,
 feature and coverage contracts. Planning records S0–S5 task dependencies and
 content hashes. Both operations can PASS while game status remains PARTIAL:
-all requested gameplay producers are still BLOCKED or UNSUPPORTED. Synthetic
-handoff checks and scenario validation do not execute application tests.
+compilation reports development intent, and S5 separately records executed
+feature evidence. Synthetic handoff checks and scenario validation do not execute
+application tests.
 See [manifest and planning rules](docs/manifests.md) for publication, frozen-brief
 and cache behavior. Pure catalog capabilities return contracts without files;
 the normal compile/plan CLI commands publish derived JSON in the workspace.
@@ -111,7 +113,13 @@ logs, source.blend, metrics.json and logical-geometry.json. Use --dry-run for
 zero writes. Build through S3 adds four transparent views, geometric diagnostics,
 FBX, material and coordinate sidecars, and a visual-review bundle. Requesting
 S4 creates the native Unity project and runs separate static EditMode gates;
-S5 remains NOT_RUN/5. Visual quality remains REVIEW.
+S5 now constructs and verifies the bounded survival arena. Use
+`polyforge build --workspace ROOT --through S5 --standalone --json` for actual
+Windows player build/smoke, or omit `--standalone` for Editor-only checks.
+`polyforge verify --workspace ROOT --json` and
+`polyforge scenario run --workspace ROOT --suite core_gameplay --json` rerun
+the native and independent public development checks. Visual quality stays
+REVIEW; game acceptance stays PARTIAL. See [the arena guide](docs/arena.md).
 
 ```powershell
 .\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --dry-run --json
@@ -148,6 +156,8 @@ handedness, binding evidence and minimal repair limits.
 
 See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
 [security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-The next delivery after Phase 5 acceptance is Phase 6: playable arena and behavioral tests.
+Phase 7 starts only after Phase 6's manual gate passes. The reviewed v5.1 roadmap
+adds specialist worker contracts alongside the original rig/animation gates;
+see [the implementation sequence](docs/implementation-plan.md).
 Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.

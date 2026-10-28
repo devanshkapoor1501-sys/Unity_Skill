@@ -1,0 +1,165 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+_______ test_malformed_mutants_are_invalid_evidence[arena_half_extents] _______
+
+field = 'arena_half_extents'
+
+    @pytest.mark.parametrize(
+        "field", ["arena_half_extents", "player_radius", "baseline_enemy_positions", "events"]
+    )
+    def test_malformed_mutants_are_invalid_evidence(field):
+        from polyforge.scenarios.arena_oracle import validate_trace
+    
+        game, trace = observed_trace(
+            "wall_collision" if field in {"arena_half_extents", "player_radius"} else "restart_resets"
+        )
+        identifier = (
+            "collision_disabled" if trace["scenario_id"] == "wall_collision" else "restart_disabled"
+        )
+        trace.update(
+            purpose="MUTANT",
+            mutant=identifier,
+            arena_half_extents=[10, 10],
+            player_radius=0.35,
+            wall_thickness=0.5,
+            baseline_player_position=[0, 0, 0],
+            baseline_enemy_positions=[{"id": "enemy", "position": [3, 0, 3]}],
+        )
+        del trace[field]
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase6_contracts.py:435: Failed
+_________ test_malformed_mutants_are_invalid_evidence[player_radius] __________
+
+field = 'player_radius'
+
+    @pytest.mark.parametrize(
+        "field", ["arena_half_extents", "player_radius", "baseline_enemy_positions", "events"]
+    )
+    def test_malformed_mutants_are_invalid_evidence(field):
+        from polyforge.scenarios.arena_oracle import validate_trace
+    
+        game, trace = observed_trace(
+            "wall_collision" if field in {"arena_half_extents", "player_radius"} else "restart_resets"
+        )
+        identifier = (
+            "collision_disabled" if trace["scenario_id"] == "wall_collision" else "restart_disabled"
+        )
+        trace.update(
+            purpose="MUTANT",
+            mutant=identifier,
+            arena_half_extents=[10, 10],
+            player_radius=0.35,
+            wall_thickness=0.5,
+            baseline_player_position=[0, 0, 0],
+            baseline_enemy_positions=[{"id": "enemy", "position": [3, 0, 3]}],
+        )
+        del trace[field]
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase6_contracts.py:435: Failed
+____ test_malformed_mutants_are_invalid_evidence[baseline_enemy_positions] ____
+
+field = 'baseline_enemy_positions'
+
+    @pytest.mark.parametrize(
+        "field", ["arena_half_extents", "player_radius", "baseline_enemy_positions", "events"]
+    )
+    def test_malformed_mutants_are_invalid_evidence(field):
+        from polyforge.scenarios.arena_oracle import validate_trace
+    
+        game, trace = observed_trace(
+            "wall_collision" if field in {"arena_half_extents", "player_radius"} else "restart_resets"
+        )
+        identifier = (
+            "collision_disabled" if trace["scenario_id"] == "wall_collision" else "restart_disabled"
+        )
+        trace.update(
+            purpose="MUTANT",
+            mutant=identifier,
+            arena_half_extents=[10, 10],
+            player_radius=0.35,
+            wall_thickness=0.5,
+            baseline_player_position=[0, 0, 0],
+            baseline_enemy_positions=[{"id": "enemy", "position": [3, 0, 3]}],
+        )
+        del trace[field]
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase6_contracts.py:435: Failed
+_____________ test_malformed_mutants_are_invalid_evidence[events] _____________
+
+field = 'events'
+
+    @pytest.mark.parametrize(
+        "field", ["arena_half_extents", "player_radius", "baseline_enemy_positions", "events"]
+    )
+    def test_malformed_mutants_are_invalid_evidence(field):
+        from polyforge.scenarios.arena_oracle import validate_trace
+    
+        game, trace = observed_trace(
+            "wall_collision" if field in {"arena_half_extents", "player_radius"} else "restart_resets"
+        )
+        identifier = (
+            "collision_disabled" if trace["scenario_id"] == "wall_collision" else "restart_disabled"
+        )
+        trace.update(
+            purpose="MUTANT",
+            mutant=identifier,
+            arena_half_extents=[10, 10],
+            player_radius=0.35,
+            wall_thickness=0.5,
+            baseline_player_position=[0, 0, 0],
+            baseline_enemy_positions=[{"id": "enemy", "position": [3, 0, 3]}],
+        )
+        del trace[field]
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase6_contracts.py:435: Failed
+______ test_every_declared_enemy_must_patrol_independent_of_record_order ______
+
+    def test_every_declared_enemy_must_patrol_independent_of_record_order():
+        from polyforge.scenarios.arena_oracle import evaluate
+    
+        _, trace = observed_trace("enemy_patrols")
+        trace["samples"][0]["enemy_positions"] = [
+            {"id": "first", "position": [0, 0, 0]},
+            {"id": "second", "position": [3, 0, 3]},
+        ]
+        trace["samples"][-1]["enemy_positions"] = [
+            {"id": "second", "position": [3, 0, 3]},
+            {"id": "first", "position": [2, 0, 0]},
+        ]
+>       assert evaluate(trace)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase6_contracts.py:451: AssertionError
+__ test_game_job_must_match_fresh_contract_and_optional_gaps_remain_visible ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-46/test_game_job_must_match_fresh0')
+
+    def test_game_job_must_match_fresh_contract_and_optional_gaps_remain_visible(tmp_path):
+        import copy
+>       from polyforge.unity.game import compile_game_request, validate_game_job, feature_trace
+E       ImportError: cannot import name 'validate_game_job' from 'polyforge.unity.game' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\game.py)
+
+tests\test_phase6_contracts.py:458: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_phase6_contracts.py::test_malformed_mutants_are_invalid_evidence[arena_half_extents]
+FAILED tests/test_phase6_contracts.py::test_malformed_mutants_are_invalid_evidence[player_radius]
+FAILED tests/test_phase6_contracts.py::test_malformed_mutants_are_invalid_evidence[baseline_enemy_positions]
+FAILED tests/test_phase6_contracts.py::test_malformed_mutants_are_invalid_evidence[events]
+FAILED tests/test_phase6_contracts.py::test_every_declared_enemy_must_patrol_independent_of_record_order
+FAILED tests/test_phase6_contracts.py::test_game_job_must_match_fresh_contract_and_optional_gaps_remain_visible
+6 failed, 26 deselected in 0.59s

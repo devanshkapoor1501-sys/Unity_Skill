@@ -15,7 +15,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `plan` | Implemented | `polyforge plan --workspace workspace/arena_demo --dry-run --json` |
 | `build` | Implemented | `polyforge build --workspace workspace/arena_demo --through S2 --json` |
 | `audit` | Implemented | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
-| `verify` | NOT_RUN; Phase 6 | `polyforge verify --workspace workspace/arena_demo --json` |
+| `verify` | Implemented | `polyforge verify --workspace workspace/arena_demo --json` |
 | `status` | Implemented | `polyforge status --workspace workspace/arena_demo --json` |
 | `resume` | NOT_RUN; Phase 9 | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
 | `report` | Implemented | `polyforge report --workspace workspace/arena_demo --run-id example --json` |
@@ -25,7 +25,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `capability run` | Implemented | `polyforge capability run contract.capability.validate.v1 --input input.json --workspace workspace/arena_demo --dry-run --json` |
 | `compile-contract` | Implemented | `polyforge compile-contract --manifest workspace/arena_demo/game_manifest.json --json` |
 | `reconcile` | Implemented | `polyforge reconcile --workspace workspace/arena_demo --strict --json` |
-| `scenario run` | NOT_RUN; Phase 6 | `polyforge scenario run --workspace workspace/arena_demo --suite core_gameplay --json` |
+| `scenario run` | Implemented | `polyforge scenario run --workspace workspace/arena_demo --suite core_gameplay --json` |
 | `diagnose` | Implemented | `polyforge diagnose --workspace workspace/arena_demo --evidence-dir runs/example --json` |
 | `repair plan` | Implemented | `polyforge repair plan --workspace workspace/arena_demo --issue ISSUE-001 --json` |
 | `repair apply` | Implemented | `polyforge repair apply --workspace workspace/arena_demo --plan repair.json --approved --json` |

@@ -67,6 +67,7 @@ COMMANDS = (
             WORKSPACE,
             (("--through",), {"choices": [f"S{i}" for i in range(6)]}),
             (("--only",), {"metavar": "ASSET_ID"}),
+            (("--standalone",), {"action": "store_true"}),
             DRY_RUN,
             (
                 ("--allow-package-downloads",),
@@ -93,6 +94,7 @@ COMMANDS = (
         "Execute distinct integration and game verification gates",
         (WORKSPACE,),
         phase=6,
+        implemented=True,
         example=("verify", "--workspace", "workspace/arena_demo", "--json"),
     ),
     CommandSpec(
@@ -182,6 +184,7 @@ COMMANDS = (
         "Execute a declarative scenario suite",
         (WORKSPACE, (("--suite",), {"required": True})),
         phase=6,
+        implemented=True,
         example=(
             "scenario",
             "run",
