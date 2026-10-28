@@ -17,3 +17,9 @@ reports/evidence/created-files.txt -text
 reports/ci-windows-evidence/original-failure.txt binary
 reports/ci-windows-short-temp-evidence/pytest.txt binary
 reports/ci-windows-short-temp-evidence/python-tests.xml binary
+# Preserve exact captured Unity/Blender evidence and hash inventories.
+reports/phase-5-evidence/** binary
+reports/phase-5-evidence/index.json text eol=lf
+# Unity-generated metadata keeps its exact native bytes and GUIDs.
+unity_package/*.meta binary
+unity_package/**/*.meta binary

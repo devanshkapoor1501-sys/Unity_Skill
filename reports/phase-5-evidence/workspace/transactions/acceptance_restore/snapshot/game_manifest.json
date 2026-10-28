@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0.0",
+  "project": {
+    "id": "arena_demo",
+    "name": "Isometric Robot Arena",
+    "kind": "3d",
+    "seed": 42,
+    "render_pipeline": "urp"
+  },
+  "units": {
+    "length": "meter",
+    "up": "Y",
+    "forward": "Z"
+  },
+  "target": {
+    "unity_major": 6,
+    "quality": "prototype",
+    "platform": "standalone_windows"
+  },
+  "scene": {
+    "id": "main",
+    "camera": "isometric",
+    "bounds_m": [
+      20,
+      3,
+      20
+    ]
+  },
+  "materials": [
+    {
+      "id": "metal_blue",
+      "base_color_rgba": [
+        0.8,
+        0.15,
+        0.05,
+        1
+      ],
+      "metallic": 0.4,
+      "roughness": 0.55
+    }
+  ],
+  "assets": [
+    {
+      "id": "ground_a",
+      "kind": "modular_mesh",
+      "source": "procedural",
+      "recipe": "recipes/ground_a.json",
+      "target_size_m": [
+        20,
+        0.2,
+        20
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "collider": "box",
+      "animation_ids": [],
+      "dependencies": []
+    },
+    {
+      "id": "crate_a",
+      "kind": "modular_mesh",
+      "source": "procedural",
+      "recipe": "recipes/crate_a.json",
+      "target_size_m": [
+        1,
+        1,
+        1
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "collider": "box",
+      "animation_ids": [],
+      "dependencies": []
+    },
+    {
+      "id": "robot_a",
+      "kind": "modular_mesh",
+      "source": "procedural",
+      "recipe": "recipes/robot_a.json",
+      "target_size_m": [
+        1,
+        1.8,
+        0.8
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "collider": "capsule",
+      "animation_ids": [],
+      "dependencies": []
+    }
+  ],
+  "actors": [
+    {
+      "id": "enemy_01",
+      "asset_id": "robot_a",
+      "controller": "PatrolEnemy",
+      "spawn_xyz": [
+        3,
+        0,
+        3
+      ]
+    }
+  ],
+  "gameplay": {
+    "win_condition": "survive_30_seconds",
+    "controls": "wasd",
+    "restart_key": "r"
+  },
+  "audit": {
+    "required_views": [
+      "front",
+      "side",
+      "top",
+      "iso"
+    ],
+    "review_mode": "manual_or_host_vision",
+    "max_retries": 2
+  },
+  "intent": {
+    "brief_path": "brief.md",
+    "requirements": [
+      {
+        "id": "movement",
+        "feature_id": "movement.character_controller.v1",
+        "required": true,
+        "source_span": {
+          "start": 259,
+          "end": 286
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "WASD changes player position"
+        ]
+      },
+      {
+        "id": "collision",
+        "feature_id": "physics.collision.v1",
+        "required": true,
+        "source_span": {
+          "start": 318,
+          "end": 337
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "Walls prevent traversal"
+        ]
+      },
+      {
+        "id": "enemy",
+        "feature_id": "ai.patrol.v1",
+        "required": true,
+        "source_span": {
+          "start": 353,
+          "end": 368
+        },
+        "binding_ids": [
+          "enemy_01"
+        ],
+        "acceptance_intent": [
+          "Enemy changes position along patrol route"
+        ]
+      },
+      {
+        "id": "damage",
+        "feature_id": "combat.damage.v1",
+        "required": true,
+        "source_span": {
+          "start": 373,
+          "end": 402
+        },
+        "binding_ids": [
+          "enemy_01"
+        ],
+        "acceptance_intent": [
+          "Contact decreases health"
+        ]
+      },
+      {
+        "id": "health",
+        "feature_id": "combat.health.v1",
+        "required": true,
+        "source_span": {
+          "start": 404,
+          "end": 415
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "Health is observable"
+        ]
+      },
+      {
+        "id": "timer",
+        "feature_id": "objective.survival.v1",
+        "required": true,
+        "source_span": {
+          "start": 422,
+          "end": 446
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "Surviving thirty seconds wins"
+        ]
+      },
+      {
+        "id": "failure",
+        "feature_id": "objective.failure.v1",
+        "required": true,
+        "source_span": {
+          "start": 464,
+          "end": 487
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "Zero health enters failure"
+        ]
+      },
+      {
+        "id": "restart",
+        "feature_id": "game.restart.v1",
+        "required": true,
+        "source_span": {
+          "start": 489,
+          "end": 496
+        },
+        "binding_ids": [
+          "main"
+        ],
+        "acceptance_intent": [
+          "Restart restores initial state"
+        ]
+      },
+      {
+        "id": "assets",
+        "feature_id": "geometry.static_assets.v1",
+        "required": true,
+        "source_span": {
+          "start": 82,
+          "end": 99
+        },
+        "binding_ids": [
+          "ground_a",
+          "crate_a",
+          "robot_a"
+        ],
+        "acceptance_intent": [
+          "All requested generated assets import"
+        ]
+      },
+      {
+        "id": "audit",
+        "feature_id": "audit.multiview.v1",
+        "required": true,
+        "source_span": {
+          "start": 740,
+          "end": 764
+        },
+        "binding_ids": [
+          "robot_a"
+        ],
+        "acceptance_intent": [
+          "All four views exist"
+        ]
+      },
+      {
+        "id": "sources",
+        "feature_id": "artifact.editable_sources.v1",
+        "required": true,
+        "source_span": {
+          "start": 562,
+          "end": 593
+        },
+        "binding_ids": [
+          "robot_a"
+        ],
+        "acceptance_intent": [
+          "Editable source and native scene artifacts exist"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__ test_project_preflight_denies_busy_editor_and_hardlinked_generated_output __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-17/test_project_preflight_denies_0')
+
+    def test_project_preflight_denies_busy_editor_and_hardlinked_generated_output(tmp_path: Path):
+>       from polyforge.unity.bootstrap import check_project_idle
+E       ImportError: cannot import name 'check_project_idle' from 'polyforge.unity.bootstrap' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\bootstrap.py)
+
+tests\test_phase5_contracts.py:307: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_project_preflight_denies_busy_editor_and_hardlinked_generated_output
+1 failed in 0.29s

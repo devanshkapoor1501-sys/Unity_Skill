@@ -75,6 +75,7 @@ class CLIAcceptanceTests(unittest.TestCase):
                 "mesh.architecture.doorway.v1",
                 "mesh.environment.tile.v1",
                 "audit.static.multiview.v1",
+                "unity.scene.static.v1",
             ],
         )
 
@@ -94,7 +95,7 @@ class CLIAcceptanceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             before = snapshot(root)
-            result = cli("build", "--workspace", str(root), "--through", "S4", "--json")
+            result = cli("build", "--workspace", str(root), "--through", "S5", "--json")
             self.assertEqual(result.returncode, 5, result.stderr)
             body = json.loads(result.stdout)
             self.assertEqual(body["status"], "NOT_RUN")

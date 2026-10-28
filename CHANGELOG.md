@@ -2,6 +2,12 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add managed native Unity URP import, materials, prefabs and two static scene layouts.
+- Add semantic GUID/local-ID reports, seventeen EditMode cases and separate application gates.
+- Preserve geometry/code on material-only rebuilds; reject stale source hashes and scene/collider defects.
+- Add evidence-bound scoped repairs, attempt limits, exact snapshots and baseline-aware reimport rollback.
+- Package native UPM resources with the portable Python engine; retain explicit download/trust boundaries.
+
 - Fix Windows workspace authorization for equivalent NTFS short/long paths;
   preserve junction rejection and independent CI matrix outcomes.
 

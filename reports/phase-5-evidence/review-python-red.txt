@@ -1,0 +1,32 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_______ test_recorded_repair_evidence_binds_issue_asset_and_attempt_key _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-27/test_recorded_repair_evidence_0')
+
+    def test_recorded_repair_evidence_binds_issue_asset_and_attempt_key(tmp_path: Path):
+>       from polyforge.unity.repairs import resolve_plan
+E       ImportError: cannot import name 'resolve_plan' from 'polyforge.unity.repairs' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\repairs.py)
+
+tests\test_phase5_contracts.py:543: ImportError
+___________ test_scoped_repair_and_rollback_compare_faulty_baseline ___________
+
+    def test_scoped_repair_and_rollback_compare_faulty_baseline():
+>       from polyforge.unity.repairs import scoped_verification, equivalent_bindings
+E       ImportError: cannot import name 'scoped_verification' from 'polyforge.unity.repairs' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\repairs.py)
+
+tests\test_phase5_contracts.py:558: ImportError
+____ test_reconciliation_requires_frozen_source_hash_before_native_launch _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-27/test_reconciliation_requires_f0')
+
+    def test_reconciliation_requires_frozen_source_hash_before_native_launch(tmp_path: Path):
+>       from polyforge.unity.repairs import verify_source_hashes
+E       ImportError: cannot import name 'verify_source_hashes' from 'polyforge.unity.repairs' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\repairs.py)
+
+tests\test_phase5_contracts.py:569: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_recorded_repair_evidence_binds_issue_asset_and_attempt_key
+FAILED tests/test_phase5_contracts.py::test_scoped_repair_and_rollback_compare_faulty_baseline
+FAILED tests/test_phase5_contracts.py::test_reconciliation_requires_frozen_source_hash_before_native_launch
+3 failed, 38 deselected in 0.44s

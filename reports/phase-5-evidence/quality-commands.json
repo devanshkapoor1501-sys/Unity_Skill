@@ -1,0 +1,96 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "check",
+      "."
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "log": "quality-0.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "."
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "log": "quality-1.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "mypy"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.484,
+    "log": "quality-2.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "mypy",
+      "--platform",
+      "linux"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 3.641,
+    "log": "quality-3.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "tools.generate_cli_docs",
+      "--check"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.172,
+    "log": "quality-4.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 1.297,
+    "log": "quality-5.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "--cov",
+      "--cov-report=term-missing",
+      "--cov-report=json:C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\coverage-final.json",
+      "--junitxml=C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\tests-final.xml"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 109.328,
+    "log": "quality-6.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "build",
+      "--no-isolation"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 7.906,
+    "log": "quality-7.txt"
+  }
+]

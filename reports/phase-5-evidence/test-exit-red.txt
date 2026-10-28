@@ -1,0 +1,25 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________ test_unity_failed_test_process_maps_to_test_exit_seven ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-23/test_unity_failed_test_process0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F598C88F0>
+
+    def test_unity_failed_test_process_maps_to_test_exit_seven(tmp_path: Path,monkeypatch):
+        from polyforge.unity import bridge
+        from polyforge.config import Config
+        from polyforge.runner.processes import ProcessOutcome
+        from polyforge.contracts.results import ErrorKind
+        monkeypatch.setattr(bridge,'run_process',lambda *args,**kwargs: ProcessOutcome(2,'exit',123,'WINDOWS_JOB',1,'','',True))
+        with pytest.raises(InputError) as exc:
+            bridge.launch(WorkspacePolicy(tmp_path),Path('Unity.exe'),Config(),'run','tests',output=tmp_path/'tests.xml')
+>       assert exc.value.kind==ErrorKind.TEST_FAILURE
+E       AssertionError: assert <ErrorKind.PRODUCER_FAILURE: 5> == <ErrorKind.TEST_FAILURE: 7>
+E        +  where <ErrorKind.PRODUCER_FAILURE: 5> = InputError('Unity tests failed: exit, exit 2; see run/stdout.txt').kind
+E        +    where InputError('Unity tests failed: exit, exit 2; see run/stdout.txt') = <ExceptionInfo InputError('Unity tests failed: exit, exit 2; see run/stdout.txt') tblen=2>.value
+E        +  and   <ErrorKind.TEST_FAILURE: 7> = <enum 'ErrorKind'>.TEST_FAILURE
+
+tests\test_phase5_contracts.py:377: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_failed_test_process_maps_to_test_exit_seven
+1 failed in 0.53s

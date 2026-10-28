@@ -1,13 +1,18 @@
 # PolyForge
 
-A local, model-independent Blender-to-Unity capability engine. Apache-2.0.
+A portable agent skill backed by a local, model-independent Blender-to-Unity
+capability engine. Apache-2.0. Final Codex/Claude installation and optional MCP
+host qualification are scheduled for Phase 10.
 
-**Current delivery: Phase 4 audit and export.** Discovery, descriptor and
+**Current implementation: Phase 5 native Unity integration.** Discovery, descriptor and
 manifest validation, scene/feature compilation, and dependency planning work
 without a model, Blender, or Unity. Workspace init, doctor, status and report
 are implemented. Five headless Blender recipes and managed S0–S2 builds generate
-editable sources and checked geometry. Unity/game generation, repair, benchmarks and MCP remain future
-commands and return `NOT_RUN`/5.
+editable sources and checked geometry. S3 audits/exports static assets; S4 builds
+a managed URP project with native prefabs, materials, two static scene layouts,
+observed semantic bindings and executed EditMode tests. Native binding diagnosis
+and bounded repair are available. Gameplay, full cross-app recovery, benchmarks
+and MCP remain future gates. See the phase reports for acceptance evidence.
 Trusted-local process protections do not claim untrusted OS containment.
 
 ## Windows setup
@@ -29,8 +34,8 @@ If the Windows sandbox's default temp directory is inaccessible, point `TEMP` an
 ## Working offline commands
 
 The following commands execute without model credentials or network access
-after installation. The fixture is example metadata; it does not make the robot
-capability available in this release.
+after installation. The fixture validates example metadata; it does not execute
+asset generation.
 
 ```console
 polyforge capability list --json
@@ -105,13 +110,15 @@ Blender capabilities are execution operations: they create unique run directorie
 logs, source.blend, metrics.json and logical-geometry.json. Use --dry-run for
 zero writes. Build through S3 adds four transparent views, geometric diagnostics,
 FBX, material and coordinate sidecars, and a visual-review bundle. Requesting
-S4–S5 returns NOT_RUN/5. Visual quality remains REVIEW; Unity import stays NOT_RUN.
+S4 creates the native Unity project and runs separate static EditMode gates;
+S5 remains NOT_RUN/5. Visual quality remains REVIEW.
 
 ```powershell
 .\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --dry-run --json
 .\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S3 --json
 .\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --dry-run --json
 .\.venv\Scripts\polyforge.exe audit --workspace workspace/arena_demo --asset robot_a --json
+.\.venv\Scripts\polyforge.exe build --workspace workspace/arena_demo --through S4 --allow-package-downloads --json
 ```
 
 The real Blender gate is separate from offline Python tests:
@@ -119,16 +126,19 @@ The real Blender gate is separate from offline Python tests:
 ```powershell
 .\.venv\Scripts\python.exe -m pytest tests/test_phase3_blender.py -m blender -o addopts=-ra
 .\.venv\Scripts\python.exe -m pytest tests/test_phase4_blender.py -m blender -o addopts=-ra
+.\.venv\Scripts\python.exe -m pytest tests/test_phase5_unity.py -m unity -o addopts=-ra
 ```
 
 It requires installed Blender 5.2.2 and fails when the dependency is unavailable.
-Default pytest excludes that application gate explicitly. See
+Default pytest excludes Blender and Unity application gates explicitly. See
 [recipe contracts](docs/recipes.md) for parameters, coordinate spaces and limits.
+See [native Unity integration](docs/unity-integration.md) for authorization,
+handedness, binding evidence and minimal repair limits.
 
 ## Ownership and next delivery
 
 - `polyforge/`: trusted engine, bundled contracts, and implemented catalog.
-- `unity_package/`: future separate Editor/runtime tooling; no generated YAML.
+- `unity_package/`: separate UPM Editor/runtime/test assemblies and native APIs.
 - `capabilities/`: future reviewed recipe data; fixtures are not advertised tools.
 - `examples/`: original briefs and requested design contracts.
 - `benchmarks/`: public development tasks and evaluator interfaces, never holdouts.
@@ -138,6 +148,6 @@ Default pytest excludes that application gate explicitly. See
 
 See [architecture](docs/architecture.md), [CLI contract](docs/cli.md),
 [security](SECURITY.md), and [execution plan](docs/implementation-plan.md).
-The next delivery is Phase 5: native Unity import, materials, prefabs and scene construction.
+The next delivery after Phase 5 acceptance is Phase 6: playable arena and behavioral tests.
 Phases stop at their acceptance
 boundaries. The source blueprint remains unchanged.

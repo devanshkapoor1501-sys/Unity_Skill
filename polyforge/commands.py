@@ -68,6 +68,13 @@ COMMANDS = (
             (("--through",), {"choices": [f"S{i}" for i in range(6)]}),
             (("--only",), {"metavar": "ASSET_ID"}),
             DRY_RUN,
+            (
+                ("--allow-package-downloads",),
+                {
+                    "action": "store_true",
+                    "help": "Authorize Unity package resolution for this managed workspace",
+                },
+            ),
         ),
         phase=3,
         implemented=True,
@@ -166,6 +173,7 @@ COMMANDS = (
         ("reconcile",),
         "Compare source and imported semantic bindings",
         (WORKSPACE, (("--strict",), {"action": "store_true"})),
+        implemented=True,
         phase=5,
         example=("reconcile", "--workspace", "workspace/arena_demo", "--strict", "--json"),
     ),
@@ -188,6 +196,7 @@ COMMANDS = (
         ("diagnose",),
         "Diagnose structured run evidence",
         (WORKSPACE, (("--evidence-dir",), {"required": True})),
+        implemented=True,
         phase=5,
         example=(
             "diagnose",
@@ -202,6 +211,7 @@ COMMANDS = (
         ("repair", "plan"),
         "Preview a bounded managed repair",
         (WORKSPACE, (("--issue",), {"required": True})),
+        implemented=True,
         phase=5,
         example=(
             "repair",
@@ -222,6 +232,7 @@ COMMANDS = (
             (("--approved",), {"action": "store_true", "required": True}),
         ),
         phase=5,
+        implemented=True,
         example=(
             "repair",
             "apply",

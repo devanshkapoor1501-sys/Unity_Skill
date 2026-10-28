@@ -1,0 +1,159 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "build",
+      "--no-isolation"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+    "exit_code": 0,
+    "duration_seconds": 14.391
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "venv",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+    "exit_code": 0,
+    "duration_seconds": 14.406
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "install",
+      "--no-index",
+      "--find-links",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 5.797
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 1.734
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "--version"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.328
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "--help"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.344
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "list",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.922
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "show",
+      "unity.scene.static.v1",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.578
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "init",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd\\arena",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.563
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "build",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd\\arena",
+      "--through",
+      "S4",
+      "--dry-run",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.968
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-c",
+      "from importlib.resources import files; from pathlib import Path; import hashlib,json; p=files(\"unity_package\"); names=[\"package.json\",\"Runtime/PrefabBinding.cs\",\"Runtime/PrefabBinding.cs.meta\",\"Editor/PolyForgeBuilder.cs\",\"Tests/Editor/ForensicsTests.cs\"]; print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in names},indent=2))"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 0.297
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-c",
+      "from pathlib import Path; from polyforge.unity.bootstrap import prepare_project,installed_template; from polyforge.security.paths import WorkspacePolicy; p=WorkspacePolicy(Path(\"arena\")); q=prepare_project(p,installed_template(Path(\"C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Unity.exe\"))); assert (q/\"Packages/com.polyforge.engine/Editor/PolyForgeBuilder.cs\").is_file(); print(\"Installed wheel native bootstrap PASS\")"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase5\\install-cwd",
+    "exit_code": 0,
+    "duration_seconds": 2.531
+  }
+]

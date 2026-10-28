@@ -1,0 +1,466 @@
+{
+  "schema_version": "1.0.0",
+  "input_digest": "f4dd1e9f54504c80036e93a93b1c801d9511851fb00039669728c6d0c8b4ead2",
+  "assets": [
+    {
+      "id": "robot",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/robot.fbx",
+      "sha256": "a56723d408c6d6152cfe2f16faffd27c1d27d6244872337988e0c0bc548e38f5",
+      "bounds_m": [
+        1.0,
+        1.8,
+        0.8
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "base",
+          "base_color_rgba": [
+            0.12,
+            0.3,
+            0.5,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        },
+        {
+          "id": "trim",
+          "base_color_rgba": [
+            0.05,
+            0.07,
+            0.09,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        },
+        {
+          "id": "accent",
+          "base_color_rgba": [
+            0.9,
+            0.55,
+            0.05,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "robot:module:body",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "head",
+          "name": "robot:module:head",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "hips",
+          "name": "robot:module:hips",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "core",
+          "name": "robot:module:core",
+          "material_ids": [
+            "accent"
+          ]
+        },
+        {
+          "id": "upper_arm_l",
+          "name": "robot:module:upper_arm_l",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "forearm_l",
+          "name": "robot:module:forearm_l",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "hand_l",
+          "name": "robot:module:hand_l",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "thigh_l",
+          "name": "robot:module:thigh_l",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "shin_l",
+          "name": "robot:module:shin_l",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "foot_l",
+          "name": "robot:module:foot_l",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "eye_l",
+          "name": "robot:module:eye_l",
+          "material_ids": [
+            "accent"
+          ]
+        },
+        {
+          "id": "upper_arm_r",
+          "name": "robot:module:upper_arm_r",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "forearm_r",
+          "name": "robot:module:forearm_r",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "hand_r",
+          "name": "robot:module:hand_r",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "thigh_r",
+          "name": "robot:module:thigh_r",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "shin_r",
+          "name": "robot:module:shin_r",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "foot_r",
+          "name": "robot:module:foot_r",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "eye_r",
+          "name": "robot:module:eye_r",
+          "material_ids": [
+            "accent"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "neck",
+          "name": "robot:socket:neck",
+          "position_m": [
+            0.0,
+            1.369721,
+            -0.12
+          ]
+        },
+        {
+          "id": "shoulder_l",
+          "name": "robot:socket:shoulder_l",
+          "position_m": [
+            -0.258621,
+            1.262151,
+            -0.12
+          ]
+        },
+        {
+          "id": "elbow_l",
+          "name": "robot:socket:elbow_l",
+          "position_m": [
+            -0.373563,
+            0.989641,
+            -0.12
+          ]
+        },
+        {
+          "id": "wrist_l",
+          "name": "robot:socket:wrist_l",
+          "position_m": [
+            -0.373563,
+            0.702789,
+            -0.12
+          ]
+        },
+        {
+          "id": "hand_l",
+          "name": "robot:socket:hand_l",
+          "position_m": [
+            -0.373563,
+            0.588048,
+            -0.12
+          ]
+        },
+        {
+          "id": "hip_l",
+          "name": "robot:socket:hip_l",
+          "position_m": [
+            -0.126437,
+            0.731474,
+            -0.12
+          ]
+        },
+        {
+          "id": "knee_l",
+          "name": "robot:socket:knee_l",
+          "position_m": [
+            -0.126437,
+            0.387251,
+            -0.12
+          ]
+        },
+        {
+          "id": "shoulder_r",
+          "name": "robot:socket:shoulder_r",
+          "position_m": [
+            0.258621,
+            1.262151,
+            -0.12
+          ]
+        },
+        {
+          "id": "elbow_r",
+          "name": "robot:socket:elbow_r",
+          "position_m": [
+            0.373563,
+            0.989641,
+            -0.12
+          ]
+        },
+        {
+          "id": "wrist_r",
+          "name": "robot:socket:wrist_r",
+          "position_m": [
+            0.373563,
+            0.702789,
+            -0.12
+          ]
+        },
+        {
+          "id": "hand_r",
+          "name": "robot:socket:hand_r",
+          "position_m": [
+            0.373563,
+            0.588048,
+            -0.12
+          ]
+        },
+        {
+          "id": "hip_r",
+          "name": "robot:socket:hip_r",
+          "position_m": [
+            0.126437,
+            0.731474,
+            -0.12
+          ]
+        },
+        {
+          "id": "knee_r",
+          "name": "robot:socket:knee_r",
+          "position_m": [
+            0.126437,
+            0.387251,
+            -0.12
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crate",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/crate.fbx",
+      "sha256": "58521bee52ec18ff0652bf651a2ad2744b4c93b80a82c4e51a249fdc953473a8",
+      "bounds_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "base",
+          "base_color_rgba": [
+            0.12,
+            0.3,
+            0.5,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        },
+        {
+          "id": "trim",
+          "base_color_rgba": [
+            0.05,
+            0.07,
+            0.09,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        },
+        {
+          "id": "accent",
+          "base_color_rgba": [
+            0.9,
+            0.55,
+            0.05,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "crate:module:body",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "brace_left",
+          "name": "crate:module:brace_left",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "brace_right",
+          "name": "crate:module:brace_right",
+          "material_ids": [
+            "trim"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "top",
+          "name": "crate:socket:top",
+          "position_m": [
+            0.0,
+            1.0,
+            -0.014563
+          ]
+        },
+        {
+          "id": "front",
+          "name": "crate:socket:front",
+          "position_m": [
+            0.0,
+            0.5,
+            0.470874
+          ]
+        }
+      ]
+    },
+    {
+      "id": "orientation_arrows",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/orientation_arrows.fbx",
+      "sha256": "d017b7f68a7e454c854e42c67981b48d943f05c3d7152f578ceddc3ce08a2443",
+      "bounds_m": [
+        1.0,
+        2.0,
+        3.0
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "axis",
+          "base_color_rgba": [
+            0.8,
+            0.1,
+            0.05,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        }
+      ],
+      "modules": [
+        {
+          "id": "x_shaft",
+          "name": "orientation_arrows:module:x_shaft",
+          "material_ids": [
+            "axis"
+          ]
+        },
+        {
+          "id": "up_shaft",
+          "name": "orientation_arrows:module:up_shaft",
+          "material_ids": [
+            "axis"
+          ]
+        },
+        {
+          "id": "forward_shaft",
+          "name": "orientation_arrows:module:forward_shaft",
+          "material_ids": [
+            "axis"
+          ]
+        },
+        {
+          "id": "front_tip",
+          "name": "orientation_arrows:module:front_tip",
+          "material_ids": [
+            "axis"
+          ]
+        },
+        {
+          "id": "rear_marker",
+          "name": "orientation_arrows:module:rear_marker",
+          "material_ids": [
+            "axis"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "front",
+          "name": "orientation_arrows:socket:front",
+          "position_m": [
+            0.0,
+            0.2,
+            1.5
+          ]
+        }
+      ]
+    }
+  ],
+  "actors": [],
+  "scene_bounds_m": [
+    20,
+    3,
+    20
+  ]
+}

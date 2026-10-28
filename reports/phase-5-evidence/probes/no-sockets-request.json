@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "input_digest": "f4dd1e9f54504c80036e93a93b1c801d9511851fb00039669728c6d0c8b4ead2",
+  "assets": [
+    {
+      "id": "crate",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/crate.fbx",
+      "sha256": "58521bee52ec18ff0652bf651a2ad2744b4c93b80a82c4e51a249fdc953473a8",
+      "bounds_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "base",
+          "base_color_rgba": [
+            0.12,
+            0.3,
+            0.5,
+            1
+          ],
+          "metallic": 0.987654,
+          "roughness": 0.65
+        },
+        {
+          "id": "trim",
+          "base_color_rgba": [
+            0.05,
+            0.07,
+            0.09,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        },
+        {
+          "id": "accent",
+          "base_color_rgba": [
+            0.9,
+            0.55,
+            0.05,
+            1
+          ],
+          "metallic": 0,
+          "roughness": 0.65
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "crate:module:body",
+          "material_ids": [
+            "base"
+          ]
+        },
+        {
+          "id": "brace_left",
+          "name": "crate:module:brace_left",
+          "material_ids": [
+            "trim"
+          ]
+        },
+        {
+          "id": "brace_right",
+          "name": "crate:module:brace_right",
+          "material_ids": [
+            "trim"
+          ]
+        }
+      ],
+      "sockets": []
+    }
+  ],
+  "actors": [],
+  "scene_bounds_m": [
+    20,
+    3,
+    20
+  ]
+}

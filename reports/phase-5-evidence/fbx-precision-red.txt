@@ -1,0 +1,12 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_fbx_coordinate_comparison_accepts_micrometres_but_rejects_real_scale_errors _
+
+    def test_fbx_coordinate_comparison_accepts_micrometres_but_rejects_real_scale_errors():
+>       from polyforge.blender.interchange import coordinates_match
+E       ModuleNotFoundError: No module named 'polyforge.blender.interchange'
+
+tests\test_phase5_contracts.py:332: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_fbx_coordinate_comparison_accepts_micrometres_but_rejects_real_scale_errors
+1 failed in 0.45s

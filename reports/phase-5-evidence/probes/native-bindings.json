@@ -1,0 +1,297 @@
+{
+    "schema_version": "1.0.0",
+    "input_digest": "f4dd1e9f54504c80036e93a93b1c801d9511851fb00039669728c6d0c8b4ead2",
+    "unity_version": "6000.6.3f1",
+    "status": "FAIL",
+    "verification_scope": "UNITY_EDITOR_STATIC",
+    "gameplay_status": "NOT_RUN",
+    "objects": [
+        {
+            "id": "robot",
+            "guid": "a09082ce8db0ae74fb9df754517d2581",
+            "prefab_guid": "1f7a9d125e251b2439d7c39fb13c99c3",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/robot.prefab",
+            "bounds_m": [
+                1.0,
+                1.7999999523162842,
+                0.8000000715255737
+            ],
+            "socket_ids": [
+                "neck",
+                "shoulder_l",
+                "elbow_l",
+                "wrist_l",
+                "hand_l",
+                "hip_l",
+                "knee_l",
+                "shoulder_r",
+                "elbow_r",
+                "wrist_r",
+                "hand_r",
+                "hip_r",
+                "knee_r"
+            ],
+            "sockets": [
+                {
+                    "id": "neck",
+                    "position_m": [
+                        0.0,
+                        1.3697210550308228,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "shoulder_l",
+                    "position_m": [
+                        0.2586206793785095,
+                        1.2621513605117798,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "elbow_l",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.9896414279937744,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "wrist_l",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.7027888298034668,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hand_l",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.5880477428436279,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hip_l",
+                    "position_m": [
+                        0.12643678486347198,
+                        0.731473982334137,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "knee_l",
+                    "position_m": [
+                        0.12643678486347198,
+                        0.38725095987319946,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "shoulder_r",
+                    "position_m": [
+                        -0.2586206793785095,
+                        1.2621513605117798,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "elbow_r",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.9896414279937744,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "wrist_r",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.7027888298034668,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hand_r",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.5880477428436279,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hip_r",
+                    "position_m": [
+                        -0.12643678486347198,
+                        0.731473982334137,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "knee_r",
+                    "position_m": [
+                        -0.12643678486347198,
+                        0.38725095987319946,
+                        -0.12000006437301636
+                    ]
+                }
+            ],
+            "material_ids": [
+                "base",
+                "trim",
+                "accent"
+            ],
+            "transform_count": 33,
+            "collider": "box"
+        },
+        {
+            "id": "crate",
+            "guid": "4652143d167ef6644aa9c76ad7db3113",
+            "prefab_guid": "14ab92a1ec80534468e1243d83d2f152",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/crate.prefab",
+            "bounds_m": [
+                1.0,
+                1.0,
+                1.0000001192092896
+            ],
+            "socket_ids": [
+                "top",
+                "front"
+            ],
+            "sockets": [
+                {
+                    "id": "top",
+                    "position_m": [
+                        0.0,
+                        0.9999999403953552,
+                        -0.014563202857971191
+                    ]
+                },
+                {
+                    "id": "front",
+                    "position_m": [
+                        0.0,
+                        0.5,
+                        0.47087371349334717
+                    ]
+                }
+            ],
+            "material_ids": [
+                "base",
+                "trim",
+                "accent"
+            ],
+            "transform_count": 7,
+            "collider": "box"
+        },
+        {
+            "id": "orientation_arrows",
+            "guid": "7679bbc3b16cef542ae5f6db66be9745",
+            "prefab_guid": "e59d8b040c758e54d96a537b4cb39ebb",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/orientation_arrows.prefab",
+            "bounds_m": [
+                1.0,
+                1.9999998807907104,
+                2.999999761581421
+            ],
+            "socket_ids": [
+                "front"
+            ],
+            "sockets": [
+                {
+                    "id": "front",
+                    "position_m": [
+                        0.0,
+                        0.20000028610229492,
+                        1.4999998807907104
+                    ]
+                }
+            ],
+            "material_ids": [
+                "axis"
+            ],
+            "transform_count": 8,
+            "collider": "box"
+        }
+    ],
+    "issues": [
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.26, 1.26, -0.12)",
+            "actual": "(0.26, 1.26, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.37, 0.99, -0.12)",
+            "actual": "(0.37, 0.99, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.37, 0.70, -0.12)",
+            "actual": "(0.37, 0.70, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.37, 0.59, -0.12)",
+            "actual": "(0.37, 0.59, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.13, 0.73, -0.12)",
+            "actual": "(0.13, 0.73, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(-0.13, 0.39, -0.12)",
+            "actual": "(0.13, 0.39, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.26, 1.26, -0.12)",
+            "actual": "(-0.26, 1.26, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.37, 0.99, -0.12)",
+            "actual": "(-0.37, 0.99, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.37, 0.70, -0.12)",
+            "actual": "(-0.37, 0.70, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.37, 0.59, -0.12)",
+            "actual": "(-0.37, 0.59, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.13, 0.73, -0.12)",
+            "actual": "(-0.13, 0.73, -0.12)"
+        },
+        {
+            "category": "axis",
+            "asset_id": "robot",
+            "expected": "(0.13, 0.39, -0.12)",
+            "actual": "(-0.13, 0.39, -0.12)"
+        }
+    ],
+    "scene_object_count": 102,
+    "scene_guids": [
+        "046b96c1732a5ec49866523d65673cc9",
+        "4f0cf4d202f188142baf15594129311e"
+    ]
+}

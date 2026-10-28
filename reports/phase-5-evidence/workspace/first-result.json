@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "through": "S4",
+    "project": "UnityProject",
+    "source_bindings": [
+      {
+        "asset_id": "crate_a",
+        "source": "runs\\mesh-20d2a5858beb4814\\asset",
+        "reused_geometry": false,
+        "fbx_sha256": "2273b210139b9317b2471b21c584e49312d044970d61b84307036350c2bbebdf"
+      },
+      {
+        "asset_id": "ground_a",
+        "source": "runs\\mesh-2d52a0571b7d4e18\\asset",
+        "reused_geometry": false,
+        "fbx_sha256": "8a460b2fee096649912674b4acec6e3bcb1d1911cfb51da3ba109fbcf667a257"
+      },
+      {
+        "asset_id": "robot_a",
+        "source": "runs\\mesh-4e174fd9fc4b409d\\asset",
+        "reused_geometry": false,
+        "fbx_sha256": "2910d85944ee79d5cdd0de85897f30bfcbe9b124aad195330c4bdb2a9345b618"
+      }
+    ],
+    "static_import_status": "PASS",
+    "playmode_status": "NOT_RUN",
+    "visual_review_status": "REVIEW"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "unity-971ac764ce924dfa",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "artifact_ids": [
+    "unity-971ac764ce924dfa:request.json",
+    "unity-971ac764ce924dfa:inputs.json",
+    "unity-971ac764ce924dfa:bindings.json",
+    "unity-971ac764ce924dfa:reconcile.json",
+    "unity-971ac764ce924dfa:editmode.xml",
+    "unity-971ac764ce924dfa:tests.json",
+    "unity-971ac764ce924dfa:native-output.zip"
+  ],
+  "evidence_paths": [
+    "runs/unity-971ac764ce924dfa/bindings.json",
+    "runs/unity-971ac764ce924dfa/reconcile.json",
+    "runs/unity-971ac764ce924dfa/editmode.xml",
+    "runs/unity-971ac764ce924dfa/inputs.json",
+    "scene_contract.json",
+    "feature_contract.json",
+    "requirement_coverage.json",
+    "plan.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

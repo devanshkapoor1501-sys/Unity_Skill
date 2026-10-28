@@ -7,6 +7,7 @@ import math
 from pathlib import Path
 from typing import Any
 
+from polyforge.blender.interchange import coordinates_match
 from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
@@ -100,8 +101,10 @@ def validate_exchange(
         )
         if roundtrip.get("material_ids") != used:
             reject()
-        for key in ("bounds_unity_m", "module_ids", "socket_positions_unity_m"):
-            if roundtrip.get(key) != metrics[key]:
+        if roundtrip.get("module_ids") != metrics["module_ids"]:
+            reject()
+        for key in ("bounds_unity_m", "socket_positions_unity_m"):
+            if not coordinates_match(metrics[key], roundtrip.get(key)):
                 reject()
         if (
             not isinstance(handoff, dict)

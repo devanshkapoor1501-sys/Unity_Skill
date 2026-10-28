@@ -21,21 +21,25 @@ from polyforge.security.paths import WorkspacePolicy
 
 
 def build_assets(
-    workspace: Path, *, through: str | None = None, only: str | None = None, dry_run: bool = False
+    workspace: Path,
+    *,
+    through: str | None = None,
+    only: str | None = None,
+    dry_run: bool = False,
+    allow_package_downloads: bool = False,
 ) -> Result:
     through = through or "S2"
-    if through not in {"S0", "S1", "S2", "S3"}:
+    if through not in {"S0", "S1", "S2", "S3", "S4"}:
         return failure(
             ErrorKind.PRODUCER_FAILURE,
             "PF-STAGE-NOT-IMPLEMENTED",
-            "Only S0–S3 generation/audit/export is implemented; "
-            "Unity integration begins in Phase 5",
+            "Only S0–S4 static generation/import is implemented; gameplay begins in Phase 6",
             status="NOT_RUN",
         )
     policy = WorkspacePolicy(workspace)
     config_path = policy.path("polyforge.toml")
     config = load_config(config_path if config_path.is_file() else None)
-    if through == "S3" and config.preview_resolution > 1024:
+    if through in {"S3", "S4"} and config.preview_resolution > 1024:
         raise InputError("Audit previews are limited to 1024 pixels")
     path = policy.path("game_manifest.json")
     model = load_manifest(path)
@@ -48,7 +52,7 @@ def build_assets(
         raise InputError("$.only: unknown asset ID")
     assets = {a["id"]: a for a in model.data["assets"]}
     materials = {m["id"]: m for m in model.data["materials"]}
-    if through == "S3" and any(m.get("textures") for m in materials.values()):
+    if through in {"S3", "S4"} and any(m.get("textures") for m in materials.values()):
         return failure(
             ErrorKind.PRODUCER_FAILURE,
             "PF-EXPORT-TEXTURES-NOT-IMPLEMENTED",
@@ -82,6 +86,14 @@ def build_assets(
                 selected.add(dependency)
                 pending.append(dependency)
     identifiers = [key for key in model.asset_order if key in selected]
+    if through == "S4":
+        from polyforge.unity.bridge import build_unity
+
+        if only is not None:
+            raise InputError("S4 builds complete static scenes; --only is supported through S3")
+        return build_unity(
+            model, prepared, dry_run=dry_run, allow_package_downloads=allow_package_downloads
+        )
     if dry_run:
         return Result(
             input_digest=model.input_digest,

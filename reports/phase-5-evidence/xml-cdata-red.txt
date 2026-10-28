@@ -1,0 +1,58 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_____ test_unity_xml_cdata_is_allowed_but_entity_declarations_are_denied ______
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-16/test_unity_xml_cdata_is_allowe0/test.xml')
+expected = {'A.One'}
+
+    def verify_test_xml(path: Path, expected: set[str]) -> dict[str, Any]:
+        """A zero exit with no tests, skipped cases, or different tests cannot pass."""
+        try:
+            payload = path.read_bytes()
+            if len(payload) > 8_388_608 or b"<!" in payload:
+>               raise ValueError("Unsafe/oversized XML")
+E               ValueError: Unsafe/oversized XML
+
+polyforge\unity\evidence.py:30: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-16/test_unity_xml_cdata_is_allowe0')
+
+    def test_unity_xml_cdata_is_allowed_but_entity_declarations_are_denied(tmp_path: Path):
+        from polyforge.unity.evidence import verify_test_xml
+        p=tmp_path/'test.xml'
+        p.write_text('<test-run result="Passed"><test-case fullname="A.One" result="Passed"><output><![CDATA[native output]]></output></test-case></test-run>')
+>       assert verify_test_xml(p,{'A.One'})['executed']==1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase5_contracts.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-16/test_unity_xml_cdata_is_allowe0/test.xml')
+expected = {'A.One'}
+
+    def verify_test_xml(path: Path, expected: set[str]) -> dict[str, Any]:
+        """A zero exit with no tests, skipped cases, or different tests cannot pass."""
+        try:
+            payload = path.read_bytes()
+            if len(payload) > 8_388_608 or b"<!" in payload:
+                raise ValueError("Unsafe/oversized XML")
+            root = ET.fromstring(payload)
+            cases = list(root.iter("test-case"))
+            names = [case.get("fullname") for case in cases]
+            if (
+                len(names) != len(set(names))
+                or set(names) != expected
+                or any(case.get("result") != "Passed" for case in cases)
+                or root.get("result") != "Passed"
+            ):
+                raise ValueError("Expected executed passing test identities do not match XML")
+        except (OSError, ValueError, ET.ParseError) as exc:
+>           raise InputError(str(exc), kind=ErrorKind.TEST_FAILURE, code="PF-UNITY-TEST-XML") from exc
+E           polyforge.contracts.validation.InputError: Unsafe/oversized XML
+
+polyforge\unity\evidence.py:42: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_xml_cdata_is_allowed_but_entity_declarations_are_denied
+1 failed in 0.39s

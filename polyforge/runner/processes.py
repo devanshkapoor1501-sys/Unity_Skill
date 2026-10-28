@@ -79,6 +79,11 @@ def run_process(
         return ProcessOutcome(None, "cancelled", None, ownership, 0, "", "", False)
     workspace.mkdir(destination)
     temporary = workspace.mkdir(destination / "tmp")
+    unity_profile = None
+    if executable.stem.lower() == "unity":
+        unity_profile = workspace.mkdir(".polyforge/unity-profile")
+        for directory in ("AppData/Local", "AppData/Roaming", "ProgramData", "upm-cache"):
+            workspace.mkdir(unity_profile / directory)
     started = time.monotonic()
     job = WindowsJob(policy.memory_limit_mb) if os.name == "nt" else None
     process: subprocess.Popen[bytes] | None = None
@@ -116,7 +121,7 @@ def run_process(
         process = subprocess.Popen(
             [str(executable), *argv[1:]],
             cwd=destination,
-            env=worker_environment(executable, temporary),
+            env=worker_environment(executable, temporary, unity_profile=unity_profile),
             shell=False,
             stdin=subprocess.DEVNULL,
             stdout=subprocess.PIPE,

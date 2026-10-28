@@ -1,0 +1,92 @@
+{
+  "status": "FAIL",
+  "issues": [
+    {
+      "category": "scale",
+      "asset_id": "robot_a",
+      "expected": [
+        1.0,
+        1.8,
+        0.8
+      ],
+      "actual": [
+        100.0,
+        180.0,
+        80.00000762939453
+      ],
+      "issue_id": "ISSUE-b271977d5c56"
+    },
+    {
+      "category": "material",
+      "asset_id": "crate_a",
+      "expected": "crate_a:module:body",
+      "actual": "lost material reference",
+      "issue_id": "ISSUE-8ed100918561"
+    },
+    {
+      "category": "scale",
+      "asset_id": "robot_a",
+      "expected": "1",
+      "actual": "100",
+      "issue_id": "ISSUE-4bb50bb2982e"
+    },
+    {
+      "category": "scale",
+      "asset_id": "robot_a",
+      "expected": "1.8",
+      "actual": "180",
+      "issue_id": "ISSUE-6babe87b69ca"
+    },
+    {
+      "category": "scale",
+      "asset_id": "robot_a",
+      "expected": "0.8",
+      "actual": "80.00001",
+      "issue_id": "ISSUE-6646bac134d0"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "crate_a",
+      "expected": "matching material bindings",
+      "actual": "asset:crate_a: scene material override",
+      "issue_id": "ISSUE-051f6a6c8ffa"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "robot_a",
+      "expected": "declared spawn, unit scale and identity rotation",
+      "actual": "asset:robot_a: scene transform override",
+      "issue_id": "ISSUE-ffa84fe0e7b8"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "robot_a",
+      "expected": "declared spawn, unit scale and identity rotation",
+      "actual": "actor:enemy_01: scene transform override",
+      "issue_id": "ISSUE-0d6b1ebf6c73"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "crate_a",
+      "expected": "matching material bindings",
+      "actual": "asset:crate_a: scene material override",
+      "issue_id": "ISSUE-051f6a6c8ffa"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "robot_a",
+      "expected": "declared spawn, unit scale and identity rotation",
+      "actual": "asset:robot_a: scene transform override",
+      "issue_id": "ISSUE-ffa84fe0e7b8"
+    },
+    {
+      "category": "scene_instance",
+      "asset_id": "robot_a",
+      "expected": "declared spawn, unit scale and identity rotation",
+      "actual": "actor:enemy_01: scene transform override",
+      "issue_id": "ISSUE-0d6b1ebf6c73"
+    }
+  ],
+  "application_execution": "UNITY_EDITOR_STATIC",
+  "gameplay_status": "NOT_RUN"
+}

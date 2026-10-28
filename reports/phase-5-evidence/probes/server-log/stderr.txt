@@ -1,0 +1,21 @@
+No logging will be generated. (The "path" argument must be of type string. Received undefined)
+[winston] Attempt to write logs with no transports, which can increase memory usage: {"message":"Command-line: 'C:\\\\Program Files\\\\Unity\\\\Hub\\\\Editor\\\\6000.6.3f1\\\\Editor\\\\Data\\\\Resources\\\\PackageManager\\\\Server\\\\UnityPackageManager.exe' server -s 19044 --ipc-path PolyForgePhase5Probe -l 2","level":"info"}
+node:path:513
+      validateString(arg, 'path');
+      ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received undefined
+    at Object.join (node:path:513:7)
+    at getCloudConfigCacheFolder (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:233:2494)
+    at Object.readConfig (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:233:3348)
+    at Object.initialize (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:237:2632)
+    at Object.callback (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:237:5538)
+    at /home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:20:5132
+    at Command2._chainOrCall (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:20:4733)
+    at /home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:20:5096
+    at Array.forEach (<anonymous>)
+    at Command2._chainOrCallHooks (/home/bokken/build/output/unity/upm/dist/temp/bundle/app.js:20:5062) {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
+
+Node.js v24.18.0

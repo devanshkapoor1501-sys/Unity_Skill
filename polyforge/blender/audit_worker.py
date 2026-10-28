@@ -242,8 +242,16 @@ def run(
         "module_ids": imported["module_ids"],
         "material_ids": imported["material_ids"],
     }
-    for key in ("bounds_unity_m", "socket_positions_unity_m", "module_ids"):
-        if imported[key] != metrics[key]:
+    spec = importlib.util.spec_from_file_location(
+        "polyforge_interchange", Path(__file__).with_name("interchange.py")
+    )
+    assert spec is not None and spec.loader is not None
+    numeric = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(numeric)
+    if imported["module_ids"] != metrics["module_ids"]:
+        roundtrip["status"] = "FAIL"
+    for key in ("bounds_unity_m", "socket_positions_unity_m"):
+        if not numeric.coordinates_match(metrics[key], imported[key]):
             roundtrip["status"] = "FAIL"
     (output / "fbx_roundtrip.json").write_text(json.dumps(roundtrip, indent=2), encoding="utf-8")
     if roundtrip["status"] != "PASS":

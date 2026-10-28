@@ -1,0 +1,17 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___ test_unity_compiler_parallelism_is_bounded_within_owned_process_budget ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-10/test_unity_compiler_parallelis0')
+
+    def test_unity_compiler_parallelism_is_bounded_within_owned_process_budget(tmp_path: Path):
+        from polyforge.security.policy import worker_environment
+        env=worker_environment(Path('Unity.exe'),tmp_path,{},unity_profile=tmp_path/'profile')
+>       assert env['BEE_BUILD_THREADS']=='2'
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'BEE_BUILD_THREADS'
+
+tests\test_phase5_contracts.py:128: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_compiler_parallelism_is_bounded_within_owned_process_budget
+1 failed in 0.23s

@@ -1,0 +1,24 @@
+...FF                                                                    [100%]
+================================== FAILURES ===================================
+______ test_test_xml_rejects_empty_skipped_duplicate_and_wrong_test_runs ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-6/test_test_xml_rejects_empty_sk0')
+
+    def test_test_xml_rejects_empty_skipped_duplicate_and_wrong_test_runs(tmp_path: Path):
+>       from polyforge.unity.evidence import verify_test_xml
+E       ModuleNotFoundError: No module named 'polyforge.unity.evidence'
+
+tests\test_phase5_contracts.py:90: ModuleNotFoundError
+_ test_observed_report_rejects_stale_identity_missing_guid_and_socket_position _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-6/test_observed_report_rejects_s0')
+
+    def test_observed_report_rejects_stale_identity_missing_guid_and_socket_position(tmp_path: Path):
+>       from polyforge.unity.evidence import reconcile_report
+E       ModuleNotFoundError: No module named 'polyforge.unity.evidence'
+
+tests\test_phase5_contracts.py:101: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_test_xml_rejects_empty_skipped_duplicate_and_wrong_test_runs
+FAILED tests/test_phase5_contracts.py::test_observed_report_rejects_stale_identity_missing_guid_and_socket_position
+2 failed, 3 passed in 0.58s

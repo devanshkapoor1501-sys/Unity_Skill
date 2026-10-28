@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="17" result="Failed(Child)" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.2434815">
+  <test-suite type="TestSuite" id="1000" name="com.unity.template.urp-blank" fullname="com.unity.template.urp-blank" runstate="Runnable" testcasecount="17" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.243482" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1023" name="PolyForge.Editor.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject/Library/ScriptAssemblies/PolyForge.Editor.Tests.dll" runstate="Runnable" testcasecount="17" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.232880" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="25592" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1024" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="17" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.232126" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1025" name="Editor" fullname="PolyForge.Editor" runstate="Runnable" testcasecount="17" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.231751" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1026" name="Tests" fullname="PolyForge.Editor.Tests" runstate="Runnable" testcasecount="17" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:32Z" duration="19.231276" total="17" passed="9" failed="8" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1001" name="ForensicsTests" fullname="PolyForge.Editor.Tests.ForensicsTests" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:25Z" duration="12.444869" total="8" passed="0" failed="8" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="ParameterizedMethod" id="1011" name="ColliderFaultsAreDetected" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:21Z" duration="9.045372" total="5" passed="0" failed="5" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1006" name="ColliderFaultsAreDetected(&quot;size&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected(&quot;size&quot;)" methodname="ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="1098719360" result="Failed" start-time="2026-10-28 06:56:12Z" end-time="2026-10-28 06:56:15Z" duration="2.213968" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  size
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected (System.String fault) [0x00134] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:50
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1007" name="ColliderFaultsAreDetected(&quot;center&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected(&quot;center&quot;)" methodname="ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="1004172790" result="Failed" start-time="2026-10-28 06:56:15Z" end-time="2026-10-28 06:56:16Z" duration="1.658709" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  center
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected (System.String fault) [0x00134] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:50
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1008" name="ColliderFaultsAreDetected(&quot;disabled&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected(&quot;disabled&quot;)" methodname="ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="2077006741" result="Failed" start-time="2026-10-28 06:56:16Z" end-time="2026-10-28 06:56:18Z" duration="1.724052" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  disabled
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected (System.String fault) [0x00134] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:50
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1009" name="ColliderFaultsAreDetected(&quot;meshReference&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected(&quot;meshReference&quot;)" methodname="ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="2001844422" result="Failed" start-time="2026-10-28 06:56:18Z" end-time="2026-10-28 06:56:20Z" duration="1.796180" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  meshReference
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected (System.String fault) [0x00134] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:50
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1010" name="ColliderFaultsAreDetected(&quot;none&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected(&quot;none&quot;)" methodname="ColliderFaultsAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="313539558" result="Failed" start-time="2026-10-28 06:56:20Z" end-time="2026-10-28 06:56:21Z" duration="1.635667" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  none
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.ColliderFaultsAreDetected (System.String fault) [0x00134] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:50
+]]></stack-trace>
+                  </failure>
+                </test-case>
+              </test-suite>
+              <test-suite type="ParameterizedMethod" id="1005" name="SceneOverridesAreDetected" fullname="PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" testcasecount="3" result="Failed" site="Child" start-time="2026-10-28 06:56:21Z" end-time="2026-10-28 06:56:25Z" duration="3.393178" total="3" passed="0" failed="3" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1002" name="SceneOverridesAreDetected(&quot;scale&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected(&quot;scale&quot;)" methodname="SceneOverridesAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="24509574" result="Failed" start-time="2026-10-28 06:56:22Z" end-time="2026-10-28 06:56:23Z" duration="1.161454" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  scale
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected (System.String fault) [0x000b5] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:23
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1003" name="SceneOverridesAreDetected(&quot;source&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected(&quot;source&quot;)" methodname="SceneOverridesAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="1918577288" result="Failed" start-time="2026-10-28 06:56:23Z" end-time="2026-10-28 06:56:24Z" duration="1.064582" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  source
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected (System.String fault) [0x000b5] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:23
+]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1004" name="SceneOverridesAreDetected(&quot;camera&quot;)" fullname="PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected(&quot;camera&quot;)" methodname="SceneOverridesAreDetected" classname="PolyForge.Editor.Tests.ForensicsTests" runstate="Runnable" seed="82616478" result="Failed" start-time="2026-10-28 06:56:24Z" end-time="2026-10-28 06:56:25Z" duration="1.156480" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  camera
+  Expected: True
+  But was:  False
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Editor.Tests.ForensicsTests.SceneOverridesAreDetected (System.String fault) [0x000b5] in .\Packages\com.polyforge.engine\Tests\Editor\ForensicsTests.cs:23
+]]></stack-trace>
+                  </failure>
+                </test-case>
+              </test-suite>
+            </test-suite>
+            <test-suite type="TestFixture" id="1012" name="ImportTests" fullname="PolyForge.Editor.Tests.ImportTests" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-28 06:56:25Z" end-time="2026-10-28 06:56:32Z" duration="6.785052" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1013" name="ChangedMaterialValueIsDetected" fullname="PolyForge.Editor.Tests.ImportTests.ChangedMaterialValueIsDetected" methodname="ChangedMaterialValueIsDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="105665697" result="Passed" start-time="2026-10-28 06:56:25Z" end-time="2026-10-28 06:56:26Z" duration="0.847780" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1015" name="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" fullname="PolyForge.Editor.Tests.ImportTests.ImportedDimensionsSocketsAndBindingsMatchIndependentSource" methodname="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="962908359" result="Passed" start-time="2026-10-28 06:56:26Z" end-time="2026-10-28 06:56:26Z" duration="0.130102" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1022" name="IndependentFaultsAreDetected" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-28 06:56:26Z" end-time="2026-10-28 06:56:30Z" duration="4.282280" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1018" name="IndependentFaultsAreDetected(&quot;scale&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;scale&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1627896308" result="Passed" start-time="2026-10-28 06:56:26Z" end-time="2026-10-28 06:56:27Z" duration="1.225967" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1019" name="IndependentFaultsAreDetected(&quot;material&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;material&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="2128517369" result="Passed" start-time="2026-10-28 06:56:27Z" end-time="2026-10-28 06:56:28Z" duration="1.193042" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1020" name="IndependentFaultsAreDetected(&quot;socket&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;socket&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="837753537" result="Passed" start-time="2026-10-28 06:56:28Z" end-time="2026-10-28 06:56:29Z" duration="0.958376" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1021" name="IndependentFaultsAreDetected(&quot;component&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;component&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1972784482" result="Passed" start-time="2026-10-28 06:56:29Z" end-time="2026-10-28 06:56:30Z" duration="0.901454" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1014" name="MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" fullname="PolyForge.Editor.Tests.ImportTests.MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" methodname="MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="602219615" result="Passed" start-time="2026-10-28 06:56:30Z" end-time="2026-10-28 06:56:31Z" duration="0.823838" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1016" name="NativeMaterialParametersMatchLinearSidecars" fullname="PolyForge.Editor.Tests.ImportTests.NativeMaterialParametersMatchLinearSidecars" methodname="NativeMaterialParametersMatchLinearSidecars" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1592802459" result="Passed" start-time="2026-10-28 06:56:31Z" end-time="2026-10-28 06:56:31Z" duration="0.004459" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1017" name="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" fullname="PolyForge.Editor.Tests.ImportTests.RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" methodname="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="96403826" result="Passed" start-time="2026-10-28 06:56:31Z" end-time="2026-10-28 06:56:32Z" duration="0.692677" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/Unity Technologies/com_unity_template_urp-blank\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

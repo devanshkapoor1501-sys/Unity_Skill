@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_reuse_requires_registered_fbx_metrics_and_source_bytes _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-21/test_reuse_requires_registered0')
+
+    def test_reuse_requires_registered_fbx_metrics_and_source_bytes(tmp_path: Path):
+        from polyforge.unity.bridge import reusable_export
+        from polyforge.runner.state import atomic_json
+        p=WorkspacePolicy(tmp_path);recipe={'asset_id':'crate','materials':[{'id':'base'}]}
+        atomic_json(p,'runs/mesh-fake/input.json',{'recipe':recipe,'seed':42})
+        atomic_json(p,'runs/mesh-fake/state.json',{'stages':{'S3':{'status':'passed'}},'updated_utc':'1'})
+        atomic_json(p,'runs/mesh-fake/export_binding.json',{})
+        atomic_json(p,'runs/mesh-fake/artifacts.json',{'artifacts':[]})
+>       with pytest.raises(InputError): reusable_export(p,recipe,42)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase5_contracts.py:351: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_reuse_requires_registered_fbx_metrics_and_source_bytes
+1 failed in 0.58s

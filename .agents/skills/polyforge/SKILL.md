@@ -7,11 +7,11 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 4 catalog contains read-only
+Discover available capabilities first. The Phase 5 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
-Blender mesh recipes and managed static audit/export. Unity/game-generation commands are future
-interfaces and return NOT_RUN with a nonzero exit; do not substitute invented
-tool output or claim a game exists.
+Blender mesh recipes, managed static audit/export and native Unity static scenes.
+Gameplay commands remain future interfaces returning NOT_RUN with a nonzero exit.
+Do not substitute invented tool output or claim a playable game exists.
 
 Phase 1 also provides init, doctor, status and report. Doctor's --dry-run writes
 nothing. An actual doctor run writes version-probe logs and state, including
@@ -25,7 +25,12 @@ BLOCKED/UNSUPPORTED features and missing evaluator evidence keep games PARTIAL.
 Static mesh capabilities write editable .blend and checked geometry evidence.
 Use build --workspace ROOT --through S3 for source, four-view audit and FBX;
 audit --workspace ROOT --asset ID audits a registered saved source. Both accept
---dry-run with zero writes. S4–S5 are unavailable. Visual quality stays REVIEW
+--dry-run with zero writes. S4 builds a managed URP project and executes native EditMode tests. The first
+real S4 build requires --allow-package-downloads after user authorization; that
+authorization persists for this workspace's Unity package resolution. Use
+reconcile for observed bindings, diagnose for evidence-based issues, and repair
+plan for a no-write native-binding patch preview. S5 remains unavailable.
+Visual quality stays REVIEW
 until separately reviewed; Blender FBX roundtrip is not Unity import evidence.
 Never call source generation game acceptance.
 
@@ -42,3 +47,6 @@ statuses, planning later stages, or handling a blocked operation.
 Report operation_status, evaluated_test_status, and game_status separately.
 A successful descriptor check is not gameplay evidence. Preserve failed and
 unexecuted checks. Hidden evaluator fixtures stay outside the agent workspace.
+
+Phase 5 integration does not qualify portable installation in multiple hosts.
+Final Codex/Claude guides, host smoke tests and optional MCP remain Phase 10.

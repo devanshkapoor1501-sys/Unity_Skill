@@ -39,9 +39,13 @@ def redact(text: str, inherited: Mapping[str, str] | None = None) -> str:
 
 
 def worker_environment(
-    executable: Path, temporary: Path, inherited: Mapping[str, str] | None = None
+    executable: Path,
+    temporary: Path,
+    inherited: Mapping[str, str] | None = None,
+    *,
+    unity_profile: Path | None = None,
 ) -> dict[str, str]:
-    """Forward only essential OS values; credentials and home directories are absent."""
+    """Filter credentials; native Unity activation has an explicit OS-profile exception."""
     source = os.environ if inherited is None else inherited
     allowed = {
         "SYSTEMROOT",
@@ -68,6 +72,24 @@ def worker_environment(
     )
     for suffix in ("CONFIG", "SCRIPTS", "DATAFILES", "EXTENSIONS"):
         env["BLENDER_USER_" + suffix] = str(temporary / "blender" / suffix.lower())
+    if unity_profile is not None:
+        env.update(
+            USERPROFILE=str(unity_profile),
+            HOME=str(unity_profile),
+            # Unity Personal resolves the activated license below LOCALAPPDATA.
+            # This trusted native service is not filesystem-sandboxed.
+            LOCALAPPDATA=source.get("LOCALAPPDATA", str(unity_profile / "AppData/Local")),
+            APPDATA=str(unity_profile / "AppData/Roaming"),
+            ALLUSERSPROFILE=str(unity_profile / "ProgramData"),
+            PROGRAMDATA=str(unity_profile / "ProgramData"),
+            UPM_CACHE_ROOT=str(unity_profile / "upm-cache"),
+            BEE_BUILD_THREADS="2",
+        )
+        # Native activation uses Windows known folders as well as environment
+        # paths. Preserve only these OS profile locations; never copy licenses.
+        for name in ("USERPROFILE", "APPDATA", "LOCALAPPDATA", "PROGRAMDATA", "ALLUSERSPROFILE"):
+            if name in source:
+                env[name] = source[name]
     return env
 
 

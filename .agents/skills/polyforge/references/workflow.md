@@ -12,7 +12,7 @@ in Unity XYZ meters. They require Blender 5.2.2 and write isolated run evidence;
 --dry-run validates without launching or writing. Source .blend, logical geometry
 and metrics must all validate before PASS. These operations are TRUSTED_LOCAL.
 Managed build supports S0 precheck, S1 contracts, S2 generation and S3 audit/export.
-S4/S5 stay NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
+S4 performs native static Unity integration; S5 stays NOT_RUN. Resume scheduling remains unavailable pending managed retry work.
 
 audit.static.multiview.v1 accepts schema_version and asset_id, locating the latest
 registered successful source and checking its hash before writes. audit CLI exposes
@@ -47,3 +47,12 @@ For later phases: inspect available tools, validate the manifest, review the pla
 run eligible stages, examine artifacts/tests, and propose only bounded managed
 repairs. Original projects must not open in Unity during read-only inspection.
 Do not enable downloads, third-party plugins, or external services implicitly.
+
+S4 is now implemented for new managed URP projects. It compiles, builds native
+static prefabs/scenes and executes seventeen required EditMode cases. Public test
+status remains separate from gameplay, which is NOT_RUN. Native missing-reference
+and scale repairs are bounded to frozen source identity and managed outputs.
+Full cross-application rollback/resume remains Phase 9. Explicit Unity package
+download approval is retained per workspace; OS activation profile access is
+required, and trusted Unity licensing services may write profile state. No
+sandbox or egress-containment claim follows from this development profile.

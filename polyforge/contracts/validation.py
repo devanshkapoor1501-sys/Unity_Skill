@@ -79,6 +79,7 @@ def schema_document(name: str) -> dict[str, Any]:
         "recipe_request.schema.json",
         "audit_request.schema.json",
         "scenario.schema.json",
+        "unity_build.schema.json",
     }
     if name not in allowed:
         raise InputError(f"Unknown bundled schema: {name}")

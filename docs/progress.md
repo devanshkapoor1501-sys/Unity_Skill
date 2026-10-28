@@ -171,4 +171,23 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   checks and 32 fresh offline install commands passed, including installed-wheel
   S3 execution. Three golden assets retain twelve checked views and exact hashes.
 
-Phase 5 is next: native Unity import and scene construction. Game remains PARTIAL.
+## Phase 5 complete
+
+- Added a separate embedded UPM package with Editor/runtime/test assemblies;
+  native APIs create materials, prefabs and two shared static scene layouts.
+- Added explicit Unity package authorization, native profile handling with owned
+  UPM cache, bounded compiler parallelism and source/evidence hash checks.
+- Actual golden import exposed handedness reversal; explicit boundary conversion
+  now preserves asymmetric front and robot left/right sockets. Seventeen native
+  EditMode cases pass, including scene overrides, collider defects and missing GUIDs.
+- Fresh managed CLI build, material-only rebuild, scoped repair with unrelated
+  faults, failed-apply restoration and healthy snapshot forced-reimport tests pass.
+- Minimal native repair snapshots, plans, attempt bounds and journals are in place.
+  Full cross-application recovery remains Phase 9; gameplay remains Phase 6.
+- All six Important independent review findings have RED/GREEN regressions.
+  Final gates: 162 offline cases, 95.28% expanded coverage, 9 Blender cases,
+  3 real Unity integration cases,17 native cases per build, lint/format/types/docs,
+  wheel/sdist and twelve fresh-wheel checks plus actual installed-wheel S4.
+- Exact commands, raw evidence, snapshots and limitations: reports/phase-5.md.
+  User authorized publication to Unity_Skill and continuation into Phase 6.
+  Game remains PARTIAL; Phase 6 is next.

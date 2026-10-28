@@ -18,15 +18,16 @@ dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "mypy>=1.15,<3", "b
 polyforge = "polyforge.cli:main"
 
 [tool.setuptools.packages.find]
-include = ["polyforge*"]
+include = ["polyforge*", "unity_package*"]
 
 [tool.setuptools.package-data]
 polyforge = ["py.typed", "contracts/*.json", "data/*.json", "data/*.md"]
+unity_package = ["package.json", "*.md", "**/*.cs", "**/*.asmdef", "**/*.meta", "*.meta"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-ra -m 'not blender'"
-markers = ["blender: real Blender application integration gate; run separately with -m blender"]
+addopts = "-ra -m 'not blender and not unity'"
+markers = ["blender: real Blender application integration gate; run separately with -m blender", "unity: real Unity Editor gate; run separately with -m unity"]
 
 [tool.ruff]
 target-version = "py311"
@@ -41,7 +42,7 @@ strict = true
 files = ["polyforge", "tools"]
 
 [tool.coverage.run]
-source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes"]
+source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes", "polyforge.blender.interchange", "polyforge.unity.bootstrap", "polyforge.unity.evidence", "polyforge.unity.transactions"]
 branch = true
 
 [tool.coverage.report]

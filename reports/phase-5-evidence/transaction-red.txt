@@ -1,0 +1,14 @@
+........F                                                                [100%]
+================================== FAILURES ===================================
+___ test_managed_snapshot_restores_exact_bytes_and_removes_new_owned_files ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-11/test_managed_snapshot_restores0')
+
+    def test_managed_snapshot_restores_exact_bytes_and_removes_new_owned_files(tmp_path: Path):
+>       from polyforge.unity.transactions import ManagedTransaction
+E       ModuleNotFoundError: No module named 'polyforge.unity.transactions'
+
+tests\test_phase5_contracts.py:131: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_managed_snapshot_restores_exact_bytes_and_removes_new_owned_files
+1 failed, 8 passed in 0.71s

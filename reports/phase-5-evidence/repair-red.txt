@@ -1,0 +1,12 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_repair_plan_rejects_wrong_manifest_unknown_assets_and_unbounded_paths __
+
+    def test_repair_plan_rejects_wrong_manifest_unknown_assets_and_unbounded_paths():
+>       from polyforge.unity.repairs import validate_plan
+E       ModuleNotFoundError: No module named 'polyforge.unity.repairs'
+
+tests\test_phase5_contracts.py:260: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_repair_plan_rejects_wrong_manifest_unknown_assets_and_unbounded_paths
+1 failed in 0.36s

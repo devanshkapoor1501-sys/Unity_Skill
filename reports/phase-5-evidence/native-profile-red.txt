@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__ test_unity_keeps_native_activation_profile_but_never_forwards_credentials __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-9/test_unity_keeps_native_activa0')
+
+    def test_unity_keeps_native_activation_profile_but_never_forwards_credentials(tmp_path: Path):
+        from polyforge.security.policy import worker_environment
+        values={'USERPROFILE':'C:/activated','APPDATA':'C:/activated/roaming','LOCALAPPDATA':'C:/activated/local','PROGRAMDATA':'C:/ProgramData','ALLUSERSPROFILE':'C:/ProgramData','PASSWORD':'do-not-copy'}
+        env=worker_environment(Path('C:/Unity/Unity.exe'),tmp_path/'tmp',values,unity_profile=tmp_path/'profile')
+        for key,value in values.items():
+>           if key != 'PASSWORD': assert env[key] == value
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: assert 'C:\\Users\\D...iva0\\profile' == 'C:/activated'
+E             
+E             - C:/activated
+E             + C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\pytest-of-Divansh Kapoor\pytest-9\test_unity_keeps_native_activa0\profile
+
+tests\test_phase5_contracts.py:123: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_keeps_native_activation_profile_but_never_forwards_credentials
+1 failed in 0.38s

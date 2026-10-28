@@ -78,12 +78,27 @@ def dispatch(args: argparse.Namespace) -> Result:
         from polyforge.blender.build import build_assets
 
         return build_assets(
-            Path(args.workspace), through=args.through, only=args.only, dry_run=args.dry_run
+            Path(args.workspace),
+            through=args.through,
+            only=args.only,
+            dry_run=args.dry_run,
+            allow_package_downloads=args.allow_package_downloads,
         )
     if spec.path == ("audit",):
         from polyforge.blender.audit import audit_asset
 
         return audit_asset(Path(args.workspace), args.asset, dry_run=args.dry_run)
+    if spec.path in {("reconcile",), ("diagnose",), ("repair", "plan"), ("repair", "apply")}:
+        from polyforge.unity.repairs import diagnose, reconcile_workspace, repair_apply, repair_plan
+
+        workspace = Path(args.workspace)
+        if spec.path == ("reconcile",):
+            return reconcile_workspace(workspace)
+        if spec.path == ("diagnose",):
+            return diagnose(workspace, args.evidence_dir)
+        if spec.path == ("repair", "plan"):
+            return repair_plan(workspace, args.issue)
+        return repair_apply(workspace, args.plan)
     if spec.path in {("validate",), ("plan",), ("compile-contract",)}:
         from polyforge.compiler.commands import manifest_command
 
@@ -118,6 +133,17 @@ def dispatch(args: argparse.Namespace) -> Result:
     path = workspace_input(Path(args.workspace), Path(args.input))
     inputs = load_json(path)
     context = RunContext(workspace=Path(args.workspace), dry_run=args.dry_run)
+    if args.id == "unity.scene.static.v1":
+        from polyforge.blender.build import build_assets
+        from polyforge.contracts.validation import validate_schema
+
+        validate_schema(inputs, "unity_build.schema.json")
+        return build_assets(
+            context.workspace,
+            through="S4",
+            dry_run=context.dry_run,
+            allow_package_downloads=inputs.get("allow_package_downloads", False),
+        )
     if args.id == "audit.static.multiview.v1":
         from polyforge.blender.audit import audit_asset
         from polyforge.contracts.validation import validate_schema

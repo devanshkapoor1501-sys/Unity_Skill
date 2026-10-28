@@ -24,11 +24,11 @@ are syntax fixtures, not evidence of execution or functionality.
 | `capability show` | Implemented | `polyforge capability show contract.capability.validate.v1 --json` |
 | `capability run` | Implemented | `polyforge capability run contract.capability.validate.v1 --input input.json --workspace workspace/arena_demo --dry-run --json` |
 | `compile-contract` | Implemented | `polyforge compile-contract --manifest workspace/arena_demo/game_manifest.json --json` |
-| `reconcile` | NOT_RUN; Phase 5 | `polyforge reconcile --workspace workspace/arena_demo --strict --json` |
+| `reconcile` | Implemented | `polyforge reconcile --workspace workspace/arena_demo --strict --json` |
 | `scenario run` | NOT_RUN; Phase 6 | `polyforge scenario run --workspace workspace/arena_demo --suite core_gameplay --json` |
-| `diagnose` | NOT_RUN; Phase 5 | `polyforge diagnose --workspace workspace/arena_demo --evidence-dir runs/example --json` |
-| `repair plan` | NOT_RUN; Phase 5 | `polyforge repair plan --workspace workspace/arena_demo --issue ISSUE-001 --json` |
-| `repair apply` | NOT_RUN; Phase 5 | `polyforge repair apply --workspace workspace/arena_demo --plan repair.json --approved --json` |
+| `diagnose` | Implemented | `polyforge diagnose --workspace workspace/arena_demo --evidence-dir runs/example --json` |
+| `repair plan` | Implemented | `polyforge repair plan --workspace workspace/arena_demo --issue ISSUE-001 --json` |
+| `repair apply` | Implemented | `polyforge repair apply --workspace workspace/arena_demo --plan repair.json --approved --json` |
 | `repair rollback` | NOT_RUN; Phase 9 | `polyforge repair rollback --workspace workspace/arena_demo --transaction-id tx-example --json` |
 | `benchmark run` | NOT_RUN; Phase 6 | `polyforge benchmark run --suite benchmark_core --arm D --output workspace/benchmarks --dry-run --json` |
 | `benchmark report` | NOT_RUN; Phase 6 | `polyforge benchmark report --run benchmark-example --format json` |

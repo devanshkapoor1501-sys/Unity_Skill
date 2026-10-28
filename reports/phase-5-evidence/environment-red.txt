@@ -1,0 +1,16 @@
+..F                                                                      [100%]
+================================== FAILURES ===================================
+___ test_unity_environment_supplies_owned_profile_without_inherited_secrets ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-4/test_unity_environment_supplie0')
+
+    def test_unity_environment_supplies_owned_profile_without_inherited_secrets(tmp_path: Path):
+        from polyforge.security.policy import worker_environment
+>       env = worker_environment(Path('C:/Unity/Unity.exe'), tmp_path/'tmp', {'LOCALAPPDATA': 'C:/private', 'TOKEN':'canary'}, unity_profile=tmp_path/'profile')
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: worker_environment() got an unexpected keyword argument 'unity_profile'
+
+tests\test_phase5_contracts.py:61: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_environment_supplies_owned_profile_without_inherited_secrets
+1 failed, 2 passed in 0.47s

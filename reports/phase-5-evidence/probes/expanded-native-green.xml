@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Failed(Child)" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.1399251">
+  <test-suite type="TestSuite" id="1000" name="com.unity.template.urp-blank" fullname="com.unity.template.urp-blank" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.139925" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1012" name="PolyForge.Editor.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject/Library/ScriptAssemblies/PolyForge.Editor.Tests.dll" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.125666" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="6344" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1013" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.124890" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1014" name="Editor" fullname="PolyForge.Editor" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.124376" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1015" name="Tests" fullname="PolyForge.Editor.Tests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.123591" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestFixture" id="1001" name="ImportTests" fullname="PolyForge.Editor.Tests.ImportTests" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:38Z" duration="6.121876" total="9" passed="1" failed="8" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-case id="1002" name="ChangedMaterialValueIsDetected" fullname="PolyForge.Editor.Tests.ImportTests.ChangedMaterialValueIsDetected" methodname="ChangedMaterialValueIsDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="823196080" result="Failed" label="Error" start-time="2026-10-28 06:33:31Z" end-time="2026-10-28 06:33:33Z" duration="1.084856" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.ChangedMaterialValueIsDetected () [0x00052] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:18 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1004" name="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" fullname="PolyForge.Editor.Tests.ImportTests.ImportedDimensionsSocketsAndBindingsMatchIndependentSource" methodname="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1881824484" result="Failed" label="Error" start-time="2026-10-28 06:33:33Z" end-time="2026-10-28 06:33:33Z" duration="0.002893" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.ImportedDimensionsSocketsAndBindingsMatchIndependentSource () [0x00006] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:45 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1011" name="IndependentFaultsAreDetected" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="4" result="Failed" site="Child" start-time="2026-10-28 06:33:33Z" end-time="2026-10-28 06:33:37Z" duration="3.997260" total="4" passed="0" failed="4" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1007" name="IndependentFaultsAreDetected(&quot;scale&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;scale&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1653268731" result="Failed" label="Error" start-time="2026-10-28 06:33:33Z" end-time="2026-10-28 06:33:33Z" duration="0.948262" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                    <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected (System.String fault) [0x000fe] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:102 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1008" name="IndependentFaultsAreDetected(&quot;material&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;material&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1154481171" result="Failed" label="Error" start-time="2026-10-28 06:33:33Z" end-time="2026-10-28 06:33:34Z" duration="1.009685" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                    <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected (System.String fault) [0x000fe] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:102 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1009" name="IndependentFaultsAreDetected(&quot;socket&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;socket&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="656782695" result="Failed" label="Error" start-time="2026-10-28 06:33:34Z" end-time="2026-10-28 06:33:36Z" duration="1.090939" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                    <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected (System.String fault) [0x000fe] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:102 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                  </failure>
+                </test-case>
+                <test-case id="1010" name="IndependentFaultsAreDetected(&quot;component&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;component&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="75892423" result="Failed" label="Error" start-time="2026-10-28 06:33:36Z" end-time="2026-10-28 06:33:37Z" duration="0.943590" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                    <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected (System.String fault) [0x000fe] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:102 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                  </failure>
+                </test-case>
+              </test-suite>
+              <test-case id="1003" name="MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" fullname="PolyForge.Editor.Tests.ImportTests.MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" methodname="MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1860103753" result="Failed" label="Error" start-time="2026-10-28 06:33:37Z" end-time="2026-10-28 06:33:37Z" duration="0.983361" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.MissingPrefabGuidIsDetectedAndNativeBytesRestoreIt () [0x00053] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:31 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                </failure>
+              </test-case>
+              <test-case id="1005" name="NativeMaterialParametersMatchLinearSidecars" fullname="PolyForge.Editor.Tests.ImportTests.NativeMaterialParametersMatchLinearSidecars" methodname="NativeMaterialParametersMatchLinearSidecars" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="438833035" result="Passed" start-time="2026-10-28 06:33:37Z" end-time="2026-10-28 06:33:38Z" duration="0.025758" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" fullname="PolyForge.Editor.Tests.ImportTests.RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" methodname="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1655869319" result="Failed" label="Error" start-time="2026-10-28 06:33:38Z" end-time="2026-10-28 06:33:38Z" duration="0.004263" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <failure>
+                  <message><![CDATA[System.NullReferenceException : Object reference not set to an instance of an object]]></message>
+                  <stack-trace><![CDATA[  at UnityEditor.AssetDatabase.TryGetGUIDAndLocalFileIdentifier (UnityEngine.Object obj, System.String& guid, System.Int64& localId) [0x00000] in <86ff5cbd32484068aca9e84e94736ae0>:0 
+  at PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_1.<Observe>g__Bind|1 (UnityEngine.Transform t, System.String id, System.String kind, System.String component, PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_0& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_2& , PolyForge.Editor.PolyForgeBuilder+<>c__DisplayClass13_3& ) [0x00006] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:219 
+  at PolyForge.Editor.PolyForgeBuilder.Observe (PolyForge.Editor.BuildRequest request) [0x00310] in .\Packages\com.polyforge.engine\Editor\PolyForgeBuilder.cs:230 
+  at PolyForge.Editor.Tests.ImportTests.RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances () [0x00005] in .\Packages\com.polyforge.engine\Tests\Editor\ImportTests.cs:76 
+  at (wrapper managed-to-native) System.Reflection.RuntimeMethodInfo.InternalInvoke(System.Reflection.RuntimeMethodInfo,object,object[],System.Exception&)
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x0006a] in <c5ae8a4eeb824526b5df2932bc2395e0>:0 ]]></stack-trace>
+                </failure>
+                <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/Unity Technologies/com_unity_template_urp-blank\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

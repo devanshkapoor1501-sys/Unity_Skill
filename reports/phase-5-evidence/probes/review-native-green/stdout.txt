@@ -1,0 +1,1848 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 29564)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 29492)
+VBCSCompiler prewarm took 27.30 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 29564)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 29492)
+VBCSCompiler prewarm took 27.30 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-10-28T07:03:24Z
+[Licensing::IpcConnector] Channel LicenseClient-Divansh Kapoor doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 25776)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject
+-logFile
+-
+-upmLogFile
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\review-native-green\upm.log
+-polyforgeInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\no-sockets-request.json
+-runTests
+-testPlatform
+EditMode
+-testFilter
+PolyForge.Editor.Tests
+-testResults
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\review-native-green.xml
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [16300]  Target information:
+
+Player connection [16300]  * "[IP] 192.168.1.8 [Port] 55504 [Flags] 2 [Guid] 1915055734 [EditorId] 1915055734 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [16300] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [16300] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Starting IPC server.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-10-28T07:03:25.0941909Z"
+Waiting for clients to connect on \\.\pipe\Unity-LicenseClient-Divansh Kapoor, press Ctrl-C to exit.
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 25776, path: "C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              001d57ba5c254074a55be17d6836ef17
+  Correlation Id:          580ea0749969da827556c831bf58e10c
+  External correlation Id: 1101246229922471047
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.37s, validation: 0.17s, handshake: 0.06s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-10-28T07:03:25.3207713Z"
+[Licensing::Module] Connected to LicensingClient (PId: 25776, launch time: 0.01, total connection time: 0.60s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Package Manager] Connected to IPC stream "Upm-17936" after 0.4 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.02
+[Licensing::Module] Licensing Background thread has ended after 0.67s
+[Licensing::Module] Licensing is initialized (took 0.01s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: aa5b6b9875b2a0a4aa1a57dcf25c31c4
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56936
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003314 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.020 seconds
+Domain Reload Profiling: 1976ms
+	BeginReloadAssembly (213ms)
+	RebuildCommonClasses (8ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (152ms)
+	LoadAllAssembliesAndSetupDomain (561ms)
+		LoadAssemblies (206ms)
+		TypeCache.Refresh (395ms)
+			TypeCache.ScanAssembly (366ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (1021ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (186ms)
+			ProcessInitializeOnLoadAttributes (178ms)
+			ProcessInitializeOnLoadMethodAttributes (303ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 35 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.03 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 4s964ms
+[595/977    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others) [CacheMiss 04fd0bc9471cece4daf274ef92f3c27600000000000000000000000000000006]
+[961/977    1s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others) [CacheWrite 04fd0bc9471cece4daf274ef92f3c27600000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others) [CacheMiss 4cf101fa29abd2cb0a8a9dcad301b8e200000000000000000000000000000006]
+[962/977    0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others) [CacheWrite 4cf101fa29abd2cb0a8a9dcad301b8e200000000000000000000000000000006]
+[963/977    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll, with 146 defines and 301 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[964/977    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll, with 146 defines and 314 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[965/977    0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.dll
+[966/977    0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.pdb
+[967/977    0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.Tests.pdb
+[968/977    0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.Tests.dll
+[969/977    2s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+[970/977    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 148 defines and 326 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[971/977    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+[972/977    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[973/977    0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[974/977    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 373 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[975/977    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[976/977    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (4.91 seconds), 17 items updated, 977 evaluated
+AssetDatabase: script compilation time: 5.893124s
+Begin MonoManager ReloadAssembly
+Total cache size 266596476
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 3.58 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.406 seconds
+Domain Reload Profiling: 3134ms
+	BeginReloadAssembly (512ms)
+		DisableScriptedObjects (42ms)
+		CreateAndSetChildDomain (177ms)
+	RebuildCommonClasses (17ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (122ms)
+	LoadAllAssembliesAndSetupDomain (1049ms)
+		LoadAssemblies (664ms)
+		TypeCache.Refresh (242ms)
+			TypeCache.ScanAssembly (227ms)
+		AnalyzeDomain (106ms)
+			BuildScriptInfoCaches (94ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (1407ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (4ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (207ms)
+			ProcessInitializeOnLoadAttributes (442ms)
+			ProcessInitializeOnLoadMethodAttributes (157ms)
+			AfterProcessingInitializeOnLoad (11ms)
+		AwakeInstancesAfterBackupRestoration (44ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject/Logs/AssetImportWorkerHW0.log
+Refreshing native plugins compatible for Editor in 2.83 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=ad1514aa21403b44c83fc7f0b976d3fa): Total: 10.408 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2252 ms
+		Asset DB Callback time: managed=265 ms, native=45 ms
+		Scripting: domain reloads=1, domain reload time=1846 ms, compile time=5897 ms, other=101 ms
+		Project Asset Count: scripts=1281, non-scripts=2252
+		Asset File Changes: new=0, changed=2, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 42.146ms
+	ApplyChangesToAssetFolders: 2.856ms
+	Scan: 207.534ms
+	Collect global state as custom dependencies: 35.784ms
+	OnSourceAssetsModified: 1.736ms
+	CategorizeScriptCompilationAssets: 79.030ms
+	ProcessAssetsWithTransientArtifactChanges: 107.908ms
+	CategorizeAssets: 67.781ms
+	CompileScripts: 5896.588ms
+	ImportOutOfDateAssets: 1439.405ms (1419.448ms without children)
+		ReloadNativeAssets: 0.056ms
+		UnloadImportedAssets: 1.101ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.910ms
+		ImportSchedulerStart: 17.885ms
+	PostProcessAllAssets: 268.878ms
+		VCAutoAddAssetPostprocess 1.894ms
+		XRBuildSystem.XRAssetImported 1.452ms
+		PostProcessCallbackCreateDeferredMaterials 0.088ms
+		MonoPostProcessAllAssets: 264.257ms
+			AssetPostprocessor.OnPostprocessAllAssets 146.645ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 26.955ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 21.245ms
+			SyncVS.PostprocessSyncProject 15.519ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 10.002ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.486ms
+			AssetChangedListener.OnPostprocessAllAssets 3.074ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 2.655ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 2.421ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.413ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.359ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.094ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.912ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.760ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.667ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.664ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.647ms
+			PostProcessor.OnPostprocessAllAssets 0.639ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.509ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.431ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.422ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.376ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.338ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.327ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.313ms
+			AssetEvents.OnPostprocessAllAssets 0.302ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.300ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.279ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.241ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.237ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.216ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.204ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.098ms
+	PostAssetChangesProfiler: 4.417ms
+	UnloadStreamsBegin: 6.580ms
+	PersistCurrentRevisions: 0.120ms
+	GenerateScriptTypeHashes: 1.577ms
+	GenerateScriptTypeSerializationHashes: 2.863ms
+	Untracked: 2192.626ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 1.248ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-com.unity.template.urp-blank
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6430 unused Assets / (7.6 MB). Loaded Objects now: 7346.
+Memory consumption went from 391.0 MB to 383.4 MB.
+Total: 14.783500 ms (FindLiveObjects: 0.651600 ms CreateObjectMapping: 0.351300 ms MarkObjects: 9.293100 ms  DeleteObjects: 4.193200 ms)
+
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Project] Loading completed in 15.356 seconds
+	Project init time: 				14.918 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.376 seconds
+		Asset Database init time: 		1.330 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			2.057 seconds
+		Unity extensions init time: 	0.029 seconds
+		Asset Database refresh time: 	10.408 seconds
+	Scene opening time: 			0.163 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1793171020027,"processId":17936,"projectLoad":15.355751199999998,"projectInit":14.918441,"templateInit":0.0,"packageManagerInit":0.3755381,"assetDatabaseInit":1.3296837,"globalIlluminationInit":0.003428,"assembliesLoad":2.0574256,"unityExtensionsInit":0.0285762,"assetDatabaseRefresh":10.4084331,"sceneOpening":0.1627216}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1793171020027,"processId":17936,"editorVersion":"6000.6.3f1 (45d8eee7de74)","branch":"6000.6/staging","buildType":"Release","platform":"Windows"}
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform = 
+playerHeartbeatTimeout = 600
+filters[0] = 
+   Filter with settings:
+   testMode = EditMode
+   targetPlatform = 
+   testNames = null
+   groupNames = PolyForge.Editor.Tests
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/Divansh Kapoor/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.030s, timestamps: [15.361 - 15.390]
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 9 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7 unused Assets / (21.4 KB). Loaded Objects now: 7507.
+Memory consumption went from 394.5 MB to 394.5 MB.
+Total: 21.561300 ms (FindLiveObjects: 0.513400 ms CreateObjectMapping: 0.168600 ms MarkObjects: 20.210000 ms  DeleteObjects: 0.366700 ms)
+
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Asset Pipeline Refresh (id=796c561d925902d4ab695e6225dfab4e): Total: 0.112 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=980da731aa81dc84c9bff5251256b8e1): Total: 0.006 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.036 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.54 ms, found 4 plugins.
+Asset Pipeline Refresh (id=92a8c8e357021f74cba9b751a9cf25f9): Total: 0.082 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=91c667cd0b73e064188dc50460fd2898): Total: 0.018 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.69 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d250c32e612a11747812b824840d40c2): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (100.4 KB). Loaded Objects now: 7502.
+Memory consumption went from 382.6 MB to 382.6 MB.
+Total: 10.958100 ms (FindLiveObjects: 0.361900 ms CreateObjectMapping: 0.121600 ms MarkObjects: 10.123200 ms  DeleteObjects: 0.126400 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '6d94180b30e1acfb9ded8233f9c81706') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=0c68a22f44dacc483651ca7861a4caa5 StaticDependenciesID=ca281e6b423556b276b332c4ba250376 
+Refreshing native plugins compatible for Editor in 4.26 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2dd53af68a65b08408bf17c34b484265): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Worker ready: AssetImportWorkerHW0 0
+Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (320.7 KB). Loaded Objects now: 7511.
+Memory consumption went from 413.5 MB to 413.2 MB.
+Total: 12.107900 ms (FindLiveObjects: 0.717600 ms CreateObjectMapping: 0.227000 ms MarkObjects: 10.681700 ms  DeleteObjects: 0.266900 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'ded6d7b9468b63d741cfe0c9b8a904d2') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=9b46e658721e59f87c55faed37874aa5 StaticDependenciesID=908d45df4c2fab8d7b2c8afdbedfbb64 
+Refreshing native plugins compatible for Editor in 2.67 ms, found 4 plugins.
+Asset Pipeline Refresh (id=5bbd8741feeb1c04588142e9f30914bb): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/e70ba4a451b9d88428c18080a0b6cd2e'
+	Deserialize:            0.479 ms
+	Integration:            0.691 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   1.189 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'fc4f13c0f55e45800b1bab26e3272387') in 0.004 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=67d2601336b1bab25ec86fedd0dddef9 DependenciesID=2ee55fcd3898da787f56dc048bd5c9c6 StaticDependenciesID=ca8168395d805fcd4cacba7a38b905e6 
+Refreshing native plugins compatible for Editor in 3.21 ms, found 4 plugins.
+Asset Pipeline Refresh (id=1ee59d3a708019249bae09105c211a1e): Total: 0.079 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.272 ms
+	Integration:            56.920 ms
+	Integration of assets:  0.020 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   58.232 ms
+Unloading 163 unused Assets / (200.2 KB). Loaded Objects now: 7590.
+Memory consumption went from 405.0 MB to 404.8 MB.
+Total: 13.247400 ms (FindLiveObjects: 0.467500 ms CreateObjectMapping: 0.159900 ms MarkObjects: 12.045000 ms  DeleteObjects: 0.281600 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.882 ms
+	Integration:            34.574 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   35.479 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 399.3 MB to 399.3 MB.
+Total: 12.042100 ms (FindLiveObjects: 0.474300 ms CreateObjectMapping: 0.127400 ms MarkObjects: 11.167000 ms  DeleteObjects: 0.046900 ms)
+
+Asset Pipeline Refresh (id=4e4b4856c00b3434c86edc00153a95a3): Total: 0.027 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=57b22ef58d966db47a5e2f83d1c6e8ba): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.043 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.23 ms, found 4 plugins.
+Asset Pipeline Refresh (id=04a24432e642b304da89280591b75669): Total: 0.083 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 3.35 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c8dd45f4d615afb4dabc41c06a6eacfe): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.35 ms, found 4 plugins.
+Asset Pipeline Refresh (id=1bdf98e503f60b546a8f041782fb2c53): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (113.2 KB). Loaded Objects now: 7511.
+Memory consumption went from 398.1 MB to 398.0 MB.
+Total: 14.848000 ms (FindLiveObjects: 0.475300 ms CreateObjectMapping: 0.146700 ms MarkObjects: 13.698800 ms  DeleteObjects: 0.184900 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'ca3b5415a3acbb7c1143a0e0a4994a1e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=286604fe5db850e9a2d6419469987ef4 StaticDependenciesID=e50c0d2b508c57cdd97a95df82ef6ad4 
+Refreshing native plugins compatible for Editor in 2.93 ms, found 4 plugins.
+Asset Pipeline Refresh (id=27355544829ca9e41a4a42ab381d84cf): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (314.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 415.9 MB to 415.6 MB.
+Total: 11.824500 ms (FindLiveObjects: 0.478000 ms CreateObjectMapping: 0.108600 ms MarkObjects: 10.684000 ms  DeleteObjects: 0.298600 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'fc0adec786dd000c212b7d4da45c2d34') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=a461b6d22e313d64a51c3f14ee20178a StaticDependenciesID=5233942866f71d3561fe002387d92c59 
+Refreshing native plugins compatible for Editor in 2.77 ms, found 4 plugins.
+Asset Pipeline Refresh (id=bc1e1b70058ba204582aeb0813d7d0a6): Total: 0.076 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=4225e4fc548be1a43827712f3c0f4276): Total: 0.030 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=8d9c04dfb5810e24a898c0137335985b): Total: 0.007 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.99 ms, found 4 plugins.
+Asset Pipeline Refresh (id=7871f75b6c112364e8c3568de11e8760): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=554ae11bd6f28ac4ba9260436f926536): Total: 0.013 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
+Asset Pipeline Refresh (id=6aef73e33ed818048bdd1bd76a9d37e9): Total: 0.029 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 215 unused Assets / (318.1 KB). Loaded Objects now: 7511.
+Memory consumption went from 424.7 MB to 424.3 MB.
+Total: 10.038000 ms (FindLiveObjects: 0.350100 ms CreateObjectMapping: 0.101100 ms MarkObjects: 9.083300 ms  DeleteObjects: 0.291900 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '601357a94f4c728b3213441e50c1cf80') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=a325d34b00b3cddb8007bda752544ae4 StaticDependenciesID=ad9f70e45104b5cbfbc34ff442a06d74 
+Refreshing native plugins compatible for Editor in 2.58 ms, found 4 plugins.
+Asset Pipeline Refresh (id=52f5c20775d11d74692265e0e8f77535): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (307.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 433.3 MB to 433.0 MB.
+Total: 13.082400 ms (FindLiveObjects: 0.664300 ms CreateObjectMapping: 0.134000 ms MarkObjects: 11.691800 ms  DeleteObjects: 0.348300 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '4883e0b08b1911e672931321df355570') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=43d12e083d5264ec1dba34f08a3c2404 StaticDependenciesID=1eedb40fab9c3fc037976b4627c7b5a0 
+Refreshing native plugins compatible for Editor in 2.36 ms, found 4 plugins.
+Asset Pipeline Refresh (id=7ddc1976253e1014fae2f9c46e8b9262): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/18e0b57d31b629d46a56d3ba7c218eee'
+	Deserialize:            0.499 ms
+	Integration:            0.581 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   1.110 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '96a172951a37a634056162508b8fe308') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5f5e9c02479585013a1a97a181278413 DependenciesID=0427990d3f9c21d9ad8677933e5322ac StaticDependenciesID=9b84fb3e14ab89a3754a0e68e9e9f216 
+Refreshing native plugins compatible for Editor in 2.71 ms, found 4 plugins.
+Asset Pipeline Refresh (id=00b2e6a127be27841b367b82c61e210f): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.823 ms
+	Integration:            29.968 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   30.814 ms
+Unloading 163 unused Assets / (172.4 KB). Loaded Objects now: 7590.
+Memory consumption went from 405.1 MB to 405.0 MB.
+Total: 17.492700 ms (FindLiveObjects: 0.516400 ms CreateObjectMapping: 0.256600 ms MarkObjects: 13.377300 ms  DeleteObjects: 3.116000 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.885 ms
+	Integration:            32.149 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.034 ms
+	Total Operation Time:   33.071 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 399.4 MB to 399.4 MB.
+Total: 14.174000 ms (FindLiveObjects: 0.515600 ms CreateObjectMapping: 0.171100 ms MarkObjects: 13.146500 ms  DeleteObjects: 0.048900 ms)
+
+Asset Pipeline Refresh (id=73756520281b0ff4db02f10280273e9d): Total: 0.031 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=fb62e1cfe0ad24645a6f604df3615741): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.57 ms, found 4 plugins.
+Asset Pipeline Refresh (id=13f1188611d58e341809766577f993c3): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 3.03 ms, found 4 plugins.
+Asset Pipeline Refresh (id=7b88aae207f0f2b4fbcc4041fc5c07a8): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.85 ms, found 4 plugins.
+Asset Pipeline Refresh (id=6bd8dde0333c0ce4f9fb1cadab2592cf): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (95.9 KB). Loaded Objects now: 7511.
+Memory consumption went from 398.1 MB to 398.0 MB.
+Total: 10.287800 ms (FindLiveObjects: 0.467700 ms CreateObjectMapping: 0.135100 ms MarkObjects: 9.355700 ms  DeleteObjects: 0.113000 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '601357a94f4c728b3213441e50c1cf80') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=a325d34b00b3cddb8007bda752544ae4 StaticDependenciesID=ad9f70e45104b5cbfbc34ff442a06d74 
+Refreshing native plugins compatible for Editor in 2.77 ms, found 4 plugins.
+Asset Pipeline Refresh (id=678bfb12c6095db43b53c3ffc2e83894): Total: 0.028 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (1.3 MB). Loaded Objects now: 7511.
+Memory consumption went from 415.9 MB to 414.6 MB.
+Total: 15.096400 ms (FindLiveObjects: 0.499500 ms CreateObjectMapping: 0.238800 ms MarkObjects: 13.719300 ms  DeleteObjects: 0.333600 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '885870133d45943fd0745fcd6996ef25') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=ec74e83313ced086ee0a665559e6305a StaticDependenciesID=a06b74cbe4ba18a6d4a84502f263ae54 
+Refreshing native plugins compatible for Editor in 2.90 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c00bfdf50527e524882ea9dc9d97fc25): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=7bcde7e6f363e6d44b752a1ea667d0c7): Total: 0.016 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=8921ac0a82f817e438fa97db6db1de65): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.76 ms, found 4 plugins.
+Asset Pipeline Refresh (id=680815256c19434499123746ec3d03a2): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=2316d1072439a754cb6c8589edc9b60b): Total: 0.016 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 3.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e242aa5136f69fd4ca86dd85a11c8f41): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 215 unused Assets / (333.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 424.7 MB to 424.3 MB.
+Total: 12.447200 ms (FindLiveObjects: 0.431500 ms CreateObjectMapping: 0.153000 ms MarkObjects: 11.112500 ms  DeleteObjects: 0.280400 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '3986a32fde82d1e04ca4e3a890c6ec0d') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=e3102e419a62ccfba34d9642b658059b StaticDependenciesID=3b9f82a2b3e9bf7b1f6e52a74b3135dc 
+Refreshing native plugins compatible for Editor in 3.29 ms, found 4 plugins.
+Asset Pipeline Refresh (id=eea55af075a31b847943dafa38622738): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (307.1 KB). Loaded Objects now: 7511.
+Memory consumption went from 433.3 MB to 433.0 MB.
+Total: 12.325700 ms (FindLiveObjects: 0.519600 ms CreateObjectMapping: 0.117900 ms MarkObjects: 11.171900 ms  DeleteObjects: 0.270300 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '885870133d45943fd0745fcd6996ef25') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=ec74e83313ced086ee0a665559e6305a StaticDependenciesID=a06b74cbe4ba18a6d4a84502f263ae54 
+Refreshing native plugins compatible for Editor in 3.78 ms, found 4 plugins.
+Asset Pipeline Refresh (id=03fba5488992702438b424a87d4df03c): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/127a54e4ebd1c904d9b0b0522606c62c'
+	Deserialize:            0.490 ms
+	Integration:            0.500 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.615 ms
+	Total Operation Time:   1.609 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '4b01d1a1f242b53c925998eddd6a247d') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0c735a6b8b96c808c676d959ee09c4fb DependenciesID=568513156c078260798c63ea2d2dcf39 StaticDependenciesID=fc738e0705a24bb4f6260ebadf2e8897 
+Refreshing native plugins compatible for Editor in 3.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2a3100e391bdc4f4ba913589d7a4d8f6): Total: 0.088 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.977 ms
+	Integration:            37.202 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   38.203 ms
+Unloading 163 unused Assets / (177.4 KB). Loaded Objects now: 7590.
+Memory consumption went from 405.2 MB to 405.0 MB.
+Total: 11.261300 ms (FindLiveObjects: 0.438000 ms CreateObjectMapping: 0.101600 ms MarkObjects: 10.226600 ms  DeleteObjects: 0.280900 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.717 ms
+	Integration:            28.124 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.016 ms
+	Total Operation Time:   28.858 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 399.4 MB to 399.4 MB.
+Total: 11.046900 ms (FindLiveObjects: 0.441800 ms CreateObjectMapping: 0.110200 ms MarkObjects: 10.180600 ms  DeleteObjects: 0.041500 ms)
+
+Asset Pipeline Refresh (id=26c58ae20e276d441bee8e50f6f72209): Total: 0.028 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=9da17f5ae5503774da0ed965bed8e004): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Asset Pipeline Refresh (id=6511edec60068d0408d11e0abdb4a6db): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 3.68 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f390abcfb4eefd1479168418e85eb8a0): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.19 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e937226d124050d45bd747bea89d5fbb): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (108.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 398.2 MB to 398.0 MB.
+Total: 13.575600 ms (FindLiveObjects: 0.362400 ms CreateObjectMapping: 0.130100 ms MarkObjects: 12.602000 ms  DeleteObjects: 0.170800 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'faed3bef9fa5cfb68700c8dbf1747294') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=e99ea63a643efe0d72a0285bdb035e88 StaticDependenciesID=fe8954f0e52b71df415af018b72ac447 
+Refreshing native plugins compatible for Editor in 3.88 ms, found 4 plugins.
+Asset Pipeline Refresh (id=a9cadeb47f846ce4e80f1e10d6ed039c): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (316.2 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.0 MB to 415.7 MB.
+Total: 14.303300 ms (FindLiveObjects: 0.359000 ms CreateObjectMapping: 0.148800 ms MarkObjects: 13.243800 ms  DeleteObjects: 0.331300 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'e0c9eb13da544055e17174912b1addae') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=bbf0e3aa08a49bf02f6a9f5ce0a96166 StaticDependenciesID=1bc2c862cab75acb4cbe8764d4e73c4e 
+Refreshing native plugins compatible for Editor in 2.79 ms, found 4 plugins.
+Asset Pipeline Refresh (id=a4902d8e3cb914e4fa16e2c062aa8c35): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=313c40c376216894a98807f95445a950): Total: 0.025 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=c9a389482773980419f5292ecb975c2a): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.70 ms, found 4 plugins.
+Asset Pipeline Refresh (id=450371378a5e73a4f91d26305e71b129): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'c6960c13bed3a46564805a4c5cd19d67') in 0.005 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e55fc9700708acc49d04e3f640c6ea83 DependenciesID=359a328e55d052e268249312ea36dff9 StaticDependenciesID=d0d57f5c53f7b50e6a8e936f5c42669c 
+Refreshing native plugins compatible for Editor in 2.63 ms, found 4 plugins.
+Asset Pipeline Refresh (id=813582f8bf754d74b86f4609cf6f02e7): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 3.01 ms, found 4 plugins.
+Asset Pipeline Refresh (id=de9d5ad9e86130d44bf12dd749e91140): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 217 unused Assets / (226.0 KB). Loaded Objects now: 7511.
+Memory consumption went from 422.7 MB to 422.5 MB.
+Total: 12.431200 ms (FindLiveObjects: 0.525100 ms CreateObjectMapping: 0.166300 ms MarkObjects: 11.240200 ms  DeleteObjects: 0.257700 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'faed3bef9fa5cfb68700c8dbf1747294') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=e99ea63a643efe0d72a0285bdb035e88 StaticDependenciesID=fe8954f0e52b71df415af018b72ac447 
+Refreshing native plugins compatible for Editor in 3.45 ms, found 4 plugins.
+Asset Pipeline Refresh (id=044262f78d8a723458800aebb071a53f): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 205 unused Assets / (2.2 MB). Loaded Objects now: 7511.
+Memory consumption went from 433.6 MB to 431.4 MB.
+Total: 11.551300 ms (FindLiveObjects: 0.387600 ms CreateObjectMapping: 0.138100 ms MarkObjects: 10.494300 ms  DeleteObjects: 0.251100 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'e0c9eb13da544055e17174912b1addae') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=bbf0e3aa08a49bf02f6a9f5ce0a96166 StaticDependenciesID=1bc2c862cab75acb4cbe8764d4e73c4e 
+Refreshing native plugins compatible for Editor in 2.16 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ddca36d2e98adb3448311ea576797ea1): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/788e478b04b6bb642b16223905312f02'
+	Deserialize:            0.634 ms
+	Integration:            0.609 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.113 ms
+	Total Operation Time:   1.358 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'ca4fd89807b3a87a35983a70e67e0ea5') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a903c3f0110ead5d281a444ad7414eb7 DependenciesID=353c6f380e4ebd73b45021a901ac2b3d StaticDependenciesID=1e9ca56d4514ac45540af69c86692088 
+Refreshing native plugins compatible for Editor in 2.44 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c5adf097962f37642ad60b4a87eeb62f): Total: 0.057 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.779 ms
+	Integration:            23.916 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   24.716 ms
+Unloading 163 unused Assets / (183.1 KB). Loaded Objects now: 7594.
+Memory consumption went from 405.4 MB to 405.3 MB.
+Total: 10.864500 ms (FindLiveObjects: 0.689700 ms CreateObjectMapping: 0.187500 ms MarkObjects: 9.379300 ms  DeleteObjects: 0.226200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.763 ms
+	Integration:            25.244 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   26.026 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7594.
+Memory consumption went from 399.7 MB to 399.7 MB.
+Total: 14.891500 ms (FindLiveObjects: 0.494700 ms CreateObjectMapping: 0.144900 ms MarkObjects: 13.900600 ms  DeleteObjects: 0.044100 ms)
+
+Asset Pipeline Refresh (id=c6a84c94c4927704abd41b3f897011f6): Total: 0.033 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=cff04bba9d210d0459be44fb4509bd22): Total: 0.004 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Asset Pipeline Refresh (id=a9512776b245b1041882f3bb578e6c97): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'd7012cba97e69f1a874eba93f95446a6') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e94ed63271172547868aceb601c400a4 DependenciesID=5b5c61032683a3feb4af5640911e9171 StaticDependenciesID=0f3f2519ab31b4c4d8fd3688a06391d8 
+Refreshing native plugins compatible for Editor in 3.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ea9f3ad5211faed47b2ad753513889ff): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 3.00 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e89434dd926bc5e4f823686a60b36c07): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (86.3 KB). Loaded Objects now: 7511.
+Memory consumption went from 398.4 MB to 398.3 MB.
+Total: 17.096400 ms (FindLiveObjects: 0.836100 ms CreateObjectMapping: 0.214400 ms MarkObjects: 15.301700 ms  DeleteObjects: 0.124200 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '3c7b64be31c11def724bfc4cf49259f4') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=75553840fa64f789ba79ae00f958ef16 StaticDependenciesID=a21adf9a3470d1ff1c4106563d56a931 
+Refreshing native plugins compatible for Editor in 2.07 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ab2db4fd2ca311947bdb59a6dfa967b5): Total: 0.057 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (193.9 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.2 MB to 416.0 MB.
+Total: 13.119800 ms (FindLiveObjects: 0.921200 ms CreateObjectMapping: 0.322700 ms MarkObjects: 11.365300 ms  DeleteObjects: 0.242300 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '324bc328caa315eb5ddb4b9238b79093') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=1631b5777a3f3f1949c891bf5a66ab73 StaticDependenciesID=a623e93035bf2f7e2ba0bae7c51e7f07 
+Refreshing native plugins compatible for Editor in 3.01 ms, found 4 plugins.
+Asset Pipeline Refresh (id=79cfd1bf9dd5f994baf767b8ae081119): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=7ef908db75c30d740a93a4a853753366): Total: 0.017 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=ecd6bac75faf4e440b5c0dbf0775ba40): Total: 0.004 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.05 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ad1e159dcdb9f1d47af6ef60ac0257be): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'b0c6d67e5299848563a20a567f6d7928') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d1695084dbed0945f3d0344215a456fa DependenciesID=6ab12b9b5b618e2fb3c5aa6974de0a51 StaticDependenciesID=2d9f213c1436a97997252939652dd6c2 
+Refreshing native plugins compatible for Editor in 2.57 ms, found 4 plugins.
+Asset Pipeline Refresh (id=1c3c6ad700eca63438ce8adb9d211266): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Asset Pipeline Refresh (id=48c6012d34d0ddb45bfa85c248de4856): Total: 0.032 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 214 unused Assets / (193.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 422.7 MB to 422.5 MB.
+Total: 14.253500 ms (FindLiveObjects: 0.349500 ms CreateObjectMapping: 0.101100 ms MarkObjects: 12.909900 ms  DeleteObjects: 0.444700 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '3c7b64be31c11def724bfc4cf49259f4') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=75553840fa64f789ba79ae00f958ef16 StaticDependenciesID=a21adf9a3470d1ff1c4106563d56a931 
+Refreshing native plugins compatible for Editor in 2.95 ms, found 4 plugins.
+Asset Pipeline Refresh (id=74f6cea73342ecb499ee10a8a7246d0f): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 202 unused Assets / (202.8 KB). Loaded Objects now: 7511.
+Memory consumption went from 433.6 MB to 433.4 MB.
+Total: 11.928300 ms (FindLiveObjects: 0.351200 ms CreateObjectMapping: 0.098200 ms MarkObjects: 10.956300 ms  DeleteObjects: 0.265900 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '188f5efcb8b5cd3d4906bb0be5bf6c2b') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=9db203ff487f19e74514c3801abd7385 StaticDependenciesID=70daf9122476f558d38a3dc864d094d1 
+Refreshing native plugins compatible for Editor in 2.64 ms, found 4 plugins.
+Asset Pipeline Refresh (id=be771193daf7c7a4692c314531e477dc): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Loaded scene 'Library/Unused/74c2aa64a9b36f74daab8f325169d849'
+	Deserialize:            0.403 ms
+	Integration:            0.615 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.025 ms
+	Total Operation Time:   1.045 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '7d12da36fc953227caf579770eb5013a') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f698cbe7c428e6fa02e236fa8cb9226d DependenciesID=eb10c38ffb1f0595684520ba80f0a1c5 StaticDependenciesID=71e2b4e6ed07e3f7327157fd53876f36 
+Refreshing native plugins compatible for Editor in 2.17 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8b2117744bae7f243a51d09292756040): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.983 ms
+	Integration:            33.540 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   34.543 ms
+Unloading 163 unused Assets / (26.2 MB). Loaded Objects now: 7590.
+Memory consumption went from 431.5 MB to 405.3 MB.
+Total: 18.056400 ms (FindLiveObjects: 0.775400 ms CreateObjectMapping: 0.225200 ms MarkObjects: 15.248200 ms  DeleteObjects: 0.718300 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.839 ms
+	Integration:            31.291 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   32.153 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 399.7 MB to 399.7 MB.
+Total: 14.873000 ms (FindLiveObjects: 0.475800 ms CreateObjectMapping: 0.133400 ms MarkObjects: 13.984000 ms  DeleteObjects: 0.044500 ms)
+
+Asset Pipeline Refresh (id=14740ae1464fb7c43a2b279c793e5c4f): Total: 0.036 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=cf59b608f28d86647869f08209dcd220): Total: 0.004 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.93 ms, found 4 plugins.
+Asset Pipeline Refresh (id=faccc85475f63294294db9c0e8aca382): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'c737fa157ccaa7e9e5fb0986312cdf02') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f61c53b2be6d82ae171a560cb371cc16 DependenciesID=8b3a3a554df8f2149d5665a077165844 StaticDependenciesID=fe6c28985dfa4e6953fa86ffdc4b74d3 
+Refreshing native plugins compatible for Editor in 2.87 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f2499a495d0bb91459f8f9c0843c7230): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.22 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f7b86a2618d5e4d4f9baa66aac088750): Total: 0.030 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (65.0 KB). Loaded Objects now: 7511.
+Memory consumption went from 398.4 MB to 398.4 MB.
+Total: 11.938100 ms (FindLiveObjects: 0.645500 ms CreateObjectMapping: 0.180600 ms MarkObjects: 10.552300 ms  DeleteObjects: 0.114200 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'f7864e632be8b211e4d14db03208eae0') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=71282a012ab1e206fc6560c10ff54417 StaticDependenciesID=5949b3b01ab8b79b18868ffaeff53bc7 
+Refreshing native plugins compatible for Editor in 2.03 ms, found 4 plugins.
+Asset Pipeline Refresh (id=faa12f2746b423243bdb13e9f8d26c28): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (173.3 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.2 MB to 416.1 MB.
+Total: 12.585000 ms (FindLiveObjects: 0.470600 ms CreateObjectMapping: 0.147800 ms MarkObjects: 11.153900 ms  DeleteObjects: 0.387400 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '188f5efcb8b5cd3d4906bb0be5bf6c2b') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=9db203ff487f19e74514c3801abd7385 StaticDependenciesID=70daf9122476f558d38a3dc864d094d1 
+Refreshing native plugins compatible for Editor in 2.96 ms, found 4 plugins.
+Asset Pipeline Refresh (id=6ac77051ccdfc94489eea4df211b2839): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.744 ms
+	Integration:            24.411 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   25.179 ms
+Unloading 159 unused Assets / (183.7 KB). Loaded Objects now: 7588.
+Memory consumption went from 408.0 MB to 407.9 MB.
+Total: 13.822600 ms (FindLiveObjects: 0.425900 ms CreateObjectMapping: 0.103300 ms MarkObjects: 12.856700 ms  DeleteObjects: 0.218600 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '0276e5919b0f93cfbf115a255aa7c54e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=3c11d0bfc4ae82bd05a499978791892d StaticDependenciesID=f4410a43f35ddb2c2e2bad77632b1f83 
+Refreshing native plugins compatible for Editor in 4.20 ms, found 4 plugins.
+Asset Pipeline Refresh (id=a51712e44f6827e4fa87d83e4d258cc8): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.087 ms
+	Integration:            27.146 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   28.256 ms
+Unloading 162 unused Assets / (165.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.1 MB to 407.9 MB.
+Total: 11.659000 ms (FindLiveObjects: 0.445000 ms CreateObjectMapping: 0.116200 ms MarkObjects: 10.573700 ms  DeleteObjects: 0.278900 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.676 ms
+	Integration:            26.709 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   27.409 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.3 MB to 402.3 MB.
+Total: 14.075300 ms (FindLiveObjects: 0.561000 ms CreateObjectMapping: 0.176000 ms MarkObjects: 13.046000 ms  DeleteObjects: 0.039700 ms)
+
+Asset Pipeline Refresh (id=6b256825e49d4ea4b94273311d12226d): Total: 0.028 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=c7220deba096a304f82ec25379f32f69): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.20 ms, found 4 plugins.
+Asset Pipeline Refresh (id=b6ecfdbdba9cee94e987deabbc47cd05): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=23e4b84ec722f53459512a596aeff8f9): Total: 0.017 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.60 ms, found 4 plugins.
+Asset Pipeline Refresh (id=23b27a1c70aba7a4f8e0c40a84d9522d): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (86.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 402.3 MB to 402.2 MB.
+Total: 12.294700 ms (FindLiveObjects: 0.842100 ms CreateObjectMapping: 0.182000 ms MarkObjects: 10.715300 ms  DeleteObjects: 0.111300 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'ee10b777126ad89f752de5a141001e12') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=8caccc8af39aed06bab24b5f93990416 StaticDependenciesID=f937167977f60c93da183309c4756dff 
+Asset Pipeline Refresh (id=c34d0ee194df457418eda05c4b0060ed): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (198.6 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.6 MB to 416.4 MB.
+Total: 11.572500 ms (FindLiveObjects: 0.519600 ms CreateObjectMapping: 0.134300 ms MarkObjects: 10.422500 ms  DeleteObjects: 0.246000 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '8b0327d343fc8ac77c8806d7537d2806') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=c5ac904200179ad02b71da7b8acd6ec3 StaticDependenciesID=d2b7890da9382e23242d3dee3267b29c 
+Refreshing native plugins compatible for Editor in 2.89 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f1ac92b6f1001db4f810c935ad8d150c): Total: 0.066 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.878 ms
+	Integration:            29.600 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.038 ms
+	Total Operation Time:   30.519 ms
+Unloading 159 unused Assets / (184.7 KB). Loaded Objects now: 7588.
+Memory consumption went from 408.0 MB to 407.8 MB.
+Total: 14.176900 ms (FindLiveObjects: 0.459500 ms CreateObjectMapping: 0.117900 ms MarkObjects: 13.074700 ms  DeleteObjects: 0.283800 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'ee10b777126ad89f752de5a141001e12') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=8caccc8af39aed06bab24b5f93990416 StaticDependenciesID=f937167977f60c93da183309c4756dff 
+Refreshing native plugins compatible for Editor in 2.86 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8164a987ec97e7549b3a1fb222ec9368): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.951 ms
+	Integration:            25.874 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   26.845 ms
+Unloading 162 unused Assets / (182.5 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.1 MB to 407.9 MB.
+Total: 12.639600 ms (FindLiveObjects: 0.504900 ms CreateObjectMapping: 0.218000 ms MarkObjects: 11.469000 ms  DeleteObjects: 0.225200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.638 ms
+	Integration:            26.079 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   26.741 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.3 MB to 402.3 MB.
+Total: 13.800500 ms (FindLiveObjects: 0.474200 ms CreateObjectMapping: 0.158100 ms MarkObjects: 12.895000 ms  DeleteObjects: 0.045000 ms)
+
+Asset Pipeline Refresh (id=54396070f916b3649ab73dfaf1da67d2): Total: 0.026 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=9a40c2b5de4b9d54b98e3484ba25a448): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.017 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.00 ms, found 4 plugins.
+Asset Pipeline Refresh (id=685503f83462c514c988835d4f0cc9af): Total: 0.051 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=d0a8ed7538859d5409d0832e4b76523f): Total: 0.015 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Asset Pipeline Refresh (id=8b284466ff96c544d8b604183455d2e6): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (85.1 KB). Loaded Objects now: 7511.
+Memory consumption went from 402.3 MB to 402.2 MB.
+Total: 10.975300 ms (FindLiveObjects: 0.380500 ms CreateObjectMapping: 0.101200 ms MarkObjects: 10.162000 ms  DeleteObjects: 0.112400 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'dfcd1629ae7b9d60d463ebef2de35a24') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=828b39bc1d5f43077285c2387b9097ae StaticDependenciesID=f88a04f4109e3b38120136eaed4b53ea 
+Refreshing native plugins compatible for Editor in 2.30 ms, found 4 plugins.
+Asset Pipeline Refresh (id=4e941ae584189e940a851c8514a5afaf): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (209.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.6 MB to 416.4 MB.
+Total: 10.751000 ms (FindLiveObjects: 0.468800 ms CreateObjectMapping: 0.149600 ms MarkObjects: 9.636600 ms  DeleteObjects: 0.275200 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'b04db181c949083519b55b5075a69e26') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=cc802acfaa23834e02582d1a2bbdcfbd StaticDependenciesID=fff416d44477b0084c3d7007d569590c 
+Asset Pipeline Refresh (id=c3539ad9c86a0d04bafea81446413ab2): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.029 ms
+	Integration:            22.575 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   23.637 ms
+Unloading 159 unused Assets / (117.5 KB). Loaded Objects now: 7588.
+Memory consumption went from 408.2 MB to 408.0 MB.
+Total: 22.523900 ms (FindLiveObjects: 0.718700 ms CreateObjectMapping: 0.214900 ms MarkObjects: 20.645200 ms  DeleteObjects: 0.654300 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '429a9aa2606b303cb13af950e8e49ad0') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=ba4fec8995baa97d7bb997aeddc26e9d StaticDependenciesID=d92661c2831be4f6e0493039101bd66c 
+Refreshing native plugins compatible for Editor in 2.81 ms, found 4 plugins.
+Asset Pipeline Refresh (id=4ad70769573241449bb9f320124cdcd8): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.762 ms
+	Integration:            29.812 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.017 ms
+	Total Operation Time:   30.592 ms
+Unloading 162 unused Assets / (175.9 KB). Loaded Objects now: 7589.
+Memory consumption went from 408.2 MB to 408.0 MB.
+Total: 10.292600 ms (FindLiveObjects: 0.424400 ms CreateObjectMapping: 0.160700 ms MarkObjects: 9.272100 ms  DeleteObjects: 0.216800 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.672 ms
+	Integration:            30.083 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.042 ms
+	Total Operation Time:   30.800 ms
+Unloading 3 unused Assets / (1.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.4 MB to 402.4 MB.
+Total: 16.915600 ms (FindLiveObjects: 0.412900 ms CreateObjectMapping: 0.166800 ms MarkObjects: 16.059300 ms  DeleteObjects: 0.051300 ms)
+
+Asset Pipeline Refresh (id=64a117ea371797b40945f9e51d52e56b): Total: 0.044 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=d229ea674c4630c4bb83749dc115a3aa): Total: 0.006 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.73 ms, found 4 plugins.
+Asset Pipeline Refresh (id=30df8abec2b49ba4f9d258b766a4c5d8): Total: 0.066 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=f56ce9a7c73dbf44a8350913a2085267): Total: 0.019 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.75 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d89b18c604361b4488bdb73b81483f2a): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (112.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 402.4 MB to 402.3 MB.
+Total: 12.498300 ms (FindLiveObjects: 0.593600 ms CreateObjectMapping: 0.209000 ms MarkObjects: 10.883400 ms  DeleteObjects: 0.129400 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '6a07ed03a7c64594fca26a1ca43e4c92') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=1d7c1f636de47349c62880bba35399b8 StaticDependenciesID=09095beba7d7ca834809c2f7a1941e73 
+Refreshing native plugins compatible for Editor in 2.67 ms, found 4 plugins.
+Asset Pipeline Refresh (id=6ae109826c76e794693e04d753efc888): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (206.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.7 MB to 416.5 MB.
+Total: 15.838400 ms (FindLiveObjects: 0.697800 ms CreateObjectMapping: 0.310500 ms MarkObjects: 13.635100 ms  DeleteObjects: 0.447100 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '4354d9479c95835102cb4c6cb053192e') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=a6f9688d34a3b4be9cbfb7c26bc9970e StaticDependenciesID=9677fe8c74eb7012223a7de34880e844 
+Refreshing native plugins compatible for Editor in 2.65 ms, found 4 plugins.
+Asset Pipeline Refresh (id=3d402e13258652842a09eb1ce43d3e19): Total: 0.073 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.965 ms
+	Integration:            25.392 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   26.381 ms
+Unloading 171 unused Assets / (184.7 KB). Loaded Objects now: 7581.
+Memory consumption went from 408.2 MB to 408.0 MB.
+Total: 15.567600 ms (FindLiveObjects: 0.433700 ms CreateObjectMapping: 0.107300 ms MarkObjects: 13.280800 ms  DeleteObjects: 1.227100 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.829 ms
+	Integration:            30.446 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   31.306 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7581.
+Memory consumption went from 402.4 MB to 402.4 MB.
+Total: 14.197000 ms (FindLiveObjects: 0.865500 ms CreateObjectMapping: 0.241500 ms MarkObjects: 12.664100 ms  DeleteObjects: 0.038400 ms)
+
+Asset Pipeline Refresh (id=25df2fe2eea1c7249bb670957675c922): Total: 0.028 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=20ba659a7dd04ac4187b1c80e6c337a9): Total: 0.004 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 4.02 ms, found 4 plugins.
+Asset Pipeline Refresh (id=b148c1a524b5b4a4c9a04f541e8b34cc): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=ca7c749053d6ac24d9a7be8e84104581): Total: 0.018 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.11 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2678f3c94d3189e4483c7bffa4ce9d3b): Total: 0.029 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (74.5 KB). Loaded Objects now: 7502.
+Memory consumption went from 402.4 MB to 402.3 MB.
+Total: 12.223500 ms (FindLiveObjects: 0.487300 ms CreateObjectMapping: 0.155900 ms MarkObjects: 11.039100 ms  DeleteObjects: 0.204200 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '6a07ed03a7c64594fca26a1ca43e4c92') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=1d7c1f636de47349c62880bba35399b8 StaticDependenciesID=09095beba7d7ca834809c2f7a1941e73 
+Refreshing native plugins compatible for Editor in 2.25 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2bed09c8ef7d91045b0c8573ad9928f0): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (174.2 KB). Loaded Objects now: 7511.
+Memory consumption went from 416.7 MB to 416.6 MB.
+Total: 11.876200 ms (FindLiveObjects: 0.394900 ms CreateObjectMapping: 0.137100 ms MarkObjects: 10.843700 ms  DeleteObjects: 0.281400 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '4354d9479c95835102cb4c6cb053192e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=a6f9688d34a3b4be9cbfb7c26bc9970e StaticDependenciesID=9677fe8c74eb7012223a7de34880e844 
+Refreshing native plugins compatible for Editor in 3.66 ms, found 4 plugins.
+Asset Pipeline Refresh (id=7ba875a1d05fa884cadfeed11ceaf87b): Total: 0.031 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.867 ms
+	Integration:            38.552 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   39.440 ms
+Unloading 162 unused Assets / (165.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.2 MB to 408.0 MB.
+Total: 12.947800 ms (FindLiveObjects: 0.427100 ms CreateObjectMapping: 0.103000 ms MarkObjects: 11.590200 ms  DeleteObjects: 0.361500 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.841 ms
+	Integration:            28.885 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.037 ms
+	Total Operation Time:   29.766 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.4 MB to 402.4 MB.
+Total: 10.679200 ms (FindLiveObjects: 0.453400 ms CreateObjectMapping: 0.104500 ms MarkObjects: 9.783100 ms  DeleteObjects: 0.039300 ms)
+
+Loaded scene 'Library/Unused/12867dd8c111bad4991bc250f44c8430'
+	Deserialize:            0.282 ms
+	Integration:            0.472 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   0.774 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '474ac9d7930944774ef68e0d16921cc7') in 0.002 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b6d867db5123e41e2979616713963c5e DependenciesID=59433867ae2b0adcc95ad271bd8bafca StaticDependenciesID=698456487d5a2d40b6832149dce02e85 
+Refreshing native plugins compatible for Editor in 2.18 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e63d786fc64554446b31cfd17f7d51de): Total: 0.074 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.961 ms
+	Integration:            38.508 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.026 ms
+	Total Operation Time:   39.498 ms
+Unloading 17 unused Assets / (49.5 KB). Loaded Objects now: 7617.
+Memory consumption went from 400.7 MB to 400.7 MB.
+Total: 15.703600 ms (FindLiveObjects: 0.645800 ms CreateObjectMapping: 0.171100 ms MarkObjects: 14.492900 ms  DeleteObjects: 0.066500 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.878 ms
+	Integration:            29.395 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.042 ms
+	Total Operation Time:   30.317 ms
+Unloading 3 unused Assets / (1.0 KB). Loaded Objects now: 7617.
+Memory consumption went from 400.6 MB to 400.6 MB.
+Total: 16.770300 ms (FindLiveObjects: 0.898200 ms CreateObjectMapping: 0.216200 ms MarkObjects: 15.165500 ms  DeleteObjects: 0.042100 ms)
+
+Asset Pipeline Refresh (id=8174cb85f069b6d419e5342a0ff29322): Total: 0.030 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=576d533f0c5b00e47a58eaa23599404e): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.08 ms, found 4 plugins.
+Asset Pipeline Refresh (id=5e7199f1a4283fe4491476ab6b476dbe): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.56 ms, found 4 plugins.
+Asset Pipeline Refresh (id=24be61884f5ce7241a3af7b6af5bd2e8): Total: 0.057 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=9540231f0d9d51e48aca513fa59349b2): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (96.9 KB). Loaded Objects now: 7511.
+Memory consumption went from 399.2 MB to 399.1 MB.
+Total: 14.089100 ms (FindLiveObjects: 0.699800 ms CreateObjectMapping: 0.275100 ms MarkObjects: 12.611400 ms  DeleteObjects: 0.160500 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '1221b1aa97d86a639f9e6637424b1794') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=505a175c8f199b2abbad67a5a8b26aeb StaticDependenciesID=ee21e63a007d8feb79f0c1c538d95e76 
+Refreshing native plugins compatible for Editor in 2.25 ms, found 4 plugins.
+Asset Pipeline Refresh (id=23dbfe7947ba504438bd467548d71e24): Total: 0.054 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (173.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 417.0 MB to 416.8 MB.
+Total: 13.377200 ms (FindLiveObjects: 0.548200 ms CreateObjectMapping: 0.284000 ms MarkObjects: 11.963600 ms  DeleteObjects: 0.325800 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'e5c5ad5a413ca9219e4f63aa11606535') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=6626b1bf6486aac4eddec71ca1bc72ca StaticDependenciesID=954b78ed03ec65d4dceccada2208b387 
+Refreshing native plugins compatible for Editor in 2.51 ms, found 4 plugins.
+Asset Pipeline Refresh (id=33a419883fd39524a8140f132bd39a82): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.887 ms
+	Integration:            22.452 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   23.365 ms
+Unloading 162 unused Assets / (200.5 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.4 MB to 408.2 MB.
+Total: 12.018400 ms (FindLiveObjects: 0.849200 ms CreateObjectMapping: 0.174000 ms MarkObjects: 10.438400 ms  DeleteObjects: 0.244800 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.993 ms
+	Integration:            33.543 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.065 ms
+	Total Operation Time:   34.604 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.7 MB to 402.7 MB.
+Total: 17.600300 ms (FindLiveObjects: 0.902200 ms CreateObjectMapping: 0.250600 ms MarkObjects: 15.148200 ms  DeleteObjects: 0.066500 ms)
+
+Loaded scene 'Library/Unused/c9f2101e3c43d004a93d4d46716d1feb'
+	Deserialize:            0.511 ms
+	Integration:            0.665 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   1.200 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '6d114762a8d90ee778bdf15765c9f0f7') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1ae356d7e994f893ea892fabd641bbab DependenciesID=0341ab471fda531b6e26923dbd9d4253 StaticDependenciesID=dc5635e19412a9c4bc40f4b6a62264df 
+Refreshing native plugins compatible for Editor in 2.54 ms, found 4 plugins.
+Asset Pipeline Refresh (id=0470ad0abc3d1d440ba13ab62798bc46): Total: 0.109 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.822 ms
+	Integration:            21.110 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   21.958 ms
+Unloading 18 unused Assets / (44.8 KB). Loaded Objects now: 7616.
+Memory consumption went from 400.7 MB to 400.7 MB.
+Total: 11.330500 ms (FindLiveObjects: 0.418900 ms CreateObjectMapping: 0.103900 ms MarkObjects: 10.476700 ms  DeleteObjects: 0.110100 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.836 ms
+	Integration:            24.983 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.025 ms
+	Total Operation Time:   25.847 ms
+Unloading 4 unused Assets / (10.7 KB). Loaded Objects now: 7616.
+Memory consumption went from 400.6 MB to 400.6 MB.
+Total: 13.674700 ms (FindLiveObjects: 0.470900 ms CreateObjectMapping: 0.147400 ms MarkObjects: 12.692300 ms  DeleteObjects: 0.076300 ms)
+
+Asset Pipeline Refresh (id=e4f7b6a0262f42942befada3925ec26b): Total: 0.029 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=422a2860ca9f1a14fa56258c1b0883e6): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 2.13 ms, found 4 plugins.
+Asset Pipeline Refresh (id=bc9f36b17aaf02e45847fa2a95fd602c): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 3.90 ms, found 4 plugins.
+Asset Pipeline Refresh (id=dfbc04a53be0ac74c88decc403edbcb1): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Asset Pipeline Refresh (id=273bd73f6adf26b44875bda6d5cff9f5): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (59.2 KB). Loaded Objects now: 7511.
+Memory consumption went from 399.2 MB to 399.1 MB.
+Total: 13.722400 ms (FindLiveObjects: 0.653600 ms CreateObjectMapping: 0.113000 ms MarkObjects: 12.244100 ms  DeleteObjects: 0.228600 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '78d398e6e0787fa5ee09e54d23741101') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=899b44cf5101cef8aafe29782c7c12d9 StaticDependenciesID=042a6ec44f7c7e2a3c9fda5b32de2dad 
+Refreshing native plugins compatible for Editor in 3.26 ms, found 4 plugins.
+Asset Pipeline Refresh (id=bfdd1b67aca1b334693822feb8ce469d): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (203.1 KB). Loaded Objects now: 7511.
+Memory consumption went from 417.0 MB to 416.8 MB.
+Total: 15.994000 ms (FindLiveObjects: 0.584400 ms CreateObjectMapping: 0.182600 ms MarkObjects: 14.291800 ms  DeleteObjects: 0.477000 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'c2a9c945f087abdc3e487ff471a27a0a') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=af252730e1bd81f07fce4b5d6394cd58 StaticDependenciesID=002e857c9fa59c4359f1cb42e6d4f75a 
+Refreshing native plugins compatible for Editor in 2.67 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f17a0cd333c3d894a91093483fa1c06d): Total: 0.069 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.822 ms
+	Integration:            26.339 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   27.182 ms
+Unloading 162 unused Assets / (187.4 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.5 MB to 408.3 MB.
+Total: 17.460500 ms (FindLiveObjects: 0.445200 ms CreateObjectMapping: 0.160500 ms MarkObjects: 16.378400 ms  DeleteObjects: 0.221200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.813 ms
+	Integration:            26.365 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   27.207 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.7 MB to 402.7 MB.
+Total: 12.013000 ms (FindLiveObjects: 0.642600 ms CreateObjectMapping: 0.173700 ms MarkObjects: 10.688000 ms  DeleteObjects: 0.038000 ms)
+
+Loaded scene 'Library/Unused/ae70d191cef42b448b5fa919adc6bdab'
+	Deserialize:            0.375 ms
+	Integration:            0.445 ms
+	Integration of assets:  0.001 ms
+	Thread Wait Time:       0.022 ms
+	Total Operation Time:   0.844 ms
+Asset Pipeline Refresh (id=1be6976d81045f640a7ed7b7cc3c5ae8): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.755 ms
+	Integration:            27.952 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.023 ms
+	Total Operation Time:   28.731 ms
+Unloading 6 unused Assets / (18.3 KB). Loaded Objects now: 7617.
+Memory consumption went from 402.9 MB to 402.9 MB.
+Total: 12.739100 ms (FindLiveObjects: 0.475800 ms CreateObjectMapping: 0.133700 ms MarkObjects: 11.365200 ms  DeleteObjects: 0.090200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.867 ms
+	Integration:            24.519 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   25.412 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7617.
+Memory consumption went from 402.9 MB to 402.9 MB.
+Total: 15.735000 ms (FindLiveObjects: 0.540100 ms CreateObjectMapping: 0.138900 ms MarkObjects: 14.507200 ms  DeleteObjects: 0.072400 ms)
+
+Asset Pipeline Refresh (id=f658b4d50382a87459815a8da0104b97): Total: 0.030 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=09e2fbfaf2fee134285a47de8fd7cffd): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 4.15 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f682576f97ff3d349b080862e688056c): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=556c41c88aa60b0499df39894c41d89a): Total: 0.018 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 4.48 ms, found 4 plugins.
+Asset Pipeline Refresh (id=5a2ad70d4457a4b429e1d2c608349e10): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (39.7 KB). Loaded Objects now: 7511.
+Memory consumption went from 402.7 MB to 402.7 MB.
+Total: 18.355200 ms (FindLiveObjects: 0.684600 ms CreateObjectMapping: 0.204300 ms MarkObjects: 16.824700 ms  DeleteObjects: 0.178700 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: 'bc5f5c941a4817585725618e67444800') in 0.004 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=4976328a3013ea571c2b53ba15f1e90a StaticDependenciesID=7f84a45abe6598711c2ca05c5d96a0d0 
+Refreshing native plugins compatible for Editor in 5.49 ms, found 4 plugins.
+Asset Pipeline Refresh (id=7e4c172a9a236ea4b986271b9af148b7): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (5.5 MB). Loaded Objects now: 7511.
+Memory consumption went from 417.0 MB to 411.5 MB.
+Total: 27.669600 ms (FindLiveObjects: 1.166400 ms CreateObjectMapping: 0.645100 ms MarkObjects: 24.262700 ms  DeleteObjects: 0.985800 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '04e0512decf1a2ea6f8253787105e1dd') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=6790ef6accc834521090847c600f55aa StaticDependenciesID=d4d8ac77a782da6f8045fcf885aac495 
+Refreshing native plugins compatible for Editor in 2.70 ms, found 4 plugins.
+Asset Pipeline Refresh (id=85be9a4cc136f8648be3c2ef9f9ac68d): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.865 ms
+	Integration:            33.345 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.020 ms
+	Total Operation Time:   34.232 ms
+Unloading 162 unused Assets / (189.8 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.5 MB to 408.3 MB.
+Total: 15.877800 ms (FindLiveObjects: 0.586200 ms CreateObjectMapping: 0.194100 ms MarkObjects: 14.506300 ms  DeleteObjects: 0.312900 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.965 ms
+	Integration:            23.988 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.198 ms
+	Total Operation Time:   25.155 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.7 MB to 402.7 MB.
+Total: 11.223000 ms (FindLiveObjects: 0.439400 ms CreateObjectMapping: 0.101000 ms MarkObjects: 10.400900 ms  DeleteObjects: 0.035000 ms)
+
+Loaded scene 'Library/Unused/26a7164d274f2cd4eb7adbe6d6449479'
+	Deserialize:            0.481 ms
+	Integration:            0.523 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   1.030 ms
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: '00a886f7a39b8e66c880fcc680382c8d') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=872e84e1eff8ee2596d422ab6dc68346 DependenciesID=1a05ed216c31b2c644ce167dd7c6694f StaticDependenciesID=5e9566a0e43b630027e7fcb1628c34fc 
+Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2ea184bd9088f2647b056c048855268c): Total: 0.088 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.200 ms
+	Integration:            34.762 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.031 ms
+	Total Operation Time:   35.997 ms
+Unloading 17 unused Assets / (74.4 KB). Loaded Objects now: 7614.
+Memory consumption went from 400.7 MB to 400.7 MB.
+Total: 14.896700 ms (FindLiveObjects: 0.424800 ms CreateObjectMapping: 0.110900 ms MarkObjects: 14.065500 ms  DeleteObjects: 0.059400 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            1.292 ms
+	Integration:            27.776 ms
+	Integration of assets:  0.005 ms
+	Thread Wait Time:       0.056 ms
+	Total Operation Time:   29.129 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7614.
+Memory consumption went from 400.7 MB to 400.6 MB.
+Total: 13.101100 ms (FindLiveObjects: 0.429100 ms CreateObjectMapping: 0.102800 ms MarkObjects: 12.191800 ms  DeleteObjects: 0.042800 ms)
+
+Asset Pipeline Refresh (id=543a673a11192ae47a236f68a7cf98c6): Total: 0.030 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=483ea55430e019b438ff8dbb0cd33a02): Total: 0.006 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.62 ms, found 4 plugins.
+Asset Pipeline Refresh (id=38ef5cc37150f5046aa0050008bb7aea): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 14ab92a1ec80534468e1243d83d2f152 - Path: Assets/PolyForgeGenerated/Prefabs/crate.prefab' with importer (PrefabImporter)
+Imported 'GUID: 14ab92a1ec80534468e1243d83d2f152' -> (Import Result ID: 'dc93ec07791f157493a168badacef313') in 0.003 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=64314e2b8e192f5ec86ecbce72dbe15f DependenciesID=a6698b4268575263be4077a9f2a153ab StaticDependenciesID=3581abf83b8676e351de413d4e235e39 
+Refreshing native plugins compatible for Editor in 2.20 ms, found 4 plugins.
+Asset Pipeline Refresh (id=3f0338e0df5bc04419cde58b24de3aef): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
+Asset Pipeline Refresh (id=fd39d937d5c27be4a83de91356c2017d): Total: 0.033 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (97.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 399.2 MB to 399.1 MB.
+Total: 11.521700 ms (FindLiveObjects: 0.654200 ms CreateObjectMapping: 0.173400 ms MarkObjects: 9.993700 ms  DeleteObjects: 0.119200 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '66b974ec15733b351f4cf0122eb9c853') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=fef5c90918a25a21cbb99bf8085078fc StaticDependenciesID=efaa7e666cd9724e93cf792013047d93 
+Refreshing native plugins compatible for Editor in 2.28 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8a6668b7b97dc7e4c9fbafc68f45bfb8): Total: 0.082 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (168.4 KB). Loaded Objects now: 7511.
+Memory consumption went from 417.0 MB to 416.9 MB.
+Total: 17.827400 ms (FindLiveObjects: 0.703100 ms CreateObjectMapping: 0.211500 ms MarkObjects: 15.585400 ms  DeleteObjects: 0.496900 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '46d3c9b92d45ae6a618e6a2d07d8e227') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=acd9624456a0e46696847817f67e18f2 StaticDependenciesID=9b4f4abd7222eaa259436f84ff5248b8 
+Refreshing native plugins compatible for Editor in 3.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=771481e48a8582f4e8a77f54bd3a1ec0): Total: 0.085 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.024 ms
+	Integration:            36.131 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.021 ms
+	Total Operation Time:   37.178 ms
+Unloading 162 unused Assets / (154.2 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.5 MB to 408.3 MB.
+Total: 16.305900 ms (FindLiveObjects: 0.869300 ms CreateObjectMapping: 0.232100 ms MarkObjects: 14.392000 ms  DeleteObjects: 0.353600 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            1.026 ms
+	Integration:            34.030 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   35.084 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.8 MB to 402.8 MB.
+Total: 15.777800 ms (FindLiveObjects: 0.644700 ms CreateObjectMapping: 0.184800 ms MarkObjects: 14.168500 ms  DeleteObjects: 0.038800 ms)
+
+Refreshing native plugins compatible for Editor in 3.65 ms, found 4 plugins.
+Asset Pipeline Refresh (id=184b7fde23de790479ae5a7ea2e71e3d): Total: 0.102 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Refreshing native plugins compatible for Editor in 2.28 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e8f43a5438c34e744ac8178930dfe864): Total: 0.097 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=1e300f3486efd4a46bacebbb9f41daea): Total: 0.005 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=57941e361e6545b4ebaf089279d32c27): Total: 0.021 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.31 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2c7c9c016007fd14bb20f86f29fb44e2): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=a07014fdbd8a4a24386a79c6fcf10392): Total: 0.018 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 2.63 ms, found 4 plugins.
+Asset Pipeline Refresh (id=366045a4346d1f8448b2a108ebc9f41b): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (101.1 KB). Loaded Objects now: 7511.
+Memory consumption went from 399.2 MB to 399.2 MB.
+Total: 15.697700 ms (FindLiveObjects: 0.706400 ms CreateObjectMapping: 0.192000 ms MarkObjects: 13.898000 ms  DeleteObjects: 0.121800 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '494cf2b21ef96f33625754c45b4c6678') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=f6eada2611ae4998d870a0459b8ada87 StaticDependenciesID=72cd0dd7fca138ba2089529ac4e1215f 
+Refreshing native plugins compatible for Editor in 2.46 ms, found 4 plugins.
+Asset Pipeline Refresh (id=b177a4c71836bf14d9c3a3eaca63a086): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (198.8 KB). Loaded Objects now: 7511.
+Memory consumption went from 417.1 MB to 416.9 MB.
+Total: 15.770300 ms (FindLiveObjects: 0.626400 ms CreateObjectMapping: 0.222800 ms MarkObjects: 14.131200 ms  DeleteObjects: 0.336500 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: '1df4b42c6ccb4e006eeba6f94cd8087d') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=ba056ef7666ac763e1dedbdcf40d1aba StaticDependenciesID=7405e51ede78993577f288c85486119f 
+Refreshing native plugins compatible for Editor in 2.21 ms, found 4 plugins.
+Asset Pipeline Refresh (id=bb8691921e02a9040bdff13054802991): Total: 0.080 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.929 ms
+	Integration:            34.178 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   35.136 ms
+Unloading 162 unused Assets / (2.2 MB). Loaded Objects now: 7590.
+Memory consumption went from 408.5 MB to 406.3 MB.
+Total: 15.737000 ms (FindLiveObjects: 0.473200 ms CreateObjectMapping: 0.128900 ms MarkObjects: 14.387100 ms  DeleteObjects: 0.401400 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.888 ms
+	Integration:            29.482 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.018 ms
+	Total Operation Time:   30.390 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.8 MB to 402.8 MB.
+Total: 14.423900 ms (FindLiveObjects: 0.484500 ms CreateObjectMapping: 0.109500 ms MarkObjects: 13.498600 ms  DeleteObjects: 0.040500 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.032 ms
+	Integration:            33.764 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.019 ms
+	Total Operation Time:   34.817 ms
+Unloading 5 unused Assets / (5.6 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.8 MB to 402.8 MB.
+Total: 14.093000 ms (FindLiveObjects: 0.507500 ms CreateObjectMapping: 0.331900 ms MarkObjects: 12.966400 ms  DeleteObjects: 0.052200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.804 ms
+	Integration:            33.185 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.027 ms
+	Total Operation Time:   34.020 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.8 MB to 402.8 MB.
+Total: 18.228000 ms (FindLiveObjects: 0.800700 ms CreateObjectMapping: 0.229800 ms MarkObjects: 16.006400 ms  DeleteObjects: 0.062100 ms)
+
+Asset Pipeline Refresh (id=6dc747c44c2b20a4b82755800e355156): Total: 0.032 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=24ea837e8d0d1a940b867f9477e7dcf8): Total: 0.006 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Importing 'GUID: 4652143d167ef6644aa9c76ad7db3113 - Path: Assets/PolyForgeGenerated/Models/crate.fbx' with importer (FBXImporter)
+Imported 'GUID: 4652143d167ef6644aa9c76ad7db3113' -> (Import Result ID: '12a69c637b566eb6b8434d2ffd3f24d9') in 0.025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=687b946dd04c64831f335dff931e6923 DependenciesID=379530f26f46bab29127c375f8a97a20 StaticDependenciesID=b67b5be4b669f3ff61a3e9c8a9915f24 
+Refreshing native plugins compatible for Editor in 3.14 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f20de9b24aa03b44488f5871e3f4087d): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=07a553d7925b8d043a0dbcfb1e6754a4): Total: 0.017 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc - Path: Assets/PolyForgeGenerated/Materials/crate/accent.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 10d83e1dad367244dbd8115ecbd0c6cc' -> (Import Result ID: 'f3fc99efd7cd00fce5421a738c94405f') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=88baf329723378f0370d3a89dcc9e822 DependenciesID=f2ede0f0750538990a32c295d7f17ff0 StaticDependenciesID=fa706f9c0a503463a09ba2e1ffd935d7 
+Importing 'GUID: a10043db41b4ee843a59ffde2f9e91fc - Path: Assets/PolyForgeGenerated/Materials/crate/trim.mat' with importer (NativeFormatImporter)
+Imported 'GUID: a10043db41b4ee843a59ffde2f9e91fc' -> (Import Result ID: '233e283f73673b85b8b16fc32fcaa169') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cc22b309d268bf8952a051e17c61b828 DependenciesID=3b227b59c271626c7ba8636b4b820835 StaticDependenciesID=6670ee31371fb85e8f71e4c007422276 
+Importing 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f - Path: Assets/PolyForgeGenerated/Materials/crate/base.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 1dc654c80a5acd5458a095eedcb8fc4f' -> (Import Result ID: 'f3a2df7e8ff72c831868022ac0bcab74') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=495a1cc27089e0729de0eb812b4bb322 DependenciesID=8c436157f9235f6c0023bd67e7db7541 StaticDependenciesID=d1b1a12dcc9e7e9da4db115abdb3a889 
+Refreshing native plugins compatible for Editor in 3.57 ms, found 4 plugins.
+Asset Pipeline Refresh (id=cfc783afb43167e42a48fe9ef535c3e9): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 69 unused Assets / (64.7 KB). Loaded Objects now: 7511.
+Memory consumption went from 402.8 MB to 402.7 MB.
+Total: 15.967300 ms (FindLiveObjects: 0.550800 ms CreateObjectMapping: 0.180500 ms MarkObjects: 14.503400 ms  DeleteObjects: 0.190100 ms)
+
+Importing 'GUID: 046b96c1732a5ec49866523d65673cc9 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: 046b96c1732a5ec49866523d65673cc9' -> (Import Result ID: '8de3af7cc880d4664866ca1e3043663d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d8e99c3247601c876e76a44657730f36 DependenciesID=fb5516d6b777cf10e4cd1f896c5e6fd8 StaticDependenciesID=916f93f9e35590ed61c6619fb77cb451 
+Refreshing native plugins compatible for Editor in 2.29 ms, found 4 plugins.
+Asset Pipeline Refresh (id=cc67e72100daa9042aed31b227dd55fc): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 22 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 203 unused Assets / (193.5 KB). Loaded Objects now: 7511.
+Memory consumption went from 417.1 MB to 416.9 MB.
+Total: 12.002600 ms (FindLiveObjects: 0.487100 ms CreateObjectMapping: 0.134400 ms MarkObjects: 10.888600 ms  DeleteObjects: 0.244800 ms)
+
+Importing 'GUID: 4f0cf4d202f188142baf15594129311e - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: 4f0cf4d202f188142baf15594129311e' -> (Import Result ID: 'bb99b66a1b856484d2a46b8555a5e65b') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=98b710014cc6c6c3b9edc6c39d194031 DependenciesID=ba73b88f582e523dd9a1307b002ebdf2 StaticDependenciesID=54fa159cb229a6b3792855d0a786a380 
+Refreshing native plugins compatible for Editor in 2.43 ms, found 4 plugins.
+Asset Pipeline Refresh (id=40210a45e1f574d41912def68040b242): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            0.914 ms
+	Integration:            28.215 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.028 ms
+	Total Operation Time:   29.160 ms
+Unloading 162 unused Assets / (197.2 KB). Loaded Objects now: 7590.
+Memory consumption went from 408.5 MB to 408.3 MB.
+Total: 16.979200 ms (FindLiveObjects: 0.442800 ms CreateObjectMapping: 0.209200 ms MarkObjects: 15.591800 ms  DeleteObjects: 0.283100 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            0.849 ms
+	Integration:            25.910 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.024 ms
+	Total Operation Time:   26.786 ms
+Unloading 3 unused Assets / (5.0 KB). Loaded Objects now: 7590.
+Memory consumption went from 402.8 MB to 402.8 MB.
+Total: 11.554200 ms (FindLiveObjects: 0.407000 ms CreateObjectMapping: 0.102200 ms MarkObjects: 10.765700 ms  DeleteObjects: 0.041100 ms)
+
+Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/Unity Technologies/com_unity_template_urp-blank\TestResults.xml
+Saving results to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase5\probe\review-native-green.xml
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 57 unused Assets / (81.3 KB). Loaded Objects now: 7508.
+Memory consumption went from 403.4 MB to 403.3 MB.
+Total: 11.032600 ms (FindLiveObjects: 0.434400 ms CreateObjectMapping: 0.187500 ms MarkObjects: 10.061500 ms  DeleteObjects: 0.128000 ms)
+
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 2 (Failed). One or more tests failed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 16067; Successful remaps: 476
+Serialized file version minimum: 22, current 23
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Shut down.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 0000000000003DE8, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000004848, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000455C, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000003DE8, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000004848, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000455C, mono_thread_manage will ignore it
+
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793171038654,"processId":17936,"allocatedMemory":14642745,"memoryLabels":[{"Default":178058},{"Permanent":15516},{"NewDelete":70287},{"Thread":4197944},{"Manager":22909},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":841698},{"Material":68},{"GfxDevice":55968},{"Animation":952},{"Audio":696},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":16768},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1259880},{"BaseObject":49296},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":19261},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":15563},{"StaticString":3808},{"Utility":2674806},{"Curl":2559},{"PoolAlloc":2264},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":288},{"WebRequest":552},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":464},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":119376},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4490026},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40465},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":220},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3336},{"Windowing":456},{"Licensing":1264},{"AssetReference":32},{"IPCStream":32}]}

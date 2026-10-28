@@ -105,6 +105,9 @@ def execute_recipe(
         "audit_worker_sha256": hashlib.sha256(
             files("polyforge.blender").joinpath("audit_worker.py").read_bytes()
         ).hexdigest(),
+        "interchange_sha256": hashlib.sha256(
+            files("polyforge.blender").joinpath("interchange.py").read_bytes()
+        ).hexdigest(),
         "executable_sha256": hashlib.sha256(executable.read_bytes()).hexdigest(),
         "executable": str(executable),
         "required_version": "5.2.2",

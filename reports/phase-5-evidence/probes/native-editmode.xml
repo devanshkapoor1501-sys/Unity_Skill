@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.7500934">
+  <test-suite type="TestSuite" id="1000" name="com.unity.template.urp-blank" fullname="com.unity.template.urp-blank" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.750093" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1010" name="PolyForge.Editor.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase5/probe/UnityProject/Library/ScriptAssemblies/PolyForge.Editor.Tests.dll" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.733778" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="19760" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1011" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.733033" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1012" name="Editor" fullname="PolyForge.Editor" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.732756" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1013" name="Tests" fullname="PolyForge.Editor.Tests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.732503" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="ImportTests" fullname="PolyForge.Editor.Tests.ImportTests" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:16Z" duration="5.731514" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" fullname="PolyForge.Editor.Tests.ImportTests.ImportedDimensionsSocketsAndBindingsMatchIndependentSource" methodname="ImportedDimensionsSocketsAndBindingsMatchIndependentSource" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1006960090" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:10Z" duration="0.144269" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1009" name="IndependentFaultsAreDetected" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:15Z" duration="4.694433" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1005" name="IndependentFaultsAreDetected(&quot;scale&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;scale&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="800388593" result="Passed" start-time="2026-10-28 06:23:10Z" end-time="2026-10-28 06:23:11Z" duration="1.435712" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1006" name="IndependentFaultsAreDetected(&quot;material&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;material&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="994209635" result="Passed" start-time="2026-10-28 06:23:11Z" end-time="2026-10-28 06:23:13Z" duration="1.121369" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="IndependentFaultsAreDetected(&quot;socket&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;socket&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="40278542" result="Passed" start-time="2026-10-28 06:23:13Z" end-time="2026-10-28 06:23:14Z" duration="1.111788" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1008" name="IndependentFaultsAreDetected(&quot;component&quot;)" fullname="PolyForge.Editor.Tests.ImportTests.IndependentFaultsAreDetected(&quot;component&quot;)" methodname="IndependentFaultsAreDetected" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="854535937" result="Passed" start-time="2026-10-28 06:23:14Z" end-time="2026-10-28 06:23:15Z" duration="1.020826" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1003" name="NativeMaterialParametersMatchLinearSidecars" fullname="PolyForge.Editor.Tests.ImportTests.NativeMaterialParametersMatchLinearSidecars" methodname="NativeMaterialParametersMatchLinearSidecars" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1136249639" result="Passed" start-time="2026-10-28 06:23:15Z" end-time="2026-10-28 06:23:15Z" duration="0.007670" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" fullname="PolyForge.Editor.Tests.ImportTests.RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" methodname="RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances" classname="PolyForge.Editor.Tests.ImportTests" runstate="Runnable" seed="1174792793" result="Passed" start-time="2026-10-28 06:23:15Z" end-time="2026-10-28 06:23:16Z" duration="0.857637" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/Unity Technologies/com_unity_template_urp-blank\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

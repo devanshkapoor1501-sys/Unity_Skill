@@ -1,0 +1,19 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____ test_unity_retains_only_os_local_license_root_and_redirects_upm_state ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-7/test_unity_retains_only_os_loc0')
+
+    def test_unity_retains_only_os_local_license_root_and_redirects_upm_state(tmp_path: Path):
+        from polyforge.security.policy import worker_environment
+        env=worker_environment(Path('C:/Unity/Unity.exe'),tmp_path/'tmp',{'LOCALAPPDATA':'C:/actual-license-root','TOKEN':'canary'},unity_profile=tmp_path/'profile')
+>       assert env['LOCALAPPDATA']=='C:/actual-license-root'
+E       AssertionError: assert 'C:\\Users\\D...ppData\\Local' == 'C:/actual-license-root'
+E         
+E         - C:/actual-license-root
+E         + C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\pytest-of-Divansh Kapoor\pytest-7\test_unity_retains_only_os_loc0\profile\AppData\Local
+
+tests\test_phase5_contracts.py:113: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase5_contracts.py::test_unity_retains_only_os_local_license_root_and_redirects_upm_state
+1 failed in 0.29s
