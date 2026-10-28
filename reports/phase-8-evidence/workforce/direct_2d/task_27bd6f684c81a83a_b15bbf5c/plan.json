@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "task_27bd6f684c81a83a_b15bbf5c",
+  "engine_digest": "b15bbf5cdfbd66a305404279f8c2431db62c16c029db5a50182094f41e328a6a",
+  "workspace_inputs": {
+    "polyforge.toml": "9681adc3e56da1bf21f312a3546954900930f73809ed403b441e0187c629eca0",
+    "input/atlas.json": "36c9669b4c72c17c5c3de09dafff9c63aa25975607897d5f17c1b68453c04d09",
+    "input/atlas.png": "9853b86f382426817fb0973af312695eaf6211d88e8b625aeb0b9d6664c17646",
+    "input/frame-0.png": "86b1dbd07d98188c234d0fa0ce1fe5642b4a0473f305b7c4c806d102e2900cdd",
+    "input/frame-1.png": "2a0194bf5dae5c619bb4078dab77f60ef71f745a1b1ae3f9ba13e040623a4974",
+    "input/frame-2.png": "850f368e25e30c1b1f1b399ba234cb1a33bf6c5ae52455f3342fb1975d60240d",
+    "input/frame-3.png": "42b2b3e4e11522be5425b6f32bdd5c5162713fdd9d2ae903d313a88ac3a39266",
+    "input/frame-4.png": "19a4b4332d0002b0ec591521c1607db81513d625226f93ceaf02d795b26b7e09",
+    "input/frame-5.png": "b148377024bd72658baaf53b22d521d75f7657b602cfb8e77818721889c42074",
+    "unity_binary": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0"
+  },
+  "input_digest": "27bd6f684c81a83a0d925b7915d92a3d6db2d0770a5fbe977bd68f57aec56523",
+  "original_request": {
+    "schema_version": "1.0.0",
+    "brief": "Use these existing robot sprites in a controllable Unity 2D fixture.",
+    "task_class": "CREATE_ASSET",
+    "domain_tags": [
+      "unity",
+      "2d"
+    ],
+    "feature_ids": [
+      "input_2d",
+      "sprite_loop",
+      "collision_2d"
+    ],
+    "capability_id": "sprite.unity.strip.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "asset_id": "robot_a",
+      "source_kind": "DIRECT_SPRITES",
+      "atlas_file": "input/atlas.png",
+      "metadata_file": "input/atlas.json",
+      "frame_files": [
+        "input/frame-0.png",
+        "input/frame-1.png",
+        "input/frame-2.png",
+        "input/frame-3.png",
+        "input/frame-4.png",
+        "input/frame-5.png"
+      ],
+      "allow_package_downloads": true
+    }
+  },
+  "stages": [
+    "S0",
+    "S1",
+    "S4",
+    "S5"
+  ],
+  "jobs": [
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_0",
+      "role_id": "intent_analyst",
+      "capability_id": "intent.freeze.v1",
+      "depends_on": [],
+      "stage": "S1",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "input_2d",
+        "sprite_loop",
+        "collision_2d"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_1",
+      "role_id": "unity_integration",
+      "capability_id": "sprite.unity.strip.v1",
+      "depends_on": [
+        "job_0"
+      ],
+      "stage": "S4",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "input_2d",
+        "sprite_loop",
+        "collision_2d"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_2",
+      "role_id": "asset_inspector",
+      "capability_id": "artifact.candidate.inspect.v1",
+      "depends_on": [
+        "job_1"
+      ],
+      "stage": "S5",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "input_2d",
+        "sprite_loop",
+        "collision_2d"
+      ]
+    }
+  ],
+  "execution_status": "NOT_RUN",
+  "support_state": "SUPPORTED",
+  "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+  "requirements_preserved": true
+}

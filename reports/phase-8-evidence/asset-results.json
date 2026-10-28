@@ -1,0 +1,338 @@
+{
+  "results": [
+    {
+      "status": "PASS",
+      "exit_code": 0,
+      "error_code": null,
+      "data": {
+        "bundle": {
+          "schema_version": "1.0.0",
+          "asset_id": "industrial_box",
+          "brief_digest": "080c522040cc93b975aedd9844fe21c3aa4a17584e2f2e5772d27604acefbf68",
+          "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257",
+          "source_license": "Apache-2.0",
+          "coordinates": {
+            "units": "m",
+            "up": "Z",
+            "forward": "-Y",
+            "scale": 1
+          },
+          "pivot": "BASE_CENTER",
+          "producer_id": "asset_refiner",
+          "revision": 2,
+          "dependencies": [],
+          "slots": {
+            "geometry_source": {
+              "path": "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/source.blend",
+              "sha256": "b45e51af690d81bbe74be5a69d73c8fda5b3e43b429cc8a8ba949d70d0fd55d9"
+            },
+            "uv_source": {
+              "path": "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/logical-geometry.json",
+              "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+            },
+            "material_source": {
+              "path": "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/material.json",
+              "sha256": "2e6d5a4b3544e32109e99577b88cf34f16e2339cc9be8378a7610ebae652b773"
+            },
+            "export": {
+              "path": "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/asset.fbx",
+              "sha256": "b6a76f693a0b5905346bcc02a8f4e4eb423a8b4dd6f87e2f42d0a8e60b55453e"
+            },
+            "geometry_metrics": {
+              "path": "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/metrics.json",
+              "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+            }
+          },
+          "revision_digest": "5a6a39db9833497568030387362e5a915533fbcee56002db6bb72d3de26ca6c3"
+        },
+        "review": {
+          "schema_version": "1.0.0",
+          "revision_digest": "5a6a39db9833497568030387362e5a915533fbcee56002db6bb72d3de26ca6c3",
+          "producer_id": "asset_refiner",
+          "reviewer_id": "asset_quality_inspector",
+          "independence": "DIFFERENT_ROLE_SAME_HOST",
+          "technical_verdict": "APPROVED",
+          "issues": [],
+          "triangles": 324,
+          "visual_review": "REVIEW",
+          "visual_confidence": null,
+          "visual_approval_required": false,
+          "source_license": "Apache-2.0"
+        },
+        "history": [
+          {
+            "schema_version": "1.0.0",
+            "revision_digest": "5d5abcd20c537d70fa2591d855c8042e76c6bac9f165e7ea1eecc96e2a481ddb",
+            "producer_id": "modeler",
+            "reviewer_id": "asset_quality_inspector",
+            "independence": "DIFFERENT_ROLE_SAME_HOST",
+            "technical_verdict": "REJECTED",
+            "issues": [
+              "material.base_color_rgba",
+              "material.metallic",
+              "material.roughness"
+            ],
+            "triangles": 324,
+            "visual_review": "REVIEW",
+            "visual_confidence": null,
+            "visual_approval_required": false,
+            "source_license": "Apache-2.0"
+          },
+          {
+            "schema_version": "1.0.0",
+            "revision_digest": "5a6a39db9833497568030387362e5a915533fbcee56002db6bb72d3de26ca6c3",
+            "producer_id": "asset_refiner",
+            "reviewer_id": "asset_quality_inspector",
+            "independence": "DIFFERENT_ROLE_SAME_HOST",
+            "technical_verdict": "APPROVED",
+            "issues": [],
+            "triangles": 324,
+            "visual_review": "REVIEW",
+            "visual_confidence": null,
+            "visual_approval_required": false,
+            "source_license": "Apache-2.0"
+          }
+        ],
+        "trace": [
+          {
+            "role": "asset_architect",
+            "state": "PLANNED",
+            "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257"
+          },
+          {
+            "role": "modeler",
+            "state": "PRODUCED",
+            "revision_digest": "5d5abcd20c537d70fa2591d855c8042e76c6bac9f165e7ea1eecc96e2a481ddb"
+          },
+          {
+            "role": "asset_quality_inspector",
+            "state": "REJECTED",
+            "revision_digest": "5d5abcd20c537d70fa2591d855c8042e76c6bac9f165e7ea1eecc96e2a481ddb"
+          },
+          {
+            "role": "uv_material_artist",
+            "state": "PROPOSED",
+            "scope": [
+              "material.base_color_rgba",
+              "material.metallic",
+              "material.roughness"
+            ]
+          },
+          {
+            "role": "asset_refiner",
+            "state": "PRODUCED",
+            "revision_digest": "5a6a39db9833497568030387362e5a915533fbcee56002db6bb72d3de26ca6c3"
+          },
+          {
+            "role": "asset_quality_inspector",
+            "state": "APPROVED",
+            "revision_digest": "5a6a39db9833497568030387362e5a915533fbcee56002db6bb72d3de26ca6c3"
+          }
+        ],
+        "import_ready": true,
+        "visual_review": "REVIEW",
+        "visual_confidence": null,
+        "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL_WITH_MATERIAL_PLANNING",
+        "evaluator_owner": "PUBLIC_DEVELOPMENT"
+      },
+      "diagnostics": [],
+      "operation_id": null,
+      "run_id": "asset_fa45468955174ba18eabaecf1545b864",
+      "version": "0.0.1",
+      "contract_version": "1.0.0",
+      "input_digest": "408b869b9980f19acd0939099872dc7cec3095ffd2a483eee60a2ba8080b5867",
+      "artifact_ids": [],
+      "evidence_paths": [
+        "runs/asset_fa45468955174ba18eabaecf1545b864/bundle.json",
+        "runs/asset_fa45468955174ba18eabaecf1545b864/review.json",
+        "runs/asset_fa45468955174ba18eabaecf1545b864/trace.json",
+        "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/source.blend",
+        "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/logical-geometry.json",
+        "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/material.json",
+        "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/asset.fbx",
+        "runs/mesh-asset_fa45468955174ba18eabaecf1545b864_r2/asset/metrics.json"
+      ],
+      "metrics": {
+        "workflow_seconds": 31.219,
+        "production_attempts": 2
+      },
+      "duration_ms": 0,
+      "rollback_id": null,
+      "evaluated_test_status": "PASS",
+      "game_status": "PARTIAL",
+      "operation_status": "PASS"
+    },
+    {
+      "status": "PASS",
+      "exit_code": 0,
+      "error_code": null,
+      "data": {
+        "bundle": {
+          "schema_version": "1.0.0",
+          "asset_id": "bulkhead",
+          "brief_digest": "33375bfbefc7d4c5f821ca808ef7f88d7a7a232d9a5edd4f1bda401e3c058079",
+          "spec_digest": "8ce337d8b3a51514b2e8f7330e0b9c1046298eb1d02d1a1dfa34b6e71c846a27",
+          "source_license": "Apache-2.0",
+          "coordinates": {
+            "units": "m",
+            "up": "Z",
+            "forward": "-Y",
+            "scale": 1
+          },
+          "pivot": "BASE_CENTER",
+          "producer_id": "asset_refiner",
+          "revision": 2,
+          "dependencies": [],
+          "slots": {
+            "geometry_source": {
+              "path": "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/source.blend",
+              "sha256": "512c2dd91513ff9d7cbf88ce3f19bf78d05a2d1ffefefaff7543173a0469a139"
+            },
+            "uv_source": {
+              "path": "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/logical-geometry.json",
+              "sha256": "180a3433316787cce1645510b48f975a49faca2c9b7cd02cfca6715845656cd7"
+            },
+            "material_source": {
+              "path": "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/material.json",
+              "sha256": "5deb4677225cf02c00a1a31cc988c23ea1d29d24324c2d865efe9936c2f9a6c4"
+            },
+            "export": {
+              "path": "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/asset.fbx",
+              "sha256": "52639bbee8b59ffda1440c45bc0bffe927a24a2fa9fec7b4311c286d646839e7"
+            },
+            "geometry_metrics": {
+              "path": "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/metrics.json",
+              "sha256": "7a3fefe0feb681e441f0326c64a3452e440a54e91c5de1a7ab66ec6383bc0a34"
+            }
+          },
+          "revision_digest": "0f845fa7bb5d34b9e24180c36d459a569b29000fc1863be3662f50a368afe220"
+        },
+        "review": {
+          "schema_version": "1.0.0",
+          "revision_digest": "0f845fa7bb5d34b9e24180c36d459a569b29000fc1863be3662f50a368afe220",
+          "producer_id": "asset_refiner",
+          "reviewer_id": "asset_quality_inspector",
+          "independence": "DIFFERENT_ROLE_SAME_HOST",
+          "technical_verdict": "APPROVED",
+          "issues": [],
+          "triangles": 216,
+          "visual_review": "REVIEW",
+          "visual_confidence": null,
+          "visual_approval_required": false,
+          "source_license": "Apache-2.0"
+        },
+        "history": [
+          {
+            "schema_version": "1.0.0",
+            "revision_digest": "f00392358181e879e68996308b47d2c744e556bf0b1d2f6add32bf9439aee82c",
+            "producer_id": "modeler",
+            "reviewer_id": "asset_quality_inspector",
+            "independence": "DIFFERENT_ROLE_SAME_HOST",
+            "technical_verdict": "REJECTED",
+            "issues": [
+              "material.base_color_rgba",
+              "material.metallic",
+              "material.roughness"
+            ],
+            "triangles": 216,
+            "visual_review": "REVIEW",
+            "visual_confidence": null,
+            "visual_approval_required": false,
+            "source_license": "Apache-2.0"
+          },
+          {
+            "schema_version": "1.0.0",
+            "revision_digest": "0f845fa7bb5d34b9e24180c36d459a569b29000fc1863be3662f50a368afe220",
+            "producer_id": "asset_refiner",
+            "reviewer_id": "asset_quality_inspector",
+            "independence": "DIFFERENT_ROLE_SAME_HOST",
+            "technical_verdict": "APPROVED",
+            "issues": [],
+            "triangles": 216,
+            "visual_review": "REVIEW",
+            "visual_confidence": null,
+            "visual_approval_required": false,
+            "source_license": "Apache-2.0"
+          }
+        ],
+        "trace": [
+          {
+            "role": "asset_architect",
+            "state": "PLANNED",
+            "spec_digest": "8ce337d8b3a51514b2e8f7330e0b9c1046298eb1d02d1a1dfa34b6e71c846a27"
+          },
+          {
+            "role": "modeler",
+            "state": "PRODUCED",
+            "revision_digest": "f00392358181e879e68996308b47d2c744e556bf0b1d2f6add32bf9439aee82c"
+          },
+          {
+            "role": "asset_quality_inspector",
+            "state": "REJECTED",
+            "revision_digest": "f00392358181e879e68996308b47d2c744e556bf0b1d2f6add32bf9439aee82c"
+          },
+          {
+            "role": "uv_material_artist",
+            "state": "PROPOSED",
+            "scope": [
+              "material.base_color_rgba",
+              "material.metallic",
+              "material.roughness"
+            ]
+          },
+          {
+            "role": "asset_refiner",
+            "state": "PRODUCED",
+            "revision_digest": "0f845fa7bb5d34b9e24180c36d459a569b29000fc1863be3662f50a368afe220"
+          },
+          {
+            "role": "asset_quality_inspector",
+            "state": "APPROVED",
+            "revision_digest": "0f845fa7bb5d34b9e24180c36d459a569b29000fc1863be3662f50a368afe220"
+          }
+        ],
+        "import_ready": true,
+        "visual_review": "REVIEW",
+        "visual_confidence": null,
+        "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL_WITH_MATERIAL_PLANNING",
+        "evaluator_owner": "PUBLIC_DEVELOPMENT"
+      },
+      "diagnostics": [],
+      "operation_id": null,
+      "run_id": "asset_4ac6efa41ceb4d6e886b23f76fc0f084",
+      "version": "0.0.1",
+      "contract_version": "1.0.0",
+      "input_digest": "1c1f1c12ae488d067b0187ac0b1c2032d786ae4cfd5a01d64a30a224dc770507",
+      "artifact_ids": [],
+      "evidence_paths": [
+        "runs/asset_4ac6efa41ceb4d6e886b23f76fc0f084/bundle.json",
+        "runs/asset_4ac6efa41ceb4d6e886b23f76fc0f084/review.json",
+        "runs/asset_4ac6efa41ceb4d6e886b23f76fc0f084/trace.json",
+        "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/source.blend",
+        "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/logical-geometry.json",
+        "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/material.json",
+        "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/asset.fbx",
+        "runs/mesh-asset_4ac6efa41ceb4d6e886b23f76fc0f084_r2/asset/metrics.json"
+      ],
+      "metrics": {
+        "workflow_seconds": 23.313,
+        "production_attempts": 2
+      },
+      "duration_ms": 0,
+      "rollback_id": null,
+      "evaluated_test_status": "PASS",
+      "game_status": "PARTIAL",
+      "operation_status": "PASS"
+    }
+  ],
+  "started": {
+    "industrial_box": 21517.296,
+    "bulkhead": 21517.296
+  },
+  "ended": {
+    "bulkhead": 21540.906,
+    "industrial_box": 21548.75
+  },
+  "overlapping_jobs": true,
+  "native_blender_parallelism": 1
+}

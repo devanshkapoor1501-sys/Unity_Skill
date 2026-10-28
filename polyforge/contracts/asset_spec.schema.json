@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+    },
+    "brief": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536
+    },
+    "kind": {
+      "enum": [
+        "robot",
+        "crate",
+        "wall",
+        "doorway",
+        "ground"
+      ]
+    },
+    "dimensions_m": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0,
+        "maximum": 100
+      }
+    },
+    "silhouette": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 65536
+    },
+    "topology": {
+      "const": "PRIMITIVE"
+    },
+    "lod_levels": {
+      "const": 1
+    },
+    "poly_budget": {
+      "type": "integer",
+      "minimum": 12,
+      "maximum": 200000
+    },
+    "uv_policy": {
+      "const": "GENERATED_UV0"
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "base_color_rgba": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "metallic": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "base_color_rgba",
+        "metallic",
+        "roughness"
+      ]
+    },
+    "pivot": {
+      "const": "BASE_CENTER"
+    },
+    "collider": {
+      "const": "BOX"
+    },
+    "source_license": {
+      "const": "Apache-2.0"
+    },
+    "references": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "CONCEPT_IMAGE",
+              "SOURCE_MESH",
+              "STYLE",
+              "BRIEF_TEXT"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "authority": {
+            "const": "DATA_ONLY"
+          }
+        },
+        "required": [
+          "kind",
+          "path",
+          "sha256",
+          "license",
+          "authority"
+        ]
+      }
+    },
+    "integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "units": {
+          "const": "m"
+        },
+        "up": {
+          "const": "Z"
+        },
+        "forward": {
+          "const": "-Y"
+        },
+        "scale": {
+          "const": 1
+        }
+      },
+      "required": [
+        "units",
+        "up",
+        "forward",
+        "scale"
+      ]
+    },
+    "rubric": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dimension_tolerance_m": {
+          "type": "number",
+          "minimum": 1e-06,
+          "maximum": 0.01
+        },
+        "color_tolerance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.01
+        }
+      },
+      "required": [
+        "dimension_tolerance_m",
+        "color_tolerance"
+      ]
+    },
+    "visual_approval_required": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "asset_id",
+    "brief",
+    "kind",
+    "dimensions_m",
+    "silhouette",
+    "topology",
+    "lod_levels",
+    "poly_budget",
+    "uv_policy",
+    "material",
+    "pivot",
+    "collider",
+    "source_license",
+    "references",
+    "integration",
+    "rubric",
+    "visual_approval_required"
+  ]
+}

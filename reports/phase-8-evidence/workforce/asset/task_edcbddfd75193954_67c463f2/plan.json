@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "task_edcbddfd75193954_67c463f2",
+  "engine_digest": "67c463f2dbafc0728ea7f0013986e711857756ccd47049c426f2100fe1c021dc",
+  "workspace_inputs": {
+    "polyforge.toml": "1ea08f620d2bc60076971ab6dacb53fee5fd86c29743eac6eafc1f414869ce61",
+    "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+  },
+  "input_digest": "edcbddfd75193954863c290f61ad7e39b961fdfb45777379667bd9e9a00728a1",
+  "original_request": {
+    "schema_version": "1.0.0",
+    "brief": "Make an editable blue industrial crate with a base-center pivot.",
+    "task_class": "CREATE_ASSET",
+    "domain_tags": [
+      "blender",
+      "assets",
+      "materials"
+    ],
+    "feature_ids": [
+      "editable_source",
+      "basic_material"
+    ],
+    "capability_id": "asset.package.build.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "spec": {
+        "schema_version": "1.0.0",
+        "asset_id": "industrial_box",
+        "brief": "Make an editable blue industrial crate with a base-center pivot.",
+        "kind": "crate",
+        "dimensions_m": [
+          1.1,
+          0.8,
+          1.3
+        ],
+        "silhouette": "Bounded beveled primitive assembly",
+        "topology": "PRIMITIVE",
+        "lod_levels": 1,
+        "poly_budget": 12000,
+        "uv_policy": "GENERATED_UV0",
+        "material": {
+          "base_color_rgba": [
+            0.12,
+            0.3,
+            0.7,
+            1
+          ],
+          "metallic": 0.2,
+          "roughness": 0.6
+        },
+        "pivot": "BASE_CENTER",
+        "collider": "BOX",
+        "source_license": "Apache-2.0",
+        "references": [],
+        "integration": {
+          "units": "m",
+          "up": "Z",
+          "forward": "-Y",
+          "scale": 1
+        },
+        "rubric": {
+          "dimension_tolerance_m": 0.001,
+          "color_tolerance": 0.001
+        },
+        "visual_approval_required": false
+      }
+    }
+  },
+  "stages": [
+    "S0",
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "jobs": [
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_0",
+      "role_id": "intent_analyst",
+      "capability_id": "intent.freeze.v1",
+      "depends_on": [],
+      "stage": "S1",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable_source",
+        "basic_material"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_1",
+      "role_id": "asset_producer",
+      "capability_id": "asset.package.build.v1",
+      "depends_on": [
+        "job_0"
+      ],
+      "stage": "S2",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable_source",
+        "basic_material"
+      ]
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_2",
+      "role_id": "asset_inspector",
+      "capability_id": "artifact.candidate.inspect.v1",
+      "depends_on": [
+        "job_1"
+      ],
+      "stage": "S3",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable_source",
+        "basic_material"
+      ]
+    }
+  ],
+  "execution_status": "NOT_RUN",
+  "support_state": "SUPPORTED",
+  "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+  "requirements_preserved": true
+}

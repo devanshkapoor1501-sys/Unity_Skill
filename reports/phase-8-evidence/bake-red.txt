@@ -1,0 +1,15 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_sprite_bake_rejects_unregistered_source_before_writes __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-94/test_sprite_bake_rejects_unreg0')
+
+    def test_sprite_bake_rejects_unregistered_source_before_writes(tmp_path):
+        from polyforge.capabilities.protocol import RunContext
+>       from polyforge.sprites.bake import bake_robot
+E       ModuleNotFoundError: No module named 'polyforge.sprites.bake'
+
+tests\test_sprites.py:77: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_sprites.py::test_sprite_bake_rejects_unregistered_source_before_writes
+1 failed, 2 deselected in 0.29s

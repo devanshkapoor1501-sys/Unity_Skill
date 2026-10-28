@@ -1,0 +1,11 @@
+import hashlib,json
+from pathlib import Path
+from polyforge.capabilities.protocol import RunContext
+from polyforge.sprites.bake import bake_robot
+p=Path('.tmp/phase6/arena');source='runs/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/source.blend'
+request={'schema_version':'1.0.0','asset_id':'robot_a','source_blend':source,'source_sha256':hashlib.sha256((p/source).read_bytes()).hexdigest()}
+Path('.tmp/phase8/bake-request.json').write_text(json.dumps(request,indent=2)+'\n')
+r=bake_robot(request,RunContext(p))
+Path('.tmp/phase8/bake-result.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n')
+print(r.status,r.exit_code,r.run_id,flush=True)
+assert r.status=='PASS',r.to_dict()

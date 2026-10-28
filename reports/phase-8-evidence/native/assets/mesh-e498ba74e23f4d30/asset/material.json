@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "bulkhead",
+  "shader_intent": "URP_LIT",
+  "color_space": "LINEAR_RGBA",
+  "materials": [
+    {
+      "id": "base",
+      "base_color_rgba": [
+        0.699999988079071,
+        0.2800000011920929,
+        0.11999999731779099,
+        1.0
+      ],
+      "metallic": 0.20000000298023224,
+      "roughness": 0.6000000238418579
+    },
+    {
+      "id": "trim",
+      "base_color_rgba": [
+        0.699999988079071,
+        0.2800000011920929,
+        0.11999999731779099,
+        1.0
+      ],
+      "metallic": 0.20000000298023224,
+      "roughness": 0.6000000238418579
+    },
+    {
+      "id": "accent",
+      "base_color_rgba": [
+        0.699999988079071,
+        0.2800000011920929,
+        0.11999999731779099,
+        1.0
+      ],
+      "metallic": 0.20000000298023224,
+      "roughness": 0.6000000238418579
+    }
+  ],
+  "module_materials": {
+    "body": [
+      "base"
+    ],
+    "cap": [
+      "trim"
+    ]
+  }
+}

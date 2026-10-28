@@ -23,6 +23,7 @@ def seal_candidate(policy: WorkspacePolicy, result: Result, brief_digest: str) -
     candidate = {
         "schema_version": "1.0.0",
         "artifact_id": result.run_id.replace("-", "_"),
+        "production_run_id": result.run_id,
         "producer_id": "producer",
         "brief_digest": brief_digest,
         "revision": 1,
@@ -52,7 +53,18 @@ def inspect_candidate(
     if candidate["brief_digest"] != canonical_digest(request["brief"]):
         raise InputError("Review brief differs from the sealed original brief")
     inventory = {item["path"] for item in candidate["files"]}
-    run = Path(candidate["files"][0]["path"]).parts[1]
+    roots = {
+        parts[1]
+        for item in candidate["files"]
+        if len(parts := Path(item["path"]).parts) >= 3
+        and parts[0] == "runs"
+        and parts[1].replace("-", "_") == candidate["artifact_id"]
+    }
+    run = candidate.get("production_run_id")
+    if run is None and len(roots) == 1:
+        run = next(iter(roots))  # Backward compatibility for older sealed handoffs.
+    if run not in roots:
+        raise InputError("Candidate lacks a unique sealed production-run identity")
     if request["task_class"] == "ANIMATE":
         from polyforge.animation.contract import inspect_motion
 
@@ -66,6 +78,53 @@ def inspect_candidate(
         if motion["asset_id"] != request["input"]["asset_id"]:
             raise InputError("Motion semantic asset identity mismatch")
         inspect_motion(motion)
+    elif request.get("capability_id") == "asset.package.build.v1":
+        from polyforge.assets.contracts import require_bundle_approval
+
+        prefix = "runs/" + run + "/"
+        required = {prefix + n for n in ("spec.json", "bundle.json", "review.json")}
+        if not required <= inventory:
+            raise InputError("Asset review lacks sealed specification/bundle/inspection")
+        spec = load_json(policy.path(prefix + "spec.json"))
+        if spec != request["input"]["spec"] or spec["brief"] != request["brief"]:
+            raise InputError("Specialist specification differs from the original request")
+        bundle = load_json(policy.path(prefix + "bundle.json"))
+        if not {item["path"] for item in bundle["slots"].values()} <= inventory:
+            raise InputError("Asset source slot is not sealed in the candidate")
+        require_bundle_approval(
+            policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
+        )
+    elif request.get("capability_id", "").startswith("sprite."):
+        from polyforge.sprites.images import inspect_strip
+
+        if request["capability_id"] == "sprite.robot.bake.v1":
+            folder = "runs/" + run + "/asset/"
+            metadata_file = folder + "atlas.json"
+            atlas_file = folder + "atlas.png"
+            frame_files = [folder + f"frame-{i}.png" for i in range(6)]
+        else:
+            metadata_file = request["input"]["metadata_file"]
+            atlas_file = request["input"]["atlas_file"]
+            frame_files = request["input"]["frame_files"]
+            from polyforge.sprites.integration import EDIT_TESTS, PLAY_TESTS
+            from polyforge.unity.evidence import verify_test_xml
+
+            for name, tests in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+                if "runs/" + run + "/" + name not in inventory:
+                    raise InputError("Sprite review lacks sealed native test evidence")
+                verify_test_xml(policy.path("runs/" + run + "/" + name), tests)
+        if not {metadata_file, atlas_file, *frame_files} <= inventory:
+            raise InputError("Sprite sources are not completely sealed")
+        metadata = load_json(policy.path(metadata_file))
+        if metadata.get("asset_id") != request["input"]["asset_id"] or not metadata.get(
+            "source_license"
+        ):
+            raise InputError("Sprite semantic identity/license mismatch")
+        inspect_strip(
+            [policy.path(p).read_bytes() for p in frame_files],
+            policy.path(atlas_file).read_bytes(),
+            metadata,
+        )
     elif request["task_class"] == "CREATE_ASSET":
         from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry
 

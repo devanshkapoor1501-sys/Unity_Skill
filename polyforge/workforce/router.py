@@ -47,6 +47,14 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
 
         policy = WorkspacePolicy(workspace)
         names = ["polyforge.toml"]
+        inputs = value.get("input", {})
+        if value.get("capability_id") == "sprite.unity.strip.v1":
+            names += [inputs["metadata_file"], inputs["atlas_file"], *inputs["frame_files"]]
+        elif value.get("capability_id") == "sprite.robot.bake.v1":
+            names.append(inputs["source_blend"])
+        elif value.get("capability_id") == "asset.package.build.v1":
+            names += [r["path"] for r in inputs["spec"]["references"]]
+
         if value["task_class"] == "BUILD_GAME" or (
             value["task_class"] == "ANIMATE" and "unity" in value["domain_tags"]
         ):
@@ -92,7 +100,15 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
         validate_schema(value["input"], descriptor["input_schema"].split("/")[-1])
     if task == "ANIMATE" and capability != "animation.robot.rig.v1":
         raise InputError("ANIMATE requires a supported animation capability")
-    if task == "CREATE_ASSET" and (capability is None or not capability.startswith("mesh.")):
+    if capability == "asset.package.build.v1":
+        from polyforge.assets.contracts import validate_spec
+
+        validate_spec(value["input"]["spec"], workspace or Path.cwd())
+        if value["brief"] != value["input"]["spec"]["brief"]:
+            raise InputError("AssetSpec must preserve the exact original task brief")
+    if task == "CREATE_ASSET" and (
+        capability is None or not capability.startswith(("mesh.", "asset.package.", "sprite."))
+    ):
         raise InputError("CREATE_ASSET requires a supported mesh capability")
     if task == "BUILD_GAME" and capability != "unity.game.arena.v1":
         raise InputError("BUILD_GAME requires an implemented game capability")
@@ -139,6 +155,11 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
                 }
             )
             validate_schema(jobs[-1], "job_ticket.schema.json")
+    if capability == "sprite.unity.strip.v1" and task == "CREATE_ASSET":
+        stages = ["S0", "S1", "S4", "S5"]
+        jobs[1]["role_id"] = "unity_integration"
+        jobs[1]["stage"] = "S4"
+        jobs[2]["stage"] = "S5"
     return {
         "schema_version": "1.0.0",
         "task_id": "task_" + digest[:16] + "_" + tool_digest[:8],

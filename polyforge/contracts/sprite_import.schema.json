@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+    },
+    "source_kind": {
+      "enum": [
+        "BAKED_ROBOT",
+        "DIRECT_SPRITES"
+      ]
+    },
+    "atlas_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metadata_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "frame_files": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "allow_package_downloads": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "asset_id",
+    "source_kind",
+    "atlas_file",
+    "metadata_file",
+    "frame_files"
+  ]
+}

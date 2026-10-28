@@ -1,0 +1,11 @@
+import json
+from pathlib import Path
+from polyforge.capabilities.protocol import RunContext
+from polyforge.sprites.integration import import_strip
+p=Path('.tmp/phase6/arena');baked=json.loads(Path('.tmp/phase8/bake-result.json').read_text());folder=Path(baked['data']['atlas']).parent
+request={'schema_version':'1.0.0','asset_id':'robot_a','source_kind':'BAKED_ROBOT','atlas_file':baked['data']['atlas'],'metadata_file':baked['data']['metadata'],'frame_files':[(folder/f'frame-{i}.png').as_posix()for i in range(6)]}
+Path('.tmp/phase8/import-request.json').write_text(json.dumps(request,indent=2)+'\n')
+r=import_strip(request,RunContext(p))
+Path('.tmp/phase8/import-result.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n')
+print(r.status,r.exit_code,r.run_id,flush=True)
+assert r.status=='PASS',r.to_dict()

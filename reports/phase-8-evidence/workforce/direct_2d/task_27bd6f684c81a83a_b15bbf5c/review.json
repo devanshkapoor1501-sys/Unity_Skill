@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_id": "sprite_unity_op_db071558788500db67320ebe8553659a",
+  "candidate_digest": "c19ec4fa6c08e2cac760db71ae6c76e08d2486e46645bdebcd2cab92852a27b2",
+  "producer_id": "producer",
+  "reviewer_id": "inspector",
+  "verdict": "APPROVED",
+  "independence": "DIFFERENT_ROLE_SAME_HOST",
+  "evidence": [
+    "input/atlas.json",
+    "input/atlas.png",
+    "input/frame-0.png",
+    "input/frame-1.png",
+    "input/frame-2.png",
+    "input/frame-3.png",
+    "input/frame-4.png",
+    "input/frame-5.png",
+    "runs/sprite-unity-op_db071558788500db67320ebe8553659a/approval.json",
+    "runs/sprite-unity-op_db071558788500db67320ebe8553659a/bindings.json",
+    "runs/sprite-unity-op_db071558788500db67320ebe8553659a/editmode.xml",
+    "runs/sprite-unity-op_db071558788500db67320ebe8553659a/playmode.xml",
+    "runs/sprite-unity-op_db071558788500db67320ebe8553659a/preservation.json"
+  ],
+  "request": {
+    "schema_version": "1.0.0",
+    "brief": "Use these existing robot sprites in a controllable Unity 2D fixture.",
+    "task_class": "CREATE_ASSET",
+    "domain_tags": [
+      "unity",
+      "2d"
+    ],
+    "feature_ids": [
+      "input_2d",
+      "sprite_loop",
+      "collision_2d"
+    ],
+    "capability_id": "sprite.unity.strip.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "asset_id": "robot_a",
+      "source_kind": "DIRECT_SPRITES",
+      "atlas_file": "input/atlas.png",
+      "metadata_file": "input/atlas.json",
+      "frame_files": [
+        "input/frame-0.png",
+        "input/frame-1.png",
+        "input/frame-2.png",
+        "input/frame-3.png",
+        "input/frame-4.png",
+        "input/frame-5.png"
+      ],
+      "allow_package_downloads": true
+    }
+  }
+}

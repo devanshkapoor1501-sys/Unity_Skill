@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "label": "EXPLORATORY",
+  "scope": "DETERMINISTIC_REGISTERED_ENGINE; NO MODEL WORKERS",
+  "trial_order": "workflow then direct; sequential per asset",
+  "limits": "n=1 per path/type; warm-cache and order effects; workflow includes rejected proposal and scoped refinement, direct begins with target palette; no parallel-speedup/general quality claim",
+  "records": [
+    {
+      "asset_id": "industrial_box",
+      "workflow_run": "asset_b6b2bf2a460a473597296cfd7bb55da2",
+      "direct_run": "mesh-a9e8f9820ae64dae",
+      "workflow_seconds": 20.063,
+      "direct_seconds": 10.093,
+      "overhead_seconds": 9.97,
+      "geometry_parity": "PASS",
+      "material_target_parity": "PASS",
+      "production_attempts": 2,
+      "sample_size_per_path": 1
+    },
+    {
+      "asset_id": "bulkhead",
+      "workflow_run": "asset_14f264f5f0c0481f89cf4f434ff1e809",
+      "direct_run": "mesh-e498ba74e23f4d30",
+      "workflow_seconds": 17.563,
+      "direct_seconds": 8.875,
+      "overhead_seconds": 8.688,
+      "geometry_parity": "PASS",
+      "material_target_parity": "PASS",
+      "production_attempts": 2,
+      "sample_size_per_path": 1
+    }
+  ]
+}

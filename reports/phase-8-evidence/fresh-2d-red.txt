@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase8\run-fresh-2d.py", line 10, in <module>
+    r=import_strip(request,RunContext(p))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\sprites\integration.py", line 41, in import_strip
+    validate_schema(inputs, "sprite_import.schema.json")
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\contracts\validation.py", line 122, in validate_schema
+    raise InputError(f"{location}: {error.message}")
+polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('allow_package_downloads' was unexpected)

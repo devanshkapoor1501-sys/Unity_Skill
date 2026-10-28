@@ -227,7 +227,12 @@ def execute_recipe(
         output = policy.mkdir(relative + "/asset")
         if source is not None:
             shutil.copyfile(source, output / "source.blend")
-        with FileLock(policy, ".polyforge/locks/blender-worker.lock"):
+        with FileLock(
+            policy,
+            ".polyforge/locks/blender-worker.lock",
+            wait_seconds=min(context.timeout_seconds, config.blender_timeout_seconds),
+            cancel=context.cancel,
+        ):
             process = run_process(
                 [
                     str(executable),

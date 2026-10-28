@@ -1,0 +1,19 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration, unity_tool, launch
+from polyforge.unity.evidence import verify_test_xml, EDITMODE_TESTS
+from polyforge.unity.game import verify_game
+p=Path('.tmp/phase6/arena').resolve(); policy=WorkspacePolicy(p)
+config=configuration(policy); out=Path('.tmp/phase8')
+relative='runs/phase8-static-regression'
+xml=policy.path(relative+'/editmode.xml')
+launch(policy,unity_tool(config),config,relative+'/editmode','tests',request=policy.path('.polyforge/unity-request.json'),output=xml)
+static=verify_test_xml(xml,EDITMODE_TESTS)
+(out/'static-final.json').write_text(json.dumps(static,indent=2)+'\n')
+print('Static Editor',static['status'],static['executed'],flush=True)
+result=verify_game(p)
+(out/'arena-final.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+assert result.status=='PASS', result.to_dict()
+print('Arena',result.status,result.exit_code,result.run_id,flush=True)
+

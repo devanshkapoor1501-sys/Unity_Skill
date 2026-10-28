@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "asset_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
+    },
+    "brief_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "spec_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_license": {
+      "const": "Apache-2.0"
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "units": {
+          "const": "m"
+        },
+        "up": {
+          "const": "Z"
+        },
+        "forward": {
+          "const": "-Y"
+        },
+        "scale": {
+          "const": 1
+        }
+      },
+      "required": [
+        "units",
+        "up",
+        "forward",
+        "scale"
+      ]
+    },
+    "pivot": {
+      "const": "BASE_CENTER"
+    },
+    "producer_id": {
+      "enum": [
+        "modeler",
+        "asset_refiner"
+      ]
+    },
+    "revision": {
+      "enum": [
+        1,
+        2
+      ]
+    },
+    "dependencies": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "enum": [
+              "CONCEPT_IMAGE",
+              "SOURCE_MESH",
+              "STYLE",
+              "BRIEF_TEXT"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "license": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "authority": {
+            "const": "DATA_ONLY"
+          }
+        },
+        "required": [
+          "kind",
+          "path",
+          "sha256",
+          "license",
+          "authority"
+        ]
+      }
+    },
+    "slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "geometry_source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "uv_source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "material_source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "export": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        },
+        "geometry_metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          },
+          "required": [
+            "path",
+            "sha256"
+          ]
+        }
+      },
+      "required": [
+        "geometry_source",
+        "uv_source",
+        "material_source",
+        "export",
+        "geometry_metrics"
+      ]
+    },
+    "revision_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "asset_id",
+    "brief_digest",
+    "spec_digest",
+    "source_license",
+    "coordinates",
+    "pivot",
+    "producer_id",
+    "revision",
+    "dependencies",
+    "slots",
+    "revision_digest"
+  ]
+}

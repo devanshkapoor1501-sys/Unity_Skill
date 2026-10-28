@@ -1,0 +1,27 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collected 38 items
+
+tests\test_assets.py .....                                               [ 13%]
+tests\test_sprites.py .....                                              [ 26%]
+tests\test_phase1_runner.py .......                                      [ 44%]
+tests\test_phase1_policy.py ......                                       [ 60%]
+tests\test_phase1_failures.py ...........                                [ 89%]
+tests\test_phase1_review.py ....                                         [100%]
+
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                             Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------------------------
+polyforge\assets\contracts.py       74      3     34      3    94%   100, 129, 142
+polyforge\runner\locks.py          101      7     30      6    90%   26, 48, 82-84, 90, 136-138, 146->exit
+polyforge\sprites\contracts.py       9      0      6      0   100%
+polyforge\sprites\images.py         35      0     12      0   100%
+----------------------------------------------------------------------------
+TOTAL                              219     10     82      9    94%
+Required test coverage of 90% reached. Total coverage: 93.69%
+============================= 38 passed in 11.54s =============================

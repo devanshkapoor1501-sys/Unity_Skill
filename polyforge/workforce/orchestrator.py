@@ -80,7 +80,13 @@ def run_task(
     policy = ledger.policy
     relative = ledger.relative
     atomic_json(policy, relative + "/plan.json", plan)
-    asset = request["input"].get("asset_id", "game_project")
+    asset = request["input"].get(
+        "asset_id", request["input"].get("spec", {}).get("asset_id", "game_project")
+    )
+    if request["capability_id"] == "asset.package.build.v1":
+        # The inner specialist transaction owns the canonical asset lease; the outer workflow
+        # owns its admission ticket, avoiding a self-conflict while preserving both fences.
+        asset = "wf_" + canonical_digest(asset)[:40]
     candidate: dict[str, Any] = {}
     review: dict[str, Any] = {}
     lineage = []

@@ -1,0 +1,97 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": "6cfe0e8b04464637a0e3b08d8ac046d8",
+    "job_id": "job_2",
+    "task_id": "task_edcbddfd75193954_67c463f2",
+    "asset_id": "wf_c33a295e2e3896827f6c712d478a4c5770c27156",
+    "pid": 30876,
+    "identity": "134376698883672278",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793199917.071705,
+    "released": false,
+    "path": ".polyforge/leases/f247490034903db56566f219d53f2bae3482a46e34ee613c8be6c5472ec99f49.json"
+  },
+  "result": {
+    "review": {
+      "schema_version": "1.0.0",
+      "artifact_id": "asset_op_fc86adc38d676fc487740d2ee22c9308",
+      "candidate_digest": "a4354b6780cfb4cb273664c844c27296242bbaa8dfacb028efd997b95bf52add",
+      "producer_id": "producer",
+      "reviewer_id": "inspector",
+      "verdict": "APPROVED",
+      "independence": "DIFFERENT_ROLE_SAME_HOST",
+      "evidence": [
+        "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/bundle.json",
+        "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/review.json",
+        "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/spec.json",
+        "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/trace.json",
+        "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/asset.fbx",
+        "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/logical-geometry.json",
+        "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/material.json",
+        "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/metrics.json",
+        "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/source.blend"
+      ],
+      "request": {
+        "schema_version": "1.0.0",
+        "brief": "Make an editable blue industrial crate with a base-center pivot.",
+        "task_class": "CREATE_ASSET",
+        "domain_tags": [
+          "blender",
+          "assets",
+          "materials"
+        ],
+        "feature_ids": [
+          "editable_source",
+          "basic_material"
+        ],
+        "capability_id": "asset.package.build.v1",
+        "input": {
+          "schema_version": "1.0.0",
+          "spec": {
+            "schema_version": "1.0.0",
+            "asset_id": "industrial_box",
+            "brief": "Make an editable blue industrial crate with a base-center pivot.",
+            "kind": "crate",
+            "dimensions_m": [
+              1.1,
+              0.8,
+              1.3
+            ],
+            "silhouette": "Bounded beveled primitive assembly",
+            "topology": "PRIMITIVE",
+            "lod_levels": 1,
+            "poly_budget": 12000,
+            "uv_policy": "GENERATED_UV0",
+            "material": {
+              "base_color_rgba": [
+                0.12,
+                0.3,
+                0.7,
+                1
+              ],
+              "metallic": 0.2,
+              "roughness": 0.6
+            },
+            "pivot": "BASE_CENTER",
+            "collider": "BOX",
+            "source_license": "Apache-2.0",
+            "references": [],
+            "integration": {
+              "units": "m",
+              "up": "Z",
+              "forward": "-Y",
+              "scale": 1
+            },
+            "rubric": {
+              "dimension_tolerance_m": 0.001,
+              "color_tolerance": 0.001
+            },
+            "visual_approval_required": false
+          }
+        }
+      }
+    }
+  },
+  "result_digest": "afc808c958cad91fdffb96c6cea58927b1f394f3b6cab9fb8151994e87abee18"
+}

@@ -1,0 +1,13 @@
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration,unity_tool,launch
+from polyforge.unity.upgrade import sync_package
+from polyforge.contracts.validation import InputError
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));c=configuration(p);sync_package(p)
+try:
+ launch(p,unity_tool(c),c,'runs/input-ownership-red/editmode','tests',output=p.path('runs/input-ownership-red/editmode.xml'),test_filter='PolyForge.Sprite.Editor.Tests')
+except InputError as e:
+ assert int(e.kind)==7,e
+ print('EXPECTED RED: native input ownership test',e,flush=True)
+else:raise AssertionError('Expected old input subscription to leak')
+

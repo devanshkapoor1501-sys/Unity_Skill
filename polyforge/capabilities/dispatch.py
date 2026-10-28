@@ -19,6 +19,18 @@ def execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Res
 
 
 def _execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Result:
+    if identifier == "asset.package.build.v1":
+        from polyforge.assets.pipeline import build_asset
+
+        return build_asset(inputs, context)
+    if identifier == "sprite.robot.bake.v1":
+        from polyforge.sprites.bake import bake_robot
+
+        return bake_robot(inputs, context)
+    if identifier == "sprite.unity.strip.v1":
+        from polyforge.sprites.integration import import_strip
+
+        return import_strip(inputs, context)
     if identifier in {"artifact.candidate.inspect.v1", "animation.robot.unity.v1"}:
         from polyforge.contracts.validation import load_json, validate_schema
         from polyforge.security.paths import WorkspacePolicy

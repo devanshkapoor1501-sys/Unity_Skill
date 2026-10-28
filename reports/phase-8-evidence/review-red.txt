@@ -1,0 +1,512 @@
+FFFFFFFFFFFF                                                             [100%]
+================================== FAILURES ===================================
+__ test_approved_bundle_cannot_drop_or_substitute_reference_provenance[omit] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_approved_bundle_cannot_dr0')
+change = 'omit'
+
+    @pytest.mark.parametrize("change", ["omit", "license", "authority", "substitute"])
+    def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path, change):
+        reference = tmp_path / "concept.txt"
+        reference.write_text("A visual style reference is data only.")
+        value = spec()
+        value["references"] = [
+            {
+                "kind": "STYLE",
+                "path": "concept.txt",
+                "sha256": hashlib.sha256(reference.read_bytes()).hexdigest(),
+                "license": "CC0-1.0",
+                "authority": "DATA_ONLY",
+            }
+        ]
+        value, bundle = asset_fixture(tmp_path, value)
+        assert inspect_bundle(tmp_path, bundle, value)["technical_verdict"] == "APPROVED"
+        bundle=copy.deepcopy(bundle)
+        if change == "omit":
+            bundle["dependencies"] = []
+        elif change == "substitute":
+            bundle["dependencies"][0]["path"] = "different.txt"
+        elif change == "license":
+            bundle["dependencies"][0]["license"] = "MISSING"
+        else:
+            bundle["dependencies"][0]["authority"] = "EXECUTE"
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:78: Failed
+_ test_approved_bundle_cannot_drop_or_substitute_reference_provenance[license] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_approved_bundle_cannot_dr1')
+change = 'license'
+
+    @pytest.mark.parametrize("change", ["omit", "license", "authority", "substitute"])
+    def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path, change):
+        reference = tmp_path / "concept.txt"
+        reference.write_text("A visual style reference is data only.")
+        value = spec()
+        value["references"] = [
+            {
+                "kind": "STYLE",
+                "path": "concept.txt",
+                "sha256": hashlib.sha256(reference.read_bytes()).hexdigest(),
+                "license": "CC0-1.0",
+                "authority": "DATA_ONLY",
+            }
+        ]
+        value, bundle = asset_fixture(tmp_path, value)
+        assert inspect_bundle(tmp_path, bundle, value)["technical_verdict"] == "APPROVED"
+        bundle=copy.deepcopy(bundle)
+        if change == "omit":
+            bundle["dependencies"] = []
+        elif change == "substitute":
+            bundle["dependencies"][0]["path"] = "different.txt"
+        elif change == "license":
+            bundle["dependencies"][0]["license"] = "MISSING"
+        else:
+            bundle["dependencies"][0]["authority"] = "EXECUTE"
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:78: Failed
+_ test_approved_bundle_cannot_drop_or_substitute_reference_provenance[authority] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_approved_bundle_cannot_dr2')
+change = 'authority'
+
+    @pytest.mark.parametrize("change", ["omit", "license", "authority", "substitute"])
+    def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path, change):
+        reference = tmp_path / "concept.txt"
+        reference.write_text("A visual style reference is data only.")
+        value = spec()
+        value["references"] = [
+            {
+                "kind": "STYLE",
+                "path": "concept.txt",
+                "sha256": hashlib.sha256(reference.read_bytes()).hexdigest(),
+                "license": "CC0-1.0",
+                "authority": "DATA_ONLY",
+            }
+        ]
+        value, bundle = asset_fixture(tmp_path, value)
+        assert inspect_bundle(tmp_path, bundle, value)["technical_verdict"] == "APPROVED"
+        bundle=copy.deepcopy(bundle)
+        if change == "omit":
+            bundle["dependencies"] = []
+        elif change == "substitute":
+            bundle["dependencies"][0]["path"] = "different.txt"
+        elif change == "license":
+            bundle["dependencies"][0]["license"] = "MISSING"
+        else:
+            bundle["dependencies"][0]["authority"] = "EXECUTE"
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:78: Failed
+_ test_approved_bundle_cannot_drop_or_substitute_reference_provenance[substitute] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_approved_bundle_cannot_dr3')
+change = 'substitute'
+
+    @pytest.mark.parametrize("change", ["omit", "license", "authority", "substitute"])
+    def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path, change):
+        reference = tmp_path / "concept.txt"
+        reference.write_text("A visual style reference is data only.")
+        value = spec()
+        value["references"] = [
+            {
+                "kind": "STYLE",
+                "path": "concept.txt",
+                "sha256": hashlib.sha256(reference.read_bytes()).hexdigest(),
+                "license": "CC0-1.0",
+                "authority": "DATA_ONLY",
+            }
+        ]
+        value, bundle = asset_fixture(tmp_path, value)
+        assert inspect_bundle(tmp_path, bundle, value)["technical_verdict"] == "APPROVED"
+        bundle=copy.deepcopy(bundle)
+        if change == "omit":
+            bundle["dependencies"] = []
+        elif change == "substitute":
+            bundle["dependencies"][0]["path"] = "different.txt"
+        elif change == "license":
+            bundle["dependencies"][0]["license"] = "MISSING"
+        else:
+            bundle["dependencies"][0]["authority"] = "EXECUTE"
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:78: Failed
+____ test_material_bindings_require_complete_unique_expected_ids[missing] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_material_bindings_require0')
+change = 'missing'
+
+    @pytest.mark.parametrize("change", ["missing", "duplicate", "unknown"])
+    def test_material_bindings_require_complete_unique_expected_ids(tmp_path, change):
+        value, bundle = asset_fixture(tmp_path)
+        source = tmp_path / bundle["slots"]["material_source"]["path"]
+        material = json.loads(source.read_text("utf-8"))
+        if change == "missing":
+            material["materials"] = material["materials"][:1]
+        elif change == "duplicate":
+            material["materials"].append(copy.deepcopy(material["materials"][0]))
+        else:
+            material["materials"][0]["id"] = "unknown"
+        source.write_text(json.dumps(material), encoding="utf-8")
+        bundle["slots"]["material_source"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:95: Failed
+___ test_material_bindings_require_complete_unique_expected_ids[duplicate] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_material_bindings_require1')
+change = 'duplicate'
+
+    @pytest.mark.parametrize("change", ["missing", "duplicate", "unknown"])
+    def test_material_bindings_require_complete_unique_expected_ids(tmp_path, change):
+        value, bundle = asset_fixture(tmp_path)
+        source = tmp_path / bundle["slots"]["material_source"]["path"]
+        material = json.loads(source.read_text("utf-8"))
+        if change == "missing":
+            material["materials"] = material["materials"][:1]
+        elif change == "duplicate":
+            material["materials"].append(copy.deepcopy(material["materials"][0]))
+        else:
+            material["materials"][0]["id"] = "unknown"
+        source.write_text(json.dumps(material), encoding="utf-8")
+        bundle["slots"]["material_source"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:95: Failed
+____ test_material_bindings_require_complete_unique_expected_ids[unknown] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_material_bindings_require2')
+change = 'unknown'
+
+    @pytest.mark.parametrize("change", ["missing", "duplicate", "unknown"])
+    def test_material_bindings_require_complete_unique_expected_ids(tmp_path, change):
+        value, bundle = asset_fixture(tmp_path)
+        source = tmp_path / bundle["slots"]["material_source"]["path"]
+        material = json.loads(source.read_text("utf-8"))
+        if change == "missing":
+            material["materials"] = material["materials"][:1]
+        elif change == "duplicate":
+            material["materials"].append(copy.deepcopy(material["materials"][0]))
+        else:
+            material["materials"][0]["id"] = "unknown"
+        source.write_text(json.dumps(material), encoding="utf-8")
+        bundle["slots"]["material_source"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:95: Failed
+_ test_declared_dimension_tolerance_is_an_actual_acceptance_boundary[1e-06-5e-06-False] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_declared_dimension_tolera0')
+tolerance = 1e-06, delta = 5e-06, accepted = False
+
+    @pytest.mark.parametrize('tolerance,delta,accepted',[(.000001,.000005,False),(.001,.0005,True)])
+    def test_declared_dimension_tolerance_is_an_actual_acceptance_boundary(tmp_path,tolerance,delta,accepted):
+        value = spec()
+        value["rubric"]["dimension_tolerance_m"] = tolerance
+        value, bundle = asset_fixture(tmp_path, value)
+        source = tmp_path / bundle["slots"]["geometry_metrics"]["path"]
+        metrics = json.loads(source.read_text("utf-8"))
+        metrics["bounds_unity_m"][0] += delta
+        source.write_text(json.dumps(metrics), encoding="utf-8")
+        bundle["slots"]["geometry_metrics"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+        if accepted:
+            assert inspect_bundle(tmp_path,rehash(bundle),value)['technical_verdict']=='APPROVED'
+        else:
+>           with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:112: Failed
+_ test_declared_dimension_tolerance_is_an_actual_acceptance_boundary[0.001-0.0005-True] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_declared_dimension_tolera1')
+tolerance = 0.001, delta = 0.0005, accepted = True
+
+    @pytest.mark.parametrize('tolerance,delta,accepted',[(.000001,.000005,False),(.001,.0005,True)])
+    def test_declared_dimension_tolerance_is_an_actual_acceptance_boundary(tmp_path,tolerance,delta,accepted):
+        value = spec()
+        value["rubric"]["dimension_tolerance_m"] = tolerance
+        value, bundle = asset_fixture(tmp_path, value)
+        source = tmp_path / bundle["slots"]["geometry_metrics"]["path"]
+        metrics = json.loads(source.read_text("utf-8"))
+        metrics["bounds_unity_m"][0] += delta
+        source.write_text(json.dumps(metrics), encoding="utf-8")
+        bundle["slots"]["geometry_metrics"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+        if accepted:
+>           assert inspect_bundle(tmp_path,rehash(bundle),value)['technical_verdict']=='APPROVED'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase8_review.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\assets\contracts.py:118: in inspect_bundle
+    validate_geometry(recipe, metrics)
+polyforge\blender\recipes.py:271: in validate_geometry
+    reject("target bounds mismatch")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+message = 'target bounds mismatch'
+
+    def reject(message: str) -> None:
+>       raise InputError(
+            "$.geometry: " + message, kind=ErrorKind.CONTRACT_FAILURE, code="PF-GEOMETRY-CONTRACT"
+        )
+E       polyforge.contracts.validation.InputError: $.geometry: target bounds mismatch
+
+polyforge\blender\recipes.py:228: InputError
+______ test_direct_sprite_input_paths_do_not_define_the_production_run[] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_direct_sprite_input_paths0')
+prefix = ''
+
+    @pytest.mark.parametrize("prefix", ["", "inputs/sprites"])
+    def test_direct_sprite_input_paths_do_not_define_the_production_run(tmp_path, prefix):
+        policy, inputs, metadata = sprite_fixture(tmp_path, prefix)
+        run = "sprite-unity-native"
+        folder = policy.mkdir("runs/" + run)
+        for name, expected in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+            root = ET.Element("test-run", result="Passed")
+            for test in sorted(expected):
+                ET.SubElement(root, "test-case", fullname=test, result="Passed")
+            (folder / name).write_bytes(ET.tostring(root))
+        (folder / "bindings.json").write_text(
+            json.dumps({"metadata_digest": canonical_digest(metadata)}), encoding="utf-8"
+        )
+        paths = [
+            inputs["metadata_file"],
+            inputs["atlas_file"],
+            *inputs["frame_files"],
+            *[f"runs/{run}/{n}" for n in ("bindings.json", "editmode.xml", "playmode.xml")],
+        ]
+        atomic_json(
+            policy,
+            "runs/" + run + "/artifacts.json",
+            {
+                "artifacts": [
+                    {
+                        "relative_path": p,
+                        "sha256": hashlib.sha256(policy.path(p).read_bytes()).hexdigest(),
+                    }
+                    for p in paths
+                ]
+            },
+        )
+        task = {
+            "schema_version": "1.0.0",
+            "brief": "Use existing sprites directly in Unity.",
+            "task_class": "CREATE_ASSET",
+            "domain_tags": ["unity", "2d"],
+            "feature_ids": [],
+            "capability_id": "sprite.unity.strip.v1",
+            "input": inputs,
+        }
+        candidate = seal_candidate(policy, Result(run_id=run), canonical_digest(task["brief"]))
+>       assert inspect_candidate(policy, candidate, task)["verdict"] == "APPROVED"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase8_review.py:192: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x00000212C0A660C0>
+candidate = {'artifact_id': 'sprite_unity_native', 'brief_digest': 'f41ee69114b953fe1d69b6b9677939f2468b6d93814ff9c631b5ec109a0bf8...80'}, {'path': 'frame-3.png', 'sha256': '22bbc506cea5bb9e5c9171b80d25c5b3e57247aece8a0593f327c4309c7a1c30'}, ...], ...}
+request = {'brief': 'Use existing sprites directly in Unity.', 'capability_id': 'sprite.unity.strip.v1', 'domain_tags': ['unity', '2d'], 'feature_ids': [], ...}
+
+    def inspect_candidate(
+        policy: WorkspacePolicy, candidate: dict[str, Any], request: dict[str, Any]
+    ) -> dict[str, Any]:
+        check_candidate(policy, candidate)
+        if request.get("task_class") not in {"ANIMATE", "CREATE_ASSET", "BUILD_GAME"}:
+            raise InputError("No technical inspector for this task class")
+        if candidate["brief_digest"] != canonical_digest(request["brief"]):
+            raise InputError("Review brief differs from the sealed original brief")
+        inventory = {item["path"] for item in candidate["files"]}
+>       run = Path(candidate["files"][0]["path"]).parts[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       IndexError: tuple index out of range
+
+polyforge\workforce\workers.py:55: IndexError
+_ test_direct_sprite_input_paths_do_not_define_the_production_run[inputs/sprites] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_direct_sprite_input_paths1')
+prefix = 'inputs/sprites'
+
+    @pytest.mark.parametrize("prefix", ["", "inputs/sprites"])
+    def test_direct_sprite_input_paths_do_not_define_the_production_run(tmp_path, prefix):
+        policy, inputs, metadata = sprite_fixture(tmp_path, prefix)
+        run = "sprite-unity-native"
+        folder = policy.mkdir("runs/" + run)
+        for name, expected in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+            root = ET.Element("test-run", result="Passed")
+            for test in sorted(expected):
+                ET.SubElement(root, "test-case", fullname=test, result="Passed")
+            (folder / name).write_bytes(ET.tostring(root))
+        (folder / "bindings.json").write_text(
+            json.dumps({"metadata_digest": canonical_digest(metadata)}), encoding="utf-8"
+        )
+        paths = [
+            inputs["metadata_file"],
+            inputs["atlas_file"],
+            *inputs["frame_files"],
+            *[f"runs/{run}/{n}" for n in ("bindings.json", "editmode.xml", "playmode.xml")],
+        ]
+        atomic_json(
+            policy,
+            "runs/" + run + "/artifacts.json",
+            {
+                "artifacts": [
+                    {
+                        "relative_path": p,
+                        "sha256": hashlib.sha256(policy.path(p).read_bytes()).hexdigest(),
+                    }
+                    for p in paths
+                ]
+            },
+        )
+        task = {
+            "schema_version": "1.0.0",
+            "brief": "Use existing sprites directly in Unity.",
+            "task_class": "CREATE_ASSET",
+            "domain_tags": ["unity", "2d"],
+            "feature_ids": [],
+            "capability_id": "sprite.unity.strip.v1",
+            "input": inputs,
+        }
+        candidate = seal_candidate(policy, Result(run_id=run), canonical_digest(task["brief"]))
+>       assert inspect_candidate(policy, candidate, task)["verdict"] == "APPROVED"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase8_review.py:192: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x00000212BF97B530>
+candidate = {'artifact_id': 'sprite_unity_native', 'brief_digest': 'f41ee69114b953fe1d69b6b9677939f2468b6d93814ff9c631b5ec109a0bf8...'inputs/sprites/frame-3.png', 'sha256': '22bbc506cea5bb9e5c9171b80d25c5b3e57247aece8a0593f327c4309c7a1c30'}, ...], ...}
+request = {'brief': 'Use existing sprites directly in Unity.', 'capability_id': 'sprite.unity.strip.v1', 'domain_tags': ['unity', '2d'], 'feature_ids': [], ...}
+
+    def inspect_candidate(
+        policy: WorkspacePolicy, candidate: dict[str, Any], request: dict[str, Any]
+    ) -> dict[str, Any]:
+        check_candidate(policy, candidate)
+        if request.get("task_class") not in {"ANIMATE", "CREATE_ASSET", "BUILD_GAME"}:
+            raise InputError("No technical inspector for this task class")
+        if candidate["brief_digest"] != canonical_digest(request["brief"]):
+            raise InputError("Review brief differs from the sealed original brief")
+        inventory = {item["path"] for item in candidate["files"]}
+        run = Path(candidate["files"][0]["path"]).parts[1]
+        if request["task_class"] == "ANIMATE":
+            from polyforge.animation.contract import inspect_motion
+    
+            required = {
+                "runs/" + run + "/asset/" + name
+                for name in ("motion.json", "source.blend", "robot.fbx")
+            }
+            if not required <= inventory or request["capability_id"] != "animation.robot.rig.v1":
+                raise InputError("Animation review requires the complete sealed source bundle")
+            motion = load_json(policy.path("runs/" + run + "/asset/motion.json"))
+            if motion["asset_id"] != request["input"]["asset_id"]:
+                raise InputError("Motion semantic asset identity mismatch")
+            inspect_motion(motion)
+        elif request.get("capability_id") == "asset.package.build.v1":
+            from polyforge.assets.contracts import require_bundle_approval
+    
+            prefix = "runs/" + run + "/"
+            required = {prefix + n for n in ("spec.json", "bundle.json", "review.json")}
+            if not required <= inventory:
+                raise InputError("Asset review lacks sealed specification/bundle/inspection")
+            spec = load_json(policy.path(prefix + "spec.json"))
+            if spec != request["input"]["spec"] or spec["brief"] != request["brief"]:
+                raise InputError("Specialist specification differs from the original request")
+            bundle = load_json(policy.path(prefix + "bundle.json"))
+            if not {item["path"] for item in bundle["slots"].values()} <= inventory:
+                raise InputError("Asset source slot is not sealed in the candidate")
+            require_bundle_approval(
+                policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
+            )
+        elif request.get("capability_id", "").startswith("sprite."):
+            from polyforge.sprites.images import inspect_strip
+    
+            if request["capability_id"] == "sprite.robot.bake.v1":
+                folder = "runs/" + run + "/asset/"
+                metadata_file = folder + "atlas.json"
+                atlas_file = folder + "atlas.png"
+                frame_files = [folder + f"frame-{i}.png" for i in range(6)]
+            else:
+                metadata_file = request["input"]["metadata_file"]
+                atlas_file = request["input"]["atlas_file"]
+                frame_files = request["input"]["frame_files"]
+                from polyforge.sprites.integration import EDIT_TESTS, PLAY_TESTS
+                from polyforge.unity.evidence import verify_test_xml
+    
+                for name, tests in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+                    if "runs/" + run + "/" + name not in inventory:
+>                       raise InputError("Sprite review lacks sealed native test evidence")
+E                       polyforge.contracts.validation.InputError: Sprite review lacks sealed native test evidence
+
+polyforge\workforce\workers.py:102: InputError
+___ test_existing_project_without_package_authorization_cannot_launch_unity ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-113/test_existing_project_without_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000212BED5B650>
+
+    def test_existing_project_without_package_authorization_cannot_launch_unity(tmp_path, monkeypatch):
+        import polyforge.sprites.integration as module
+    
+        policy, inputs, metadata = sprite_fixture(tmp_path)
+        # Reach policy admission without spending a native process on this unit fixture.
+        metadata["frame_size"] = 128
+        (tmp_path / "atlas.json").write_text(json.dumps(metadata), encoding="utf-8")
+        monkeypatch.setattr(module, "inspect_strip", lambda *args: {"status": "PASS"})
+        monkeypatch.setattr(module, "unity_tool", lambda config: Path("Unity.exe"))
+        monkeypatch.setattr(module, "installed_template", lambda tool: Path("template.tgz"))
+        project = policy.mkdir("UnityProject")
+        monkeypatch.setattr(module, "prepare_project", lambda *args, **kwargs: project)
+        monkeypatch.setattr(module, "check_project_idle", lambda *args: None)
+    
+        def forbidden(*args, **kwargs):
+            raise AssertionError("Unauthorized project reached native synchronization")
+    
+        monkeypatch.setattr(module, "sync_package", forbidden)
+        with pytest.raises(InputError) as failure:
+>           import_strip(inputs, RunContext(tmp_path))
+
+tests\test_phase8_review.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\sprites\integration.py:104: in import_strip
+    sync_package(policy)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<polyforge.security.paths.WorkspacePolicy object at 0x00000212BF76B2C0>,)
+kwargs = {}
+
+    def forbidden(*args, **kwargs):
+>       raise AssertionError("Unauthorized project reached native synchronization")
+E       AssertionError: Unauthorized project reached native synchronization
+
+tests\test_phase8_review.py:210: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase8_review.py::test_approved_bundle_cannot_drop_or_substitute_reference_provenance[omit]
+FAILED tests/test_phase8_review.py::test_approved_bundle_cannot_drop_or_substitute_reference_provenance[license]
+FAILED tests/test_phase8_review.py::test_approved_bundle_cannot_drop_or_substitute_reference_provenance[authority]
+FAILED tests/test_phase8_review.py::test_approved_bundle_cannot_drop_or_substitute_reference_provenance[substitute]
+FAILED tests/test_phase8_review.py::test_material_bindings_require_complete_unique_expected_ids[missing]
+FAILED tests/test_phase8_review.py::test_material_bindings_require_complete_unique_expected_ids[duplicate]
+FAILED tests/test_phase8_review.py::test_material_bindings_require_complete_unique_expected_ids[unknown]
+FAILED tests/test_phase8_review.py::test_declared_dimension_tolerance_is_an_actual_acceptance_boundary[1e-06-5e-06-False]
+FAILED tests/test_phase8_review.py::test_declared_dimension_tolerance_is_an_actual_acceptance_boundary[0.001-0.0005-True]
+FAILED tests/test_phase8_review.py::test_direct_sprite_input_paths_do_not_define_the_production_run[]
+FAILED tests/test_phase8_review.py::test_direct_sprite_input_paths_do_not_define_the_production_run[inputs/sprites]
+FAILED tests/test_phase8_review.py::test_existing_project_without_package_authorization_cannot_launch_unity
+12 failed in 1.48s

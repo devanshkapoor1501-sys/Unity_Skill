@@ -50,7 +50,7 @@ class JobLedger:
         if type(ttl) is not int or not 1 <= ttl <= 3600:
             raise InputError("Lease TTL must be 1..3600 seconds")
         relative = ".polyforge/leases/" + hashlib.sha256(asset.encode()).hexdigest() + ".json"
-        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock"):
+        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock", wait_seconds=5):
             if self.completed(job) is not None:
                 return None
             own = self.policy.path(self._state(job))
@@ -106,7 +106,7 @@ class JobLedger:
     def heartbeat(self, job: str, lease: dict[str, Any], *, ttl: int = 3600) -> None:
         if type(ttl) is not int or not 1 <= ttl <= 3600:
             raise InputError("Invalid lease TTL")
-        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock"):
+        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock", wait_seconds=5):
             current = self._check(job, lease)
             current["until"] = time.time() + ttl
             atomic_json(self.policy, current["path"], current)
@@ -133,7 +133,7 @@ class JobLedger:
         canonical_digest(result)
         if lease is None:
             raise InputError("No ownership lease")
-        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock"):
+        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock", wait_seconds=5):
             current = self._check(job, lease)
             atomic_json(
                 self.policy,
@@ -149,7 +149,7 @@ class JobLedger:
             atomic_json(self.policy, current["path"], current)
 
     def cancel(self, job: str) -> None:
-        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock"):
+        with FileLock(self.policy, ".polyforge/locks/workforce-state.lock", wait_seconds=5):
             state = load_json(self.policy.path(self._state(job)))
             if state["state"] == "COMMITTED":
                 raise InputError("Committed job cannot be cancelled")

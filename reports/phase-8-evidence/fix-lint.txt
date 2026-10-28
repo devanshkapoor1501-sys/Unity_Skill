@@ -1,0 +1,67 @@
+E501 Line too long (184 > 100)
+  --> polyforge\sprites\integration.py:63:101
+   |
+61 | …t_id"]:
+62 | …tity")
+63 | …as_sha256":hashlib.sha256(sheet).hexdigest(),"frame_sha256":[hashlib.sha256(f).hexdigest()for f in frames]})
+   |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+64 | …
+65 | …
+   |
+
+E501 Line too long (123 > 100)
+   --> tests\test_assets.py:225:101
+    |
+223 |             "material.json": {
+224 |                 "asset_id": recipe["asset_id"],
+225 |                 "module_materials":{m["id"]:[m.get("material_id",recipe["materials"][0]["id"])]for m in recipe["modules"]},
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+226 |                 "materials": [
+227 |                     {
+    |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:93:9
+   |
+91 |     elif change == "unknown":
+92 |         material["materials"][0]["id"] = "unknown"
+93 |     else:material["module_materials"]={"wrong_module":["base"]}
+   |         ^
+94 |     source.write_text(json.dumps(material), encoding="utf-8")
+95 |     bundle["slots"]["material_source"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+   |
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> tests\test_phase8_review.py:144:5
+    |
+142 |     (folder / "atlas.png").write_bytes(atlas(frames))
+143 |     (folder / "atlas.json").write_text(json.dumps(metadata), encoding="utf-8")
+144 |     relative = lambda name: (folder / name).relative_to(tmp_path).as_posix()
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+145 |     request = {
+146 |         "schema_version": "1.0.0",
+    |
+help: Rewrite `relative` as a `def`
+
+E702 Multiple statements on one line (semicolon)
+   --> tests\test_phase8_review.py:227:45
+    |
+225 |     from polyforge.workforce.operations import complete, operation_context, recover
+226 |     policy,inputs,_=sprite_fixture(tmp_path)
+227 |     folder=policy.mkdir('runs/sprite_cache');(folder/'output.json').write_text('{}')
+    |                                             ^
+228 |     context=operation_context(tmp_path,'sprite_task','produce',42,None)
+229 |     complete('sprite.unity.strip.v1',inputs,context,Result(run_id='sprite_cache'))
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tests\test_phase8_review.py:232:35
+    |
+230 |     assert recover('sprite.unity.strip.v1',inputs,context).status=='PASS'
+231 |     (tmp_path/inputs['metadata_file']).write_text('{"changed":true}')
+232 |     with pytest.raises(InputError):recover('sprite.unity.strip.v1',inputs,context)
+    |                                   ^
+    |
+
+Found 7 errors (1 fixed, 6 remaining).
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

@@ -11,6 +11,8 @@ ROLES: dict[str, dict[str, list[str]]] = {
     "rig_animation_artist": {"tools": ["animation.robot.rig.v1"], "writes": ["runs/"]},
     "asset_producer": {
         "tools": [
+            "asset.package.build.v1",
+            "sprite.robot.bake.v1",
             "mesh.props.crate.v1",
             "mesh.robot.modular.v1",
             "mesh.architecture.wall.v1",
@@ -22,10 +24,20 @@ ROLES: dict[str, dict[str, list[str]]] = {
     "animation_inspector": {"tools": ["artifact.candidate.inspect.v1"], "writes": []},
     "asset_inspector": {"tools": ["artifact.candidate.inspect.v1"], "writes": []},
     "unity_integration": {
-        "tools": ["animation.robot.unity.v1", "unity.game.arena.v1"],
+        "tools": ["animation.robot.unity.v1", "unity.game.arena.v1", "sprite.unity.strip.v1"],
         "writes": ["UnityProject/"],
     },
 }
+
+ROLES.update(
+    {
+        "asset_architect": {"tools": [], "writes": ["workforce/"]},
+        "modeler": {"tools": list(ROLES["asset_producer"]["tools"]), "writes": ["runs/"]},
+        "uv_material_artist": {"tools": [], "writes": ["runs/"]},
+        "asset_refiner": {"tools": list(ROLES["asset_producer"]["tools"]), "writes": ["runs/"]},
+        "asset_quality_inspector": {"tools": [], "writes": []},
+    }
+)
 
 
 def execution_profile(mode: str) -> dict[str, Any]:

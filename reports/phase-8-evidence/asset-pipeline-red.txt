@@ -1,0 +1,35 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_specialist_pipeline_requires_scoped_refinement_and_preserves_first_revision _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-88/test_specialist_pipeline_requi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000251E3E21790>
+
+    def test_specialist_pipeline_requires_scoped_refinement_and_preserves_first_revision(tmp_path, monkeypatch):
+        import json
+    
+        import polyforge.assets.pipeline as module
+        from polyforge.capabilities.protocol import RunContext
+        from polyforge.contracts.results import Result
+    
+        calls = []
+    
+        def native(recipe, context, *, audit_export=False):
+            calls.append(recipe)
+            folder = tmp_path / "runs" / ("native_" + str(len(calls))) / "asset"
+            folder.mkdir(parents=True)
+            w, h, d = recipe["parameters"]["size_m"]
+            metrics = {"status": "PASS", "asset_id": recipe["asset_id"], "degenerate_faces": 0, "invalid_uv_faces": 0, "nonfinite_values": 0, "polygon_count": 12, "module_ids": [m["id"] for m in recipe["modules"]], "socket_ids": [s["id"] for s in recipe["sockets"]], "material_ids": [m["id"] for m in recipe["materials"]], "bounds_unity_m": [w,h,d], "pivot_unity_m": [0,0,0], "minimum_native_m": [-w/2,-d/2,0], "geometry_digest": "a"*64, "coordinate_basis": {"up":"Z","forward":"-Y"}, "meters_per_unit": 1}
+            for name,data in {"metrics.json": metrics,"logical-geometry.json": {"modules":[{"faces":[[[0,0,0,0,0]]*4]}]}, "material.json": {"asset_id":recipe["asset_id"],"materials":[{"id":m["id"],"base_color_rgba":m["color_rgba"],"metallic":m.get("metallic",0),"roughness":m.get("roughness",.65)}for m in recipe["materials"]]}}.items():
+                (folder/name).write_text(json.dumps(data))
+            (folder/"source.blend").write_bytes(b"fixture-source")
+            (folder/"asset.fbx").write_bytes(b"fixture-export")
+            return Result(run_id=folder.parent.name,data={"source_blend":(folder/"source.blend").relative_to(tmp_path).as_posix()})
+    
+>       monkeypatch.setattr(module, "execute_recipe", native)
+E       AttributeError: <module 'polyforge.assets.pipeline' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\assets\\pipeline.py'> has no attribute 'execute_recipe'
+
+tests\test_assets.py:113: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_assets.py::test_specialist_pipeline_requires_scoped_refinement_and_preserves_first_revision
+1 failed, 3 deselected in 0.34s

@@ -65,7 +65,18 @@ def complete(
     if result.run_id:
         paths.add("runs/" + result.run_id)
     paths.update(result.evidence_paths)
-    if identifier in {"animation.robot.unity.v1", "unity.game.arena.v1", "unity.scene.static.v1"}:
+    if identifier == "sprite.unity.strip.v1":
+        paths.update([inputs["metadata_file"], inputs["atlas_file"], *inputs["frame_files"]])
+    elif identifier == "sprite.robot.bake.v1":
+        paths.add(inputs["source_blend"])
+    elif identifier == "asset.package.build.v1":
+        paths.update(reference["path"] for reference in inputs["spec"]["references"])
+    if identifier in {
+        "animation.robot.unity.v1",
+        "unity.game.arena.v1",
+        "unity.scene.static.v1",
+        "sprite.unity.strip.v1",
+    }:
         paths.update(
             "UnityProject/" + p
             for p in (

@@ -221,7 +221,9 @@ def expand_recipe(kind: str, request: Any, *, seed: int) -> dict[str, Any]:
     return validate_recipe(value)
 
 
-def validate_geometry(recipe: dict[str, Any], metrics: Any) -> None:
+def validate_geometry(
+    recipe: dict[str, Any], metrics: Any, *, dimension_tolerance_m: float | None = None
+) -> None:
     """Independent report checks; output validation never trusts worker status alone."""
 
     def reject(message: str) -> None:
@@ -229,6 +231,14 @@ def validate_geometry(recipe: dict[str, Any], metrics: Any) -> None:
             "$.geometry: " + message, kind=ErrorKind.CONTRACT_FAILURE, code="PF-GEOMETRY-CONTRACT"
         )
 
+    if dimension_tolerance_m is not None and (
+        type(dimension_tolerance_m) not in {int, float}
+        or not math.isfinite(dimension_tolerance_m)
+        or not 0 < dimension_tolerance_m <= 0.01
+    ):
+        reject("invalid explicit dimension tolerance")
+    absolute = 1e-5 if dimension_tolerance_m is None else dimension_tolerance_m
+    relative = 1e-5 if dimension_tolerance_m is None else 0.0
     try:
         canonical_digest(metrics)
     except InputError:
@@ -264,7 +274,8 @@ def validate_geometry(recipe: dict[str, Any], metrics: Any) -> None:
         not isinstance(bounds, list)
         or len(bounds) != 3
         or any(
-            type(v) not in {int, float} or not math.isclose(v, want, rel_tol=1e-5, abs_tol=1e-5)
+            type(v) not in {int, float}
+            or not math.isclose(v, want, rel_tol=relative, abs_tol=absolute)
             for v, want in zip(bounds, recipe["parameters"]["size_m"], strict=True)
         )
     ):
@@ -286,7 +297,8 @@ def validate_geometry(recipe: dict[str, Any], metrics: Any) -> None:
         not isinstance(minimum, list)
         or len(minimum) != 3
         or any(
-            type(v) not in {int, float} or not math.isclose(v, want, rel_tol=1e-5, abs_tol=1e-5)
+            type(v) not in {int, float}
+            or not math.isclose(v, want, rel_tol=relative, abs_tol=absolute)
             for v, want in zip(minimum, [-w / 2, -d / 2, 0], strict=True)
         )
     ):

@@ -1,0 +1,12 @@
+E702 Multiple statements on one line (semicolon)
+   --> tests\test_assets.py:170:53
+    |
+168 |     from polyforge.capabilities.protocol import RunContext
+169 |     from polyforge.workforce.ledger import JobLedger
+170 |     owner=JobLedger(tmp_path,"existing_asset_owner");owner.claim("asset",spec()["asset_id"])
+    |                                                     ^
+171 |     def forbidden(*args,**kwargs):raise AssertionError("Second same-asset producer started")
+172 |     monkeypatch.setattr(module,"execute_recipe",forbidden)
+    |
+
+Found 1 error.

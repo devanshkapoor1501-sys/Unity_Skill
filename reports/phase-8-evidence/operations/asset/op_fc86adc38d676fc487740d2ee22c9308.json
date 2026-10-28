@@ -1,0 +1,231 @@
+{
+  "request_digest": "44783e167ea62f21890f20a0f126dcb30f728020945669ca0775175509ce34e0",
+  "files": [
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/artifacts.json",
+      "sha256": "a0629dfe3db4949a9c9c649ab7447c029d54ced991d88c792d08aca563589498"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/bundle.json",
+      "sha256": "b7b478e970102d8d54884100f1ab89981d1c5810a8d226b6cdb278674d4d5490"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/material-plan.json",
+      "sha256": "97ad8d631f906da6778e36fa61623f7d32243ada39ce35056d1e410b7a74219c"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/review.json",
+      "sha256": "34627184a04f95b4c5173a8dd0c2bdf282b69333e3275658101832e456ceda58"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/revision-1.json",
+      "sha256": "08b28d1cf11003b8d5381a1c304e2a00e6c4fe0d3aa1f6ba2d1c290579fe91c4"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/revision-2.json",
+      "sha256": "c3078d18d9c8c015f9c15d4e1b06da305d9a984cf164899bba7ec56788aad61f"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/spec.json",
+      "sha256": "681b100e37d94755f7242854ddcfc28f18b6da3e6ae83af610dff10e6cdb5a48"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/trace.json",
+      "sha256": "7ad07bd096be29b7b47318101e2e69a60a61db24b60f5fc73d6aa676b4560ab6"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/bundle.json",
+      "sha256": "b7b478e970102d8d54884100f1ab89981d1c5810a8d226b6cdb278674d4d5490"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/review.json",
+      "sha256": "34627184a04f95b4c5173a8dd0c2bdf282b69333e3275658101832e456ceda58"
+    },
+    {
+      "path": "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/trace.json",
+      "sha256": "7ad07bd096be29b7b47318101e2e69a60a61db24b60f5fc73d6aa676b4560ab6"
+    },
+    {
+      "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/asset.fbx",
+      "sha256": "6705a38a2e9fee7dd998f78ca5858be1f1fdb6fbc22cbe4f267fc40f865d6ab1"
+    },
+    {
+      "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/logical-geometry.json",
+      "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+    },
+    {
+      "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/material.json",
+      "sha256": "2e6d5a4b3544e32109e99577b88cf34f16e2339cc9be8378a7610ebae652b773"
+    },
+    {
+      "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/metrics.json",
+      "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+    },
+    {
+      "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/source.blend",
+      "sha256": "77a5f68e431282212c7cf6dfea6ce50df378a94453de17058cbfb9df3fc585ce"
+    }
+  ],
+  "result": {
+    "status": "PASS",
+    "exit_code": 0,
+    "error_code": null,
+    "data": {
+      "bundle": {
+        "schema_version": "1.0.0",
+        "asset_id": "industrial_box",
+        "brief_digest": "080c522040cc93b975aedd9844fe21c3aa4a17584e2f2e5772d27604acefbf68",
+        "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257",
+        "source_license": "Apache-2.0",
+        "coordinates": {
+          "units": "m",
+          "up": "Z",
+          "forward": "-Y",
+          "scale": 1
+        },
+        "pivot": "BASE_CENTER",
+        "producer_id": "asset_refiner",
+        "revision": 2,
+        "dependencies": [],
+        "slots": {
+          "geometry_source": {
+            "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/source.blend",
+            "sha256": "77a5f68e431282212c7cf6dfea6ce50df378a94453de17058cbfb9df3fc585ce"
+          },
+          "uv_source": {
+            "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/logical-geometry.json",
+            "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+          },
+          "material_source": {
+            "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/material.json",
+            "sha256": "2e6d5a4b3544e32109e99577b88cf34f16e2339cc9be8378a7610ebae652b773"
+          },
+          "export": {
+            "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/asset.fbx",
+            "sha256": "6705a38a2e9fee7dd998f78ca5858be1f1fdb6fbc22cbe4f267fc40f865d6ab1"
+          },
+          "geometry_metrics": {
+            "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/metrics.json",
+            "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+          }
+        },
+        "revision_digest": "bec76f49f5dece7be0b446b87e53767f156b9abd8417d50a96647d01cb4c442a"
+      },
+      "review": {
+        "schema_version": "1.0.0",
+        "revision_digest": "bec76f49f5dece7be0b446b87e53767f156b9abd8417d50a96647d01cb4c442a",
+        "producer_id": "asset_refiner",
+        "reviewer_id": "asset_quality_inspector",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "technical_verdict": "APPROVED",
+        "issues": [],
+        "triangles": 324,
+        "visual_review": "REVIEW",
+        "visual_confidence": null,
+        "visual_approval_required": false,
+        "source_license": "Apache-2.0"
+      },
+      "history": [
+        {
+          "schema_version": "1.0.0",
+          "revision_digest": "721b9c0404dd93bf020f1cb756cbcbd8d0e2ae54f697a3e1a8f0a6209c97363a",
+          "producer_id": "modeler",
+          "reviewer_id": "asset_quality_inspector",
+          "independence": "DIFFERENT_ROLE_SAME_HOST",
+          "technical_verdict": "REJECTED",
+          "issues": [
+            "material.base_color_rgba",
+            "material.metallic",
+            "material.roughness"
+          ],
+          "triangles": 324,
+          "visual_review": "REVIEW",
+          "visual_confidence": null,
+          "visual_approval_required": false,
+          "source_license": "Apache-2.0"
+        },
+        {
+          "schema_version": "1.0.0",
+          "revision_digest": "bec76f49f5dece7be0b446b87e53767f156b9abd8417d50a96647d01cb4c442a",
+          "producer_id": "asset_refiner",
+          "reviewer_id": "asset_quality_inspector",
+          "independence": "DIFFERENT_ROLE_SAME_HOST",
+          "technical_verdict": "APPROVED",
+          "issues": [],
+          "triangles": 324,
+          "visual_review": "REVIEW",
+          "visual_confidence": null,
+          "visual_approval_required": false,
+          "source_license": "Apache-2.0"
+        }
+      ],
+      "trace": [
+        {
+          "role": "asset_architect",
+          "state": "PLANNED",
+          "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257"
+        },
+        {
+          "role": "modeler",
+          "state": "PRODUCED",
+          "revision_digest": "721b9c0404dd93bf020f1cb756cbcbd8d0e2ae54f697a3e1a8f0a6209c97363a"
+        },
+        {
+          "role": "asset_quality_inspector",
+          "state": "REJECTED",
+          "revision_digest": "721b9c0404dd93bf020f1cb756cbcbd8d0e2ae54f697a3e1a8f0a6209c97363a"
+        },
+        {
+          "role": "uv_material_artist",
+          "state": "PROPOSED",
+          "scope": [
+            "material.base_color_rgba",
+            "material.metallic",
+            "material.roughness"
+          ]
+        },
+        {
+          "role": "asset_refiner",
+          "state": "PRODUCED",
+          "revision_digest": "bec76f49f5dece7be0b446b87e53767f156b9abd8417d50a96647d01cb4c442a"
+        },
+        {
+          "role": "asset_quality_inspector",
+          "state": "APPROVED",
+          "revision_digest": "bec76f49f5dece7be0b446b87e53767f156b9abd8417d50a96647d01cb4c442a"
+        }
+      ],
+      "import_ready": true,
+      "visual_review": "REVIEW",
+      "visual_confidence": null,
+      "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL_WITH_MATERIAL_PLANNING",
+      "evaluator_owner": "PUBLIC_DEVELOPMENT"
+    },
+    "diagnostics": [],
+    "operation_id": null,
+    "run_id": "asset_op_fc86adc38d676fc487740d2ee22c9308",
+    "version": "0.0.1",
+    "contract_version": "1.0.0",
+    "input_digest": "408b869b9980f19acd0939099872dc7cec3095ffd2a483eee60a2ba8080b5867",
+    "artifact_ids": [],
+    "evidence_paths": [
+      "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/bundle.json",
+      "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/review.json",
+      "runs/asset_op_fc86adc38d676fc487740d2ee22c9308/trace.json",
+      "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/source.blend",
+      "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/logical-geometry.json",
+      "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/material.json",
+      "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/asset.fbx",
+      "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r2/asset/metrics.json"
+    ],
+    "metrics": {
+      "workflow_seconds": 26.954,
+      "production_attempts": 2
+    },
+    "duration_ms": 0,
+    "rollback_id": null,
+    "evaluated_test_status": "PASS",
+    "game_status": "PARTIAL",
+    "operation_status": "PASS"
+  }
+}

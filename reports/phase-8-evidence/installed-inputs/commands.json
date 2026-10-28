@@ -1,0 +1,65 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "run",
+      "sprite.unity.strip.v1",
+      "--input",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites\\request.json",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites",
+      "--dry-run",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "zero_writes": true,
+    "duration_seconds": 2.406
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "run",
+      "asset.package.build.v1",
+      "--input",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites\\asset.json",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites",
+      "--dry-run",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "zero_writes": true,
+    "duration_seconds": 0.719
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "run",
+      "sprite.unity.strip.v1",
+      "--input",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites\\invalid.json",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase8\\installed-sprites",
+      "--dry-run",
+      "--json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "zero_writes": true,
+    "duration_seconds": 0.703
+  }
+]

@@ -1,0 +1,34 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+__ test_asset_spec_and_reference_policy_are_pure_and_bound_to_original_brief __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-86/test_asset_spec_and_reference_0')
+
+    def test_asset_spec_and_reference_policy_are_pure_and_bound_to_original_brief(tmp_path):
+>       from polyforge.assets.contracts import validate_spec
+E       ModuleNotFoundError: No module named 'polyforge.assets'
+
+tests\test_assets.py:34: ModuleNotFoundError
+_ test_bundle_missing_sources_license_coordinates_and_self_approval_are_rejected _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-86/test_bundle_missing_sources_li0')
+
+    def test_bundle_missing_sources_license_coordinates_and_self_approval_are_rejected(tmp_path):
+>       from polyforge.assets.contracts import inspect_bundle, seal_bundle, require_bundle_approval
+E       ModuleNotFoundError: No module named 'polyforge.assets'
+
+tests\test_assets.py:55: ModuleNotFoundError
+________ test_asset_generation_dry_run_and_invalid_spec_leave_no_files ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-86/test_asset_generation_dry_run_0')
+
+    def test_asset_generation_dry_run_and_invalid_spec_leave_no_files(tmp_path):
+>       from polyforge.assets.pipeline import build_asset
+E       ModuleNotFoundError: No module named 'polyforge.assets'
+
+tests\test_assets.py:67: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_assets.py::test_asset_spec_and_reference_policy_are_pure_and_bound_to_original_brief
+FAILED tests/test_assets.py::test_bundle_missing_sources_license_coordinates_and_self_approval_are_rejected
+FAILED tests/test_assets.py::test_asset_generation_dry_run_and_invalid_spec_leave_no_files
+3 failed in 0.45s

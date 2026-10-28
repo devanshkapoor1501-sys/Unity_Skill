@@ -336,5 +336,78 @@
       "test_xml"
     ],
     "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "asset.package.build.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/asset_build.schema.json",
+    "runner": "workforce.asset.package",
+    "deterministic": false,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "source_slots",
+      "reference_policy",
+      "scoped_refinement",
+      "technical_approval"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "asset_bundle",
+      "review",
+      "png"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "sprite.robot.bake.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/sprite_bake.schema.json",
+    "runner": "blender.sprite.bake",
+    "deterministic": false,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "six_frames",
+      "fixed_pivot",
+      "transparent_atlas",
+      "pixel_order"
+    ],
+    "output_types": [
+      "blend",
+      "png",
+      "atlas",
+      "metadata"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "sprite.unity.strip.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/sprite_import.schema.json",
+    "runner": "unity.sprite.strip",
+    "deterministic": false,
+    "requires": [
+      "python>=3.11",
+      "unity==6000.6.3f1"
+    ],
+    "tests": [
+      "native_sprite_data_provider",
+      "sprite_reference_curve",
+      "loop_and_2d_input",
+      "wall_collision"
+    ],
+    "output_types": [
+      "prefab",
+      "scene",
+      "animation_clip",
+      "test_xml"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
   }
 ]

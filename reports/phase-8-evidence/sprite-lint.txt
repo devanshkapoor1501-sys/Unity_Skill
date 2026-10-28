@@ -1,0 +1,126 @@
+E501 Line too long (163 > 100)
+  --> polyforge\sprites\images.py:21:101
+   |
+20 | …n range(height))
+21 | …BBBBB", width, height, 8, 6, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b"")
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (111 > 100)
+  --> polyforge\sprites\images.py:44:101
+   |
+42 |         or metadata.get("frame_sha256") != [hashlib.sha256(f).hexdigest() for f in frames]
+43 |     ):
+44 |         raise InputError("Sprite order/pivot/timing/source contract mismatch", kind=ErrorKind.CONTRACT_FAILURE)
+   |                                                                                                     ^^^^^^^^^^^
+45 |     decoded = [inspect_png(f, expected_size=metadata["frame_size"], include_pixels=True) for f in frames]
+46 |     if any(not d["nonblank"] or not d["framing_pass"] or not 0 < d["alpha_coverage"] < .9 for d in decoded):
+   |
+
+E501 Line too long (105 > 100)
+  --> polyforge\sprites\images.py:45:101
+   |
+43 |     ):
+44 |         raise InputError("Sprite order/pivot/timing/source contract mismatch", kind=ErrorKind.CONTRACT_FAILURE)
+45 |     decoded = [inspect_png(f, expected_size=metadata["frame_size"], include_pixels=True) for f in frames]
+   |                                                                                                     ^^^^^
+46 |     if any(not d["nonblank"] or not d["framing_pass"] or not 0 < d["alpha_coverage"] < .9 for d in decoded):
+47 |         raise InputError("Sprite blank/cropped/missing transparency", kind=ErrorKind.CONTRACT_FAILURE)
+   |
+
+E501 Line too long (108 > 100)
+  --> polyforge\sprites\images.py:46:101
+   |
+44 |         raise InputError("Sprite order/pivot/timing/source contract mismatch", kind=ErrorKind.CONTRACT_FAILURE)
+45 |     decoded = [inspect_png(f, expected_size=metadata["frame_size"], include_pixels=True) for f in frames]
+46 |     if any(not d["nonblank"] or not d["framing_pass"] or not 0 < d["alpha_coverage"] < .9 for d in decoded):
+   |                                                                                                     ^^^^^^^^
+47 |         raise InputError("Sprite blank/cropped/missing transparency", kind=ErrorKind.CONTRACT_FAILURE)
+48 |     observed = inspect_png(sheet, include_pixels=True)
+   |
+
+E501 Line too long (102 > 100)
+  --> polyforge\sprites\images.py:47:101
+   |
+45 |     decoded = [inspect_png(f, expected_size=metadata["frame_size"], include_pixels=True) for f in frames]
+46 |     if any(not d["nonblank"] or not d["framing_pass"] or not 0 < d["alpha_coverage"] < .9 for d in decoded):
+47 |         raise InputError("Sprite blank/cropped/missing transparency", kind=ErrorKind.CONTRACT_FAILURE)
+   |                                                                                                     ^^
+48 |     observed = inspect_png(sheet, include_pixels=True)
+49 |     expected = inspect_png(atlas(frames), include_pixels=True)
+   |
+
+E501 Line too long (130 > 100)
+  --> polyforge\sprites\images.py:50:101
+   |
+48 | …True)
+49 | …_pixels=True)
+50 | …observed["height"] != expected["height"] or observed["rgba"] != expected["rgba"]:
+   |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+51 | …m ordered frames", kind=ErrorKind.CONTRACT_FAILURE)
+52 | …me_bounds_px":[d["foreground_bounds_px"]for d in decoded], "alpha_coverage":[d["alpha_coverage"]for d in decoded], "pivot":[.5,.1], "…
+   |
+
+E501 Line too long (232 > 100)
+  --> polyforge\sprites\images.py:52:101
+   |
+50 | …served["rgba"] != expected["rgba"]:
+51 | …LURE)
+52 | …in decoded], "alpha_coverage":[d["alpha_coverage"]for d in decoded], "pivot":[.5,.1], "visual_review":"REVIEW", "visual_confidence":None}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (291 > 100)
+  --> tests\test_sprites.py:25:101
+   |
+24 | …
+25 | …pixels_per_unit":64,"fps":6,"pivot":[.5,.1],"trim":"NONE","order":[0,1,2,3,4,5],"frame_sha256":[hashlib.sha256(f).hexdigest()for f in frames],"source_sha256":"a"*64,"framing":"FIXED_ORTHOGRAPHIC"}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | …
+27 | …("trim","AUTO")]:
+   |
+
+E501 Line too long (112 > 100)
+  --> tests\test_sprites.py:27:101
+   |
+25 |     metadata = {"schema_version":"1.0.0","asset_id":"robot_a","frame_size":32,"frame_count":6,"pixels_per_unit":64,"fps":6,"pivot":[.5…
+26 |     assert inspect_strip(frames,atlas(frames),metadata)["status"] == "PASS"
+27 |     for field,value in [("order",[1,0,2,3,4,5]),("pivot",[.51,.1]),("fps",0),("frame_count",5),("trim","AUTO")]:
+   |                                                                                                     ^^^^^^^^^^^^
+28 |         with pytest.raises(InputError):
+29 |             inspect_strip(frames,atlas(frames),{**metadata,field:value})
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_sprites.py:30:25
+   |
+28 |         with pytest.raises(InputError):
+29 |             inspect_strip(frames,atlas(frames),{**metadata,field:value})
+30 |     wrong = list(frames);wrong[0],wrong[1]=wrong[1],wrong[0]
+   |                         ^
+31 |     with pytest.raises(InputError):
+32 |         inspect_strip(wrong,atlas(wrong),metadata)
+   |
+
+E501 Line too long (101 > 100)
+  --> tests\test_sprites.py:42:101
+   |
+40 |     from polyforge.sprites.contracts import route_2d
+41 |
+42 |     assert route_2d({"output":"UNITY_2D","source":"DIRECT_SPRITES"}) == ["sprite.inspect","unity.2d"]
+   |                                                                                                     ^
+43 |     assert route_2d({"output":"UNITY_2D","source":"BAKED_ROBOT"}) == ["blender.bake","sprite.inspect","unity.2d"]
+44 |     with pytest.raises(InputError):
+   |
+
+E501 Line too long (113 > 100)
+  --> tests\test_sprites.py:43:101
+   |
+42 |     assert route_2d({"output":"UNITY_2D","source":"DIRECT_SPRITES"}) == ["sprite.inspect","unity.2d"]
+43 |     assert route_2d({"output":"UNITY_2D","source":"BAKED_ROBOT"}) == ["blender.bake","sprite.inspect","unity.2d"]
+   |                                                                                                     ^^^^^^^^^^^^^
+44 |     with pytest.raises(InputError):
+45 |         route_2d({"output":"UNITY_2D","source":"UNKNOWN"})
+   |
+
+Found 12 errors.

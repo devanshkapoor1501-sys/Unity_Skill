@@ -1,0 +1,89 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collected 15 items / 14 deselected / 1 selected
+
+tests\test_phase8_review.py F                                            [100%]
+
+================================== FAILURES ===================================
+_____ test_unchanged_fresh_package_records_baseline_before_later_upgrade ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-117/test_unchanged_fresh_package_r0')
+
+    def test_unchanged_fresh_package_records_baseline_before_later_upgrade(tmp_path):
+        from polyforge.unity.upgrade import sync_package
+    
+        policy = WorkspacePolicy(tmp_path)
+        package = policy.mkdir("UnityProject/Packages/com.polyforge.engine")
+        (package / "Runtime.cs").write_bytes(b"fresh trusted engine code")
+        sync_package(policy, {"Runtime.cs": b"fresh trusted engine code"})
+>       assert sync_package(policy, {"Runtime.cs": b"upgraded trusted engine code"}) is not None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase8_review.py:246: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000002BDAB074860>
+desired = {'Runtime.cs': b'upgraded trusted engine code'}
+
+    def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = None) -> str | None:
+        package = policy.path("UnityProject/Packages/com.polyforge.engine")
+        if desired is None:
+            resources = Path(str(files("unity_package")))
+            desired = {
+                p.relative_to(resources).as_posix(): p.read_bytes()
+                for p in resources.rglob("*")
+                if p.is_file() and (p.suffix in {".cs", ".asmdef"} or p.name == "package.json")
+            }
+        changed = {
+            name: data
+            for name, data in desired.items()
+            if not policy.path(package / name).is_file()
+            or policy.path(package / name).read_bytes() != data
+        }
+        if not changed:
+            return None
+        old: dict[str, bytes] = {}
+        latest = policy.path(".polyforge/unity-latest.json")
+        if latest.is_file():
+            run = load_json(latest)["run_id"]
+            archive = policy.path(f"runs/{run}/native-output.zip")
+            registry = load_json(policy.path(f"runs/{run}/artifacts.json"))["artifacts"]
+            entry = next((a for a in registry if policy.path(a["relative_path"]) == archive), None)
+            if entry is None or hashlib.sha256(archive.read_bytes()).hexdigest() != entry["sha256"]:
+                raise InputError(
+                    "Package upgrade baseline archive hash mismatch", kind=ErrorKind.CONTRACT_FAILURE
+                )
+            with zipfile.ZipFile(archive) as source:
+                for name in desired:
+                    key = "Packages/com.polyforge.engine/" + name
+                    if key in source.namelist():
+                        if source.getinfo(key).file_size > 1_048_576:
+                            raise InputError("Package source exceeds 1MiB")
+                        old[name] = source.read(key)
+        provenance = policy.path(".polyforge/owned-package.json")
+        if provenance.is_file():
+            recorded = load_json(provenance)
+            for name, item in recorded["files"].items():
+                source_path = policy.path(item["source"])
+                content = source_path.read_bytes()
+                if hashlib.sha256(content).hexdigest() != item["sha256"]:
+                    raise InputError(
+                        "Owned package provenance changed", kind=ErrorKind.CONTRACT_FAILURE
+                    )
+                old[name] = content
+        for name in changed:
+            current = policy.path(package / name)
+            if current.is_file() and current.read_bytes() != old.get(name):
+>               raise InputError(
+                    "Managed package code was modified without a matching baseline: " + name,
+                    kind=ErrorKind.POLICY_DENIED,
+                )
+E               polyforge.contracts.validation.InputError: Managed package code was modified without a matching baseline: Runtime.cs
+
+polyforge\unity\upgrade.py:67: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase8_review.py::test_unchanged_fresh_package_records_baseline_before_later_upgrade
+====================== 1 failed, 14 deselected in 0.40s =======================

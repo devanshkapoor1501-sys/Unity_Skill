@@ -1,0 +1,50 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": "91d2105e5d0f436f86457d8e8b4df1f0",
+    "job_id": "job_0",
+    "task_id": "task_27bd6f684c81a83a_b15bbf5c",
+    "asset_id": "robot_a",
+    "pid": 26292,
+    "identity": "134376698536674470",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793199940.1466188,
+    "released": false,
+    "path": ".polyforge/leases/92f95119c8f7579fbf2e3233283446bacff274782cde745c82f5b110436c9282.json"
+  },
+  "result": {
+    "original_request": {
+      "schema_version": "1.0.0",
+      "brief": "Use these existing robot sprites in a controllable Unity 2D fixture.",
+      "task_class": "CREATE_ASSET",
+      "domain_tags": [
+        "unity",
+        "2d"
+      ],
+      "feature_ids": [
+        "input_2d",
+        "sprite_loop",
+        "collision_2d"
+      ],
+      "capability_id": "sprite.unity.strip.v1",
+      "input": {
+        "schema_version": "1.0.0",
+        "asset_id": "robot_a",
+        "source_kind": "DIRECT_SPRITES",
+        "atlas_file": "input/atlas.png",
+        "metadata_file": "input/atlas.json",
+        "frame_files": [
+          "input/frame-0.png",
+          "input/frame-1.png",
+          "input/frame-2.png",
+          "input/frame-3.png",
+          "input/frame-4.png",
+          "input/frame-5.png"
+        ],
+        "allow_package_downloads": true
+      }
+    },
+    "brief_digest": "0f0e58ec561e3ea85bdde18ae4804e010e7ec2ce4b819b50b95830e7ce479d89"
+  },
+  "result_digest": "d8c02711af32bf34b8705dc88933bdd782178097d0ce8551d90b6cdab54167f8"
+}

@@ -1,0 +1,13 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration,unity_tool,launch
+from polyforge.unity.evidence import verify_test_xml
+from polyforge.animation.integration import EDIT_TESTS,PLAY_TESTS
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));c=configuration(p);results={}
+request=p.path('runs/animation-646c4cbdd8db44b97701acdbab0ae96c/input.json')
+for platform,expected,namespace in [('EditMode',EDIT_TESTS,'PolyForge.Animation.Editor.Tests'),('PlayMode',PLAY_TESTS,'PolyForge.Animation.Tests')]:
+ relative='runs/phase8-animation-final/'+platform;out=p.path(relative+'.xml')
+ launch(p,unity_tool(c),c,relative,'tests',game_input=request,output=out,test_platform=platform,test_filter=namespace)
+ results[platform]=verify_test_xml(out,expected);print(platform,results[platform]['status'],flush=True)
+Path('.tmp/phase8/animation-final.json').write_text(json.dumps(results,indent=2)+'\n')

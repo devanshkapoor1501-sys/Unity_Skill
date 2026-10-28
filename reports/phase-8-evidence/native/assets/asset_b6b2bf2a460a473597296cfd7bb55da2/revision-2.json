@@ -1,0 +1,56 @@
+{
+  "bundle": {
+    "schema_version": "1.0.0",
+    "asset_id": "industrial_box",
+    "brief_digest": "080c522040cc93b975aedd9844fe21c3aa4a17584e2f2e5772d27604acefbf68",
+    "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257",
+    "source_license": "Apache-2.0",
+    "coordinates": {
+      "units": "m",
+      "up": "Z",
+      "forward": "-Y",
+      "scale": 1
+    },
+    "pivot": "BASE_CENTER",
+    "producer_id": "asset_refiner",
+    "revision": 2,
+    "dependencies": [],
+    "slots": {
+      "geometry_source": {
+        "path": "runs/mesh-asset_b6b2bf2a460a473597296cfd7bb55da2_r2/asset/source.blend",
+        "sha256": "72db95fc4329a8bc0a5ebd9a4ec488dbb086963e67300502fd04d74c4ef42cd3"
+      },
+      "uv_source": {
+        "path": "runs/mesh-asset_b6b2bf2a460a473597296cfd7bb55da2_r2/asset/logical-geometry.json",
+        "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+      },
+      "material_source": {
+        "path": "runs/mesh-asset_b6b2bf2a460a473597296cfd7bb55da2_r2/asset/material.json",
+        "sha256": "2e6d5a4b3544e32109e99577b88cf34f16e2339cc9be8378a7610ebae652b773"
+      },
+      "export": {
+        "path": "runs/mesh-asset_b6b2bf2a460a473597296cfd7bb55da2_r2/asset/asset.fbx",
+        "sha256": "12610ded12ad8eef2356169bbdd2fac047b01685d16937fb0a01e2f50f14cba7"
+      },
+      "geometry_metrics": {
+        "path": "runs/mesh-asset_b6b2bf2a460a473597296cfd7bb55da2_r2/asset/metrics.json",
+        "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+      }
+    },
+    "revision_digest": "c559e7910aa38a930bf9989d73c4812f4363ad903f3b5648770603dec16f2f68"
+  },
+  "inspection": {
+    "schema_version": "1.0.0",
+    "revision_digest": "c559e7910aa38a930bf9989d73c4812f4363ad903f3b5648770603dec16f2f68",
+    "producer_id": "asset_refiner",
+    "reviewer_id": "asset_quality_inspector",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "technical_verdict": "APPROVED",
+    "issues": [],
+    "triangles": 324,
+    "visual_review": "REVIEW",
+    "visual_confidence": null,
+    "visual_approval_required": false,
+    "source_license": "Apache-2.0"
+  }
+}

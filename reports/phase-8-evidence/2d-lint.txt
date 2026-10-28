@@ -1,0 +1,109 @@
+E501 Line too long (149 > 100)
+  --> polyforge\sprites\integration.py:57:101
+   |
+55 | …ions/semantic identity")
+56 | …
+57 | …),data={"dry_run":True,"execution_status":"NOT_RUN","route":route,"inspection":inspection})
+   |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+58 | …
+59 | …
+   |
+
+E501 Line too long (131 > 100)
+  --> polyforge\sprites\integration.py:62:101
+   |
+60 |     project = prepare_project(policy,installed_template(executable),dry_run=True)
+61 |     if not project.is_dir():
+62 |         raise InputError("Initialize a managed URP project with explicit package authorization first",kind=ErrorKind.POLICY_DENIED)
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+63 |     check_project_idle(policy)
+64 |     run_id = "sprite-unity-" + (context.run_id or uuid4().hex[:16])
+   |
+
+E501 Line too long (208 > 100)
+  --> polyforge\sprites\integration.py:67:101
+   |
+65 | …
+66 | ….
+67 | …xdigest() for p in policy.path(project/"Assets/PolyForgeGenerated").rglob("*.unity") if "/Sprites/" not in p.as_posix()}
+   |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+68 | …
+69 | …
+   |
+
+E501 Line too long (120 > 100)
+  --> polyforge\sprites\integration.py:72:101
+   |
+70 |         target = policy.path(project/"Assets/PolyForgeGenerated/Sprites/atlas.png")
+71 |         policy.mkdir(target.parent)
+72 |         if not target.is_file() or hashlib.sha256(target.read_bytes()).hexdigest() != hashlib.sha256(sheet).hexdigest():
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+73 |             shutil.copyfile(atlas,target)
+74 |         digest = canonical_digest(metadata)
+   |
+
+E501 Line too long (147 > 100)
+  --> polyforge\sprites\integration.py:75:101
+   |
+73 | …
+74 | …
+75 | …n",{**metadata,"atlas_sha256":hashlib.sha256(sheet).hexdigest(),"metadata_digest":digest})
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+76 | …viewer_id":"sprite_quality_inspector","producer_id":"sprite_source","independence":"DIFFERENT_ROLE_SAME_HOST","technical_verdict":"AP…
+77 | …
+   |
+
+E501 Line too long (204 > 100)
+  --> polyforge\sprites\integration.py:80:101
+   |
+78 | …,output=output,cancel=context.cancel)
+79 | …
+80 | …b.sha256(sheet).hexdigest() or len(bindings["sprites"]) != 6 or len({s["local_id"]for s in bindings["sprites"]}) != 6:
+   |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+81 | …d.CONTRACT_FAILURE)
+82 | …
+   |
+
+E501 Line too long (105 > 100)
+  --> polyforge\sprites\integration.py:81:101
+   |
+79 | …     bindings = load_json(output)
+80 | …     if bindings["metadata_digest"] != digest or bindings["atlas_sha256"] != hashlib.sha256(sheet).hexdigest() or len(bindings["sprit…
+81 | …         raise InputError("Native sprite reference identity mismatch",kind=ErrorKind.CONTRACT_FAILURE)
+   |                                                                                                   ^^^^^
+82 | …     tests = {}
+83 | …     for platform,expected,namespace in [("EditMode",EDIT_TESTS,"PolyForge.Sprite.Editor.Tests"),("PlayMode",PLAY_TESTS,"PolyForge.Sp…
+   |
+
+E501 Line too long (150 > 100)
+  --> polyforge\sprites\integration.py:83:101
+   |
+81 | …ity mismatch",kind=ErrorKind.CONTRACT_FAILURE)
+82 | …
+83 | …T_TESTS,"PolyForge.Sprite.Editor.Tests"),("PlayMode",PLAY_TESTS,"PolyForge.Sprite.Tests")]:
+   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+84 | …+".xml")
+85 | …atform.lower(),"tests",game_input=request,output=xml,test_platform=platform,test_filter=namespace,cancel=context.cancel)
+   |
+
+E501 Line too long (117 > 100)
+  --> polyforge\sprites\integration.py:89:101
+   |
+87 |         for path,sha in originals.items():
+88 |             if hashlib.sha256(policy.path(path).read_bytes()).hexdigest() != sha:
+89 |                 raise InputError("Preexisting 3D scene changed during sprite import",kind=ErrorKind.CONTRACT_FAILURE)
+   |                                                                                                     ^^^^^^^^^^^^^^^^^
+90 |         atomic_json(policy,relative+"/preservation.json",{"before_and_after_sha256":originals})
+91 |         atomic_json(policy,relative+"/tests.json",tests)
+   |
+
+E501 Line too long (453 > 100)
+  --> polyforge\sprites\integration.py:92:101
+   |
+90 | …
+91 | …
+92 | …="PASS",data={"bindings":bindings,"scene":"UnityProject/Assets/PolyForgeGenerated/Sprites/SpriteArena.unity","route":route,"inspection":inspection,"visual_review":"REVIEW","original_3d_scenes_preserved":True},evidence_paths=[relative+"/bindings.json",relative+"/approval.json",relative+"/editmode.xml",relative+"/playmode.xml",relative+"/preservation.json"])
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+Found 11 errors (1 fixed, 10 remaining).

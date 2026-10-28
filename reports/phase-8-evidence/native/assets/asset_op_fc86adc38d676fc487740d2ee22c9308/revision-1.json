@@ -1,0 +1,60 @@
+{
+  "bundle": {
+    "schema_version": "1.0.0",
+    "asset_id": "industrial_box",
+    "brief_digest": "080c522040cc93b975aedd9844fe21c3aa4a17584e2f2e5772d27604acefbf68",
+    "spec_digest": "484125a64129b21af51750bc78b704243f1fc9b80e053cfa2ec202db3894b257",
+    "source_license": "Apache-2.0",
+    "coordinates": {
+      "units": "m",
+      "up": "Z",
+      "forward": "-Y",
+      "scale": 1
+    },
+    "pivot": "BASE_CENTER",
+    "producer_id": "modeler",
+    "revision": 1,
+    "dependencies": [],
+    "slots": {
+      "geometry_source": {
+        "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r1/asset/source.blend",
+        "sha256": "a6759acb50d5c9461e20c90ca94e6233c35fbc2ee90b5ded553d29c398dc3bc6"
+      },
+      "uv_source": {
+        "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r1/asset/logical-geometry.json",
+        "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+      },
+      "material_source": {
+        "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r1/asset/material.json",
+        "sha256": "b3b5cae030f1baef1bf4213c64dbf5b07ebc6eb9734b6527eba4840a5b71d40c"
+      },
+      "export": {
+        "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r1/asset/asset.fbx",
+        "sha256": "909dfb370d94a1c47bf1ceebfa66099f773c3dba3d9243e799711482235ded27"
+      },
+      "geometry_metrics": {
+        "path": "runs/mesh-asset_op_fc86adc38d676fc487740d2ee22c9308_r1/asset/metrics.json",
+        "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd"
+      }
+    },
+    "revision_digest": "721b9c0404dd93bf020f1cb756cbcbd8d0e2ae54f697a3e1a8f0a6209c97363a"
+  },
+  "inspection": {
+    "schema_version": "1.0.0",
+    "revision_digest": "721b9c0404dd93bf020f1cb756cbcbd8d0e2ae54f697a3e1a8f0a6209c97363a",
+    "producer_id": "modeler",
+    "reviewer_id": "asset_quality_inspector",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "technical_verdict": "REJECTED",
+    "issues": [
+      "material.base_color_rgba",
+      "material.metallic",
+      "material.roughness"
+    ],
+    "triangles": 324,
+    "visual_review": "REVIEW",
+    "visual_confidence": null,
+    "visual_approval_required": false,
+    "source_license": "Apache-2.0"
+  }
+}

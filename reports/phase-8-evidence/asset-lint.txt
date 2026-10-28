@@ -1,0 +1,12 @@
+E501 Line too long (104 > 100)
+  --> polyforge\runner\locks.py:55:101
+   |
+53 |         while True:
+54 |             if self.cancel is not None and self.cancel.is_set():
+55 |                 raise InputError("Cancelled while waiting for owned worker", kind=ErrorKind.INTERRUPTED)
+   |                                                                                                     ^^^^
+56 |             try:
+57 |                 return self._enter_once()
+   |
+
+Found 1 error.

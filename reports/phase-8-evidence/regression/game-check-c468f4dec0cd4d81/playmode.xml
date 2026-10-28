@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.5918644">
+  <test-suite type="TestSuite" id="1038" name="Isometric Robot Arena" fullname="Isometric Robot Arena" runstate="Runnable" testcasecount="18" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.591864" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1060" name="PolyForge.PlayMode.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase6/arena/UnityProject/Library/ScriptAssemblies/PolyForge.PlayMode.Tests.dll" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.580249" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="14600" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1061" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.579079" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1062" name="Game" fullname="PolyForge.Game" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.578436" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1063" name="Tests" fullname="PolyForge.Game.Tests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.577794" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1046" name="RuntimeTests" fullname="PolyForge.Game.Tests.RuntimeTests" classname="PolyForge.Game.Tests.RuntimeTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:13:15Z" duration="0.043929" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1047" name="HealthClampsDamageAndResets" fullname="PolyForge.Game.Tests.RuntimeTests.HealthClampsDamageAndResets" methodname="HealthClampsDamageAndResets" classname="PolyForge.Game.Tests.RuntimeTests" runstate="Runnable" seed="2110142428" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:13:15Z" duration="0.023846" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1048" name="ScenarioTests" fullname="PolyForge.Game.Tests.ScenarioTests" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:14:06Z" duration="50.531732" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1058" name="CollisionDisabledMutant" fullname="PolyForge.Game.Tests.ScenarioTests.CollisionDisabledMutant" methodname="CollisionDisabledMutant" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="1557465394" result="Passed" start-time="2026-10-28 14:13:15Z" end-time="2026-10-28 14:13:20Z" duration="4.083349" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="ContactDealsDamage" fullname="PolyForge.Game.Tests.ScenarioTests.ContactDealsDamage" methodname="ContactDealsDamage" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="2056590762" result="Passed" start-time="2026-10-28 14:13:20Z" end-time="2026-10-28 14:13:21Z" duration="1.530351" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="EnemyPatrols" fullname="PolyForge.Game.Tests.ScenarioTests.EnemyPatrols" methodname="EnemyPatrols" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="547010710" result="Passed" start-time="2026-10-28 14:13:21Z" end-time="2026-10-28 14:13:24Z" duration="3.014946" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="HealthFailure" fullname="PolyForge.Game.Tests.ScenarioTests.HealthFailure" methodname="HealthFailure" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="951888246" result="Passed" start-time="2026-10-28 14:13:24Z" end-time="2026-10-28 14:13:26Z" duration="1.512180" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1056" name="KeyboardAdapterMovesPlayer" fullname="PolyForge.Game.Tests.ScenarioTests.KeyboardAdapterMovesPlayer" methodname="KeyboardAdapterMovesPlayer" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="1359654653" result="Passed" start-time="2026-10-28 14:13:26Z" end-time="2026-10-28 14:13:27Z" duration="1.115310" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1057" name="KeyboardAdapterRestarts" fullname="PolyForge.Game.Tests.ScenarioTests.KeyboardAdapterRestarts" methodname="KeyboardAdapterRestarts" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="751267095" result="Passed" start-time="2026-10-28 14:13:27Z" end-time="2026-10-28 14:13:28Z" duration="1.033385" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="PlayerMoves" fullname="PolyForge.Game.Tests.ScenarioTests.PlayerMoves" methodname="PlayerMoves" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="854015798" result="Passed" start-time="2026-10-28 14:13:28Z" end-time="2026-10-28 14:13:29Z" duration="1.015302" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1059" name="RestartDisabledMutant" fullname="PolyForge.Game.Tests.ScenarioTests.RestartDisabledMutant" methodname="RestartDisabledMutant" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="546630193" result="Passed" start-time="2026-10-28 14:13:29Z" end-time="2026-10-28 14:13:30Z" duration="1.535226" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1055" name="RestartResets" fullname="PolyForge.Game.Tests.ScenarioTests.RestartResets" methodname="RestartResets" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="1031500494" result="Passed" start-time="2026-10-28 14:13:30Z" end-time="2026-10-28 14:13:32Z" duration="1.534468" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1054" name="SurvivalWins" fullname="PolyForge.Game.Tests.ScenarioTests.SurvivalWins" methodname="SurvivalWins" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="1744027642" result="Passed" start-time="2026-10-28 14:13:32Z" end-time="2026-10-28 14:14:02Z" duration="30.135362" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1050" name="WallCollision" fullname="PolyForge.Game.Tests.ScenarioTests.WallCollision" methodname="WallCollision" classname="PolyForge.Game.Tests.ScenarioTests" runstate="Runnable" seed="1627193305" result="Passed" start-time="2026-10-28 14:14:02Z" end-time="2026-10-28 14:14:06Z" duration="4.016837" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/PolyForge/Isometric Robot Arena\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

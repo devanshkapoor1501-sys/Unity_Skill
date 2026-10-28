@@ -1,0 +1,16 @@
+import json
+from pathlib import Path
+from polyforge.workforce.orchestrator import run_task
+
+asset=json.loads(Path('.tmp/phase8/asset-inputs.json').read_text())[0]
+task={'schema_version':'1.0.0','brief':asset['brief'],'task_class':'CREATE_ASSET','domain_tags':['blender','assets','materials'],'feature_ids':['editable_source','basic_material'],'capability_id':'asset.package.build.v1','input':{'schema_version':'1.0.0','spec':asset}}
+result=run_task(Path('.tmp/phase8/assets'),task)
+Path('.tmp/phase8/coordinator-asset-result.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+assert result.status=='PASS',result.to_dict()
+print('Asset coordinator',result.status,result.run_id,flush=True)
+request=json.loads(Path('.tmp/phase8/import-request.json').read_text());request['source_kind']='DIRECT_SPRITES'
+task={'schema_version':'1.0.0','brief':'Use these six existing robot sprites in a controllable Unity 2D fixture; preserve the 3D arena.','task_class':'CREATE_ASSET','domain_tags':['unity','2d'],'feature_ids':['input_2d','sprite_loop','collision_2d'],'capability_id':'sprite.unity.strip.v1','input':request}
+result=run_task(Path('.tmp/phase6/arena'),task)
+Path('.tmp/phase8/coordinator-2d-result.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+assert result.status=='PASS',result.to_dict()
+print('Direct sprite coordinator',result.status,result.run_id,flush=True)

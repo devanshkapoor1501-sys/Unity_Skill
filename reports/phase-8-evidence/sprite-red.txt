@@ -1,0 +1,24 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_six_frame_atlas_pixel_order_alpha_and_pivot_are_independently_checked __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-92/test_six_frame_atlas_pixel_ord0')
+
+    def test_six_frame_atlas_pixel_order_alpha_and_pivot_are_independently_checked(tmp_path):
+>       from polyforge.sprites.images import atlas, inspect_strip
+E       ModuleNotFoundError: No module named 'polyforge.sprites'
+
+tests\test_sprites.py:22: ModuleNotFoundError
+__________ test_native_2d_route_does_not_discover_or_require_blender __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-92/test_native_2d_route_does_not_0')
+
+    def test_native_2d_route_does_not_discover_or_require_blender(tmp_path):
+>       from polyforge.sprites.contracts import route_2d
+E       ModuleNotFoundError: No module named 'polyforge.sprites'
+
+tests\test_sprites.py:40: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_sprites.py::test_six_frame_atlas_pixel_order_alpha_and_pivot_are_independently_checked
+FAILED tests/test_sprites.py::test_native_2d_route_does_not_discover_or_require_blender
+2 failed in 0.32s

@@ -10,7 +10,9 @@ from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError
 
 
-def inspect_png(content: bytes, *, expected_size: int | None = None) -> dict[str, Any]:
+def inspect_png(
+    content: bytes, *, expected_size: int | None = None, include_pixels: bool = False
+) -> dict[str, Any]:
     """Decode checked PNG chunks and all five scanline filters; never trust worker stats."""
 
     def invalid(message: str) -> None:
@@ -82,6 +84,7 @@ def inspect_png(content: bytes, *, expected_size: int | None = None) -> dict[str
     foreground = []
     colors = set()
     opaque = 0
+    pixels = bytearray()
     for y in range(height):
         offset = y * (stride + 1)
         mode = raw[offset]
@@ -102,6 +105,8 @@ def inspect_png(content: bytes, *, expected_size: int | None = None) -> dict[str
                 opaque += 1
                 foreground.append((x, y))
                 colors.add(bytes(pixel[:3]))
+        if include_pixels:
+            pixels.extend(row)
         previous = row
     bounds = (
         [
@@ -129,4 +134,5 @@ def inspect_png(content: bytes, *, expected_size: int | None = None) -> dict[str
         "nonblank": opaque >= max(1, width * height // 1000) and len(colors) > 1,
         "framing_pass": framed,
         "alpha_coverage": opaque / (width * height),
+        **({"rgba": bytes(pixels)} if include_pixels else {}),
     }

@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase8\installed-workforce.py", line 19, in <module>
+    call(['workforce','plan','--workspace',str(workspace),'--brief','task-brief.md','--dry-run']);assert inventory()==before
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase8\installed-workforce.py", line 15, in call
+    assert result.returncode==0,result.stderr+result.stdout
+           ^^^^^^^^^^^^^^^^^^^^
+AssertionError: {"status": "FAIL", "exit_code": 2, "error_code": "PF-INPUT-CONTRACT", "data": {}, "diagnostics": [{"code": "PF-INPUT-CONTRACT", "message": "Unknown configuration key: visual_audit.preview_size"}], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 468.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "FAIL"}
+

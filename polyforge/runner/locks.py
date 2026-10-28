@@ -6,6 +6,8 @@ import json
 import os
 import socket
 import sys
+import threading
+import time
 from pathlib import Path
 from types import TracebackType
 from typing import BinaryIO
@@ -34,13 +36,38 @@ def unity_project_lock(policy: WorkspacePolicy, project: Path) -> FileLock:
 class FileLock:
     """Keep a persistent lock file; release OS locks on exit/crash, never unlink races."""
 
-    def __init__(self, policy: WorkspacePolicy, relative: str) -> None:
+    def __init__(
+        self,
+        policy: WorkspacePolicy,
+        relative: str,
+        *,
+        wait_seconds: float = 0,
+        cancel: threading.Event | None = None,
+    ) -> None:
+        if type(wait_seconds) not in {int, float} or not 0 <= wait_seconds <= 3600:
+            raise InputError("Invalid bounded lock wait")
         self.policy, self.relative = policy, relative
+        self.wait_seconds, self.cancel = wait_seconds, cancel
         self.stream: BinaryIO | None = None
         self.recovered_stale = False
         self.record: dict[str, object] = {}
 
     def __enter__(self) -> FileLock:
+        deadline = time.monotonic() + self.wait_seconds
+        while True:
+            if self.cancel is not None and self.cancel.is_set():
+                raise InputError(
+                    "Cancelled while waiting for owned worker", kind=ErrorKind.INTERRUPTED
+                )
+            try:
+                return self._enter_once()
+            except InputError as error:
+                # Only OS contention is queued. Malformed/still-live stale ownership fails closed.
+                if not isinstance(error.__cause__, OSError) or time.monotonic() >= deadline:
+                    raise
+                time.sleep(min(0.02, max(0, deadline - time.monotonic())))
+
+    def _enter_once(self) -> FileLock:
         path = self.policy.path(self.relative)
         self.policy.mkdir(path.parent)
         stream = path.open("a+b")

@@ -1,0 +1,56 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____ test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-90/test_bounded_lock_queue_waits_0')
+
+    def test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled(tmp_path):
+        import threading
+        import time
+    
+        from polyforge.runner.locks import FileLock
+        from polyforge.security.paths import WorkspacePolicy
+    
+        policy = WorkspacePolicy(tmp_path)
+        outcome = []
+        def acquire(cancel=None):
+            try:
+                with FileLock(policy, "locks/queue", wait_seconds=2, cancel=cancel):
+                    outcome.append("acquired")
+            except InputError as error:
+                outcome.append(int(error.kind))
+        with FileLock(policy, "locks/queue"):
+            thread = threading.Thread(target=acquire)
+            thread.start()
+            time.sleep(.1)
+            assert outcome == []
+        thread.join(3)
+>       assert outcome == ["acquired"]
+E       AssertionError: assert [] == ['acquired']
+E         
+E         Right contains one more item: 'acquired'
+E         Use -v to get more diff
+
+tests\test_assets.py:54: AssertionError
+============================== warnings summary ===============================
+tests/test_assets.py::test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled
+  C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.venv\Lib\site-packages\_pytest\threadexception.py:58: PytestUnhandledThreadExceptionWarning: Exception in thread Thread-1 (acquire)
+  
+  Traceback (most recent call last):
+    File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1075, in _bootstrap_inner
+      self.run()
+    File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\threading.py", line 1012, in run
+      self._target(*self._args, **self._kwargs)
+    File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\tests\test_assets.py", line 44, in acquire
+      with FileLock(policy, "locks/queue", wait_seconds=2, cancel=cancel):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  TypeError: FileLock.__init__() got an unexpected keyword argument 'wait_seconds'
+  
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+    warnings.warn(pytest.PytestUnhandledThreadExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_assets.py::test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled
+1 failed, 4 deselected, 1 warning in 0.43s

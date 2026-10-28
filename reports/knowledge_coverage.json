@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "scope": "PHASE7_MINIMAL_DISCOVERY",
+  "scope": "PHASE7_8_MINIMAL_DISCOVERY",
   "global_taxonomy": "NOT_YET_FROZEN; Phase10/17 domain coverage remains future",
   "coverage_percentage": null,
   "records": [
@@ -24,6 +24,17 @@
       "verified_at": "2026-10-28T10:59:39.098502+00:00",
       "probe": "animation-c75a7a5cef034add actual Editor/PlayMode XML",
       "scope": "Generic mechanical skeleton, native two-state controller and in-place root only."
+    },
+    {
+      "knowledge_id": "unity.sprite.data_provider.v1",
+      "domain": "2d",
+      "knowledge_state": "VERIFIED_IN_WORKFLOW",
+      "installed_version": "6000.6.3f1 / 2D Sprite 1.0.0",
+      "source": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\com.unity.2d.sprite\\Documentation~\\DataProvider.md",
+      "source_sha256": "d86af9e6ecd904e267fc23c96a7f3d4b2b41b8217f0b29ff25034380b894cd89",
+      "verified_at": "2026-10-28T14:15:36.815512+00:00",
+      "probe": "sprite-unity-16aa676ff41a4e4e and sprite-unity-op_db071558788500db67320ebe8553659a: actual 5 EditMode + 4 PlayMode each",
+      "scope": "Six 128px frames; native slicing, imported m_Sprite references, measured 1s loop, keyboard/physics/lifecycle. No universal sprite-format or standalone claim."
     }
   ],
   "unfamiliar_code_execution": "BLOCKED",

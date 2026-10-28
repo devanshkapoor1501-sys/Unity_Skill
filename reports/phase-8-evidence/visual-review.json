@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0.0",
+  "review_type": "AGENT_SOURCE_VISUAL",
+  "independence": "DIFFERENT_ROLE_SAME_HOST",
+  "status": "PASS_FOR_BOUNDED_SOURCE_PREVIEW",
+  "views": [
+    "six-frame robot atlas",
+    "crate isometric",
+    "wall isometric"
+  ],
+  "observations": [
+    "six frames are untrimmed and fully framed with attached mechanical limbs",
+    "walking offsets are visible across the cycle; repeated poses at symmetric times are retained",
+    "crate is blue and wall is orange with coherent primitive silhouettes"
+  ],
+  "confidence": 0.8,
+  "limits": "Source previews only; no protected aesthetic evaluator or rendered standalone profile. Native animation and controls are verified separately."
+}

@@ -30,7 +30,8 @@ def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = Non
         if not policy.path(package / name).is_file()
         or policy.path(package / name).read_bytes() != data
     }
-    if not changed:
+    provenance = policy.path(".polyforge/owned-package.json")
+    if not changed and provenance.is_file():
         return None
     old: dict[str, bytes] = {}
     latest = policy.path(".polyforge/unity-latest.json")
@@ -50,7 +51,6 @@ def sync_package(policy: WorkspacePolicy, desired: dict[str, bytes] | None = Non
                     if source.getinfo(key).file_size > 1_048_576:
                         raise InputError("Package source exceeds 1MiB")
                     old[name] = source.read(key)
-    provenance = policy.path(".polyforge/owned-package.json")
     if provenance.is_file():
         recorded = load_json(provenance)
         for name, item in recorded["files"].items():

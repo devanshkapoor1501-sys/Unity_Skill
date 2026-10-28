@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Failed(Child)" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.1376971">
+  <test-suite type="TestSuite" id="1000" name="Isometric Robot Arena" fullname="Isometric Robot Arena" runstate="Runnable" testcasecount="28" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.137697" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1051" name="PolyForge.Sprite.Editor.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase6/arena/UnityProject/Library/ScriptAssemblies/PolyForge.Sprite.Editor.Tests.dll" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.119541" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="24552" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1052" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.118625" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1053" name="Sprite" fullname="PolyForge.Sprite" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.118302" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestSuite" id="1054" name="Editor" fullname="PolyForge.Sprite.Editor" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.117928" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-suite type="TestSuite" id="1055" name="Tests" fullname="PolyForge.Sprite.Editor.Tests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.117545" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <failure>
+                <message><![CDATA[One or more child tests had errors]]></message>
+              </failure>
+              <test-suite type="TestFixture" id="1045" name="SpriteTests" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" testcasecount="5" result="Failed" site="Child" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.115570" total="5" passed="4" failed="1" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <failure>
+                  <message><![CDATA[One or more child tests had errors]]></message>
+                </failure>
+                <test-case id="1048" name="FlipbookUsesActualSpriteReferencesAndOneSecondLoop" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests.FlipbookUsesActualSpriteReferencesAndOneSecondLoop" methodname="FlipbookUsesActualSpriteReferencesAndOneSecondLoop" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" seed="1305829413" result="Passed" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.045126" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1047" name="ImportedSpritesKeepSixRectsPivotsAndStableIds" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests.ImportedSpritesKeepSixRectsPivotsAndStableIds" methodname="ImportedSpritesKeepSixRectsPivotsAndStableIds" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" seed="596747435" result="Passed" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.010186" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1049" name="MissingSpriteCurveIsRejected" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests.MissingSpriteCurveIsRejected" methodname="MissingSpriteCurveIsRejected" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" seed="708346552" result="Passed" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.005470" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1050" name="ReorderedSpriteReferenceCurveIsRejected" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests.ReorderedSpriteReferenceCurveIsRejected" methodname="ReorderedSpriteReferenceCurveIsRejected" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" seed="1826151528" result="Passed" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.004388" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1046" name="ReplacingInputDisposesPreviousSubscription" fullname="PolyForge.Sprite.Editor.Tests.SpriteTests.ReplacingInputDisposesPreviousSubscription" methodname="ReplacingInputDisposesPreviousSubscription" classname="PolyForge.Sprite.Editor.Tests.SpriteTests" runstate="Runnable" seed="619156994" result="Failed" start-time="2026-10-28 14:01:39Z" end-time="2026-10-28 14:01:39Z" duration="0.011390" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                  <failure>
+                    <message><![CDATA[  Expected: 1
+  But was:  0
+]]></message>
+                    <stack-trace><![CDATA[at PolyForge.Sprite.Editor.Tests.SpriteTests.ReplacingInputDisposesPreviousSubscription () [0x0002b] in .\Packages\com.polyforge.engine\Tests\SpriteEditor\SpriteTests.cs:26
+]]></stack-trace>
+                  </failure>
+                  <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/PolyForge/Isometric Robot Arena\TestResults.xml
+]]></output>
+                </test-case>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

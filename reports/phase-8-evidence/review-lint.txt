@@ -1,0 +1,372 @@
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:27:46
+   |
+25 | def asset_fixture(tmp_path, value=None):
+26 |     value=spec() if value is None else value
+27 |     folder=tmp_path/'runs/asset_native/asset';folder.mkdir(parents=True)
+   |                                              ^
+28 |     for name in ('metrics.json','logical-geometry.json','material.json'):
+29 |         shutil.copyfile(Path(__file__).parent/'fixtures/phase8'/name,folder/name)
+   |
+
+E501 Line too long (245 > 100)
+  --> tests\test_phase8_review.py:32:101
+   |
+30 | …
+31 | …
+32 | …:'source.blend','export':'asset.fbx','uv_source':'logical-geometry.json','geometry_metrics':'metrics.json','material_source':'material.json'}.items()}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+33 | …
+   |
+
+E501 Line too long (102 > 100)
+  --> tests\test_phase8_review.py:37:101
+   |
+36 | def rehash(bundle):
+37 |     bundle['revision_digest']=canonical_digest({k:v for k,v in bundle.items()if k!='revision_digest'})
+   |                                                                                                     ^^
+38 |     return bundle
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:43:37
+   |
+41 | @pytest.mark.parametrize('change',['omit','license','authority','substitute'])
+42 | def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path,change):
+43 |     reference=tmp_path/'concept.txt';reference.write_text('A visual style reference is data only.')
+   |                                     ^
+44 |     value=spec();value['references']=[{'kind':'STYLE','path':'concept.txt','sha256':hashlib.sha256(reference.read_bytes()).hexdigest()…
+45 |     value,bundle=asset_fixture(tmp_path,value)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:44:17
+   |
+42 | def test_approved_bundle_cannot_drop_or_substitute_reference_provenance(tmp_path,change):
+43 |     reference=tmp_path/'concept.txt';reference.write_text('A visual style reference is data only.')
+44 |     value=spec();value['references']=[{'kind':'STYLE','path':'concept.txt','sha256':hashlib.sha256(reference.read_bytes()).hexdigest()…
+   |                 ^
+45 |     value,bundle=asset_fixture(tmp_path,value)
+46 |     assert inspect_bundle(tmp_path,bundle,value)['technical_verdict']=='APPROVED'
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:47:22
+   |
+45 |     value,bundle=asset_fixture(tmp_path,value)
+46 |     assert inspect_bundle(tmp_path,bundle,value)['technical_verdict']=='APPROVED'
+47 |     if change=='omit':bundle['dependencies']=[]
+   |                      ^
+48 |     elif change=='substitute':bundle['dependencies'][0]['path']='different.txt'
+49 |     elif change=='license':bundle['dependencies'][0]['license']='MISSING'
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:48:30
+   |
+46 |     assert inspect_bundle(tmp_path,bundle,value)['technical_verdict']=='APPROVED'
+47 |     if change=='omit':bundle['dependencies']=[]
+48 |     elif change=='substitute':bundle['dependencies'][0]['path']='different.txt'
+   |                              ^
+49 |     elif change=='license':bundle['dependencies'][0]['license']='MISSING'
+50 |     else:bundle['dependencies'][0]['authority']='EXECUTE'
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:49:27
+   |
+47 |     if change=='omit':bundle['dependencies']=[]
+48 |     elif change=='substitute':bundle['dependencies'][0]['path']='different.txt'
+49 |     elif change=='license':bundle['dependencies'][0]['license']='MISSING'
+   |                           ^
+50 |     else:bundle['dependencies'][0]['authority']='EXECUTE'
+51 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:50:9
+   |
+48 |     elif change=='substitute':bundle['dependencies'][0]['path']='different.txt'
+49 |     elif change=='license':bundle['dependencies'][0]['license']='MISSING'
+50 |     else:bundle['dependencies'][0]['authority']='EXECUTE'
+   |         ^
+51 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:51:35
+   |
+49 |     elif change=='license':bundle['dependencies'][0]['license']='MISSING'
+50 |     else:bundle['dependencies'][0]['authority']='EXECUTE'
+51 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |                                   ^
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:57:63
+   |
+55 | def test_material_bindings_require_complete_unique_expected_ids(tmp_path,change):
+56 |     value,bundle=asset_fixture(tmp_path)
+57 |     source=tmp_path/bundle['slots']['material_source']['path'];material=json.loads(source.read_text('utf-8'))
+   |                                                               ^
+58 |     if change=='missing':material['materials']=material['materials'][:1]
+59 |     elif change=='duplicate':material['materials'].append(copy.deepcopy(material['materials'][0]))
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:58:25
+   |
+56 |     value,bundle=asset_fixture(tmp_path)
+57 |     source=tmp_path/bundle['slots']['material_source']['path'];material=json.loads(source.read_text('utf-8'))
+58 |     if change=='missing':material['materials']=material['materials'][:1]
+   |                         ^
+59 |     elif change=='duplicate':material['materials'].append(copy.deepcopy(material['materials'][0]))
+60 |     else:material['materials'][0]['id']='unknown'
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:59:29
+   |
+57 |     source=tmp_path/bundle['slots']['material_source']['path'];material=json.loads(source.read_text('utf-8'))
+58 |     if change=='missing':material['materials']=material['materials'][:1]
+59 |     elif change=='duplicate':material['materials'].append(copy.deepcopy(material['materials'][0]))
+   |                             ^
+60 |     else:material['materials'][0]['id']='unknown'
+61 |     source.write_text(json.dumps(material),encoding='utf-8');bundle['slots']['material_source']['sha256']=hashlib.sha256(source.read_b…
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:60:9
+   |
+58 |     if change=='missing':material['materials']=material['materials'][:1]
+59 |     elif change=='duplicate':material['materials'].append(copy.deepcopy(material['materials'][0]))
+60 |     else:material['materials'][0]['id']='unknown'
+   |         ^
+61 |     source.write_text(json.dumps(material),encoding='utf-8');bundle['slots']['material_source']['sha256']=hashlib.sha256(source.read_b…
+62 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:61:61
+   |
+59 |     elif change=='duplicate':material['materials'].append(copy.deepcopy(material['materials'][0]))
+60 |     else:material['materials'][0]['id']='unknown'
+61 |     source.write_text(json.dumps(material),encoding='utf-8');bundle['slots']['material_source']['sha256']=hashlib.sha256(source.read_b…
+   |                                                             ^
+62 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:62:35
+   |
+60 |     else:material['materials'][0]['id']='unknown'
+61 |     source.write_text(json.dumps(material),encoding='utf-8');bundle['slots']['material_source']['sha256']=hashlib.sha256(source.read_b…
+62 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |                                   ^
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:66:17
+   |
+65 | def test_declared_dimension_tolerance_is_an_actual_acceptance_boundary(tmp_path):
+66 |     value=spec();value['rubric']['dimension_tolerance_m']=.000001
+   |                 ^
+67 |     value,bundle=asset_fixture(tmp_path,value)
+68 |     source=tmp_path/bundle['slots']['geometry_metrics']['path'];metrics=json.loads(source.read_text('utf-8'));metrics['bounds_unity_m'…
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:68:64
+   |
+66 |     value=spec();value['rubric']['dimension_tolerance_m']=.000001
+67 |     value,bundle=asset_fixture(tmp_path,value)
+68 |     source=tmp_path/bundle['slots']['geometry_metrics']['path'];metrics=json.loads(source.read_text('utf-8'));metrics['bounds_unity_m'…
+   |                                                                ^
+69 |     source.write_text(json.dumps(metrics),encoding='utf-8');bundle['slots']['geometry_metrics']['sha256']=hashlib.sha256(source.read_b…
+70 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:68:110
+   |
+66 |     value=spec();value['rubric']['dimension_tolerance_m']=.000001
+67 |     value,bundle=asset_fixture(tmp_path,value)
+68 |     source=tmp_path/bundle['slots']['geometry_metrics']['path'];metrics=json.loads(source.read_text('utf-8'));metrics['bounds_unity_m'…
+   |                                                                                                              ^
+69 |     source.write_text(json.dumps(metrics),encoding='utf-8');bundle['slots']['geometry_metrics']['sha256']=hashlib.sha256(source.read_b…
+70 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:69:60
+   |
+67 |     value,bundle=asset_fixture(tmp_path,value)
+68 |     source=tmp_path/bundle['slots']['geometry_metrics']['path'];metrics=json.loads(source.read_text('utf-8'));metrics['bounds_unity_m'…
+69 |     source.write_text(json.dumps(metrics),encoding='utf-8');bundle['slots']['geometry_metrics']['sha256']=hashlib.sha256(source.read_b…
+   |                                                            ^
+70 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:70:35
+   |
+68 |     source=tmp_path/bundle['slots']['geometry_metrics']['path'];metrics=json.loads(source.read_text('utf-8'));metrics['bounds_unity_m'…
+69 |     source.write_text(json.dumps(metrics),encoding='utf-8');bundle['slots']['geometry_metrics']['sha256']=hashlib.sha256(source.read_b…
+70 |     with pytest.raises(InputError):inspect_bundle(tmp_path,rehash(bundle),value)
+   |                                   ^
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:74:37
+   |
+73 | def sprite_fixture(tmp_path,prefix=''):
+74 |     policy=WorkspacePolicy(tmp_path);folder=policy.mkdir(prefix)if prefix else tmp_path
+   |                                     ^
+75 |     frames=[sample(i)for i in range(6)]
+76 |     metadata={'schema_version':'1.0.0','asset_id':'robot_a','frame_size':32,'frame_count':6,'pixels_per_unit':64,'fps':6,'pivot':[.5,.…
+   |
+
+E501 Line too long (317 > 100)
+  --> tests\test_phase8_review.py:76:101
+   |
+74 | …
+75 | …
+76 | …xels_per_unit':64,'fps':6,'pivot':[.5,.1],'trim':'NONE','order':list(range(6)),'frame_sha256':[hashlib.sha256(f).hexdigest()for f in frames],'source_sha256':'a'*64,'framing':'FIXED_ORTHOGRAPHIC','source_license':'CC0-1.0'}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+77 | …
+78 | …(metadata),encoding='utf-8')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:77:37
+   |
+75 |     frames=[sample(i)for i in range(6)]
+76 |     metadata={'schema_version':'1.0.0','asset_id':'robot_a','frame_size':32,'frame_count':6,'pixels_per_unit':64,'fps':6,'pivot':[.5,.…
+77 |     for i,frame in enumerate(frames):(folder/f'frame-{i}.png').write_bytes(frame)
+   |                                     ^
+78 |     (folder/'atlas.png').write_bytes(atlas(frames));(folder/'atlas.json').write_text(json.dumps(metadata),encoding='utf-8')
+79 |     relative=lambda name:(folder/name).relative_to(tmp_path).as_posix()
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:78:52
+   |
+76 |     metadata={'schema_version':'1.0.0','asset_id':'robot_a','frame_size':32,'frame_count':6,'pixels_per_unit':64,'fps':6,'pivot':[.5,.…
+77 |     for i,frame in enumerate(frames):(folder/f'frame-{i}.png').write_bytes(frame)
+78 |     (folder/'atlas.png').write_bytes(atlas(frames));(folder/'atlas.json').write_text(json.dumps(metadata),encoding='utf-8')
+   |                                                    ^
+79 |     relative=lambda name:(folder/name).relative_to(tmp_path).as_posix()
+80 |     request={'schema_version':'1.0.0','asset_id':'robot_a','source_kind':'DIRECT_SPRITES','atlas_file':relative('atlas.png'),'metadata…
+   |
+
+E731 Do not assign a `lambda` expression, use a `def`
+  --> tests\test_phase8_review.py:79:5
+   |
+77 |     for i,frame in enumerate(frames):(folder/f'frame-{i}.png').write_bytes(frame)
+78 |     (folder/'atlas.png').write_bytes(atlas(frames));(folder/'atlas.json').write_text(json.dumps(metadata),encoding='utf-8')
+79 |     relative=lambda name:(folder/name).relative_to(tmp_path).as_posix()
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+80 |     request={'schema_version':'1.0.0','asset_id':'robot_a','source_kind':'DIRECT_SPRITES','atlas_file':relative('atlas.png'),'metadata…
+81 |     return policy,request,metadata
+   |
+help: Rewrite `relative` as a `def`
+
+E501 Line too long (224 > 100)
+  --> tests\test_phase8_review.py:80:101
+   |
+78 | …(metadata),encoding='utf-8')
+79 | …
+80 | …s_file':relative('atlas.png'),'metadata_file':relative('atlas.json'),'frame_files':[relative(f'frame-{i}.png')for i in range(6)]}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+81 | …
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> tests\test_phase8_review.py:87:30
+   |
+85 | def test_direct_sprite_input_paths_do_not_define_the_production_run(tmp_path,prefix):
+86 |     policy,inputs,metadata=sprite_fixture(tmp_path,prefix)
+87 |     run='sprite-unity-native';folder=policy.mkdir('runs/'+run)
+   |                              ^
+88 |     for name,expected in [('editmode.xml',EDIT_TESTS),('playmode.xml',PLAY_TESTS)]:
+89 |         root=ET.Element('test-run',result='Passed')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> tests\test_phase8_review.py:90:37
+   |
+88 |     for name,expected in [('editmode.xml',EDIT_TESTS),('playmode.xml',PLAY_TESTS)]:
+89 |         root=ET.Element('test-run',result='Passed')
+90 |         for test in sorted(expected):ET.SubElement(root,'test-case',fullname=test,result='Passed')
+   |                                     ^
+91 |         (folder/name).write_bytes(ET.tostring(root))
+92 |     (folder/'bindings.json').write_text(json.dumps({'metadata_digest':canonical_digest(metadata)}),encoding='utf-8')
+   |
+
+E501 Line too long (156 > 100)
+  --> tests\test_phase8_review.py:93:101
+   |
+91 | …
+92 | …digest':canonical_digest(metadata)}),encoding='utf-8')
+93 | …s['frame_files'],*[f'runs/{run}/{n}'for n in ('bindings.json','editmode.xml','playmode.xml')]]
+   |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+94 | …ts':[{'relative_path':p,'sha256':hashlib.sha256(policy.path(p).read_bytes()).hexdigest()}for p in paths]})
+95 | …es directly in Unity.','task_class':'CREATE_ASSET','domain_tags':['unity','2d'],'feature_ids':[],'capability_id':'sprite.unity.strip.…
+   |
+
+E501 Line too long (168 > 100)
+  --> tests\test_phase8_review.py:94:101
+   |
+92 | …':canonical_digest(metadata)}),encoding='utf-8')
+93 | …me_files'],*[f'runs/{run}/{n}'for n in ('bindings.json','editmode.xml','playmode.xml')]]
+94 | …'relative_path':p,'sha256':hashlib.sha256(policy.path(p).read_bytes()).hexdigest()}for p in paths]})
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+95 | …ectly in Unity.','task_class':'CREATE_ASSET','domain_tags':['unity','2d'],'feature_ids':[],'capability_id':'sprite.unity.strip.v1','i…
+96 | …est(task['brief']))
+   |
+
+E501 Line too long (214 > 100)
+  --> tests\test_phase8_review.py:95:101
+   |
+93 | …n}/{n}'for n in ('bindings.json','editmode.xml','playmode.xml')]]
+94 | …56':hashlib.sha256(policy.path(p).read_bytes()).hexdigest()}for p in paths]})
+95 | …class':'CREATE_ASSET','domain_tags':['unity','2d'],'feature_ids':[],'capability_id':'sprite.unity.strip.v1','input':inputs}
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+96 | …
+97 | …
+   |
+
+E702 Multiple statements on one line (semicolon)
+   --> tests\test_phase8_review.py:104:31
+    |
+102 |     policy,inputs,metadata=sprite_fixture(tmp_path)
+103 |     # Reach policy admission without spending a native process on this unit fixture.
+104 |     metadata['frame_size']=128;(tmp_path/'atlas.json').write_text(json.dumps(metadata),encoding='utf-8')
+    |                               ^
+105 |     monkeypatch.setattr(module,'inspect_strip',lambda *args:{'status':'PASS'})
+106 |     monkeypatch.setattr(module,'unity_tool',lambda config:Path('Unity.exe'))
+    |
+
+E501 Line too long (109 > 100)
+   --> tests\test_phase8_review.py:111:101
+    |
+109 |     monkeypatch.setattr(module,'prepare_project',lambda *args,**kwargs:project)
+110 |     monkeypatch.setattr(module,'check_project_idle',lambda *args:None)
+111 |     def forbidden(*args,**kwargs):raise AssertionError('Unauthorized project reached native synchronization')
+    |                                                                                                     ^^^^^^^^^
+112 |     monkeypatch.setattr(module,'sync_package',forbidden)
+113 |     with pytest.raises(InputError)as failure:import_strip(inputs,RunContext(tmp_path))
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tests\test_phase8_review.py:113:45
+    |
+111 |     def forbidden(*args,**kwargs):raise AssertionError('Unauthorized project reached native synchronization')
+112 |     monkeypatch.setattr(module,'sync_package',forbidden)
+113 |     with pytest.raises(InputError)as failure:import_strip(inputs,RunContext(tmp_path))
+    |                                             ^
+114 |     assert int(failure.value.kind)==4
+    |
+
+Found 36 errors (1 fixed, 35 remaining).
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

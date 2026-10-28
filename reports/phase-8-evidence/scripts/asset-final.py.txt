@@ -1,0 +1,8 @@
+import json
+from pathlib import Path
+from polyforge.workforce.orchestrator import run_task
+base=Path('.tmp/phase8');asset=json.loads((base/'asset-inputs.json').read_text(encoding='utf-8'))[0]
+task={'schema_version':'1.0.0','brief':asset['brief'],'task_class':'CREATE_ASSET','domain_tags':['blender','assets','materials'],'feature_ids':['editable_source','basic_material'],'capability_id':'asset.package.build.v1','input':{'schema_version':'1.0.0','spec':asset}}
+r=run_task(base/'assets',task)
+(base/'coordinator-asset-final.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n',encoding='utf-8');assert r.status=='PASS',r.to_dict()
+print('Final asset coordinator',r.status,r.run_id,flush=True)

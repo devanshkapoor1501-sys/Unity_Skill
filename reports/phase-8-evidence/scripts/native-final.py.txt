@@ -1,0 +1,22 @@
+import json
+from pathlib import Path
+from polyforge.workforce.orchestrator import run_task
+from polyforge.sprites.integration import import_strip
+from polyforge.capabilities.protocol import RunContext
+base=Path('.tmp/phase8')
+request=json.loads((base/'import-request.json').read_text(encoding='utf-8'));request['source_kind']='DIRECT_SPRITES'
+r=import_strip(request,RunContext(Path('.tmp/phase6/arena')))
+(base/'import-final.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n',encoding='utf-8');assert r.status=='PASS',r.to_dict()
+print('Existing 3D + 2D preserved, final sprite native 5 Editor + 4 Play PASS',r.run_id,flush=True)
+p=base/'direct-final';p.mkdir(exist_ok=True)
+import shutil
+(p/'input').mkdir(exist_ok=True)
+old=Path('.tmp/phase6/arena')
+for name in [request['metadata_file'],request['atlas_file'],*request['frame_files']]:shutil.copyfile(old/name,p/'input'/Path(name).name)
+(p/'polyforge.toml').write_text('[tools]\nblender_executable="must-not-run-blender.exe"\nunity_executable="C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Unity.exe"\n',encoding='utf-8')
+request.update(atlas_file='input/atlas.png',metadata_file='input/atlas.json',frame_files=[f'input/frame-{i}.png' for i in range(6)],allow_package_downloads=True)
+task={'schema_version':'1.0.0','brief':'Use these existing robot sprites in a controllable Unity 2D fixture.','task_class':'CREATE_ASSET','domain_tags':['unity','2d'],'feature_ids':['input_2d','sprite_loop','collision_2d'],'capability_id':'sprite.unity.strip.v1','input':request}
+(base/'direct-task-final.json').write_text(json.dumps(task,indent=2)+'\n',encoding='utf-8')
+r=run_task(p,task)
+(base/'coordinator-2d-final.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n',encoding='utf-8');assert r.status=='PASS',r.to_dict()
+print('Fresh direct-sprite coordinator final PASS; configured Blender unavailable',r.run_id,flush=True)

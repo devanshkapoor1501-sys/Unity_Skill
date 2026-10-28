@@ -1,0 +1,38 @@
+[
+  {
+    "job_id": "job_0",
+    "role_id": "intent_analyst",
+    "stage": "S1",
+    "state": "PRODUCED",
+    "result_digest": "60db845aa3a204dc4e388a590f6bfb1799c086ee7ffe2aacea58f8220f7bdd4d",
+    "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+    "native_subagents": "UNAVAILABLE",
+    "host_delegation_probe": "NOT_IMPLEMENTED",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+  },
+  {
+    "job_id": "job_1",
+    "role_id": "asset_producer",
+    "stage": "S2",
+    "state": "PRODUCED",
+    "result_digest": "361cda75a55c37c4cfde845d8a0d9c9e0fb843297f37d81e902d8fb6a5ce04f1",
+    "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+    "native_subagents": "UNAVAILABLE",
+    "host_delegation_probe": "NOT_IMPLEMENTED",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+  },
+  {
+    "job_id": "job_2",
+    "role_id": "asset_inspector",
+    "stage": "S3",
+    "state": "APPROVED",
+    "result_digest": "0db863f9748d097349e451af53cd4ce7f5d3c5200bb33608a8af2f4b27e5e7b0",
+    "execution_mode": "LOCAL_MULTIROLE_SEQUENTIAL",
+    "native_subagents": "UNAVAILABLE",
+    "host_delegation_probe": "NOT_IMPLEMENTED",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "evaluator_owner": "EXTERNAL_NOT_SUPPLIED"
+  }
+]

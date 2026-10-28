@@ -1,0 +1,28 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+________ test_asset_generation_dry_run_and_invalid_spec_leave_no_files ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-101/test_asset_generation_dry_run_0')
+
+    def test_asset_generation_dry_run_and_invalid_spec_leave_no_files(tmp_path):
+        from polyforge.assets.pipeline import build_asset
+        from polyforge.capabilities.protocol import RunContext
+    
+        result = build_asset(
+            {"schema_version": "1.0.0", "spec": spec()}, RunContext(tmp_path, dry_run=True)
+        )
+        assert result.data["execution_status"] == "NOT_RUN"
+        assert list(tmp_path.iterdir()) == []
+        for identifier in ["UpperID", "invalid-hyphen"]:
+            with pytest.raises(InputError):
+                build_asset({"schema_version":"1.0.0","spec":{**spec(),"asset_id":identifier}},RunContext(tmp_path))
+>           assert list(tmp_path.iterdir()) == []
+E           AssertionError: assert [WindowsPath(...0/workforce')] == []
+E             
+E             Left contains 2 more items, first extra item: WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-101/test_asset_generation_dry_run_0/.polyforge')
+E             Use -v to get more diff
+
+tests\test_assets.py:128: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_assets.py::test_asset_generation_dry_run_and_invalid_spec_leave_no_files
+1 failed, 4 deselected in 0.98s

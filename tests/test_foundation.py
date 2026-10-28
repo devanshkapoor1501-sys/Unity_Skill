@@ -80,6 +80,9 @@ class CLIAcceptanceTests(unittest.TestCase):
                 "animation.robot.rig.v1",
                 "artifact.candidate.inspect.v1",
                 "animation.robot.unity.v1",
+                "asset.package.build.v1",
+                "sprite.robot.bake.v1",
+                "sprite.unity.strip.v1",
             ],
         )
 

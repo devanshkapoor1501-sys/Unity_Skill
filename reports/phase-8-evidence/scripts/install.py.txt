@@ -1,0 +1,19 @@
+from pathlib import Path
+import subprocess,json,time,os,sys,hashlib,zipfile,tarfile
+root=Path.cwd();base=root/'.tmp/phase8';cwd=base/'install-cwd';cwd.mkdir(exist_ok=True);out=base/'install';out.mkdir(exist_ok=True);(cwd/'task.json').write_bytes((root/'examples/phase8/crate-task.json').read_bytes());(cwd/'task-brief.md').write_bytes((root/'examples/phase8/crate-brief.md').read_bytes());py=root/'.venv/Scripts/python.exe';fresh=base/'fresh-wheel/Scripts/python.exe';env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'))
+checks=[([str(py),'-m','venv',str(base/'fresh-wheel')],root),([str(fresh),'-I','-m','pip','install','--force-reinstall','--no-index','--find-links',str(root/'.tmp/wheelhouse'),str(root/'dist/polyforge-0.0.1-py3-none-any.whl')],cwd)]
+checks += [([str(fresh),'-I','-m',*args],cwd) for args in [['pip','check'],['polyforge','--help'],['polyforge','capability','list','--json'],*([ 'polyforge','capability','show',cap,'--json'] for cap in ['asset.package.build.v1','sprite.robot.bake.v1','sprite.unity.strip.v1']),['polyforge','workforce','roles','--workspace',str(cwd),'--json'],['polyforge','workforce','plan','--workspace',str(cwd),'--brief','task-brief.md','--dry-run','--json']]]
+code='from importlib.resources import files; import json,hashlib; p=files("unity_package"); names=["Runtime/SpritePlayer.cs","Runtime/SpritePlayer.cs.meta","SpriteEditor/SpriteBuilder.cs","Tests/SpriteEditor/SpriteTests.cs","Tests/SpritePlayMode/SpriteMotionTests.cs","Tests/SpritePlayMode/SpriteMotionTests.cs.meta"]; print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in names})); q=files("polyforge"); [q.joinpath("contracts/"+n+".schema.json").read_bytes() for n in ["asset_spec","asset_build","asset_bundle","sprite_bake","sprite_import"]]'
+checks += [([str(fresh),'-I','-c',code],cwd)]
+records=[]
+for i,(args,folder) in enumerate(checks):
+ start=time.monotonic();log=out/f'{i:02}.txt'
+ with log.open('w',encoding='utf-8') as f:r=subprocess.run(args,cwd=folder,env=env,stdout=f,stderr=subprocess.STDOUT)
+ records.append({'argv':args,'cwd':str(folder),'exit_code':r.returncode,'duration_seconds':round(time.monotonic()-start,3),'log':str(log.relative_to(root))});print(i,r.returncode,flush=True)
+ if r.returncode:break
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n',encoding='utf-8')
+if any(r['exit_code'] for r in records):sys.exit(1)
+observed=json.loads((out/f'{len(checks)-1:02}.txt').read_text(encoding='utf-8'));assert all(hashlib.sha256((root/'unity_package'/n).read_bytes()).hexdigest()==h for n,h in observed.items())
+with tarfile.open(root/'dist/polyforge-0.0.1.tar.gz') as a:
+ names=a.getnames();assert any(n.endswith('roles/asset_quality_inspector.md') for n in names);assert any(n.endswith('.agents/skills/polyforge/references/assets-and-sprites.md') for n in names)
+print('Fresh isolated install, three capability descriptors, workforce dry-run, schemas, source/metadata equality and sdist skill/roles PASS')

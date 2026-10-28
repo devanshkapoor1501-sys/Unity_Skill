@@ -1,0 +1,19 @@
+import hashlib,json,os,shutil,subprocess,time
+from pathlib import Path
+root=Path.cwd();base=root/'.tmp/phase8';workspace=base/'installed-sprites';workspace.mkdir(exist_ok=True);out=base/'installed-inputs';out.mkdir(exist_ok=True)
+source=base/'direct-final/input'
+for p in source.iterdir():shutil.copyfile(p,workspace/p.name)
+request={'schema_version':'1.0.0','asset_id':'robot_a','source_kind':'DIRECT_SPRITES','atlas_file':'atlas.png','metadata_file':'atlas.json','frame_files':[f'frame-{i}.png' for i in range(6)]}
+(workspace/'request.json').write_text(json.dumps(request),encoding='utf-8')
+(workspace/'asset.json').write_text(json.dumps({'schema_version':'1.0.0','spec':json.loads((root/'examples/phase8/crate-asset.json').read_text(encoding='utf-8'))}),encoding='utf-8')
+# Example file already wraps spec; keep the CLI input in its published form.
+(workspace/'asset.json').write_bytes((root/'examples/phase8/crate-asset.json').read_bytes())
+(workspace/'invalid.json').write_text('{"schema_version":"1.0.0"}',encoding='utf-8')
+py=base/'fresh-wheel/Scripts/python.exe';env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'));records=[]
+def inventory():return {p.relative_to(workspace).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in workspace.rglob('*') if p.is_file()}
+for cap,file,expected in [('sprite.unity.strip.v1','request.json',0),('asset.package.build.v1','asset.json',0),('sprite.unity.strip.v1','invalid.json',2)]:
+ before=inventory();args=[str(py),'-I','-m','polyforge','capability','run',cap,'--input',str(workspace/file),'--workspace',str(workspace),'--dry-run','--json'];start=time.monotonic()
+ r=subprocess.run(args,cwd=out,env=env,capture_output=True,text=True);(out/f'{len(records):02}.json').write_text(r.stdout,encoding='utf-8');(out/f'{len(records):02}.stderr.txt').write_text(r.stderr,encoding='utf-8')
+ assert r.returncode==expected,(r.returncode,r.stdout,r.stderr);assert inventory()==before
+ records.append({'argv':args,'exit_code':r.returncode,'expected_exit_code':expected,'zero_writes':True,'duration_seconds':round(time.monotonic()-start,3)})
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n',encoding='utf-8');print('Installed real sprite/asset dry runs and invalid input: zero filesystem changes PASS')

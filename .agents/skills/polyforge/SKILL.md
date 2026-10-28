@@ -7,7 +7,7 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 7 catalog contains read-only
+Discover available capabilities first. The Phase 8 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
 Blender mesh recipes, managed static audit/export and native Unity static scenes.
 S5 builds the bounded playable survival arena and runs independent public checks.
@@ -64,5 +64,11 @@ evaluator. Resume verifies completion receipts and file hashes; stale outputs
 invalidate success. See [workforce and animation rules](references/workflow.md)
 for supported capabilities and authority boundaries.
 
-Phase 7 integration does not qualify portable installation in multiple hosts.
+Phase 8 adds inspected primitive asset packages, bounded material refinement and
+a separate six-frame 2D fixture. Read [asset and sprite inputs](references/assets-and-sprites.md)
+when authoring an AssetSpec, baking sprites, or using existing sprites directly.
+Do not force Blender for a native 2D request. Required subjective approval stays
+REVIEW until supplied; technical approval alone cannot replace it.
+
+Phase 8 integration does not qualify portable installation in multiple hosts.
 Final Codex/Claude guides, host smoke tests and optional MCP remain Phase 10.

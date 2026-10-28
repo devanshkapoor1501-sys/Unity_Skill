@@ -1,24 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "brief": "Animate the supported robot with in-place Idle and Walk; preserve the playable arena and all bone/socket bindings.",
-  "brief_digest": "8e3f8d357145e7b4382a8453b0eb7169e26ee23bc946dced0d4d825026bdd090",
+  "scope": "PHASE8_PUBLIC_DEVELOPMENT",
   "oracle_owner": "PUBLIC_DEVELOPMENT",
   "independence": "DIFFERENT_ROLE_SAME_HOST",
   "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
   "phase_acceptance": "PASS",
   "game_status": "PARTIAL",
+  "baseline_commit": "ba70092d860055c8b9f67cd157e4e3fcf9777bfa",
+  "asset_gate": "Two distinct primitive model/refine/review handoffs; immutable original briefs, declared rubric, source/license bindings",
   "required_native_evidence": {
+    "sprite_editor_per_project": 5,
+    "sprite_playmode_per_project": 4,
     "animation_editor": 5,
     "animation_playmode": 2,
     "static_editor": 17,
     "arena_editor": 1,
     "arena_playmode": 12
   },
-  "visual_review": "AGENT_POSE_REVIEW_ONLY",
+  "visual_review": "SOURCE_PREVIEW_AGENT_REVIEW; aesthetic approval REVIEW",
+  "previous_oracle": "phase-7-evidence/summary.json",
   "limits": [
-    "one rigid mechanical robot family",
-    "sequential engine roles; no verified host delegation",
-    "full cross-application rollback remains Phase9",
-    "release qualification remains incomplete"
+    "six-frame bounded importer and one robot bake family",
+    "basic URP Lit only",
+    "same-host roles; no protected evaluator",
+    "full rollback Phase9; host qualification Phase10; advanced texturing Phase13",
+    "no Phase8 standalone/performance/sandbox claim"
   ]
 }

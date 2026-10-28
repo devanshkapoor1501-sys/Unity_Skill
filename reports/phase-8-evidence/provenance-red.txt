@@ -1,0 +1,47 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+____ test_material_bindings_require_complete_unique_expected_ids[mapping] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-115/test_material_bindings_require0')
+change = 'mapping'
+
+    @pytest.mark.parametrize("change", ["missing", "duplicate", "unknown", "mapping"])
+    def test_material_bindings_require_complete_unique_expected_ids(tmp_path, change):
+        value, bundle = asset_fixture(tmp_path)
+        source = tmp_path / bundle["slots"]["material_source"]["path"]
+        material = json.loads(source.read_text("utf-8"))
+        if change == "missing":
+            material["materials"] = material["materials"][:1]
+        elif change == "duplicate":
+            material["materials"].append(copy.deepcopy(material["materials"][0]))
+        elif change == "unknown":
+            material["materials"][0]["id"] = "unknown"
+        else:material["module_materials"]={"wrong_module":["base"]}
+        source.write_text(json.dumps(material), encoding="utf-8")
+        bundle["slots"]["material_source"]["sha256"] = hashlib.sha256(source.read_bytes()).hexdigest()
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:96: Failed
+___________ test_sprite_operation_cache_rejects_changed_input_files ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-115/test_sprite_operation_cache_re0')
+
+    def test_sprite_operation_cache_rejects_changed_input_files(tmp_path):
+        from polyforge.workforce.operations import complete,operation_context,recover
+        policy,inputs,_=sprite_fixture(tmp_path)
+        folder=policy.mkdir('runs/sprite_cache');(folder/'output.json').write_text('{}')
+        context=operation_context(tmp_path,'sprite_task','produce',42,None)
+        complete('sprite.unity.strip.v1',inputs,context,Result(run_id='sprite_cache'))
+        assert recover('sprite.unity.strip.v1',inputs,context).status=='PASS'
+        (tmp_path/inputs['metadata_file']).write_text('{"changed":true}')
+>       with pytest.raises(InputError):recover('sprite.unity.strip.v1',inputs,context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase8_review.py:232: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase8_review.py::test_material_bindings_require_complete_unique_expected_ids[mapping]
+FAILED tests/test_phase8_review.py::test_sprite_operation_cache_rejects_changed_input_files
+2 failed, 12 deselected in 0.67s

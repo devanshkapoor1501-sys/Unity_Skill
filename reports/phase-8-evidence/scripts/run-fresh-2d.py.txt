@@ -1,0 +1,13 @@
+import json,shutil
+from pathlib import Path
+from polyforge.capabilities.protocol import RunContext
+from polyforge.sprites.integration import import_strip
+old=Path('.tmp/phase6/arena');p=Path('.tmp/phase8/direct-2d');p.mkdir(exist_ok=True);(p/'input').mkdir(exist_ok=True)
+old_request=json.loads(Path('.tmp/phase8/import-request.json').read_text())
+for name in [old_request['metadata_file'],old_request['atlas_file'],*old_request['frame_files']]:shutil.copyfile(old/name,p/'input'/Path(name).name)
+(p/'polyforge.toml').write_text('[tools]\nblender_executable="must-not-run-blender.exe"\nunity_executable="C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Unity.exe"\n')
+request={'schema_version':'1.0.0','asset_id':'robot_a','source_kind':'DIRECT_SPRITES','atlas_file':'input/atlas.png','metadata_file':'input/atlas.json','frame_files':[f'input/frame-{i}.png'for i in range(6)],'allow_package_downloads':True}
+r=import_strip(request,RunContext(p))
+Path('.tmp/phase8/fresh-2d-result.json').write_text(json.dumps(r.to_dict(),indent=2)+'\n')
+assert r.status=='PASS',r.to_dict()
+print('Fresh direct-sprite project PASS; no Blender executable exists at configured path',r.run_id,flush=True)

@@ -160,6 +160,8 @@ See [architecture](architecture.md), [CLI contract](cli.md),
 [security](../SECURITY.md), and [execution plan](implementation-plan.md).
 Phase 7 adds bounded worker contracts and robot Idle/Walk animation; see the
 [workforce workflow](workforce.md) and [Phase 7 evidence](../reports/phase-7.md).
+Phase 8 adds [asset/material handoffs and the bounded 2D workflow](asset-workflow.md),
+with separate technical, visual and game acceptance evidence.
 The reviewed v5.1 roadmap keeps broader asset, texture, 2D and host integration
 work in later phases; see [the implementation sequence](implementation-plan.md).
 Phases stop at their acceptance

@@ -1,0 +1,20 @@
+import copy,json,time
+from pathlib import Path
+from polyforge.assets.contracts import require_bundle_approval
+from polyforge.assets.pipeline import build_asset
+from polyforge.blender.adapter import execute_recipe
+from polyforge.blender.recipes import expand_recipe
+from polyforge.capabilities.protocol import RunContext
+p=Path('.tmp/phase8/assets');records=[]
+for spec in json.loads(Path('.tmp/phase8/asset-inputs.json').read_text()):
+ start=time.monotonic();workflow=build_asset({'schema_version':'1.0.0','spec':spec},RunContext(p));elapsed=time.monotonic()-start
+ assert workflow.status=='PASS',workflow.to_dict();require_bundle_approval(p,workflow.data['bundle'],workflow.data['review'],spec)
+ recipe=expand_recipe(spec['kind'],{'schema_version':'1.0.0','asset_id':spec['asset_id'],'parameters':{'size_m':spec['dimensions_m']}},seed=42)
+ for material in recipe['materials']:material.update(color_rgba=spec['material']['base_color_rgba'],metallic=spec['material']['metallic'],roughness=spec['material']['roughness'])
+ start=time.monotonic();direct=execute_recipe(recipe,RunContext(p),audit_export=True);direct_elapsed=time.monotonic()-start
+ assert direct.status=='PASS',direct.to_dict()
+ target=json.loads((p/workflow.data['bundle']['slots']['geometry_metrics']['path']).read_text())
+ assert direct.metrics['geometry_digest']==target['geometry_digest']
+ records.append({'asset_id':spec['asset_id'],'workflow_run':workflow.run_id,'direct_run':direct.run_id,'workflow_seconds':round(elapsed,3),'direct_seconds':round(direct_elapsed,3),'overhead_seconds':round(elapsed-direct_elapsed,3),'geometry_parity':'PASS','material_target_parity':'PASS','production_attempts':workflow.metrics['production_attempts'],'sample_size_per_path':1})
+ print(spec['asset_id'],'PASS',flush=True)
+Path('.tmp/phase8/benchmark.json').write_text(json.dumps({'status':'PASS','label':'EXPLORATORY','scope':'DETERMINISTIC_REGISTERED_ENGINE; NO MODEL WORKERS','trial_order':'workflow then direct; sequential per asset','limits':'n=1 per path/type; warm-cache and order effects; workflow includes rejected proposal and scoped refinement, direct begins with target palette; no parallel-speedup/general quality claim','records':records},indent=2)+'\n')

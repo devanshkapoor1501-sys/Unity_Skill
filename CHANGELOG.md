@@ -2,6 +2,11 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add typed asset specifications, source/license bundles and material-only refinement with independent technical review.
+- Add six transparent robot frames, fixed-pivot atlas audits and native Sprite Data Provider slicing.
+- Add a separate controllable 2D fixture, actual sprite-reference loops, keyboard and collision checks.
+- Route direct sprites to Unity without Blender; keep advanced textures and broader 2D formats outside this preview.
+
 - Add bounded worker roles, explicit task routing, sealed handoffs and digest-bound inspection.
 - Add leases, cancellation, durable completion receipts and guarded resume through the shared engine.
 - Add one Blender slotted robot rig with Idle/Walk and native Unity Animator/skin-motion checks.

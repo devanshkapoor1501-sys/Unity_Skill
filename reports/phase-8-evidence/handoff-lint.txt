@@ -1,0 +1,23 @@
+E501 Line too long (106 > 100)
+   --> polyforge\workforce\workers.py:104:101
+    |
+102 |             raise InputError("Sprite sources are not completely sealed")
+103 |         metadata = load_json(policy.path(metadata_file))
+104 |         if metadata.get("asset_id") != request["input"]["asset_id"] or not metadata.get("source_license"):
+    |                                                                                                     ^^^^^^
+105 |             raise InputError("Sprite semantic identity/license mismatch")
+106 |         inspect_strip([policy.path(p).read_bytes()for p in frame_files],policy.path(atlas_file).read_bytes(),metadata)
+    |
+
+E501 Line too long (118 > 100)
+   --> polyforge\workforce\workers.py:106:101
+    |
+104 |         if metadata.get("asset_id") != request["input"]["asset_id"] or not metadata.get("source_license"):
+105 |             raise InputError("Sprite semantic identity/license mismatch")
+106 |         inspect_strip([policy.path(p).read_bytes()for p in frame_files],policy.path(atlas_file).read_bytes(),metadata)
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^
+107 |     elif request["task_class"] == "CREATE_ASSET":
+108 |         from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry
+    |
+
+Found 2 errors.

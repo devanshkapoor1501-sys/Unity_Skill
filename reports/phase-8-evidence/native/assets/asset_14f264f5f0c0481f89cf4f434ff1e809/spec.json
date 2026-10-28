@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "bulkhead",
+  "brief": "Make an editable blue industrial wall with a base-center pivot.",
+  "kind": "wall",
+  "dimensions_m": [
+    2,
+    2,
+    0.25
+  ],
+  "silhouette": "Bounded beveled primitive assembly",
+  "topology": "PRIMITIVE",
+  "lod_levels": 1,
+  "poly_budget": 12000,
+  "uv_policy": "GENERATED_UV0",
+  "material": {
+    "base_color_rgba": [
+      0.7,
+      0.28,
+      0.12,
+      1
+    ],
+    "metallic": 0.2,
+    "roughness": 0.6
+  },
+  "pivot": "BASE_CENTER",
+  "collider": "BOX",
+  "source_license": "Apache-2.0",
+  "references": [],
+  "integration": {
+    "units": "m",
+    "up": "Z",
+    "forward": "-Y",
+    "scale": 1
+  },
+  "rubric": {
+    "dimension_tolerance_m": 0.001,
+    "color_tolerance": 0.001
+  },
+  "visual_approval_required": false
+}
