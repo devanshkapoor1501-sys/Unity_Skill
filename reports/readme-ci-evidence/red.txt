@@ -1,0 +1,21 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_______ BoundaryTests.test_readme_and_skill_commands_parse_and_execute ________
+
+self = <test_contract_boundaries.BoundaryTests testMethod=test_readme_and_skill_commands_parse_and_execute>
+
+    def test_readme_and_skill_commands_parse_and_execute(self) -> None:
+        paths = (ROOT / "README.md", ROOT / ".agents/skills/polyforge/SKILL.md")
+        for path in paths:
+            commands = [
+                line
+                for line in path.read_text("utf-8").splitlines()
+                if line.startswith("polyforge ")
+            ]
+>           self.assertTrue(commands, str(path))
+E           AssertionError: [] is not true : C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\README.md
+
+tests\test_contract_boundaries.py:225: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_contract_boundaries.py::BoundaryTests::test_readme_and_skill_commands_parse_and_execute
+1 failed, 15 deselected in 0.58s

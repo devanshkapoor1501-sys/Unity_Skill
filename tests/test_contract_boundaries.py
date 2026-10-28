@@ -11,6 +11,7 @@ import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
+from urllib.parse import urlsplit
 
 from test_foundation import ROOT, cli
 
@@ -214,8 +215,8 @@ class BoundaryTests(unittest.TestCase):
                     self.assertEqual(result.status, "NOT_RUN")
                     self.assertEqual(result.exit_code, 5)
 
-    def test_readme_and_skill_commands_parse_and_execute(self) -> None:
-        paths = (ROOT / "README.md", ROOT / ".agents/skills/polyforge/SKILL.md")
+    def test_development_guide_and_skill_commands_parse_and_execute(self) -> None:
+        paths = (ROOT / "docs/development-guide.md", ROOT / ".agents/skills/polyforge/SKILL.md")
         for path in paths:
             commands = [
                 line
@@ -227,6 +228,21 @@ class BoundaryTests(unittest.TestCase):
                 with self.subTest(command=command):
                     result = cli(*shlex.split(command)[1:])
                     self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_readme_installs_the_existing_polyforge_skill(self) -> None:
+        readme = (ROOT / "README.md").read_text("utf-8")
+        commands = [line for line in readme.splitlines() if line.startswith("$skill-installer ")]
+        self.assertEqual(len(commands), 1)
+        installer, action, source = shlex.split(commands[0])
+        self.assertEqual((installer, action), ("$skill-installer", "install"))
+        url = urlsplit(source)
+        self.assertEqual((url.scheme, url.netloc), ("https", "github.com"))
+        parts = url.path.strip("/").split("/")
+        self.assertEqual(parts[:4], ["devanshkapoor1501-sys", "Unity_Skill", "tree", "main"])
+        self.assertEqual(parts[4:], [".agents", "skills", "polyforge"])
+        skill = ROOT.joinpath(*parts[4:]) / "SKILL.md"
+        self.assertTrue(skill.is_file(), str(skill))
+        self.assertIn("name: polyforge", skill.read_text("utf-8").split("---", 2)[1])
 
     def test_keyboard_interrupt_and_human_output_preserve_result_semantics(self) -> None:
         from polyforge.cli import main
