@@ -57,6 +57,17 @@ claim the unknown methods passed or later-phase production features exist.
 
 ## Limits
 
+## Publication
+
+Correction commit `4a7204576b0ecb66e9a9d6eebe2b60e2f5319d32` passed
+all three jobs in [run 40928045880](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions/runs/40928045880):
+Windows Python 3.11, Windows Python 3.12 and Ubuntu Python 3.12. Exact revision,
+job and step results are retained in `phase-10-completion-evidence/ci-branch.json`.
+The report-only publication commit is fast-forwarded to main and its remote
+revision and post-push CI are checked separately. No history is rewritten.
+
+## Remaining verification limits
+
 UI evidence covers this fixed temporary Editor window; other UI methods and
 vision remain UNKNOWN. Host feature flags/help establish local affordance
 declarations; account, model and permissions still determine actual delegation.
