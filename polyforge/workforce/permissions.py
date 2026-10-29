@@ -39,6 +39,16 @@ ROLES.update(
     }
 )
 
+for _inspector in (
+    "brief_compliance_inspector",
+    "asset_animation_inspector",
+    "unity_import_inspector",
+    "gameplay_qa_inspector",
+    "performance_inspector",
+    "release_supervisor",
+):
+    ROLES[_inspector] = {"tools": ["artifact.candidate.inspect.v1"], "writes": []}
+
 
 def execution_profile(mode: str) -> dict[str, Any]:
     if mode not in {"sequential", "single"}:

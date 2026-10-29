@@ -172,6 +172,7 @@ def run_task(
                 )
                 value = inspected.data
                 atomic_json(policy, relative + "/review.json", value["review"])
+                atomic_json(policy, relative + "/board.json", value["board"])
             else:
                 require_approval(policy, candidate, review)
                 authorize(policy, job["role_id"], "tool", "animation.robot.unity.v1")
@@ -206,7 +207,7 @@ def run_task(
                 "stage": job["stage"],
                 "state": "VERIFIED"
                 if job_id == "job_3"
-                else "APPROVED"
+                else value.get("board", {}).get("promotion", "APPROVED")
                 if job_id == "job_2"
                 else "PRODUCED",
                 "result_digest": canonical_digest(value),

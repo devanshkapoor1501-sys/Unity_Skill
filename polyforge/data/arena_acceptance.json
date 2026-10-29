@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "PUBLIC_ARENA_FIXTURE",
+  "original_brief": "# Isometric robot arena\n\nCreate a small editable 3D isometric arena in Unity with Blender-generated\nground, crate obstacles, and a modular robot enemy. Use an original generated\nasset style with simple blue metallic material; no downloaded asset dependency.\n\nThe player moves using WASD, remains inside the arena, and collides with walls\nand obstacles. A robot patrols and damages the player on contact. Show health\nand a 30-second survival timer. Surviving wins; losing all health fails. Press R\nto restart positions, health, timer, and the win/failure state.\n\nKeep editable Blender originals and native Unity scenes/prefabs. Verify actual\nmovement, collision, enemy behavior, damage, win/failure, and restart separately\nfrom compilation. Capture four asset views and disclose pending visual review.\n\nThis is a public development brief, not a hidden evaluation task. Independent\nrelease acceptance must come from separately owned frozen-brief oracles.\n",
+  "oracle_owner": "PUBLIC_DEVELOPMENT",
+  "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
+  "requirements": [
+    {
+      "original_phrase": "WASD",
+      "feature_id": "movement.character_controller.v1",
+      "artifact_id": "player_01",
+      "unity_component": "PlayerController",
+      "oracles": [
+        "player_moves",
+        "keyboard_input"
+      ]
+    },
+    {
+      "original_phrase": "collides with walls",
+      "feature_id": "physics.collision.v1",
+      "artifact_id": "main",
+      "unity_component": "BoxCollider",
+      "oracles": [
+        "wall_collision"
+      ]
+    },
+    {
+      "original_phrase": "robot patrols",
+      "feature_id": "ai.patrol.v1",
+      "artifact_id": "enemy_01",
+      "unity_component": "PatrolEnemy",
+      "oracles": [
+        "enemy_patrols"
+      ]
+    },
+    {
+      "original_phrase": "damages the player on contact",
+      "feature_id": "combat.damage.v1",
+      "artifact_id": "enemy_01",
+      "unity_component": "PatrolEnemy",
+      "oracles": [
+        "contact_damage"
+      ]
+    },
+    {
+      "original_phrase": "losing all health fails",
+      "feature_id": "combat.health.v1",
+      "artifact_id": "player_01",
+      "unity_component": "Health",
+      "oracles": [
+        "health_failure"
+      ]
+    },
+    {
+      "original_phrase": "Surviving wins",
+      "feature_id": "objective.survival.v1",
+      "artifact_id": "main",
+      "unity_component": "ArenaSession",
+      "oracles": [
+        "survival_win"
+      ]
+    },
+    {
+      "original_phrase": "restart positions, health, timer",
+      "feature_id": "game.restart.v1",
+      "artifact_id": "main",
+      "unity_component": "ArenaSession",
+      "oracles": [
+        "restart_resets",
+        "keyboard_restart"
+      ]
+    }
+  ]
+}

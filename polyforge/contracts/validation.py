@@ -71,6 +71,7 @@ def canonical_digest(value: Any) -> str:
 def schema_document(name: str) -> dict[str, Any]:
     """Read a known packaged schema; never resolve user-provided URLs."""
     allowed = {
+        "review_board.schema.json",
         "asset_spec.schema.json",
         "asset_build.schema.json",
         "asset_bundle.schema.json",

@@ -45,12 +45,18 @@ def _execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Re
         policy = WorkspacePolicy(context.workspace)
         candidate = load_json(policy.path(inputs["candidate_file"]))
         if identifier.startswith("artifact."):
+            from polyforge.review.board import review_candidate
             from polyforge.workforce.router import plan_task
 
             plan = load_json(policy.path(inputs["task_file"]))
             plan_task(plan["original_request"])
             return Result(
-                data={"review": inspect_candidate(policy, candidate, plan["original_request"])}
+                data={
+                    "review": inspect_candidate(
+                        policy, candidate, plan["original_request"], technical_only=True
+                    ),
+                    "board": review_candidate(policy, candidate, plan["original_request"]),
+                }
             )
         review = load_json(policy.path(inputs["review_file"]))
         production = load_json(policy.path(inputs["production_file"]))

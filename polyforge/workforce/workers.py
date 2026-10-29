@@ -45,7 +45,11 @@ def check_candidate(policy: WorkspacePolicy, candidate: dict[str, Any]) -> None:
 
 
 def inspect_candidate(
-    policy: WorkspacePolicy, candidate: dict[str, Any], request: dict[str, Any]
+    policy: WorkspacePolicy,
+    candidate: dict[str, Any],
+    request: dict[str, Any],
+    *,
+    technical_only: bool = False,
 ) -> dict[str, Any]:
     check_candidate(policy, candidate)
     if request.get("task_class") not in {"ANIMATE", "CREATE_ASSET", "BUILD_GAME"}:
@@ -91,9 +95,16 @@ def inspect_candidate(
         bundle = load_json(policy.path(prefix + "bundle.json"))
         if not {item["path"] for item in bundle["slots"].values()} <= inventory:
             raise InputError("Asset source slot is not sealed in the candidate")
-        require_bundle_approval(
-            policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
-        )
+        if technical_only:
+            from polyforge.assets.contracts import inspect_bundle
+
+            observed = inspect_bundle(policy.root, bundle, spec)
+            if observed["technical_verdict"] != "APPROVED":
+                raise InputError("Asset technical review failed")
+        else:
+            require_bundle_approval(
+                policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
+            )
     elif request.get("capability_id", "").startswith("sprite."):
         from polyforge.sprites.images import inspect_strip
 
@@ -166,7 +177,10 @@ def require_approval(
 ) -> None:
     check_candidate(policy, candidate)
     validate_review(review)
-    if "request" not in review or inspect_candidate(policy, candidate, review["request"]) != review:
+    if (
+        "request" not in review
+        or inspect_candidate(policy, candidate, review["request"], technical_only=True) != review
+    ):
         raise InputError(
             "Approval lacks a matching registered technical inspection",
             kind=ErrorKind.POLICY_DENIED,
@@ -180,3 +194,6 @@ def require_approval(
         raise InputError(
             "Integration needs approval bound to this exact candidate", kind=ErrorKind.POLICY_DENIED
         )
+    from polyforge.review.board import require_promotion, review_candidate
+
+    require_promotion(policy, candidate, review_candidate(policy, candidate, review["request"]))

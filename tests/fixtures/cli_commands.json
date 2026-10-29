@@ -3,6 +3,41 @@
   "commands": [
     {
       "argv": [
+        "review",
+        "board",
+        "--workspace",
+        "workspace/arena_demo",
+        "--candidate",
+        "candidate.json",
+        "--task",
+        "task.json",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
+        "review",
+        "human",
+        "--workspace",
+        "workspace/arena_demo",
+        "--candidate",
+        "candidate.json",
+        "--verdict",
+        "REJECTED",
+        "--operator",
+        "operator",
+        "--reason",
+        "Review required",
+        "--approved",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
         "workforce",
         "roles",
         "--workspace",

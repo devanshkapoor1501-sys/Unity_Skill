@@ -63,6 +63,24 @@ def build_parser() -> argparse.ArgumentParser:
 def dispatch(args: argparse.Namespace) -> Result:
     """Dispatch only implemented capabilities; placeholders never claim tool success."""
     spec: CommandSpec = args.spec
+    if spec.path[0] == "review":
+        from polyforge.review.board import record_human_review, review_candidate
+        from polyforge.security.paths import WorkspacePolicy
+
+        policy = WorkspacePolicy(Path(args.workspace))
+        candidate = load_json(policy.path(args.candidate))
+        if spec.path[-1] == "human":
+            receipt = record_human_review(
+                policy, candidate, verdict=args.verdict, operator=args.operator, reason=args.reason
+            )
+            return Result(data={"human_review": receipt})
+        board = review_candidate(policy, candidate, load_json(policy.path(args.task)))
+        approved = board["promotion"] == "APPROVED"
+        return Result(
+            status="PASS" if approved else "REVIEW",
+            exit_code=0 if approved else 4,
+            data={"review": board},
+        )
     if spec.path[0] == "workforce":
         from polyforge.workforce.cli import dispatch as workforce_dispatch
 
