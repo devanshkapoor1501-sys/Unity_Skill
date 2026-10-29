@@ -156,11 +156,47 @@ def diagnose(workspace: Path, evidence_dir: str) -> Result:
         }
         for issue in report["issues"]
     ]
+    from polyforge.repairs.diagnostics import diagnose_evidence
+
+    codes = {
+        "binding": "PF-GUID-MISMATCH",
+        "scale": "PF-FBX-AXES",
+        "axis": "PF-FBX-AXES",
+        "material": "PF-MATERIAL-SWAPPED",
+        "component": "PF-COMPONENT-MISSING",
+    }
+    observed_path = directory.relative_to(policy.root).as_posix() + "/bindings.json"
+    forensics = [
+        diagnose_evidence(
+            {
+                "schema_version": "1.0.0",
+                "input_digest": request["input_digest"],
+                "producer_id": "unity_integration",
+                "tool": {"name": "unity", "version": raw["unity_version"]},
+                "structured": {"status": "FAIL", "code": codes.get(issue["category"], "UNKNOWN")},
+                "log": json.dumps(issue, sort_keys=True),
+                "affected_ids": [issue["asset_id"]],
+                "artifacts": [
+                    {
+                        "id": "native_bindings",
+                        "path": observed_path,
+                        "sha256": hashlib.sha256(
+                            policy.path(observed_path).read_bytes()
+                        ).hexdigest(),
+                    }
+                ],
+            }
+        )
+        for issue in issues
+        if isinstance(issue.get("asset_id"), str)
+        and re.fullmatch(r"[A-Za-z][A-Za-z0-9_-]{0,63}", issue["asset_id"])
+    ]
     return Result(
         input_digest=request["input_digest"],
         data={
             "diagnosis_status": report["status"],
             "issues": issues,
+            "forensics": forensics,
             "evidence_dir": directory.relative_to(policy.root).as_posix(),
         },
     )

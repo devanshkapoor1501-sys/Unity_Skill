@@ -3,6 +3,32 @@
   "commands": [
     {
       "argv": [
+        "repair",
+        "inspect",
+        "--workspace",
+        "workspace/arena_demo",
+        "--evidence",
+        "failure.json",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
+        "repair",
+        "propose",
+        "--workspace",
+        "workspace/arena_demo",
+        "--diagnosis",
+        "diagnosis.json",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
         "review",
         "board",
         "--workspace",

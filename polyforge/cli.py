@@ -63,6 +63,18 @@ def build_parser() -> argparse.ArgumentParser:
 def dispatch(args: argparse.Namespace) -> Result:
     """Dispatch only implemented capabilities; placeholders never claim tool success."""
     spec: CommandSpec = args.spec
+    if spec.path in {("repair", "inspect"), ("repair", "propose")}:
+        from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair
+        from polyforge.security.paths import WorkspacePolicy
+
+        policy = WorkspacePolicy(Path(args.workspace))
+        if spec.path[-1] == "inspect":
+            return Result(
+                data={"diagnosis": diagnose_evidence(load_json(policy.path(args.evidence)))}
+            )
+        return Result(
+            data={"proposal": plan_repair(policy, load_json(policy.path(args.diagnosis)))}
+        )
     if spec.path[0] == "review":
         from polyforge.review.board import record_human_review, review_candidate
         from polyforge.security.paths import WorkspacePolicy

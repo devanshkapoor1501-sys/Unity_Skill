@@ -26,6 +26,38 @@ class CommandSpec:
 
 COMMANDS = (
     CommandSpec(
+        ("repair", "inspect"),
+        "Classify bounded cross-tool forensic evidence without writes",
+        (WORKSPACE, (("--evidence",), {"required": True})),
+        implemented=True,
+        phase=9,
+        example=(
+            "repair",
+            "inspect",
+            "--workspace",
+            "workspace/arena_demo",
+            "--evidence",
+            "failure.json",
+            "--json",
+        ),
+    ),
+    CommandSpec(
+        ("repair", "propose"),
+        "Preview an evidence-bound registered repair action",
+        (WORKSPACE, (("--diagnosis",), {"required": True})),
+        implemented=True,
+        phase=9,
+        example=(
+            "repair",
+            "propose",
+            "--workspace",
+            "workspace/arena_demo",
+            "--diagnosis",
+            "diagnosis.json",
+            "--json",
+        ),
+    ),
+    CommandSpec(
         ("review", "board"),
         "Read-only technical, subjective and gameplay promotion review",
         (WORKSPACE, (("--candidate",), {"required": True}), (("--task",), {"required": True})),

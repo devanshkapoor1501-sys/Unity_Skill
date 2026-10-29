@@ -9,6 +9,8 @@ are syntax fixtures, not evidence of execution or functionality.
 
 | Command | Availability | Example |
 | --- | --- | --- |
+| `repair inspect` | Implemented | `polyforge repair inspect --workspace workspace/arena_demo --evidence failure.json --json` |
+| `repair propose` | Implemented | `polyforge repair propose --workspace workspace/arena_demo --diagnosis diagnosis.json --json` |
 | `review board` | Implemented | `polyforge review board --workspace workspace/arena_demo --candidate candidate.json --task task.json --json` |
 | `review human` | Implemented | `polyforge review human --workspace workspace/arena_demo --candidate candidate.json --verdict REJECTED --operator operator --reason 'Review required' --approved --json` |
 | `workforce roles` | Implemented | `polyforge workforce roles --workspace . --json` |
