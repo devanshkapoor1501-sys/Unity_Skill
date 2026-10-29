@@ -42,7 +42,7 @@ strict = true
 files = ["polyforge", "tools"]
 
 [tool.coverage.run]
-source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes", "polyforge.blender.interchange", "polyforge.unity.bootstrap", "polyforge.unity.evidence", "polyforge.unity.transactions", "polyforge.scenarios.arena_oracle", "polyforge.unity.upgrade", "polyforge.workforce.models", "polyforge.workforce.permissions", "polyforge.workforce.router", "polyforge.workforce.ledger", "polyforge.animation.contract", "polyforge.assets.contracts", "polyforge.sprites.contracts", "polyforge.sprites.images", "polyforge.runner.locks", "polyforge.host.stdio", "polyforge.knowledge.catalog", "polyforge.knowledge.router", "polyforge.knowledge.probes", "polyforge.review.amendments", "polyforge.review.sprite_source", "polyforge.review.board", "polyforge.review.acceptance", "polyforge.repairs.diagnostics"]
+source = ["polyforge.contracts", "polyforge.security", "polyforge.blender.recipes", "polyforge.blender.interchange", "polyforge.unity.bootstrap", "polyforge.unity.evidence", "polyforge.unity.transactions", "polyforge.scenarios.arena_oracle", "polyforge.unity.upgrade", "polyforge.workforce.models", "polyforge.workforce.permissions", "polyforge.workforce.router", "polyforge.workforce.ledger", "polyforge.animation.contract", "polyforge.assets.contracts", "polyforge.sprites.contracts", "polyforge.sprites.images", "polyforge.runner.locks", "polyforge.host.stdio", "polyforge.knowledge.catalog", "polyforge.knowledge.router", "polyforge.knowledge.probes", "polyforge.knowledge.availability", "polyforge.review.amendments", "polyforge.review.sprite_source", "polyforge.review.board", "polyforge.review.acceptance", "polyforge.repairs.diagnostics"]
 branch = true
 
 [tool.coverage.report]

@@ -1,0 +1,61 @@
+import hashlib, json, shutil, xml.etree.ElementTree as ET
+from pathlib import Path
+from polyforge.knowledge.catalog import catalog_cards
+from polyforge.knowledge.probes import read_probe
+from polyforge.security.paths import WorkspacePolicy
+from tools.validate_skill import validate_skill
+
+root=Path.cwd();base=root/'.tmp/phase10-completion'
+suite=ET.parse(base/'tests-final.xml').getroot().find('testsuite')
+assert suite is not None
+assert int(suite.attrib['tests']) >= 483 and all(suite.attrib[k]=='0' for k in ['errors','failures','skipped'])
+coverage=json.loads((root/'coverage.json').read_text());totals=coverage['totals']
+branches=100*totals['covered_branches']/totals['num_branches']
+assert totals['percent_covered']>=90 and branches>=90
+assert any('availability.py' in p for p in coverage['files'])
+shutil.copyfile(root/'coverage.json',base/'coverage-final.json')
+cards=catalog_cards();assert len(cards)==20
+assert next(c for c in cards if c['knowledge_id']=='unity.packages')['package_versions']['com.unity.render-pipelines.universal']==['17.6.0']
+skill=validate_skill(root/'.agents/skills/polyforge');assert skill['runnable_commands']==9
+native={}
+for tool,folder in [('blender',root/'.tmp/phase10/probe-blender'),('unity',root/'.tmp/phase10/probe-unity'),('unity-ui',base/'native-ui')]:
+    value=read_probe(WorkspacePolicy(folder),tool);assert value and value['execution_support_promoted'] is False
+    native[tool]={'probe_id':value['receipt']['probe_id'],'checks':value['checks'],'run_id':value['receipt']['run_id']}
+hosts={}
+for host in ['codex','claude']:
+    result=json.loads((base/(host+'-availability.json')).read_text())
+    value=result['data']['availability']['hosts'][host]
+    assert result['status']=='PASS' and value['status']=='OBSERVED' and value['role_delegation']=='UNKNOWN'
+    hosts[host]=value
+packages=json.loads((base/'packages-availability.json').read_text())['data']['availability']['installation_packages']
+urp=packages['packages']['com.unity.render-pipelines.universal']
+assert urp=={'requested':'17.6.0','resolved':'17.6.0','cached':['17.6.0'],'status':'CACHE_OBSERVED'}
+assert packages['api_compatibility']=='UNKNOWN'
+install=json.loads((base/'install/commands.json').read_text());assert len(install)==16 and all(r['exit_code']==r['expected_exit'] for r in install)
+for filename,phrase in [('lint-final.txt','All checks passed'),('format-final.txt','already formatted'),('types-final.txt','Success:'),('types-linux-final.txt','Success:'),('cli-final.txt','current'),('pip-final.txt','No broken requirements'),('build-final.txt','Successfully built'),('install-final.txt','16 isolated offline'),('skills-ref-final.txt','Valid skill')]:
+    assert phrase in (base/filename).read_text('utf-8'),filename
+result={'scope':'Phase 10 completion correction; semantic requirements reviewed separately','offline_tests':int(suite.attrib['tests']),'coverage_combined':totals['percent_covered'],'coverage_branches':branches,'cards':len(cards),'skill':skill,'native':native,'hosts':hosts,'urp':urp,'installed_checks':len(install),'phase11_started':False}
+(base/'qualification.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+dest=root/'reports/phase-10-completion-evidence';dest.mkdir(exist_ok=True)
+def retain(source,target):
+    target=dest/target;target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+for path in base.iterdir():
+    if path.is_file() and path.suffix in {'.txt','.json','.xml','.py'}:
+        retain(path,path.name+('.txt' if path.suffix=='.py' else ''))
+for path in (base/'install').iterdir():
+    if path.is_file():retain(path,'install/'+path.name)
+for path in (base/'host-probes/runs').rglob('*'):
+    if path.is_file() and path.suffix in {'.json','.txt'}:retain(path,'hosts/'+path.relative_to(base/'host-probes/runs').as_posix())
+ui=json.loads((base/'native-ui-result.json').read_text())['data']['receipt']
+for key in ['source','observation','process']:
+    path=base/'native-ui'/ui[key+'_path'];retain(path,'native-ui/'+path.name+('.txt' if key=='source' else ''))
+process=json.loads((base/'native-ui'/ui['process_path']).read_text())
+for key in ['stdout_path','stderr_path']:
+    path=base/'native-ui'/process[key]
+    retain(path,'native-ui/'+key+'.txt')
+files=[]
+for path in sorted(dest.rglob('*')):
+    if path.is_file() and path.name!='index.json':
+        raw=path.read_bytes();files.append({'path':path.relative_to(dest).as_posix(),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})
+(dest/'index.json').write_text(json.dumps({'scope':'Phase 10 completion correction; original evidence preserved separately','files':files},indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'status':'PASS',**result},indent=2))

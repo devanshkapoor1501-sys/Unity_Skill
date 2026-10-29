@@ -1,0 +1,73 @@
+.....FFFFF                                                               [100%]
+================================== FAILURES ===================================
+___ test_package_probe_distinguishes_requested_resolved_and_cached_versions ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-availability/test_package_probe_distinguish0')
+
+    def test_package_probe_distinguishes_requested_resolved_and_cached_versions(tmp_path):
+        import json
+>       from polyforge.knowledge.availability import probe_packages
+E       ModuleNotFoundError: No module named 'polyforge.knowledge.availability'
+
+tests\test_phase10_completion.py:49: ModuleNotFoundError
+__________ test_package_probe_missing_cache_does_not_claim_installed __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-availability/test_package_probe_missing_cac0')
+
+    def test_package_probe_missing_cache_does_not_claim_installed(tmp_path):
+>       from polyforge.knowledge.availability import probe_packages
+E       ModuleNotFoundError: No module named 'polyforge.knowledge.availability'
+
+tests\test_phase10_completion.py:72: ModuleNotFoundError
+____________ test_host_probe_missing_binary_is_explicitly_blocked _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-availability/test_host_probe_missing_binary0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001CF6DD92DE0>
+
+    def test_host_probe_missing_binary_is_explicitly_blocked(tmp_path, monkeypatch):
+>       from polyforge.knowledge import availability
+E       ImportError: cannot import name 'availability' from 'polyforge.knowledge' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\knowledge\__init__.py)
+
+tests\test_phase10_completion.py:79: ImportError
+_______ test_host_feature_observation_never_promotes_actual_delegation ________
+
+    def test_host_feature_observation_never_promotes_actual_delegation():
+>       from polyforge.knowledge.availability import host_observation
+E       ModuleNotFoundError: No module named 'polyforge.knowledge.availability'
+
+tests\test_phase10_completion.py:88: ModuleNotFoundError
+______ test_unity_ui_probe_is_a_separate_fixed_probe_and_dry_run_is_pure ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-availability/test_unity_ui_probe_is_a_separ0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001CF6DD91790>
+
+    def test_unity_ui_probe_is_a_separate_fixed_probe_and_dry_run_is_pure(tmp_path, monkeypatch):
+        import sys
+        from pathlib import Path
+        from polyforge.knowledge import probes
+        monkeypatch.setattr(probes, "discover_tool", lambda *a: Path(sys.executable))
+>       value = probes.probe_tool(tmp_path, "unity-ui", dry_run=True)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase10_completion.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\knowledge\probes.py:119: in probe_tool
+    version, identifier, _ = _pin(tool)
+                             ^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tool = 'unity-ui'
+
+    def _pin(tool: str) -> tuple[str, str, str]:
+        if not isinstance(tool, str) or tool not in PINS:
+>           raise InputError("Only registered Blender/Unity probes are available")
+E           polyforge.contracts.validation.InputError: Only registered Blender/Unity probes are available
+
+polyforge\knowledge\probes.py:38: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_completion.py::test_package_probe_distinguishes_requested_resolved_and_cached_versions
+FAILED tests/test_phase10_completion.py::test_package_probe_missing_cache_does_not_claim_installed
+FAILED tests/test_phase10_completion.py::test_host_probe_missing_binary_is_explicitly_blocked
+FAILED tests/test_phase10_completion.py::test_host_feature_observation_never_promotes_actual_delegation
+FAILED tests/test_phase10_completion.py::test_unity_ui_probe_is_a_separate_fixed_probe_and_dry_run_is_pure
+5 failed, 5 passed in 2.12s

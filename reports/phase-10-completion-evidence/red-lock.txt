@@ -1,0 +1,28 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__________ test_package_cache_mismatch_is_reported_without_lockfile ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-lock/test_package_cache_mismatch_is0')
+
+    def test_package_cache_mismatch_is_reported_without_lockfile(tmp_path):
+        import json
+        from polyforge.knowledge.availability import probe_packages
+    
+        for relative, value in {
+            "Packages/manifest.json": {"dependencies": {"com.unity.test-framework": "1.8.0"}},
+            "Library/PackageCache/test/package.json": {"name": "com.unity.test-framework", "version": "1.7.0"},
+        }.items():
+            path = tmp_path / relative
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(json.dumps(value), encoding="utf-8")
+        result = probe_packages(WorkspacePolicy(tmp_path), ".")
+>       assert result["packages"]["com.unity.test-framework"]["status"] == "MISMATCH"
+E       AssertionError: assert 'CACHE_OBSERVED' == 'MISMATCH'
+E         
+E         - MISMATCH
+E         + CACHE_OBSERVED
+
+tests\test_phase10_completion.py:103: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_completion.py::test_package_cache_mismatch_is_reported_without_lockfile
+1 failed, 10 deselected in 0.65s

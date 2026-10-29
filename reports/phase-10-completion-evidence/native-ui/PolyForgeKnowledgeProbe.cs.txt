@@ -1,0 +1,52 @@
+// Fixed trusted probe: only an empty scratch project and its temporary window.
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+public sealed class PolyForgeProbeWindow : EditorWindow
+{
+    public static bool Painted;
+    void OnGUI() { Painted = true; GUILayout.Label("PolyForge availability probe"); }
+}
+public static class PolyForgeKnowledgeProbe
+{
+    [Serializable] sealed class Checks { public bool interactive_mode; public bool window_painted; }
+    [Serializable] sealed class Observation
+    {
+        public string schema_version = "1.0.0";
+        public string probe_id = "unity.editor-window.v1";
+        public string tool_version = Application.unityVersion;
+        public Checks checks = new Checks();
+        public string[] artifacts = new string[0];
+    }
+    static double deadline;
+    static PolyForgeProbeWindow window;
+    public static void Run()
+    {
+        deadline = EditorApplication.timeSinceStartup + 30;
+        window = ScriptableObject.CreateInstance<PolyForgeProbeWindow>();
+        window.titleContent = new GUIContent("PolyForge probe");
+        window.ShowUtility();
+        window.Repaint();
+        EditorApplication.update += Poll;
+    }
+    static void Poll()
+    {
+        if (!PolyForgeProbeWindow.Painted && EditorApplication.timeSinceStartup < deadline) return;
+        EditorApplication.update -= Poll;
+        try
+        {
+            var observation = new Observation();
+            observation.checks.interactive_mode = !Application.isBatchMode;
+            observation.checks.window_painted = PolyForgeProbeWindow.Painted;
+            window.Close();
+            string[] args = Environment.GetCommandLineArgs();
+            int index = Array.IndexOf(args, "-polyforgeProbeOutput");
+            if (index < 0 || index + 1 >= args.Length) throw new ArgumentException("Missing probe output");
+            File.WriteAllText(args[index + 1], JsonUtility.ToJson(observation, true) + "\n");
+            EditorApplication.Exit(observation.checks.interactive_mode && observation.checks.window_painted ? 0 : 6);
+        }
+        catch (Exception error) { Debug.LogException(error); EditorApplication.Exit(6); }
+    }
+}

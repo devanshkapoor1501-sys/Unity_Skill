@@ -1,0 +1,84 @@
+{
+  "scope": "Phase 10 completion correction; semantic requirements reviewed separately",
+  "offline_tests": 483,
+  "coverage_combined": 94.45214979195562,
+  "coverage_branches": 91.0394265232975,
+  "cards": 20,
+  "skill": {
+    "name": "polyforge",
+    "body_words": 656,
+    "references": 13,
+    "domains": [
+      "blender",
+      "game_design",
+      "quality",
+      "security",
+      "unity",
+      "workforce"
+    ],
+    "profile": "AGENT_SKILLS_SIMPLE_SCALARS",
+    "runnable_commands": 9,
+    "execution_status": "NOT_RUN"
+  },
+  "native": {
+    "blender": {
+      "probe_id": "blender.mesh-context.v1",
+      "checks": {
+        "valid_mesh_unchanged": true,
+        "degenerate_mesh_repaired": true,
+        "context_poll_without_active_object": false,
+        "context_poll_with_active_object": true
+      },
+      "run_id": "knowledge-65370d00ada640dc"
+    },
+    "unity": {
+      "probe_id": "unity.typecache.v1",
+      "checks": {
+        "known_record_found": true,
+        "unrelated_type_excluded": true,
+        "editor_assembly": true
+      },
+      "run_id": "knowledge-5ee5c80ce6944c0e"
+    },
+    "unity-ui": {
+      "probe_id": "unity.editor-window.v1",
+      "checks": {
+        "interactive_mode": true,
+        "window_painted": true
+      },
+      "run_id": "knowledge-70ca33a5402046f3"
+    }
+  },
+  "hosts": {
+    "codex": {
+      "path": "C:\\Users\\Divansh Kapoor\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\node_modules\\@openai\\codex-win32-x64\\vendor\\x86_64-pc-windows-msvc\\bin\\codex.exe",
+      "role_delegation": "UNKNOWN",
+      "skill_execution": "UNKNOWN",
+      "probe_command": "polyforge knowledge availability --workspace ROOT --host codex",
+      "status": "OBSERVED",
+      "delegation_feature": "ENABLED",
+      "reason": "Local feature/help observation; model, permissions and actual delegation require a separate host smoke",
+      "evidence_path": "runs/host-probe-cc9bfd37c3dc4cca/probe.json"
+    },
+    "claude": {
+      "path": "C:\\Users\\Divansh Kapoor\\.local\\bin\\claude.exe",
+      "role_delegation": "UNKNOWN",
+      "skill_execution": "UNKNOWN",
+      "probe_command": "polyforge knowledge availability --workspace ROOT --host claude",
+      "status": "OBSERVED",
+      "delegation_feature": "CLI_DECLARED",
+      "reason": "Local feature/help observation; model, permissions and actual delegation require a separate host smoke",
+      "evidence_path": "runs/host-probe-3c09934f11dc42c4/probe.json"
+    }
+  },
+  "urp": {
+    "requested": "17.6.0",
+    "resolved": "17.6.0",
+    "cached": [
+      "17.6.0"
+    ],
+    "status": "CACHE_OBSERVED"
+  },
+  "installed_checks": 16,
+  "phase11_started": false
+}

@@ -73,3 +73,73 @@ def test_references_cover_decisions_fallbacks_precedence_and_contribution_gates(
         assert term in references
     for host in ["codex", "claude"]:
         assert (ROOT / "docs/hosts" / (host + ".md")).is_file()
+
+
+def test_inline_and_multiline_reference_commands_are_validated(tmp_path):
+    import shutil
+
+    from tools.validate_skill import skill_commands, validate_skill
+
+    target = tmp_path / "polyforge"
+    shutil.copytree(SKILL, target)
+    reference = target / "references/unity/overview.md"
+    with reference.open("a", encoding="utf-8") as stream:
+        stream.write(
+            "\n`polyforge knowledge list --json`\n```console\n"
+            "polyforge knowledge probe \\\n"
+            "  --workspace ROOT --tool unity-ui --dry-run --json\n```\n"
+        )
+    commands = skill_commands(target)
+    assert [
+        "knowledge",
+        "probe",
+        "--workspace",
+        "ROOT",
+        "--tool",
+        "unity-ui",
+        "--dry-run",
+        "--json",
+    ] in commands
+    validate_skill(target)
+    with reference.open("a", encoding="utf-8") as stream:
+        stream.write("\n`polyforge unsupported-alias --json`\n")
+    with pytest.raises(InputError):
+        validate_skill(target)
+
+
+def test_every_runnable_skill_reference_example_executes(tmp_path):
+    import json
+    import subprocess
+    import sys
+
+    from tools.validate_skill import skill_commands
+
+    (tmp_path / "request.json").write_text(
+        json.dumps(
+            {"schema_version": "1.0.0", "query": "Explain Geometry Nodes", "output": "EXPLAIN"}
+        ),
+        encoding="utf-8",
+    )
+    before = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
+    commands = skill_commands(SKILL)
+    assert commands
+    for command in commands:
+        args = [str(tmp_path) if arg == "ROOT" else arg for arg in command]
+        service = args[:2] == ["mcp", "serve"]
+        payload = (
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"test","version":"1"}}}\n'
+            if service
+            else None
+        )
+        result = subprocess.run(
+            [sys.executable, "-m", "polyforge", *args],
+            input=payload,
+            capture_output=True,
+            text=True,
+            timeout=20,
+            cwd=ROOT,
+        )
+        assert result.returncode == 0, (args, result.stdout, result.stderr)
+        response = json.loads(result.stdout)
+        assert response.get("result") if service else response["status"] == "PASS"
+    assert {p.name: p.read_bytes() for p in tmp_path.iterdir()} == before

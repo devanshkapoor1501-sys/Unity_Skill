@@ -110,7 +110,7 @@ def route_reference(
     if output == "SPRITE" and sprite_bake:
         capabilities = ["sprite.robot.bake.v1"]
     elif output == "SPRITE" and any(
-        word in query for word in ("supplied", "existing", "import", "atlas", "six")
+        re.search(r"\b" + word + r"\b", query) for word in ("supplied", "existing", "import")
     ):
         capabilities = ["sprite.unity.strip.v1"]
     elif output == "ASSET":
@@ -187,7 +187,7 @@ def route_reference(
                 "tool": t,
                 "status": "VERSION_PROBED" if observations[t] is not None else "UNKNOWN",
                 "availability": discovered[t]["availability"],
-                "command": "knowledge probe --tool " + t,
+                "command": "polyforge knowledge probe --workspace ROOT --tool " + t,
             }
             for t in tools
         ],

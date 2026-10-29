@@ -4,6 +4,14 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
 
 ## Rulings
 
+- Phase 10 semantic completion recheck corrected the original blanket claim:
+  add explicit host/UI/package probes, package/architecture reference coverage
+  and exhaustive runnable skill-reference command execution. Fresh review fixed
+  missing-lock mismatch and POSIX package-file enumeration. Final correction:
+  483 offline tests, 94.45% combined / 91.04% branches, actual scratch UI paint,
+  host feature/package observations and 16 fresh offline install checks pass.
+  Publication is tracked in reports/phase-10-completion.md. Phase 11 unstarted.
+
 - Phase 10 local scope verified against all 17 blueprint tasks and its build plan:
   465 offline tests, 94.67% combined / 91.45% branch coverage; actual empty-scratch
   Blender/Unity API probes; official skills-ref; reference/transfer tests; 14

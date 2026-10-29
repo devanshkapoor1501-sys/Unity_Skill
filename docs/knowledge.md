@@ -1,9 +1,25 @@
 # Local knowledge and host routing
 
-`knowledge list --json` reads 18 source-attributed KnowledgeCards. Their curated
+Availability uses explicit probes. `knowledge availability --workspace ROOT --host codex`
+runs the fixed local `features list` query; Claude uses its local help. Feature
+ENABLED/CLI_DECLARED is configuration evidence; actual delegation remains UNKNOWN
+until a successful host smoke. No model call or settings change is made.
+`--project PROJECT` statically compares requested manifest versions, resolved
+lock versions and installed cache/embedded package metadata, with bounded reads.
+A mismatch is reported even without a lock file. Cache presence never establishes
+API compatibility. Project sources are never opened in Unity by this command.
+
+The separate `knowledge probe --workspace ROOT --tool unity-ui` opens an empty
+scratch Editor and checks a temporary window actually paints before closing it.
+This fixed UI observation is separate from the existing headless TypeCache
+probe and Blender context polling. Only exact native receipts populate observed
+availability; vision and other methods remain UNKNOWN. Use `--dry-run` to inspect
+the plan without launching native tools.
+
+`knowledge list --json` reads 20 source-attributed KnowledgeCards. Their curated
 summaries cover modeling/topology, UV/PBR, rigs/motion, Blender operator context,
 sprites, Unity Editor/runtime/C#, animation, mechanics, physics, AI, UI, shaders,
-world design, integration, recovery, evaluation and reference security.
+world design, integration, recovery, evaluation, architecture, packages and reference security.
 Each card names applicability, prerequisites, alternatives, contrasting examples,
 risks, versions, source, local text digest, fixed probe, confidence and reviewer.
 Sources are linked, not copied vendor articles. Curated summaries are cached
@@ -19,6 +35,8 @@ Save this to a workspace-local request.json:
 polyforge knowledge route --workspace ROOT --request request.json --json
 polyforge knowledge probe --workspace ROOT --tool blender --dry-run --json
 polyforge knowledge probe --workspace ROOT --tool unity --dry-run --json
+polyforge knowledge probe --workspace ROOT --tool unity-ui --dry-run --json
+polyforge knowledge availability --workspace ROOT --dry-run --json
 ```
 
 Routing reads at most three matching cards, preserves the original query and

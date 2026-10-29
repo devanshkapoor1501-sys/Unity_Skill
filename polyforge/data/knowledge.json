@@ -995,5 +995,133 @@
     "reviewer": "polyforge.curated-reference-review.v1",
     "capability_ids": [],
     "content_kind": "CURATED_SUMMARY"
+  },
+  {
+    "schema_version": "1.0.0",
+    "knowledge_id": "unity.architecture",
+    "domain": "unity",
+    "topic": "architecture",
+    "concept": "Shared data assets and compilation boundaries",
+    "intent_triggers": [
+      "scriptableobject",
+      "architecture",
+      "assembly definition",
+      "assemblies",
+      "asmdef",
+      "module boundaries"
+    ],
+    "when_to_use": "Shared data assets and compilation boundaries",
+    "alternatives": [
+      "Choose scene components for instance behavior, shared assets for authored data, and reviewed package changes only when needed."
+    ],
+    "prerequisites": [
+      "Read exact user constraints; discover capability; probe matching installed version before action"
+    ],
+    "versions": {
+      "unity": [
+        "6000.6.3f1"
+      ]
+    },
+    "sources": [
+      {
+        "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/class-ScriptableObject.html",
+        "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+      },
+      {
+        "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/assembly-definition-files.html",
+        "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+      }
+    ],
+    "retrieved_or_verified_at": "2026-10-29",
+    "reference_text": "Use ScriptableObject assets for shared authored configuration; use MonoBehaviour for per-instance scene lifecycle and plain C# objects for pure computation. Keep mutable runtime state separate from shared asset defaults. Assembly definitions partition compilation and references: separate Editor-only code from runtime assemblies, make dependency direction explicit, and avoid cycles. Small prototypes may keep the default assembly until a real boundary warrants an asmdef.",
+    "doc_digest": "c1208cf90803737cd540609b4d6f504888659a873deef98bac7272d74cf1fb38",
+    "reference_path": "references/unity/architecture-packages.md",
+    "api_probe_id": "none",
+    "examples": [
+      "Shared enemy tuning across prefabs: ScriptableObject configuration with per-enemy runtime health.",
+      "Runtime assembly plus Editor-only tooling assembly: Editor depends on runtime, never the reverse."
+    ],
+    "pitfalls": [
+      "A shared mutable asset can leak state across instances and play sessions.",
+      "An Editor namespace in a runtime assembly can break player compilation."
+    ],
+    "security_notes": [
+      "DATA_ONLY; no inherited network/filesystem/tool/review authority"
+    ],
+    "output_contract": "Reference selection and operation proposal; game acceptance remains PARTIAL",
+    "knowledge_state": "REFERENCE_ONLY",
+    "support_state": "REFERENCE_ONLY",
+    "confidence": 0.7,
+    "reviewer": "polyforge.curated-reference-review.v1",
+    "capability_ids": [],
+    "content_kind": "CURATED_SUMMARY"
+  },
+  {
+    "schema_version": "1.0.0",
+    "knowledge_id": "unity.packages",
+    "domain": "unity",
+    "topic": "packages",
+    "concept": "Package applicability and installed project evidence",
+    "intent_triggers": [
+      "package",
+      "packages",
+      "urp",
+      "package compatibility",
+      "package manager",
+      "dependencies"
+    ],
+    "when_to_use": "Package applicability and installed project evidence",
+    "alternatives": [
+      "Choose scene components for instance behavior, shared assets for authored data, and reviewed package changes only when needed."
+    ],
+    "prerequisites": [
+      "Read exact user constraints; discover capability; probe matching installed version before action"
+    ],
+    "versions": {
+      "unity": [
+        "6000.6.3f1"
+      ]
+    },
+    "sources": [
+      {
+        "uri": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.6/manual/index.html",
+        "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+      },
+      {
+        "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/Packages.html",
+        "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+      }
+    ],
+    "retrieved_or_verified_at": "2026-10-29",
+    "reference_text": "Match the Editor and package versions independently. This reference targets Unity 6000.6.3f1 with URP 17.6.0 and Test Framework 1.8.0, as observed in the managed arena project; it does not establish every package API. A manifest declares requested dependencies; packages-lock records resolution and Library/PackageCache package.json files are local installation observations. Compare all three without downloading or resolving dependencies. Missing cache evidence stays UNKNOWN. Prefer the installed render pipeline and tested materials; changing pipeline or package requires a separately reviewed scratch experiment.",
+    "doc_digest": "81cbbe1c4f4422604176d31c3d56386743dcc8f653bd32b5c18f3c7b1068ded6",
+    "reference_path": "references/unity/architecture-packages.md",
+    "api_probe_id": "none",
+    "examples": [
+      "URP 17.6.0 on Unity 6000.6.3f1: consult the matching 17.6 manual before a shader operation.",
+      "Manifest URP 17.6.0 but cached package 17.3.0: report a version mismatch and block compatibility claims."
+    ],
+    "pitfalls": [
+      "A package source link does not prove the package is installed.",
+      "A lock file is resolution metadata, not proof an API has compiled or a package cache is complete."
+    ],
+    "security_notes": [
+      "DATA_ONLY; no inherited network/filesystem/tool/review authority"
+    ],
+    "output_contract": "Reference selection and operation proposal; game acceptance remains PARTIAL",
+    "knowledge_state": "REFERENCE_ONLY",
+    "support_state": "REFERENCE_ONLY",
+    "confidence": 0.7,
+    "reviewer": "polyforge.curated-reference-review.v1",
+    "capability_ids": [],
+    "content_kind": "CURATED_SUMMARY",
+    "package_versions": {
+      "com.unity.render-pipelines.universal": [
+        "17.6.0"
+      ],
+      "com.unity.test-framework": [
+        "1.8.0"
+      ]
+    }
   }
 ]

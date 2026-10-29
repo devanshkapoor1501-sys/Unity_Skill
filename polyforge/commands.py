@@ -26,6 +26,21 @@ class CommandSpec:
 
 COMMANDS = (
     CommandSpec(
+        ("knowledge", "availability"),
+        "Observe fixed host features, native probe receipts and local package metadata",
+        (WORKSPACE, (("--project",), {}), (("--host",), {"choices": ["codex", "claude"]}), DRY_RUN),
+        implemented=True,
+        phase=10,
+        example=(
+            "knowledge",
+            "availability",
+            "--workspace",
+            "workspace/arena_demo",
+            "--dry-run",
+            "--json",
+        ),
+    ),
+    CommandSpec(
         ("knowledge", "list"),
         "List versioned DATA_ONLY reference cards",
         implemented=True,
@@ -51,7 +66,11 @@ COMMANDS = (
     CommandSpec(
         ("knowledge", "probe"),
         "Run a fixed registered installed-tool API probe",
-        (WORKSPACE, (("--tool",), {"required": True, "choices": ["blender", "unity"]}), DRY_RUN),
+        (
+            WORKSPACE,
+            (("--tool",), {"required": True, "choices": ["blender", "unity", "unity-ui"]}),
+            DRY_RUN,
+        ),
         implemented=True,
         phase=10,
         example=(

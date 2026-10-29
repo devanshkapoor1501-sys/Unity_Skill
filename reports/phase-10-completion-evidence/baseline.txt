@@ -1,0 +1,73 @@
+........................................................................ [ 15%]
+...................................................................F.... [ 30%]
+........................................................................ [ 46%]
+.F...................................................................... [ 61%]
+........................................................................ [ 77%]
+........................................................................ [ 92%]
+.................................                                        [100%]
+================================== FAILURES ===================================
+________ PolicyTests.test_real_directory_link_is_denied_before_writing ________
+
+self = <test_phase1_policy.PolicyTests testMethod=test_real_directory_link_is_denied_before_writing>
+
+    def test_real_directory_link_is_denied_before_writing(self) -> None:
+        from polyforge.security.paths import WorkspacePolicy
+    
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root, outside = base / "root", base / "outside"
+            root.mkdir()
+            outside.mkdir()
+            link = root / "link"
+            if os.name == "nt":
+                result = subprocess.run(
+                    [os.environ["COMSPEC"], "/d", "/c", "mklink", "/J", str(link), str(outside)],
+                    capture_output=True,
+                    text=True,
+                )
+>               self.assertEqual(result.returncode, 0, result.stderr)
+E               AssertionError: 1 != 0 : Access is denied.
+
+tests\test_phase1_policy.py:118: AssertionError
+__ test_project_preflight_denies_busy_editor_and_hardlinked_generated_output __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/baseline-temp/test_project_preflight_denies_0')
+
+    def test_project_preflight_denies_busy_editor_and_hardlinked_generated_output(tmp_path: Path):
+        from polyforge.unity.bootstrap import check_project_idle
+    
+        p = WorkspacePolicy(tmp_path)
+        busy = tmp_path / "UnityProject/Temp/UnityLockfile"
+        busy.parent.mkdir(parents=True)
+        busy.write_text("busy")
+        with pytest.raises(InputError):
+            check_project_idle(p)
+        busy.unlink()
+        original = tmp_path / "original"
+        original.write_text("untouched")
+        target = tmp_path / "UnityProject/Assets/PolyForgeGenerated/outside.fbx"
+        target.parent.mkdir(parents=True)
+>       target.hardlink_to(original)
+
+tests\test_phase5_contracts.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/baseline-temp/test_project_preflight_denies_0/UnityProject/Assets/PolyForgeGenerated/outside.fbx')
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/baseline-temp/test_project_preflight_denies_0/original')
+
+    def hardlink_to(self, target):
+        """
+        Make this path a hard link pointing to the same file as *target*.
+    
+        Note the order of arguments (self, target) is the reverse of os.link's.
+        """
+        if not hasattr(os, "link"):
+            raise NotImplementedError("os.link() not available on this system")
+>       os.link(target, self)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10-completion\\baseline-temp\\test_project_preflight_denies_0\\original' -> 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10-completion\\baseline-temp\\test_project_preflight_denies_0\\UnityProject\\Assets\\PolyForgeGenerated\\outside.fbx'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1396: PermissionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase1_policy.py::PolicyTests::test_real_directory_link_is_denied_before_writing
+FAILED tests/test_phase5_contracts.py::test_project_preflight_denies_busy_editor_and_hardlinked_generated_output
+2 failed, 463 passed, 12 deselected in 266.94s (0:04:26)

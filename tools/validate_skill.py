@@ -7,11 +7,33 @@ profile deliberately uses only the four simple Agent Skills scalar fields.
 from __future__ import annotations
 
 import re
+import shlex
 from pathlib import Path
 from typing import Any
 
 from polyforge.cli import build_parser
 from polyforge.contracts.validation import InputError
+
+
+def skill_commands(root: Path) -> list[list[str]]:
+    """Collect runnable inline/fenced examples throughout the skill reference tree."""
+    commands: list[list[str]] = []
+    for path in sorted(root.rglob("*.md")):
+        content = path.read_text(encoding="utf-8")
+        blocks = re.findall(r"```[^\n]*\n(.*?)```", content, re.S)
+        inline = re.findall(r"(?<!`)`(polyforge [^`\n]+)`(?!`)", content)
+        for candidate in [*inline, *blocks]:
+            candidate = re.sub(r"[\\^`]\r?\n\s*", " ", candidate)
+            for line in candidate.splitlines():
+                line = line.strip()
+                if line.startswith("polyforge "):
+                    try:
+                        command = shlex.split(line)[1:]
+                    except ValueError as exc:
+                        raise InputError("Malformed skill command example") from exc
+                    if command not in commands:
+                        commands.append(command)
+    return commands
 
 
 def validate_skill(root: Path) -> dict[str, Any]:
@@ -59,12 +81,9 @@ def validate_skill(root: Path) -> dict[str, Any]:
             if not resolved.is_relative_to(root) or not resolved.is_file() or resolved.is_symlink():
                 raise InputError("Missing or escaping skill reference: " + target)
             targets.add(resolved)
-        for block in re.findall(r"```console\n(.*?)```", content, re.S):
-            import shlex
-
-            for line in block.splitlines():
-                if line.startswith("polyforge "):
-                    parser.parse_args(shlex.split(line)[1:])
+    commands = skill_commands(root)
+    for command in commands:
+        parser.parse_args(command)
     domains = sorted(p.name for p in (root / "references").iterdir() if p.is_dir())
     if domains != ["blender", "game_design", "quality", "security", "unity", "workforce"]:
         raise InputError("Incomplete domain reference coverage")
@@ -74,6 +93,7 @@ def validate_skill(root: Path) -> dict[str, Any]:
         "references": len(targets),
         "domains": domains,
         "profile": "AGENT_SKILLS_SIMPLE_SCALARS",
+        "runnable_commands": len(commands),
         "execution_status": "NOT_RUN",
     }
 

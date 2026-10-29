@@ -1,0 +1,96 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__________ test_package_inspection_handles_posix_file_parent_errors ___________
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-posix/test_package_inspection_handle0/Packages/manifest.json/package.json')
+args = (), kwargs = {}
+
+    def posix_lstat(path, *args, **kwargs):
+        if path.name == "package.json" and path.parent.is_file():
+>           raise NotADirectoryError(str(path))
+E           NotADirectoryError: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase10-completion\red-posix\test_package_inspection_handle0\Packages\manifest.json\package.json
+
+tests\test_phase10_completion.py:121: NotADirectoryError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-posix/test_package_inspection_handle0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001352102C800>
+
+    def test_package_inspection_handles_posix_file_parent_errors(tmp_path, monkeypatch):
+        from pathlib import Path
+        from polyforge.knowledge.availability import probe_packages
+    
+        packages = tmp_path / "Packages"
+        packages.mkdir()
+        (packages / "manifest.json").write_text('{"dependencies":{}}', encoding="utf-8")
+        original = Path.lstat
+        # POSIX raises ENOTDIR for a/file.json/package.json; Windows may return ENOENT.
+        def posix_lstat(path, *args, **kwargs):
+            if path.name == "package.json" and path.parent.is_file():
+                raise NotADirectoryError(str(path))
+            return original(path, *args, **kwargs)
+        monkeypatch.setattr(Path, "lstat", posix_lstat)
+>       assert probe_packages(WorkspacePolicy(tmp_path), ".")["status"] == "OBSERVED"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase10_completion.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\knowledge\availability.py:53: in probe_packages
+    path = policy.path(child / "package.json")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <polyforge.security.paths.WorkspacePolicy object at 0x00000135218F4980>
+supplied = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-posix/test_package_inspection_handle0/Packages/manifest.json/package.json')
+
+    def path(self, supplied: str | Path) -> Path:
+        """Reject ambiguous Windows spellings and links before resolving a child."""
+        try:
+            raw = str(supplied)
+            if "\x00" in raw:
+                raise _deny("NUL is not allowed in paths")
+            parts = raw.replace("\\", "/").split("/")
+            if ".." in parts:
+                raise _deny("Parent traversal is not allowed")
+            candidate = Path(raw)
+            if not candidate.is_absolute():
+                if PureWindowsPath(raw).drive or raw.startswith(("/", "\\")):
+                    raise _deny("Drive-relative and network paths are not allowed")
+                candidate = self.root / raw.replace("\\", "/")
+            # Windows can spell the same directory with an 8.3 name or a long name.
+            # Inspect every original component before resolving aliases, so a junction
+            # cannot become an apparently safe canonical child of the workspace.
+            current = Path(candidate.anchor)
+            _check_link(current)
+            reserved = {
+                "CON",
+                "PRN",
+                "AUX",
+                "NUL",
+                *(f"COM{i}" for i in range(1, 10)),
+                *(f"LPT{i}" for i in range(1, 10)),
+            }
+            for part in candidate.parts[1:]:
+                if (
+                    ":" in part
+                    or part.endswith((".", " "))
+                    or part.split(".")[0].upper() in reserved
+                ):
+                    raise _deny("Ambiguous Windows path component")
+                current /= part
+                _check_link(current)
+            resolved = candidate.resolve()
+            if not resolved.is_relative_to(self.root):
+                raise _deny("Resolved path escapes the authorized workspace")
+            return resolved
+        except (OSError, ValueError) as exc:
+            if isinstance(exc, InputError):
+                raise
+>           raise InputError(f"Invalid workspace-relative path: {exc}") from exc
+E           polyforge.contracts.validation.InputError: Invalid workspace-relative path: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase10-completion\red-posix\test_package_inspection_handle0\Packages\manifest.json\package.json
+
+polyforge\security\paths.py:81: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_completion.py::test_package_inspection_handles_posix_file_parent_errors
+1 failed, 11 deselected in 0.74s

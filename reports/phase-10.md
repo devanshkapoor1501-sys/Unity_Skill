@@ -1,5 +1,11 @@
 # Phase 10 — portable skill, local knowledge and bounded hosts
 
+**Completion correction:** the later semantic blueprint audit found missing
+package/architecture coverage, explicit availability probes and exhaustive
+skill-command execution proof. The [completion correction](phase-10-completion.md)
+supersedes this report's original blanket completion claim and records the fixes
+and current qualification. Historical results below are retained as executed.
+
 **Phase 10 development scope: PASS, with disclosed host-dependent blocks. Game acceptance: PARTIAL.** This phase
 implements reference/host affordances around the existing engine. It does not
 claim broad game-production expertise or successful authentication on unavailable

@@ -109,3 +109,5 @@ Contrasts: Use Lit for a colored crate. A dissolving hologram requires unsupport
 ## Role playbook
 
 Unity integration: inventory unity.scene.static.v1, animation.robot.unity.v1, sprite.unity.strip.v1 and unity.game.arena.v1. Consume approved sealed source; produce native GUID/local-ID bindings, source hashes, exact XML/telemetry and editable scenes. Serialize project writes; keep Editor APIs out of runtime. Missing license/tool/package or headless API support stays BLOCKED; unprobed GUI stays UNKNOWN.
+
+[Architecture and package applicability](architecture-packages.md).

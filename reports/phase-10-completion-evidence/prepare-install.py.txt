@@ -1,0 +1,10 @@
+from pathlib import Path
+source=Path('.tmp/phase10/install.py').read_text('utf-8')
+source=source.replace("base=root/'.tmp/phase10'", "base=root/'.tmp/phase10-completion'")
+source=source.replace("'knowledge/probes.py']", "'knowledge/probes.py','knowledge/availability.py','data/unity-ui-probe.cs.txt']")
+source=source.replace('records=[];before=', '''checks += [([str(fresh),'-I','-m','polyforge',*args],cwd,0) for args in [
+ ['knowledge','availability','--workspace',str(cwd),'--dry-run','--json'],
+ ['knowledge','probe','--workspace',str(cwd),'--tool','unity-ui','--dry-run','--json']]]
+records=[];before=''')
+source=source.replace('14 isolated offline', '16 isolated offline')
+Path('.tmp/phase10-completion/install.py').write_text(source,encoding='utf-8')

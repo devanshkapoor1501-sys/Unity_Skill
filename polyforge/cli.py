@@ -79,6 +79,16 @@ def dispatch(args: argparse.Namespace) -> Result:
             from polyforge.knowledge.probes import probe_tool
 
             return probe_tool(Path(args.workspace), args.tool, dry_run=args.dry_run)
+        if spec.path[-1] == "availability":
+            from polyforge.knowledge.availability import availability_snapshot, probe_host
+
+            policy = WorkspacePolicy(Path(args.workspace))
+            snapshot = availability_snapshot(policy, args.project)
+            if args.host:
+                snapshot["hosts"][args.host].update(
+                    {"status": "NOT_RUN"} if args.dry_run else probe_host(policy, args.host)
+                )
+            return Result(data={"availability": snapshot, "dry_run": args.dry_run})
         from polyforge.knowledge.router import route_reference
 
         policy = WorkspacePolicy(Path(args.workspace))

@@ -21,6 +21,7 @@ from polyforge.unity.bridge import configuration
 PINS = {
     "blender": ("5.2.2", "blender.mesh-context.v1", "blender-knowledge-probe.py.txt"),
     "unity": ("6000.6.3f1", "unity.typecache.v1", "unity-knowledge-probe.cs.txt"),
+    "unity-ui": ("6000.6.3f1", "unity.editor-window.v1", "unity-ui-probe.cs.txt"),
 }
 CHECKS = {
     "blender": {
@@ -30,6 +31,7 @@ CHECKS = {
         "context_poll_with_active_object": True,
     },
     "unity": {"known_record_found": True, "unrelated_type_excluded": True, "editor_assembly": True},
+    "unity-ui": {"interactive_mode": True, "window_painted": True},
 }
 
 
@@ -77,7 +79,7 @@ def validate_observation(tool: str, value: Any) -> dict[str, Any]:
         "execution_support_promoted": False,
         "host_delegation": "UNKNOWN",
         "host_vision": "UNKNOWN",
-        "unity_ui": "UNKNOWN",
+        "unity_ui": "VERSION_PROBED" if tool == "unity-ui" else "UNKNOWN",
         "package_compatibility": "ONLY_FIXED_PROBE_CONTEXT",
     }
 
@@ -98,8 +100,7 @@ def _args(policy: WorkspacePolicy, executable: Path, tool: str, relative: str) -
         ]
     return [
         str(executable),
-        "-batchmode",
-        "-nographics",
+        *(["-batchmode", "-nographics"] if tool == "unity" else []),
         "-job-worker-count",
         "2",
         "-projectPath",
@@ -120,7 +121,8 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
     policy = WorkspacePolicy(workspace)
     config = configuration(policy)
     executable = discover_tool(
-        tool, config.blender_executable if tool == "blender" else config.unity_executable
+        "blender" if tool == "blender" else "unity",
+        config.blender_executable if tool == "blender" else config.unity_executable,
     )
     if dry_run:
         return Result(
@@ -155,7 +157,7 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
     )
     policy.mkdir(path.parent)
     path.write_bytes(source)
-    if tool == "unity":
+    if tool != "blender":
         atomic_json(
             policy, relative + "/scratch/UnityProject/Packages/manifest.json", {"dependencies": {}}
         )
@@ -259,7 +261,8 @@ def read_probe(policy: WorkspacePolicy, tool: str) -> dict[str, Any] | None:
         raise InputError("Invalid registered knowledge probe receipt")
     config = configuration(policy)
     executable = discover_tool(
-        tool, config.blender_executable if tool == "blender" else config.unity_executable
+        "blender" if tool == "blender" else "unity",
+        config.blender_executable if tool == "blender" else config.unity_executable,
     )
     if (
         executable is None

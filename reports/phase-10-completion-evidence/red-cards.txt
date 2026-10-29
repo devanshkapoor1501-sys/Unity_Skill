@@ -1,0 +1,74 @@
+FF.FF                                                                    [100%]
+================================== FAILURES ===================================
+_ test_missing_specialties_route_to_reference_only_without_execution[Explain ScriptableObject architecture patterns] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-cards/test_missing_specialties_route0')
+query = 'Explain ScriptableObject architecture patterns'
+
+    @pytest.mark.parametrize("query", [
+        "Explain ScriptableObject architecture patterns",
+        "Explain Unity assembly definition architecture",
+        "Explain URP package compatibility",
+    ])
+    def test_missing_specialties_route_to_reference_only_without_execution(tmp_path, query):
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": "EXPLAIN"
+        })
+>       assert result["status"] == "PASS"
+E       AssertionError: assert 'REVIEW' == 'PASS'
+E         
+E         - PASS
+E         + REVIEW
+
+tests\test_phase10_completion.py:22: AssertionError
+_ test_missing_specialties_route_to_reference_only_without_execution[Explain Unity assembly definition architecture] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-cards/test_missing_specialties_route1')
+query = 'Explain Unity assembly definition architecture'
+
+    @pytest.mark.parametrize("query", [
+        "Explain ScriptableObject architecture patterns",
+        "Explain Unity assembly definition architecture",
+        "Explain URP package compatibility",
+    ])
+    def test_missing_specialties_route_to_reference_only_without_execution(tmp_path, query):
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": "EXPLAIN"
+        })
+>       assert result["status"] == "PASS"
+E       AssertionError: assert 'REVIEW' == 'PASS'
+E         
+E         - PASS
+E         + REVIEW
+
+tests\test_phase10_completion.py:22: AssertionError
+____ test_package_applicability_has_exact_pins_and_rejects_unbounded_names ____
+
+    def test_package_applicability_has_exact_pins_and_rejects_unbounded_names():
+        cards = catalog_cards()
+        package = next((c for c in cards if c["knowledge_id"] == "unity.packages"), None)
+>       assert package is not None
+E       assert None is not None
+
+tests\test_phase10_completion.py:31: AssertionError
+_________ test_new_sprite_art_does_not_route_to_import_based_on_count _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-cards/test_new_sprite_art_does_not_r0')
+
+    def test_new_sprite_art_does_not_route_to_import_based_on_count(tmp_path):
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": "Draw six new dragon sprites", "output": "SPRITE"
+        })
+>       assert result["status"] == "REVIEW"
+E       AssertionError: assert 'PASS' == 'REVIEW'
+E         
+E         - REVIEW
+E         + PASS
+
+tests\test_phase10_completion.py:43: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_completion.py::test_missing_specialties_route_to_reference_only_without_execution[Explain ScriptableObject architecture patterns]
+FAILED tests/test_phase10_completion.py::test_missing_specialties_route_to_reference_only_without_execution[Explain Unity assembly definition architecture]
+FAILED tests/test_phase10_completion.py::test_package_applicability_has_exact_pins_and_rejects_unbounded_names
+FAILED tests/test_phase10_completion.py::test_new_sprite_art_does_not_route_to_import_based_on_count
+4 failed, 1 passed in 2.00s

@@ -9,6 +9,7 @@ are syntax fixtures, not evidence of execution or functionality.
 
 | Command | Availability | Example |
 | --- | --- | --- |
+| `knowledge availability` | Implemented | `polyforge knowledge availability --workspace workspace/arena_demo --dry-run --json` |
 | `knowledge list` | Implemented | `polyforge knowledge list --json` |
 | `knowledge route` | Implemented | `polyforge knowledge route --workspace workspace/arena_demo --request knowledge-request.json --json` |
 | `knowledge probe` | Implemented | `polyforge knowledge probe --workspace workspace/arena_demo --tool blender --dry-run --json` |

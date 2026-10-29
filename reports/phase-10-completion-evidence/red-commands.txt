@@ -1,0 +1,28 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_________ test_inline_and_multiline_reference_commands_are_validated __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-commands/test_inline_and_multiline_refe0')
+
+    def test_inline_and_multiline_reference_commands_are_validated(tmp_path):
+        import shutil
+>       from tools.validate_skill import skill_commands, validate_skill
+E       ImportError: cannot import name 'skill_commands' from 'tools.validate_skill' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\tools\validate_skill.py)
+
+tests\test_phase10_skill.py:80: ImportError
+____________ test_every_runnable_skill_reference_example_executes _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10-completion/red-commands/test_every_runnable_skill_refe0')
+
+    def test_every_runnable_skill_reference_example_executes(tmp_path):
+        import json
+        import subprocess
+        import sys
+>       from tools.validate_skill import skill_commands
+E       ImportError: cannot import name 'skill_commands' from 'tools.validate_skill' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\tools\validate_skill.py)
+
+tests\test_phase10_skill.py:101: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_skill.py::test_inline_and_multiline_reference_commands_are_validated
+FAILED tests/test_phase10_skill.py::test_every_runnable_skill_reference_example_executes
+2 failed, 7 deselected in 0.44s

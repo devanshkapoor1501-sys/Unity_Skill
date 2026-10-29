@@ -1,0 +1,33 @@
+import copy, json
+from pathlib import Path
+from polyforge.contracts.validation import canonical_digest
+
+path = Path('polyforge/data/knowledge.json')
+cards = json.loads(path.read_text('utf-8'))
+base = next(c for c in cards if c['knowledge_id'] == 'unity.csharp')
+entries = [
+ ('unity.architecture', 'architecture', ['scriptableobject', 'architecture', 'assembly definition', 'assemblies', 'asmdef', 'module boundaries'],
+  'Shared data assets and compilation boundaries',
+  'Use ScriptableObject assets for shared authored configuration; use MonoBehaviour for per-instance scene lifecycle and plain C# objects for pure computation. Keep mutable runtime state separate from shared asset defaults. Assembly definitions partition compilation and references: separate Editor-only code from runtime assemblies, make dependency direction explicit, and avoid cycles. Small prototypes may keep the default assembly until a real boundary warrants an asmdef.',
+  ['Shared enemy tuning across prefabs: ScriptableObject configuration with per-enemy runtime health.', 'Runtime assembly plus Editor-only tooling assembly: Editor depends on runtime, never the reverse.'],
+  ['A shared mutable asset can leak state across instances and play sessions.', 'An Editor namespace in a runtime assembly can break player compilation.'],
+  ['https://docs.unity3d.com/6000.6/Documentation/Manual/class-ScriptableObject.html', 'https://docs.unity3d.com/6000.6/Documentation/Manual/assembly-definition-files.html']),
+ ('unity.packages', 'packages', ['package', 'packages', 'urp', 'package compatibility', 'package manager', 'dependencies'],
+  'Package applicability and installed project evidence',
+  'Match the Editor and package versions independently. This reference targets Unity 6000.6.3f1 with URP 17.6.0 and Test Framework 1.8.0, as observed in the managed arena project; it does not establish every package API. A manifest declares requested dependencies; packages-lock records resolution and Library/PackageCache package.json files are local installation observations. Compare all three without downloading or resolving dependencies. Missing cache evidence stays UNKNOWN. Prefer the installed render pipeline and tested materials; changing pipeline or package requires a separately reviewed scratch experiment.',
+  ['URP 17.6.0 on Unity 6000.6.3f1: consult the matching 17.6 manual before a shader operation.', 'Manifest URP 17.6.0 but cached package 17.3.0: report a version mismatch and block compatibility claims.'],
+  ['A package source link does not prove the package is installed.', 'A lock file is resolution metadata, not proof an API has compiled or a package cache is complete.'],
+  ['https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.6/manual/index.html', 'https://docs.unity3d.com/6000.6/Documentation/Manual/Packages.html']),
+]
+for identifier, topic, triggers, concept, prose, examples, pitfalls, sources in entries:
+    c = copy.deepcopy(base)
+    c.update(knowledge_id=identifier, topic=topic, intent_triggers=triggers, concept=concept,
+             when_to_use=concept, reference_text=prose, doc_digest=canonical_digest(prose),
+             reference_path='references/unity/architecture-packages.md', examples=examples,
+             alternatives=['Choose scene components for instance behavior, shared assets for authored data, and reviewed package changes only when needed.'],
+             pitfalls=pitfalls, confidence=0.7,
+             sources=[{'uri': s, 'license_or_attribution': 'Official versioned documentation; locally authored summary, no vendor article copied'} for s in sources])
+    if topic == 'packages':
+        c['package_versions'] = {'com.unity.render-pipelines.universal': ['17.6.0'], 'com.unity.test-framework': ['1.8.0']}
+    cards.append(c)
+path.write_text(json.dumps(cards, indent=2)+'\n', encoding='utf-8')
