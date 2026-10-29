@@ -10,7 +10,9 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   fresh offline wheel/CLI/MCP checks. A fresh reviewer finding about overbroad
   probe evidence was fixed and rechecked. Codex app-harness explanation PASS;
   Codex CLI and Claude Code retain explicit model/account/auth BLOCKED outcomes.
-  Publication and exact limits are in reports/phase-10.md; Phase 11 unstarted.
+  Qualification 9dac23d passed all three branch CI jobs in run 40921511937;
+  main receives the audited result by fast-forward. Exact limits and live final
+  publication checks are in reports/phase-10.md; Phase 11 unstarted.
 
 - Phase 9 local qualification complete: 395 offline cases, 9 real Blender cases,
   94.43% combined / 91.19% branch coverage, native six-mutant acceptance,

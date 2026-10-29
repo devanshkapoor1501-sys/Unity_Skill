@@ -1,6 +1,6 @@
 # Phase 10 — portable skill, local knowledge and bounded hosts
 
-**Local development scope: PASS; publication checks pending. Game acceptance: PARTIAL.** This phase
+**Phase 10 development scope: PASS, with disclosed host-dependent blocks. Game acceptance: PARTIAL.** This phase
 implements reference/host affordances around the existing engine. It does not
 claim broad game-production expertise or successful authentication on unavailable
 hosts. Final quality and publication gates are recorded below after verification.
@@ -120,4 +120,20 @@ fixtures, native observations/process logs, tool/probe sources, host blocks,
 validation and installed-package checks. Scratch caches, credentials and host
 session state are excluded. Source scripts are retained with `.py.txt` suffixes.
 The build-plan audit is additionally machine-checked against the executed result
-files before publication. Phase 11 remains unstarted.
+files and committed implementation bytes before publication.
+
+## Publication
+
+Implementation/qualification commit `9dac23dcc45713da93d502f8f24c330420304f1d`
+passed all three jobs in [branch run 40921511937](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions/runs/40921511937):
+Windows Python 3.11, Windows Python 3.12 and Ubuntu Python 3.12. Raw job logs,
+individual step results and exact source revision are retained under
+`phase-10-evidence/ci/`. Publication preserves the complete Phase 0–9 history
+through a fast-forward of main; no force update or phase artifact replacement.
+
+The final report/evidence commit is checked again on push.
+[Main Actions](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions?query=branch%3Amain)
+is the authoritative post-publication status. The user-requested plan audit found
+no remaining unimplemented Phase 10 code/reference item within this scope;
+account-dependent host blocks, unprobed methods and protected evaluation remain
+explicitly disclosed. Phase 11 remains unstarted.
