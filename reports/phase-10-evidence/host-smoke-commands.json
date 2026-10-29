@@ -1,0 +1,48 @@
+[
+  {
+    "host": "codex",
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "C:\\Users\\Divansh Kapoor\\AppData\\Roaming\\npm\\node_modules\\@openai\\codex\\bin\\codex.js",
+      "exec",
+      "--json",
+      "--ephemeral",
+      "--sandbox",
+      "read-only",
+      "--cd",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\hosts\\codex",
+      "--skip-git-repo-check",
+      "--output-last-message",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\codex-smoke-final.txt",
+      "-"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\hosts\\codex",
+    "exit_code": 1,
+    "duration_seconds": 5.092999999999847,
+    "fixture_files_unchanged": true,
+    "automatic_result": "NEEDS_EVIDENCE_REVIEW",
+    "stdout": "codex-smoke-stdout.txt",
+    "stderr": "codex-smoke-stderr.txt"
+  },
+  {
+    "host": "claude",
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\.local\\bin\\claude.exe",
+      "-p",
+      "--output-format",
+      "json",
+      "--no-session-persistence",
+      "--tools",
+      "Read,Bash",
+      "--permission-mode",
+      "default"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\hosts\\claude",
+    "exit_code": 1,
+    "duration_seconds": 1.7660000000000764,
+    "fixture_files_unchanged": true,
+    "automatic_result": "NEEDS_EVIDENCE_REVIEW",
+    "stdout": "claude-smoke-stdout.txt",
+    "stderr": "claude-smoke-stderr.txt"
+  }
+]

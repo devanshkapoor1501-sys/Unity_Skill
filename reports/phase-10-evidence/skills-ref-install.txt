@@ -1,0 +1,36 @@
+Collecting git+https://github.com/agentskills/agentskills.git#subdirectory=skills-ref
+  Cloning https://github.com/agentskills/agentskills.git to c:\users\divansh kapoor\onedrive\desktop\skill\.tmp\pip-req-build-eaad2dk9
+  Running command git clone --filter=blob:none --quiet https://github.com/agentskills/agentskills.git 'C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\pip-req-build-eaad2dk9'
+  Resolved https://github.com/agentskills/agentskills.git to commit 69ef37e9424c0a7ea9dd2293b559e43ec8176379
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting click>=8.0 (from skills-ref==0.1.0)
+  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting strictyaml>=1.7.3 (from skills-ref==0.1.0)
+  Downloading strictyaml-1.7.3-py3-none-any.whl.metadata (11 kB)
+Collecting python-dateutil>=2.6.0 (from strictyaml>=1.7.3->skills-ref==0.1.0)
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting six>=1.6 (from python-dateutil>=2.6.0->strictyaml>=1.7.3->skills-ref==0.1.0)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting tzdata (from python-dateutil>=2.6.0->strictyaml>=1.7.3->skills-ref==0.1.0)
+  Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Using cached click-8.5.0-py3-none-any.whl (125 kB)
+Downloading strictyaml-1.7.3-py3-none-any.whl (123 kB)
+Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Building wheels for collected packages: skills-ref
+  Building wheel for skills-ref (pyproject.toml): started
+  Building wheel for skills-ref (pyproject.toml): finished with status 'done'
+  Created wheel for skills-ref: filename=skills_ref-0.1.0-py3-none-any.whl size=12724 sha256=7cfb6d48294b012664ab28c381dc0c22fce4aeedc8ad3e949aa6dff8992d94bd
+  Stored in directory: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\pip-ephem-wheel-cache-b5776mer\wheels\09\ec\37\34bfd60c1de95ad45e0cb051dbe7f44e9a6678dbfbd64193d1
+Successfully built skills-ref
+Installing collected packages: tzdata, six, click, python-dateutil, strictyaml, skills-ref
+Successfully installed click-8.5.0 python-dateutil-3.0.0 six-1.17.0 skills-ref-0.1.0 strictyaml-1.7.3 tzdata-2026.6
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.2
+[notice] To update, run: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase10\skills-validator\Scripts\python.exe -m pip install --upgrade pip

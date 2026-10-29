@@ -1,0 +1,31 @@
+import hashlib,json,os,shutil,subprocess,time
+from pathlib import Path
+
+root=Path.cwd();base=root/'.tmp/phase10';records=[]
+for host in ['codex','claude']:
+ scratch=base/'hosts'/host;scratch.mkdir(parents=True,exist_ok=True)
+ target=scratch/('.agents' if host=='codex' else '.claude')/'skills/polyforge'
+ shutil.copytree(root/'.agents/skills/polyforge',target,dirs_exist_ok=True)
+ request={'schema_version':'1.0.0','query':'Explain Geometry Nodes versus manual mesh','output':'EXPLAIN','domain':'blender'}
+ (scratch/'request.json').write_text(json.dumps(request)+'\n')
+ py=str(root/'.venv/Scripts/python.exe')
+ prompt='Use the local PolyForge skill. This is an EXPLAIN-only host compatibility smoke. Preserve the exact query in request.json. Read SKILL.md and only its relevant Blender reference. Run exactly this read-only deterministic command with the shell tool: "'+py+'" -m polyforge knowledge route --workspace "'+str(scratch)+'" --request request.json --json . Do not include the final punctuation in the command. Do not create assets, invoke native apps, write files, fetch references, invoke other tools/services, change settings, grant approvals or claim delegated agents. Summarize the actual JSON status, selected knowledge IDs, whether native work ran and remaining unsupported expertise. If permission/auth prevents the command, report BLOCKED precisely. The skill directory is '+str(target)+'.'
+ before={str(p.relative_to(scratch)):hashlib.sha256(p.read_bytes()).hexdigest() for p in scratch.rglob('*') if p.is_file()}
+ (base/(host+'-smoke-prompt.txt')).write_text(prompt)
+ if host=='codex':
+  executable=Path(os.environ['APPDATA'])/'npm/node_modules/@openai/codex/vendor' # CLI .cmd handled below by actual installed node launcher
+  node=shutil.which('node');script=Path(os.environ['APPDATA'])/'npm/node_modules/@openai/codex/bin/codex.js'
+  args=[node,str(script),'exec','--json','--ephemeral','--sandbox','read-only','--cd',str(scratch),'--skip-git-repo-check','--output-last-message',str(base/'codex-smoke-final.txt'),'-']
+ else:
+  args=[str(Path.home()/'.local/bin/claude.exe'),'-p','--output-format','json','--no-session-persistence','--tools','Read,Bash','--permission-mode','default']
+ start=time.monotonic()
+ try:
+  result=subprocess.run(args,input=prompt,cwd=scratch,env=dict(os.environ,PYTHONDONTWRITEBYTECODE='1'),capture_output=True,text=True,encoding='utf-8',timeout=150)
+  stdout,stderr,code=result.stdout,result.stderr,result.returncode
+ except subprocess.TimeoutExpired as exc:
+  stdout=exc.stdout or b'';stderr=exc.stderr or b'';stdout=stdout.decode('utf-8','replace') if isinstance(stdout,bytes) else stdout;stderr=stderr.decode('utf-8','replace') if isinstance(stderr,bytes) else stderr;code=124
+ (base/(host+'-smoke-stdout.txt')).write_text(stdout,encoding='utf-8');(base/(host+'-smoke-stderr.txt')).write_text(stderr,encoding='utf-8')
+ after={str(p.relative_to(scratch)):hashlib.sha256(p.read_bytes()).hexdigest() for p in scratch.rglob('*') if p.is_file()}
+ records.append({'host':host,'argv':args,'cwd':str(scratch),'exit_code':code,'duration_seconds':time.monotonic()-start,'fixture_files_unchanged':before==after,'automatic_result':'NEEDS_EVIDENCE_REVIEW','stdout':host+'-smoke-stdout.txt','stderr':host+'-smoke-stderr.txt'})
+ print(host,code,'fixture unchanged',before==after,flush=True)
+ (base/'host-smoke-commands.json').write_text(json.dumps(records,indent=2)+'\n')

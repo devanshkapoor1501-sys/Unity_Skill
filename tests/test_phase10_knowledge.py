@@ -202,3 +202,26 @@ def test_missing_tool_is_an_explicit_block_not_fake_native_execution(tmp_path, m
     result = route_reference(WorkspacePolicy(tmp_path), request("Make a crate"))
     assert result["status"] == "BLOCKED" and result["missing_tools"] == ["blender"]
     assert result["planned_writes"] == []
+
+
+def test_sprite_bake_and_new_sprite_art_are_not_silently_routed_to_supplied_import(tmp_path):
+    from polyforge.knowledge.router import route_reference
+
+    p = WorkspacePolicy(tmp_path)
+    baked = route_reference(
+        p, request("Bake six sprite frames from the approved robot model", output="SPRITE")
+    )
+    assert baked["capability_ids"] == ["sprite.robot.bake.v1"]
+    assert baked["roles"] == ["asset_producer", "asset_inspector"]
+    assert {row["tool"] for row in baked["required_probes"]} == {"blender"}
+    novel = route_reference(p, request("Draw new hand-painted dragon sprites", output="SPRITE"))
+    assert novel["status"] == "REVIEW" and novel["capability_ids"] == []
+
+
+def test_unknown_tool_version_keys_cannot_crash_routing():
+    from polyforge.knowledge.catalog import catalog_cards, validate_cards
+
+    cards = catalog_cards()
+    cards[0]["versions"] = {"arbitrary_shell": ["1.0"]}
+    with pytest.raises(InputError):
+        validate_cards(cards)

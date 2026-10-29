@@ -1,0 +1,16 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.knowledge.router import route_reference
+from polyforge.knowledge.probes import read_probe
+
+results={}
+for tool,query,card in [('blender','Inspect bpy context validate','blender.context'),('unity','Inspect TypeCache Unity Editor API','unity.editor')]:
+ p=WorkspacePolicy(Path('.tmp/phase10/probe-'+tool))
+ observed=read_probe(p,tool);assert observed and observed['knowledge_state']=='VERSION_PROBED'
+ route=route_reference(p,{'schema_version':'1.0.0','query':query,'output':'INSPECT','domain':tool})
+ assert next(c for c in route['cards'] if c['knowledge_id']==card)['knowledge_state']=='VERSION_PROBED'
+ assert all(c['knowledge_state']=='REFERENCE_ONLY' for c in route['cards'] if c['api_probe_id']=='none')
+ results[tool]={'observed':observed,'reference_route':route}
+Path('.tmp/phase10/native-receipts-verified.json').write_text(json.dumps(results,indent=2)+'\n')
+print('Actual native receipts and exact API-scoped card knowledge PASS; no capability promoted')

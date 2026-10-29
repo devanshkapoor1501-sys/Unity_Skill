@@ -1,0 +1,18 @@
+{
+  "verified_on": "2026-10-29",
+  "runtime_retrieval": "DISABLED",
+  "sources": [
+    {"url":"https://agentskills.io/specification","purpose":"Portable SKILL.md fields and reference validator","status":"FETCHED"},
+    {"url":"https://learn.chatgpt.com/docs/build-skills","purpose":"Codex discovery and progressive disclosure; redirected from developers.openai.com/codex/skills","status":"FETCHED"},
+    {"url":"https://code.claude.com/docs/en/skills","purpose":"Claude project .claude/skills path and version-dependent loading","status":"FETCHED"},
+    {"url":"https://code.claude.com/docs/en/headless","purpose":"-p and structured noninteractive output","status":"FETCHED"},
+    {"url":"https://modelcontextprotocol.io/specification/2025-11-25/basic/transports","purpose":"newline JSON-RPC stdio and stdout-only protocol","status":"FETCHED"},
+    {"url":"https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle","purpose":"initialize and initialized handshake","status":"FETCHED"},
+    {"url":"https://modelcontextprotocol.io/specification/2025-11-25/basic/utilities/cancellation","purpose":"pending request cancellation, unknown IDs ignored","status":"FETCHED"},
+    {"url":"https://modelcontextprotocol.io/specification/2025-11-25/server/tools","purpose":"tools/list and tools/call response contracts","status":"FETCHED"},
+    {"url":"https://docs.blender.org/api/5.0/bpy.types.Mesh.html","purpose":"Mesh validation API","status":"REMOTE_BLOCKED_402; installed native API inspection and actual scratch assertions used"},
+    {"url":"https://docs.unity3d.com/6000.0/Documentation/ScriptReference/TypeCache.GetTypesDerivedFrom.html","purpose":"Derived type discovery","status":"FETCHED; matched installed 6000.6.3f1 UnityEditor.xml signature and actual isolated compile/probe"},
+    {"url":"https://github.com/agentskills/agentskills/tree/69ef37e9424c0a7ea9dd2293b559e43ec8176379/skills-ref","purpose":"Official reference validator 0.1.0 installed only in isolated test venv","status":"VALID_SKILL","license":"Apache-2.0","runtime_dependency":false}
+  ],
+  "attribution":"Locally authored summaries with authoritative source links; vendor articles are not copied into the catalog. Captured native process logs and API observations retain their source identity."
+}

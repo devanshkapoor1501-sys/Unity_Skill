@@ -1,0 +1,46 @@
+FFFF.                                                                    [100%]
+================================== FAILURES ===================================
+________________ test_unknown_probe_and_dry_run_write_nothing _________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/probes-red/test_unknown_probe_and_dry_run0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A7DD72BCB0>
+
+    def test_unknown_probe_and_dry_run_write_nothing(tmp_path, monkeypatch):
+>       from polyforge.knowledge import probes
+E       ImportError: cannot import name 'probes' from 'polyforge.knowledge' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\knowledge\__init__.py)
+
+tests\test_phase10_probes.py:15: ImportError
+______________ test_missing_probe_tool_is_blocked_without_writes ______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/probes-red/test_missing_probe_tool_is_blo0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A7DBCFA630>
+
+    def test_missing_probe_tool_is_blocked_without_writes(tmp_path, monkeypatch):
+>       from polyforge.knowledge import probes
+E       ImportError: cannot import name 'probes' from 'polyforge.knowledge' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\knowledge\__init__.py)
+
+tests\test_phase10_probes.py:27: ImportError
+______ test_success_requires_actual_typed_native_probe_not_a_pass_label _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/probes-red/test_success_requires_actual_t0')
+
+    def test_success_requires_actual_typed_native_probe_not_a_pass_label(tmp_path):
+>       from polyforge.knowledge.probes import validate_observation
+E       ModuleNotFoundError: No module named 'polyforge.knowledge.probes'
+
+tests\test_phase10_probes.py:36: ModuleNotFoundError
+_ test_probe_receipts_bind_binary_script_result_and_no_ui_or_delegation_claim _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/probes-red/test_probe_receipts_bind_binar0')
+
+    def test_probe_receipts_bind_binary_script_result_and_no_ui_or_delegation_claim(tmp_path):
+>       from polyforge.knowledge.probes import read_probe
+E       ModuleNotFoundError: No module named 'polyforge.knowledge.probes'
+
+tests\test_phase10_probes.py:46: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_probes.py::test_unknown_probe_and_dry_run_write_nothing
+FAILED tests/test_phase10_probes.py::test_missing_probe_tool_is_blocked_without_writes
+FAILED tests/test_phase10_probes.py::test_success_requires_actual_typed_native_probe_not_a_pass_label
+FAILED tests/test_phase10_probes.py::test_probe_receipts_bind_binary_script_result_and_no_ui_or_delegation_claim
+4 failed, 1 passed in 1.23s

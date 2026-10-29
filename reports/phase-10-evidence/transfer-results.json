@@ -1,0 +1,15 @@
+{
+  "test_kind": "Fresh reference-only reader on public prompts withheld from the card-authoring round",
+  "protected_evaluator": "NOT_SUPPLIED",
+  "status": "PASS_REFERENCE_DECISIONS",
+  "actual_native_execution": "NOT_RUN",
+  "cases": [
+    {"brief":"300 adjustable ventilation pipes with editable cross-sections after assembly","decision":"Geometry Nodes with exposed reusable parameters","support":"REFERENCE_ONLY; engine pipe/Geometry Nodes/300-pipe production unimplemented","preserved_requirement":"post-assembly editability; no primitive substitution"},
+    {"brief":"One asymmetrical carved idol with custom topology","decision":"Manual mesh/sculpt specialist","support":"REFERENCE_ONLY; arbitrary topology/sculpt unimplemented","preserved_requirement":"unique topology and carving"},
+    {"brief":"Falling debris physically activates a plate; camera follows an authored cinematic path","decision":"Physics for contacts/activation; Timeline for cinematic camera","support":"REFERENCE_ONLY; existing collision fixtures do not establish debris/plate or Timeline authoring","preserved_requirement":"both physical activation and authored camera path"},
+    {"brief":"Player-reactive dissolve hologram alongside basic industrial crate","decision":"Shader Graph plus interaction logic for hologram; URP Lit for standard crate material","support":"Hologram/reference only; bounded crate and Lit palette workflow implemented","preserved_requirement":"reactive dissolve remains explicit gap; no FBX procedural effect claim"}
+  ],
+  "animation_contrast":"Animator for responsive actors; Timeline for fixed sequencing. Only bounded mechanical robot Idle/Walk is currently executable.",
+  "loaded_references":["SKILL.md","references/blender/overview.md","references/unity/overview.md","references/assets-and-sprites.md","references/workflow.md"],
+  "authority":"Reading did not grant VERSION_PROBED, workflow verification, human approval, tools or network"
+}

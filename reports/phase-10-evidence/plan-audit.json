@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0.0",
+  "status": "PASS",
+  "scope": "Phase 10 local build-plan/blueprint audit; publication checked separately",
+  "requirements": [
+    {
+      "requirement_id": "10.1",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/SKILL.md",
+          "sha256": "024f0198d9a49b77819940f01b181a3d89d3d6c5add3d571de0f06a83eb7d763",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "tools/validate_skill.py",
+          "sha256": "04c686b0864864b4382af97c088855bd31fefd36e27d8cb50d011725ed6a6beb",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.2",
+      "implementation": [
+        {
+          "path": "polyforge/data/knowledge.json",
+          "sha256": "0a4597a2ffc8d6320fee7202b921f8957469e56d5e3b4e8ad5b3dfbd35abc06b",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.3",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/references/blender/overview.md",
+          "sha256": "c583398e7dc971f72d5fec19634a1f4ade5e5552aab2f8e05603659a6ab1c776",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": ".agents/skills/polyforge/references/unity/overview.md",
+          "sha256": "97b5bf3feaa34de5db93769dc1724ab6b3dec4b994e6c3fa7c39b4a9b3eac1c6",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.4",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/references/workforce/overview.md",
+          "sha256": "3b9e1eb7ad9135d82362824baf98e75488c1f0d9c4431b5e80561feae6c01957",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "roles/asset_architect.md",
+          "sha256": "9ef66ef3be9e79215e011ecbddce39202d3fe031d3c9e9ca20eb5ba20fabe071",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.5",
+      "implementation": [
+        {
+          "path": "polyforge/cli.py",
+          "sha256": "268dd80d1ddf113e0490883e01efc77f18d90950f466e40ca3f2980292ba282b",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "pyproject.toml",
+          "sha256": "6be9019d41de37f50df1d5e131d9dc094a27cfe1fe54735df7db5e0da1ebde00",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.6",
+      "implementation": [
+        {
+          "path": "docs/hosts/codex.md",
+          "sha256": "380d7c6dfc9691958edee104283655b0e896453c69c19438de770ac9bd5a5f6d",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "docs/hosts/claude.md",
+          "sha256": "14477a529a1c0e0754cf3eb4bfdca425b243acb8850aa341ac58b5a9d691acb5",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED_WITH_DISCLOSED_LIMITS"
+    },
+    {
+      "requirement_id": "10.7",
+      "implementation": [
+        {
+          "path": "polyforge/commands.py",
+          "sha256": "c6b99d7e5400b155c7494d3c3d5b12f81dc28324ef90b2cf5130330247d1dd32",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "docs/cli.md",
+          "sha256": "272f3cd779dc214154e049d0aed73b6cedd45061a4919273ec03ae7ac7880b86",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "tests/test_contract_boundaries.py",
+          "sha256": "e0a3a4b47a1b4d1b88f47874742e1bb4a84da150ce1164efa4d8a08fec2873a9",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.8",
+      "implementation": [
+        {
+          "path": "tests/test_phase10_skill.py",
+          "sha256": "903044c3e404d13df023351c9cbdb7f4fc92494d52f10df4515a09759ab6970a",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "tests/test_phase10_knowledge.py",
+          "sha256": "1b3fdd6d9ccbc1adc5fb5b86c73c3899ef8d0aeea5def57e6a2ef10cb1713da5",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.9",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/references/workforce/contributing.md",
+          "sha256": "b961e821f45c6562dd9fb4e2d093112a04ce4a00fe1e027fa37b2b3ea6126516",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.10",
+      "implementation": [
+        {
+          "path": "polyforge/contracts/knowledge_card.schema.json",
+          "sha256": "8d3b4376d6602cf53a8f9a1d0c8f7a6e83372e31f36cf1af3d43183dce065099",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "polyforge/knowledge/catalog.py",
+          "sha256": "ea9b1e790c5c3bf1b123489f1df11a66f9fbee9166e0d4dbea2536e9f3d70e3b",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.11",
+      "implementation": [
+        {
+          "path": "polyforge/knowledge/router.py",
+          "sha256": "6ce47b78e15719102d1800e2e3b51d8935b67b03069289ece0abe4769450693f",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.12",
+      "implementation": [
+        {
+          "path": "polyforge/contracts/knowledge_card.schema.json",
+          "sha256": "8d3b4376d6602cf53a8f9a1d0c8f7a6e83372e31f36cf1af3d43183dce065099",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.13",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/references/security/discovery.md",
+          "sha256": "82523f110426c924d23d4a394e63477d1b08f0afffc82cdfa77ad4bb9e841dc8",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "polyforge/knowledge/probes.py",
+          "sha256": "53f89cf8371de2635798cce6299ef0a89937f3355f9c1d26c7298937961f3088",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.14",
+      "implementation": [
+        {
+          "path": "polyforge/knowledge/catalog.py",
+          "sha256": "ea9b1e790c5c3bf1b123489f1df11a66f9fbee9166e0d4dbea2536e9f3d70e3b",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": ".agents/skills/polyforge/references/security/overview.md",
+          "sha256": "64662c7a676aa45ca1c8f0abda25df6fa07c63f4ac7715d493e13bb0bcb8761a",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    },
+    {
+      "requirement_id": "10.15",
+      "implementation": [
+        {
+          "path": "tests/test_phase10_knowledge.py",
+          "sha256": "1b3fdd6d9ccbc1adc5fb5b86c73c3899ef8d0aeea5def57e6a2ef10cb1713da5",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": ".agents/skills/polyforge/references/unity/overview.md",
+          "sha256": "97b5bf3feaa34de5db93769dc1724ab6b3dec4b994e6c3fa7c39b4a9b3eac1c6",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED_WITH_DISCLOSED_LIMITS"
+    },
+    {
+      "requirement_id": "10.16",
+      "implementation": [
+        {
+          "path": "polyforge/knowledge/probes.py",
+          "sha256": "53f89cf8371de2635798cce6299ef0a89937f3355f9c1d26c7298937961f3088",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "polyforge/workforce/discovery.py",
+          "sha256": "91be5bf180eab95975c726a0a98d1b99bcfa9fc3bd9ab6a607d1a14dfaae67e8",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED_WITH_DISCLOSED_LIMITS"
+    },
+    {
+      "requirement_id": "10.17",
+      "implementation": [
+        {
+          "path": ".agents/skills/polyforge/SKILL.md",
+          "sha256": "024f0198d9a49b77819940f01b181a3d89d3d6c5add3d571de0f06a83eb7d763",
+          "hash_normalization": "LF_TEXT"
+        },
+        {
+          "path": "tools/validate_skill.py",
+          "sha256": "04c686b0864864b4382af97c088855bd31fefd36e27d8cb50d011725ed6a6beb",
+          "hash_normalization": "LF_TEXT"
+        }
+      ],
+      "verification": "IMPLEMENTED_AND_CHECKED"
+    }
+  ],
+  "offline_tests": 465,
+  "coverage_combined": 94.66551326412917,
+  "coverage_branches": 91.44981412639405,
+  "skill": {
+    "name": "polyforge",
+    "body_words": 656,
+    "references": 12,
+    "domains": [
+      "blender",
+      "game_design",
+      "quality",
+      "security",
+      "unity",
+      "workforce"
+    ],
+    "profile": "AGENT_SKILLS_SIMPLE_SCALARS",
+    "execution_status": "NOT_RUN"
+  },
+  "native_probes": {
+    "blender": {
+      "run_id": "knowledge-65370d00ada640dc",
+      "checks": {
+        "valid_mesh_unchanged": true,
+        "degenerate_mesh_repaired": true,
+        "context_poll_without_active_object": false,
+        "context_poll_with_active_object": true
+      },
+      "state": "VERSION_PROBED"
+    },
+    "unity": {
+      "run_id": "knowledge-5ee5c80ce6944c0e",
+      "checks": {
+        "known_record_found": true,
+        "unrelated_type_excluded": true,
+        "editor_assembly": true
+      },
+      "state": "VERSION_PROBED"
+    }
+  },
+  "native_baseline_run": "game-check-d0f6dbc0853849a4",
+  "host_results": {
+    "scope": "Public development skill/reference and narrow host tests; no protected evaluator",
+    "baseline_reader": {
+      "missing": [
+        "Geometry Nodes/manual reference",
+        "Animator/Timeline decision",
+        "API reference routing",
+        "host affordance probes",
+        "complete domain state inventory"
+      ],
+      "correct_existing": [
+        "direct-sprite route without Blender",
+        "pending human review",
+        "sequential roles"
+      ]
+    },
+    "updated_codex_app_harness": {
+      "status": "PASS",
+      "operation_status": "PASS",
+      "evaluated_test_status": "NOT_RUN",
+      "game_status": "PARTIAL",
+      "query": "Explain Geometry Nodes versus manual mesh",
+      "selected_card_ids": [
+        "blender.modeling"
+      ],
+      "selected_executable_capability_ids": [],
+      "native_execution": "NOT_RUN",
+      "host_vision": "UNKNOWN",
+      "host_delegation": "UNKNOWN",
+      "observed_decisions": [
+        "Geometry Nodes for adjustable patterns versus manual unique topology",
+        "supplied sprites direct to Unity",
+        "interactive Animator versus cinematic Timeline",
+        "malicious reference instructions ignored",
+        "required visual review without vision remains REVIEW"
+      ],
+      "limits": "Only the narrow route command actually executed; other contrasts are reference assessments. This is a Codex app harness test, not proof of arbitrary native host delegation."
+    },
+    "codex_cli": {
+      "version": "0.154.0",
+      "status": "BLOCKED",
+      "reason": "Existing configured gpt-6.1-sol model unsupported for signed-in ChatGPT account",
+      "settings_or_model_changed": false,
+      "fixture_unchanged": true
+    },
+    "claude_code": {
+      "version": "2.1.186",
+      "status": "BLOCKED",
+      "reason": "Not logged in; host requests /login",
+      "settings_or_auth_changed": false,
+      "fixture_unchanged": true,
+      "model_calls_executed": 0
+    }
+  },
+  "transfer_results": {
+    "test_kind": "Fresh reference-only reader on public prompts withheld from the card-authoring round",
+    "protected_evaluator": "NOT_SUPPLIED",
+    "status": "PASS_REFERENCE_DECISIONS",
+    "actual_native_execution": "NOT_RUN",
+    "cases": [
+      {
+        "brief": "300 adjustable ventilation pipes with editable cross-sections after assembly",
+        "decision": "Geometry Nodes with exposed reusable parameters",
+        "support": "REFERENCE_ONLY; engine pipe/Geometry Nodes/300-pipe production unimplemented",
+        "preserved_requirement": "post-assembly editability; no primitive substitution"
+      },
+      {
+        "brief": "One asymmetrical carved idol with custom topology",
+        "decision": "Manual mesh/sculpt specialist",
+        "support": "REFERENCE_ONLY; arbitrary topology/sculpt unimplemented",
+        "preserved_requirement": "unique topology and carving"
+      },
+      {
+        "brief": "Falling debris physically activates a plate; camera follows an authored cinematic path",
+        "decision": "Physics for contacts/activation; Timeline for cinematic camera",
+        "support": "REFERENCE_ONLY; existing collision fixtures do not establish debris/plate or Timeline authoring",
+        "preserved_requirement": "both physical activation and authored camera path"
+      },
+      {
+        "brief": "Player-reactive dissolve hologram alongside basic industrial crate",
+        "decision": "Shader Graph plus interaction logic for hologram; URP Lit for standard crate material",
+        "support": "Hologram/reference only; bounded crate and Lit palette workflow implemented",
+        "preserved_requirement": "reactive dissolve remains explicit gap; no FBX procedural effect claim"
+      }
+    ],
+    "animation_contrast": "Animator for responsive actors; Timeline for fixed sequencing. Only bounded mechanical robot Idle/Walk is currently executable.",
+    "loaded_references": [
+      "SKILL.md",
+      "references/blender/overview.md",
+      "references/unity/overview.md",
+      "references/assets-and-sprites.md",
+      "references/workflow.md"
+    ],
+    "authority": "Reading did not grant VERSION_PROBED, workflow verification, human approval, tools or network"
+  },
+  "installed_checks": 14,
+  "unimplemented_required_items": [],
+  "disclosed_external_limits": [
+    "Claude authentication BLOCKED",
+    "Codex CLI configured model/account BLOCKED",
+    "protected held-out evaluator NOT_SUPPLIED",
+    "UI/vision/delegation/arbitrary package methods UNKNOWN",
+    "generated code execution BLOCKED without separate isolation/owner approval"
+  ],
+  "phase11_started": false
+}

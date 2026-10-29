@@ -106,7 +106,12 @@ def route_reference(
     selected = [copy.deepcopy(row[2]) for row in sorted(ranked, key=lambda r: (-r[0], r[1]))[:3]]
     capabilities = []
     # These are engine-owned typed routes, never instructions or aliases from a document.
-    if output == "SPRITE":
+    sprite_bake = output == "SPRITE" and "robot" in query and "bake" in query
+    if output == "SPRITE" and sprite_bake:
+        capabilities = ["sprite.robot.bake.v1"]
+    elif output == "SPRITE" and any(
+        word in query for word in ("supplied", "existing", "import", "atlas", "six")
+    ):
         capabilities = ["sprite.unity.strip.v1"]
     elif output == "ASSET":
         for word, identifier in {
@@ -129,6 +134,8 @@ def route_reference(
         if output != "EXPLAIN"
         else []
     )
+    if sprite_bake and capabilities:
+        tools = ["blender"]
     from polyforge.workforce.discovery import discover
 
     discovered = discover(policy)["tools"] if tools else {}
@@ -140,6 +147,7 @@ def route_reference(
         if relevant and all(
             (observed := observations[tool]) is not None
             and observed["tool_version"] in card["versions"][tool]
+            and observed["receipt"]["probe_id"] == card["api_probe_id"]
             for tool in relevant
         ):
             card["knowledge_state"] = "VERSION_PROBED"
@@ -151,7 +159,9 @@ def route_reference(
         []
         if output in {"EXPLAIN", "INSPECT"}
         else ["unity_integration", "asset_inspector"]
-        if output == "SPRITE"
+        if output == "SPRITE" and not sprite_bake
+        else ["asset_producer", "asset_inspector"]
+        if sprite_bake
         else ["asset_producer", "asset_inspector"]
         if output == "ASSET"
         else ["rig_animation_artist", "animation_inspector"]

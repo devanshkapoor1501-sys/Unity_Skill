@@ -1,0 +1,25 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______________ test_missing_probe_tool_is_blocked_without_writes ______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/missing-dry-red/test_missing_probe_tool_is_blo0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002A4BEE90380>
+
+    def test_missing_probe_tool_is_blocked_without_writes(tmp_path, monkeypatch):
+        from polyforge.knowledge import probes
+    
+        monkeypatch.setattr(probes, "discover_tool", lambda *a: None)
+        result = probes.probe_tool(tmp_path, "unity")
+        assert result.status == "BLOCKED" and result.exit_code == 3
+        assert not list(tmp_path.iterdir())
+        dry = probes.probe_tool(tmp_path, "unity", dry_run=True)
+>       assert dry.status == "PASS" and dry.data["execution_status"] == "NOT_RUN"
+E       AssertionError: assert ('BLOCKED' == 'PASS'
+E         
+E         - PASS
+E         + BLOCKED)
+
+tests\test_phase10_probes.py:34: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_probes.py::test_missing_probe_tool_is_blocked_without_writes
+1 failed, 14 deselected in 0.56s

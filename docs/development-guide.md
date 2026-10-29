@@ -165,6 +165,9 @@ Phase 7 adds bounded worker contracts and robot Idle/Walk animation; see the
 Phase 8 adds [asset/material handoffs and the bounded 2D workflow](asset-workflow.md),
 with separate technical, visual and game acceptance evidence.
 Phase 9 adds [review, amendments, diagnosis and verified recovery](review-and-recovery.md).
+Phase 10 adds [local knowledge routing and fixed API probes](knowledge.md),
+portable [Codex](hosts/codex.md)/[Claude](hosts/claude.md) guides and a read-only
+optional MCP bridge. Reference coverage never implies executable support.
 The reviewed v5.1 roadmap keeps broader asset, texture, 2D and host integration
 work in later phases; see [the implementation sequence](implementation-plan.md).
 Phases stop at their acceptance

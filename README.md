@@ -26,6 +26,10 @@ This installs the skill instructions. Building also needs Blender, Unity and Pol
 
 Automatic setup and tested installation for other assistants, including Claude, are still being finished. A packaged plugin is planned.
 
+[Codex](docs/hosts/codex.md) and [Claude Code](docs/hosts/claude.md) setup guides
+share the same skill and local tools. [Reference routing](docs/knowledge.md)
+explains supported workflows and gaps before execution.
+
 ## How you use it
 
 1. **Describe your idea.** Say what you want to make and how it should look or play.
@@ -52,4 +56,4 @@ Try PolyForge if you want a starting point for simple Blender-to-Unity projects 
 
 The project is free under the [Apache-2.0 license](LICENSE). Your AI assistant and other software may have their own costs or terms.
 
-[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-9.md)
+[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-10.md)

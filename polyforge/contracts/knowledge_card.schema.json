@@ -132,7 +132,15 @@
           "type": "string",
           "maxLength": 80
         }
-      }
+      },
+      "propertyNames": {
+        "enum": [
+          "blender",
+          "unity",
+          "python"
+        ]
+      },
+      "maxProperties": 3
     },
     "sources": {
       "type": "array",

@@ -1,0 +1,87 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+__________ test_portable_skill_format_links_and_domain_map_are_valid __________
+
+    def test_portable_skill_format_links_and_domain_map_are_valid():
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:15: ModuleNotFoundError
+_ test_missing_reference_unsupported_claim_or_permission_field_fails_validation[name] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/skill-red/test_missing_reference_unsuppo0')
+damage = 'name'
+
+    @pytest.mark.parametrize("damage", ["name", "description", "link", "permission", "historical"])
+    def test_missing_reference_unsupported_claim_or_permission_field_fails_validation(tmp_path, damage):
+        import shutil
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:27: ModuleNotFoundError
+_ test_missing_reference_unsupported_claim_or_permission_field_fails_validation[description] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/skill-red/test_missing_reference_unsuppo1')
+damage = 'description'
+
+    @pytest.mark.parametrize("damage", ["name", "description", "link", "permission", "historical"])
+    def test_missing_reference_unsupported_claim_or_permission_field_fails_validation(tmp_path, damage):
+        import shutil
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:27: ModuleNotFoundError
+_ test_missing_reference_unsupported_claim_or_permission_field_fails_validation[link] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/skill-red/test_missing_reference_unsuppo2')
+damage = 'link'
+
+    @pytest.mark.parametrize("damage", ["name", "description", "link", "permission", "historical"])
+    def test_missing_reference_unsupported_claim_or_permission_field_fails_validation(tmp_path, damage):
+        import shutil
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:27: ModuleNotFoundError
+_ test_missing_reference_unsupported_claim_or_permission_field_fails_validation[permission] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/skill-red/test_missing_reference_unsuppo3')
+damage = 'permission'
+
+    @pytest.mark.parametrize("damage", ["name", "description", "link", "permission", "historical"])
+    def test_missing_reference_unsupported_claim_or_permission_field_fails_validation(tmp_path, damage):
+        import shutil
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:27: ModuleNotFoundError
+_ test_missing_reference_unsupported_claim_or_permission_field_fails_validation[historical] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/skill-red/test_missing_reference_unsuppo4')
+damage = 'historical'
+
+    @pytest.mark.parametrize("damage", ["name", "description", "link", "permission", "historical"])
+    def test_missing_reference_unsupported_claim_or_permission_field_fails_validation(tmp_path, damage):
+        import shutil
+>       from tools.validate_skill import validate_skill
+E       ModuleNotFoundError: No module named 'tools.validate_skill'
+
+tests\test_phase10_skill.py:27: ModuleNotFoundError
+_ test_references_cover_decisions_fallbacks_precedence_and_contribution_gates _
+
+    def test_references_cover_decisions_fallbacks_precedence_and_contribution_gates():
+        references = "\n".join(p.read_text(encoding="utf-8") for p in SKILL.rglob("*.md"))
+        for term in ["Geometry Nodes", "manual mesh", "Animator", "Timeline", "Shader Graph", "SAFE_DISCOVERY", "REFERENCE_ONLY", "VERSION_PROBED", "VERIFIED_IN_WORKFLOW", "UNKNOWN", "Appendix G", "negative", "owner approval", "DATA_ONLY"]:
+>           assert term in references
+E           AssertionError: assert 'Geometry Nodes' in '---\nname: polyforge\ndescription: Discover and invoke the local PolyForge Blender-to-Unity capability engine, valida...orkforce status/review for evidence\nand workforce cancel for an active job; cancelled work cannot publish a result.\n'
+
+tests\test_phase10_skill.py:51: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_skill.py::test_portable_skill_format_links_and_domain_map_are_valid
+FAILED tests/test_phase10_skill.py::test_missing_reference_unsupported_claim_or_permission_field_fails_validation[name]
+FAILED tests/test_phase10_skill.py::test_missing_reference_unsupported_claim_or_permission_field_fails_validation[description]
+FAILED tests/test_phase10_skill.py::test_missing_reference_unsupported_claim_or_permission_field_fails_validation[link]
+FAILED tests/test_phase10_skill.py::test_missing_reference_unsupported_claim_or_permission_field_fails_validation[permission]
+FAILED tests/test_phase10_skill.py::test_missing_reference_unsupported_claim_or_permission_field_fails_validation[historical]
+FAILED tests/test_phase10_skill.py::test_references_cover_decisions_fallbacks_precedence_and_contribution_gates
+7 failed in 0.33s

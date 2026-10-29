@@ -1,0 +1,48 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 407 items / 12 deselected / 395 selected
+
+tests\test_animation.py .........                                        [  2%]
+tests\test_assets.py ......                                              [  3%]
+tests\test_contract_boundaries.py .................                      [  8%]
+tests\test_foundation.py .................                               [ 12%]
+tests\test_phase1_cli.py .....                                           [ 13%]
+tests\test_phase1_failures.py ...........                                [ 16%]
+tests\test_phase1_policy.py ......                                       [ 17%]
+tests\test_phase1_review.py ....                                         [ 18%]
+tests\test_phase1_runner.py .......                                      [ 20%]
+tests\test_phase2_boundaries.py ..............                           [ 24%]
+tests\test_phase2_contracts.py ..............                            [ 27%]
+tests\test_phase3_cli.py ......                                          [ 29%]
+tests\test_phase3_recipes.py .......                                     [ 31%]
+tests\test_phase4_contracts.py ...........                               [ 33%]
+tests\test_phase5_contracts.py ......................................... [ 44%]
+.                                                                        [ 44%]
+tests\test_phase6_contracts.py .....................................     [ 53%]
+tests\test_phase7_review.py .........                                    [ 56%]
+tests\test_phase8_review.py ...............                              [ 60%]
+tests\test_phase9_amendments.py ........                                 [ 62%]
+tests\test_phase9_diagnostics.py ............................            [ 69%]
+tests\test_phase9_forensic_execution.py ...                              [ 69%]
+tests\test_phase9_mutations.py .....                                     [ 71%]
+tests\test_phase9_recovery.py .......................................... [ 81%]
+                                                                         [ 81%]
+tests\test_phase9_review.py .........................                    [ 88%]
+tests\test_phase9_routing.py ......                                      [ 89%]
+tests\test_phase9_sprite_gate.py .........                               [ 91%]
+tests\test_sprites.py .....                                              [ 93%]
+tests\test_windows_alias_paths.py ..                                     [ 93%]
+tests\test_workforce.py ........................                         [ 99%]
+tests\test_workforce_crash.py .                                          [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase10\baseline-tests.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Coverage JSON written to file .tmp/phase10/baseline-coverage.json
+Required test coverage of 90.0% reached. Total coverage: 94.43%
+=============== 395 passed, 12 deselected in 317.84s (0:05:17) ================

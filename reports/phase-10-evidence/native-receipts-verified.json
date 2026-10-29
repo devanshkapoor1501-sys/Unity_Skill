@@ -1,0 +1,389 @@
+{
+  "blender": {
+    "observed": {
+      "receipt": {
+        "schema_version": "1.0.0",
+        "tool": "blender",
+        "probe_id": "blender.mesh-context.v1",
+        "run_id": "knowledge-65370d00ada640dc",
+        "binary_path": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+        "binary_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+        "source_path": "runs/knowledge-65370d00ada640dc/probe.py",
+        "source_sha256": "03fe96feeba8ddc9f8e0e2f495f180b6928139f9cb2e5c7304f03622ce862bce",
+        "observation_path": "runs/knowledge-65370d00ada640dc/observation.json",
+        "observation_sha256": "344a59fbe66e9212c1ed4d141e45fbbd5b43e71d0f2df3004e39e4e97f0aa453",
+        "process_path": "runs/knowledge-65370d00ada640dc/process.json",
+        "process_sha256": "74890dd70d46ae50f6cf9c11fbd30b1f0f957b604a300b8eb46ec14da40c94e2"
+      },
+      "knowledge_state": "VERSION_PROBED",
+      "tool_version": "5.2.2",
+      "checks": {
+        "valid_mesh_unchanged": true,
+        "degenerate_mesh_repaired": true,
+        "context_poll_without_active_object": false,
+        "context_poll_with_active_object": true
+      },
+      "execution_support_promoted": false,
+      "host_delegation": "UNKNOWN",
+      "host_vision": "UNKNOWN",
+      "unity_ui": "UNKNOWN",
+      "package_compatibility": "ONLY_FIXED_PROBE_CONTEXT"
+    },
+    "reference_route": {
+      "schema_version": "1.0.0",
+      "query": "Inspect bpy context validate",
+      "request_digest": "825ec00b8df11f07921613a6029a6a828f78d08bbc8e5fd7948ba6aa070c865a",
+      "output": "INSPECT",
+      "status": "REVIEW",
+      "game_status": "PARTIAL",
+      "cards": [
+        {
+          "schema_version": "1.0.0",
+          "knowledge_id": "blender.context",
+          "domain": "blender",
+          "topic": "context",
+          "concept": "context",
+          "intent_triggers": [
+            "bpy",
+            "operator",
+            "context",
+            "validate",
+            "unknown api"
+          ],
+          "when_to_use": "bpy tasks within the explicitly declared support scope",
+          "alternatives": [
+            "Data API avoids UI context; operators are appropriate only after poll/context validation."
+          ],
+          "prerequisites": [
+            "Read exact user constraints; discover capability; probe matching installed version before action"
+          ],
+          "versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/api/5.0/bpy.types.Mesh.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "retrieved_or_verified_at": "2026-10-29",
+          "reference_text": "Prefer Blender data APIs for deterministic headless edits. Operators require an appropriate active object, mode and context; poll before calling. Mesh.validate checks and repairs invalid mesh data; fixed positive and degenerate cases must establish actual behavior on the installed version.",
+          "doc_digest": "4fc17ca2f418fe4526984801cb5e1a49696ad18372f2c0717f404fa19aefd2bd",
+          "reference_path": "references/blender/overview.md",
+          "api_probe_id": "blender.mesh-context.v1",
+          "examples": [
+            "Create a mesh through data and check valid versus degenerate faces.",
+            "Do not run an object-mode operation blindly from edit mode."
+          ],
+          "pitfalls": [
+            "Documentation coverage does not establish executable feature support"
+          ],
+          "security_notes": [
+            "DATA_ONLY; no inherited network/filesystem/tool/review authority"
+          ],
+          "output_contract": "Reference selection and operation proposal; game acceptance remains PARTIAL",
+          "knowledge_state": "VERSION_PROBED",
+          "support_state": "REFERENCE_ONLY",
+          "confidence": 0.7,
+          "reviewer": "polyforge.curated-reference-review.v1",
+          "capability_ids": [],
+          "content_kind": "CURATED_SUMMARY"
+        }
+      ],
+      "context_digest": "a4e78fdb1308070fbf27d05c501a0930e26602ad9eb4065a9f50a2302c177f3d",
+      "loaded_reference_paths": [
+        "references/blender/overview.md"
+      ],
+      "capability_ids": [],
+      "roles": [],
+      "required_probes": [
+        {
+          "tool": "blender",
+          "status": "VERSION_PROBED",
+          "availability": "PRESENT",
+          "command": "knowledge probe --tool blender"
+        }
+      ],
+      "missing_tools": [],
+      "tool_observations": {
+        "blender": {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "tool": "blender",
+            "probe_id": "blender.mesh-context.v1",
+            "run_id": "knowledge-65370d00ada640dc",
+            "binary_path": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+            "binary_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+            "source_path": "runs/knowledge-65370d00ada640dc/probe.py",
+            "source_sha256": "03fe96feeba8ddc9f8e0e2f495f180b6928139f9cb2e5c7304f03622ce862bce",
+            "observation_path": "runs/knowledge-65370d00ada640dc/observation.json",
+            "observation_sha256": "344a59fbe66e9212c1ed4d141e45fbbd5b43e71d0f2df3004e39e4e97f0aa453",
+            "process_path": "runs/knowledge-65370d00ada640dc/process.json",
+            "process_sha256": "74890dd70d46ae50f6cf9c11fbd30b1f0f957b604a300b8eb46ec14da40c94e2"
+          },
+          "knowledge_state": "VERSION_PROBED",
+          "tool_version": "5.2.2",
+          "checks": {
+            "valid_mesh_unchanged": true,
+            "degenerate_mesh_repaired": true,
+            "context_poll_without_active_object": false,
+            "context_poll_with_active_object": true
+          },
+          "execution_support_promoted": false,
+          "host_delegation": "UNKNOWN",
+          "host_vision": "UNKNOWN",
+          "unity_ui": "UNKNOWN",
+          "package_compatibility": "ONLY_FIXED_PROBE_CONTEXT"
+        }
+      },
+      "gap": "Review unsupported requirements, missing tools and version-sensitive APIs",
+      "operation_plan": [
+        "review gaps and prepare bounded SAFE_DISCOVERY proposal"
+      ],
+      "discovery": {
+        "schema_version": "1.0.0",
+        "request_digest": "825ec00b8df11f07921613a6029a6a828f78d08bbc8e5fd7948ba6aa070c865a",
+        "query": "Inspect bpy context validate",
+        "lane": "SAFE_DISCOVERY",
+        "execution_status": "BLOCKED",
+        "isolation_verified": false,
+        "owner_approval_required": true,
+        "scratch_scope": "a new disposable project copy with read-only original references",
+        "original_project_writes": [],
+        "network": "DISABLED",
+        "budget": {
+          "attempts": 2,
+          "timeout_seconds": 60
+        },
+        "required_proposal_fields": [
+          "requirement_ids",
+          "exact_api_tool_package_versions",
+          "patch_diff",
+          "scratch_path",
+          "expected_writes",
+          "risk_class",
+          "validation_plan",
+          "owner_approval"
+        ],
+        "validation_plan": [
+          "consult official versioned sources and local API",
+          "static scope/security review",
+          "compile and isolated positive/negative probe",
+          "measure actual outputs and compare original hashes"
+        ],
+        "promotion_requirements": [
+          "owner review",
+          "typed registered capability",
+          "positive and negative fixtures",
+          "version applicability",
+          "benchmark slot"
+        ],
+        "reason": "Generated code needs separate authorization and verified or disclosed isolation"
+      },
+      "planned_writes": [],
+      "network": "DISABLED",
+      "reference_trust": "DATA_ONLY",
+      "permissions_from_references": false,
+      "host_delegation": "UNKNOWN",
+      "host_vision": "UNKNOWN",
+      "unity_ui": "UNKNOWN",
+      "precedence": "EXPLICIT_USER_REQUIREMENTS_CURRENT_APPENDIX_G_AND_CANONICAL_CLI"
+    }
+  },
+  "unity": {
+    "observed": {
+      "receipt": {
+        "schema_version": "1.0.0",
+        "tool": "unity",
+        "probe_id": "unity.typecache.v1",
+        "run_id": "knowledge-5ee5c80ce6944c0e",
+        "binary_path": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Unity.exe",
+        "binary_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+        "source_path": "runs/knowledge-5ee5c80ce6944c0e/scratch/UnityProject/Assets/Editor/PolyForgeKnowledgeProbe.cs",
+        "source_sha256": "3bd2254a381b3e7b61b1c6d64227ba3ba5519c9817aeeeee11627f7bd0e4b66a",
+        "observation_path": "runs/knowledge-5ee5c80ce6944c0e/observation.json",
+        "observation_sha256": "48cfc3c440bfb38853340dbd326950ff8af453941075b542bf22866bd57439b6",
+        "process_path": "runs/knowledge-5ee5c80ce6944c0e/process.json",
+        "process_sha256": "e63f36f9460bc743665b1d1c40f8f97cfe5f71e22aac4e3416d5bbde196d1f5c"
+      },
+      "knowledge_state": "VERSION_PROBED",
+      "tool_version": "6000.6.3f1",
+      "checks": {
+        "known_record_found": true,
+        "unrelated_type_excluded": true,
+        "editor_assembly": true
+      },
+      "execution_support_promoted": false,
+      "host_delegation": "UNKNOWN",
+      "host_vision": "UNKNOWN",
+      "unity_ui": "UNKNOWN",
+      "package_compatibility": "ONLY_FIXED_PROBE_CONTEXT"
+    },
+    "reference_route": {
+      "schema_version": "1.0.0",
+      "query": "Inspect TypeCache Unity Editor API",
+      "request_digest": "4440c560fdb8d91afb5d0cce3126cb97d0df8b98429d112b76a7a754ec569e5d",
+      "output": "INSPECT",
+      "status": "REVIEW",
+      "game_status": "PARTIAL",
+      "cards": [
+        {
+          "schema_version": "1.0.0",
+          "knowledge_id": "unity.editor",
+          "domain": "unity",
+          "topic": "editor",
+          "concept": "editor",
+          "intent_triggers": [
+            "unity editor",
+            "typecache",
+            "editor api",
+            "prefab",
+            "import",
+            "unknown unity"
+          ],
+          "when_to_use": "unity editor tasks within the explicitly declared support scope",
+          "alternatives": [
+            "Headless registered build for repeatable imports; GUI only when its actual UI affordance is probed."
+          ],
+          "prerequisites": [
+            "Read exact user constraints; discover capability; probe matching installed version before action"
+          ],
+          "versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/ScriptReference/TypeCache.GetTypesDerivedFrom.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "retrieved_or_verified_at": "2026-10-29",
+          "reference_text": "Keep UnityEditor APIs in Editor assemblies and use native prefab/asset APIs. TypeCache.GetTypesDerivedFrom returns discovered derived types in the loaded Editor domain. A local documentation signature is VERSION_PROBED only; isolated execution and positive/negative assertions are required for a workflow claim.",
+          "doc_digest": "e593c2b9c689bfb2538db4b82dabc607d0041ab66db28759c0ff6fd0ee9d5381",
+          "reference_path": "references/unity/overview.md",
+          "api_probe_id": "unity.typecache.v1",
+          "examples": [
+            "Discover a known ScriptableObject subtype in a scratch project.",
+            "A runtime assembly cannot import UnityEditor."
+          ],
+          "pitfalls": [
+            "Documentation coverage does not establish executable feature support"
+          ],
+          "security_notes": [
+            "DATA_ONLY; no inherited network/filesystem/tool/review authority"
+          ],
+          "output_contract": "Reference selection and operation proposal; game acceptance remains PARTIAL",
+          "knowledge_state": "VERSION_PROBED",
+          "support_state": "VERIFIED_EXECUTABLE",
+          "confidence": 0.9,
+          "reviewer": "polyforge.curated-reference-review.v1",
+          "capability_ids": [
+            "unity.scene.static.v1"
+          ],
+          "content_kind": "CURATED_SUMMARY"
+        }
+      ],
+      "context_digest": "b7d927fba2fcfa5d34f5ae45bd1a94c84e9ee31977410f04a78cd242b4c8e3cf",
+      "loaded_reference_paths": [
+        "references/unity/overview.md"
+      ],
+      "capability_ids": [],
+      "roles": [],
+      "required_probes": [
+        {
+          "tool": "unity",
+          "status": "VERSION_PROBED",
+          "availability": "PRESENT",
+          "command": "knowledge probe --tool unity"
+        }
+      ],
+      "missing_tools": [],
+      "tool_observations": {
+        "unity": {
+          "receipt": {
+            "schema_version": "1.0.0",
+            "tool": "unity",
+            "probe_id": "unity.typecache.v1",
+            "run_id": "knowledge-5ee5c80ce6944c0e",
+            "binary_path": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Unity.exe",
+            "binary_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+            "source_path": "runs/knowledge-5ee5c80ce6944c0e/scratch/UnityProject/Assets/Editor/PolyForgeKnowledgeProbe.cs",
+            "source_sha256": "3bd2254a381b3e7b61b1c6d64227ba3ba5519c9817aeeeee11627f7bd0e4b66a",
+            "observation_path": "runs/knowledge-5ee5c80ce6944c0e/observation.json",
+            "observation_sha256": "48cfc3c440bfb38853340dbd326950ff8af453941075b542bf22866bd57439b6",
+            "process_path": "runs/knowledge-5ee5c80ce6944c0e/process.json",
+            "process_sha256": "e63f36f9460bc743665b1d1c40f8f97cfe5f71e22aac4e3416d5bbde196d1f5c"
+          },
+          "knowledge_state": "VERSION_PROBED",
+          "tool_version": "6000.6.3f1",
+          "checks": {
+            "known_record_found": true,
+            "unrelated_type_excluded": true,
+            "editor_assembly": true
+          },
+          "execution_support_promoted": false,
+          "host_delegation": "UNKNOWN",
+          "host_vision": "UNKNOWN",
+          "unity_ui": "UNKNOWN",
+          "package_compatibility": "ONLY_FIXED_PROBE_CONTEXT"
+        }
+      },
+      "gap": "Review unsupported requirements, missing tools and version-sensitive APIs",
+      "operation_plan": [
+        "review gaps and prepare bounded SAFE_DISCOVERY proposal"
+      ],
+      "discovery": {
+        "schema_version": "1.0.0",
+        "request_digest": "4440c560fdb8d91afb5d0cce3126cb97d0df8b98429d112b76a7a754ec569e5d",
+        "query": "Inspect TypeCache Unity Editor API",
+        "lane": "SAFE_DISCOVERY",
+        "execution_status": "BLOCKED",
+        "isolation_verified": false,
+        "owner_approval_required": true,
+        "scratch_scope": "a new disposable project copy with read-only original references",
+        "original_project_writes": [],
+        "network": "DISABLED",
+        "budget": {
+          "attempts": 2,
+          "timeout_seconds": 60
+        },
+        "required_proposal_fields": [
+          "requirement_ids",
+          "exact_api_tool_package_versions",
+          "patch_diff",
+          "scratch_path",
+          "expected_writes",
+          "risk_class",
+          "validation_plan",
+          "owner_approval"
+        ],
+        "validation_plan": [
+          "consult official versioned sources and local API",
+          "static scope/security review",
+          "compile and isolated positive/negative probe",
+          "measure actual outputs and compare original hashes"
+        ],
+        "promotion_requirements": [
+          "owner review",
+          "typed registered capability",
+          "positive and negative fixtures",
+          "version applicability",
+          "benchmark slot"
+        ],
+        "reason": "Generated code needs separate authorization and verified or disclosed isolation"
+      },
+      "planned_writes": [],
+      "network": "DISABLED",
+      "reference_trust": "DATA_ONLY",
+      "permissions_from_references": false,
+      "host_delegation": "UNKNOWN",
+      "host_vision": "UNKNOWN",
+      "unity_ui": "UNKNOWN",
+      "precedence": "EXPLICIT_USER_REQUIREMENTS_CURRENT_APPENDIX_G_AND_CANONICAL_CLI"
+    }
+  }
+}

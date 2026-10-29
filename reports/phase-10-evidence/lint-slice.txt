@@ -1,0 +1,117 @@
+E501 Line too long (130 > 100)
+  --> polyforge\knowledge\router.py:78:101
+   |
+76 |             "benchmark slot",
+77 |         ],
+78 |         "reason": "Reference text cannot execute generated code; unproven isolation requires separate trusted-user authorization",
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+79 |     }
+   |
+
+E501 Line too long (113 > 100)
+   --> polyforge\knowledge\router.py:188:101
+    |
+186 |         "gap": None
+187 |         if status == "PASS"
+188 |         else "Confirm unsupported requirements, missing tools or version-sensitive APIs; no silent substitution",
+    |                                                                                                     ^^^^^^^^^^^^^
+189 |         "operation_plan": [
+190 |             "preserve exact user constraints",
+    |
+
+E501 Line too long (184 > 100)
+   --> tests\test_phase10_probes.py:108:101
+    |
+106 | …
+107 | …
+108 | …probes.PINS[tool][1], "tool_version": probes.PINS[tool][0], "checks": probes.CHECKS[tool], "artifacts": []})
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+109 | …se)
+110 | …
+    |
+
+E501 Line too long (108 > 100)
+   --> tests\test_phase10_probes.py:116:101
+    |
+115 | @pytest.mark.parametrize("tool", ["blender", "unity"])
+116 | def test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow(tmp_path, monkeypatch, tool):
+    |                                                                                                     ^^^^^^^^
+117 |     from polyforge.knowledge.probes import read_probe
+118 |     from polyforge.knowledge.router import route_reference
+    |
+
+E501 Line too long (170 > 100)
+   --> tests\test_phase10_probes.py:125:101
+    |
+123 | …
+124 | …
+125 | …ol == "blender" else "Import supplied sprites", "output": "ASSET" if tool == "blender" else "SPRITE"}
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+126 | …
+127 | …
+    |
+
+E501 Line too long (106 > 100)
+   --> tests\test_phase10_probes.py:131:101
+    |
+131 | @pytest.mark.parametrize("damage", ["binary", "source", "observation", "process", "path", "argv", "exit"])
+    |                                                                                                     ^^^^^^
+132 | def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+133 |     from polyforge.knowledge import probes
+    |
+
+F821 Undefined name `load_json`
+   --> tests\test_phase10_probes.py:137:15
+    |
+135 |     p, result = successful_probe(tmp_path, monkeypatch)
+136 |     marker = ".polyforge/knowledge-blender.json"
+137 |     receipt = load_json(p.path(marker))
+    |               ^^^^^^^^^
+138 |     if damage == "binary":
+139 |         receipt["binary_sha256"] = "0" * 64
+    |
+
+F821 Undefined name `load_json`
+   --> tests\test_phase10_probes.py:145:19
+    |
+143 |         receipt["observation_path"] = "../secret.json"
+144 |     else:
+145 |         process = load_json(p.path(receipt["process_path"]))
+    |                   ^^^^^^^^^
+146 |         if damage == "argv":
+147 |             process["argv"] = ["arbitrary", "script"]
+    |
+
+F821 Undefined name `hashlib`
+   --> tests\test_phase10_probes.py:151:37
+    |
+149 |             process["returncode"] = 1
+150 |         atomic_json(p, receipt["process_path"], process)
+151 |         receipt["process_sha256"] = hashlib.sha256(p.path(receipt["process_path"]).read_bytes()).hexdigest()
+    |                                     ^^^^^^^
+152 |     atomic_json(p, marker, receipt)
+153 |     with pytest.raises(InputError):
+    |
+
+E501 Line too long (108 > 100)
+   --> tests\test_phase10_probes.py:151:101
+    |
+149 |             process["returncode"] = 1
+150 |         atomic_json(p, receipt["process_path"], process)
+151 |         receipt["process_sha256"] = hashlib.sha256(p.path(receipt["process_path"]).read_bytes()).hexdigest()
+    |                                                                                                     ^^^^^^^^
+152 |     atomic_json(p, marker, receipt)
+153 |     with pytest.raises(InputError):
+    |
+
+E501 Line too long (126 > 100)
+   --> tests\test_phase10_probes.py:162:101
+    |
+161 |     monkeypatch.setattr(probes, "discover_tool", lambda *a: Path(sys.executable))
+162 |     monkeypatch.setattr(probes, "run_process", lambda *a: ProcessOutcome(1, "timeout", 123, "UNIT_FIXTURE", 1, "", "", False))
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+163 |     result = probes.probe_tool(tmp_path, "blender")
+164 |     assert result.status == "FAIL" and result.data["knowledge_state"] == "UNAVAILABLE"
+    |
+
+Found 11 errors.

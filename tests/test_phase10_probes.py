@@ -148,7 +148,41 @@ def test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow(
     }
     routed = route_reference(p, query)
     assert routed["required_probes"][0]["status"] == "VERSION_PROBED"
-    assert any(c["knowledge_state"] == "VERSION_PROBED" for c in routed["cards"])
+    assert all(c["knowledge_state"] == "REFERENCE_ONLY" for c in routed["cards"])
+
+
+def test_fixed_probe_cannot_promote_unrelated_reference_knowledge(tmp_path, monkeypatch):
+    from polyforge.knowledge.router import route_reference
+
+    p, result = successful_probe(tmp_path, monkeypatch, "unity")
+    repair = route_reference(
+        p,
+        {
+            "schema_version": "1.0.0",
+            "query": "Repair an unknown compiler failure",
+            "output": "REPAIR",
+        },
+    )
+    assert repair["cards"][0]["api_probe_id"] == "none"
+    assert repair["cards"][0]["knowledge_state"] == "REFERENCE_ONLY"
+    known = route_reference(
+        p,
+        {
+            "schema_version": "1.0.0",
+            "query": "Inspect TypeCache Unity Editor API",
+            "output": "INSPECT",
+            "domain": "unity",
+        },
+    )
+    assert (
+        next(c for c in known["cards"] if c["knowledge_id"] == "unity.editor")["knowledge_state"]
+        == "VERSION_PROBED"
+    )
+    assert all(
+        c["knowledge_state"] == "REFERENCE_ONLY"
+        for c in known["cards"]
+        if c["api_probe_id"] == "none"
+    )
 
 
 @pytest.mark.parametrize(

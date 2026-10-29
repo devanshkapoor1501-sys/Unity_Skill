@@ -1,0 +1,37 @@
+import hashlib,json,shutil,zipfile
+from pathlib import Path
+
+root=Path.cwd();base=root/'.tmp/phase10';out=root/'reports/phase-10-evidence';out.mkdir(exist_ok=True)
+def copy(source,target):
+ target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+for source in base.iterdir():
+ if not source.is_file() or source.name in {'collect.txt'}:continue
+ if source.suffix in {'.json','.txt','.xml','.jsonl'}:copy(source,out/source.name)
+ elif source.suffix=='.py':copy(source,out/'scripts'/(source.name+'.txt'))
+for source in (base/'install').glob('*'):
+ if source.is_file():copy(source,out/'install'/source.name)
+for tool in ['blender','unity']:
+ workspace=base/('probe-'+tool)
+ for source in workspace.rglob('*'):
+  if not source.is_file():continue
+  relative=source.relative_to(workspace)
+  if any(part in {'Library','Temp','Logs','UserSettings','tmp','upm-cache','unity-profile'} for part in relative.parts):continue
+  if source.suffix in {'.json','.txt','.log','.cs','.meta','.py'}:
+   name=relative.as_posix()+('.txt' if source.suffix=='.py' else '')
+   copy(source,out/'native'/tool/name)
+baseline=json.loads((base/'baseline-native.json').read_text());arena=root/'.tmp/phase6/arena';folder=arena/'runs'/baseline['run_id']
+for source in folder.rglob('*'):
+ if source.is_file() and 'tmp' not in source.relative_to(folder).parts and source.suffix in {'.json','.xml','.txt','.log'}:copy(source,out/'baseline-native'/source.relative_to(folder))
+with zipfile.ZipFile(out/'scratch-probe-sources.zip','w',zipfile.ZIP_DEFLATED) as archive:
+ for name in ['blender-knowledge-probe.py.txt','unity-knowledge-probe.cs.txt','knowledge.json']:
+  archive.write(root/'polyforge/data'/name,'polyforge/data/'+name)
+ for tool in ['blender','unity']:
+  workspace=base/('probe-'+tool)
+  for source in workspace.rglob('*'):
+   if not source.is_file():continue
+   relative=source.relative_to(workspace)
+   if any(p in {'Library','Temp','Logs','UserSettings','tmp','unity-profile','upm-cache'} for p in relative.parts):continue
+   if source.suffix in {'.json','.txt','.cs','.meta','.py'}:archive.write(source,tool+'/'+relative.as_posix())
+records=[{'path':p.relative_to(out).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(out.rglob('*')) if p.is_file() and p.name!='index.json']
+(out/'index.json').write_text(json.dumps({'schema_version':'1.0.0','scope':'Phase 10 public development evidence, including disclosed host blocks','excluded':['native caches','host sessions/authentication state','credentials','validator virtual environment'],'files':records},indent=2)+'\n')
+print('Retained',len(records),'files;',sum(r['bytes'] for r in records),'bytes')

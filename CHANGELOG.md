@@ -2,6 +2,10 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add a bounded local KnowledgeCard catalog, source/version-aware reference routing and fixed scratch API probes.
+- Add focused specialist references, decision contrasts and Codex/Claude host guides with explicit unavailable states.
+- Add optional read-only stdio MCP catalog/routing/descriptor tools with bounded requests and cancellation.
+
 - Add independent review gates, explicit operator decisions and original-bound amendment chains.
 - Add eight forensic playbooks with bounded registered native repair execution and explicit unsupported routes.
 - Add registered-source snapshots, physical project locks, verified native rollback, quarantine and crash resume.

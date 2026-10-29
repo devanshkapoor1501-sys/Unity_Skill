@@ -1,0 +1,34 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_sprite_bake_and_new_sprite_art_are_not_silently_routed_to_supplied_import _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/route-contrast-red/test_sprite_bake_and_new_sprit0')
+
+    def test_sprite_bake_and_new_sprite_art_are_not_silently_routed_to_supplied_import(tmp_path):
+        from polyforge.knowledge.router import route_reference
+    
+        p = WorkspacePolicy(tmp_path)
+        baked = route_reference(p, request("Bake six sprite frames from the approved robot model", output="SPRITE"))
+>       assert baked["capability_ids"] == ["sprite.robot.bake.v1"]
+E       AssertionError: assert ['sprite.unity.strip.v1'] == ['sprite.robot.bake.v1']
+E         
+E         At index 0 diff: 'sprite.unity.strip.v1' != 'sprite.robot.bake.v1'
+E         Use -v to get more diff
+
+tests\test_phase10_knowledge.py:212: AssertionError
+_____________ test_unknown_tool_version_keys_cannot_crash_routing _____________
+
+    def test_unknown_tool_version_keys_cannot_crash_routing():
+        from polyforge.knowledge.catalog import catalog_cards, validate_cards
+    
+        cards = catalog_cards()
+        cards[0]["versions"] = {"arbitrary_shell": ["1.0"]}
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase10_knowledge.py:224: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_knowledge.py::test_sprite_bake_and_new_sprite_art_are_not_silently_routed_to_supplied_import
+FAILED tests/test_phase10_knowledge.py::test_unknown_tool_version_keys_cannot_crash_routing
+2 failed, 29 deselected in 2.31s

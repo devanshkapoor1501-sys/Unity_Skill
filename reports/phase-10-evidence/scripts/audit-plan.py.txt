@@ -1,0 +1,63 @@
+"""Cross-check every Phase10 task against concrete implementation and executed gates."""
+import hashlib,json,re,sys,xml.etree.ElementTree as ET
+from pathlib import Path
+sys.path.insert(0,str(Path.cwd()))
+from polyforge.knowledge.catalog import catalog_cards
+from polyforge.knowledge.probes import read_probe
+from polyforge.security.paths import WorkspacePolicy
+from tools.validate_skill import validate_skill
+
+root=Path.cwd();base=root/'.tmp/phase10'
+spec=root/'docs/superpowers/specs/2026-10-29-phase-10-design.md';plan=root/'docs/superpowers/plans/2026-10-29-phase-10.md'
+assert spec.is_file() and plan.is_file()
+blueprint=(root/'.tmp/phase9/blueprint.txt').read_text(encoding='utf-8')
+required=re.findall(r'10\.(\d+) ',blueprint[blueprint.index('Phase 10 | Expert Agent Skill'):blueprint.index('Phase 11 | Core v1.0')])
+assert set(required)=={str(i) for i in range(1,18)}
+cards=catalog_cards();assert len(cards)==18
+topics={c['topic'] for c in cards}
+assert {'modeling','uv-pbr','animation','sprites','editor','csharp','mechanics','physics','ai','ui','shaders','worlds','recovery','integration','evaluation','security'}<=topics
+assert {c['knowledge_id'] for c in cards if c['api_probe_id']!='none'}=={'blender.context','unity.editor'}
+skill=validate_skill(root/'.agents/skills/polyforge');assert 'Valid skill' in (base/'skills-ref-validation.txt').read_text()
+native={}
+for tool in ['blender','unity']:
+ value=json.loads((base/('native-'+tool+'-probe.json')).read_text());assert value['status']=='PASS' and value['evaluated_test_status']=='PASS'
+ observed=read_probe(WorkspacePolicy(base/('probe-'+tool)),tool);assert observed and observed['execution_support_promoted'] is False
+ native[tool]={'run_id':value['run_id'],'checks':observed['checks'],'state':observed['knowledge_state']}
+baseline=json.loads((base/'baseline-native.json').read_text());assert baseline['status']=='PASS'
+suite=ET.parse(base/'tests-final.xml').getroot().find('testsuite');assert suite is not None
+assert int(suite.attrib['tests'])>395 and suite.attrib['errors']=='0' and suite.attrib['failures']=='0' and suite.attrib['skipped']=='0'
+coverage=json.loads((root/'coverage.json').read_text());total=coverage['totals'];branch=100*total['covered_branches']/total['num_branches']
+assert total['percent_covered']>=90 and branch>=90,(total['percent_covered'],branch)
+for name,phrase in [('lint-final.txt','All checks passed'),('format-final.txt','unchanged'),('types-final.txt','Success:'),('types-linux-final.txt','Success:'),('cli-final.txt','current'),('pip-final.txt','No broken requirements'),('build-final.txt','Successfully built'),('install-final.txt','14 isolated offline')]:
+ assert phrase in (base/name).read_text(encoding='utf-8'),name
+host=json.loads((base/'skill-host-results.json').read_text());assert host['updated_codex_app_harness']['status']=='PASS'
+transfer=json.loads((base/'transfer-results.json').read_text());assert transfer['status']=='PASS_REFERENCE_DECISIONS' and len(transfer['cases'])==4 and transfer['actual_native_execution']=='NOT_RUN'
+assert host['claude_code']['status']=='BLOCKED' and host['codex_cli']['status']=='BLOCKED'
+commands=json.loads((base/'host-smoke-commands.json').read_text());assert len(commands)==2 and all(c['fixture_files_unchanged'] for c in commands)
+install=json.loads((base/'install/commands.json').read_text());assert len(install)==14 and all(c['exit_code']==c['expected_exit'] for c in install)
+implementation={
+ '10.1':['.agents/skills/polyforge/SKILL.md','tools/validate_skill.py'],
+ '10.2':['polyforge/data/knowledge.json'],
+ '10.3':['.agents/skills/polyforge/references/blender/overview.md','.agents/skills/polyforge/references/unity/overview.md'],
+ '10.4':['.agents/skills/polyforge/references/workforce/overview.md','roles/asset_architect.md'],
+ '10.5':['polyforge/cli.py','pyproject.toml'],
+ '10.6':['docs/hosts/codex.md','docs/hosts/claude.md'],
+ '10.7':['polyforge/commands.py','docs/cli.md','tests/test_contract_boundaries.py'],
+ '10.8':['tests/test_phase10_skill.py','tests/test_phase10_knowledge.py'],
+ '10.9':['.agents/skills/polyforge/references/workforce/contributing.md'],
+ '10.10':['polyforge/contracts/knowledge_card.schema.json','polyforge/knowledge/catalog.py'],
+ '10.11':['polyforge/knowledge/router.py'],
+ '10.12':['polyforge/contracts/knowledge_card.schema.json'],
+ '10.13':['.agents/skills/polyforge/references/security/discovery.md','polyforge/knowledge/probes.py'],
+ '10.14':['polyforge/knowledge/catalog.py','.agents/skills/polyforge/references/security/overview.md'],
+ '10.15':['tests/test_phase10_knowledge.py','.agents/skills/polyforge/references/unity/overview.md'],
+ '10.16':['polyforge/knowledge/probes.py','polyforge/workforce/discovery.py'],
+ '10.17':['.agents/skills/polyforge/SKILL.md','tools/validate_skill.py']}
+rows=[]
+for key,paths in implementation.items():
+ assert all((root/path).is_file() for path in paths),key
+ rows.append({'requirement_id':key,'implementation':[{'path':path,'sha256':hashlib.sha256((root/path).read_bytes().replace(b'\r\n',b'\n')).hexdigest(),'hash_normalization':'LF_TEXT'} for path in paths],'verification':'IMPLEMENTED_AND_CHECKED_WITH_DISCLOSED_LIMITS' if key in {'10.6','10.15','10.16'} else 'IMPLEMENTED_AND_CHECKED'})
+result={'schema_version':'1.0.0','status':'PASS','scope':'Phase 10 local build-plan/blueprint audit; publication checked separately','requirements':rows,'offline_tests':int(suite.attrib['tests']),'coverage_combined':total['percent_covered'],'coverage_branches':branch,'skill':skill,'native_probes':native,'native_baseline_run':baseline['run_id'],'host_results':host,'transfer_results':transfer,'installed_checks':len(install),'unimplemented_required_items':[],'disclosed_external_limits':['Claude authentication BLOCKED','Codex CLI configured model/account BLOCKED','protected held-out evaluator NOT_SUPPLIED','UI/vision/delegation/arbitrary package methods UNKNOWN','generated code execution BLOCKED without separate isolation/owner approval'],'phase11_started':False}
+(base/'plan-audit.json').write_text(json.dumps(result,indent=2)+'\n')
+(base/'coverage-final.json').write_text(json.dumps(coverage,indent=2)+'\n')
+print('PASS: all 17 blueprint items mapped; native/probe/skill/package evidence valid;',suite.attrib['tests'],'tests;',round(total['percent_covered'],2),'combined /',round(branch,2),'branch coverage')

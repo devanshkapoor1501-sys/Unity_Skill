@@ -1,0 +1,29 @@
+[codex/polyforge-phase-10 6153498] feat: add version-aware knowledge routing and bounded host interfaces
+ 37 files changed, 3654 insertions(+), 79 deletions(-)
+ create mode 100644 .agents/skills/polyforge/references/blender/overview.md
+ create mode 100644 .agents/skills/polyforge/references/game_design/overview.md
+ create mode 100644 .agents/skills/polyforge/references/quality/overview.md
+ create mode 100644 .agents/skills/polyforge/references/security/discovery.md
+ create mode 100644 .agents/skills/polyforge/references/security/overview.md
+ create mode 100644 .agents/skills/polyforge/references/unity/overview.md
+ create mode 100644 .agents/skills/polyforge/references/workforce/contributing.md
+ create mode 100644 .agents/skills/polyforge/references/workforce/hosts.md
+ create mode 100644 .agents/skills/polyforge/references/workforce/overview.md
+ create mode 100644 docs/hosts/claude.md
+ create mode 100644 docs/hosts/codex.md
+ create mode 100644 docs/knowledge.md
+ create mode 100644 polyforge/contracts/knowledge_card.schema.json
+ create mode 100644 polyforge/data/blender-knowledge-probe.py.txt
+ create mode 100644 polyforge/data/knowledge.json
+ create mode 100644 polyforge/data/unity-knowledge-probe.cs.txt
+ create mode 100644 polyforge/host/__init__.py
+ create mode 100644 polyforge/host/stdio.py
+ create mode 100644 polyforge/knowledge/__init__.py
+ create mode 100644 polyforge/knowledge/catalog.py
+ create mode 100644 polyforge/knowledge/probes.py
+ create mode 100644 polyforge/knowledge/router.py
+ create mode 100644 tests/test_phase10_knowledge.py
+ create mode 100644 tests/test_phase10_mcp.py
+ create mode 100644 tests/test_phase10_probes.py
+ create mode 100644 tests/test_phase10_skill.py
+ create mode 100644 tools/validate_skill.py

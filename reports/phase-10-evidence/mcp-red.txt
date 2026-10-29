@@ -1,0 +1,121 @@
+FFFFFFFFFF                                                               [100%]
+================================== FAILURES ===================================
+_________ test_lifecycle_and_client_identity_do_not_grant_extra_tools _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_lifecycle_and_client_iden0')
+
+    def test_lifecycle_and_client_identity_do_not_grant_extra_tools(tmp_path):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:30: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value0] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco0')
+value = []
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value1] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco1')
+value = {}
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value2] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco2')
+value = {'id': 1, 'jsonrpc': '1.0', 'method': 'initialize'}
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value3] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco3')
+value = {'id': True, 'jsonrpc': '2.0', 'method': 'ping'}
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value4] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco4')
+value = {'id': 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', 'jsonrpc': '2.0', 'method': 'ping'}
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+________ test_malformed_or_fake_protocol_identity_is_rejected[value5] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_malformed_or_fake_protoco5')
+value = {'id': 1, 'jsonrpc': '2.0', 'method': 'initialize', 'params': {'capabilities': {}, 'clientInfo': {'name': 'polyforge', 'version': '1'}, 'protocolVersion': 'fake'}}
+
+    @pytest.mark.parametrize("value", [[], {}, {"jsonrpc": "1.0", "id": 1, "method": "initialize"}, msg(True, "ping"), msg("x" * 129, "ping"), msg(1, "initialize", {"protocolVersion": "fake", "clientInfo": {"name": "polyforge", "version": "1"}, "capabilities": {}})])
+    def test_malformed_or_fake_protocol_identity_is_rejected(tmp_path, value):
+>       from polyforge.host.stdio import StdioServer
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:49: ModuleNotFoundError
+_____ test_cancellation_of_actual_pending_request_suppresses_publication ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_cancellation_of_actual_pe0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000156375439E0>
+
+    def test_cancellation_of_actual_pending_request_suppresses_publication(tmp_path, monkeypatch):
+>       from polyforge.host import stdio
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:58: ModuleNotFoundError
+____ test_tool_arguments_cannot_replace_bound_workspace_or_claim_approval _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_tool_arguments_cannot_rep0')
+
+    def test_tool_arguments_cannot_replace_bound_workspace_or_claim_approval(tmp_path):
+>       from polyforge.host.stdio import execute_readonly
+E       ModuleNotFoundError: No module named 'polyforge.host'
+
+tests\test_phase10_mcp.py:78: ModuleNotFoundError
+_____ test_real_stdio_client_gets_only_jsonrpc_and_never_writes_workspace _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/mcp-red/test_real_stdio_client_gets_on0')
+
+    def test_real_stdio_client_gets_only_jsonrpc_and_never_writes_workspace(tmp_path):
+        messages = [msg(1, "initialize", {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {"name": "fixture", "version": "1"}}), msg(None, "notifications/initialized"), msg(2, "tools/list"), msg(3, "ping")]
+        process = subprocess.run([sys.executable, "-m", "polyforge", "mcp", "serve", "--workspace", str(tmp_path)], input="\n".join(map(json.dumps, messages)) + "\n", capture_output=True, text=True, timeout=15)
+>       assert process.returncode == 0, process.stderr
+E       AssertionError: 
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe', '-m', 'polyf...Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\mcp-red\\test_real_stdio_client_gets_on0\n', stderr='').returncode
+
+tests\test_phase10_mcp.py:91: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_mcp.py::test_lifecycle_and_client_identity_do_not_grant_extra_tools
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value0]
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value1]
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value2]
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value3]
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value4]
+FAILED tests/test_phase10_mcp.py::test_malformed_or_fake_protocol_identity_is_rejected[value5]
+FAILED tests/test_phase10_mcp.py::test_cancellation_of_actual_pending_request_suppresses_publication
+FAILED tests/test_phase10_mcp.py::test_tool_arguments_cannot_replace_bound_workspace_or_claim_approval
+FAILED tests/test_phase10_mcp.py::test_real_stdio_client_gets_only_jsonrpc_and_never_writes_workspace
+10 failed in 0.76s

@@ -1,0 +1,22 @@
+"""Fixed trusted-local scratch probe; no input code or existing .blend is loaded."""
+import bpy
+import json
+import sys
+from pathlib import Path
+
+bpy.ops.object.select_all(action="SELECT")
+bpy.ops.object.delete(use_global=False)
+without = bpy.ops.object.mode_set.poll()
+mesh = bpy.data.meshes.new("ProbeValidMesh")
+mesh.from_pydata([(0, 0, 0), (1, 0, 0), (0, 1, 0)], [], [(0, 1, 2)])
+unchanged = not mesh.validate(clean_customdata=False)
+obj = bpy.data.objects.new("ProbeObject", mesh)
+bpy.context.collection.objects.link(obj)
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+with_active = bpy.ops.object.mode_set.poll()
+bad = bpy.data.meshes.new("ProbeDegenerateMesh")
+bad.from_pydata([(0, 0, 0), (1, 0, 0), (0, 1, 0)], [], [(0, 0, 1)])
+repaired = bad.validate(clean_customdata=False) and len(bad.polygons) == 0
+value = {"schema_version": "1.0.0", "probe_id": "blender.mesh-context.v1", "tool_version": ".".join(map(str, bpy.app.version)), "checks": {"valid_mesh_unchanged": unchanged, "degenerate_mesh_repaired": repaired, "context_poll_without_active_object": without, "context_poll_with_active_object": with_active}, "artifacts": []}
+Path(sys.argv[sys.argv.index("--") + 1]).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")

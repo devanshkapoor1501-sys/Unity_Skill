@@ -1,0 +1,34 @@
+import hashlib,json,os,subprocess,time,tarfile
+from pathlib import Path
+
+root=Path.cwd();base=root/'.tmp/phase10';cwd=base/'install-cwd';cwd.mkdir(exist_ok=True);out=base/'install';out.mkdir(exist_ok=True)
+py=root/'.venv/Scripts/python.exe';fresh=base/'fresh-wheel/Scripts/python.exe'
+env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'),PYTHONDONTWRITEBYTECODE='1')
+(cwd/'request.json').write_text(json.dumps({'schema_version':'1.0.0','query':'Explain Animator versus Timeline','output':'EXPLAIN','domain':'unity'})+'\n')
+(cwd/'descriptor.json').write_bytes((root/'tests/fixtures/capability_valid.json').read_bytes())
+checks=[([str(py),'-m','venv',str(base/'fresh-wheel')],root,0),([str(fresh),'-I','-m','pip','install','--force-reinstall','--no-index','--find-links',str(root/'.tmp/wheelhouse'),str(root/'dist/polyforge-0.0.1-py3-none-any.whl')],cwd,0)]
+checks += [([str(fresh),'-I','-m',*args],cwd,code) for args,code in [(['pip','check'],0),(['polyforge','--help'],0),(['polyforge','capability','list','--json'],0),(['polyforge','knowledge','list','--json'],0),(['polyforge','knowledge','route','--workspace',str(cwd),'--request','request.json','--json'],0),(['polyforge','knowledge','probe','--workspace',str(cwd),'--tool','blender','--dry-run','--json'],0),(['polyforge','knowledge','probe','--workspace',str(cwd),'--tool','unity','--dry-run','--json'],0),(['polyforge','capability','run','contract.capability.validate.v1','--workspace',str(cwd),'--input','descriptor.json','--json'],0),(['polyforge','mcp','serve','--help'],0),(['polyforge','knowledge','probe','--workspace',str(cwd),'--tool','shell','--json'],2)]]
+resources=['data/knowledge.json','contracts/knowledge_card.schema.json','data/blender-knowledge-probe.py.txt','data/unity-knowledge-probe.cs.txt','host/stdio.py','knowledge/probes.py']
+code='from importlib.resources import files; import json,hashlib; p=files("polyforge"); print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in '+repr(resources)+'}))'
+checks += [([str(fresh),'-I','-c',code],cwd,0)]
+records=[];before={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in cwd.iterdir() if p.is_file()}
+for i,(args,folder,expected) in enumerate(checks):
+ start=time.monotonic();log=out/f'{i:02}.txt'
+ with log.open('w',encoding='utf-8') as f:result=subprocess.run(args,cwd=folder,env=env,stdout=f,stderr=subprocess.STDOUT)
+ records.append({'argv':args,'cwd':str(folder),'exit_code':result.returncode,'expected_exit':expected,'seconds':time.monotonic()-start,'log':str(log.relative_to(root))});print(i,result.returncode,flush=True)
+ if result.returncode!=expected:break
+assert len(records)==len(checks) and all(r['exit_code']==r['expected_exit'] for r in records),records[-1]
+observed=json.loads((out/'12.txt').read_text());assert all(hashlib.sha256((root/'polyforge'/n).read_bytes()).hexdigest()==digest for n,digest in observed.items())
+messages=[{'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'installed-test','version':'1'}}},{'jsonrpc':'2.0','method':'notifications/initialized'},{'jsonrpc':'2.0','id':2,'method':'tools/call','params':{'name':'polyforge_catalog','arguments':{}}}]
+args=[str(fresh),'-I','-m','polyforge','mcp','serve','--workspace',str(cwd)]
+result=subprocess.run(args,input='\n'.join(map(json.dumps,messages))+'\n',cwd=cwd,env=env,capture_output=True,text=True,timeout=15)
+(out/'mcp-stdout.jsonl').write_text(result.stdout);(out/'mcp-stderr.txt').write_text(result.stderr)
+replies=[json.loads(line) for line in result.stdout.splitlines()];assert result.returncode==0 and {r['id'] for r in replies}=={1,2}
+assert next(r for r in replies if r['id']==2)['result']['isError'] is False
+records.append({'argv':args,'exit_code':result.returncode,'expected_exit':0,'log':'mcp-stdout.jsonl'})
+with tarfile.open(root/'dist/polyforge-0.0.1.tar.gz') as a:
+ names=a.getnames();assert any(n.endswith('.agents/skills/polyforge/references/security/discovery.md') for n in names);assert any(n.endswith('data/unity-knowledge-probe.cs.txt') for n in names)
+after={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in cwd.iterdir() if p.is_file()};assert before==after
+assert not (cwd/'runs').exists() and not (cwd/'UnityProject').exists()
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n')
+print('14 isolated offline install/CLI/MCP/resource checks PASS; workspace unchanged')

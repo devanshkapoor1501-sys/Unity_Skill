@@ -1,0 +1,241 @@
+[
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+      "-m",
+      "venv",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 4.108999999999924,
+    "log": ".tmp\\phase10\\install\\00.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "install",
+      "--force-reinstall",
+      "--no-index",
+      "--find-links",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\wheelhouse",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\dist\\polyforge-0.0.1-py3-none-any.whl"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 8.577999999999975,
+    "log": ".tmp\\phase10\\install\\01.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 2.0,
+    "log": ".tmp\\phase10\\install\\02.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "--help"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.5309999999999491,
+    "log": ".tmp\\phase10\\install\\03.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "list",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.0470000000000255,
+    "log": ".tmp\\phase10\\install\\04.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "knowledge",
+      "list",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.1410000000000764,
+    "log": ".tmp\\phase10\\install\\05.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "knowledge",
+      "route",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+      "--request",
+      "request.json",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 1.0,
+    "log": ".tmp\\phase10\\install\\06.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "knowledge",
+      "probe",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+      "--tool",
+      "blender",
+      "--dry-run",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.4839999999999236,
+    "log": ".tmp\\phase10\\install\\07.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "knowledge",
+      "probe",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+      "--tool",
+      "unity",
+      "--dry-run",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.5,
+    "log": ".tmp\\phase10\\install\\08.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "capability",
+      "run",
+      "contract.capability.validate.v1",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+      "--input",
+      "descriptor.json",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.6559999999999491,
+    "log": ".tmp\\phase10\\install\\09.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "mcp",
+      "serve",
+      "--help"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.32900000000017826,
+    "log": ".tmp\\phase10\\install\\10.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "knowledge",
+      "probe",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+      "--tool",
+      "shell",
+      "--json"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 2,
+    "expected_exit": 2,
+    "seconds": 0.31199999999989814,
+    "log": ".tmp\\phase10\\install\\11.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-c",
+      "from importlib.resources import files; import json,hashlib; p=files(\"polyforge\"); print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in ['data/knowledge.json', 'contracts/knowledge_card.schema.json', 'data/blender-knowledge-probe.py.txt', 'data/unity-knowledge-probe.cs.txt', 'host/stdio.py', 'knowledge/probes.py']}))"
+    ],
+    "cwd": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd",
+    "exit_code": 0,
+    "expected_exit": 0,
+    "seconds": 0.2660000000000764,
+    "log": ".tmp\\phase10\\install\\12.txt"
+  },
+  {
+    "argv": [
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\fresh-wheel\\Scripts\\python.exe",
+      "-I",
+      "-m",
+      "polyforge",
+      "mcp",
+      "serve",
+      "--workspace",
+      "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase10\\install-cwd"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "log": "mcp-stdout.jsonl"
+  }
+]

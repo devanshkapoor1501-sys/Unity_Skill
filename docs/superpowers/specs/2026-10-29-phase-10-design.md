@@ -1,5 +1,8 @@
 # Phase 10: portable skill and version-aware reference routing
 
+Status: implemented and locally verified; see reports/phase-10.md for exact
+qualification, explicit host-dependent blocks and publication results.
+
 Authority: v5.1 Section 12 Phase 10, Chapters 16–18 and Appendix G; preserve
 Phases 0–9 and stop before Phase 11. User requested continuation and previously
 authorized routine implementation decisions without repeated confirmation.

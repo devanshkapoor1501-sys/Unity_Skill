@@ -4,6 +4,14 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
 
 ## Rulings
 
+- Phase 10 local scope verified against all 17 blueprint tasks and its build plan:
+  465 offline tests, 94.67% combined / 91.45% branch coverage; actual empty-scratch
+  Blender/Unity API probes; official skills-ref; reference/transfer tests; 14
+  fresh offline wheel/CLI/MCP checks. A fresh reviewer finding about overbroad
+  probe evidence was fixed and rechecked. Codex app-harness explanation PASS;
+  Codex CLI and Claude Code retain explicit model/account/auth BLOCKED outcomes.
+  Publication and exact limits are in reports/phase-10.md; Phase 11 unstarted.
+
 - Phase 9 local qualification complete: 395 offline cases, 9 real Blender cases,
   94.43% combined / 91.19% branch coverage, native six-mutant acceptance,
   static/arena/animation/sprite recovery, actual crash/timeout/quarantine/resume,

@@ -38,7 +38,7 @@
     "reference_text": "Procedural recipes suit repeated parameterized objects; manual mesh editing suits one-off topology. Geometry Nodes supports reusable non-destructive geometry graphs; the engine currently executes five explicit primitive recipes. Arbitrary topology and sculpt remain reference-only.",
     "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
     "reference_path": "references/blender/overview.md",
-    "api_probe_id": "blender.mesh-context.v1",
+    "api_probe_id": "none",
     "examples": [
       "Repeated floor tiles: use the tested tile recipe.",
       "One-off carved creature: manual specialist and review, no automatic recipe substitution."
@@ -98,7 +98,7 @@
     "reference_text": "Generated UV0 and simple palette sidecars serve tested primitive assets. Image textures, baking and PBR channel authoring need explicit provenance, color-space mapping and future workflow qualification. A UV tutorial does not make arbitrary topology supported.",
     "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
     "reference_path": "references/blender/overview.md",
-    "api_probe_id": "blender.mesh-context.v1",
+    "api_probe_id": "none",
     "examples": [
       "Adjust a crate palette using scoped refinement.",
       "A hand-painted skin atlas needs UV/material specialist review."
@@ -155,7 +155,7 @@
     "reference_text": "Use an armature for deforming articulated motion; bake when a constrained target needs sampled transforms. The current mechanical robot has slotted Idle/Walk actions. Human, facial and arbitrary retargeting remain unqualified. Probe action slots and operator context before version-sensitive changes.",
     "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
     "reference_path": "references/blender/overview.md",
-    "api_probe_id": "blender.mesh-context.v1",
+    "api_probe_id": "none",
     "examples": [
       "Animate the supported robot with Idle/Walk.",
       "A quadruped needs a separate rig family and negative deformation fixtures."
@@ -264,7 +264,7 @@
     "reference_text": "Supplied six-frame 128px strips go directly to Unity after license/pixel/source approval. Do not discover Blender for an existing-sprite task. Bake through Blender only when an approved editable source needs a sprite sequence. Native PPtr curve and physics tests remain separate from appearance approval.",
     "doc_digest": "5512bd9e7b22b04171975666048c0fda4935b82b6990e1c6e8f83064689490dd",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "Six supplied transparent walk frames use DIRECT_SPRITES.",
       "A rendered turntable from a model needs a camera/bake workflow first."
@@ -321,7 +321,7 @@
     "reference_text": "Animator suits stateful interactive character motion; Timeline suits authored cinematic sequencing. Current native robot integration tests Idle/Walk transitions and actual skin movement. Timeline authoring is reference-only and must not be substituted for requested gameplay control.",
     "doc_digest": "29da1f016d9ff22d3dc96be25ed3437988396eabf8ab90d2d10b25495ecbc9c8",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "A controllable patrolling robot uses Animator.",
       "A fixed cutscene uses Timeline conceptually, not an implemented engine capability."
@@ -434,7 +434,7 @@
     "reference_text": "Use reviewed tested templates for supported mechanics. Novel generated C# requires a typed proposal, separate scratch project, compilation and independent behavior tests. Documentation and compiler success alone cannot establish gameplay or authorize arbitrary source execution.",
     "doc_digest": "b576a749cf1c56ded2f079f536d8be3f7f5dfa2fbe661d09b4e6d37f65e8d1cc",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "Use existing Health for the arena.",
       "A novel networking component stays unsupported until independently tested."
@@ -544,7 +544,7 @@
     "reference_text": "Use physics for interactions and contacts that must react to the environment; animation alone describes motion and cannot prove collision. The arena and 2D fixture have measured collision oracles. Arbitrary physics behaviors need explicit tolerances and independent tests.",
     "doc_digest": "029152314242883e272ff9a26817453ad223c7a33cd8892ad8bbaad8058bd159",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "A moving sprite stopped by a wall needs Rigidbody2D checks.",
       "A decorative waving prop may use animation without a contact mechanic."
@@ -598,7 +598,7 @@
     "reference_text": "Current enemy patrol is a bounded fixture. NavMesh planning, behavior trees and general NPC reasoning are reference-only. Choose a simple deterministic patrol for its known requirement; use pathfinding only when navigability is actually modeled and tested.",
     "doc_digest": "7b2e947992c60167f23495e49c8c3ae296288e22c25b843070f176b212dbe0d3",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "Known arena patrol is tested.",
       "A maze-solving creature needs new navigation and stuck-agent negative tests."
@@ -651,7 +651,7 @@
     "reference_text": "The arena HUD displays measured state. General UI Toolkit or uGUI authoring remains reference-only. Choose the UI system for target/runtime needs, verify bindings and accessibility, and test state changes rather than accepting a screenshot.",
     "doc_digest": "dcee4acc4e73849d68737d6a5c246a6631d3358437259732c10096e4b05b64b8",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "Health text reflects real health.",
       "A responsive inventory menu needs separate inputs and UI tests."
@@ -704,7 +704,7 @@
     "reference_text": "Basic URP Lit color, metallic and roughness mapping is implemented. Shader Graph enables custom visual logic but needs its own version/package, render and material-transfer proof. Complex procedural graphs do not round-trip through FBX by implication.",
     "doc_digest": "2e79b1151fbdbbdfb637cf99e8daf8f04012c4f08566346058a362756e67aa3b",
     "reference_path": "references/unity/overview.md",
-    "api_probe_id": "unity.typecache.v1",
+    "api_probe_id": "none",
     "examples": [
       "Use Lit for a colored crate.",
       "A dissolving hologram requires unsupported shader authoring and actual render tests."

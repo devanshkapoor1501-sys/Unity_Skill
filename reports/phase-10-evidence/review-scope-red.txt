@@ -1,0 +1,85 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_ test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow[blender] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/review-scope-red/test_current_fixed_receipt_is_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001450486E240>
+tool = 'blender'
+
+    @pytest.mark.parametrize("tool", ["blender", "unity"])
+    def test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow(
+        tmp_path, monkeypatch, tool
+    ):
+        from polyforge.knowledge.probes import read_probe
+        from polyforge.knowledge.router import route_reference
+    
+        p, result = successful_probe(tmp_path, monkeypatch, tool)
+        assert result.status == "PASS"
+        observed = read_probe(p, tool)
+        assert observed["knowledge_state"] == "VERSION_PROBED"
+        assert observed["execution_support_promoted"] is False
+        query = {
+            "schema_version": "1.0.0",
+            "query": "Make a crate" if tool == "blender" else "Import supplied sprites",
+            "output": "ASSET" if tool == "blender" else "SPRITE",
+        }
+        routed = route_reference(p, query)
+        assert routed["required_probes"][0]["status"] == "VERSION_PROBED"
+>       assert all(c["knowledge_state"] == "REFERENCE_ONLY" for c in routed["cards"])
+E       assert False
+E        +  where False = all(<generator object test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow.<locals>.<genexpr> at 0x0000014505369D80>)
+
+tests\test_phase10_probes.py:151: AssertionError
+_ test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow[unity] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/review-scope-red/test_current_fixed_receipt_is_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000014505185A00>
+tool = 'unity'
+
+    @pytest.mark.parametrize("tool", ["blender", "unity"])
+    def test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow(
+        tmp_path, monkeypatch, tool
+    ):
+        from polyforge.knowledge.probes import read_probe
+        from polyforge.knowledge.router import route_reference
+    
+        p, result = successful_probe(tmp_path, monkeypatch, tool)
+        assert result.status == "PASS"
+        observed = read_probe(p, tool)
+        assert observed["knowledge_state"] == "VERSION_PROBED"
+        assert observed["execution_support_promoted"] is False
+        query = {
+            "schema_version": "1.0.0",
+            "query": "Make a crate" if tool == "blender" else "Import supplied sprites",
+            "output": "ASSET" if tool == "blender" else "SPRITE",
+        }
+        routed = route_reference(p, query)
+        assert routed["required_probes"][0]["status"] == "VERSION_PROBED"
+>       assert all(c["knowledge_state"] == "REFERENCE_ONLY" for c in routed["cards"])
+E       assert False
+E        +  where False = all(<generator object test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow.<locals>.<genexpr> at 0x000001450536A810>)
+
+tests\test_phase10_probes.py:151: AssertionError
+________ test_fixed_probe_cannot_promote_unrelated_reference_knowledge ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/review-scope-red/test_fixed_probe_cannot_promot0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000014505184CB0>
+
+    def test_fixed_probe_cannot_promote_unrelated_reference_knowledge(tmp_path, monkeypatch):
+        from polyforge.knowledge.router import route_reference
+    
+        p, result = successful_probe(tmp_path, monkeypatch, "unity")
+        repair = route_reference(p, {"schema_version": "1.0.0", "query": "Repair an unknown compiler failure", "output": "REPAIR"})
+        assert repair["cards"][0]["api_probe_id"] == "none"
+>       assert repair["cards"][0]["knowledge_state"] == "REFERENCE_ONLY"
+E       AssertionError: assert 'VERSION_PROBED' == 'REFERENCE_ONLY'
+E         
+E         - REFERENCE_ONLY
+E         + VERSION_PROBED
+
+tests\test_phase10_probes.py:160: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_probes.py::test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow[blender]
+FAILED tests/test_phase10_probes.py::test_current_fixed_receipt_is_version_probed_but_does_not_promote_workflow[unity]
+FAILED tests/test_phase10_probes.py::test_fixed_probe_cannot_promote_unrelated_reference_knowledge
+3 failed, 13 deselected in 3.24s

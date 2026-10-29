@@ -1,0 +1,241 @@
+FFFFFFFFFFFFFFFFFFFFF                                                    [100%]
+================================== FAILURES ===================================
+_____ test_cards_are_versioned_attributed_and_distinct_from_capabilities ______
+
+    def test_cards_are_versioned_attributed_and_distinct_from_capabilities():
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:16: ModuleNotFoundError
+____ test_card_substitution_cannot_promote_unimplemented_tools[duplicate] _____
+
+damage = 'duplicate'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+______ test_card_substitution_cannot_promote_unimplemented_tools[digest] ______
+
+damage = 'digest'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+______ test_card_substitution_cannot_promote_unimplemented_tools[source] ______
+
+damage = 'source'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+____ test_card_substitution_cannot_promote_unimplemented_tools[capability] ____
+
+damage = 'capability'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+______ test_card_substitution_cannot_promote_unimplemented_tools[state] _______
+
+damage = 'state'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+______ test_card_substitution_cannot_promote_unimplemented_tools[field] _______
+
+damage = 'field'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+_______ test_card_substitution_cannot_promote_unimplemented_tools[path] _______
+
+damage = 'path'
+
+    @pytest.mark.parametrize("damage", ["duplicate", "digest", "source", "capability", "state", "field", "path"])
+    def test_card_substitution_cannot_promote_unimplemented_tools(damage):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:29: ModuleNotFoundError
+_ test_routing_loads_only_relevant_references_and_preserves_brief[Make a crate-ASSET-modeling] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_routing_loads_only_releva0')
+query = 'Make a crate', output = 'ASSET', topic = 'modeling'
+
+    @pytest.mark.parametrize("query,output,topic", [("Make a crate", "ASSET", "modeling"), ("Use six existing sprites", "SPRITE", "sprites"), ("Explain Geometry Nodes versus manual topology", "EXPLAIN", "modeling"), ("Why Animator instead of Timeline", "EXPLAIN", "animation"), ("Build a networked battle game", "GAME", None)])
+    def test_routing_loads_only_relevant_references_and_preserves_brief(tmp_path, query, output, topic):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:52: ModuleNotFoundError
+_ test_routing_loads_only_relevant_references_and_preserves_brief[Use six existing sprites-SPRITE-sprites] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_routing_loads_only_releva1')
+query = 'Use six existing sprites', output = 'SPRITE', topic = 'sprites'
+
+    @pytest.mark.parametrize("query,output,topic", [("Make a crate", "ASSET", "modeling"), ("Use six existing sprites", "SPRITE", "sprites"), ("Explain Geometry Nodes versus manual topology", "EXPLAIN", "modeling"), ("Why Animator instead of Timeline", "EXPLAIN", "animation"), ("Build a networked battle game", "GAME", None)])
+    def test_routing_loads_only_relevant_references_and_preserves_brief(tmp_path, query, output, topic):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:52: ModuleNotFoundError
+_ test_routing_loads_only_relevant_references_and_preserves_brief[Explain Geometry Nodes versus manual topology-EXPLAIN-modeling] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_routing_loads_only_releva2')
+query = 'Explain Geometry Nodes versus manual topology', output = 'EXPLAIN'
+topic = 'modeling'
+
+    @pytest.mark.parametrize("query,output,topic", [("Make a crate", "ASSET", "modeling"), ("Use six existing sprites", "SPRITE", "sprites"), ("Explain Geometry Nodes versus manual topology", "EXPLAIN", "modeling"), ("Why Animator instead of Timeline", "EXPLAIN", "animation"), ("Build a networked battle game", "GAME", None)])
+    def test_routing_loads_only_relevant_references_and_preserves_brief(tmp_path, query, output, topic):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:52: ModuleNotFoundError
+_ test_routing_loads_only_relevant_references_and_preserves_brief[Why Animator instead of Timeline-EXPLAIN-animation] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_routing_loads_only_releva3')
+query = 'Why Animator instead of Timeline', output = 'EXPLAIN'
+topic = 'animation'
+
+    @pytest.mark.parametrize("query,output,topic", [("Make a crate", "ASSET", "modeling"), ("Use six existing sprites", "SPRITE", "sprites"), ("Explain Geometry Nodes versus manual topology", "EXPLAIN", "modeling"), ("Why Animator instead of Timeline", "EXPLAIN", "animation"), ("Build a networked battle game", "GAME", None)])
+    def test_routing_loads_only_relevant_references_and_preserves_brief(tmp_path, query, output, topic):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:52: ModuleNotFoundError
+_ test_routing_loads_only_relevant_references_and_preserves_brief[Build a networked battle game-GAME-None] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_routing_loads_only_releva4')
+query = 'Build a networked battle game', output = 'GAME', topic = None
+
+    @pytest.mark.parametrize("query,output,topic", [("Make a crate", "ASSET", "modeling"), ("Use six existing sprites", "SPRITE", "sprites"), ("Explain Geometry Nodes versus manual topology", "EXPLAIN", "modeling"), ("Why Animator instead of Timeline", "EXPLAIN", "animation"), ("Build a networked battle game", "GAME", None)])
+    def test_routing_loads_only_relevant_references_and_preserves_brief(tmp_path, query, output, topic):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:52: ModuleNotFoundError
+____ test_explicit_user_domain_and_unavailable_tool_outrank_query_keywords ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_explicit_user_domain_and_0')
+
+    def test_explicit_user_domain_and_unavailable_tool_outrank_query_keywords(tmp_path):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:69: ModuleNotFoundError
+_________________ test_invalid_route_writes_nothing[change0] __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_invalid_route_writes_noth0')
+change = {'output': 'RUN_SHELL'}
+
+    @pytest.mark.parametrize("change", [{"output": "RUN_SHELL"}, {"query": ""}, {"query": "a" * 8193}, {"network": True}, {"domain": "../private"}])
+    def test_invalid_route_writes_nothing(tmp_path, change):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:82: ModuleNotFoundError
+_________________ test_invalid_route_writes_nothing[change1] __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_invalid_route_writes_noth1')
+change = {'query': ''}
+
+    @pytest.mark.parametrize("change", [{"output": "RUN_SHELL"}, {"query": ""}, {"query": "a" * 8193}, {"network": True}, {"domain": "../private"}])
+    def test_invalid_route_writes_nothing(tmp_path, change):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:82: ModuleNotFoundError
+_________________ test_invalid_route_writes_nothing[change2] __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_invalid_route_writes_noth2')
+change = {'query': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa...aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
+
+    @pytest.mark.parametrize("change", [{"output": "RUN_SHELL"}, {"query": ""}, {"query": "a" * 8193}, {"network": True}, {"domain": "../private"}])
+    def test_invalid_route_writes_nothing(tmp_path, change):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:82: ModuleNotFoundError
+_________________ test_invalid_route_writes_nothing[change3] __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_invalid_route_writes_noth3')
+change = {'network': True}
+
+    @pytest.mark.parametrize("change", [{"output": "RUN_SHELL"}, {"query": ""}, {"query": "a" * 8193}, {"network": True}, {"domain": "../private"}])
+    def test_invalid_route_writes_nothing(tmp_path, change):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:82: ModuleNotFoundError
+_________________ test_invalid_route_writes_nothing[change4] __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_invalid_route_writes_noth4')
+change = {'domain': '../private'}
+
+    @pytest.mark.parametrize("change", [{"output": "RUN_SHELL"}, {"query": ""}, {"query": "a" * 8193}, {"network": True}, {"domain": "../private"}])
+    def test_invalid_route_writes_nothing(tmp_path, change):
+>       from polyforge.knowledge.router import route_reference
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:82: ModuleNotFoundError
+_ test_reference_injection_has_no_authority_and_cannot_add_executable_support _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_reference_injection_has_n0')
+
+    def test_reference_injection_has_no_authority_and_cannot_add_executable_support(tmp_path):
+>       from polyforge.knowledge.catalog import catalog_cards, validate_cards
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:90: ModuleNotFoundError
+__ test_unknown_api_safe_discovery_is_proposal_only_and_cannot_execute_code ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-red/test_unknown_api_safe_discover0')
+
+    def test_unknown_api_safe_discovery_is_proposal_only_and_cannot_execute_code(tmp_path):
+>       from polyforge.knowledge.router import discovery_proposal
+E       ModuleNotFoundError: No module named 'polyforge.knowledge'
+
+tests\test_phase10_knowledge.py:106: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_knowledge.py::test_cards_are_versioned_attributed_and_distinct_from_capabilities
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[duplicate]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[digest]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[source]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[capability]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[state]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[field]
+FAILED tests/test_phase10_knowledge.py::test_card_substitution_cannot_promote_unimplemented_tools[path]
+FAILED tests/test_phase10_knowledge.py::test_routing_loads_only_relevant_references_and_preserves_brief[Make a crate-ASSET-modeling]
+FAILED tests/test_phase10_knowledge.py::test_routing_loads_only_relevant_references_and_preserves_brief[Use six existing sprites-SPRITE-sprites]
+FAILED tests/test_phase10_knowledge.py::test_routing_loads_only_relevant_references_and_preserves_brief[Explain Geometry Nodes versus manual topology-EXPLAIN-modeling]
+FAILED tests/test_phase10_knowledge.py::test_routing_loads_only_relevant_references_and_preserves_brief[Why Animator instead of Timeline-EXPLAIN-animation]
+FAILED tests/test_phase10_knowledge.py::test_routing_loads_only_relevant_references_and_preserves_brief[Build a networked battle game-GAME-None]
+FAILED tests/test_phase10_knowledge.py::test_explicit_user_domain_and_unavailable_tool_outrank_query_keywords
+FAILED tests/test_phase10_knowledge.py::test_invalid_route_writes_nothing[change0]
+FAILED tests/test_phase10_knowledge.py::test_invalid_route_writes_nothing[change1]
+FAILED tests/test_phase10_knowledge.py::test_invalid_route_writes_nothing[change2]
+FAILED tests/test_phase10_knowledge.py::test_invalid_route_writes_nothing[change3]
+FAILED tests/test_phase10_knowledge.py::test_invalid_route_writes_nothing[change4]
+FAILED tests/test_phase10_knowledge.py::test_reference_injection_has_no_authority_and_cannot_add_executable_support
+FAILED tests/test_phase10_knowledge.py::test_unknown_api_safe_discovery_is_proposal_only_and_cannot_execute_code
+21 failed in 0.77s

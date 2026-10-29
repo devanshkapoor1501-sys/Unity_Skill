@@ -1,0 +1,144 @@
+............................FFFFFFF.                                     [100%]
+================================== FAILURES ===================================
+_____ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[binary] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A473FB0>
+damage = 'binary'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+_____ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[source] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A4423C0>
+damage = 'source'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+__ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[observation] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A443DA0>
+damage = 'observation'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+____ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[process] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A3B9D00>
+damage = 'process'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+______ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[path] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A441EB0>
+damage = 'path'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+______ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[argv] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A493FE0>
+damage = 'argv'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+______ test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[exit] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase10/knowledge-probes-green/test_changed_probe_inputs_or_o6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019A3A490F80>
+damage = 'exit'
+
+    @pytest.mark.parametrize(
+        "damage", ["binary", "source", "observation", "process", "path", "argv", "exit"]
+    )
+    def test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt(tmp_path, monkeypatch, damage):
+        from polyforge.knowledge import probes
+    
+        p, result = successful_probe(tmp_path, monkeypatch)
+        marker = ".polyforge/knowledge-blender.json"
+>       receipt = load_json(p.path(marker))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase10_probes.py:157: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[binary]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[source]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[observation]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[process]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[path]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[argv]
+FAILED tests/test_phase10_probes.py::test_changed_probe_inputs_or_outputs_cannot_reuse_a_receipt[exit]
+7 failed, 29 passed in 7.59s

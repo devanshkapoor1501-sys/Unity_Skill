@@ -1,0 +1,25 @@
+...F.............                                                        [100%]
+================================== FAILURES ===================================
+__ BoundaryTests.test_development_guide_and_skill_commands_parse_and_execute __
+
+self = <test_contract_boundaries.BoundaryTests testMethod=test_development_guide_and_skill_commands_parse_and_execute>
+
+    def test_development_guide_and_skill_commands_parse_and_execute(self) -> None:
+        paths = (ROOT / "docs/development-guide.md", ROOT / ".agents/skills/polyforge/SKILL.md")
+        for path in paths:
+            commands = [
+                line
+                for line in path.read_text("utf-8").splitlines()
+                if line.startswith("polyforge ")
+            ]
+            self.assertTrue(commands, str(path))
+            for command in commands:
+                with self.subTest(command=command):
+                    result = cli(*shlex.split(command)[1:])
+>                   self.assertEqual(result.returncode, 0, result.stderr)
+E                   AssertionError: 2 != 0 :
+
+tests\test_contract_boundaries.py:230: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_contract_boundaries.py::BoundaryTests::test_development_guide_and_skill_commands_parse_and_execute
+1 failed, 16 passed in 10.98s

@@ -1,0 +1,41 @@
+E501 Line too long (127 > 100)
+   --> tests\test_phase10_probes.py:158:101
+    |
+157 |     p, result = successful_probe(tmp_path, monkeypatch, "unity")
+158 |     repair = route_reference(p, {"schema_version": "1.0.0", "query": "Repair an unknown compiler failure", "output": "REPAIR"})
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+159 |     assert repair["cards"][0]["api_probe_id"] == "none"
+160 |     assert repair["cards"][0]["knowledge_state"] == "REFERENCE_ONLY"
+    |
+
+E501 Line too long (146 > 100)
+   --> tests\test_phase10_probes.py:161:101
+    |
+159 | …
+160 | …RENCE_ONLY"
+161 | …, "query": "Inspect TypeCache Unity Editor API", "output": "INSPECT", "domain": "unity"})
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+162 | …_id"] == "unity.editor")["knowledge_state"] == "VERSION_PROBED"
+163 | …or c in known["cards"] if c["api_probe_id"] == "none")
+    |
+
+E501 Line too long (120 > 100)
+   --> tests\test_phase10_probes.py:162:101
+    |
+160 |     assert repair["cards"][0]["knowledge_state"] == "REFERENCE_ONLY"
+161 |     known = route_reference(p, {"schema_version": "1.0.0", "query": "Inspect TypeCache Unity Editor API", "output": "INSPECT", "domai…
+162 |     assert next(c for c in known["cards"] if c["knowledge_id"] == "unity.editor")["knowledge_state"] == "VERSION_PROBED"
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+163 |     assert all(c["knowledge_state"] == "REFERENCE_ONLY" for c in known["cards"] if c["api_probe_id"] == "none")
+    |
+
+E501 Line too long (111 > 100)
+   --> tests\test_phase10_probes.py:163:101
+    |
+161 |     known = route_reference(p, {"schema_version": "1.0.0", "query": "Inspect TypeCache Unity Editor API", "output": "INSPECT", "domai…
+162 |     assert next(c for c in known["cards"] if c["knowledge_id"] == "unity.editor")["knowledge_state"] == "VERSION_PROBED"
+163 |     assert all(c["knowledge_state"] == "REFERENCE_ONLY" for c in known["cards"] if c["api_probe_id"] == "none")
+    |                                                                                                     ^^^^^^^^^^^
+    |
+
+Found 4 errors.
