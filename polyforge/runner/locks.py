@@ -8,6 +8,8 @@ import socket
 import sys
 import threading
 import time
+from collections.abc import Iterator
+from contextlib import contextmanager
 from pathlib import Path
 from types import TracebackType
 from typing import BinaryIO
@@ -19,18 +21,39 @@ from polyforge.runner.ownership import process_identity
 from polyforge.security.paths import WorkspacePolicy
 
 
-def unity_project_lock(policy: WorkspacePolicy, project: Path) -> FileLock:
+@contextmanager
+def unity_project_lock(
+    policy: WorkspacePolicy,
+    project: Path,
+    *,
+    cancel: threading.Event | None = None,
+    recovery: bool = False,
+) -> Iterator[FileLock]:
     """Use one physical lock per approved project, even under nested workspace roots."""
     project = policy.path(project)
-    if not project.is_dir():
-        raise InputError("Unity project directory does not exist")
-    if policy.path(project / "Temp/UnityLockfile").exists():
-        raise InputError(
-            "Unity Editor has a project lock; close the Editor first",
-            kind=ErrorKind.POLICY_DENIED,
-            code="PF-UNITY-PROJECT-LOCKED",
-        )
-    return FileLock(policy, str(project / ".polyforge/worker.lock"))
+    if project.exists() and not project.is_dir():
+        raise InputError("Unity project path is not a directory")
+
+    def check() -> None:
+        if policy.path(project / "Temp/UnityLockfile").exists():
+            raise InputError(
+                "Unity Editor has a project lock; close the Editor first",
+                kind=ErrorKind.POLICY_DENIED,
+                code="PF-UNITY-PROJECT-LOCKED",
+            )
+        if policy.path(project / ".polyforge/repair-quarantine.json").exists() and not recovery:
+            raise InputError(
+                "Managed project is quarantined after unverified recovery",
+                kind=ErrorKind.POLICY_DENIED,
+                code="PF-ROLLBACK-QUARANTINE",
+            )
+
+    check()
+    with FileLock(
+        policy, str(project.parent / ("." + project.name + ".polyforge.lock")), cancel=cancel
+    ) as lock:
+        check()
+        yield lock
 
 
 class FileLock:

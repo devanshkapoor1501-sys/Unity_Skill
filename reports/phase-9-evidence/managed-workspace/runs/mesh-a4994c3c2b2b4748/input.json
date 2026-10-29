@@ -1,0 +1,101 @@
+{
+  "recipe": {
+    "schema_version": "1.0.0",
+    "asset_id": "ground_a",
+    "kind": "ground",
+    "capability_id": "mesh.environment.tile.v1",
+    "parameters": {
+      "size_m": [
+        20,
+        0.2,
+        20
+      ]
+    },
+    "modules": [
+      {
+        "id": "body",
+        "primitive": "beveled_box",
+        "size_m": [
+          20,
+          0.2,
+          20
+        ],
+        "location": [
+          0,
+          0.1,
+          0
+        ],
+        "material_id": "metal_blue",
+        "bevel_m": 0.007557707193831535
+      }
+    ],
+    "sockets": [
+      {
+        "id": "top",
+        "module_id": "body",
+        "position": [
+          0,
+          0.1,
+          0
+        ]
+      },
+      {
+        "id": "front",
+        "module_id": "body",
+        "position": [
+          0,
+          0,
+          10.0
+        ]
+      },
+      {
+        "id": "join_left",
+        "module_id": "body",
+        "position": [
+          -10.0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "join_right",
+        "module_id": "body",
+        "position": [
+          10.0,
+          0,
+          0
+        ]
+      }
+    ],
+    "pivot": "base_center",
+    "max_polygons": 25000,
+    "materials": [
+      {
+        "id": "metal_blue",
+        "color_rgba": [
+          0.14,
+          0.38,
+          0.7,
+          1
+        ],
+        "metallic": 0.4,
+        "roughness": 0.55
+      }
+    ]
+  },
+  "seed": 42,
+  "input_digest": "8bbb35186de9857dcbecfd2e812865d421f873af020bf2b1e3a5b091d245fd2d",
+  "toolchain": {
+    "worker_sha256": "ac4898a212cd03983fcb53010191c3b750256a92fabd9c96b2905a40f3e7f5f1",
+    "audit_worker_sha256": "af90b6b2b23fd0c9e1e6caacaf79ea2e8613f4a8a948d73d26269767f4484115",
+    "interchange_sha256": "d63c771a4bae3d39aba1c52c5cf249acdbc642beac2b7bd62aacdafb975030bb",
+    "executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+    "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "required_version": "5.2.2",
+    "validator": "geometry.v1"
+  },
+  "audit_export": true,
+  "preview_resolution": 512,
+  "source": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase6\\arena\\runs\\mesh-2dc9228312b943c5\\asset\\source.blend",
+  "source_sha256": "f92b5b999d067d3f010b912975787f21f1960326a0a578cd28689a48724bfc8b"
+}

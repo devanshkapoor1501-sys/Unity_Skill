@@ -26,6 +26,52 @@ class CommandSpec:
 
 COMMANDS = (
     CommandSpec(
+        ("review", "sprite-source"),
+        "Inspect and seal sprite sources before native import",
+        (WORKSPACE, (("--input",), {"required": True})),
+        implemented=True,
+        phase=9,
+        example=(
+            "review",
+            "sprite-source",
+            "--workspace",
+            "workspace/arena_demo",
+            "--input",
+            "sprite-input.json",
+            "--json",
+        ),
+    ),
+    CommandSpec(
+        ("review", "amend"),
+        "Append explicit original-bound operator obligations",
+        (
+            WORKSPACE,
+            (("--task",), {"required": True}),
+            (("--amendment",), {"required": True}),
+            (("--operator",), {"required": True}),
+            (("--reason",), {"required": True}),
+            (("--approved",), {"action": "store_true", "required": True}),
+        ),
+        implemented=True,
+        phase=9,
+        example=(
+            "review",
+            "amend",
+            "--workspace",
+            "workspace/arena_demo",
+            "--task",
+            "task.json",
+            "--amendment",
+            "amendment.json",
+            "--operator",
+            "operator",
+            "--reason",
+            "Approved addition",
+            "--approved",
+            "--json",
+        ),
+    ),
+    CommandSpec(
         ("repair", "inspect"),
         "Classify bounded cross-tool forensic evidence without writes",
         (WORKSPACE, (("--evidence",), {"required": True})),
@@ -283,9 +329,10 @@ COMMANDS = (
     ),
     CommandSpec(
         ("resume",),
-        "Resume a recorded run",
+        "Resume a recorded recoverable transaction or workforce run",
         (WORKSPACE, RUN_ID),
         phase=9,
+        implemented=True,
         example=("resume", "--workspace", "workspace/arena_demo", "--run-id", "example", "--json"),
     ),
     CommandSpec(
@@ -429,6 +476,7 @@ COMMANDS = (
         "Restore and reverify a repair transaction",
         (WORKSPACE, (("--transaction-id",), {"required": True})),
         phase=9,
+        implemented=True,
         example=(
             "repair",
             "rollback",

@@ -1,0 +1,435 @@
+{
+  "schema_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "assets": [
+    {
+      "id": "crate_a",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/crate_a.fbx",
+      "sha256": "bb283779dffddbb7f8bc0c873f46fadd642084fbad27a1bf27383d6e496d7303",
+      "bounds_m": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "metal_blue",
+          "base_color_rgba": [
+            0.14,
+            0.38,
+            0.7,
+            1
+          ],
+          "metallic": 0.4,
+          "roughness": 0.55
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "crate_a:module:body",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "brace_left",
+          "name": "crate_a:module:brace_left",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "brace_right",
+          "name": "crate_a:module:brace_right",
+          "material_ids": [
+            "metal_blue"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "top",
+          "name": "crate_a:socket:top",
+          "position_m": [
+            0.0,
+            1.0,
+            -0.014563
+          ]
+        },
+        {
+          "id": "front",
+          "name": "crate_a:socket:front",
+          "position_m": [
+            0.0,
+            0.5,
+            0.470874
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ground_a",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/ground_a.fbx",
+      "sha256": "5199665248b0fe30cd64fe3076644be14c49a450bcf379e9f71458afcf77f409",
+      "bounds_m": [
+        20.0,
+        0.2,
+        20.0
+      ],
+      "collider": "box",
+      "materials": [
+        {
+          "id": "metal_blue",
+          "base_color_rgba": [
+            0.14,
+            0.38,
+            0.7,
+            1
+          ],
+          "metallic": 0.4,
+          "roughness": 0.55
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "ground_a:module:body",
+          "material_ids": [
+            "metal_blue"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "top",
+          "name": "ground_a:socket:top",
+          "position_m": [
+            0.0,
+            0.2,
+            -0.0
+          ]
+        },
+        {
+          "id": "front",
+          "name": "ground_a:socket:front",
+          "position_m": [
+            0.0,
+            0.1,
+            10.0
+          ]
+        },
+        {
+          "id": "join_left",
+          "name": "ground_a:socket:join_left",
+          "position_m": [
+            -10.0,
+            0.1,
+            -0.0
+          ]
+        },
+        {
+          "id": "join_right",
+          "name": "ground_a:socket:join_right",
+          "position_m": [
+            10.0,
+            0.1,
+            -0.0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robot_a",
+      "fbx_path": "Assets/PolyForgeGenerated/Models/robot_a.fbx",
+      "sha256": "68d8b0fafa43684879f79e5aa7f83163a9b1cda4799e4d3a860c2a96c14d9da3",
+      "bounds_m": [
+        1.0,
+        1.8,
+        0.8
+      ],
+      "collider": "capsule",
+      "materials": [
+        {
+          "id": "metal_blue",
+          "base_color_rgba": [
+            0.14,
+            0.38,
+            0.7,
+            1
+          ],
+          "metallic": 0.4,
+          "roughness": 0.55
+        }
+      ],
+      "modules": [
+        {
+          "id": "body",
+          "name": "robot_a:module:body",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "head",
+          "name": "robot_a:module:head",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "hips",
+          "name": "robot_a:module:hips",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "core",
+          "name": "robot_a:module:core",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "upper_arm_l",
+          "name": "robot_a:module:upper_arm_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "forearm_l",
+          "name": "robot_a:module:forearm_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "hand_l",
+          "name": "robot_a:module:hand_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "thigh_l",
+          "name": "robot_a:module:thigh_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "shin_l",
+          "name": "robot_a:module:shin_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "foot_l",
+          "name": "robot_a:module:foot_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "eye_l",
+          "name": "robot_a:module:eye_l",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "upper_arm_r",
+          "name": "robot_a:module:upper_arm_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "forearm_r",
+          "name": "robot_a:module:forearm_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "hand_r",
+          "name": "robot_a:module:hand_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "thigh_r",
+          "name": "robot_a:module:thigh_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "shin_r",
+          "name": "robot_a:module:shin_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "foot_r",
+          "name": "robot_a:module:foot_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        },
+        {
+          "id": "eye_r",
+          "name": "robot_a:module:eye_r",
+          "material_ids": [
+            "metal_blue"
+          ]
+        }
+      ],
+      "sockets": [
+        {
+          "id": "neck",
+          "name": "robot_a:socket:neck",
+          "position_m": [
+            0.0,
+            1.369721,
+            -0.12
+          ]
+        },
+        {
+          "id": "shoulder_l",
+          "name": "robot_a:socket:shoulder_l",
+          "position_m": [
+            -0.258621,
+            1.262151,
+            -0.12
+          ]
+        },
+        {
+          "id": "elbow_l",
+          "name": "robot_a:socket:elbow_l",
+          "position_m": [
+            -0.373563,
+            0.989641,
+            -0.12
+          ]
+        },
+        {
+          "id": "wrist_l",
+          "name": "robot_a:socket:wrist_l",
+          "position_m": [
+            -0.373563,
+            0.702789,
+            -0.12
+          ]
+        },
+        {
+          "id": "hand_l",
+          "name": "robot_a:socket:hand_l",
+          "position_m": [
+            -0.373563,
+            0.588048,
+            -0.12
+          ]
+        },
+        {
+          "id": "hip_l",
+          "name": "robot_a:socket:hip_l",
+          "position_m": [
+            -0.126437,
+            0.731474,
+            -0.12
+          ]
+        },
+        {
+          "id": "knee_l",
+          "name": "robot_a:socket:knee_l",
+          "position_m": [
+            -0.126437,
+            0.387251,
+            -0.12
+          ]
+        },
+        {
+          "id": "shoulder_r",
+          "name": "robot_a:socket:shoulder_r",
+          "position_m": [
+            0.258621,
+            1.262151,
+            -0.12
+          ]
+        },
+        {
+          "id": "elbow_r",
+          "name": "robot_a:socket:elbow_r",
+          "position_m": [
+            0.373563,
+            0.989641,
+            -0.12
+          ]
+        },
+        {
+          "id": "wrist_r",
+          "name": "robot_a:socket:wrist_r",
+          "position_m": [
+            0.373563,
+            0.702789,
+            -0.12
+          ]
+        },
+        {
+          "id": "hand_r",
+          "name": "robot_a:socket:hand_r",
+          "position_m": [
+            0.373563,
+            0.588048,
+            -0.12
+          ]
+        },
+        {
+          "id": "hip_r",
+          "name": "robot_a:socket:hip_r",
+          "position_m": [
+            0.126437,
+            0.731474,
+            -0.12
+          ]
+        },
+        {
+          "id": "knee_r",
+          "name": "robot_a:socket:knee_r",
+          "position_m": [
+            0.126437,
+            0.387251,
+            -0.12
+          ]
+        }
+      ]
+    }
+  ],
+  "actors": [
+    {
+      "id": "enemy_01",
+      "asset_id": "robot_a",
+      "controller": "PatrolEnemy",
+      "spawn_xyz": [
+        3,
+        0,
+        3
+      ]
+    }
+  ],
+  "scene_bounds_m": [
+    20,
+    3,
+    20
+  ],
+  "rebuild_asset_ids": [
+    "robot_a"
+  ]
+}

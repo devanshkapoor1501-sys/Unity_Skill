@@ -2,6 +2,11 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add independent review gates, explicit operator decisions and original-bound amendment chains.
+- Add eight forensic playbooks with bounded registered native repair execution and explicit unsupported routes.
+- Add registered-source snapshots, physical project locks, verified native rollback, quarantine and crash resume.
+- Expand the public arena to six independently scored native mutants; preserve separate game acceptance.
+
 - Add typed asset specifications, source/license bundles and material-only refinement with independent technical review.
 - Add six transparent robot frames, fixed-pivot atlas audits and native Sprite Data Provider slicing.
 - Add a separate controllable 2D fixture, actual sprite-reference loops, keyboard and collision checks.

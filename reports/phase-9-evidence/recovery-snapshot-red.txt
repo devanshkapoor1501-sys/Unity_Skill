@@ -1,0 +1,97 @@
+FFFFFFF.                                                                 [100%]
+================================== FAILURES ===================================
+__ test_registered_blender_source_and_game_state_are_in_transaction_closure ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_registered_blender_source0')
+
+    def test_registered_blender_source_and_game_state_are_in_transaction_closure(tmp_path):
+        p, path = source_fixture(tmp_path)
+        atomic_json(p, ".polyforge/game-latest.json", {"request": "runs/game/input.json"})
+>       tx = ManagedTransaction.create(p, "cross_tool", dependencies=[path])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:28: TypeError
+_ test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[private.blend] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_snapshot_cannot_expand_wr0')
+dependency = 'private.blend'
+
+    @pytest.mark.parametrize("dependency", ["private.blend", "runs/unregistered/asset/source.blend", "../outside.blend", "UnityProject/Assets/User/scene.unity"])
+    def test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies(tmp_path, dependency):
+        p, path = source_fixture(tmp_path)
+        with pytest.raises(InputError):
+>           ManagedTransaction.create(p, "unsafe", dependencies=[dependency])
+E           TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:44: TypeError
+_ test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[runs/unregistered/asset/source.blend] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_snapshot_cannot_expand_wr1')
+dependency = 'runs/unregistered/asset/source.blend'
+
+    @pytest.mark.parametrize("dependency", ["private.blend", "runs/unregistered/asset/source.blend", "../outside.blend", "UnityProject/Assets/User/scene.unity"])
+    def test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies(tmp_path, dependency):
+        p, path = source_fixture(tmp_path)
+        with pytest.raises(InputError):
+>           ManagedTransaction.create(p, "unsafe", dependencies=[dependency])
+E           TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:44: TypeError
+_ test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[../outside.blend] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_snapshot_cannot_expand_wr2')
+dependency = '../outside.blend'
+
+    @pytest.mark.parametrize("dependency", ["private.blend", "runs/unregistered/asset/source.blend", "../outside.blend", "UnityProject/Assets/User/scene.unity"])
+    def test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies(tmp_path, dependency):
+        p, path = source_fixture(tmp_path)
+        with pytest.raises(InputError):
+>           ManagedTransaction.create(p, "unsafe", dependencies=[dependency])
+E           TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:44: TypeError
+_ test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[UnityProject/Assets/User/scene.unity] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_snapshot_cannot_expand_wr3')
+dependency = 'UnityProject/Assets/User/scene.unity'
+
+    @pytest.mark.parametrize("dependency", ["private.blend", "runs/unregistered/asset/source.blend", "../outside.blend", "UnityProject/Assets/User/scene.unity"])
+    def test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies(tmp_path, dependency):
+        p, path = source_fixture(tmp_path)
+        with pytest.raises(InputError):
+>           ManagedTransaction.create(p, "unsafe", dependencies=[dependency])
+E           TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:44: TypeError
+__________ test_snapshot_validation_happens_before_any_restore_write __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_snapshot_validation_happe0')
+
+    def test_snapshot_validation_happens_before_any_restore_write(tmp_path):
+        p, path = source_fixture(tmp_path)
+>       tx = ManagedTransaction.create(p, "tampered", dependencies=[path])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:50: TypeError
+___ test_tampered_original_inventory_and_transaction_identity_are_rejected ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-139/test_tampered_original_invento0')
+
+    def test_tampered_original_inventory_and_transaction_identity_are_rejected(tmp_path):
+        p, path = source_fixture(tmp_path)
+>       tx = ManagedTransaction.create(p, "identity", dependencies=[path])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: ManagedTransaction.create() got an unexpected keyword argument 'dependencies'
+
+tests\test_phase9_recovery.py:60: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_registered_blender_source_and_game_state_are_in_transaction_closure
+FAILED tests/test_phase9_recovery.py::test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[private.blend]
+FAILED tests/test_phase9_recovery.py::test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[runs/unregistered/asset/source.blend]
+FAILED tests/test_phase9_recovery.py::test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[../outside.blend]
+FAILED tests/test_phase9_recovery.py::test_snapshot_cannot_expand_write_scope_through_unregistered_dependencies[UnityProject/Assets/User/scene.unity]
+FAILED tests/test_phase9_recovery.py::test_snapshot_validation_happens_before_any_restore_write
+FAILED tests/test_phase9_recovery.py::test_tampered_original_inventory_and_transaction_identity_are_rejected
+7 failed, 1 passed in 1.06s

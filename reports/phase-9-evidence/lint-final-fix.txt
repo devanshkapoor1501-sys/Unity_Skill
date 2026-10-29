@@ -1,0 +1,138 @@
+E501 Line too long (182 > 100)
+   --> polyforge\repairs\diagnostics.py:393:101
+    |
+391 | …
+392 | …completed")
+393 | …dence_hashes={name: hashlib.sha256(policy.path(name).read_bytes()).hexdigest() for name in evidence_paths})
+    |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+394 | …
+    |
+
+E501 Line too long (169 > 100)
+  --> polyforge\repairs\execution.py:84:101
+   |
+82 | …tempt receipt")
+83 | …
+84 | …lib.sha256(policy.path(name).read_bytes()).hexdigest() != digest for name, digest in hashes.items()):
+   |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+85 | …ter recording")
+86 | …
+   |
+
+E501 Line too long (137 > 100)
+  --> polyforge\repairs\execution.py:93:101
+   |
+91 | …
+92 | … transaction ownership changed")
+93 | …inventory(policy, journal.get("dependencies", [])) != journal["committed_inventory"]:
+   |                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+94 | … project changed afterward")
+95 | …d not tx.verify_restored():
+   |
+
+E501 Line too long (101 > 100)
+  --> tests\test_phase9_routing.py:23:101
+   |
+21 |     raw = load_json(Path("tests/fixtures/phase9/native-fault.json"))
+22 |     report = reconcile_report(request, raw)
+23 |     issues = [{**row, "issue_id": "ISSUE-" + canonical_digest(row)[:12]} for row in report["issues"]]
+   |                                                                                                     ^
+24 |     atomic_json(p, "runs/native/bindings.json", raw)
+25 |     atomic_json(p, ".polyforge/unity-issues.json", {"input_digest": request["input_digest"], "evidence_dir": "runs/native", "issues": …
+   |
+
+E501 Line too long (142 > 100)
+  --> tests\test_phase9_routing.py:25:101
+   |
+23 | …digest(row)[:12]} for row in report["issues"]]
+24 | …
+25 | …put_digest": request["input_digest"], "evidence_dir": "runs/native", "issues": issues})
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | …cale" and i["asset_id"] == "robot_a")
+27 | … request["input_digest"], "producer_id": "unity_integration", "tool": {"name": "unity", "version": "6000.6.3f1"}, "structured": {"sta…
+   |
+
+E501 Line too long (491 > 100)
+  --> tests\test_phase9_routing.py:27:101
+   |
+25 | …vidence_dir": "runs/native", "issues": issues})
+26 | …
+27 | … "unity_integration", "tool": {"name": "unity", "version": "6000.6.3f1"}, "structured": {"status": "FAIL", "code": "PF-FBX-AXES"}, "log": json.dumps({**row, "repair_supported": True}, sort_keys=True), "affected_ids": ["robot_a"], "artifacts": [{"id": "native_bindings", "path": "runs/native/bindings.json", "sha256": hashlib.sha256(p.path("runs/native/bindings.json").read_bytes()).hexdigest()}]}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+28 | …
+29 | …
+   |
+
+E501 Line too long (102 > 100)
+  --> tests\test_phase9_routing.py:32:101
+   |
+32 | def test_actual_native_scale_fault_selects_exact_symptom_and_registered_action(tmp_path, monkeypatch):
+   |                                                                                                     ^^
+33 |     p, value = native_fixture(tmp_path, monkeypatch)
+34 |     plan = plan_repair(p, diagnose_evidence(value))
+   |
+
+E501 Line too long (120 > 100)
+  --> tests\test_phase9_routing.py:41:101
+   |
+41 | @pytest.mark.parametrize("change", ["invalid_log", "wrong_symptom", "wrong_source", "wrong_manifest", "stale_registry"])
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+42 | def test_misleading_native_symptom_cannot_authorize_another_repair(tmp_path, monkeypatch, change):
+43 |     p, value = native_fixture(tmp_path, monkeypatch)
+   |
+
+E501 Line too long (122 > 100)
+   --> tests\test_phase9_sprite_gate.py:134:101
+    |
+132 |         atomic_json(p, "atlas.json", [])
+133 |     else:
+134 |         atomic_json(p, ".polyforge/source-reviews/" + canonical_digest(inputs["asset_id"]) + ".json", {"required": False})
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^
+135 |     with pytest.raises(InputError):
+136 |         review_sprite_source(p, inputs)
+    |
+
+E501 Line too long (139 > 100)
+   --> tests\test_phase9_sprite_gate.py:157:101
+    |
+155 | …test, result="Passed")
+156 | …ostring(root))
+157 | …le"], *inputs["frame_files"], "runs/native/editmode.xml", "runs/native/playmode.xml"]
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+158 | …ifacts": [{"relative_path": name, "sha256": hashlib.sha256(p.path(name).read_bytes()).hexdigest()} for name in paths]})
+159 | …t supplied strip", "task_class": "CREATE_ASSET", "domain_tags": ["unity", "2d"], "feature_ids": [], "capability_id": "sprite.unity.s…
+    |
+
+E501 Line too long (173 > 100)
+   --> tests\test_phase9_sprite_gate.py:158:101
+    |
+156 | …
+157 | …ame_files"], "runs/native/editmode.xml", "runs/native/playmode.xml"]
+158 | …ive_path": name, "sha256": hashlib.sha256(p.path(name).read_bytes()).hexdigest()} for name in paths]})
+    |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+159 | …, "task_class": "CREATE_ASSET", "domain_tags": ["unity", "2d"], "feature_ids": [], "capability_id": "sprite.unity.strip.v1", "input"…
+160 | …gest(task["brief"]))
+    |
+
+E501 Line too long (212 > 100)
+   --> tests\test_phase9_sprite_gate.py:159:101
+    |
+157 | …native/editmode.xml", "runs/native/playmode.xml"]
+158 | …ha256": hashlib.sha256(p.path(name).read_bytes()).hexdigest()} for name in paths]})
+159 | …EATE_ASSET", "domain_tags": ["unity", "2d"], "feature_ids": [], "capability_id": "sprite.unity.strip.v1", "input": inputs}
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+160 | …)
+161 | …
+    |
+
+E501 Line too long (113 > 100)
+   --> tests\test_phase9_sprite_gate.py:165:101
+    |
+163 |     record_human_review(p, source, verdict="APPROVED", operator="owner", reason="Viewed source")
+164 |     assert review_candidate(p, candidate, task)["promotion"] == "APPROVED"
+165 |     record_human_review(p, candidate, verdict="REJECTED", operator="owner", reason="Wrong integrated appearance")
+    |                                                                                                     ^^^^^^^^^^^^^
+166 |     assert review_candidate(p, candidate, task)["promotion"] == "REJECTED"
+    |
+
+Found 16 errors (3 fixed, 13 remaining).

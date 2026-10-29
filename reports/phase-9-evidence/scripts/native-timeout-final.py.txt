@@ -1,0 +1,18 @@
+import json
+from dataclasses import replace
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.runner.state import atomic_json
+from polyforge.unity import recovery
+from polyforge.unity.transactions import ManagedTransaction
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));identifier='phase9_crash_recovery'
+actual=recovery.configuration
+recovery.configuration=lambda policy:replace(actual(policy),unity_timeout_seconds=1)
+result=recovery.repair_rollback(p.root,identifier)
+Path('.tmp/phase9/native-timeout-final.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+journal=ManagedTransaction(p,identifier).read();attempt=journal['recovery_attempt']
+atomic_json(p,'runs/phase9-final-timeout-proof.json',{'attempt':attempt,'process':json.loads(p.path(attempt+'/native/process.json').read_text()),'quarantine':json.loads(p.path('UnityProject/.polyforge/repair-quarantine.json').read_text())})
+assert result.error_code=='PF-ROLLBACK-FAILED',result.to_dict()
+assert journal['status']=='ROLLBACK_FAILED'
+print('Final native failed proof preserved',attempt,flush=True)

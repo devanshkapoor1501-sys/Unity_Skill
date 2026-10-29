@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "id": "core_gameplay",
+  "scenarios": [
+    {
+      "schema_version": "1.0.0",
+      "id": "player_moves",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ]
+      },
+      "steps": [
+        {
+          "action": "move",
+          "actor_id": "player_01",
+          "direction": [
+            0,
+            1
+          ],
+          "ticks": 50
+        }
+      ],
+      "expected": [
+        {
+          "event": "restarted",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "wall_collision",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ],
+        "player_position": [
+          -7.0,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "action": "move",
+          "actor_id": "player_01",
+          "direction": [
+            -1,
+            0
+          ],
+          "ticks": 200
+        }
+      ],
+      "expected": [
+        {
+          "event": "restarted",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "enemy_patrols",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ]
+      },
+      "steps": [
+        {
+          "action": "wait",
+          "ticks": 150
+        }
+      ],
+      "expected": [
+        {
+          "event": "restarted",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "contact_damage",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ],
+        "player_position": [
+          3,
+          0,
+          2
+        ],
+        "initial_health": 100
+      },
+      "steps": [
+        {
+          "action": "wait",
+          "ticks": 75
+        }
+      ],
+      "expected": [
+        {
+          "event": "damage",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "health_failure",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ],
+        "player_position": [
+          3,
+          0,
+          2
+        ],
+        "initial_health": 25
+      },
+      "steps": [
+        {
+          "action": "wait",
+          "ticks": 75
+        }
+      ],
+      "expected": [
+        {
+          "event": "failed",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "survival_win",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ]
+      },
+      "steps": [
+        {
+          "action": "wait",
+          "ticks": 1505
+        }
+      ],
+      "expected": [
+        {
+          "event": "won",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
+      "id": "restart_resets",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ],
+        "player_position": [
+          3,
+          0,
+          2
+        ],
+        "initial_health": 25
+      },
+      "steps": [
+        {
+          "action": "wait",
+          "ticks": 75
+        },
+        {
+          "action": "restart",
+          "ticks": 1
+        }
+      ],
+      "expected": [
+        {
+          "event": "restarted",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    }
+  ]
+}

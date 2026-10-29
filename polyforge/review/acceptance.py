@@ -8,7 +8,9 @@ from importlib.resources import files
 from typing import Any
 
 from polyforge.contracts.manifest import load_manifest
+from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
+from polyforge.review.amendments import read_amendments
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.evidence import verify_test_xml
 from polyforge.unity.game import (
@@ -24,10 +26,24 @@ def public_acceptance_spec(policy: WorkspacePolicy) -> dict[str, Any]:
     spec: dict[str, Any] = json.loads(
         files("polyforge").joinpath("data/arena_acceptance.json").read_text("utf-8")
     )
-    frozen = policy.path(".polyforge/original_prompt.txt").read_text(encoding="utf-8")
+    with policy.path(".polyforge/original_prompt.txt").open("rb") as stream:
+        payload = stream.read(262145)
+    if len(payload) > 262144:
+        raise InputError("Frozen brief exceeds the 256 KiB read limit")
+    try:
+        frozen = payload.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+    except UnicodeError as exc:
+        raise InputError("Frozen brief is not UTF-8") from exc
     if frozen != spec["original_brief"]:
-        raise InputError("No independently authored public acceptance specification for this brief")
+        raise InputError(
+            "No independently authored public acceptance specification for this brief",
+            kind=ErrorKind.POLICY_DENIED,
+            code="PF-ACCEPTANCE-REVIEW",
+        )
     spec["original_brief_digest"] = canonical_digest(frozen)
+    amendments = read_amendments(policy, spec["original_brief_digest"])
+    spec["amendment_digest"] = amendments["chain_digest"]
+    spec["requirements"] += [row for r in amendments["records"] for row in r["requirements"]]
     spec["acceptance_digest"] = canonical_digest(spec)
     return spec
 
@@ -49,11 +65,23 @@ def check_acceptance(
     validate_game_job(job, game)
     scored = score_telemetry(policy, relative, job)
     rows = []
+    known = json.loads(
+        files("polyforge").joinpath("data/arena_acceptance.json").read_text("utf-8")
+    )["requirements"]
     for requirement in spec["requirements"]:
+        supported = any(
+            all(
+                requirement[k] == r[k]
+                for k in ("feature_id", "artifact_id", "unity_component", "oracles")
+            )
+            for r in known
+        )
         rows.append(
             {
                 **requirement,
-                "status": "PASS"
+                "status": "REVIEW"
+                if not supported
+                else "PASS"
                 if all(
                     scored["scenarios"][name]["gate_status"] == "PASS"
                     for name in requirement["oracles"]
@@ -61,11 +89,17 @@ def check_acceptance(
                 else "FAIL",
                 "evidence": [
                     relative + "/telemetry/" + name + ".json" for name in requirement["oracles"]
-                ],
+                ]
+                if supported
+                else [],
             }
         )
     return {
-        "status": scored["status"],
+        "status": "FAIL"
+        if scored["status"] != "PASS"
+        else "REVIEW"
+        if any(r["status"] == "REVIEW" for r in rows)
+        else "PASS",
         "game_status": "PARTIAL",
         "oracle_owner": "PUBLIC_DEVELOPMENT",
         "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",

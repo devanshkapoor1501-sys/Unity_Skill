@@ -1,0 +1,20 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___ test_quarantine_is_checked_when_lock_is_acquired_not_only_when_created ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-149/test_quarantine_is_checked_whe0')
+
+    def test_quarantine_is_checked_when_lock_is_acquired_not_only_when_created(tmp_path):
+        from polyforge.runner.locks import unity_project_lock
+    
+        p, path = source_fixture(tmp_path)
+        guard = unity_project_lock(p, p.path("UnityProject"))
+        atomic_json(p, "UnityProject/.polyforge/repair-quarantine.json", {"status": "ROLLBACK_FAILED"})
+>       with pytest.raises(InputError, match="quarantin"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:224: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_quarantine_is_checked_when_lock_is_acquired_not_only_when_created
+1 failed in 0.36s

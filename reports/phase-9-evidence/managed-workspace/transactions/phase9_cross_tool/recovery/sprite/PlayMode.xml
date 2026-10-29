@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.4080117">
+  <test-suite type="TestSuite" id="1042" name="Isometric Robot Arena" fullname="Isometric Robot Arena" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.408012" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1077" name="PolyForge.Sprite.PlayMode.Tests.dll" fullname="C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase6/arena/UnityProject/Library/ScriptAssemblies/PolyForge.Sprite.PlayMode.Tests.dll" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.396742" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="27844" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1078" name="PolyForge" fullname="PolyForge" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.395431" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1079" name="Sprite" fullname="PolyForge.Sprite" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.394823" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1080" name="Tests" fullname="PolyForge.Sprite.Tests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.394365" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1072" name="SpriteMotionTests" fullname="PolyForge.Sprite.Tests.SpriteMotionTests" classname="PolyForge.Sprite.Tests.SpriteMotionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:38Z" duration="4.392371" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1073" name="DestroyedPlayerReleasesInputSubscription" fullname="PolyForge.Sprite.Tests.SpriteMotionTests.DestroyedPlayerReleasesInputSubscription" methodname="DestroyedPlayerReleasesInputSubscription" classname="PolyForge.Sprite.Tests.SpriteMotionTests" runstate="Runnable" seed="761761501" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:34Z" duration="0.062618" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1075" name="InjectedInputMovesAndReal2DWallStopsPlayer" fullname="PolyForge.Sprite.Tests.SpriteMotionTests.InjectedInputMovesAndReal2DWallStopsPlayer" methodname="InjectedInputMovesAndReal2DWallStopsPlayer" classname="PolyForge.Sprite.Tests.SpriteMotionTests" runstate="Runnable" seed="1003034805" result="Passed" start-time="2026-10-29 08:07:34Z" end-time="2026-10-29 08:07:36Z" duration="2.012311" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1076" name="KeyboardWASDControlsThe2DFixture" fullname="PolyForge.Sprite.Tests.SpriteMotionTests.KeyboardWASDControlsThe2DFixture" methodname="KeyboardWASDControlsThe2DFixture" classname="PolyForge.Sprite.Tests.SpriteMotionTests" runstate="Runnable" seed="258401631" result="Passed" start-time="2026-10-29 08:07:36Z" end-time="2026-10-29 08:07:36Z" duration="0.472223" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Sprite keyboard observed: device=1, current=1, W=True, movement=(0.00, 1.00), body=(0.00, 1.20)
+]]></output>
+              </test-case>
+              <test-case id="1074" name="LoopActuallyChangesImportedSpriteAndWraps" fullname="PolyForge.Sprite.Tests.SpriteMotionTests.LoopActuallyChangesImportedSpriteAndWraps" methodname="LoopActuallyChangesImportedSpriteAndWraps" classname="PolyForge.Sprite.Tests.SpriteMotionTests" runstate="Runnable" seed="704497285" result="Passed" start-time="2026-10-29 08:07:36Z" end-time="2026-10-29 08:07:38Z" duration="1.818934" asserts="0">
+                <properties>
+                  <property name="_JOINTYPE" value="UnityCombinatorial" />
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/PolyForge/Isometric Robot Arena\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

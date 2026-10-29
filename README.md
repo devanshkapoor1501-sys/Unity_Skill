@@ -42,10 +42,14 @@ You can also ask for just a supported 3D object, such as a crate, without buildi
 
 For a 2D starting point, ask for the walking robot demo. You can also supply six 128×128 transparent sprite frames that you have permission to use. Your assistant checks whether they fit the current format before building.
 
+Required human approval is checked before supported imports. Managed repairs keep
+an evidence trail and restore the project through native reimport and checks if
+verification fails. See [review and recovery](docs/review-and-recovery.md).
+
 ## Is it for you?
 
 Try PolyForge if you want a starting point for simple Blender-to-Unity projects and are comfortable using an early preview. It still needs your feedback and playtesting. It cannot yet build any game you imagine or replace every part of making a game.
 
 The project is free under the [Apache-2.0 license](LICENSE). Your AI assistant and other software may have their own costs or terms.
 
-[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-8.md)
+[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-9.md)

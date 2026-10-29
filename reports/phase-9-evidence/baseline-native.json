@@ -1,0 +1,42 @@
+{
+  "status": "FAIL",
+  "exit_code": 5,
+  "error_code": "PF-GAME-VERIFY",
+  "data": {},
+  "diagnostics": [
+    {
+      "code": "PF-GAME-VERIFY",
+      "message": "Unity tests failed: exit, exit 3758096385; see runs/game-check-625e92bda1594478/editmode/stdout.txt"
+    }
+  ],
+  "operation_id": null,
+  "run_id": "game-check-625e92bda1594478",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": null,
+  "artifact_ids": [
+    "runs/game-check-625e92bda1594478/editmode/process.json",
+    "runs/game-check-625e92bda1594478/editmode/stderr.txt",
+    "runs/game-check-625e92bda1594478/editmode/stdout.txt",
+    "runs/game-check-625e92bda1594478/editmode/tmp/BugReporterCrashReportJson/CrashReport_6ac8009d13272d2488f116481009e340.json",
+    "runs/game-check-625e92bda1594478/editmode/tmp/Unity/Editor/Crashes/Crash_2026-10-29_070227008/crash.dmp",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityCBMCrashes/212c4d71d6f4c7f4d927ac56ca53250f",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityVBCSPreWarm_19264.cs",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityVBCSPreWarm_19264.dll",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityVBCSPreWarm_19264.pdb",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityVBCSPreWarm_19264.ref.dll",
+    "runs/game-check-625e92bda1594478/editmode/tmp/UnityVBCSPreWarm_19264.rsp",
+    "runs/game-check-625e92bda1594478/editmode/upm.log",
+    "runs/game-check-625e92bda1594478/game-input.json",
+    "runs/game-check-625e92bda1594478/scenarios.json"
+  ],
+  "evidence_paths": [
+    "runs/game-check-625e92bda1594478"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "NOT_RUN",
+  "game_status": "PARTIAL",
+  "operation_status": "FAIL"
+}

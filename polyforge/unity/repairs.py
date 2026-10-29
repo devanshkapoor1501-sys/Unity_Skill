@@ -16,7 +16,7 @@ from uuid import uuid4
 from polyforge.contracts.manifest import load_manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
-from polyforge.runner.locks import FileLock
+from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.bootstrap import check_project_idle
@@ -103,7 +103,7 @@ def reconcile_workspace(workspace: Path) -> Result:
     executable = unity_tool(config)
     run_id = "reconcile-" + uuid4().hex[:16]
     relative = "runs/" + run_id
-    with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+    with unity_project_lock(policy, policy.path("UnityProject")):
         request_path = atomic_json(policy, relative + "/request.json", request)
         path = policy.path(relative + "/bindings.json")
         launch(
@@ -250,21 +250,25 @@ def repair_plan(workspace: Path, issue_id: str) -> Result:
                 "managed_prefix": "UnityProject/Assets/PolyForgeGenerated",
             },
             "verification": "native reconciliation; automatic rollback on failed verification",
-            "cross_application_recovery": "NOT_RUN; Phase 9",
+            "cross_application_recovery": "Required native reimport and source/regression proof",
         },
     )
 
 
-def repair_apply(workspace: Path, plan_path: str) -> Result:
+def repair_apply(workspace: Path, plan_path: str, *, forensic_run: str | None = None) -> Result:
     policy = WorkspacePolicy(workspace)
-    request = current_request(policy)
     plan = load_json(policy.path(plan_path))
+    if "diagnosis" in plan:
+        from polyforge.repairs.execution import apply_forensic
+
+        return apply_forensic(workspace, plan)
+    request = current_request(policy)
     key = resolve_plan(policy, plan, request)
     config = configuration(policy)
     executable = unity_tool(config)
     tx_id = "tx-" + uuid4().hex[:16]
     relative = f"transactions/{tx_id}"
-    with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+    with unity_project_lock(policy, policy.path("UnityProject")):
         attempts_path = policy.path(".polyforge/repair-attempts.json")
         attempts = load_json(attempts_path) if attempts_path.is_file() else {}
         if attempts.get(key, 0) >= 2:
@@ -273,33 +277,36 @@ def repair_apply(workspace: Path, plan_path: str) -> Result:
                 "PF-REPAIR-ATTEMPTS",
                 "Two proposals already attempted for this symptom",
             )
-        before = policy.path(".polyforge/unity-request.json")
-        baseline_path = policy.path(f"runs/repair-baseline-{tx_id}/bindings.json")
-        launch(
-            policy,
-            executable,
-            config,
-            f"runs/repair-baseline-{tx_id}",
-            "reconcile",
-            request=before,
-            output=baseline_path,
-            allow_contract_failure=True,
-        )
-        baseline_raw = load_json(baseline_path)
+        from polyforge.unity.recovery import observe_state, rollback_locked, source_dependencies
+        from polyforge.unity.transactions import inventory
+
+        prestate = observe_state(policy, f"runs/repair-baseline-{tx_id}")
+        baseline_raw = prestate["bindings"]
         baseline = reconcile_report(request, baseline_raw)
         if not any(
             i["asset_id"] == plan["asset_id"] and i["category"] == plan["category"]
             for i in baseline["issues"]
         ):
             raise InputError("Issue is no longer present; reconcile and replan")
-        tx = ManagedTransaction.create(policy, tx_id)
-        tx.record("BASELINE", observed=baseline_raw, reconciliation=baseline)
+        tx = ManagedTransaction.create(policy, tx_id, dependencies=source_dependencies(policy))
+        tx.record(
+            "BASELINE",
+            observed=baseline_raw,
+            reconciliation=baseline,
+            prestate=prestate,
+            forensic_run=forensic_run,
+            proof_scope="NATIVE_REIMPORT_AND_REGRESSION",
+        )
+        if forensic_run is not None:
+            intent_path = "runs/" + forensic_run + "/intent.json"
+            intent = load_json(policy.path(intent_path))
+            atomic_json(policy, intent_path, {**intent, "transaction_id": tx_id})
         attempts[key] = attempts.get(key, 0) + 1
         atomic_json(policy, attempts_path, attempts)
         affected = copy.deepcopy(request)
         affected["rebuild_asset_ids"] = [plan["asset_id"]]
         apply_request = atomic_json(policy, relative + "/request.json", affected)
-        tx.record("APPLY", plan=plan)
+        tx.record("APPLYING", plan=plan)
         try:
             output = policy.path(relative + "/after.json")
             launch(
@@ -312,10 +319,42 @@ def repair_apply(workspace: Path, plan_path: str) -> Result:
                 output=output,
                 allow_contract_failure=True,
             )
+            tx.record("APPLIED")
+            current = inventory(policy, tx.read().get("dependencies", []))
+            original = tx.read()["original"]
+            diff = {
+                "added": sorted(current.keys() - original.keys()),
+                "removed": sorted(original.keys() - current.keys()),
+                "modified": sorted(
+                    n for n in original.keys() & current.keys() if original[n] != current[n]
+                ),
+            }
+            tx.record("VERIFYING", changed_paths=diff)
             report = reconcile_report(request, load_json(output))
             if not scoped_verification(baseline, report, plan["asset_id"]):
                 raise InputError(json.dumps(report["issues"]), kind=ErrorKind.CONTRACT_FAILURE)
-            tx.record("COMMITTED", verification=report)
+            after_state = observe_state(
+                policy, relative + "/verification", profile_inputs=prestate["profile_inputs"]
+            )
+            before_regression = prestate["regressions"]
+            after_regression = after_state["regressions"]
+            if set(before_regression) != set(after_regression):
+                raise InputError("Repair changed the required regression profile set")
+            for profile, previous in before_regression.items():
+                if profile == "arena":
+                    if any(
+                        v == "PASS" and after_regression[profile]["scenarios"].get(k) != "PASS"
+                        for k, v in previous["scenarios"].items()
+                    ):
+                        raise InputError("Repair regressed an independent original gameplay check")
+                elif previous != after_regression[profile]:
+                    raise InputError("Repair regressed native animation/sprite checks")
+            tx.record(
+                "COMMITTED",
+                verification=report,
+                after_state=after_state,
+                committed_inventory=inventory(policy, tx.read().get("dependencies", [])),
+            )
             return Result(
                 rollback_id=tx_id,
                 data={
@@ -326,45 +365,22 @@ def repair_apply(workspace: Path, plan_path: str) -> Result:
                 evidence_paths=[relative + "/journal.json", relative + "/after.json"],
             )
         except (InputError, OSError, KeyboardInterrupt) as exc:
-            try:
-                tx.restore()
-                if not tx.verify_restored():
-                    raise InputError("Restored bytes do not match snapshot")
-                restored = policy.path(relative + "/restored.json")
-                launch(
-                    policy,
-                    executable,
-                    config,
-                    relative + "/restore",
-                    "restore",
-                    request=before,
-                    output=restored,
-                    allow_contract_failure=True,
-                )
-                restored_raw = load_json(restored)
-                check = reconcile_report(request, restored_raw)
-                if not equivalent_bindings(baseline_raw, restored_raw):
-                    raise InputError("Restored native bindings differ from the observed baseline")
-                tx.record("ROLLED_BACK", verification=check)
-                return replace(
-                    failure(
-                        ErrorKind.INTERRUPTED
-                        if isinstance(exc, KeyboardInterrupt)
-                        else ErrorKind.CONTRACT_FAILURE,
-                        "PF-REPAIR-ROLLED-BACK",
-                        str(exc),
-                    ),
-                    rollback_id=tx_id,
-                    evidence_paths=[relative + "/journal.json"],
-                )
-            except (InputError, OSError):
-                tx.record("ROLLBACK_FAILED", failure=str(exc))
-                return replace(
-                    failure(
-                        ErrorKind.CONTRACT_FAILURE,
-                        "PF-ROLLBACK-FAILED",
-                        "Native restore could not be verified; project requires manual recovery",
-                    ),
-                    rollback_id=tx_id,
-                    evidence_paths=[relative + "/journal.json"],
-                )
+            rolled_back = rollback_locked(policy, tx)
+            if rolled_back.status != "PASS":
+                return rolled_back
+            # Keep Phase 5's visible faulty-baseline reconciliation alongside the new proof.
+            tx.record(
+                "ROLLED_BACK",
+                verification=reconcile_report(request, tx.read()["recovery"]["bindings"]),
+            )
+            return replace(
+                failure(
+                    ErrorKind.INTERRUPTED
+                    if isinstance(exc, KeyboardInterrupt)
+                    else ErrorKind.CONTRACT_FAILURE,
+                    "PF-REPAIR-ROLLED-BACK",
+                    str(exc),
+                ),
+                rollback_id=tx_id,
+                evidence_paths=[relative + "/journal.json"],
+            )

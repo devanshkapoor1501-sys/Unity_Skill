@@ -1,0 +1,18 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity import recovery
+from polyforge.unity.transactions import ManagedTransaction
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));identifier='phase9_crash_recovery'
+actual=recovery.launch
+def log(*args,**kwargs):
+    print('Native recovery stage:',args[3],args[4],flush=True)
+    return actual(*args,**kwargs)
+recovery.launch=log
+result=recovery.resume_run(p.root,identifier)
+Path('.tmp/phase9/native-resume.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n',encoding='utf-8')
+print('Resume',result.status,result.error_code,flush=True)
+assert result.status=='PASS' and ManagedTransaction(p,identifier).read()['status']=='ROLLED_BACK',result.to_dict()
+assert not p.path('UnityProject/.polyforge/repair-quarantine.json').exists()
+assert ManagedTransaction(p,identifier).verify_restored()

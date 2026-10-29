@@ -1,0 +1,7 @@
+Native stage transactions/phase9_crash_recovery/recovery/attempt-ca04430fe96945e4/native restore
+Native stage transactions/phase9_crash_recovery/recovery/attempt-ca04430fe96945e4/identity recovery
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase9\native-resume-final.py", line 17, in <module>
+    assert result.status=='PASS',result.to_dict()
+           ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'status': 'FAIL', 'exit_code': 6, 'error_code': 'PF-ROLLBACK-FAILED', 'data': {}, 'diagnostics': [{'code': 'PF-ROLLBACK-FAILED', 'message': 'Native recovery could not reproduce prestate; managed project quarantined'}], 'operation_id': None, 'run_id': None, 'version': '0.0.1', 'contract_version': '1.0.0', 'input_digest': None, 'artifact_ids': [], 'evidence_paths': ['transactions/phase9_crash_recovery/journal.json'], 'metrics': {}, 'duration_ms': 0, 'rollback_id': 'phase9_crash_recovery', 'evaluated_test_status': 'NOT_RUN', 'game_status': 'PARTIAL', 'operation_status': 'FAIL'}

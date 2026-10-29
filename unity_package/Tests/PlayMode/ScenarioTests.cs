@@ -57,6 +57,11 @@ namespace PolyForge.Game.Tests
             var suite=JsonUtility.FromJson<Suite>(File.ReadAllText(Arg("-polyforgeScenarioInput")));
             var scenario=suite.scenarios.Single(x=>x.id==id);var input=new InjectedInput{disableRestart=mutant=="restart_disabled"};
             session.player.Input=input;
+            // In-memory test-only defects; each scene reload restores the original production code.
+            if(mutant=="input_disconnected")session.player.Input=null;
+            if(mutant=="navigation_stuck")foreach(var enemy in session.enemies)enemy.speed=0;
+            if(mutant=="damage_no_health")foreach(var damage in UnityEngine.Object.FindObjectsByType<ContactDamage>(FindObjectsSortMode.None))damage.amount=0;
+            if(mutant=="win_reversed")session.survivalSeconds=60;
             if(scenario.setup.player_position!=null && scenario.setup.player_position.Length==3)
                 session.player.ResetAt(new Vector3(scenario.setup.player_position[0],scenario.setup.player_position[1],scenario.setup.player_position[2]));
             if(scenario.setup.initial_health>0 && scenario.setup.initial_health<100)session.player.Health.Damage(100-scenario.setup.initial_health);
@@ -81,6 +86,11 @@ namespace PolyForge.Game.Tests
                     while(session.Frame<target)
                     {
                         yield return new WaitForFixedUpdate();
+                        if(mutant=="win_reversed" && session.State=="RUNNING" && session.ElapsedSeconds<30)
+                        {
+                            typeof(ArenaSession).GetProperty(nameof(ArenaSession.State)).SetValue(session,"WON");
+                            session.Record("won","player",session.ElapsedSeconds);
+                        }
                         samples.Add(Observe(session));
                         if(samples.Count>32000)throw new Exception("Telemetry sample budget exceeded");
                     }
@@ -115,5 +125,9 @@ namespace PolyForge.Game.Tests
         [UnityTest] public IEnumerator KeyboardAdapterRestarts()=>Run("player_moves",keyboard:true,keyboardRestart:true);
         [UnityTest] public IEnumerator CollisionDisabledMutant()=>Run("wall_collision","collision_disabled");
         [UnityTest] public IEnumerator RestartDisabledMutant()=>Run("restart_resets","restart_disabled");
+        [UnityTest] public IEnumerator ReversedWinMutant()=>Run("survival_win","win_reversed");
+        [UnityTest] public IEnumerator DamageWithoutHealthMutant()=>Run("contact_damage","damage_no_health");
+        [UnityTest] public IEnumerator NavigationStuckMutant()=>Run("enemy_patrols","navigation_stuck");
+        [UnityTest] public IEnumerator InputDisconnectedMutant()=>Run("player_moves","input_disconnected");
     }
 }

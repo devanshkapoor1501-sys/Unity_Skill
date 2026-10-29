@@ -1,0 +1,125 @@
+{
+  "proposal": {
+    "schema_version": "1.0.0",
+    "issue_id": "ISSUE-fa45943fcdef08a1",
+    "diagnosis": {
+      "schema_version": "1.0.0",
+      "issue_id": "ISSUE-fa45943fcdef08a1",
+      "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+      "producer_id": "unity_integration",
+      "original_specialist": "asset_producer",
+      "affected_ids": [
+        "robot_a"
+      ],
+      "symptom_signature": "bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+      "playbook_version": "1.0.0",
+      "playbook": "FBX_AXES",
+      "diagnosis_status": "FAIL",
+      "recommended_action": "rebuild_export",
+      "context_failure": null,
+      "hypotheses": [
+        {
+          "cause": "FBX_AXES",
+          "confidence": 0.85,
+          "falsify_with": "source/export/import axis and scale metrics"
+        }
+      ],
+      "rejected_alternatives": [
+        "arbitrary source patch",
+        "implicit package installation"
+      ],
+      "repair_status": "NOT_RUN",
+      "evaluated_test_status": "NOT_RUN",
+      "source_evidence": {
+        "schema_version": "1.0.0",
+        "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+        "producer_id": "unity_integration",
+        "tool": {
+          "name": "unity",
+          "version": "6000.6.3f1"
+        },
+        "structured": {
+          "status": "FAIL",
+          "code": "PF-FBX-AXES"
+        },
+        "log": "{\"actual\": [100.0, 180.0, 80.00000762939453], \"asset_id\": \"robot_a\", \"category\": \"scale\", \"expected\": [1.0, 1.8, 0.8], \"issue_id\": \"ISSUE-b271977d5c56\", \"repair_supported\": true}",
+        "affected_ids": [
+          "robot_a"
+        ],
+        "artifacts": [
+          {
+            "id": "native_bindings",
+            "path": "runs/reconcile-d57742d59b4f40d8/bindings.json",
+            "sha256": "8ff8febc5cd7f9f9217388f669b9748cbc36f054b49e863f979da0bcfd0f603d"
+          }
+        ]
+      },
+      "evidence_graph": {
+        "nodes": [
+          "input:a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+          "tool:unity:6000.6.3f1",
+          "artifact:native_bindings",
+          "issue:bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b"
+        ],
+        "edges": [
+          {
+            "from": "input:a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+            "to": "issue:bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+            "relation": "supports"
+          },
+          {
+            "from": "tool:unity:6000.6.3f1",
+            "to": "issue:bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+            "relation": "supports"
+          },
+          {
+            "from": "artifact:native_bindings",
+            "to": "issue:bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+            "relation": "supports"
+          }
+        ]
+      }
+    },
+    "native_plan": {
+      "schema_version": "1.0.0",
+      "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+      "issue_id": "ISSUE-b271977d5c56",
+      "category": "scale",
+      "asset_id": "robot_a",
+      "operation": "rebuild_native_binding"
+    },
+    "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+    "symptom_signature": "bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+    "action": "rebuild_native_binding",
+    "original_specialist": "asset_producer",
+    "affected_ids": [
+      "robot_a"
+    ],
+    "dry_run": true,
+    "status": "PROPOSED",
+    "blocked_reason": null,
+    "changed_paths": [
+      "UnityProject/Assets/PolyForgeGenerated"
+    ],
+    "rollback_required": true,
+    "risk": "NATIVE_REIMPORT_AND_REGRESSION_REQUIRED",
+    "verification_plan": [
+      "validate exact input/evidence hashes",
+      "rerun targeted native checks",
+      "rerun applicable broad regression",
+      "compare original native identities and scenarios after rollback"
+    ],
+    "attempt_limit": 2,
+    "execution_authority": "REGISTERED_ENGINE_ACTION_ONLY",
+    "execution_status": "NOT_RUN"
+  },
+  "attempt": {
+    "symptom_signature": "bd580a4ea8e9c36b3d4feecc00a81d33e01a3c94c7dc0c120f31dc2c68ee696b",
+    "proposal_digest": "1326228a2e8478e3a89848b2576c9b249e61088ce3549ed4473b8f0f8d7116af",
+    "token": "00031ddeb6ee49fd914e912b17204080",
+    "attempt": 1,
+    "status": "RESERVED",
+    "evidence_paths": []
+  },
+  "transaction_id": "tx-24bf0b24140d4902"
+}

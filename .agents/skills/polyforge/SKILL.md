@@ -7,7 +7,7 @@ compatibility: Python 3.11+ and an installed polyforge CLI. Blender and Unity ca
 
 # PolyForge
 
-Discover available capabilities first. The Phase 8 catalog contains read-only
+Discover available capabilities first. The Phase 9 catalog contains read-only
 descriptor/manifest validation, scene-contract compilation/planning and five
 Blender mesh recipes, managed static audit/export and native Unity static scenes.
 S5 builds the bounded playable survival arena and runs independent public checks.
@@ -29,7 +29,7 @@ audit --workspace ROOT --asset ID audits a registered saved source. Both accept
 real S4 build requires --allow-package-downloads after user authorization; that
 authorization persists for this workspace's Unity package resolution. Use
 reconcile for observed bindings, diagnose for evidence-based issues, and repair
-plan for a no-write native-binding patch preview. S5 runs seven behavioral scenarios, real keyboard input cases and two mutants.
+plan for a no-write native-binding patch preview. S5 runs seven behavioral scenarios, real keyboard input cases and six mutants.
 Use --standalone on build for a Windows player build and smoke run.
 verify and scenario run --suite core_gameplay rerun native checks.
 Visual quality stays REVIEW
@@ -70,5 +70,11 @@ when authoring an AssetSpec, baking sprites, or using existing sprites directly.
 Do not force Blender for a native 2D request. Required subjective approval stays
 REVIEW until supplied; technical approval alone cannot replace it.
 
-Phase 8 integration does not qualify portable installation in multiple hosts.
+Phase 9 adds review-board vetoes, original-bound approved amendments and native
+transaction recovery. Read [review and recovery commands](references/review-and-recovery.md)
+before importing reviewed candidates, changing acceptance obligations or recovering
+interrupted work. Source approvals precede both direct and workforce sprite imports.
+Do not invent operator decisions or count a proposed repair as executed.
+
+Current integration does not qualify portable installation in multiple hosts.
 Final Codex/Claude guides, host smoke tests and optional MCP remain Phase 10.

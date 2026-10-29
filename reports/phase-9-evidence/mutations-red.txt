@@ -1,0 +1,116 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+_________ test_all_six_mutations_have_explicit_independent_scenarios __________
+
+    def test_all_six_mutations_have_explicit_independent_scenarios():
+>       from polyforge.scenarios.arena_oracle import MUTANT_SCENARIOS, evaluate, validate_trace
+E       ImportError: cannot import name 'MUTANT_SCENARIOS' from 'polyforge.scenarios.arena_oracle' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\scenarios\arena_oracle.py)
+
+tests\test_phase9_mutations.py:59: ImportError
+__ test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-147/test_score_counts_all_six_actu0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024D583D49E0>
+
+    def test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant(tmp_path, monkeypatch):
+        from polyforge.unity.game import score_telemetry
+    
+        p = populated(tmp_path, monkeypatch)
+        scored = score_telemetry(p, "runs/probe", GAME)
+        assert scored["status"] == "PASS"
+>       assert {n for n, r in scored["scenarios"].items() if r["mutant"]} == set(MUTANTS)
+E       AssertionError: assert {'collision_d...art_disabled'} == {'collision_d...win_reversed'}
+E         
+E         Extra items in the right set:
+E         'win_reversed'
+E         'input_disconnected'
+E         'damage_no_health'
+E         'navigation_stuck'
+E         Use -v to get more diff
+
+tests\test_phase9_mutations.py:94: AssertionError
+______ test_unexecuted_or_invalid_mutant_never_counts_as_killed[missing] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-147/test_unexecuted_or_invalid_mut0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024D5A7BDE50>
+fault = 'missing'
+
+    @pytest.mark.parametrize("fault", ["missing", "not_run", "wrong_identity"])
+    def test_unexecuted_or_invalid_mutant_never_counts_as_killed(tmp_path, monkeypatch, fault):
+        from polyforge.unity.game import score_telemetry
+    
+        p = populated(tmp_path, monkeypatch)
+        path = p.path("runs/probe/telemetry/win_reversed.json")
+        if fault == "missing":
+            path.unlink()
+        else:
+            value = trace("survival_win", "win_reversed")
+            if fault == "not_run":
+                value["frames_executed"] = 0
+            else:
+                value["input_digest"] = "b" * 64
+            atomic_json(p, path, value)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_mutations.py:116: Failed
+______ test_unexecuted_or_invalid_mutant_never_counts_as_killed[not_run] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-147/test_unexecuted_or_invalid_mut1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024D5A7BFA70>
+fault = 'not_run'
+
+    @pytest.mark.parametrize("fault", ["missing", "not_run", "wrong_identity"])
+    def test_unexecuted_or_invalid_mutant_never_counts_as_killed(tmp_path, monkeypatch, fault):
+        from polyforge.unity.game import score_telemetry
+    
+        p = populated(tmp_path, monkeypatch)
+        path = p.path("runs/probe/telemetry/win_reversed.json")
+        if fault == "missing":
+            path.unlink()
+        else:
+            value = trace("survival_win", "win_reversed")
+            if fault == "not_run":
+                value["frames_executed"] = 0
+            else:
+                value["input_digest"] = "b" * 64
+            atomic_json(p, path, value)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_mutations.py:116: Failed
+__ test_unexecuted_or_invalid_mutant_never_counts_as_killed[wrong_identity] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-147/test_unexecuted_or_invalid_mut2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000024D5A7BDF70>
+fault = 'wrong_identity'
+
+    @pytest.mark.parametrize("fault", ["missing", "not_run", "wrong_identity"])
+    def test_unexecuted_or_invalid_mutant_never_counts_as_killed(tmp_path, monkeypatch, fault):
+        from polyforge.unity.game import score_telemetry
+    
+        p = populated(tmp_path, monkeypatch)
+        path = p.path("runs/probe/telemetry/win_reversed.json")
+        if fault == "missing":
+            path.unlink()
+        else:
+            value = trace("survival_win", "win_reversed")
+            if fault == "not_run":
+                value["frames_executed"] = 0
+            else:
+                value["input_digest"] = "b" * 64
+            atomic_json(p, path, value)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_mutations.py:116: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_mutations.py::test_all_six_mutations_have_explicit_independent_scenarios
+FAILED tests/test_phase9_mutations.py::test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant
+FAILED tests/test_phase9_mutations.py::test_unexecuted_or_invalid_mutant_never_counts_as_killed[missing]
+FAILED tests/test_phase9_mutations.py::test_unexecuted_or_invalid_mutant_never_counts_as_killed[not_run]
+FAILED tests/test_phase9_mutations.py::test_unexecuted_or_invalid_mutant_never_counts_as_killed[wrong_identity]
+5 failed in 2.57s

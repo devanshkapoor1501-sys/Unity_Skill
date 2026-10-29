@@ -1,0 +1,17 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.upgrade import sync_package
+from polyforge.unity.game import verify_game
+from polyforge.runner.locks import unity_project_lock
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'))
+with unity_project_lock(p,p.path('UnityProject')):
+    print('Owned package sync:',sync_package(p),flush=True)
+result=verify_game(p.root)
+Path('.tmp/phase9/mutations-native-green.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n',encoding='utf-8')
+print(result.status,result.error_code,result.run_id,flush=True)
+if result.status=='PASS':
+    for name,record in result.data['oracles']['scenarios'].items():
+        if record['mutant']:print(record['mutation_id'],name,record['status'],record['gate_status'],flush=True)
+raise SystemExit(result.exit_code)

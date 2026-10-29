@@ -1,0 +1,109 @@
+E501 Line too long (141 > 100)
+   --> tests\test_phase9_review.py:287:101
+    |
+287 | …", ""), ("producer", "self approval"), ("release_supervisor", "role is not a human")])
+    |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+288 | …_nothing(tmp_path, operator, reason):
+289 | …iew
+    |
+
+E501 Line too long (141 > 100)
+   --> tests\test_phase9_review.py:317:101
+    |
+315 | …
+316 | …
+317 | …(Path("examples/simple_arena/brief.md").read_text(encoding="utf-8"), encoding="utf-8")
+    |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+318 | …
+319 | …
+    |
+
+E501 Line too long (121 > 100)
+   --> tests\test_phase9_review.py:339:101
+    |
+337 |     p = WorkspacePolicy(root)
+338 |     p.mkdir(".polyforge")
+339 |     p.path(".polyforge/original_prompt.txt").write_text(p.path("brief.md").read_text(encoding="utf-8"), encoding="utf-8")
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^
+340 |     game = compile_game_request(load_manifest(p.path("game_manifest.json")))
+341 |     atomic_json(p, "runs/public/game-input.json", game)
+    |
+
+E501 Line too long (132 > 100)
+   --> tests\test_phase9_review.py:348:101
+    |
+346 |         p.path("runs/public/" + filename).write_bytes(ET.tostring(xml))
+347 |     cases = {s["id"]: s for s in core_suite(game)["scenarios"]}
+348 |     variants = {**{name: name for name in cases}, "keyboard_input": "player_moves", "keyboard_restart": "restart_resets", **MUTANTS}
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+349 |     for name, scenario in variants.items():
+350 |         value = trace(scenario, name if name in MUTANTS else None)
+    |
+
+E501 Line too long (115 > 100)
+   --> tests\test_phase9_review.py:351:101
+    |
+349 |     for name, scenario in variants.items():
+350 |         value = trace(scenario, name if name in MUTANTS else None)
+351 |         ticks = sum(s["ticks"] for s in cases["player_moves" if name == "keyboard_restart" else scenario]["steps"])
+    |                                                                                                     ^^^^^^^^^^^^^^^
+352 |         if name == "keyboard_restart": ticks += 1
+353 |         value.update(input_digest=game["input_digest"], scene_id=game["scene_id"], seed=game["seed"], frames_executed=ticks)
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tests\test_phase9_review.py:352:38
+    |
+350 |         value = trace(scenario, name if name in MUTANTS else None)
+351 |         ticks = sum(s["ticks"] for s in cases["player_moves" if name == "keyboard_restart" else scenario]["steps"])
+352 |         if name == "keyboard_restart": ticks += 1
+    |                                      ^
+353 |         value.update(input_digest=game["input_digest"], scene_id=game["scene_id"], seed=game["seed"], frames_executed=ticks)
+354 |         value["samples"][-1]["frame"] = ticks
+    |
+
+E501 Line too long (124 > 100)
+   --> tests\test_phase9_review.py:353:101
+    |
+351 |         ticks = sum(s["ticks"] for s in cases["player_moves" if name == "keyboard_restart" else scenario]["steps"])
+352 |         if name == "keyboard_restart": ticks += 1
+353 |         value.update(input_digest=game["input_digest"], scene_id=game["scene_id"], seed=game["seed"], frames_executed=ticks)
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+354 |         value["samples"][-1]["frame"] = ticks
+355 |         if name.startswith("keyboard_"): value["purpose"] = "INPUT_ADAPTER"
+    |
+
+E701 Multiple statements on one line (colon)
+   --> tests\test_phase9_review.py:355:40
+    |
+353 |         value.update(input_digest=game["input_digest"], scene_id=game["scene_id"], seed=game["seed"], frames_executed=ticks)
+354 |         value["samples"][-1]["frame"] = ticks
+355 |         if name.startswith("keyboard_"): value["purpose"] = "INPUT_ADAPTER"
+    |                                        ^
+356 |         for records in [value["baseline_enemy_positions"], *[s["enemy_positions"] for s in value["samples"]]]:
+357 |             records[0]["id"] = game["enemies"][0]["id"]
+    |
+
+E501 Line too long (110 > 100)
+   --> tests\test_phase9_review.py:356:101
+    |
+354 |         value["samples"][-1]["frame"] = ticks
+355 |         if name.startswith("keyboard_"): value["purpose"] = "INPUT_ADAPTER"
+356 |         for records in [value["baseline_enemy_positions"], *[s["enemy_positions"] for s in value["samples"]]]:
+    |                                                                                                     ^^^^^^^^^^
+357 |             records[0]["id"] = game["enemies"][0]["id"]
+358 |         for expected in cases[scenario]["expected"]:
+    |
+
+F821 Undefined name `load_json`
+   --> tests\test_phase9_review.py:365:15
+    |
+363 |     assert good["status"] == "PASS" and good["game_status"] == "PARTIAL"
+364 |     assert len(good["mutations"]) == 6
+365 |     damaged = load_json(p.path("runs/public/telemetry/contact_damage.json"))
+    |               ^^^^^^^^^
+366 |     damaged["samples"][-1]["health"] = 100
+367 |     atomic_json(p, "runs/public/telemetry/contact_damage.json", damaged)
+    |
+
+Found 12 errors (2 fixed, 10 remaining).

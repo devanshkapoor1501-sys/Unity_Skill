@@ -3,7 +3,8 @@
 Phase 2 accepts v1 JSON design manifests, typed parametric recipe declarations,
 and bounded development scenarios. Unknown fields are rejected. Known v1 fields
 may declare a newer minor version; new majors require an explicit migration.
-No automatic migration or amendment workflow is implemented.
+No automatic schema migration is implemented. Phase 9 adds explicit approved
+[brief amendments](review-and-recovery.md); original obligations remain frozen.
 
 All declared assets, actors, materials, animations and sprite sheets have unique
 semantic IDs. References must exist. Asset dependencies and recipe parents must

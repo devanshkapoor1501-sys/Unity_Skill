@@ -1,0 +1,90 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+__ test_unknown_game_brief_requires_review_and_wrong_game_has_inspector_veto __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-158/test_unknown_game_brief_requir0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002110CE7F5F0>
+
+    def test_unknown_game_brief_requires_review_and_wrong_game_has_inspector_veto(tmp_path, monkeypatch):
+        from pathlib import Path
+        from polyforge.review import acceptance, board
+    
+        p, candidate, task = candidate_fixture(tmp_path)
+        # Unit boundary: registered technical inspection succeeds; acceptance has its own veto.
+        monkeypatch.setattr(board, "inspect_candidate", lambda *a, **k: {"verdict": "APPROVED"})
+        task["task_class"] = "BUILD_GAME"
+        task["capability_id"] = "unity.game.arena.v1"
+        p.mkdir(".polyforge")
+        p.path(".polyforge/original_prompt.txt").write_text("An unrelated game brief", encoding="utf-8")
+>       reviewed = board.review_candidate(p, candidate, task)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase9_review.py:434: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\review\board.py:173: in review_candidate
+    policy, public_acceptance_spec(policy), {"run_id": candidate["production_run_id"]}
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000002110D1CBCB0>
+
+    def public_acceptance_spec(policy: WorkspacePolicy) -> dict[str, Any]:
+        spec: dict[str, Any] = json.loads(
+            files("polyforge").joinpath("data/arena_acceptance.json").read_text("utf-8")
+        )
+        frozen = policy.path(".polyforge/original_prompt.txt").read_text(encoding="utf-8")
+        if frozen != spec["original_brief"]:
+>           raise InputError("No independently authored public acceptance specification for this brief")
+E           polyforge.contracts.validation.InputError: No independently authored public acceptance specification for this brief
+
+polyforge\review\acceptance.py:29: InputError
+_____________________ test_frozen_brief_reads_are_bounded _____________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-158/test_frozen_brief_reads_are_bo0')
+
+    def test_frozen_brief_reads_are_bounded(tmp_path):
+        from polyforge.review.acceptance import public_acceptance_spec
+    
+        p = WorkspacePolicy(tmp_path)
+        p.mkdir(".polyforge")
+        p.path(".polyforge/original_prompt.txt").write_bytes(b"x" * 262145)
+        with pytest.raises(InputError, match="limit|budget|exceed"):
+>           public_acceptance_spec(p)
+
+tests\test_phase9_review.py:451: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000002110D26D5E0>
+
+    def public_acceptance_spec(policy: WorkspacePolicy) -> dict[str, Any]:
+        spec: dict[str, Any] = json.loads(
+            files("polyforge").joinpath("data/arena_acceptance.json").read_text("utf-8")
+        )
+        frozen = policy.path(".polyforge/original_prompt.txt").read_text(encoding="utf-8")
+        if frozen != spec["original_brief"]:
+>           raise InputError("No independently authored public acceptance specification for this brief")
+E           polyforge.contracts.validation.InputError: No independently authored public acceptance specification for this brief
+
+polyforge\review\acceptance.py:29: InputError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-158/test_frozen_brief_reads_are_bo0')
+
+    def test_frozen_brief_reads_are_bounded(tmp_path):
+        from polyforge.review.acceptance import public_acceptance_spec
+    
+        p = WorkspacePolicy(tmp_path)
+        p.mkdir(".polyforge")
+        p.path(".polyforge/original_prompt.txt").write_bytes(b"x" * 262145)
+>       with pytest.raises(InputError, match="limit|budget|exceed"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E        Regex: 'limit|budget|exceed'
+E        Input: 'No independently authored public acceptance specification for this brief'
+
+tests\test_phase9_review.py:450: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_unknown_game_brief_requires_review_and_wrong_game_has_inspector_veto
+FAILED tests/test_phase9_review.py::test_frozen_brief_reads_are_bounded - Ass...
+2 failed in 1.57s

@@ -1,0 +1,82 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+__________ test_board_is_pure_and_discloses_logical_review_ownership __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_board_is_pure_and_disclos0')
+
+    def test_board_is_pure_and_discloses_logical_review_ownership(tmp_path):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:48: ModuleNotFoundError
+_____ test_required_subjective_approval_cannot_be_invented_by_supervisor ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_required_subjective_appro0')
+
+    def test_required_subjective_approval_cannot_be_invented_by_supervisor(tmp_path):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:65: ModuleNotFoundError
+____________ test_changed_or_forged_board_receipt_is_denied[brief] ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_changed_or_forged_board_r0')
+change = 'brief'
+
+    @pytest.mark.parametrize("change", ["brief", "producer", "evidence", "verdict"])
+    def test_changed_or_forged_board_receipt_is_denied(tmp_path, change):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:81: ModuleNotFoundError
+__________ test_changed_or_forged_board_receipt_is_denied[producer] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_changed_or_forged_board_r1')
+change = 'producer'
+
+    @pytest.mark.parametrize("change", ["brief", "producer", "evidence", "verdict"])
+    def test_changed_or_forged_board_receipt_is_denied(tmp_path, change):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:81: ModuleNotFoundError
+__________ test_changed_or_forged_board_receipt_is_denied[evidence] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_changed_or_forged_board_r2')
+change = 'evidence'
+
+    @pytest.mark.parametrize("change", ["brief", "producer", "evidence", "verdict"])
+    def test_changed_or_forged_board_receipt_is_denied(tmp_path, change):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:81: ModuleNotFoundError
+___________ test_changed_or_forged_board_receipt_is_denied[verdict] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_changed_or_forged_board_r3')
+change = 'verdict'
+
+    @pytest.mark.parametrize("change", ["brief", "producer", "evidence", "verdict"])
+    def test_changed_or_forged_board_receipt_is_denied(tmp_path, change):
+>       from polyforge.review.board import require_promotion, review_candidate
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:81: ModuleNotFoundError
+____ test_inspector_access_is_limited_to_sealed_files_not_whole_runs_tree _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-125/test_inspector_access_is_limit0')
+
+    def test_inspector_access_is_limited_to_sealed_files_not_whole_runs_tree(tmp_path):
+>       from polyforge.review.board import CandidateReader
+E       ModuleNotFoundError: No module named 'polyforge.review'
+
+tests\test_phase9_review.py:99: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_board_is_pure_and_discloses_logical_review_ownership
+FAILED tests/test_phase9_review.py::test_required_subjective_approval_cannot_be_invented_by_supervisor
+FAILED tests/test_phase9_review.py::test_changed_or_forged_board_receipt_is_denied[brief]
+FAILED tests/test_phase9_review.py::test_changed_or_forged_board_receipt_is_denied[producer]
+FAILED tests/test_phase9_review.py::test_changed_or_forged_board_receipt_is_denied[evidence]
+FAILED tests/test_phase9_review.py::test_changed_or_forged_board_receipt_is_denied[verdict]
+FAILED tests/test_phase9_review.py::test_inspector_access_is_limited_to_sealed_files_not_whole_runs_tree
+7 failed in 0.50s

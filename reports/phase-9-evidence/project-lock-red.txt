@@ -1,0 +1,30 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_project_lock_does_not_create_an_unbootstrapped_project _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-140/test_project_lock_does_not_cre0')
+
+    def test_project_lock_does_not_create_an_unbootstrapped_project(tmp_path):
+        from polyforge.runner.locks import unity_project_lock
+    
+        p = WorkspacePolicy(tmp_path)
+>       with unity_project_lock(p, p.path("UnityProject")):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase9_recovery.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001FBAC12F530>
+project = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-140/test_project_lock_does_not_cre0/UnityProject')
+
+    def unity_project_lock(policy: WorkspacePolicy, project: Path) -> FileLock:
+        """Use one physical lock per approved project, even under nested workspace roots."""
+        project = policy.path(project)
+        if not project.is_dir():
+>           raise InputError("Unity project directory does not exist")
+E           polyforge.contracts.validation.InputError: Unity project directory does not exist
+
+polyforge\runner\locks.py:26: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_project_lock_does_not_create_an_unbootstrapped_project
+1 failed in 0.39s

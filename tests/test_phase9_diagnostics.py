@@ -137,7 +137,7 @@ def test_missing_version_unsafe_reference_and_invalid_status_fail_closed(tmp_pat
     assert list(tmp_path.iterdir()) == []
 
 
-def test_attempt_limit_is_durable_and_same_failed_proposal_escalates(tmp_path):
+def test_attempt_limit_is_durable_and_same_failed_proposal_escalates(tmp_path, monkeypatch):
     from polyforge.repairs.diagnostics import (
         diagnose_evidence,
         finish_attempt,
@@ -148,6 +148,11 @@ def test_attempt_limit_is_durable_and_same_failed_proposal_escalates(tmp_path):
     p = WorkspacePolicy(tmp_path)
     p.mkdir("runs/source")
     p.path("runs/source/observation.json").write_bytes(b"observed")
+    from polyforge.repairs import diagnostics
+
+    monkeypatch.setattr(
+        diagnostics, "_native_plan", lambda *_: {"operation": "rebuild_native_binding"}
+    )
     issue = diagnose_evidence(evidence())
     plan = plan_repair(p, issue)
     attempt = reserve_attempt(p, issue, plan)
@@ -191,3 +196,18 @@ def test_forensic_cli_is_pure_and_unknown_repairs_stay_blocked(tmp_path):
     assert result.data["diagnosis"]["playbook"] == "UNITY_API"
     assert result.data["diagnosis"]["recommended_action"] is None
     assert not p.path(".polyforge").exists()
+
+
+@pytest.mark.parametrize("status", ["BLOCKED", "NOT_RUN"])
+def test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure(
+    status,
+):
+    from polyforge.repairs.diagnostics import diagnose_evidence
+
+    value = evidence("PF-COMPONENT-MISSING")
+    value["structured"]["status"] = status
+    value["log"] = "error CS0117 from an older attempt"
+    result = diagnose_evidence(value)
+    assert result["diagnosis_status"] == status
+    assert result["recommended_action"] is None
+    assert not result["hypotheses"]

@@ -1,0 +1,98 @@
+.................FFF                                                     [100%]
+================================== FAILURES ===================================
+__ test_invalid_prepare_dependencies_are_rejected_before_native_observation ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-162/test_invalid_prepare_dependenc0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001965171F710>
+
+    def test_invalid_prepare_dependencies_are_rejected_before_native_observation(tmp_path, monkeypatch):
+        from polyforge.unity import recovery
+    
+        p, path = source_fixture(tmp_path)
+        before = set(tmp_path.rglob("*"))
+        monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: pytest.fail("invalid input reached a native worker"))
+        with pytest.raises(InputError):
+>           recovery.prepare_transaction(p, "invalid_preflight", dependencies=["../private.blend"])
+
+tests\test_phase9_recovery.py:267: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\recovery.py:206: in prepare_transaction
+    prestate = observe_state(policy, "runs/recovery-baseline-" + identifier)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+a = (<polyforge.security.paths.WorkspacePolicy object at 0x000001965171F680>, 'runs/recovery-baseline-invalid_preflight')
+k = {}
+
+>   monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: pytest.fail("invalid input reached a native worker"))
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: invalid input reached a native worker
+
+tests\test_phase9_recovery.py:265: Failed
+_ test_workforce_resume_preserves_original_ledger_identity_and_mode[sequential] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-162/test_workforce_resume_preserve0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001965175C7A0>
+mode = 'sequential'
+
+    @pytest.mark.parametrize("mode", ["sequential", "single"])
+    def test_workforce_resume_preserves_original_ledger_identity_and_mode(tmp_path, monkeypatch, mode):
+        from test_workforce import request
+        from polyforge.contracts.results import Result
+        from polyforge.unity.recovery import resume_run
+        from polyforge.workforce import orchestrator
+        from polyforge.workforce.router import plan_task
+    
+        p = WorkspacePolicy(tmp_path)
+        saved = plan_task(request(), workspace=tmp_path)
+        run_id = saved["task_id"] + ("_single" if mode == "single" else "")
+        atomic_json(p, "workforce/" + run_id + "/plan.json", saved)
+        calls = []
+        def run(*args, **kwargs):
+            calls.append(kwargs.get("mode", "sequential"))
+            return Result()
+        monkeypatch.setattr(orchestrator, "run_task", run)
+        assert resume_run(tmp_path, run_id).status == "PASS"
+        assert calls == [mode]
+        atomic_json(p, "workforce/renamed_run/plan.json", saved)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:291: Failed
+__ test_workforce_resume_preserves_original_ledger_identity_and_mode[single] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-162/test_workforce_resume_preserve1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001965186EF00>
+mode = 'single'
+
+    @pytest.mark.parametrize("mode", ["sequential", "single"])
+    def test_workforce_resume_preserves_original_ledger_identity_and_mode(tmp_path, monkeypatch, mode):
+        from test_workforce import request
+        from polyforge.contracts.results import Result
+        from polyforge.unity.recovery import resume_run
+        from polyforge.workforce import orchestrator
+        from polyforge.workforce.router import plan_task
+    
+        p = WorkspacePolicy(tmp_path)
+        saved = plan_task(request(), workspace=tmp_path)
+        run_id = saved["task_id"] + ("_single" if mode == "single" else "")
+        atomic_json(p, "workforce/" + run_id + "/plan.json", saved)
+        calls = []
+        def run(*args, **kwargs):
+            calls.append(kwargs.get("mode", "sequential"))
+            return Result()
+        monkeypatch.setattr(orchestrator, "run_task", run)
+        assert resume_run(tmp_path, run_id).status == "PASS"
+>       assert calls == [mode]
+E       AssertionError: assert ['sequential'] == ['single']
+E         
+E         At index 0 diff: 'sequential' != 'single'
+E         Use -v to get more diff
+
+tests\test_phase9_recovery.py:289: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_invalid_prepare_dependencies_are_rejected_before_native_observation
+FAILED tests/test_phase9_recovery.py::test_workforce_resume_preserves_original_ledger_identity_and_mode[sequential]
+FAILED tests/test_phase9_recovery.py::test_workforce_resume_preserves_original_ledger_identity_and_mode[single]
+3 failed, 17 passed in 11.08s

@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "task_class": "BUILD_GAME",
+  "brief": "# Isometric robot arena\n\nCreate a small editable 3D isometric arena in Unity with Blender-generated\nground, crate obstacles, and a modular robot enemy. Use an original generated\nasset style with simple blue metallic material; no downloaded asset dependency.\n\nThe player moves using WASD, remains inside the arena, and collides with walls\nand obstacles. A robot patrols and damages the player on contact. Show health\nand a 30-second survival timer. Surviving wins; losing all health fails. Press R\nto restart positions, health, timer, and the win/failure state.\n\nKeep editable Blender originals and native Unity scenes/prefabs. Verify actual\nmovement, collision, enemy behavior, damage, win/failure, and restart separately\nfrom compilation. Capture four asset views and disclose pending visual review.\n\nThis is a public development brief, not a hidden evaluation task. Independent\nrelease acceptance must come from separately owned frozen-brief oracles.\n",
+  "domain_tags": [
+    "unity",
+    "gameplay"
+  ],
+  "feature_ids": [
+    "player_control"
+  ],
+  "capability_id": "unity.game.arena.v1",
+  "input": {
+    "schema_version": "1.0.0"
+  }
+}

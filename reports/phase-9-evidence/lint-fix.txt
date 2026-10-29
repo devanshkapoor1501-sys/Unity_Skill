@@ -1,0 +1,596 @@
+E501 Line too long (130 > 100)
+  --> polyforge\capabilities\dispatch.py:16:101
+   |
+14 |         from polyforge.security.paths import WorkspacePolicy
+15 |
+16 |         source_review = review_sprite_source(WorkspacePolicy(context.workspace), inputs, remember_requirement=not context.dry_run)
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+17 |         if source_review["promotion"] != "APPROVED":
+18 |             return Result(status="REVIEW", exit_code=4, data={"source_review": source_review})
+   |
+
+E501 Line too long (180 > 100)
+  --> polyforge\cli.py:93:101
+   |
+92 | …gs.input)))
+93 | …D" else "REVIEW", exit_code=0 if review["promotion"] == "APPROVED" else 4, data={"source_review": review})
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+94 | …
+95 | …
+   |
+
+E501 Line too long (191 > 100)
+  --> polyforge\cli.py:97:101
+   |
+95 | …
+96 | …
+97 | …(policy.path(args.task)), load_json(policy.path(args.amendment)), operator=args.operator, reason=args.reason)})
+   |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+98 | …
+99 | …
+   |
+
+E501 Line too long (125 > 100)
+  --> polyforge\commands.py:34:101
+   |
+32 |         implemented=True,
+33 |         phase=9,
+34 |         example=("review", "sprite-source", "--workspace", "workspace/arena_demo", "--input", "sprite-input.json", "--json"),
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+35 |     ),
+36 |     CommandSpec(
+   |
+
+E501 Line too long (234 > 100)
+  --> polyforge\commands.py:39:101
+   |
+37 | …
+38 | …
+39 | …(("--operator",), {"required": True}), (("--reason",), {"required": True}), (("--approved",), {"action": "store_true", "required": True})),
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | …
+41 | …
+   |
+
+E501 Line too long (214 > 100)
+  --> polyforge\commands.py:42:101
+   |
+40 | …
+41 | …
+42 | …json", "--amendment", "amendment.json", "--operator", "operator", "--reason", "Approved addition", "--approved", "--json"),
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+43 | …
+44 | …
+   |
+
+E501 Line too long (111 > 100)
+   --> polyforge\repairs\diagnostics.py:246:101
+    |
+244 |         return None
+245 |     request = current_request(policy)
+246 |     if issue["input_digest"] != request["input_digest"] or recorded["input_digest"] != request["input_digest"]:
+    |                                                                                                     ^^^^^^^^^^^
+247 |         raise InputError("Forensic native inputs changed; diagnose the current revision")
+248 |     observed = reconcile_report(request, load_json(policy.path(path)))
+    |
+
+E501 Line too long (162 > 100)
+   --> polyforge\repairs\diagnostics.py:249:101
+    |
+247 | …e the current revision")
+248 | …th)))
+249 | …", "axis": "PF-FBX-AXES", "material": "PF-MATERIAL-SWAPPED", "component": "PF-COMPONENT-MISSING"}
+    |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+250 | …ed_ids"] == [row["asset_id"]] and codes.get(row["category"]) == issue["source_evidence"]["structured"]["code"]]
+251 | …
+    |
+
+E501 Line too long (176 > 100)
+   --> polyforge\repairs\diagnostics.py:250:101
+    |
+248 | …
+249 | …s": "PF-FBX-AXES", "material": "PF-MATERIAL-SWAPPED", "component": "PF-COMPONENT-MISSING"}
+250 | …] == [row["asset_id"]] and codes.get(row["category"]) == issue["source_evidence"]["structured"]["code"]]
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+251 | …
+252 | …
+    |
+
+E501 Line too long (200 > 100)
+   --> polyforge\repairs\diagnostics.py:257:101
+    |
+255 | …
+256 | …)
+257 | …ue_id": identifier, "category": row["category"], "asset_id": row["asset_id"], "operation": "rebuild_native_binding"}
+    |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+
+E501 Line too long (141 > 100)
+   --> polyforge\repairs\diagnostics.py:292:101
+    |
+290 | …
+291 | …",
+292 | …fely reconstructable registered original inputs/action; route to original specialist",
+    |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+293 | …
+294 | …
+    |
+
+E501 Line too long (191 > 100)
+  --> polyforge\repairs\execution.py:20:101
+   |
+18 | …
+19 | …
+20 | … "PASS" else "BLOCKED" if result.status == "BLOCKED" else "FAIL", evidence_paths=[path, *result.evidence_paths])
+   |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 | …
+   |
+
+E501 Line too long (115 > 100)
+  --> polyforge\repairs\execution.py:50:101
+   |
+48 | def resume_forensic(policy: WorkspacePolicy, run: str) -> Result:
+49 |     intent = load_json(policy.path("runs/" + run + "/intent.json"))
+50 |     if set(intent) != {"proposal", "attempt", "transaction_id"} or run != "forensic-" + intent["attempt"]["token"]:
+   |                                                                                                     ^^^^^^^^^^^^^^^
+51 |         raise InputError("Forensic resume identity differs from durable ownership")
+52 |     saved = policy.path("runs/" + run + "/result.json")
+   |
+
+E501 Line too long (142 > 100)
+  --> polyforge\repairs\execution.py:58:101
+   |
+56 | … and attempt completion.
+57 | …ensic-attempts.json"))
+58 | …attempt"]["symptom_signature"], []) if a["token"] == intent["attempt"]["token"]), None)
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+59 | …
+60 | …
+   |
+
+E501 Line too long (187 > 100)
+  --> polyforge\repairs\execution.py:66:101
+   |
+64 | …
+65 | …
+66 | …"PF-FORENSIC-NO-TRANSACTION", "Interrupted before mutation; reserved proposal is not automatically replayed"))
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+67 | …
+68 | …
+   |
+
+E501 Line too long (127 > 100)
+  --> polyforge\repairs\execution.py:75:101
+   |
+73 |         raise InputError("Forensic transaction ownership mismatch")
+74 |     if journal["status"] == "COMMITTED":
+75 |         result = Result(rollback_id=tx_id, data={"repair_status": "COMMITTED"}, evidence_paths=[tx.relative + "/journal.json"])
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+76 |     else:
+77 |         recovered = resume_run(policy.root, tx_id)
+   |
+
+E501 Line too long (255 > 100)
+  --> polyforge\repairs\execution.py:78:101
+   |
+76 | …
+77 | …
+78 | …T_FAILURE, "PF-FORENSIC-RECOVERED", "Interrupted repair restored its baseline; no repair replayed"), rollback_id=tx_id, evidence_paths=recovered.evidence_paths)
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+79 | …
+   |
+
+E501 Line too long (116 > 100)
+  --> polyforge\review\acceptance.py:68:101
+   |
+66 |     scored = score_telemetry(policy, relative, job)
+67 |     rows = []
+68 |     known = json.loads(files("polyforge").joinpath("data/arena_acceptance.json").read_text("utf-8"))["requirements"]
+   |                                                                                                     ^^^^^^^^^^^^^^^^
+69 |     for requirement in spec["requirements"]:
+70 |         supported = any(
+   |
+
+E501 Line too long (108 > 100)
+  --> polyforge\review\acceptance.py:71:101
+   |
+69 |     for requirement in spec["requirements"]:
+70 |         supported = any(
+71 |             all(requirement[k] == r[k] for k in ("feature_id", "artifact_id", "unity_component", "oracles"))
+   |                                                                                                     ^^^^^^^^
+72 |             for r in known
+73 |         )
+   |
+
+E501 Line too long (127 > 100)
+  --> polyforge\review\acceptance.py:89:101
+   |
+87 |         )
+88 |     return {
+89 |         "status": "FAIL" if scored["status"] != "PASS" else "REVIEW" if any(r["status"] == "REVIEW" for r in rows) else "PASS",
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+90 |         "game_status": "PARTIAL",
+91 |         "oracle_owner": "PUBLIC_DEVELOPMENT",
+   |
+
+E501 Line too long (105 > 100)
+  --> polyforge\review\amendments.py:30:101
+   |
+28 | …     if (
+29 | …         not isinstance(row, dict)
+30 | …         or set(row) != {"original_phrase", "feature_id", "artifact_id", "unity_component", "oracles"}
+   |                                                                                                   ^^^^^
+31 | …         or any(not isinstance(row[k], str) or not 1 <= len(row[k]) <= 4096 for k in ("original_phrase", "feature_id", "artifact_id",…
+32 | …         or row["original_phrase"] not in value["text"]
+   |
+
+E501 Line too long (156 > 100)
+  --> polyforge\review\amendments.py:31:101
+   |
+29 | …
+30 | …artifact_id", "unity_component", "oracles"}
+31 | …(row[k]) <= 4096 for k in ("original_phrase", "feature_id", "artifact_id", "unity_component"))
+   |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+32 | …
+33 | …
+   |
+
+E501 Line too long (120 > 100)
+  --> polyforge\review\amendments.py:35:101
+   |
+33 |             or not isinstance(row["oracles"], list)
+34 |             or not 1 <= len(row["oracles"]) <= 32
+35 |             or any(not isinstance(o, str) or not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,79}", o) for o in row["oracles"])
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+36 |         ):
+37 |             raise InputError("Amendment obligations need phrases and explicit typed oracle mappings")
+   |
+
+E501 Line too long (101 > 100)
+  --> polyforge\review\amendments.py:37:101
+   |
+35 |             or any(not isinstance(o, str) or not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]{0,79}", o) for o in row["oracles"])
+36 |         ):
+37 |             raise InputError("Amendment obligations need phrases and explicit typed oracle mappings")
+   |                                                                                                     ^
+   |
+
+E501 Line too long (200 > 100)
+  --> polyforge\review\amendments.py:59:101
+   |
+57 | …
+58 | …
+59 | …f_digest", "sequence", "previous_digest", "operator", "reason", "origin", "identity_authenticated", "record_digest"}
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+60 | …
+61 | …
+   |
+
+E501 Line too long (105 > 100)
+  --> polyforge\review\amendments.py:62:101
+   |
+60 |         if not isinstance(record, dict) or set(record) != fields:
+61 |             raise InputError("Malformed amendment record")
+62 |         _validate_amendment({k: record[k] for k in ("text", "requirements", "visual_approval_required")})
+   |                                                                                                     ^^^^^
+63 |         if (
+64 |             record["original_brief_digest"] != brief_digest
+   |
+
+E501 Line too long (125 > 100)
+  --> polyforge\review\amendments.py:69:101
+   |
+67 |             or record["origin"] != "EXPLICIT_LOCAL_OPERATOR_ATTESTATION"
+68 |             or record["identity_authenticated"] is not False
+69 |             or any(not isinstance(record[k], str) or not 1 <= len(record[k].strip()) <= 4096 for k in ("operator", "reason"))
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+70 |             or record["operator"] in {*ROLES, "producer", "inspector"}
+71 |             or record["record_digest"] != canonical_digest({k: v for k, v in record.items() if k != "record_digest"})
+   |
+
+E501 Line too long (117 > 100)
+  --> polyforge\review\amendments.py:71:101
+   |
+69 |             or any(not isinstance(record[k], str) or not 1 <= len(record[k].strip()) <= 4096 for k in ("operator", "reason"))
+70 |             or record["operator"] in {*ROLES, "producer", "inspector"}
+71 |             or record["record_digest"] != canonical_digest({k: v for k, v in record.items() if k != "record_digest"})
+   |                                                                                                     ^^^^^^^^^^^^^^^^^
+72 |         ):
+73 |             raise InputError("Amendment history was reordered or substituted")
+   |
+
+E501 Line too long (144 > 100)
+  --> polyforge\review\amendments.py:80:101
+   |
+80 | …[str, Any], amendment: dict[str, Any], *, operator: str, reason: str) -> dict[str, Any]:
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+81 | …
+82 | …
+   |
+
+E501 Line too long (147 > 100)
+  --> polyforge\review\amendments.py:83:101
+   |
+81 | …
+82 | …
+83 | …()) <= 4096 for v in (operator, reason)) or operator in {*ROLES, "producer", "inspector"}:
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+84 | …local operator, not a worker role")
+85 | …
+   |
+
+E501 Line too long (266 > 100)
+  --> polyforge\review\amendments.py:90:101
+   |
+88 | …
+89 | …
+90 | …]) + 1, "previous_digest": chain["chain_digest"], "operator": operator, "reason": reason, "origin": "EXPLICIT_LOCAL_OPERATOR_ATTESTATION", "identity_authenticated": False}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+91 | …
+92 | …d], "chain_digest": record["record_digest"]}
+   |
+
+E501 Line too long (139 > 100)
+  --> polyforge\review\amendments.py:92:101
+   |
+90 | …": digest, "sequence": len(chain["records"]) + 1, "previous_digest": chain["chain_digest"], "operator": operator, "reason": reason, "…
+91 | …cord)
+92 | …ef"], "records": [*chain["records"], record], "chain_digest": record["record_digest"]}
+   |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+93 | …+ digest + ".json", chain)
+94 | …
+   |
+
+E501 Line too long (131 > 100)
+  --> polyforge\review\sprite_source.py:18:101
+   |
+18 | def review_sprite_source(policy: WorkspacePolicy, inputs: dict[str, Any], *, remember_requirement: bool = False) -> dict[str, Any]:
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+19 |     validate_schema(inputs, "sprite_import.schema.json")
+20 |     paths = [inputs["metadata_file"], inputs["atlas_file"], *inputs["frame_files"]]
+   |
+
+E501 Line too long (101 > 100)
+  --> polyforge\review\sprite_source.py:26:101
+   |
+24 |         assert_public_path(policy, path)
+25 |     metadata = load_json(policy.path(inputs["metadata_file"]))
+26 |     if not isinstance(metadata.get("source_license"), str) or not metadata["source_license"].strip():
+   |                                                                                                     ^
+27 |         raise InputError("Sprite source license required before native import")
+28 |     payloads = []
+   |
+
+E501 Line too long (206 > 100)
+  --> polyforge\review\sprite_source.py:38:101
+   |
+36 | …
+37 | …
+38 | …a256": hashlib.sha256(data).hexdigest()} for name, data in zip(paths, payloads, strict=True)], key=lambda r: r["path"])
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+39 | …
+40 | …
+   |
+
+E501 Line too long (254 > 100)
+  --> polyforge\review\sprite_source.py:41:101
+   |
+39 | …
+40 | …
+41 | …files)[:32], "producer_id": "sprite_source", "brief_digest": canonical_digest("Technical sprite source: " + inputs["asset_id"]), "revision": 1, "files": files}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+42 | …
+43 | …
+   |
+
+E501 Line too long (144 > 100)
+  --> polyforge\review\sprite_source.py:61:101
+   |
+59 | …"
+60 | …
+61 | …] == "REJECTED" or human["amendment_digest"] == amendments["chain_digest"] else "REVIEW"
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+62 | … "NOT_REQUIRED"} else subjective
+63 | …s"]) and promotion != "REJECTED":
+   |
+
+E501 Line too long (381 > 100)
+  --> polyforge\review\sprite_source.py:65:101
+   |
+63 | …
+64 | …
+65 | …subjective": subjective, "promotion": promotion, "human_review": human, "inspection": inspection, "amendment_digest": amendments["chain_digest"], "native_import": "NOT_RUN", "tool_identity": "polyforge.registered.sprite_source_inspection.v1", "independence": "DIFFERENT_ROLE_SAME_HOST"}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (111 > 100)
+   --> polyforge\sprites\integration.py:110:101
+    |
+108 |             raise InputError("Sprite source approval changed before project lock")
+109 |         source_hashes = {f["path"]: f["sha256"] for f in source_review["candidate"]["files"]}
+110 |         for name, payload in [(inputs["atlas_file"], sheet), *zip(inputs["frame_files"], frames, strict=True)]:
+    |                                                                                                     ^^^^^^^^^^^
+111 |             if source_hashes[policy.path(name).relative_to(policy.root).as_posix()] != hashlib.sha256(payload).hexdigest():
+112 |                 raise InputError("Sprite bytes changed after source approval")
+    |
+
+E501 Line too long (123 > 100)
+   --> polyforge\sprites\integration.py:111:101
+    |
+109 |         source_hashes = {f["path"]: f["sha256"] for f in source_review["candidate"]["files"]}
+110 |         for name, payload in [(inputs["atlas_file"], sheet), *zip(inputs["frame_files"], frames, strict=True)]:
+111 |             if source_hashes[policy.path(name).relative_to(policy.root).as_posix()] != hashlib.sha256(payload).hexdigest():
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^
+112 |                 raise InputError("Sprite bytes changed after source approval")
+113 |         if canonical_digest(metadata) != canonical_digest(load_json(policy.path(inputs["metadata_file"]))):
+    |
+
+E501 Line too long (107 > 100)
+   --> polyforge\sprites\integration.py:113:101
+    |
+111 |             if source_hashes[policy.path(name).relative_to(policy.root).as_posix()] != hashlib.sha256(payload).hexdigest():
+112 |                 raise InputError("Sprite bytes changed after source approval")
+113 |         if canonical_digest(metadata) != canonical_digest(load_json(policy.path(inputs["metadata_file"]))):
+    |                                                                                                     ^^^^^^^
+114 |             raise InputError("Sprite metadata changed after source approval")
+115 |         prepare_project(policy, installed_template(executable))
+    |
+
+E501 Line too long (180 > 100)
+  --> tests\test_phase9_amendments.py:65:101
+   |
+64 | …
+65 | …", "feature_id": "online", "artifact_id": "server", "unity_component": "Network", "oracles": ["online"]}])
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+66 | …
+67 | …
+   |
+
+E501 Line too long (108 > 100)
+  --> tests\test_phase9_amendments.py:72:101
+   |
+70 |     assert review_candidate(p, candidate, task)["promotion"] == "REVIEW"
+71 |     with pytest.raises(InputError):
+72 |         append_amendment(p, task, {**value, "text": "different"}, operator="owner", reason="Missing phrase")
+   |                                                                                                     ^^^^^^^^
+   |
+
+E501 Line too long (104 > 100)
+   --> tests\test_phase9_diagnostics.py:153:101
+    |
+151 |     from polyforge.repairs import diagnostics
+152 |
+153 |     monkeypatch.setattr(diagnostics, "_native_plan", lambda *_: {"operation": "rebuild_native_binding"})
+    |                                                                                                     ^^^^
+154 |     issue = diagnose_evidence(evidence())
+155 |     plan = plan_repair(p, issue)
+    |
+
+E501 Line too long (104 > 100)
+  --> tests\test_phase9_forensic_execution.py:18:101
+   |
+16 |     p.mkdir("runs/source")
+17 |     p.path("runs/source/observation.json").write_bytes(b"observed")
+18 |     for code in ("PF-GEOMETRY-DEGENERATE", "PF-SPRITE-CURVE", "PF-ANIMATION-SLOT", "PF-WORKER-TIMEOUT"):
+   |                                                                                                     ^^^^
+19 |         issue = diagnose_evidence(evidence(code))
+20 |         plan = plan_repair(p, issue)
+   |
+
+E501 Line too long (181 > 100)
+  --> tests\test_phase9_forensic_execution.py:35:101
+   |
+33 | …
+34 | …
+35 | …id": "ISSUE-native", "category": "component", "asset_id": "robot_a", "operation": "rebuild_native_binding"}
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+36 | …
+37 | …)
+   |
+
+E501 Line too long (105 > 100)
+  --> tests\test_phase9_forensic_execution.py:55:101
+   |
+55 | def test_crashed_forensic_reservation_without_transaction_is_blocked_not_replayed(tmp_path, monkeypatch):
+   |                                                                                                     ^^^^^
+56 |     from polyforge.repairs import diagnostics
+57 |     from polyforge.unity import recovery
+   |
+
+E501 Line too long (104 > 100)
+  --> tests\test_phase9_forensic_execution.py:62:101
+   |
+60 |     p.mkdir("runs/source")
+61 |     p.path("runs/source/observation.json").write_bytes(b"observed")
+62 |     monkeypatch.setattr(diagnostics, "_native_plan", lambda *_: {"operation": "rebuild_native_binding"})
+   |                                                                                                     ^^^^
+63 |     issue = diagnostics.diagnose_evidence(evidence())
+64 |     plan = diagnostics.plan_repair(p, issue)
+   |
+
+E501 Line too long (114 > 100)
+  --> tests\test_phase9_forensic_execution.py:67:101
+   |
+65 |     attempt = diagnostics.reserve_attempt(p, issue, plan)
+66 |     run = "forensic-" + attempt["token"]
+67 |     atomic_json(p, "runs/" + run + "/intent.json", {"proposal": plan, "attempt": attempt, "transaction_id": None})
+   |                                                                                                     ^^^^^^^^^^^^^^
+68 |     result = recovery.resume_run(tmp_path, run)
+69 |     assert result.status == "BLOCKED"
+   |
+
+E501 Line too long (119 > 100)
+  --> tests\test_phase9_forensic_execution.py:70:101
+   |
+68 |     result = recovery.resume_run(tmp_path, run)
+69 |     assert result.status == "BLOCKED"
+70 |     assert load_json(p.path(".polyforge/forensic-attempts.json"))[issue["symptom_signature"]][0]["status"] == "BLOCKED"
+   |                                                                                                     ^^^^^^^^^^^^^^^^^^^
+   |
+
+E501 Line too long (376 > 100)
+  --> tests\test_phase9_sprite_gate.py:25:101
+   |
+23 | …
+24 | …
+25 | …": 128, "frame_count": 6, "pixels_per_unit": 64, "fps": 6, "pivot": [0.5, 0.1], "trim": "NONE", "order": list(range(6)), "frame_sha256": [hashlib.sha256(f).hexdigest() for f in frames], "source_sha256": "a" * 64, "framing": "FIXED_ORTHOGRAPHIC", "source_license": "USER_PROVIDED"})
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+26 | …, "atlas_file": "atlas.png", "metadata_file": "atlas.json", "frame_files": [f"frame-{i}.png" for i in range(6)], "visual_approval_required": True}
+27 | …
+   |
+
+E501 Line too long (241 > 100)
+  --> tests\test_phase9_sprite_gate.py:26:101
+   |
+24 | …
+25 | …": 128, "frame_count": 6, "pixels_per_unit": 64, "fps": 6, "pivot": [0.5, 0.1], "trim": "NONE", "order": list(range(6)), "frame_sha256": [hashlib.sha25…
+26 | …, "atlas_file": "atlas.png", "metadata_file": "atlas.json", "frame_files": [f"frame-{i}.png" for i in range(6)], "visual_approval_required": True}
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+27 | …
+   |
+
+E501 Line too long (249 > 100)
+  --> tests\test_phase9_sprite_gate.py:39:101
+   |
+37 | …
+38 | …
+39 | …, "task_class": "CREATE_ASSET", "domain_tags": ["unity", "2d"], "feature_ids": ["control_2d"], "capability_id": "sprite.unity.strip.v1", "input": inputs})
+   |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+40 | …
+41 | …
+   |
+
+E501 Line too long (115 > 100)
+  --> tests\test_phase9_sprite_gate.py:56:101
+   |
+54 |     legacy = {k:v for k,v in inputs.items() if k != "visual_approval_required"}
+55 |     assert review_sprite_source(p, legacy)["promotion"] == "REVIEW"
+56 |     record_human_review(p, review["candidate"], verdict="APPROVED", operator="owner", reason="Viewed actual strip")
+   |                                                                                                     ^^^^^^^^^^^^^^^
+57 |     assert review_sprite_source(p, legacy)["promotion"] == "APPROVED"
+58 |     assert import_strip(legacy, RunContext(tmp_path, dry_run=True)).data["dry_run"]
+   |
+
+E501 Line too long (112 > 100)
+  --> tests\test_phase9_sprite_gate.py:59:101
+   |
+57 |     assert review_sprite_source(p, legacy)["promotion"] == "APPROVED"
+58 |     assert import_strip(legacy, RunContext(tmp_path, dry_run=True)).data["dry_run"]
+59 |     record_human_review(p, review["candidate"], verdict="REJECTED", operator="owner", reason="Wrong appearance")
+   |                                                                                                     ^^^^^^^^^^^^
+60 |     assert import_strip(legacy, RunContext(tmp_path)).status == "REVIEW"
+61 |     assert not p.path("UnityProject").exists()
+   |
+
+E501 Line too long (102 > 100)
+  --> tests\test_phase9_sprite_gate.py:70:101
+   |
+68 |     p, inputs = sprite_fixture(tmp_path)
+69 |     review = review_sprite_source(p, inputs)
+70 |     record_human_review(p, review["candidate"], verdict="APPROVED", operator="owner", reason="Viewed")
+   |                                                                                                     ^^
+71 |     from polyforge.contracts.validation import InputError
+72 |     p.path("frame-0.png").write_bytes(b"changed")
+   |
+
+Found 61 errors (5 fixed, 56 remaining).

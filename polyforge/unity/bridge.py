@@ -22,7 +22,7 @@ from polyforge.contracts.manifest import Manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.doctor import discover_tool
-from polyforge.runner.locks import FileLock
+from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import RunJournal, atomic_json
 from polyforge.security.paths import WorkspacePolicy
@@ -117,6 +117,15 @@ def launch(
         args += ["-executeMethod", "PolyForge.Animation.Editor.AnimationBuilder.BuildBatch"]
         if output is not None:
             args += ["-polyforgeOutput", str(policy.path(output))]
+    elif mode == "recovery":
+        if output is None:
+            raise InputError("Native recovery observation needs an output path")
+        args += [
+            "-executeMethod",
+            "PolyForge.Editor.RecoveryProbe.ObserveBatch",
+            "-polyforgeOutput",
+            str(policy.path(output)),
+        ]
     elif mode in {"game", "player"}:
         method = "BuildBatch" if mode == "game" else "BuildPlayerBatch"
         args += ["-executeMethod", "PolyForge.Game.Editor.GameBuilder." + method]
@@ -310,7 +319,7 @@ def build_unity(
     journal = RunJournal.create(policy, run_id, retry_limit=0)
     journal.transition("S4", "running")
     try:
-        with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+        with unity_project_lock(policy, policy.path("UnityProject")):
             prepare_project(policy, template)
             from polyforge.unity.upgrade import sync_package
 

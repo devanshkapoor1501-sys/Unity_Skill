@@ -1,0 +1,113 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__________ test_recovery_observer_is_a_fixed_registered_unity_method __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-145/test_recovery_observer_is_a_fi0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022EEF35D280>
+
+    def test_recovery_observer_is_a_fixed_registered_unity_method(tmp_path, monkeypatch):
+        from polyforge.config import Config
+        from polyforge.runner.processes import ProcessOutcome
+        from polyforge.unity import bridge
+    
+        p = WorkspacePolicy(tmp_path)
+        calls = []
+        def run(argv, *args, **kwargs):
+            calls.append(argv)
+            return ProcessOutcome(0, "exit", None, "UNIT_FIXTURE", 0, "", "", False)
+        monkeypatch.setattr(bridge, "run_process", run)
+>       bridge.launch(p, tmp_path / "Unity.exe", Config(), "runs/probe", "recovery", output=p.path("runs/probe/identity.json"))
+
+tests\test_phase9_recovery.py:205: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x0000022EEE92C140>
+executable = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-145/test_recovery_observer_is_a_fi0/Unity.exe')
+config = Config(blender_executable='', unity_executable='', max_parallel_blender=2, max_parallel_unity=1, blender_timeout_secon...e_approval_for_download=True, mode='TRUSTED_LOCAL', preview_resolution=512, visual_review_mode='manual_or_host_vision')
+relative = 'runs/probe', mode = 'recovery'
+
+    def launch(
+        policy: WorkspacePolicy,
+        executable: Path,
+        config: Config,
+        relative: str,
+        mode: str,
+        *,
+        request: Path | None = None,
+        output: Path | None = None,
+        allow_contract_failure: bool = False,
+        test_platform: str = "EditMode",
+        test_filter: str = "PolyForge.Editor.Tests",
+        game_input: Path | None = None,
+        scenario_input: Path | None = None,
+        telemetry_directory: Path | None = None,
+        cancel: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        if test_platform not in {"EditMode", "PlayMode"} or test_filter not in {
+            "PolyForge.Editor.Tests",
+            "PolyForge.Game.Editor.Tests",
+            "PolyForge.Game.Tests",
+            "PolyForge.Animation.Editor.Tests",
+            "PolyForge.Animation.Tests",
+            "PolyForge.Sprite.Editor.Tests",
+            "PolyForge.Sprite.Tests",
+        }:
+            raise InputError("Unknown owned Unity test platform/filter")
+        policy.mkdir(relative)
+        args = [
+            str(executable),
+            "-batchmode",
+            "-nographics",
+            "-job-worker-count",
+            "2",
+            "-projectPath",
+            str(policy.path("UnityProject")),
+            "-logFile",
+            "-",
+            "-upmLogFile",
+            str(policy.path(relative + "/upm.log")),
+        ]
+        if request is not None:
+            args += ["-polyforgeInput", str(policy.path(request))]
+        for key, path_value in (
+            ("-polyforgeGameInput", game_input),
+            ("-polyforgeScenarioInput", scenario_input),
+            ("-polyforgeTelemetry", telemetry_directory),
+        ):
+            if path_value is not None:
+                args += [key, str(policy.path(path_value))]
+        if mode == "compile":
+            args += ["-quit"]
+        elif mode == "tests":
+            assert output is not None
+            args += [
+                "-runTests",
+                "-testPlatform",
+                test_platform,
+                "-testFilter",
+                test_filter,
+                "-testResults",
+                str(policy.path(output)),
+            ]
+        elif mode == "sprites":
+            args += ["-executeMethod", "PolyForge.Sprite.Editor.SpriteBuilder.BuildBatch"]
+            if output is not None:
+                args += ["-polyforgeOutput", str(policy.path(output))]
+        elif mode == "animation":
+            args += ["-executeMethod", "PolyForge.Animation.Editor.AnimationBuilder.BuildBatch"]
+            if output is not None:
+                args += ["-polyforgeOutput", str(policy.path(output))]
+        elif mode in {"game", "player"}:
+            method = "BuildBatch" if mode == "game" else "BuildPlayerBatch"
+            args += ["-executeMethod", "PolyForge.Game.Editor.GameBuilder." + method]
+            if output is not None:
+                args += ["-polyforgeOutput", str(policy.path(output))]
+        else:
+>           assert mode in {"build", "reconcile", "restore"} and output is not None
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError
+
+polyforge\unity\bridge.py:126: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_recovery_observer_is_a_fixed_registered_unity_method
+1 failed in 0.42s

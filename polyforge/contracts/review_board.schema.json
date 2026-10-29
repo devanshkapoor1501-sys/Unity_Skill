@@ -165,6 +165,16 @@
         "minLength": 1,
         "maxLength": 4096
       }
+    },
+    "amendment_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_review": {
+      "type": [
+        "object",
+        "null"
+      ]
     }
   },
   "required": [
@@ -186,6 +196,8 @@
     "independence",
     "evaluator_owner",
     "isolation_verified",
-    "unresolved_risks"
+    "unresolved_risks",
+    "amendment_digest",
+    "source_review"
   ]
 }

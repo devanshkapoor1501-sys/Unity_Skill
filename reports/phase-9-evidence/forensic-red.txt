@@ -1,0 +1,47 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_________ test_unregistered_cross_tool_routes_are_explicitly_blocked __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/forensic-red/test_unregistered_cross_tool_r0')
+
+    def test_unregistered_cross_tool_routes_are_explicitly_blocked(tmp_path):
+        from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair, reserve_attempt
+    
+        p = WorkspacePolicy(tmp_path)
+        p.mkdir("runs/source")
+        p.path("runs/source/observation.json").write_bytes(b"observed")
+        for code in ("PF-GEOMETRY-DEGENERATE", "PF-SPRITE-CURVE", "PF-ANIMATION-SLOT", "PF-WORKER-TIMEOUT"):
+            issue = diagnose_evidence(evidence(code))
+            plan = plan_repair(p, issue)
+>           assert plan["status"] == "BLOCKED"
+E           AssertionError: assert 'PROPOSED' == 'BLOCKED'
+E             
+E             - BLOCKED
+E             + PROPOSED
+
+tests\test_phase9_forensic_execution.py:21: AssertionError
+______ test_apply_failure_reserves_once_and_resume_never_replays_worker _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/forensic-red/test_apply_failure_reserves_on0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001DCDE5861E0>
+
+    def test_apply_failure_reserves_once_and_resume_never_replays_worker(tmp_path, monkeypatch):
+>       from polyforge.repairs import diagnostics, execution
+E       ImportError: cannot import name 'execution' from 'polyforge.repairs' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\repairs\__init__.py)
+
+tests\test_phase9_forensic_execution.py:29: ImportError
+_ test_crashed_forensic_reservation_without_transaction_is_blocked_not_replayed _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/forensic-red/test_crashed_forensic_reservat0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001DCDE584F80>
+
+    def test_crashed_forensic_reservation_without_transaction_is_blocked_not_replayed(tmp_path, monkeypatch):
+>       from polyforge.repairs import diagnostics, execution
+E       ImportError: cannot import name 'execution' from 'polyforge.repairs' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\repairs\__init__.py)
+
+tests\test_phase9_forensic_execution.py:56: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_forensic_execution.py::test_unregistered_cross_tool_routes_are_explicitly_blocked
+FAILED tests/test_phase9_forensic_execution.py::test_apply_failure_reserves_once_and_resume_never_replays_worker
+FAILED tests/test_phase9_forensic_execution.py::test_crashed_forensic_reservation_without_transaction_is_blocked_not_replayed
+3 failed in 0.48s

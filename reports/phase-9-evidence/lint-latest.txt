@@ -1,0 +1,23 @@
+E501 Line too long (107 > 100)
+   --> polyforge\repairs\diagnostics.py:269:101
+    |
+267 |         if issue["affected_ids"] == [row["asset_id"]]
+268 |         and codes.get(row["category"]) == issue["source_evidence"]["structured"]["code"]
+269 |         and claimed == {**row, "issue_id": "ISSUE-" + canonical_digest(row)[:12], "repair_supported": True}
+    |                                                                                                     ^^^^^^^
+270 |     ]
+271 |     if len(matches) != 1:
+    |
+
+E501 Line too long (105 > 100)
+   --> polyforge\repairs\diagnostics.py:323:101
+    |
+321 |         "blocked_reason": None
+322 |         if supported
+323 |         else "No safely reconstructable registered original inputs/action; route to original specialist",
+    |                                                                                                     ^^^^^
+324 |         "changed_paths": targets,
+325 |         "rollback_required": True,
+    |
+
+Found 2 errors.

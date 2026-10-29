@@ -56,7 +56,8 @@ tested. `evaluated_test_status=NOT_RUN` and `game_status=PARTIAL` remain explici
 ## Development checks
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest --cov --cov-report=term-missing
+.\.venv\Scripts\python.exe -m pytest --cov --cov-report=term-missing --cov-report=json
+.\.venv\Scripts\python.exe -m tools.check_coverage
 .\.venv\Scripts\python.exe -m ruff check .
 .\.venv\Scripts\python.exe -m mypy
 .\.venv\Scripts\python.exe -m tools.generate_cli_docs --check
@@ -98,8 +99,9 @@ The runner provides allowlisted binaries, minimal environments, redacted bounded
 logs, timeouts/cancellation, owned process-tree cleanup and Windows job memory/
 process limits. POSIX process-group cleanup is implemented; POSIX memory ceilings
 are explicitly unverified. Locks use OS exclusion plus PID/host/birth metadata.
-Journal replay recovers a cache interrupted after a durable append. Resume
-scheduling stays unavailable until actual build producers exist.
+Journal replay recovers a cache interrupted after a durable append. Phase 9 resume
+supports recorded managed transactions, forensic attempts and validated workforce
+inputs; unsupported run types fail explicitly.
 
 Compilation preserves original source ranges and creates development-only scene,
 feature and coverage contracts. Planning records S0–S5 task dependencies and
@@ -162,6 +164,7 @@ Phase 7 adds bounded worker contracts and robot Idle/Walk animation; see the
 [workforce workflow](workforce.md) and [Phase 7 evidence](../reports/phase-7.md).
 Phase 8 adds [asset/material handoffs and the bounded 2D workflow](asset-workflow.md),
 with separate technical, visual and game acceptance evidence.
+Phase 9 adds [review, amendments, diagnosis and verified recovery](review-and-recovery.md).
 The reviewed v5.1 roadmap keeps broader asset, texture, 2D and host integration
 work in later phases; see [the implementation sequence](implementation-plan.md).
 Phases stop at their acceptance

@@ -1,6 +1,7 @@
 # Phase 9: supervision, diagnosis and verified recovery
 
-Status: implementation design for review. No Phase 9 product code has been changed.
+Status: approved by the user and implemented. Qualification and limits are
+recorded in [the Phase 9 report](../../../reports/phase-9.md).
 
 ## Authority and intended outcome
 

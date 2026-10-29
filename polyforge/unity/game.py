@@ -7,6 +7,7 @@ import json
 import shutil
 import threading
 import zipfile
+from contextlib import nullcontext
 from dataclasses import replace
 from importlib.resources import files
 from pathlib import Path
@@ -16,10 +17,15 @@ from uuid import uuid4
 from polyforge.contracts.manifest import Manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
-from polyforge.runner.locks import FileLock
+from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import RunJournal, atomic_json
-from polyforge.scenarios.arena_oracle import CORE_SCENARIOS, evaluate, validate_trace
+from polyforge.scenarios.arena_oracle import (
+    CORE_SCENARIOS,
+    MUTANT_SCENARIOS,
+    evaluate,
+    validate_trace,
+)
 from polyforge.scenarios.schema import validate_scenario
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.bridge import configuration, launch, reusable_export, unity_tool
@@ -44,6 +50,10 @@ PLAY_TESTS = {
             "KeyboardAdapterRestarts",
             "CollisionDisabledMutant",
             "RestartDisabledMutant",
+            "ReversedWinMutant",
+            "DamageWithoutHealthMutant",
+            "NavigationStuckMutant",
+            "InputDisconnectedMutant",
         )
     },
 }
@@ -242,8 +252,7 @@ def score_telemetry(policy: WorkspacePolicy, relative: str, game: dict[str, Any]
         *CORE_SCENARIOS,
         "keyboard_input",
         "keyboard_restart",
-        "collision_disabled",
-        "restart_disabled",
+        *MUTANT_SCENARIOS,
     ):
         trace = load_json(
             policy.path(relative + "/telemetry/" + identifier + ".json"), max_bytes=33_554_432
@@ -251,8 +260,7 @@ def score_telemetry(policy: WorkspacePolicy, relative: str, game: dict[str, Any]
         expected_case = {
             "keyboard_input": "player_moves",
             "keyboard_restart": "restart_resets",
-            "collision_disabled": "wall_collision",
-            "restart_disabled": "restart_resets",
+            **MUTANT_SCENARIOS,
         }.get(identifier, identifier)
         case = cases[expected_case]
         ticks = (
@@ -262,7 +270,7 @@ def score_telemetry(policy: WorkspacePolicy, relative: str, game: dict[str, Any]
         )
         validate_trace(trace, game, identifier, ticks)
         result = evaluate(trace)
-        mutant = identifier in {"collision_disabled", "restart_disabled"}
+        mutant = identifier in MUTANT_SCENARIOS
         if not mutant:
             for expected in case["expected"]:
                 if (
@@ -276,6 +284,9 @@ def score_telemetry(policy: WorkspacePolicy, relative: str, game: dict[str, Any]
         results[identifier] = {
             **result,
             "mutant": mutant,
+            "mutation_id": "M" + str(list(MUTANT_SCENARIOS).index(identifier) + 1)
+            if mutant
+            else None,
             "gate_status": "PASS"
             if (result["status"] == "FAIL" if mutant else result["status"] == "PASS")
             else "FAIL",
@@ -287,7 +298,7 @@ def score_telemetry(policy: WorkspacePolicy, relative: str, game: dict[str, Any]
     }
 
 
-def verify_game(workspace: Path, *, standalone: bool = False) -> Result:
+def verify_game(workspace: Path, *, standalone: bool = False, _lock_held: bool = False) -> Result:
     policy = WorkspacePolicy(workspace)
     from polyforge.contracts.manifest import load_manifest
 
@@ -304,7 +315,7 @@ def verify_game(workspace: Path, *, standalone: bool = False) -> Result:
     wall_path = policy.path("UnityProject/" + job["wall_fbx"])
     if hashlib.sha256(wall_path.read_bytes()).hexdigest() != job["wall_sha256"]:
         raise InputError("Boundary source hash changed", kind=ErrorKind.CONTRACT_FAILURE)
-    return execute_game_checks(policy, job, standalone=standalone)
+    return execute_game_checks(policy, job, standalone=standalone, _lock_held=_lock_held)
 
 
 def execute_game_checks(
@@ -313,6 +324,7 @@ def execute_game_checks(
     *,
     standalone: bool = False,
     cancel: threading.Event | None = None,
+    _lock_held: bool = False,
 ) -> Result:
     config = configuration(policy)
     executable = unity_tool(config)
@@ -321,7 +333,9 @@ def execute_game_checks(
     request = atomic_json(policy, relative + "/game-input.json", game)
     suite = atomic_json(policy, relative + "/scenarios.json", core_suite(game))
     try:
-        with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+        with (
+            nullcontext() if _lock_held else unity_project_lock(policy, policy.path("UnityProject"))
+        ):
             edit = policy.path(relative + "/editmode.xml")
             launch(
                 policy,
@@ -515,24 +529,24 @@ def build_game(
     wall_target = policy.path(
         "UnityProject/Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx"
     )
-    policy.mkdir(wall_target.parent)
-    shutil.copyfile(folder / "asset.fbx", wall_target)
     static = load_json(policy.path(f"runs/{parent.run_id}/request.json"))
     ground = next(a for a in static["assets"] if a["id"] == game["ground_id"])
-    game.update(
-        wall_fbx=wall_target.relative_to(policy.path("UnityProject")).as_posix(),
-        wall_material=f"Assets/PolyForgeGenerated/Materials/{ground['id']}/{ground['materials'][0]['id']}.mat",
-        wall_source=folder.relative_to(policy.root).as_posix(),
-        wall_sha256=hashlib.sha256(wall_target.read_bytes()).hexdigest(),
-    )
     run_id = "game-build-" + uuid4().hex[:16]
     relative = "runs/" + run_id
     journal = RunJournal.create(policy, run_id, retry_limit=0)
     journal.transition("S4", "running")
     active_stage = "S4"
-    request = atomic_json(policy, relative + "/game-input.json", game)
     try:
-        with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+        with unity_project_lock(policy, policy.path("UnityProject")):
+            policy.mkdir(wall_target.parent)
+            shutil.copyfile(folder / "asset.fbx", wall_target)
+            game.update(
+                wall_fbx=wall_target.relative_to(policy.path("UnityProject")).as_posix(),
+                wall_material=f"Assets/PolyForgeGenerated/Materials/{ground['id']}/{ground['materials'][0]['id']}.mat",
+                wall_source=folder.relative_to(policy.root).as_posix(),
+                wall_sha256=hashlib.sha256(wall_target.read_bytes()).hexdigest(),
+            )
+            request = atomic_json(policy, relative + "/game-input.json", game)
             output = policy.path(relative + "/bindings.json")
             launch(
                 policy,

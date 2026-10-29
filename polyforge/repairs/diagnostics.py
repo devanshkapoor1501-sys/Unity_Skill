@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import json
 import re
 from typing import Any
 from uuid import uuid4
@@ -14,6 +15,7 @@ from polyforge.runner.locks import FileLock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.security.policy import redact
+from polyforge.workforce.permissions import assert_public_path
 
 # Versioned deterministic rules, with no source-code patch or shell execution action.
 PLAYBOOKS = {
@@ -154,19 +156,22 @@ def diagnose_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
     source = copy.deepcopy(evidence)
     source["log"] = redact(source["log"])
     code = source["structured"]["code"]
-    success = source["structured"]["status"] == "PASS"
-    playbook = None if success else CODES.get(code)
+    recorded_status = source["structured"]["status"]
+    executed_failure = recorded_status == "FAIL"
+    playbook = CODES.get(code) if executed_failure else None
     role, action, verification = (
         PLAYBOOKS[playbook]
         if playbook is not None
         else (source["producer_id"], None, "independent reproduction before proposing any patch")
     )
-    context = next(
-        (kind for pattern, kind in CONTEXTS if re.search(pattern, source["log"], re.I)), None
+    context = (
+        next((kind for pattern, kind in CONTEXTS if re.search(pattern, source["log"], re.I)), None)
+        if executed_failure
+        else None
     )
     hypotheses = (
         []
-        if success
+        if not executed_failure
         else [{"cause": playbook, "confidence": 0.85, "falsify_with": verification}]
         if playbook
         else [
@@ -204,8 +209,8 @@ def diagnose_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
         "symptom_signature": signature,
         "playbook_version": "1.0.0",
         "playbook": playbook,
-        "diagnosis_status": "PASS"
-        if success
+        "diagnosis_status": recorded_status
+        if not executed_failure
         else "BLOCKED"
         if action is None and playbook
         else "REVIEW"
@@ -227,6 +232,60 @@ def diagnose_evidence(evidence: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _native_plan(policy: WorkspacePolicy, issue: dict[str, Any]) -> dict[str, Any] | None:
+    """Admit only a reproduced native symptom with registered original inputs."""
+    registry = policy.path(".polyforge/unity-issues.json")
+    if issue["source_evidence"]["tool"]["name"] != "unity" or not registry.is_file():
+        return None
+    from polyforge.unity.evidence import reconcile_report
+    from polyforge.unity.repairs import current_request
+
+    recorded = load_json(registry)
+    path = recorded["evidence_dir"] + "/bindings.json"
+    if not any(a["path"] == path for a in issue["source_evidence"]["artifacts"]):
+        return None
+    request = current_request(policy)
+    if (
+        issue["input_digest"] != request["input_digest"]
+        or recorded["input_digest"] != request["input_digest"]
+    ):
+        raise InputError("Forensic native inputs changed; diagnose the current revision")
+    observed = reconcile_report(request, load_json(policy.path(path)))
+    codes = {
+        "binding": "PF-GUID-MISMATCH",
+        "scale": "PF-FBX-AXES",
+        "axis": "PF-FBX-AXES",
+        "material": "PF-MATERIAL-SWAPPED",
+        "component": "PF-COMPONENT-MISSING",
+    }
+    try:
+        claimed = json.loads(issue["source_evidence"]["log"])
+    except ValueError:
+        return None
+    matches = [
+        row
+        for row in observed["issues"]
+        if issue["affected_ids"] == [row["asset_id"]]
+        and codes.get(row["category"]) == issue["source_evidence"]["structured"]["code"]
+        and claimed
+        == {**row, "issue_id": "ISSUE-" + canonical_digest(row)[:12], "repair_supported": True}
+    ]
+    if len(matches) != 1:
+        return None
+    row = matches[0]
+    identifier = "ISSUE-" + canonical_digest(row)[:12]
+    if {**row, "issue_id": identifier} not in recorded["issues"]:
+        raise InputError("Forensic symptom differs from registered native diagnosis")
+    return {
+        "schema_version": "1.0.0",
+        "input_digest": request["input_digest"],
+        "issue_id": identifier,
+        "category": row["category"],
+        "asset_id": row["asset_id"],
+        "operation": "rebuild_native_binding",
+    }
+
+
 def plan_repair(policy: WorkspacePolicy, issue: dict[str, Any]) -> dict[str, Any]:
     if (
         not isinstance(issue, dict)
@@ -235,9 +294,15 @@ def plan_repair(policy: WorkspacePolicy, issue: dict[str, Any]) -> dict[str, Any
     ):
         raise InputError("Repair issue differs from recorded deterministic diagnosis")
     for item in issue["source_evidence"]["artifacts"]:
+        assert_public_path(policy, item["path"])
+    for item in issue["source_evidence"]["artifacts"]:
         if hashlib.sha256(policy.path(item["path"]).read_bytes()).hexdigest() != item["sha256"]:
             raise InputError("Forensic evidence was substituted after diagnosis")
     action = issue["recommended_action"]
+    native = _native_plan(policy, issue) if action else None
+    supported = native is not None
+    if supported:
+        action = "rebuild_native_binding"
     targets = (
         ["UnityProject/Assets/PolyForgeGenerated"]
         if action in {"rebuild_native_binding", "rebuild_sprite"}
@@ -248,13 +313,18 @@ def plan_repair(policy: WorkspacePolicy, issue: dict[str, Any]) -> dict[str, Any
     return {
         "schema_version": "1.0.0",
         "issue_id": issue["issue_id"],
+        "diagnosis": copy.deepcopy(issue),
+        "native_plan": native,
         "input_digest": issue["input_digest"],
         "symptom_signature": issue["symptom_signature"],
         "action": action,
         "original_specialist": issue["original_specialist"],
         "affected_ids": issue["affected_ids"],
         "dry_run": True,
-        "status": "PROPOSED" if action else "BLOCKED",
+        "status": "PROPOSED" if supported else "BLOCKED",
+        "blocked_reason": None
+        if supported
+        else "No reconstructable registered original inputs/action; route to original specialist",
         "changed_paths": targets,
         "rollback_required": True,
         "risk": "NATIVE_REIMPORT_AND_REGRESSION_REQUIRED"
@@ -275,7 +345,7 @@ def plan_repair(policy: WorkspacePolicy, issue: dict[str, Any]) -> dict[str, Any
 def reserve_attempt(
     policy: WorkspacePolicy, issue: dict[str, Any], proposal: dict[str, Any]
 ) -> dict[str, Any]:
-    if proposal != plan_repair(policy, issue) or proposal["action"] is None:
+    if proposal != plan_repair(policy, issue) or proposal["status"] != "PROPOSED":
         raise InputError("No matching registered repair proposal")
     path = ".polyforge/forensic-attempts.json"
     key = issue["symptom_signature"]
@@ -320,5 +390,12 @@ def finish_attempt(
         ]
         if len(matches) != 1 or matches[0] != attempt:
             raise InputError("Repair attempt ownership is stale or already completed")
-        matches[0].update(status=status, evidence_paths=evidence_paths)
+        matches[0].update(
+            status=status,
+            evidence_paths=evidence_paths,
+            evidence_hashes={
+                name: hashlib.sha256(policy.path(name).read_bytes()).hexdigest()
+                for name in evidence_paths
+            },
+        )
         atomic_json(policy, path, history)

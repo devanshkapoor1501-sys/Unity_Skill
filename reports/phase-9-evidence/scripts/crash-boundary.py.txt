@@ -1,0 +1,15 @@
+import sys,time
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.runner.locks import unity_project_lock
+from polyforge.runner.state import atomic_json
+from polyforge.unity.transactions import ManagedTransaction
+
+p=WorkspacePolicy(Path(sys.argv[1]));tx=ManagedTransaction(p,sys.argv[2])
+with unity_project_lock(p,p.path('UnityProject')):
+    tx.restore()
+    assert tx.verify_restored() and tx.read()['status']=='ROLLING_BACK'
+    atomic_json(p,'runs/phase9-crash-boundary/ready.json',{'status':'BYTES_RESTORED_NATIVE_REIMPORT_NOT_RUN','transaction_id':tx.identifier})
+    print('RESTORED_BYTES_WAITING_FOR_NATIVE_REIMPORT',flush=True)
+    time.sleep(120)
+    raise AssertionError('Parent failed to terminate the owned crash-boundary fixture')

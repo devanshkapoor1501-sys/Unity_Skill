@@ -210,6 +210,11 @@ def test_existing_project_without_package_authorization_cannot_launch_unity(tmp_
     metadata["frame_size"] = 128
     (tmp_path / "atlas.json").write_text(json.dumps(metadata), encoding="utf-8")
     monkeypatch.setattr(module, "inspect_strip", lambda *args: {"status": "PASS"})
+    from polyforge.review import sprite_source
+
+    # Phase 9 adds source admission before the existing importer admission.
+    # This test isolates package authorization; pixel checks have separate fixtures.
+    monkeypatch.setattr(sprite_source, "inspect_strip", lambda *args: {"status": "PASS"})
     monkeypatch.setattr(module, "unity_tool", lambda config: Path("Unity.exe"))
     monkeypatch.setattr(module, "installed_template", lambda tool: Path("template.tgz"))
     project = policy.mkdir("UnityProject")

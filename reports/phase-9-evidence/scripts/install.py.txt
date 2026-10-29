@@ -1,0 +1,43 @@
+from pathlib import Path
+import subprocess,json,time,os,sys,hashlib,tarfile
+
+root=Path.cwd();base=root/'.tmp/phase9';cwd=base/'install-cwd';cwd.mkdir(exist_ok=True);out=base/'install';out.mkdir(exist_ok=True)
+py=root/'.venv/Scripts/python.exe';fresh=base/'fresh-wheel/Scripts/python.exe';editable=base/'fresh-editable/Scripts/python.exe'
+env=dict(os.environ,TEMP=str(root/'.tmp'),TMP=str(root/'.tmp'))
+arena=root/'.tmp/phase6/arena'
+inputs=json.loads((root/'.tmp/phase8/import-request.json').read_text());inputs['source_kind']='DIRECT_SPRITES'
+for key in ['atlas_file','metadata_file']:
+ target=cwd/Path(inputs[key]).name;target.write_bytes((arena/inputs[key]).read_bytes());inputs[key]=target.name
+for i,name in enumerate(inputs['frame_files']):
+ target=cwd/Path(name).name;target.write_bytes((arena/name).read_bytes());inputs['frame_files'][i]=target.name
+(cwd/'sprite-input.json').write_text(json.dumps(inputs))
+(cwd/'sprite-pending.json').write_text(json.dumps({**inputs,'visual_approval_required':True}))
+checks=[([str(py),'-m','venv',str(base/'fresh-wheel')],root,0),([str(fresh),'-I','-m','pip','install','--force-reinstall','--no-index','--find-links',str(root/'.tmp/wheelhouse'),str(root/'dist/polyforge-0.0.1-py3-none-any.whl')],cwd,0)]
+checks += [([str(fresh),'-I','-m',*args],cwd,exitcode) for args,exitcode in [
+ (['pip','check'],0),(['polyforge','capability','list','--json'],0),(['polyforge','review','--help'],0),(['polyforge','repair','apply','--help'],0),(['polyforge','repair','rollback','--help'],0),(['polyforge','resume','--help'],0),
+ (['polyforge','review','sprite-source','--workspace',str(cwd),'--input','sprite-input.json','--json'],0),
+ (['polyforge','capability','run','sprite.unity.strip.v1','--workspace',str(cwd),'--input','sprite-input.json','--dry-run','--json'],0),
+ (['polyforge','capability','run','sprite.unity.strip.v1','--workspace',str(cwd),'--input','sprite-pending.json','--dry-run','--json'],4),
+ (['polyforge','review','human','--workspace',str(cwd),'--candidate','absent.json','--verdict','APPROVED','--operator','fixture','--reason','Missing explicit action','--json'],2),
+ (['polyforge','review','amend','--workspace',str(cwd),'--task','absent.json','--amendment','absent.json','--operator','fixture','--reason','Missing explicit action','--json'],2),
+]]
+code='from importlib.resources import files; import json,hashlib; p=files("unity_package"); names=["Editor/RecoveryProbe.cs","Editor/RecoveryProbe.cs.meta","Tests/PlayMode/ScenarioTests.cs"]; print(json.dumps({n:hashlib.sha256(p.joinpath(n).read_bytes()).hexdigest() for n in names})); q=files("polyforge"); [q.joinpath("contracts/"+n+".schema.json").read_bytes() for n in ["review_board","sprite_import"]]; q.joinpath("data/arena_acceptance.json").read_bytes()'
+for name in ['unity/recovery.py','review/amendments.py','repairs/execution.py']:
+ code += '; assert hashlib.sha256(q.joinpath('+repr(name)+').read_bytes()).hexdigest()=='+repr(hashlib.sha256((root/'polyforge'/name).read_bytes()).hexdigest())
+checks += [([str(fresh),'-I','-c',code],cwd,0)]
+checks += [([str(py),'-m','venv',str(base/'fresh-editable')],root,0),([str(editable),'-I','-m','pip','install','--no-index','--find-links',str(root/'.tmp/wheelhouse'),'setuptools','wheel'],cwd,0),([str(editable),'-I','-m','pip','install','--no-index','--find-links',str(root/'.tmp/wheelhouse'),'--no-build-isolation','-e',str(root)],cwd,0),([str(editable),'-I','-m','polyforge','review','--help'],cwd,0)]
+before={p.relative_to(cwd).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in cwd.rglob('*') if p.is_file()}
+records=[]
+for i,(args,folder,expected) in enumerate(checks):
+ start=time.monotonic();log=out/f'{i:02}.txt'
+ with log.open('w',encoding='utf-8') as f:r=subprocess.run(args,cwd=folder,env=env,stdout=f,stderr=subprocess.STDOUT)
+ records.append({'argv':args,'cwd':str(folder),'exit_code':r.returncode,'expected_exit':expected,'duration_seconds':round(time.monotonic()-start,3),'log':str(log.relative_to(root))});print(i,r.returncode,flush=True)
+ if r.returncode!=expected:break
+(out/'commands.json').write_text(json.dumps(records,indent=2)+'\n')
+assert len(records)==len(checks) and all(r['exit_code']==r['expected_exit'] for r in records),records[-1]
+after={p.relative_to(cwd).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in cwd.rglob('*') if p.is_file()}
+assert before==after,'read-only/invalid/dry commands wrote workspace files'
+observed=json.loads((out/'13.txt').read_text());assert all(hashlib.sha256((root/'unity_package'/n).read_bytes()).hexdigest()==h for n,h in observed.items())
+with tarfile.open(root/'dist/polyforge-0.0.1.tar.gz') as a:
+ names=a.getnames();assert any(n.endswith('.agents/skills/polyforge/references/review-and-recovery.md') for n in names)
+print('Fresh isolated wheel/editable installs, 18 checks, resources, explicit-action admission and zero-write dry runs PASS')

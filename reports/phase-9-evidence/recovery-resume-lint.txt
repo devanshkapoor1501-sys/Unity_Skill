@@ -1,0 +1,65 @@
+E501 Line too long (102 > 100)
+   --> polyforge\unity\recovery.py:285:101
+    |
+283 |         if marker.is_file():
+284 |             quarantine = load_json(marker)
+285 |             if not isinstance(quarantine, dict) or quarantine.get("transaction_id") != transaction_id:
+    |                                                                                                     ^^
+286 |                 raise InputError("Another transaction owns this recovery quarantine", kind=ErrorKind.POLICY_DENIED)
+287 |         return rollback_locked(policy, tx)
+    |
+
+E501 Line too long (115 > 100)
+   --> polyforge\unity\recovery.py:286:101
+    |
+284 |             quarantine = load_json(marker)
+285 |             if not isinstance(quarantine, dict) or quarantine.get("transaction_id") != transaction_id:
+286 |                 raise InputError("Another transaction owns this recovery quarantine", kind=ErrorKind.POLICY_DENIED)
+    |                                                                                                     ^^^^^^^^^^^^^^^
+287 |         return rollback_locked(policy, tx)
+    |
+
+E501 Line too long (109 > 100)
+   --> polyforge\unity\recovery.py:303:101
+    |
+301 |             )
+302 |         if status == "ROLLED_BACK" and not transaction.verify_restored():
+303 |             raise InputError("Recovered workspace changed afterward; explicit reviewed rollback is required")
+    |                                                                                                     ^^^^^^^^^
+304 |         return repair_rollback(workspace, run_id)
+305 |     plan = policy.path("workforce/" + run_id + "/plan.json")
+    |
+
+E501 Line too long (139 > 100)
+   --> polyforge\unity\recovery.py:311:101
+    |
+310 | …
+311 | …ce(saved.get("task_id"), str) or not isinstance(saved.get("original_request"), dict):
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+312 | …me plan")
+313 | …k_id"] + "_single"}:
+    |
+
+E501 Line too long (124 > 100)
+   --> polyforge\unity\recovery.py:317:101
+    |
+315 |         if plan_task(saved["original_request"], workspace=workspace) != saved:
+316 |             raise InputError("Recorded workforce inputs changed; cannot safely resume")
+317 |         return run_task(workspace, saved["original_request"], mode="single" if run_id.endswith("_single") else "sequential")
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+318 |     raise InputError(
+319 |         "No safely reconstructable transaction/workforce run; original stage inputs are required"
+    |
+
+E501 Line too long (120 > 100)
+   --> tests\test_phase9_recovery.py:265:101
+    |
+263 |     p, path = source_fixture(tmp_path)
+264 |     before = set(tmp_path.rglob("*"))
+265 |     monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: pytest.fail("invalid input reached a native worker"))
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^
+266 |     with pytest.raises(InputError):
+267 |         recovery.prepare_transaction(p, "invalid_preflight", dependencies=["../private.blend"])
+    |
+
+Found 7 errors (1 fixed, 6 remaining).

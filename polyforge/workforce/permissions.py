@@ -39,6 +39,16 @@ ROLES.update(
     }
 )
 
+
+def assert_public_path(policy: WorkspacePolicy, target: str) -> None:
+    relative = policy.path(target).relative_to(policy.root)
+    if {p.casefold() for p in relative.parts} & {"evaluator", "holdouts", "protected_evaluator"}:
+        raise InputError(
+            "Evaluator-owned namespaces cannot enter worker/review evidence",
+            kind=ErrorKind.POLICY_DENIED,
+        )
+
+
 for _inspector in (
     "brief_compliance_inspector",
     "asset_animation_inspector",
@@ -74,6 +84,7 @@ def authorize(policy: WorkspacePolicy, role: str, action: str, target: str) -> b
     if action == "tool":
         allowed = target in rule["tools"]
     else:
+        assert_public_path(policy, target)
         path = policy.path(target)
         relative = path.relative_to(policy.root).as_posix()
         allowed = action == "read" and relative.startswith(("runs/", "workforce/", "recipes/"))

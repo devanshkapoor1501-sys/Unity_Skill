@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_large_native_proof_is_immutable_external_evidence_not_an_unreadable_journal _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-160/test_large_native_proof_is_imm0')
+
+    def test_large_native_proof_is_immutable_external_evidence_not_an_unreadable_journal(tmp_path):
+        p, path = source_fixture(tmp_path)
+        tx = ManagedTransaction.create(p, "large_native", dependencies=[path])
+        proof = {"native_references": ["asset reference " + str(i) + "x" * 100 for i in range(10000)]}
+        tx.record("BASELINE", prestate=proof)
+        metadata = p.path(tx.relative + "/journal.json")
+>       assert metadata.stat().st_size < 10000
+E       AssertionError: assert 1299772 < 10000
+E        +  where 1299772 = os.stat_result(st_mode=33206, st_ino=1125899908516583, st_dev=12141410533994944018, st_nlink=1, st_uid=0, st_gid=0, st_size=1299772, st_atime=1793262084, st_mtime=1793262084, st_ctime=1793262084).st_size
+E        +    where os.stat_result(st_mode=33206, st_ino=1125899908516583, st_dev=12141410533994944018, st_nlink=1, st_uid=0, st_gid=0, st_size=1299772, st_atime=1793262084, st_mtime=1793262084, st_ctime=1793262084) = stat()
+E        +      where stat = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-160/test_large_native_proof_is_imm0/transactions/large_native/journal.json').stat
+
+tests\test_phase9_recovery.py:252: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_large_native_proof_is_immutable_external_evidence_not_an_unreadable_journal
+1 failed in 0.71s

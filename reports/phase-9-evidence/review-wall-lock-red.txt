@@ -1,0 +1,90 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight[contention] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-171/test_arena_boundary_cannot_be_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001AF35DD3140>
+blocked = 'contention'
+
+    @pytest.mark.parametrize("blocked", ["contention", "quarantine"])
+    def test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight(tmp_path, monkeypatch, blocked):
+        from contextlib import nullcontext
+        from polyforge.contracts.manifest import load_manifest
+        from polyforge.contracts.results import Result
+        from polyforge.runner.locks import unity_project_lock
+        from polyforge.unity import bridge, game
+        from polyforge.workspace import init_workspace
+    
+        root = tmp_path / "arena"
+        init_workspace(root, "simple_arena")
+        p = WorkspacePolicy(root)
+        model = load_manifest(p.path("game_manifest.json"))
+        target = p.path("UnityProject/Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx")
+        p.mkdir(target.parent)
+        target.write_bytes(b"original managed boundary")
+        folder = p.mkdir("runs/wall_export/asset")
+        (folder / "asset.fbx").write_bytes(b"new generated boundary")
+        atomic_json(p, "runs/static/request.json", {"assets": [{"id": "ground_a", "materials": [{"id": "grey"}]}]})
+        def parent(*args, **kwargs):
+            if blocked == "quarantine":
+                atomic_json(p, "UnityProject/.polyforge/repair-quarantine.json", {"transaction_id": "other", "status": "ROLLBACK_FAILED"})
+            return Result(run_id="static")
+        monkeypatch.setattr(bridge, "build_unity", parent)
+        monkeypatch.setattr(game, "unity_tool", lambda config: p.path("Unity.exe"))
+        monkeypatch.setattr(game, "reusable_export", lambda *a: folder)
+        with unity_project_lock(p, p.path("UnityProject")) if blocked == "contention" else nullcontext():
+            result = game.build_game(model, model.recipes)
+        assert result.status == "BLOCKED"
+>       assert target.read_bytes() == b"original managed boundary"
+E       AssertionError: assert b'new generated boundary' == b'original managed boundary'
+E         
+E         At index 0 diff: b'n' != b'o'
+E         Use -v to get more diff
+
+tests\test_phase9_recovery.py:378: AssertionError
+_ test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight[quarantine] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-171/test_arena_boundary_cannot_be_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001AF368C9DC0>
+blocked = 'quarantine'
+
+    @pytest.mark.parametrize("blocked", ["contention", "quarantine"])
+    def test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight(tmp_path, monkeypatch, blocked):
+        from contextlib import nullcontext
+        from polyforge.contracts.manifest import load_manifest
+        from polyforge.contracts.results import Result
+        from polyforge.runner.locks import unity_project_lock
+        from polyforge.unity import bridge, game
+        from polyforge.workspace import init_workspace
+    
+        root = tmp_path / "arena"
+        init_workspace(root, "simple_arena")
+        p = WorkspacePolicy(root)
+        model = load_manifest(p.path("game_manifest.json"))
+        target = p.path("UnityProject/Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx")
+        p.mkdir(target.parent)
+        target.write_bytes(b"original managed boundary")
+        folder = p.mkdir("runs/wall_export/asset")
+        (folder / "asset.fbx").write_bytes(b"new generated boundary")
+        atomic_json(p, "runs/static/request.json", {"assets": [{"id": "ground_a", "materials": [{"id": "grey"}]}]})
+        def parent(*args, **kwargs):
+            if blocked == "quarantine":
+                atomic_json(p, "UnityProject/.polyforge/repair-quarantine.json", {"transaction_id": "other", "status": "ROLLBACK_FAILED"})
+            return Result(run_id="static")
+        monkeypatch.setattr(bridge, "build_unity", parent)
+        monkeypatch.setattr(game, "unity_tool", lambda config: p.path("Unity.exe"))
+        monkeypatch.setattr(game, "reusable_export", lambda *a: folder)
+        with unity_project_lock(p, p.path("UnityProject")) if blocked == "contention" else nullcontext():
+            result = game.build_game(model, model.recipes)
+        assert result.status == "BLOCKED"
+>       assert target.read_bytes() == b"original managed boundary"
+E       AssertionError: assert b'new generated boundary' == b'original managed boundary'
+E         
+E         At index 0 diff: b'n' != b'o'
+E         Use -v to get more diff
+
+tests\test_phase9_recovery.py:378: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight[contention]
+FAILED tests/test_phase9_recovery.py::test_arena_boundary_cannot_be_written_before_project_lock_and_quarantine_preflight[quarantine]
+2 failed in 2.35s

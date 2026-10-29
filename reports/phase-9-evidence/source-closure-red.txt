@@ -1,0 +1,29 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______ test_source_closure_follows_consumers_back_to_registered_producer ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-152/test_source_closure_follows_co0')
+
+    def test_source_closure_follows_consumers_back_to_registered_producer(tmp_path):
+        from polyforge.unity.recovery import source_dependencies
+    
+        p, source = source_fixture(tmp_path)
+        fbx = "runs/source/asset/asset.fbx"
+        p.path(fbx).write_bytes(b"registered exported model")
+        p.path("UnityProject/Assets/PolyForgeGenerated/robot.fbx").write_bytes(p.path(fbx).read_bytes())
+        records = [{"relative_path": n, "sha256": hashlib.sha256(p.path(n).read_bytes()).hexdigest()} for n in (source, fbx)]
+        atomic_json(p, "runs/source/artifacts.json", {"artifacts": records})
+        # A later consumer may seal the producer's files by reference without owning them.
+        atomic_json(p, "runs/later_consumer/artifacts.json", {"artifacts": records})
+>       assert set(source_dependencies(p)) == {source, fbx}
+E       AssertionError: assert set() == {'runs/source...source.blend'}
+E         
+E         Extra items in the right set:
+E         'runs/source/asset/source.blend'
+E         'runs/source/asset/asset.fbx'
+E         Use -v to get more diff
+
+tests\test_phase9_recovery.py:240: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_source_closure_follows_consumers_back_to_registered_producer
+1 failed in 0.87s

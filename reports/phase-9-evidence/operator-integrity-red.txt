@@ -1,0 +1,80 @@
+...............F...FF.                                                   [100%]
+================================== FAILURES ===================================
+_ test_invalid_or_role_authored_human_decisions_write_nothing[asset_producer-producer role is not a human] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-155/test_invalid_or_role_authored_3')
+operator = 'asset_producer', reason = 'producer role is not a human'
+
+    @pytest.mark.parametrize(
+        "operator,reason",
+        [
+            ("operator", ""),
+            ("producer", "self approval"),
+            ("release_supervisor", "role is not a human"),
+            ("asset_producer", "producer role is not a human"),
+        ],
+    )
+    def test_invalid_or_role_authored_human_decisions_write_nothing(tmp_path, operator, reason):
+        from polyforge.review.board import record_human_review
+    
+        p, candidate, task = candidate_fixture(tmp_path)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_review.py:300: Failed
+____ test_corrupt_operator_attestation_cannot_promote_a_candidate[origin] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-155/test_corrupt_operator_attestat0')
+change = 'origin'
+
+    @pytest.mark.parametrize("change", ["origin", "history", "revision"])
+    def test_corrupt_operator_attestation_cannot_promote_a_candidate(tmp_path, change):
+        from polyforge.review.board import record_human_review, review_candidate
+    
+        p, candidate, task = candidate_fixture(tmp_path, visual=True)
+        record_human_review(p, candidate, verdict="APPROVED", operator="operator", reason="Fixture operator decision")
+        name = ".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json"
+        value = load_json(p.path(name))
+        if change == "origin":
+            value["current"].pop("origin")
+        elif change == "history":
+            value["history"] = []
+        else:
+            value["current"]["revision"] += 1
+        atomic_json(p, name, value)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_review.py:417: Failed
+____ test_corrupt_operator_attestation_cannot_promote_a_candidate[history] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-155/test_corrupt_operator_attestat1')
+change = 'history'
+
+    @pytest.mark.parametrize("change", ["origin", "history", "revision"])
+    def test_corrupt_operator_attestation_cannot_promote_a_candidate(tmp_path, change):
+        from polyforge.review.board import record_human_review, review_candidate
+    
+        p, candidate, task = candidate_fixture(tmp_path, visual=True)
+        record_human_review(p, candidate, verdict="APPROVED", operator="operator", reason="Fixture operator decision")
+        name = ".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json"
+        value = load_json(p.path(name))
+        if change == "origin":
+            value["current"].pop("origin")
+        elif change == "history":
+            value["history"] = []
+        else:
+            value["current"]["revision"] += 1
+        atomic_json(p, name, value)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_review.py:417: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_invalid_or_role_authored_human_decisions_write_nothing[asset_producer-producer role is not a human]
+FAILED tests/test_phase9_review.py::test_corrupt_operator_attestation_cannot_promote_a_candidate[origin]
+FAILED tests/test_phase9_review.py::test_corrupt_operator_attestation_cannot_promote_a_candidate[history]
+3 failed, 19 passed in 16.38s

@@ -1,0 +1,21 @@
+.....F.........................                                          [100%]
+================================== FAILURES ===================================
+_ test_unsupported_amended_requirement_remains_review_and_roles_cannot_approve _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/amendment-tests/test_unsupported_amended_requi0')
+
+    def test_unsupported_amended_requirement_remains_review_and_roles_cannot_approve(tmp_path):
+        from polyforge.review.amendments import append_amendment
+        from polyforge.review.board import review_candidate
+    
+        p, candidate, task = candidate_fixture(tmp_path)
+        value = amendment("Add online play", [{"original_phrase": "online play", "feature_id": "online", "artifact_id": "server", "unity_component": "Network", "oracles": ["online"]}])
+        value["visual_approval_required"] = False
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_amendments.py:67: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_amendments.py::test_unsupported_amended_requirement_remains_review_and_roles_cannot_approve
+1 failed, 30 passed in 30.28s

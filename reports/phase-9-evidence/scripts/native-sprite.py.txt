@@ -1,0 +1,11 @@
+import json
+from pathlib import Path
+from polyforge.capabilities.dispatch import execute
+from polyforge.capabilities.protocol import RunContext
+
+inputs=json.loads(Path('.tmp/phase8/import-request.json').read_text())
+inputs['source_kind']='DIRECT_SPRITES'
+result=execute('sprite.unity.strip.v1',inputs,RunContext(Path('.tmp/phase6/arena')))
+Path('.tmp/phase9/native-sprite.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+print('Source gate plus actual native 2D import',result.status,result.run_id,flush=True)
+assert result.status=='PASS',result.to_dict()

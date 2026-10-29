@@ -1,0 +1,21 @@
+import json
+from pathlib import Path
+from polyforge.contracts.results import Result
+from polyforge.contracts.validation import canonical_digest
+from polyforge.runner.state import atomic_json
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.workforce.workers import seal_candidate
+from polyforge.review.board import review_candidate
+from polyforge.review.acceptance import public_acceptance_spec,check_acceptance
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'))
+brief=p.path('.polyforge/original_prompt.txt').read_text(encoding='utf-8')
+run='game-check-809ffafcc7044cdc'
+task={'schema_version':'1.0.0','task_class':'BUILD_GAME','brief':brief,'domain_tags':['unity','gameplay'],'feature_ids':['player_control'],'capability_id':'unity.game.arena.v1','input':{'schema_version':'1.0.0'}}
+candidate=seal_candidate(p,Result(run_id=run),canonical_digest(brief))
+review=review_candidate(p,candidate,task)
+out=Path('.tmp/phase9')
+for name,value in [('native-game-candidate.json',candidate),('native-game-task.json',task),('native-game-board.json',review),('native-game-acceptance.json',check_acceptance(p,public_acceptance_spec(p),{'run_id':run}))]:
+ (out/name).write_text(json.dumps(value,indent=2)+'\n',encoding='utf-8')
+assert review['promotion']=='APPROVED' and review['game_status']=='PARTIAL',review
+print('Native original-brief board PASS; 7 original obligations, six mutants; game PARTIAL')

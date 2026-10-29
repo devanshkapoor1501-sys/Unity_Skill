@@ -1,0 +1,36 @@
+E501 Line too long (101 > 100)
+   --> polyforge\unity\recovery.py:206:101
+    |
+204 |     if not isinstance(baseline, dict):
+205 |         raise InputError(
+206 |             "Legacy transaction has no complete application prestate; cannot claim verified rollback"
+    |                                                                                                     ^
+207 |         )
+208 |     try:
+    |
+
+E501 Line too long (107 > 100)
+   --> polyforge\unity\repairs.py:253:101
+    |
+251 |             },
+252 |             "verification": "native reconciliation; automatic rollback on failed verification",
+253 |             "cross_application_recovery": "Required native reimport, source identity and regression proof",
+    |                                                                                                     ^^^^^^^
+254 |         },
+255 |     )
+    |
+
+F841 Local variable `before` is assigned to but never used
+   --> polyforge\unity\repairs.py:276:9
+    |
+274 |                 "Two proposals already attempted for this symptom",
+275 |             )
+276 |         before = policy.path(".polyforge/unity-request.json")
+    |         ^^^^^^
+277 |         from polyforge.unity.recovery import observe_state, rollback_locked, source_dependencies
+278 |         from polyforge.unity.transactions import inventory
+    |
+help: Remove assignment to unused variable `before`
+
+Found 3 errors.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).

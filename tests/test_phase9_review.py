@@ -8,7 +8,7 @@ from test_phase8_review import asset_fixture
 
 from polyforge.assets.contracts import inspect_bundle
 from polyforge.contracts.results import Result
-from polyforge.contracts.validation import InputError, canonical_digest
+from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.workforce.workers import seal_candidate
@@ -282,3 +282,272 @@ def test_review_cli_publishes_no_files_until_explicit_operator_action(tmp_path):
         "--json",
     ]
     assert dispatch(build_parser().parse_args(args)).status == "PASS"
+
+
+@pytest.mark.parametrize(
+    "operator,reason",
+    [
+        ("operator", ""),
+        ("producer", "self approval"),
+        ("release_supervisor", "role is not a human"),
+        ("asset_producer", "producer role is not a human"),
+    ],
+)
+def test_invalid_or_role_authored_human_decisions_write_nothing(tmp_path, operator, reason):
+    from polyforge.review.board import record_human_review
+
+    p, candidate, task = candidate_fixture(tmp_path)
+    with pytest.raises(InputError):
+        record_human_review(p, candidate, verdict="APPROVED", operator=operator, reason=reason)
+    assert not p.path(".polyforge/human-reviews").exists()
+
+
+def test_unbound_receipt_and_post_open_candidate_change_are_denied(tmp_path):
+    from polyforge.review.board import CandidateReader, require_promotion
+
+    p, candidate, task = candidate_fixture(tmp_path)
+    with pytest.raises(InputError):
+        require_promotion(p, candidate, {"promotion": "APPROVED"})
+    reader = CandidateReader(p, candidate, "brief_compliance_inspector")
+    name = candidate["files"][0]["path"]
+    p.path(name).write_bytes(b"changed after opening the read-only candidate view")
+    with pytest.raises(InputError):
+        reader.read(name)
+
+
+def test_unknown_acceptance_run_cannot_escape_or_publish_files(tmp_path):
+    from pathlib import Path
+
+    from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
+
+    p = WorkspacePolicy(tmp_path)
+    p.mkdir(".polyforge")
+    p.path(".polyforge/original_prompt.txt").write_text(
+        Path("examples/simple_arena/brief.md").read_text(encoding="utf-8"), encoding="utf-8"
+    )
+    spec = public_acceptance_spec(p)
+    for run in ["../secret", None, "", "C:/private"]:
+        with pytest.raises(InputError):
+            check_acceptance(p, spec, {"run_id": run})
+    assert not p.path("runs").exists()
+
+
+def test_public_acceptance_replays_all_oracles_and_retains_verifier_veto(tmp_path):
+    import xml.etree.ElementTree as ET
+
+    from test_phase9_mutations import MUTANTS, trace
+
+    from polyforge.contracts.manifest import load_manifest
+    from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
+    from polyforge.unity.game import GAME_EDIT_TESTS, PLAY_TESTS, compile_game_request, core_suite
+    from polyforge.workspace import init_workspace
+
+    root = tmp_path / "arena"
+    init_workspace(root, "simple_arena")
+    p = WorkspacePolicy(root)
+    p.mkdir(".polyforge")
+    p.path(".polyforge/original_prompt.txt").write_text(
+        p.path("brief.md").read_text(encoding="utf-8"), encoding="utf-8"
+    )
+    game = compile_game_request(load_manifest(p.path("game_manifest.json")))
+    atomic_json(p, "runs/public/game-input.json", game)
+    for filename, names in [("editmode.xml", GAME_EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+        xml = ET.Element("test-run", result="Passed")
+        for name in sorted(names):
+            ET.SubElement(xml, "test-case", fullname=name, result="Passed")
+        p.path("runs/public/" + filename).write_bytes(ET.tostring(xml))
+    cases = {s["id"]: s for s in core_suite(game)["scenarios"]}
+    variants = {
+        **{name: name for name in cases},
+        "keyboard_input": "player_moves",
+        "keyboard_restart": "restart_resets",
+        **MUTANTS,
+    }
+    for name, scenario in variants.items():
+        value = trace(scenario, name if name in MUTANTS else None)
+        ticks = sum(
+            s["ticks"]
+            for s in cases["player_moves" if name == "keyboard_restart" else scenario]["steps"]
+        )
+        if name == "keyboard_restart":
+            ticks += 1
+        value.update(
+            input_digest=game["input_digest"],
+            scene_id=game["scene_id"],
+            seed=game["seed"],
+            frames_executed=ticks,
+        )
+        value["samples"][-1]["frame"] = ticks
+        if name.startswith("keyboard_"):
+            value["purpose"] = "INPUT_ADAPTER"
+        for records in [
+            value["baseline_enemy_positions"],
+            *[s["enemy_positions"] for s in value["samples"]],
+        ]:
+            records[0]["id"] = game["enemies"][0]["id"]
+        for expected in cases[scenario]["expected"]:
+            value["events"] += [{"name": expected["event"]}] * expected["count_gte"]
+        atomic_json(p, "runs/public/telemetry/" + name + ".json", value)
+    spec = public_acceptance_spec(p)
+    good = check_acceptance(p, spec, {"run_id": "public"})
+    assert good["status"] == "PASS" and good["game_status"] == "PARTIAL"
+    assert len(good["mutations"]) == 6
+    from polyforge.review.amendments import append_amendment
+
+    task = {
+        "schema_version": "1.0.0",
+        "task_class": "BUILD_GAME",
+        "brief": p.path("brief.md").read_text(encoding="utf-8"),
+        "domain_tags": ["unity", "gameplay"],
+        "feature_ids": ["player_control"],
+        "capability_id": "unity.game.arena.v1",
+        "input": {"schema_version": "1.0.0"},
+    }
+    row = {**spec["requirements"][0], "original_phrase": "Keep keyboard controls"}
+    append_amendment(
+        p,
+        task,
+        {
+            "text": "Keep keyboard controls",
+            "requirements": [row],
+            "visual_approval_required": False,
+        },
+        operator="owner",
+        reason="Explicit obligation",
+    )
+    amended = public_acceptance_spec(p)
+    assert len(amended["requirements"]) == len(spec["requirements"]) + 1
+    assert check_acceptance(p, amended, {"run_id": "public"})["status"] == "PASS"
+    with pytest.raises(InputError):
+        check_acceptance(p, spec, {"run_id": "public"})
+    unsupported = {**row, "original_phrase": "Add networking", "oracles": ["networking"]}
+    append_amendment(
+        p,
+        task,
+        {
+            "text": "Add networking",
+            "requirements": [unsupported],
+            "visual_approval_required": False,
+        },
+        operator="owner",
+        reason="Unsupported obligation",
+    )
+    assert (
+        check_acceptance(p, public_acceptance_spec(p), {"run_id": "public"})["status"] == "REVIEW"
+    )
+    damaged = load_json(p.path("runs/public/telemetry/contact_damage.json"))
+    damaged["samples"][-1]["health"] = 100
+    atomic_json(p, "runs/public/telemetry/contact_damage.json", damaged)
+    wrong = check_acceptance(
+        p, public_acceptance_spec(p), {"run_id": "public", "supervisor": "APPROVED"}
+    )
+    assert wrong["status"] == "FAIL" and wrong["game_status"] == "PARTIAL"
+
+
+@pytest.mark.parametrize("change", ["origin", "history", "revision"])
+def test_corrupt_operator_attestation_cannot_promote_a_candidate(tmp_path, change):
+    from polyforge.review.board import record_human_review, review_candidate
+
+    p, candidate, task = candidate_fixture(tmp_path, visual=True)
+    record_human_review(
+        p, candidate, verdict="APPROVED", operator="operator", reason="Fixture operator decision"
+    )
+    name = ".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json"
+    value = load_json(p.path(name))
+    if change == "origin":
+        value["current"].pop("origin")
+    elif change == "history":
+        value["history"] = []
+    else:
+        value["current"]["revision"] += 1
+    atomic_json(p, name, value)
+    with pytest.raises(InputError):
+        review_candidate(p, candidate, task)
+
+
+def test_unknown_game_brief_requires_review_and_wrong_game_has_inspector_veto(
+    tmp_path, monkeypatch
+):
+    from pathlib import Path
+
+    from polyforge.review import acceptance, board
+
+    p, candidate, task = candidate_fixture(tmp_path)
+    # Unit boundary: registered technical inspection succeeds; acceptance has its own veto.
+    monkeypatch.setattr(board, "inspect_candidate", lambda *a, **k: {"verdict": "APPROVED"})
+    task["task_class"] = "BUILD_GAME"
+    task["capability_id"] = "unity.game.arena.v1"
+    p.mkdir(".polyforge")
+    p.path(".polyforge/original_prompt.txt").write_text("An unrelated game brief", encoding="utf-8")
+    reviewed = board.review_candidate(p, candidate, task)
+    assert reviewed["promotion"] == "REVIEW"
+    assert (
+        next(i for i in reviewed["inspectors"] if i["reviewed_by"] == "gameplay_qa_inspector")[
+            "status"
+        ]
+        == "REVIEW"
+    )
+    p.path(".polyforge/original_prompt.txt").write_text(
+        Path("examples/simple_arena/brief.md").read_text(encoding="utf-8"), encoding="utf-8"
+    )
+    # A different candidate brief cannot borrow a passing frozen arena's acceptance.
+    assert board.review_candidate(p, candidate, task)["promotion"] == "REVIEW"
+    task["brief"] = p.path(".polyforge/original_prompt.txt").read_text(encoding="utf-8")
+    candidate["brief_digest"] = canonical_digest(task["brief"])
+    candidate["candidate_digest"] = canonical_digest(
+        {k: v for k, v in candidate.items() if k != "candidate_digest"}
+    )
+    monkeypatch.setattr(
+        acceptance, "check_acceptance", lambda *a, **k: {"status": "FAIL", "game_status": "PARTIAL"}
+    )
+    rejected = board.review_candidate(p, candidate, task)
+    assert rejected["promotion"] == "REJECTED"
+    assert (
+        next(i for i in rejected["inspectors"] if i["reviewed_by"] == "gameplay_qa_inspector")[
+            "status"
+        ]
+        == "REJECTED"
+    )
+
+
+def test_frozen_brief_reads_are_bounded(tmp_path):
+    from polyforge.review.acceptance import public_acceptance_spec
+
+    p = WorkspacePolicy(tmp_path)
+    p.mkdir(".polyforge")
+    p.path(".polyforge/original_prompt.txt").write_bytes(b"x" * 262145)
+    with pytest.raises(InputError, match="limit|budget|exceed"):
+        public_acceptance_spec(p)
+
+
+def test_reserved_evaluator_data_cannot_be_smuggled_into_a_sealed_candidate(tmp_path, monkeypatch):
+    from pathlib import Path
+
+    from polyforge.review.board import CandidateReader
+    from polyforge.workforce.permissions import authorize
+
+    p, candidate, task = candidate_fixture(tmp_path)
+    p.mkdir("runs/evaluator")
+    secret = p.path("runs/evaluator/hidden.json")
+    secret.write_bytes(b"unit fixture, not a real evaluator holdout")
+    candidate["files"].append(
+        {
+            "path": "runs/evaluator/hidden.json",
+            "sha256": hashlib.sha256(secret.read_bytes()).hexdigest(),
+        }
+    )
+    candidate["candidate_digest"] = canonical_digest(
+        {k: v for k, v in candidate.items() if k != "candidate_digest"}
+    )
+    original = Path.read_bytes
+
+    def read(path):
+        if path == secret:
+            pytest.fail("inspector attempted to read reserved evaluator data")
+        return original(path)
+
+    monkeypatch.setattr(Path, "read_bytes", read)
+    with pytest.raises(InputError):
+        CandidateReader(p, candidate, "brief_compliance_inspector")
+    with pytest.raises(InputError):
+        authorize(p, "brief_compliance_inspector", "read", "runs/evaluator/hidden.json")

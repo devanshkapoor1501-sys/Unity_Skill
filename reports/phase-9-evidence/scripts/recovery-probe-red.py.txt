@@ -1,0 +1,14 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration, unity_tool, launch
+from polyforge.contracts.validation import InputError
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));c=configuration(p)
+try:
+    launch(p,unity_tool(c),c,'runs/phase9-probe-red','recovery',output=p.path('runs/phase9-probe-red/identity.json'))
+except InputError as exc:
+    Path('.tmp/phase9/recovery-probe-native-red.json').write_text(json.dumps({'expected':'registered method does not exist in old package','observed':str(exc),'kind':int(exc.kind)},indent=2)+'\n',encoding='utf-8')
+    print('Expected native RED:',exc)
+else:
+    raise AssertionError('Old package unexpectedly implements RecoveryProbe')

@@ -1,0 +1,18 @@
+import json
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration, unity_tool, launch
+from polyforge.unity.upgrade import sync_package
+from polyforge.runner.locks import unity_project_lock
+from polyforge.contracts.validation import load_json
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));c=configuration(p)
+with unity_project_lock(p,p.path('UnityProject')):
+    transaction=sync_package(p)
+    print('Owned package sync:',transaction,flush=True)
+    output=p.path('runs/phase9-probe-green/identity.json')
+    launch(p,unity_tool(c),c,'runs/phase9-probe-green','recovery',output=output)
+    observed=load_json(output,max_bytes=33_554_432)
+    assert observed['assets'] and all(a['guid'] for a in observed['assets'])
+    Path('.tmp/phase9/recovery-probe-native-green.json').write_text(json.dumps(observed,indent=2)+'\n',encoding='utf-8')
+    print('Observed',len(observed['assets']),'native assets;',sum(len(a['object_ids']) for a in observed['assets']),'persistent IDs;',sum(len(a['references']) for a in observed['assets']),'references',flush=True)

@@ -1,0 +1,36 @@
+.......FFF                                                               [100%]
+================================== FAILURES ===================================
+_ test_explicit_operator_receipt_binds_revision_and_does_not_claim_identity_authentication _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-127/test_explicit_operator_receipt0')
+
+    def test_explicit_operator_receipt_binds_revision_and_does_not_claim_identity_authentication(tmp_path):
+>       from polyforge.review.board import record_human_review, require_promotion, review_candidate
+E       ImportError: cannot import name 'record_human_review' from 'polyforge.review.board' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\review\board.py)
+
+tests\test_phase9_review.py:120: ImportError
+__________ test_arena_acceptance_is_frozen_independently_of_manifest __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-127/test_arena_acceptance_is_froze0')
+
+    def test_arena_acceptance_is_frozen_independently_of_manifest(tmp_path):
+        from pathlib import Path
+>       from polyforge.review.acceptance import public_acceptance_spec
+E       ModuleNotFoundError: No module named 'polyforge.review.acceptance'
+
+tests\test_phase9_review.py:138: ModuleNotFoundError
+_____ test_arena_fake_pass_and_omitted_original_obligations_are_rejected ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-127/test_arena_fake_pass_and_omitt0')
+
+    def test_arena_fake_pass_and_omitted_original_obligations_are_rejected(tmp_path):
+        from pathlib import Path
+>       from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
+E       ModuleNotFoundError: No module named 'polyforge.review.acceptance'
+
+tests\test_phase9_review.py:158: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_explicit_operator_receipt_binds_revision_and_does_not_claim_identity_authentication
+FAILED tests/test_phase9_review.py::test_arena_acceptance_is_frozen_independently_of_manifest
+FAILED tests/test_phase9_review.py::test_arena_fake_pass_and_omitted_original_obligations_are_rejected
+3 failed, 7 passed in 5.25s

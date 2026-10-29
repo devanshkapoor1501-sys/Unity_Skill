@@ -8,11 +8,12 @@ from typing import Any
 
 from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
+from polyforge.review.amendments import read_amendments
 from polyforge.runner.locks import FileLock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.workforce.models import validate_task
-from polyforge.workforce.permissions import authorize
+from polyforge.workforce.permissions import ROLES, authorize
 from polyforge.workforce.workers import check_candidate, inspect_candidate
 
 INSPECTORS = (
@@ -23,6 +24,55 @@ INSPECTORS = (
     "performance_inspector",
     "release_supervisor",
 )
+
+
+def _human_record(value: Any, candidate: dict[str, Any]) -> dict[str, Any]:
+    fields = {
+        "schema_version",
+        "candidate_digest",
+        "revision",
+        "operator",
+        "reason",
+        "verdict",
+        "origin",
+        "identity_authenticated",
+        "amendment_digest",
+    }
+    if (
+        not isinstance(value, dict)
+        or set(value) != {"current", "history"}
+        or not isinstance(value["history"], list)
+        or not 1 <= len(value["history"]) <= 100
+        or value["current"] != value["history"][-1]
+    ):
+        raise InputError("Invalid operator decision history")
+    for receipt in value["history"]:
+        if (
+            not isinstance(receipt, dict)
+            or set(receipt) != fields
+            or receipt["schema_version"] != "1.0.0"
+            or receipt["candidate_digest"] != candidate["candidate_digest"]
+            or receipt["revision"] != candidate["revision"]
+            or receipt["origin"] != "EXPLICIT_LOCAL_OPERATOR_ATTESTATION"
+            or receipt["identity_authenticated"] is not False
+            or not isinstance(receipt["amendment_digest"], str)
+            or len(receipt["amendment_digest"]) != 64
+            or not isinstance(receipt["verdict"], str)
+            or receipt["verdict"] not in {"APPROVED", "REJECTED"}
+            or any(
+                not isinstance(receipt[key], str)
+                or not receipt[key].strip()
+                or len(receipt[key]) > 4096
+                for key in ("operator", "reason")
+            )
+            or receipt["operator"] == candidate["producer_id"]
+            or receipt["operator"] in ROLES
+        ):
+            raise InputError(
+                "Operator attestation is malformed or belongs to a role/other revision"
+            )
+    current: dict[str, Any] = value["current"]
+    return current
 
 
 def record_human_review(
@@ -38,7 +88,7 @@ def record_human_review(
         not isinstance(v, str) or not v.strip() or len(v) > 4096 for v in (operator, reason)
     ):
         raise InputError("Human decision needs a verdict, operator and explicit reason")
-    if operator == candidate["producer_id"] or operator in INSPECTORS:
+    if operator == candidate["producer_id"] or operator in ROLES:
         raise InputError("A producer/inspector role cannot attest as a human operator")
     receipt = {
         "schema_version": "1.0.0",
@@ -49,11 +99,16 @@ def record_human_review(
         "verdict": verdict,
         "origin": "EXPLICIT_LOCAL_OPERATOR_ATTESTATION",
         "identity_authenticated": False,
+        "amendment_digest": read_amendments(policy, candidate["brief_digest"])["chain_digest"],
     }
     with FileLock(policy, ".polyforge/locks/human-review.lock"):
         path = ".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json"
         prior = load_json(policy.path(path)) if policy.path(path).is_file() else {"history": []}
-        atomic_json(policy, path, {"current": receipt, "history": [*prior["history"], receipt]})
+        if policy.path(path).is_file():
+            _human_record(prior, candidate)
+        updated = {"current": receipt, "history": [*prior["history"], receipt]}
+        _human_record(updated, candidate)
+        atomic_json(policy, path, updated)
     return receipt
 
 
@@ -98,9 +153,11 @@ def review_candidate(
         raise InputError("A producer cannot join its own approval board")
     # Registered checks inspect exact sealed source/metrics/test identities, not role assertions.
     technical = inspect_candidate(policy, candidate, task, technical_only=True)
+    amendments = read_amendments(policy, candidate["brief_digest"])
     visual_required = task.get("input", {}).get("spec", {}).get("visual_approval_required", False)
+    visual_required |= any(r["visual_approval_required"] for r in amendments["records"])
     path = policy.path(".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json")
-    recorded = load_json(path)["current"] if path.is_file() else None
+    recorded = _human_record(load_json(path), candidate) if path.is_file() else None
     if human_review is not None and human_review != recorded:
         raise InputError("Unregistered human approval receipt", kind=ErrorKind.POLICY_DENIED)
     human_review = recorded
@@ -112,19 +169,50 @@ def review_candidate(
             or human_review.get("revision") != candidate["revision"]
         ):
             raise InputError("Human review belongs to another candidate revision")
-        subjective = human_review["verdict"]
+        subjective = (
+            human_review["verdict"]
+            if human_review["verdict"] == "REJECTED"
+            or human_review["amendment_digest"] == amendments["chain_digest"]
+            else "REVIEW"
+        )
         if subjective == "REJECTED" or visual_required:
             promotion = subjective
     game = task["task_class"] == "BUILD_GAME"
+    if not game and any(r["requirements"] for r in amendments["records"]):
+        promotion = "REVIEW" if promotion != "REJECTED" else promotion
+    source_review = None
+    if task.get("capability_id") == "sprite.unity.strip.v1":
+        from polyforge.review.sprite_source import review_sprite_source
+
+        source_review = review_sprite_source(policy, task["input"])
+        if source_review["promotion"] != "APPROVED" and promotion != "REJECTED":
+            promotion = source_review["promotion"]
+        if source_review["subjective"] != "NOT_REQUIRED" and subjective != "REJECTED":
+            subjective = source_review["subjective"]
     acceptance = None
     if game:
         from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
 
-        acceptance = check_acceptance(
-            policy, public_acceptance_spec(policy), {"run_id": candidate["production_run_id"]}
-        )
+        try:
+            acceptance_spec = public_acceptance_spec(policy)
+            if acceptance_spec["original_brief_digest"] != candidate["brief_digest"]:
+                raise InputError(
+                    "Game candidate differs from the frozen original brief",
+                    code="PF-ACCEPTANCE-REVIEW",
+                )
+            acceptance = check_acceptance(
+                policy, acceptance_spec, {"run_id": candidate["production_run_id"]}
+            )
+        except InputError as exc:
+            if exc.code != "PF-ACCEPTANCE-REVIEW":
+                raise
+            acceptance = {"status": "REVIEW", "game_status": "PARTIAL", "reason": str(exc)}
         if acceptance["status"] != "PASS":
-            promotion = "REJECTED"
+            promotion = (
+                "REVIEW"
+                if acceptance["status"] == "REVIEW" and promotion != "REJECTED"
+                else "REJECTED"
+            )
     integrated = task.get("capability_id") in {"unity.game.arena.v1", "sprite.unity.strip.v1"}
     records = []
     for role in INSPECTORS:
@@ -132,6 +220,15 @@ def review_candidate(
         applies |= role == "asset_animation_inspector" and not game
         applies |= role == "unity_import_inspector" and integrated
         applies |= role == "gameplay_qa_inspector" and game
+        verdict = "APPROVED" if applies else "NOT_RUN"
+        if role == "release_supervisor":
+            verdict = promotion
+        elif (
+            role in {"brief_compliance_inspector", "gameplay_qa_inspector"}
+            and acceptance is not None
+            and acceptance["status"] != "PASS"
+        ):
+            verdict = "REVIEW" if acceptance["status"] == "REVIEW" else "REJECTED"
         records.append(
             {
                 "authored_by": candidate["producer_id"],
@@ -140,7 +237,7 @@ def review_candidate(
                 "tool_identity": "polyforge.registered.candidate_inspection.v1",
                 "writable_paths": [],
                 "readable_paths": [f["path"] for f in candidate["files"]],
-                "status": "APPROVED" if applies else "NOT_RUN",
+                "status": verdict,
                 "required": applies,
             }
         )
@@ -150,10 +247,12 @@ def review_candidate(
         "candidate_digest": candidate["candidate_digest"],
         "revision": candidate["revision"],
         "brief_digest": candidate["brief_digest"],
+        "amendment_digest": amendments["chain_digest"],
         "task": copy.deepcopy(task),
         "technical": technical["verdict"],
         "subjective": subjective,
         "human_review": copy.deepcopy(human_review),
+        "source_review": source_review,
         "acceptance": acceptance,
         "gameplay": "PUBLIC_CHECKS_ONLY" if game else "NOT_REQUIRED",
         "game_status": "PARTIAL",

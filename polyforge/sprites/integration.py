@@ -1,14 +1,13 @@
 """Approved six-frame sprite import, native slicing and separate 2D behavior tests."""
 
 import hashlib
-import shutil
 from typing import Any
 from uuid import uuid4
 
 from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
-from polyforge.runner.locks import FileLock
+from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.sprites.contracts import route_2d
@@ -42,6 +41,11 @@ PLAY_TESTS = {
 def import_strip(inputs: dict[str, Any], context: RunContext) -> Result:
     validate_schema(inputs, "sprite_import.schema.json")
     policy = WorkspacePolicy(context.workspace)
+    from polyforge.review.sprite_source import review_sprite_source
+
+    source_review = review_sprite_source(policy, inputs, remember_requirement=not context.dry_run)
+    if source_review["promotion"] != "APPROVED":
+        return Result(status="REVIEW", exit_code=4, data={"source_review": source_review})
     route = route_2d({"output": "UNITY_2D", "source": inputs["source_kind"]})
     metadata = load_json(policy.path(inputs["metadata_file"]))
     if (
@@ -99,7 +103,23 @@ def import_strip(inputs: dict[str, Any], context: RunContext) -> Result:
         for p in policy.path(project / "Assets/PolyForgeGenerated").rglob("*.unity")
         if "/Sprites/" not in p.as_posix()
     }
-    with FileLock(policy, ".polyforge/locks/unity-project.lock", cancel=context.cancel):
+    with unity_project_lock(policy, policy.path("UnityProject"), cancel=context.cancel):
+        if review_sprite_source(policy, inputs) != source_review:
+            raise InputError("Sprite source approval changed before project lock")
+        source_hashes = {f["path"]: f["sha256"] for f in source_review["candidate"]["files"]}
+        for name, payload in [
+            (inputs["atlas_file"], sheet),
+            *zip(inputs["frame_files"], frames, strict=True),
+        ]:
+            if (
+                source_hashes[policy.path(name).relative_to(policy.root).as_posix()]
+                != hashlib.sha256(payload).hexdigest()
+            ):
+                raise InputError("Sprite bytes changed after source approval")
+        if canonical_digest(metadata) != canonical_digest(
+            load_json(policy.path(inputs["metadata_file"]))
+        ):
+            raise InputError("Sprite metadata changed after source approval")
         prepare_project(policy, installed_template(executable))
         if inputs.get("allow_package_downloads", False):
             atomic_json(
@@ -118,7 +138,7 @@ def import_strip(inputs: dict[str, Any], context: RunContext) -> Result:
             not target.is_file()
             or hashlib.sha256(target.read_bytes()).hexdigest() != hashlib.sha256(sheet).hexdigest()
         ):
-            shutil.copyfile(atlas, target)
+            target.write_bytes(sheet)
         digest = canonical_digest(metadata)
         request = atomic_json(
             policy,
@@ -192,6 +212,8 @@ def import_strip(inputs: dict[str, Any], context: RunContext) -> Result:
                 )
         atomic_json(policy, relative + "/preservation.json", {"before_and_after_sha256": originals})
         atomic_json(policy, relative + "/tests.json", tests)
+        if review_sprite_source(policy, inputs) != source_review:
+            raise InputError("Sprite source approval changed during native import")
         registered = [
             policy.path(relative + "/" + name)
             for name in (

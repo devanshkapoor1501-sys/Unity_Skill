@@ -1,0 +1,153 @@
+{
+  "status": "PASS",
+  "scenarios": {
+    "player_moves": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "wall_collision": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "enemy_patrols": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "contact_damage": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "health_failure": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "survival_win": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "restart_resets": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "keyboard_input": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "keyboard_restart": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "mutation_id": null,
+      "gate_status": "PASS"
+    },
+    "collision_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Wall did not stop actual player movement at its inner boundary"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M1",
+      "gate_status": "PASS"
+    },
+    "restart_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Restart did not restore position, health, time and running state"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M2",
+      "gate_status": "PASS"
+    },
+    "win_reversed": {
+      "status": "FAIL",
+      "issues": [
+        "Surviving thirty seconds did not win"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M3",
+      "gate_status": "PASS"
+    },
+    "damage_no_health": {
+      "status": "FAIL",
+      "issues": [
+        "Contact produced no observed health loss and damage evidence"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M4",
+      "gate_status": "PASS"
+    },
+    "navigation_stuck": {
+      "status": "FAIL",
+      "issues": [
+        "One or more declared enemies did not patrol"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M5",
+      "gate_status": "PASS"
+    },
+    "input_disconnected": {
+      "status": "FAIL",
+      "issues": [
+        "Player did not move at least 0.5m"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "mutation_id": "M6",
+      "gate_status": "PASS"
+    }
+  },
+  "hidden_evaluation": "NOT_RUN"
+}

@@ -1,0 +1,47 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___ test_reserved_evaluator_data_cannot_be_smuggled_into_a_sealed_candidate ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-165/test_reserved_evaluator_data_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002A57FA661E0>
+
+    def test_reserved_evaluator_data_cannot_be_smuggled_into_a_sealed_candidate(tmp_path, monkeypatch):
+        from pathlib import Path
+        from polyforge.review.board import CandidateReader
+        from polyforge.workforce.permissions import authorize
+    
+        p, candidate, task = candidate_fixture(tmp_path)
+        p.mkdir("runs/evaluator")
+        secret = p.path("runs/evaluator/hidden.json")
+        secret.write_bytes(b"unit fixture, not a real evaluator holdout")
+        candidate["files"].append({"path": "runs/evaluator/hidden.json", "sha256": hashlib.sha256(secret.read_bytes()).hexdigest()})
+        candidate["candidate_digest"] = canonical_digest({k: v for k, v in candidate.items() if k != "candidate_digest"})
+        original = Path.read_bytes
+        def read(path):
+            if path == secret:
+                pytest.fail("inspector attempted to read reserved evaluator data")
+            return original(path)
+        monkeypatch.setattr(Path, "read_bytes", read)
+        with pytest.raises(InputError):
+>           CandidateReader(p, candidate, "brief_compliance_inspector")
+
+tests\test_phase9_review.py:489: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\review\board.py:113: in __init__
+    check_candidate(policy, candidate)
+polyforge\workforce\workers.py:43: in check_candidate
+    if hashlib.sha256(policy.path(item["path"]).read_bytes()).hexdigest() != item["sha256"]:
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-165/test_reserved_evaluator_data_c0/runs/evaluator/hidden.json')
+
+    def read(path):
+        if path == secret:
+>           pytest.fail("inspector attempted to read reserved evaluator data")
+E           Failed: inspector attempted to read reserved evaluator data
+
+tests\test_phase9_review.py:485: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_reserved_evaluator_data_cannot_be_smuggled_into_a_sealed_candidate
+1 failed in 3.11s

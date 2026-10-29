@@ -18,6 +18,15 @@ CORE_SCENARIOS = (
     "restart_resets",
 )
 
+MUTANT_SCENARIOS = {
+    "collision_disabled": "wall_collision",
+    "restart_disabled": "restart_resets",
+    "win_reversed": "survival_win",
+    "damage_no_health": "contact_damage",
+    "navigation_stuck": "enemy_patrols",
+    "input_disconnected": "player_moves",
+}
+
 
 def validate_trace(
     trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int
@@ -27,10 +36,9 @@ def validate_trace(
     expected_case = {
         "keyboard_input": "player_moves",
         "keyboard_restart": "restart_resets",
-        "collision_disabled": "wall_collision",
-        "restart_disabled": "restart_resets",
+        **MUTANT_SCENARIOS,
     }.get(identifier, identifier)
-    mutant = identifier in {"collision_disabled", "restart_disabled"}
+    mutant = identifier in MUTANT_SCENARIOS
     purpose = (
         "MUTANT" if mutant else "INPUT_ADAPTER" if identifier.startswith("keyboard_") else "NOMINAL"
     )

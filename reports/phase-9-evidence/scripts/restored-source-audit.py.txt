@@ -1,0 +1,23 @@
+import json,hashlib
+from pathlib import Path
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.transactions import ManagedTransaction
+from polyforge.contracts.validation import load_json
+from polyforge.blender.adapter import execute_recipe
+from polyforge.capabilities.protocol import RunContext
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));tx=ManagedTransaction(p,'phase9_cross_tool')
+journal=tx.read()
+legacy=p.path(tx.relative+'/journal.json').read_bytes()
+Path('.tmp/phase9/native-rollback-inline-journal.json').write_bytes(legacy)
+tx.record('EVIDENCE_EXTERNALIZED',legacy_journal_sha256=hashlib.sha256(legacy).hexdigest())
+assert tx.read()['recovery']==journal['recovery'] and tx.verify_restored()
+name=journal['changed_source'];source=p.path(name)
+assert hashlib.sha256(source.read_bytes()).hexdigest()==journal['original'][name]
+owner=source.parent.parent
+job=load_json(p.path(owner/'input.json'))
+result=execute_recipe(job['recipe'],RunContext(p.root),audit_export=True,source=source)
+record={'source':name,'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'original_sha256':journal['original'][name],'result':result.to_dict()}
+Path('.tmp/phase9/restored-source-audit.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+print('Exact restored Blender source audit:',result.status,result.run_id,flush=True)
+assert result.status=='PASS',result.to_dict()

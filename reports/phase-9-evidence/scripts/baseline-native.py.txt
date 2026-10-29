@@ -1,0 +1,8 @@
+import json
+from pathlib import Path
+from polyforge.unity.game import verify_game
+
+result = verify_game(Path('.tmp/phase6/arena').resolve())
+Path('.tmp/phase9/baseline-native-retry.json').write_text(json.dumps(result.to_dict(), indent=2) + '\n', encoding='utf-8')
+print(result.status, result.exit_code, result.run_id, flush=True)
+raise SystemExit(result.exit_code)

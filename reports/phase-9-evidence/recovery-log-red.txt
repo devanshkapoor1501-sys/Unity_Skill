@@ -1,0 +1,30 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+______________ test_resume_preserves_failed_native_attempt_logs _______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/recovery-log-red/test_resume_preserves_failed_n0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000196600796A0>
+
+    def test_resume_preserves_failed_native_attempt_logs(tmp_path, monkeypatch):
+        from polyforge.unity import recovery
+    
+        p, source = source_fixture(tmp_path)
+        monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: native_state())
+        tx = recovery.prepare_transaction(p, "keep_negative", dependencies=[source])
+        paths = []
+        def observe(policy, relative, **kwargs):
+            paths.append(relative)
+            atomic_json(policy, relative + "/native/process.json", {"reason": "timeout" if len(paths) == 1 else "exit"})
+            if len(paths) == 1:
+                raise InputError("Injected timeout")
+            return native_state()
+        monkeypatch.setattr(recovery, "observe_state", observe)
+        assert recovery.repair_rollback(tmp_path, tx.identifier).status == "FAIL"
+        assert recovery.resume_run(tmp_path, tx.identifier).status == "PASS"
+>       assert paths[0] != paths[1]
+E       AssertionError: assert 'transactions/keep_negative/recovery' != 'transactions/keep_negative/recovery'
+
+tests\test_phase9_recovery.py:258: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_resume_preserves_failed_native_attempt_logs
+1 failed, 40 deselected in 2.32s

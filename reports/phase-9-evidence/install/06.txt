@@ -1,0 +1,12 @@
+usage: polyforge repair rollback [-h] --workspace PATH --transaction-id
+                                 TRANSACTION_ID [--json]
+                                 [--format {human,json}]
+
+Restore and reverify a repair transaction
+
+options:
+  -h, --help            show this help message and exit
+  --workspace PATH
+  --transaction-id TRANSACTION_ID
+  --json                Emit the versioned JSON result
+  --format {human,json}

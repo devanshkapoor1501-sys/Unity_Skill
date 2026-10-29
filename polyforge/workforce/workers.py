@@ -8,6 +8,7 @@ from polyforge.contracts.results import ErrorKind, Result
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.workforce.models import validate_review
+from polyforge.workforce.permissions import assert_public_path
 
 
 def seal_candidate(policy: WorkspacePolicy, result: Result, brief_digest: str) -> dict[str, Any]:
@@ -16,6 +17,7 @@ def seal_candidate(policy: WorkspacePolicy, result: Result, brief_digest: str) -
     registry = load_json(policy.path("runs/" + result.run_id + "/artifacts.json"))
     records = []
     for item in registry["artifacts"]:
+        assert_public_path(policy, item["relative_path"])
         path = policy.path(item["relative_path"])
         if hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
             raise InputError("Candidate source digest mismatch", kind=ErrorKind.CONTRACT_FAILURE)
@@ -39,6 +41,8 @@ def check_candidate(policy: WorkspacePolicy, candidate: dict[str, Any]) -> None:
     identity = {k: v for k, v in candidate.items() if k != "candidate_digest"}
     if canonical_digest(identity) != candidate["candidate_digest"]:
         raise InputError("Candidate handoff digest mismatch", kind=ErrorKind.CONTRACT_FAILURE)
+    for item in candidate["files"]:
+        assert_public_path(policy, item["path"])
     for item in candidate["files"]:
         if hashlib.sha256(policy.path(item["path"]).read_bytes()).hexdigest() != item["sha256"]:
             raise InputError("Candidate changed after sealing", kind=ErrorKind.CONTRACT_FAILURE)
@@ -90,6 +94,9 @@ def inspect_candidate(
         if not required <= inventory:
             raise InputError("Asset review lacks sealed specification/bundle/inspection")
         spec = load_json(policy.path(prefix + "spec.json"))
+        for reference in spec.get("references", []):
+            if isinstance(reference, dict) and isinstance(reference.get("path"), str):
+                assert_public_path(policy, reference["path"])
         if spec != request["input"]["spec"] or spec["brief"] != request["brief"]:
             raise InputError("Specialist specification differs from the original request")
         bundle = load_json(policy.path(prefix + "bundle.json"))

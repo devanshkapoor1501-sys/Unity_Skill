@@ -1,0 +1,74 @@
+.................F                                                       [100%]
+================================== FAILURES ===================================
+____ test_public_acceptance_replays_all_oracles_and_retains_verifier_veto _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-154/test_public_acceptance_replays0')
+
+    def test_public_acceptance_replays_all_oracles_and_retains_verifier_veto(tmp_path):
+        import xml.etree.ElementTree as ET
+    
+        from test_phase9_mutations import MUTANTS, trace
+    
+        from polyforge.contracts.manifest import load_manifest
+        from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
+        from polyforge.unity.game import GAME_EDIT_TESTS, PLAY_TESTS, compile_game_request, core_suite
+        from polyforge.workspace import init_workspace
+    
+        root = tmp_path / "arena"
+        init_workspace(root, "simple_arena")
+        p = WorkspacePolicy(root)
+        p.mkdir(".polyforge")
+        p.path(".polyforge/original_prompt.txt").write_text(
+            p.path("brief.md").read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        game = compile_game_request(load_manifest(p.path("game_manifest.json")))
+        atomic_json(p, "runs/public/game-input.json", game)
+        for filename, names in [("editmode.xml", GAME_EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+            xml = ET.Element("test-run", result="Passed")
+            for name in sorted(names):
+                ET.SubElement(xml, "test-case", fullname=name, result="Passed")
+            p.path("runs/public/" + filename).write_bytes(ET.tostring(xml))
+        cases = {s["id"]: s for s in core_suite(game)["scenarios"]}
+        variants = {
+            **{name: name for name in cases},
+            "keyboard_input": "player_moves",
+            "keyboard_restart": "restart_resets",
+            **MUTANTS,
+        }
+        for name, scenario in variants.items():
+            value = trace(scenario, name if name in MUTANTS else None)
+            ticks = sum(
+                s["ticks"]
+                for s in cases["player_moves" if name == "keyboard_restart" else scenario]["steps"]
+            )
+            if name == "keyboard_restart":
+                ticks += 1
+            value.update(
+                input_digest=game["input_digest"],
+                scene_id=game["scene_id"],
+                seed=game["seed"],
+                frames_executed=ticks,
+            )
+            value["samples"][-1]["frame"] = ticks
+            if name.startswith("keyboard_"):
+                value["purpose"] = "INPUT_ADAPTER"
+            for records in [
+                value["baseline_enemy_positions"],
+                *[s["enemy_positions"] for s in value["samples"]],
+            ]:
+                records[0]["id"] = game["enemies"][0]["id"]
+            for expected in cases[scenario]["expected"]:
+                value["events"] += [{"name": expected["event"]}] * expected["count_gte"]
+            atomic_json(p, "runs/public/telemetry/" + name + ".json", value)
+        spec = public_acceptance_spec(p)
+        good = check_acceptance(p, spec, {"run_id": "public"})
+        assert good["status"] == "PASS" and good["game_status"] == "PARTIAL"
+        assert len(good["mutations"]) == 6
+>       damaged = load_json(p.path("runs/public/telemetry/contact_damage.json"))
+                  ^^^^^^^^^
+E       NameError: name 'load_json' is not defined
+
+tests\test_phase9_review.py:394: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_review.py::test_public_acceptance_replays_all_oracles_and_retains_verifier_veto
+1 failed, 17 passed in 14.40s

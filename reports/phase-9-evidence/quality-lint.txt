@@ -1,0 +1,15 @@
+I001 [*] Import block is un-sorted or un-formatted
+   --> tests\test_phase9_review.py:472:5
+    |
+471 |   def test_reserved_evaluator_data_cannot_be_smuggled_into_a_sealed_candidate(tmp_path, monkeypatch):
+472 | /     from pathlib import Path
+473 | |     from polyforge.review.board import CandidateReader
+474 | |     from polyforge.workforce.permissions import authorize
+    | |_________________________________________________________^
+475 |
+476 |       p, candidate, task = candidate_fixture(tmp_path)
+    |
+help: Organize imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

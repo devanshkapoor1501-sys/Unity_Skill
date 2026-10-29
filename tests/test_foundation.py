@@ -98,14 +98,16 @@ class CLIAcceptanceTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2, result.stderr)
         self.assertEqual(json.loads(result.stdout)["status"], "FAIL")
 
-    def test_unimplemented_pipeline_is_explicitly_not_run(self) -> None:
+    def test_unknown_resume_is_rejected_without_side_effects(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             before = snapshot(root)
             result = cli("resume", "--workspace", str(root), "--run-id", "example", "--json")
-            self.assertEqual(result.returncode, 5, result.stderr)
+            self.assertEqual(result.returncode, 2, result.stderr)
             body = json.loads(result.stdout)
-            self.assertEqual(body["status"], "NOT_RUN")
+            self.assertEqual(body["status"], "FAIL")
+            self.assertEqual(body["error_code"], "PF-INPUT-CONTRACT")
+            self.assertEqual(body["evaluated_test_status"], "NOT_RUN")
             self.assertEqual(body["game_status"], "PARTIAL")
             self.assertEqual(snapshot(root), before)
 

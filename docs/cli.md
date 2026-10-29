@@ -9,6 +9,8 @@ are syntax fixtures, not evidence of execution or functionality.
 
 | Command | Availability | Example |
 | --- | --- | --- |
+| `review sprite-source` | Implemented | `polyforge review sprite-source --workspace workspace/arena_demo --input sprite-input.json --json` |
+| `review amend` | Implemented | `polyforge review amend --workspace workspace/arena_demo --task task.json --amendment amendment.json --operator operator --reason 'Approved addition' --approved --json` |
 | `repair inspect` | Implemented | `polyforge repair inspect --workspace workspace/arena_demo --evidence failure.json --json` |
 | `repair propose` | Implemented | `polyforge repair propose --workspace workspace/arena_demo --diagnosis diagnosis.json --json` |
 | `review board` | Implemented | `polyforge review board --workspace workspace/arena_demo --candidate candidate.json --task task.json --json` |
@@ -27,7 +29,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `audit` | Implemented | `polyforge audit --workspace workspace/arena_demo --asset robot_a --json` |
 | `verify` | Implemented | `polyforge verify --workspace workspace/arena_demo --json` |
 | `status` | Implemented | `polyforge status --workspace workspace/arena_demo --json` |
-| `resume` | NOT_RUN; Phase 9 | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
+| `resume` | Implemented | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
 | `report` | Implemented | `polyforge report --workspace workspace/arena_demo --run-id example --json` |
 | `clean` | NOT_RUN; Phase 11 | `polyforge clean --workspace workspace/arena_demo --dry-run --json` |
 | `capability list` | Implemented | `polyforge capability list --json` |
@@ -39,7 +41,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `diagnose` | Implemented | `polyforge diagnose --workspace workspace/arena_demo --evidence-dir runs/example --json` |
 | `repair plan` | Implemented | `polyforge repair plan --workspace workspace/arena_demo --issue ISSUE-001 --json` |
 | `repair apply` | Implemented | `polyforge repair apply --workspace workspace/arena_demo --plan repair.json --approved --json` |
-| `repair rollback` | NOT_RUN; Phase 9 | `polyforge repair rollback --workspace workspace/arena_demo --transaction-id tx-example --json` |
+| `repair rollback` | Implemented | `polyforge repair rollback --workspace workspace/arena_demo --transaction-id tx-example --json` |
 | `benchmark run` | NOT_RUN; Phase 6 | `polyforge benchmark run --suite benchmark_core --arm D --output workspace/benchmarks --dry-run --json` |
 | `benchmark report` | NOT_RUN; Phase 6 | `polyforge benchmark report --run benchmark-example --format json` |
 | `inspect-project` | NOT_RUN; Phase 11 | `polyforge inspect-project --project workspace/existing_project --read-only --json` |

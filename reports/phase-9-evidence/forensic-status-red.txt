@@ -1,0 +1,44 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure[BLOCKED] _
+
+status = 'BLOCKED'
+
+    @pytest.mark.parametrize("status", ["BLOCKED", "NOT_RUN"])
+    def test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure(status):
+        from polyforge.repairs.diagnostics import diagnose_evidence
+    
+        value = evidence("PF-COMPONENT-MISSING")
+        value["structured"]["status"] = status
+        value["log"] = "error CS0117 from an older attempt"
+        result = diagnose_evidence(value)
+>       assert result["diagnosis_status"] == status
+E       AssertionError: assert 'FAIL' == 'BLOCKED'
+E         
+E         - BLOCKED
+E         + FAIL
+
+tests\test_phase9_diagnostics.py:204: AssertionError
+_ test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure[NOT_RUN] _
+
+status = 'NOT_RUN'
+
+    @pytest.mark.parametrize("status", ["BLOCKED", "NOT_RUN"])
+    def test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure(status):
+        from polyforge.repairs.diagnostics import diagnose_evidence
+    
+        value = evidence("PF-COMPONENT-MISSING")
+        value["structured"]["status"] = status
+        value["log"] = "error CS0117 from an older attempt"
+        result = diagnose_evidence(value)
+>       assert result["diagnosis_status"] == status
+E       AssertionError: assert 'FAIL' == 'NOT_RUN'
+E         
+E         - NOT_RUN
+E         + FAIL
+
+tests\test_phase9_diagnostics.py:204: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_diagnostics.py::test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure[BLOCKED]
+FAILED tests/test_phase9_diagnostics.py::test_blocked_or_unexecuted_result_cannot_be_reclassified_as_an_executed_repairable_failure[NOT_RUN]
+2 failed in 0.67s

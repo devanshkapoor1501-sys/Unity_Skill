@@ -36,4 +36,4 @@ plan. It keeps the exact brief and uses S0/S1/S4/S5. Asset package requests use
 ["blender","assets","materials"]. Read returned technical receipts and actual
 Editor/PlayMode XML; clip names or a supervisor label are not gameplay evidence.
 Native subagents and protected evaluator authority remain unavailable here.
-This phase does not claim standalone 2D qualification or full rollback.
+Standalone 2D qualification remains open. Phase 9 adds source admission before Unity writes and verified recovery for supported combined managed projects; see review-and-recovery.md.

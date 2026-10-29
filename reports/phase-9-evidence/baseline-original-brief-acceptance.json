@@ -1,0 +1,126 @@
+{
+  "status": "PASS",
+  "game_status": "PARTIAL",
+  "oracle_owner": "PUBLIC_DEVELOPMENT",
+  "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",
+  "acceptance_digest": "5b8e77c838a23f022b6ce7a0cee09543d577df7271fd61784b55a48cb2ee3445",
+  "traceability": [
+    {
+      "original_phrase": "WASD",
+      "feature_id": "movement.character_controller.v1",
+      "artifact_id": "player_01",
+      "unity_component": "PlayerController",
+      "oracles": [
+        "player_moves",
+        "keyboard_input"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/player_moves.json",
+        "runs/game-check-8d8f743d55da485e/telemetry/keyboard_input.json"
+      ]
+    },
+    {
+      "original_phrase": "collides with walls",
+      "feature_id": "physics.collision.v1",
+      "artifact_id": "main",
+      "unity_component": "BoxCollider",
+      "oracles": [
+        "wall_collision"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/wall_collision.json"
+      ]
+    },
+    {
+      "original_phrase": "robot patrols",
+      "feature_id": "ai.patrol.v1",
+      "artifact_id": "enemy_01",
+      "unity_component": "PatrolEnemy",
+      "oracles": [
+        "enemy_patrols"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/enemy_patrols.json"
+      ]
+    },
+    {
+      "original_phrase": "damages the player on contact",
+      "feature_id": "combat.damage.v1",
+      "artifact_id": "enemy_01",
+      "unity_component": "PatrolEnemy",
+      "oracles": [
+        "contact_damage"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/contact_damage.json"
+      ]
+    },
+    {
+      "original_phrase": "losing all health fails",
+      "feature_id": "combat.health.v1",
+      "artifact_id": "player_01",
+      "unity_component": "Health",
+      "oracles": [
+        "health_failure"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/health_failure.json"
+      ]
+    },
+    {
+      "original_phrase": "Surviving wins",
+      "feature_id": "objective.survival.v1",
+      "artifact_id": "main",
+      "unity_component": "ArenaSession",
+      "oracles": [
+        "survival_win"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/survival_win.json"
+      ]
+    },
+    {
+      "original_phrase": "restart positions, health, timer",
+      "feature_id": "game.restart.v1",
+      "artifact_id": "main",
+      "unity_component": "ArenaSession",
+      "oracles": [
+        "restart_resets",
+        "keyboard_restart"
+      ],
+      "status": "PASS",
+      "evidence": [
+        "runs/game-check-8d8f743d55da485e/telemetry/restart_resets.json",
+        "runs/game-check-8d8f743d55da485e/telemetry/keyboard_restart.json"
+      ]
+    }
+  ],
+  "mutations": {
+    "collision_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Wall did not stop actual player movement at its inner boundary"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "restart_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Restart did not restore position, health, time and running state"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    }
+  }
+}

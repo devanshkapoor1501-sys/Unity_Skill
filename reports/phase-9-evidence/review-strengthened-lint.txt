@@ -1,0 +1,64 @@
+E501 Line too long (132 > 100)
+  --> polyforge\review\board.py:29:101
+   |
+28 | … Any]) -> dict[str, Any]:
+29 | …, "revision", "operator", "reason", "verdict", "origin", "identity_authenticated"}
+   |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+30 | …= {"current", "history"} or not isinstance(value["history"], list) or not 1 <= len(value["history"]) <= 100 or value["current"] != va…
+31 | …n history")
+   |
+
+E501 Line too long (202 > 100)
+  --> polyforge\review\board.py:30:101
+   |
+28 | …
+29 | … "verdict", "origin", "identity_authenticated"}
+30 | …nstance(value["history"], list) or not 1 <= len(value["history"]) <= 100 or value["current"] != value["history"][-1]:
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+31 | …
+32 | …
+   |
+
+E501 Line too long (108 > 100)
+  --> polyforge\review\board.py:39:101
+   |
+37 | …     or receipt["origin"] != "EXPLICIT_LOCAL_OPERATOR_ATTESTATION"
+38 | …     or receipt["identity_authenticated"] is not False
+39 | …     or not isinstance(receipt["verdict"], str) or receipt["verdict"] not in {"APPROVED", "REJECTED"}
+   |                                                                                               ^^^^^^^^
+40 | …     or any(not isinstance(receipt[key], str) or not receipt[key].strip() or len(receipt[key]) > 4096 for key in ("operator", "reason…
+41 | …     or receipt["operator"] == candidate["producer_id"] or receipt["operator"] in ROLES):
+   |
+
+E501 Line too long (143 > 100)
+  --> polyforge\review\board.py:40:101
+   |
+38 | … False
+39 | …or receipt["verdict"] not in {"APPROVED", "REJECTED"}
+40 | … not receipt[key].strip() or len(receipt[key]) > 4096 for key in ("operator", "reason"))
+   |                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+41 | …er_id"] or receipt["operator"] in ROLES):
+42 | …alformed or belongs to a role/other revision")
+   |
+
+E501 Line too long (101 > 100)
+  --> polyforge\review\board.py:42:101
+   |
+40 |             or any(not isinstance(receipt[key], str) or not receipt[key].strip() or len(receipt[key]) > 4096 for key in ("operator", "…
+41 |             or receipt["operator"] == candidate["producer_id"] or receipt["operator"] in ROLES):
+42 |             raise InputError("Operator attestation is malformed or belongs to a role/other revision")
+   |                                                                                                     ^
+43 |     return value["current"]
+   |
+
+E501 Line too long (114 > 100)
+   --> tests\test_phase9_review.py:407:101
+    |
+406 |     p, candidate, task = candidate_fixture(tmp_path, visual=True)
+407 |     record_human_review(p, candidate, verdict="APPROVED", operator="operator", reason="Fixture operator decision")
+    |                                                                                                     ^^^^^^^^^^^^^^
+408 |     name = ".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json"
+409 |     value = load_json(p.path(name))
+    |
+
+Found 6 errors.

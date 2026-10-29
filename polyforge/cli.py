@@ -63,6 +63,12 @@ def build_parser() -> argparse.ArgumentParser:
 def dispatch(args: argparse.Namespace) -> Result:
     """Dispatch only implemented capabilities; placeholders never claim tool success."""
     spec: CommandSpec = args.spec
+    if spec.path in {("resume",), ("repair", "rollback")}:
+        from polyforge.unity.recovery import repair_rollback, resume_run
+
+        if spec.path == ("resume",):
+            return resume_run(Path(args.workspace), args.run_id)
+        return repair_rollback(Path(args.workspace), args.transaction_id)
     if spec.path in {("repair", "inspect"), ("repair", "propose")}:
         from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair
         from polyforge.security.paths import WorkspacePolicy
@@ -80,6 +86,29 @@ def dispatch(args: argparse.Namespace) -> Result:
         from polyforge.security.paths import WorkspacePolicy
 
         policy = WorkspacePolicy(Path(args.workspace))
+        if spec.path[-1] == "sprite-source":
+            from polyforge.review.sprite_source import review_sprite_source
+
+            review = review_sprite_source(policy, load_json(policy.path(args.input)))
+            return Result(
+                status="PASS" if review["promotion"] == "APPROVED" else "REVIEW",
+                exit_code=0 if review["promotion"] == "APPROVED" else 4,
+                data={"source_review": review},
+            )
+        if spec.path[-1] == "amend":
+            from polyforge.review.amendments import append_amendment
+
+            return Result(
+                data={
+                    "amendments": append_amendment(
+                        policy,
+                        load_json(policy.path(args.task)),
+                        load_json(policy.path(args.amendment)),
+                        operator=args.operator,
+                        reason=args.reason,
+                    )
+                }
+            )
         candidate = load_json(policy.path(args.candidate))
         if spec.path[-1] == "human":
             receipt = record_human_review(

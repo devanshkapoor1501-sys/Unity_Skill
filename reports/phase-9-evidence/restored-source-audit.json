@@ -1,0 +1,164 @@
+{
+  "source": "runs/mesh-2dc9228312b943c5/asset/source.blend",
+  "source_sha256": "f92b5b999d067d3f010b912975787f21f1960326a0a578cd28689a48724bfc8b",
+  "original_sha256": "f92b5b999d067d3f010b912975787f21f1960326a0a578cd28689a48724bfc8b",
+  "result": {
+    "status": "PASS",
+    "exit_code": 0,
+    "error_code": null,
+    "data": {
+      "source_blend": "runs\\mesh-a4994c3c2b2b4748\\asset\\source.blend",
+      "metrics_path": "runs\\mesh-a4994c3c2b2b4748\\asset\\metrics.json",
+      "toolchain": {
+        "worker_sha256": "ac4898a212cd03983fcb53010191c3b750256a92fabd9c96b2905a40f3e7f5f1",
+        "audit_worker_sha256": "af90b6b2b23fd0c9e1e6caacaf79ea2e8613f4a8a948d73d26269767f4484115",
+        "interchange_sha256": "d63c771a4bae3d39aba1c52c5cf249acdbc642beac2b7bd62aacdafb975030bb",
+        "executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+        "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+        "required_version": "5.2.2",
+        "validator": "geometry.v1"
+      },
+      "security_scope": "TRUSTED_LOCAL",
+      "isolation_verified": false,
+      "through": "S3",
+      "visual_review_status": "REVIEW",
+      "unity_import_status": "NOT_RUN",
+      "fbx_path": "runs/mesh-a4994c3c2b2b4748/asset/asset.fbx",
+      "export_binding": "runs/mesh-a4994c3c2b2b4748/export_binding.json"
+    },
+    "diagnostics": [],
+    "operation_id": null,
+    "run_id": "mesh-a4994c3c2b2b4748",
+    "version": "0.0.1",
+    "contract_version": "1.0.0",
+    "input_digest": "8bbb35186de9857dcbecfd2e812865d421f873af020bf2b1e3a5b091d245fd2d",
+    "artifact_ids": [
+      "mesh-a4994c3c2b2b4748:source.blend",
+      "mesh-a4994c3c2b2b4748:metrics.json",
+      "mesh-a4994c3c2b2b4748:logical-geometry.json",
+      "mesh-a4994c3c2b2b4748:asset.fbx",
+      "mesh-a4994c3c2b2b4748:material.json",
+      "mesh-a4994c3c2b2b4748:audit_metadata.json",
+      "mesh-a4994c3c2b2b4748:fbx_roundtrip.json",
+      "mesh-a4994c3c2b2b4748:handoff.json",
+      "mesh-a4994c3c2b2b4748:front.png",
+      "mesh-a4994c3c2b2b4748:side.png",
+      "mesh-a4994c3c2b2b4748:top.png",
+      "mesh-a4994c3c2b2b4748:iso.png",
+      "mesh-a4994c3c2b2b4748:view_checks.json",
+      "mesh-a4994c3c2b2b4748:review.html"
+    ],
+    "evidence_paths": [
+      "runs\\mesh-a4994c3c2b2b4748\\artifacts.json",
+      "runs\\mesh-a4994c3c2b2b4748\\log\\stdout.txt",
+      "runs\\mesh-a4994c3c2b2b4748\\log\\stderr.txt"
+    ],
+    "metrics": {
+      "schema_version": "1.0.0",
+      "status": "PASS",
+      "asset_id": "ground_a",
+      "blender_version": "5.2.2",
+      "blender_version_label": "5.2.2 LTS",
+      "worker_python_version": "3.13.13 (main, May  8 2026, 12:37:03) [MSC v.1944 64 bit (AMD64)]",
+      "blender_build_hash": "d13f752e3b9c",
+      "coordinate_basis": {
+        "up": "Z",
+        "forward": "-Y"
+      },
+      "meters_per_unit": 1.0,
+      "bounds_m": [
+        20.0,
+        20.0,
+        0.2
+      ],
+      "bounds_unity_m": [
+        20.0,
+        0.2,
+        20.0
+      ],
+      "pivot_unity_m": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "minimum_native_m": [
+        -10.0,
+        -10.0,
+        0.0
+      ],
+      "polygon_count": 54,
+      "vertex_count": 56,
+      "degenerate_faces": 0,
+      "invalid_uv_faces": 0,
+      "nonfinite_values": 0,
+      "module_ids": [
+        "body"
+      ],
+      "socket_ids": [
+        "front",
+        "join_left",
+        "join_right",
+        "top"
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_positions_unity_m": {
+        "front": [
+          0.0,
+          0.1,
+          10.0
+        ],
+        "join_left": [
+          -10.0,
+          0.1,
+          -0.0
+        ],
+        "join_right": [
+          10.0,
+          0.1,
+          -0.0
+        ],
+        "top": [
+          0.0,
+          0.2,
+          -0.0
+        ]
+      },
+      "geometry_digest": "5c9221eed26fce5f4090fdab76892d0fe305eebd1a6c0a84f06348479ee178dd",
+      "object_names": [
+        "ground_a",
+        "ground_a:module:body",
+        "ground_a:socket:front",
+        "ground_a:socket:join_left",
+        "ground_a:socket:join_right",
+        "ground_a:socket:top"
+      ],
+      "logical_metrics": {
+        "bounds_m": [
+          20.0,
+          20.0,
+          0.2
+        ],
+        "polygon_count": 54,
+        "vertex_count": 56,
+        "module_ids": [
+          "body"
+        ],
+        "socket_ids": [
+          "front",
+          "join_left",
+          "join_right",
+          "top"
+        ],
+        "geometry_digest": "5c9221eed26fce5f4090fdab76892d0fe305eebd1a6c0a84f06348479ee178dd"
+      },
+      "saved_roundtrip_verified": true
+    },
+    "duration_ms": 0,
+    "rollback_id": null,
+    "evaluated_test_status": "NOT_RUN",
+    "game_status": "PARTIAL",
+    "operation_status": "PASS"
+  }
+}

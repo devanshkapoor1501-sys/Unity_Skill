@@ -1,0 +1,123 @@
+.....................FF..                                                [100%]
+================================== FAILURES ===================================
+_ test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception[change0] _
+
+change = {'tool': {'name': [], 'version': '1.0'}}
+
+    @pytest.mark.parametrize("change", [{"tool": {"name": [], "version": "1.0"}}, {"structured": {"status": [], "code": "UNKNOWN"}}, {"producer_id": []}, {"affected_ids": [True]}])
+    def test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception(change):
+        from polyforge.repairs.diagnostics import diagnose_evidence
+    
+        with pytest.raises(InputError):
+>           diagnose_evidence({**evidence(), **change})
+
+tests\test_phase9_diagnostics.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\repairs\diagnostics.py:151: in diagnose_evidence
+    _validate(evidence)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'affected_ids': ['robot_a'], 'artifacts': [{'id': 'native_observation', 'path': 'runs/source/observation.json', 'sha2...aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'log': 'Observed native evidence, not an inferred successful repair.', ...}
+
+    def _validate(value: dict[str, Any]) -> None:
+        fields = {
+            "schema_version",
+            "input_digest",
+            "producer_id",
+            "tool",
+            "structured",
+            "log",
+            "affected_ids",
+            "artifacts",
+        }
+        if not isinstance(value, dict) or set(value) != fields or value["schema_version"] != "1.0.0":
+            raise InputError("Invalid versioned forensic evidence fields")
+        if not isinstance(value["input_digest"], str) or not re.fullmatch(
+            r"[a-f0-9]{64}", value["input_digest"]
+        ):
+            raise InputError("Forensics requires a frozen input digest")
+        if not isinstance(value["producer_id"], str) or not re.fullmatch(
+            r"[A-Za-z][A-Za-z0-9_-]{0,63}", value["producer_id"]
+        ):
+            raise InputError("Invalid producer identity")
+        tool = value["tool"]
+        if (
+            not isinstance(tool, dict)
+            or set(tool) != {"name", "version"}
+>           or tool["name"] not in {"unity", "blender", "python"}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            or not isinstance(tool["version"], str)
+            or not tool["version"].strip()
+            or len(tool["version"]) > 128
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\repairs\diagnostics.py:92: TypeError
+_ test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception[change1] _
+
+change = {'structured': {'code': 'UNKNOWN', 'status': []}}
+
+    @pytest.mark.parametrize("change", [{"tool": {"name": [], "version": "1.0"}}, {"structured": {"status": [], "code": "UNKNOWN"}}, {"producer_id": []}, {"affected_ids": [True]}])
+    def test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception(change):
+        from polyforge.repairs.diagnostics import diagnose_evidence
+    
+        with pytest.raises(InputError):
+>           diagnose_evidence({**evidence(), **change})
+
+tests\test_phase9_diagnostics.py:165: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\repairs\diagnostics.py:151: in diagnose_evidence
+    _validate(evidence)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'affected_ids': ['robot_a'], 'artifacts': [{'id': 'native_observation', 'path': 'runs/source/observation.json', 'sha2...aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'log': 'Observed native evidence, not an inferred successful repair.', ...}
+
+    def _validate(value: dict[str, Any]) -> None:
+        fields = {
+            "schema_version",
+            "input_digest",
+            "producer_id",
+            "tool",
+            "structured",
+            "log",
+            "affected_ids",
+            "artifacts",
+        }
+        if not isinstance(value, dict) or set(value) != fields or value["schema_version"] != "1.0.0":
+            raise InputError("Invalid versioned forensic evidence fields")
+        if not isinstance(value["input_digest"], str) or not re.fullmatch(
+            r"[a-f0-9]{64}", value["input_digest"]
+        ):
+            raise InputError("Forensics requires a frozen input digest")
+        if not isinstance(value["producer_id"], str) or not re.fullmatch(
+            r"[A-Za-z][A-Za-z0-9_-]{0,63}", value["producer_id"]
+        ):
+            raise InputError("Invalid producer identity")
+        tool = value["tool"]
+        if (
+            not isinstance(tool, dict)
+            or set(tool) != {"name", "version"}
+            or tool["name"] not in {"unity", "blender", "python"}
+            or not isinstance(tool["version"], str)
+            or not tool["version"].strip()
+            or len(tool["version"]) > 128
+        ):
+            raise InputError("Forensics requires an explicit registered tool and version")
+        structured = value["structured"]
+        if (
+            not isinstance(structured, dict)
+            or set(structured) != {"status", "code"}
+>           or structured["status"] not in {"PASS", "FAIL", "BLOCKED", "NOT_RUN"}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            or (
+                structured["code"] is not None
+                and (not isinstance(structured["code"], str) or len(structured["code"]) > 128)
+            )
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\repairs\diagnostics.py:102: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_diagnostics.py::test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception[change0]
+FAILED tests/test_phase9_diagnostics.py::test_malformed_evidence_is_a_contract_error_not_an_unhandled_exception[change1]
+2 failed, 23 passed in 0.57s

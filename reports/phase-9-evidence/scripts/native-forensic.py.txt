@@ -1,0 +1,52 @@
+import json
+from dataclasses import asdict
+from pathlib import Path
+from importlib.resources import files
+from polyforge.runner.locks import unity_project_lock
+from polyforge.runner.processes import run_process, ProcessPolicy
+from polyforge.runner.state import atomic_json
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.contracts.validation import load_json, InputError
+from polyforge.unity.bridge import configuration, unity_tool
+from polyforge.unity.upgrade import sync_package
+from polyforge.unity import repairs, recovery
+from polyforge.repairs.diagnostics import plan_repair
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena')); c=configuration(p); exe=unity_tool(c)
+resources=Path(str(files('unity_package')))
+desired={f.relative_to(resources).as_posix():f.read_bytes() for f in resources.rglob('*') if f.is_file() and (f.suffix in {'.cs','.asmdef'} or f.name=='package.json')}
+desired['Editor/PolyForgeFaultProbe.cs']=Path('tests/unity_fault_probe.cs').read_bytes()
+desired['Editor/PolyForgeRecoveryFaultFixture.cs']=Path('tests/unity_recovery_fault.cs').read_bytes()
+with unity_project_lock(p,p.path('UnityProject')):
+    print('Fixture sync',sync_package(p,desired),flush=True)
+    relative='runs/phase9-forensic-fault'
+    args=[str(exe),'-batchmode','-nographics','-job-worker-count','2','-projectPath',str(p.path('UnityProject')),'-logFile','-','-upmLogFile',str(p.path(relative+'/upm.log')),'-executeMethod','PolyForgeFaultProbe.DamageScale']
+    outcome=run_process(args,p,relative,ProcessPolicy((exe,),c.unity_timeout_seconds,c.max_output_bytes,c.memory_limit_mb))
+    atomic_json(p,relative+'/process.json',{'argv':args,**asdict(outcome)})
+    assert outcome.returncode==0 and outcome.reason=='exit',asdict(outcome)
+observed=repairs.reconcile_workspace(p.root)
+print('Native fault observed',observed.status,flush=True)
+assert observed.status=='FAIL'
+diagnosed=repairs.diagnose(p.root,'runs/'+observed.run_id)
+issue=next(i for i in diagnosed.data['forensics'] if i['source_evidence']['structured']['code']=='PF-FBX-AXES' and i['affected_ids']==['robot_a'])
+proposal=plan_repair(p,issue)
+atomic_json(p,'runs/phase9-forensic-fault/proposal.json',proposal)
+assert proposal['status']=='PROPOSED',proposal
+print('Apply registered forensic plan',flush=True)
+actual=recovery.launch
+def log(*args,**kwargs):
+    print('Stage',args[3],args[4],flush=True)
+    return actual(*args,**kwargs)
+recovery.launch=log
+result=repairs.repair_apply(p.root,'runs/phase9-forensic-fault/proposal.json')
+Path('.tmp/phase9/native-forensic.json').write_text(json.dumps(result.to_dict(),indent=2)+'\n')
+print('Forensic result',result.status,result.error_code,flush=True)
+assert result.status=='PASS' and result.data['repair_status']=='COMMITTED',result.to_dict()
+assert recovery.resume_run(p.root,result.run_id)==result
+try:
+    repairs.repair_apply(p.root,'runs/phase9-forensic-fault/proposal.json')
+except InputError as exc:
+    assert exc.kind.name=='RETRY_EXHAUSTED',str(exc)
+    print('Durable duplicate escalation',str(exc),flush=True)
+else:
+    raise AssertionError('duplicate forensic proposal replayed')

@@ -1,0 +1,50 @@
+import sys,time,threading,json
+from pathlib import Path
+from dataclasses import asdict,replace
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.runner.locks import unity_project_lock
+from polyforge.runner.processes import run_process,ProcessPolicy
+from polyforge.runner.state import atomic_json
+from polyforge.unity import recovery
+from polyforge.unity.transactions import ManagedTransaction
+
+p=WorkspacePolicy(Path('.tmp/phase6/arena'));identifier='phase9_crash_recovery';out=Path('.tmp/phase9')
+actual_launch=recovery.launch
+def log_launch(*args,**kwargs):
+    print('Native recovery stage:',args[3],args[4],flush=True)
+    return actual_launch(*args,**kwargs)
+recovery.launch=log_launch
+print('Capture current full prestate for forced crash/resume qualification',flush=True)
+tx=recovery.prepare_transaction(p,identifier)
+print('Prepared',identifier,'dependencies',len(tx.read()['dependencies']),flush=True)
+with unity_project_lock(p,p.path('UnityProject')):
+    source=next(n for n in tx.read()['original'] if n.endswith('.blend'))
+    p.path(source).write_bytes(b'controlled source fault before forced crash')
+    tx.record('APPLIED',changed_source=source,qualification_faults=True)
+cancel=threading.Event();done=threading.Event();marker=p.path('runs/phase9-crash-boundary/ready.json')
+assert not marker.exists()
+def watch():
+    deadline=time.monotonic()+45
+    while not done.wait(.02):
+        if marker.is_file() or time.monotonic()>=deadline:
+            cancel.set();return
+thread=threading.Thread(target=watch,daemon=True);thread.start()
+args=[sys.executable,str(Path('.tmp/phase9/crash-boundary.py').resolve()),str(p.root),identifier]
+try:
+    process=run_process(args,p,'runs/phase9-owned-crash',ProcessPolicy((Path(sys.executable),),60,10485760,8192),cancel=cancel)
+finally:
+    done.set();thread.join(1)
+atomic_json(p,'runs/phase9-owned-crash/process.json',{'argv':args,**asdict(process)})
+assert marker.is_file() and process.reason=='cancelled',asdict(process)
+assert ManagedTransaction(p,identifier).read()['status']=='ROLLING_BACK'
+print('Owned worker terminated after byte restoration, before native reimport:',process.reason,flush=True)
+original_configuration=recovery.configuration
+recovery.configuration=lambda policy:replace(original_configuration(policy),unity_timeout_seconds=1)
+try:
+    failed=recovery.repair_rollback(p.root,identifier)
+finally:
+    recovery.configuration=original_configuration
+(out/'native-recovery-timeout.json').write_text(json.dumps(failed.to_dict(),indent=2)+'\n',encoding='utf-8')
+assert failed.error_code=='PF-ROLLBACK-FAILED',failed.to_dict()
+assert p.path('UnityProject/.polyforge/repair-quarantine.json').is_file()
+print('Actual native proof timeout surfaced as',failed.error_code,'with durable quarantine. Ready for verified cleanup/resume.',flush=True)

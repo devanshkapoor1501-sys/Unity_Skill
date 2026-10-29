@@ -1,0 +1,14 @@
+I001 [*] Import block is un-sorted or un-formatted
+   --> tests\test_phase9_mutations.py:97:5
+    |
+ 96 |   def populated(tmp_path, monkeypatch):
+ 97 | /     from polyforge.unity import game
+ 98 | |     from polyforge.scenarios.arena_oracle import CORE_SCENARIOS
+    | |_______________________________________________________________^
+ 99 |
+100 |       p = WorkspacePolicy(tmp_path)
+    |
+help: Organize imports
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

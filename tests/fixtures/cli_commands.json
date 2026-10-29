@@ -3,6 +3,39 @@
   "commands": [
     {
       "argv": [
+        "review",
+        "sprite-source",
+        "--workspace",
+        "workspace/arena_demo",
+        "--input",
+        "sprite-input.json",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
+        "review",
+        "amend",
+        "--workspace",
+        "workspace/arena_demo",
+        "--task",
+        "task.json",
+        "--amendment",
+        "amendment.json",
+        "--operator",
+        "operator",
+        "--reason",
+        "Approved addition",
+        "--approved",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 9
+    },
+    {
+      "argv": [
         "repair",
         "inspect",
         "--workspace",
@@ -235,7 +268,7 @@
         "example",
         "--json"
       ],
-      "implemented": false,
+      "implemented": true,
       "phase": 9
     },
     {
@@ -378,7 +411,7 @@
         "tx-example",
         "--json"
       ],
-      "implemented": false,
+      "implemented": true,
       "phase": 9
     },
     {

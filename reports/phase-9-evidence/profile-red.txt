@@ -1,0 +1,26 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_native_input_archive_survives_changed_original_and_duplicate_consumer_runs _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/profile-red/test_native_input_archive_surv0')
+
+    def test_native_input_archive_survives_changed_original_and_duplicate_consumer_runs(tmp_path):
+        from polyforge.unity.recovery import _profile_inputs
+    
+        p, source = source_fixture(tmp_path)
+        p.mkdir("UnityProject/Assets/PolyForgeGenerated/Sprites")
+        p.path("UnityProject/Assets/PolyForgeGenerated/Sprites/SpriteArena.unity").write_bytes(b"scene")
+        p.path("UnityProject/Assets/PolyForgeGenerated/Sprites/atlas.png").write_bytes(b"imported atlas")
+        job = {"atlas_sha256": hashlib.sha256(b"imported atlas").hexdigest(), "fps": 6}
+        atomic_json(p, "runs/sprite-unity-first/input.json", job)
+        profiles = _profile_inputs(p)
+        archived = profiles["sprite"]["path"]
+>       assert archived.startswith(".polyforge/native-inputs/sprite/")
+E       AssertionError: assert False
+E        +  where False = <built-in method startswith of str object at 0x0000021DCD4CDA20>('.polyforge/native-inputs/sprite/')
+E        +    where <built-in method startswith of str object at 0x0000021DCD4CDA20> = 'runs/sprite-unity-first/input.json'.startswith
+
+tests\test_phase9_recovery.py:351: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_native_input_archive_survives_changed_original_and_duplicate_consumer_runs
+1 failed, 41 deselected in 0.60s

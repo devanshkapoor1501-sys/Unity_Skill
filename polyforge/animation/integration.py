@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, load_json
-from polyforge.runner.locks import FileLock
+from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.bootstrap import check_project_idle, installed_template, prepare_project
@@ -85,7 +85,7 @@ def integrate_animation(
     run_id = "animation-" + (operation_id[3:] if operation_id else uuid4().hex[:16])
     relative = "runs/" + run_id
     check_project_idle(policy)
-    with FileLock(policy, ".polyforge/locks/unity-project.lock"):
+    with unity_project_lock(policy, policy.path("UnityProject")):
         sync_package(policy)
         model = "Assets/PolyForgeGenerated/Animation/robot.fbx"
         target = policy.path(project / model)

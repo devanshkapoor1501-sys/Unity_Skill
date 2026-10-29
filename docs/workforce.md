@@ -59,7 +59,8 @@ Committed results are reused, while changed candidate bytes are rejected.
 Durable operation and native completion receipts bridge a crash before the
 coordinator commits. Resume verifies file hashes, skips completed generation or
 asset import, and repeats outstanding checks. This does not establish the full
-cross-application rollback guarantees reserved for Phase 9.
+cross-application rollback guarantees by itself. Phase 9 adds separate
+[native transaction recovery](review-and-recovery.md) and proof.
 
 Candidates contain hashed source files, brief identity and a revision. Reviews
 bind to that exact digest and cannot self-approve. Inspectors read candidate

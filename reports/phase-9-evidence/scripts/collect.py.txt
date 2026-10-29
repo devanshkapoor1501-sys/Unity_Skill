@@ -1,0 +1,62 @@
+"""Retain audit evidence and editable managed sources, excluding application caches."""
+import hashlib,json,shutil,zipfile
+from pathlib import Path
+
+root=Path.cwd();base=root/'.tmp/phase9';arena=root/'.tmp/phase6/arena';out=root/'reports/phase-9-evidence';out.mkdir(exist_ok=True)
+def copy(source,target):
+ target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+for source in base.iterdir():
+ if not source.is_file() or source.name in {'blueprint.txt','collect.txt'}:continue
+ if source.suffix in {'.json','.xml','.txt'}:copy(source,out/source.name)
+ elif source.suffix=='.py':copy(source,out/'scripts'/(source.name+'.txt'))
+for source in (base/'install').glob('*'):
+ if source.is_file():copy(source,out/'install'/source.name)
+transactions=['phase9_cross_tool','phase9_crash_recovery','tx-24bf0b24140d4902']
+runs={'game-check-8d8f743d55da485e','game-check-809ffafcc7044cdc','mesh-a4994c3c2b2b4748','phase9-static-regression','phase9-native-fault','phase9-forensic-fault','phase9-owned-crash','phase9-crash-boundary','sprite-unity-550b96f741de4e45'}
+dependencies=set()
+native_inputs=set()
+def references(value):
+ if isinstance(value,dict):
+  if isinstance(value.get('run_id'),str):runs.add(value['run_id'])
+  for v in value.values():references(v)
+ elif isinstance(value,list):
+  for v in value:references(v)
+ elif isinstance(value,str) and value.startswith('runs/') and len(value.split('/'))>=3:
+  runs.add(value.split('/')[1])
+  if value.endswith(('/input.json','/game-input.json')):native_inputs.add(value)
+ elif isinstance(value,str) and value.startswith('.polyforge/native-inputs/'):
+  native_inputs.add(value)
+for source in base.glob('*.json'):
+ try:references(json.loads(source.read_text(encoding='utf-8')))
+ except (ValueError,UnicodeError):pass
+for tx in transactions:
+ folder=arena/'transactions'/tx
+ for source in folder.rglob('*'):
+  if not source.is_file() or 'tmp' in source.relative_to(folder).parts:continue
+  if source.suffix not in {'.json','.txt','.xml','.log','.cs','.asmdef','.meta','.blend','.fbx','.png'}:continue
+  copy(source,out/'managed-workspace'/source.relative_to(arena))
+  if source.suffix=='.json' and 'snapshot' not in source.relative_to(folder).parts:
+   try:references(json.loads(source.read_text(encoding='utf-8')))
+   except (ValueError,UnicodeError):pass
+ journal=json.loads((folder/'journal.json').read_text());dependencies.update(journal.get('dependencies',[]))
+for name in sorted(runs):
+ folder=arena/'runs'/name
+ if not folder.is_dir():continue
+ for source in folder.rglob('*'):
+  if source.is_file() and 'tmp' not in source.relative_to(folder).parts and source.suffix in {'.json','.txt','.xml','.log'}:
+   copy(source,out/'managed-workspace'/source.relative_to(arena))
+for name in ['.polyforge/forensic-attempts.json','.polyforge/repair-attempts.json','.polyforge/unity-issues.json','runs/phase9-final-timeout-proof.json']:
+ source=arena/name
+ if source.is_file():copy(source,out/'managed-workspace'/name)
+with zipfile.ZipFile(out/'editable-managed-project.zip','w',zipfile.ZIP_DEFLATED) as archive:
+ source_paths=set()
+ for scope in ['UnityProject/Assets','UnityProject/ProjectSettings','UnityProject/Packages','recipes','.polyforge/native-inputs']:
+  source_paths.update(p for p in (arena/scope).rglob('*') if p.is_file())
+ source_paths.update(arena/n for n in dependencies)
+ source_paths.update(arena/n for n in native_inputs)
+ source_paths.update(arena/n for n in ['game_manifest.json','brief.md','polyforge.toml','.polyforge/original_prompt.txt','.polyforge/unity-request.json','.polyforge/owned-package.json','.polyforge/game-latest.json','UnityProject/.polyforge-project.json'])
+ for source in sorted(source_paths):
+  if source.is_file() and not source.is_symlink():archive.write(source,source.relative_to(arena).as_posix())
+records=[{'path':p.relative_to(out).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(out.rglob('*')) if p.is_file() and p.name!='index.json']
+(out/'index.json').write_text(json.dumps({'schema_version':'1.0.0','scope':'Phase 9 development evidence; no protected evaluator','excluded':['Unity Library/cache','compiler temp binaries','machine credentials'],'files':records},indent=2)+'\n',encoding='utf-8')
+print('Retained',len(records),'files;',sum(r['bytes'] for r in records),'bytes;',len(runs),'referenced runs')

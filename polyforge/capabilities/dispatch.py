@@ -9,6 +9,15 @@ from polyforge.contracts.results import Result
 
 def execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Result:
     lookup(identifier)
+    if identifier == "sprite.unity.strip.v1":
+        from polyforge.review.sprite_source import review_sprite_source
+        from polyforge.security.paths import WorkspacePolicy
+
+        source_review = review_sprite_source(
+            WorkspacePolicy(context.workspace), inputs, remember_requirement=not context.dry_run
+        )
+        if source_review["promotion"] != "APPROVED":
+            return Result(status="REVIEW", exit_code=4, data={"source_review": source_review})
     from polyforge.workforce.operations import complete, recover
 
     previous = recover(identifier, inputs, context)

@@ -1,0 +1,23 @@
+* Getting build dependencies for sdist...
+
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.venv\Lib\site-packages\pyproject_hooks\_impl.py", line 30, in write_json
+    with open(path, "w", encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{53b7ac97-f16d-43c5-9302-6d0e9e664853}\\AC\\Temp\\tmphf0jp034\\input.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 637, in _rmtree_unsafe
+    os.rmdir(path)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{53b7ac97-f16d-43c5-9302-6d0e9e664853}\\AC\\Temp\\tmphf0jp034'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\tempfile.py", line 277, in _dont_follow_symlinks
+    func(path, *args)
+PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{53b7ac97-f16d-43c5-9302-6d0e9e664853}\\AC\\Temp\\tmphf0jp034'
+
+ERROR Backend operation failed: PermissionError(13, 'Access is denied')

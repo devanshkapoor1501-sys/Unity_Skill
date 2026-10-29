@@ -1,0 +1,42 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+___ test_completed_recovery_resume_cannot_overwrite_later_workspace_changes ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-163/test_completed_recovery_resume0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C7EDA774D0>
+
+    def test_completed_recovery_resume_cannot_overwrite_later_workspace_changes(tmp_path, monkeypatch):
+        from polyforge.unity import recovery
+    
+        p, path = source_fixture(tmp_path)
+        monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: native_state())
+        tx = recovery.prepare_transaction(p, "completed", dependencies=[path])
+        assert recovery.repair_rollback(tmp_path, tx.identifier).status == "PASS"
+        p.path(path).write_bytes(b"later intentional source revision")
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:303: Failed
+__________ test_recovery_cannot_clear_another_transaction_quarantine __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-163/test_recovery_cannot_clear_ano0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001C7EC00A5D0>
+
+    def test_recovery_cannot_clear_another_transaction_quarantine(tmp_path, monkeypatch):
+        from polyforge.unity import recovery
+    
+        p, path = source_fixture(tmp_path)
+        monkeypatch.setattr(recovery, "observe_state", lambda *a, **k: native_state())
+        tx = recovery.prepare_transaction(p, "one", dependencies=[path])
+        marker = "UnityProject/.polyforge/repair-quarantine.json"
+        atomic_json(p, marker, {"transaction_id": "another", "status": "ROLLBACK_FAILED"})
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:316: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_completed_recovery_resume_cannot_overwrite_later_workspace_changes
+FAILED tests/test_phase9_recovery.py::test_recovery_cannot_clear_another_transaction_quarantine
+2 failed in 4.08s

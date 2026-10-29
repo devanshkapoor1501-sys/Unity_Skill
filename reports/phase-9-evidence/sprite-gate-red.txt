@@ -1,0 +1,131 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_______ test_required_sprite_review_vetoes_before_native_import[direct] _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/sprite-red/test_required_sprite_review_ve0')
+entry = 'direct'
+
+    @pytest.mark.parametrize("entry", ["direct", "workforce"])
+    def test_required_sprite_review_vetoes_before_native_import(tmp_path, entry):
+        from polyforge.capabilities.dispatch import execute
+        from polyforge.workforce.orchestrator import run_task
+    
+        p, inputs = sprite_fixture(tmp_path)
+        if entry == "direct":
+>           result = execute("sprite.unity.strip.v1", inputs, RunContext(tmp_path))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase9_sprite_gate.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\capabilities\dispatch.py:17: in execute
+    result = _execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\capabilities\dispatch.py:33: in _execute
+    return import_strip(inputs, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\sprites\integration.py:43: in import_strip
+    validate_schema(inputs, "sprite_import.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'asset_id': 'robot_a', 'atlas_file': 'atlas.png', 'frame_files': ['frame-0.png', 'frame-1.png', 'frame-2.png', 'frame-3.png', 'frame-4.png', 'frame-5.png'], 'metadata_file': 'atlas.json', ...}
+name = 'sprite_import.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('visual_approval_required' was unexpected)
+
+polyforge\contracts\validation.py:123: InputError
+_____ test_required_sprite_review_vetoes_before_native_import[workforce] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/sprite-red/test_required_sprite_review_ve1')
+entry = 'workforce'
+
+    @pytest.mark.parametrize("entry", ["direct", "workforce"])
+    def test_required_sprite_review_vetoes_before_native_import(tmp_path, entry):
+        from polyforge.capabilities.dispatch import execute
+        from polyforge.workforce.orchestrator import run_task
+    
+        p, inputs = sprite_fixture(tmp_path)
+        if entry == "direct":
+            result = execute("sprite.unity.strip.v1", inputs, RunContext(tmp_path))
+        else:
+>           result = run_task(tmp_path, {"schema_version": "1.0.0", "brief": "Import these sprites", "task_class": "CREATE_ASSET", "domain_tags": ["unity", "2d"], "feature_ids": ["control_2d"], "capability_id": "sprite.unity.strip.v1", "input": inputs})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase9_sprite_gate.py:39: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:71: in run_task
+    plan = plan_task(request, workspace=workspace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\workforce\router.py:100: in plan_task
+    validate_schema(value["input"], descriptor["input_schema"].split("/")[-1])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'asset_id': 'robot_a', 'atlas_file': 'atlas.png', 'frame_files': ['frame-0.png', 'frame-1.png', 'frame-2.png', 'frame-3.png', 'frame-4.png', 'frame-5.png'], 'metadata_file': 'atlas.json', ...}
+name = 'sprite_import.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('visual_approval_required' was unexpected)
+
+polyforge\contracts\validation.py:123: InputError
+____ test_rejection_and_required_marker_cannot_be_bypassed_by_legacy_input ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/sprite-red/test_rejection_and_required_ma0')
+
+    def test_rejection_and_required_marker_cannot_be_bypassed_by_legacy_input(tmp_path):
+        from polyforge.review.board import record_human_review
+>       from polyforge.review.sprite_source import review_sprite_source
+E       ModuleNotFoundError: No module named 'polyforge.review.sprite_source'
+
+tests\test_phase9_sprite_gate.py:47: ModuleNotFoundError
+___________ test_source_receipt_cannot_approve_changed_sprite_bytes ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase9/sprite-red/test_source_receipt_cannot_app0')
+
+    def test_source_receipt_cannot_approve_changed_sprite_bytes(tmp_path):
+        from polyforge.review.board import record_human_review
+>       from polyforge.review.sprite_source import review_sprite_source
+E       ModuleNotFoundError: No module named 'polyforge.review.sprite_source'
+
+tests\test_phase9_sprite_gate.py:66: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_sprite_gate.py::test_required_sprite_review_vetoes_before_native_import[direct]
+FAILED tests/test_phase9_sprite_gate.py::test_required_sprite_review_vetoes_before_native_import[workforce]
+FAILED tests/test_phase9_sprite_gate.py::test_rejection_and_required_marker_cannot_be_bypassed_by_legacy_input
+FAILED tests/test_phase9_sprite_gate.py::test_source_receipt_cannot_approve_changed_sprite_bytes
+4 failed in 2.09s

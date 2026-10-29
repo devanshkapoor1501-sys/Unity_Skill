@@ -1,0 +1,267 @@
+FFFFFFFFFFFFFFFFFFFFF                                                    [100%]
+================================== FAILURES ===================================
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-GUID-MISMATCH-GUID-rebuild_native_binding] _
+
+code = 'PF-GUID-MISMATCH', playbook = 'GUID', action = 'rebuild_native_binding'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-FBX-AXES-FBX_AXES-rebuild_export] _
+
+code = 'PF-FBX-AXES', playbook = 'FBX_AXES', action = 'rebuild_export'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-GEOMETRY-DEGENERATE-GEOMETRY-regenerate_geometry] _
+
+code = 'PF-GEOMETRY-DEGENERATE', playbook = 'GEOMETRY'
+action = 'regenerate_geometry'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-UNITY-API-UNITY_API-None] _
+
+code = 'PF-UNITY-API', playbook = 'UNITY_API', action = None
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-COMPONENT-MISSING-MISSING_COMPONENT-rebuild_native_binding] _
+
+code = 'PF-COMPONENT-MISSING', playbook = 'MISSING_COMPONENT'
+action = 'rebuild_native_binding'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-SPRITE-CURVE-SPRITE_CURVE-rebuild_sprite] _
+
+code = 'PF-SPRITE-CURVE', playbook = 'SPRITE_CURVE', action = 'rebuild_sprite'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-ANIMATION-SLOT-ANIMATION_SLOT-rebuild_motion] _
+
+code = 'PF-ANIMATION-SLOT', playbook = 'ANIMATION_SLOT'
+action = 'rebuild_motion'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-WORKER-TIMEOUT-WORKER_TIMEOUT-retry_registered_worker] _
+
+code = 'PF-WORKER-TIMEOUT', playbook = 'WORKER_TIMEOUT'
+action = 'retry_registered_worker'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-MATERIAL-SWAPPED-GUID-rebuild_native_binding] _
+
+code = 'PF-MATERIAL-SWAPPED', playbook = 'GUID'
+action = 'rebuild_native_binding'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-CLIP-MISLEADING-ANIMATION_SLOT-rebuild_motion] _
+
+code = 'PF-CLIP-MISLEADING', playbook = 'ANIMATION_SLOT'
+action = 'rebuild_motion'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-MECHANIC-MISSING-MISSING_COMPONENT-rebuild_native_binding] _
+
+code = 'PF-MECHANIC-MISSING', playbook = 'MISSING_COMPONENT'
+action = 'rebuild_native_binding'
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-TEST-FAKE-PASS-None-None] _
+
+code = 'PF-TEST-FAKE-PASS', playbook = None, action = None
+
+    @pytest.mark.parametrize("code,playbook,action", FAULTS)
+    def test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair(code, playbook, action):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:41: ModuleNotFoundError
+_ test_structured_success_wins_over_stale_error_log_and_unknown_null_ref_is_ambiguous _
+
+    def test_structured_success_wins_over_stale_error_log_and_unknown_null_ref_is_ambiguous():
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:53: ModuleNotFoundError
+_ test_novel_code_failures_remain_proposals_with_distinct_context[error CS0117: Foo has no definition-API_MISMATCH] _
+
+text = 'error CS0117: Foo has no definition', detail = 'API_MISMATCH'
+
+    @pytest.mark.parametrize("text,detail", [
+        ("error CS0117: Foo has no definition", "API_MISMATCH"),
+        ("UnityEditor namespace is unavailable in runtime assembly", "ASSEMBLY_CONTEXT"),
+        ("operator bpy.ops requires OBJECT mode", "MODE_CONTEXT"),
+        ("com.unity.inputsystem package not found", "PACKAGE_ABSENCE"),
+        ("domain reload invalidated object reference", "DOMAIN_RELOAD"),
+    ])
+    def test_novel_code_failures_remain_proposals_with_distinct_context(text, detail):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:75: ModuleNotFoundError
+_ test_novel_code_failures_remain_proposals_with_distinct_context[UnityEditor namespace is unavailable in runtime assembly-ASSEMBLY_CONTEXT] _
+
+text = 'UnityEditor namespace is unavailable in runtime assembly'
+detail = 'ASSEMBLY_CONTEXT'
+
+    @pytest.mark.parametrize("text,detail", [
+        ("error CS0117: Foo has no definition", "API_MISMATCH"),
+        ("UnityEditor namespace is unavailable in runtime assembly", "ASSEMBLY_CONTEXT"),
+        ("operator bpy.ops requires OBJECT mode", "MODE_CONTEXT"),
+        ("com.unity.inputsystem package not found", "PACKAGE_ABSENCE"),
+        ("domain reload invalidated object reference", "DOMAIN_RELOAD"),
+    ])
+    def test_novel_code_failures_remain_proposals_with_distinct_context(text, detail):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:75: ModuleNotFoundError
+_ test_novel_code_failures_remain_proposals_with_distinct_context[operator bpy.ops requires OBJECT mode-MODE_CONTEXT] _
+
+text = 'operator bpy.ops requires OBJECT mode', detail = 'MODE_CONTEXT'
+
+    @pytest.mark.parametrize("text,detail", [
+        ("error CS0117: Foo has no definition", "API_MISMATCH"),
+        ("UnityEditor namespace is unavailable in runtime assembly", "ASSEMBLY_CONTEXT"),
+        ("operator bpy.ops requires OBJECT mode", "MODE_CONTEXT"),
+        ("com.unity.inputsystem package not found", "PACKAGE_ABSENCE"),
+        ("domain reload invalidated object reference", "DOMAIN_RELOAD"),
+    ])
+    def test_novel_code_failures_remain_proposals_with_distinct_context(text, detail):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:75: ModuleNotFoundError
+_ test_novel_code_failures_remain_proposals_with_distinct_context[com.unity.inputsystem package not found-PACKAGE_ABSENCE] _
+
+text = 'com.unity.inputsystem package not found', detail = 'PACKAGE_ABSENCE'
+
+    @pytest.mark.parametrize("text,detail", [
+        ("error CS0117: Foo has no definition", "API_MISMATCH"),
+        ("UnityEditor namespace is unavailable in runtime assembly", "ASSEMBLY_CONTEXT"),
+        ("operator bpy.ops requires OBJECT mode", "MODE_CONTEXT"),
+        ("com.unity.inputsystem package not found", "PACKAGE_ABSENCE"),
+        ("domain reload invalidated object reference", "DOMAIN_RELOAD"),
+    ])
+    def test_novel_code_failures_remain_proposals_with_distinct_context(text, detail):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:75: ModuleNotFoundError
+_ test_novel_code_failures_remain_proposals_with_distinct_context[domain reload invalidated object reference-DOMAIN_RELOAD] _
+
+text = 'domain reload invalidated object reference', detail = 'DOMAIN_RELOAD'
+
+    @pytest.mark.parametrize("text,detail", [
+        ("error CS0117: Foo has no definition", "API_MISMATCH"),
+        ("UnityEditor namespace is unavailable in runtime assembly", "ASSEMBLY_CONTEXT"),
+        ("operator bpy.ops requires OBJECT mode", "MODE_CONTEXT"),
+        ("com.unity.inputsystem package not found", "PACKAGE_ABSENCE"),
+        ("domain reload invalidated object reference", "DOMAIN_RELOAD"),
+    ])
+    def test_novel_code_failures_remain_proposals_with_distinct_context(text, detail):
+>       from polyforge.repairs.diagnostics import diagnose_evidence
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:75: ModuleNotFoundError
+___ test_minimal_proposal_verifies_actual_evidence_and_denies_substitution ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-132/test_minimal_proposal_verifies0')
+
+    def test_minimal_proposal_verifies_actual_evidence_and_denies_substitution(tmp_path):
+>       from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:86: ModuleNotFoundError
+____ test_missing_version_unsafe_reference_and_invalid_status_fail_closed _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-132/test_missing_version_unsafe_re0')
+
+    def test_missing_version_unsafe_reference_and_invalid_status_fail_closed(tmp_path):
+>       from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:106: ModuleNotFoundError
+______ test_attempt_limit_is_durable_and_same_failed_proposal_escalates _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-132/test_attempt_limit_is_durable_0')
+
+    def test_attempt_limit_is_durable_and_same_failed_proposal_escalates(tmp_path):
+>       from polyforge.repairs.diagnostics import diagnose_evidence, finish_attempt, plan_repair, reserve_attempt
+E       ModuleNotFoundError: No module named 'polyforge.repairs'
+
+tests\test_phase9_diagnostics.py:125: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-GUID-MISMATCH-GUID-rebuild_native_binding]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-FBX-AXES-FBX_AXES-rebuild_export]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-GEOMETRY-DEGENERATE-GEOMETRY-regenerate_geometry]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-UNITY-API-UNITY_API-None]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-COMPONENT-MISSING-MISSING_COMPONENT-rebuild_native_binding]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-SPRITE-CURVE-SPRITE_CURVE-rebuild_sprite]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-ANIMATION-SLOT-ANIMATION_SLOT-rebuild_motion]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-WORKER-TIMEOUT-WORKER_TIMEOUT-retry_registered_worker]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-MATERIAL-SWAPPED-GUID-rebuild_native_binding]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-CLIP-MISLEADING-ANIMATION_SLOT-rebuild_motion]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-MECHANIC-MISSING-MISSING_COMPONENT-rebuild_native_binding]
+FAILED tests/test_phase9_diagnostics.py::test_twelve_defects_select_evidence_driven_playbook_without_claiming_repair[PF-TEST-FAKE-PASS-None-None]
+FAILED tests/test_phase9_diagnostics.py::test_structured_success_wins_over_stale_error_log_and_unknown_null_ref_is_ambiguous
+FAILED tests/test_phase9_diagnostics.py::test_novel_code_failures_remain_proposals_with_distinct_context[error CS0117: Foo has no definition-API_MISMATCH]
+FAILED tests/test_phase9_diagnostics.py::test_novel_code_failures_remain_proposals_with_distinct_context[UnityEditor namespace is unavailable in runtime assembly-ASSEMBLY_CONTEXT]
+FAILED tests/test_phase9_diagnostics.py::test_novel_code_failures_remain_proposals_with_distinct_context[operator bpy.ops requires OBJECT mode-MODE_CONTEXT]
+FAILED tests/test_phase9_diagnostics.py::test_novel_code_failures_remain_proposals_with_distinct_context[com.unity.inputsystem package not found-PACKAGE_ABSENCE]
+FAILED tests/test_phase9_diagnostics.py::test_novel_code_failures_remain_proposals_with_distinct_context[domain reload invalidated object reference-DOMAIN_RELOAD]
+FAILED tests/test_phase9_diagnostics.py::test_minimal_proposal_verifies_actual_evidence_and_denies_substitution
+FAILED tests/test_phase9_diagnostics.py::test_missing_version_unsafe_reference_and_invalid_status_fail_closed
+FAILED tests/test_phase9_diagnostics.py::test_attempt_limit_is_durable_and_same_failed_proposal_escalates
+21 failed in 0.59s

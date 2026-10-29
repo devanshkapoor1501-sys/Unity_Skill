@@ -1,0 +1,47 @@
+.........FFFF                                                            [100%]
+================================== FAILURES ===================================
+____ test_byte_restore_requires_native_proof_and_failed_proof_quarantines _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-142/test_byte_restore_requires_nat0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E4646283B0>
+
+    def test_byte_restore_requires_native_proof_and_failed_proof_quarantines(tmp_path, monkeypatch):
+>       from polyforge.unity import recovery
+E       ImportError: cannot import name 'recovery' from 'polyforge.unity' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\__init__.py)
+
+tests\test_phase9_recovery.py:123: ImportError
+_________ test_resume_after_crash_repeats_reimport_and_scenario_proof _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-142/test_resume_after_crash_repeat0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E46458ECF0>
+
+    def test_resume_after_crash_repeats_reimport_and_scenario_proof(tmp_path, monkeypatch):
+>       from polyforge.unity import recovery
+E       ImportError: cannot import name 'recovery' from 'polyforge.unity' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\__init__.py)
+
+tests\test_phase9_recovery.py:145: ImportError
+____ test_failed_scenario_blocks_rollback_even_when_native_bindings_match _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-142/test_failed_scenario_blocks_ro0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001E46453DCA0>
+
+    def test_failed_scenario_blocks_rollback_even_when_native_bindings_match(tmp_path, monkeypatch):
+>       from polyforge.unity import recovery
+E       ImportError: cannot import name 'recovery' from 'polyforge.unity' (C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\__init__.py)
+
+tests\test_phase9_recovery.py:166: ImportError
+___________ test_unknown_resume_never_creates_or_executes_anything ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-142/test_unknown_resume_never_crea0')
+
+    def test_unknown_resume_never_creates_or_executes_anything(tmp_path):
+>       from polyforge.unity.recovery import resume_run
+E       ModuleNotFoundError: No module named 'polyforge.unity.recovery'
+
+tests\test_phase9_recovery.py:178: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_byte_restore_requires_native_proof_and_failed_proof_quarantines
+FAILED tests/test_phase9_recovery.py::test_resume_after_crash_repeats_reimport_and_scenario_proof
+FAILED tests/test_phase9_recovery.py::test_failed_scenario_blocks_rollback_even_when_native_bindings_match
+FAILED tests/test_phase9_recovery.py::test_unknown_resume_never_creates_or_executes_anything
+4 failed, 9 passed in 2.60s

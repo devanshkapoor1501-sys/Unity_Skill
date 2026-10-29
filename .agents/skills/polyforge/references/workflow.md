@@ -13,7 +13,7 @@ in Unity XYZ meters. They require Blender 5.2.2 and write isolated run evidence;
 and metrics must all validate before PASS. These operations are TRUSTED_LOCAL.
 Managed build supports S0 precheck, S1 contracts, S2 generation and S3 audit/export.
 S4 performs native static Unity integration. S5 builds the bounded playable arena
-and verifies seven behavior scenarios, actual W/R input and two smoke mutants. Resume scheduling remains unavailable pending managed retry work.
+and verifies seven behavior scenarios, actual W/R input and six smoke mutants. Recorded transaction/workforce resume is supported; unsupported inputs fail explicitly.
 
 audit.static.multiview.v1 accepts schema_version and asset_id, locating the latest
 registered successful source and checking its hash before writes. audit CLI exposes
@@ -27,7 +27,7 @@ CLI validate is read-only. CLI compile-contract --manifest FILE and plan
 requirement_coverage.json and (for plan) plan.json. Both accept --dry-run with
 zero writes. Publication freezes the exact original brief bytes and records an
 artifact inventory and PREPARING/COMMITTED marker. A changed frozen brief is
-invalid input; use a new workspace. No amendment workflow is implemented yet.
+invalid input. Preserve the frozen brief and use the explicit Phase 9 review amend workflow for approved additions; see review-and-recovery.md.
 Generated scenarios and feature intent never substitute for evaluator acceptance.
 
 Phase 1 CLI init creates a new managed workspace and refuses overwrites. Doctor
@@ -54,7 +54,7 @@ static prefabs/scenes and executes seventeen required EditMode cases. Public tes
 status remains separate from gameplay. S5 executes separate native PlayMode
 and independent public telemetry oracles; game acceptance still stays PARTIAL. Native missing-reference
 and scale repairs are bounded to frozen source identity and managed outputs.
-Full cross-application rollback/resume remains Phase 9. Explicit Unity package
+Phase 9 adds verified managed rollback/resume, native reimport and applicable regression proofs; see review-and-recovery.md. Explicit Unity package
 download approval is retained per workspace; OS activation profile access is
 required, and trusted Unity licensing services may write profile state. No
 sandbox or egress-containment claim follows from this development profile.
@@ -83,6 +83,5 @@ LOCAL_SINGLE_ROLE. Native subagent delegation is UNAVAILABLE. The same-host
 technical inspector checks actual samples and imported skin/transition behavior;
 it has no protected evaluator authority. Hidden evaluation stays NOT_RUN.
 Leases, cancellation and completion receipts guard native operations; resume
-rejects changed code/inputs/output hashes. These guards do not imply full Phase 9
-rollback or operating-system isolation. Use workforce status/review for evidence
+rejects changed code/inputs/output hashes. These guards do not imply operating-system isolation. Phase 9 native recovery has its own journal and regression proof. Use workforce status/review for evidence
 and workforce cancel for an active job; cancelled work cannot publish a result.

@@ -1,0 +1,108 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+_ test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[False-UserProject/keep.txt] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-169/test_corrupt_dependency_closur0')
+target = 'UserProject/keep.txt', legacy = False
+
+    @pytest.mark.parametrize("target", ["UserProject/keep.txt", "UserProject"])
+    @pytest.mark.parametrize("legacy", [False, True])
+    def test_corrupt_dependency_closure_cannot_delete_unrelated_user_data(tmp_path, target, legacy):
+        p, source = source_fixture(tmp_path)
+        p.mkdir("UserProject")
+        user_file = p.path("UserProject/keep.txt")
+        user_file.write_bytes(b"untouched user project")
+        tx = ManagedTransaction.create(p, "closure_corrupt", dependencies=[source])
+        p.path(source).write_bytes(b"current source must also remain unchanged on rejection")
+        path = p.path(tx.relative + "/journal.json")
+        journal = load_json(path)
+        if legacy:
+            journal.pop("scope_digest", None)
+        journal["dependencies"].append(target)
+        atomic_json(p, path, journal)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:343: Failed
+_ test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[False-UserProject] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-169/test_corrupt_dependency_closur1')
+target = 'UserProject', legacy = False
+
+    @pytest.mark.parametrize("target", ["UserProject/keep.txt", "UserProject"])
+    @pytest.mark.parametrize("legacy", [False, True])
+    def test_corrupt_dependency_closure_cannot_delete_unrelated_user_data(tmp_path, target, legacy):
+        p, source = source_fixture(tmp_path)
+        p.mkdir("UserProject")
+        user_file = p.path("UserProject/keep.txt")
+        user_file.write_bytes(b"untouched user project")
+        tx = ManagedTransaction.create(p, "closure_corrupt", dependencies=[source])
+        p.path(source).write_bytes(b"current source must also remain unchanged on rejection")
+        path = p.path(tx.relative + "/journal.json")
+        journal = load_json(path)
+        if legacy:
+            journal.pop("scope_digest", None)
+        journal["dependencies"].append(target)
+        atomic_json(p, path, journal)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:343: Failed
+_ test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[True-UserProject/keep.txt] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-169/test_corrupt_dependency_closur2')
+target = 'UserProject/keep.txt', legacy = True
+
+    @pytest.mark.parametrize("target", ["UserProject/keep.txt", "UserProject"])
+    @pytest.mark.parametrize("legacy", [False, True])
+    def test_corrupt_dependency_closure_cannot_delete_unrelated_user_data(tmp_path, target, legacy):
+        p, source = source_fixture(tmp_path)
+        p.mkdir("UserProject")
+        user_file = p.path("UserProject/keep.txt")
+        user_file.write_bytes(b"untouched user project")
+        tx = ManagedTransaction.create(p, "closure_corrupt", dependencies=[source])
+        p.path(source).write_bytes(b"current source must also remain unchanged on rejection")
+        path = p.path(tx.relative + "/journal.json")
+        journal = load_json(path)
+        if legacy:
+            journal.pop("scope_digest", None)
+        journal["dependencies"].append(target)
+        atomic_json(p, path, journal)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:343: Failed
+_ test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[True-UserProject] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/pytest-of-Divansh Kapoor/pytest-169/test_corrupt_dependency_closur3')
+target = 'UserProject', legacy = True
+
+    @pytest.mark.parametrize("target", ["UserProject/keep.txt", "UserProject"])
+    @pytest.mark.parametrize("legacy", [False, True])
+    def test_corrupt_dependency_closure_cannot_delete_unrelated_user_data(tmp_path, target, legacy):
+        p, source = source_fixture(tmp_path)
+        p.mkdir("UserProject")
+        user_file = p.path("UserProject/keep.txt")
+        user_file.write_bytes(b"untouched user project")
+        tx = ManagedTransaction.create(p, "closure_corrupt", dependencies=[source])
+        p.path(source).write_bytes(b"current source must also remain unchanged on rejection")
+        path = p.path(tx.relative + "/journal.json")
+        journal = load_json(path)
+        if legacy:
+            journal.pop("scope_digest", None)
+        journal["dependencies"].append(target)
+        atomic_json(p, path, journal)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase9_recovery.py:343: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_recovery.py::test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[False-UserProject/keep.txt]
+FAILED tests/test_phase9_recovery.py::test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[False-UserProject]
+FAILED tests/test_phase9_recovery.py::test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[True-UserProject/keep.txt]
+FAILED tests/test_phase9_recovery.py::test_corrupt_dependency_closure_cannot_delete_unrelated_user_data[True-UserProject]
+4 failed in 4.75s
