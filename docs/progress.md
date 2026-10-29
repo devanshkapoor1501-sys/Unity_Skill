@@ -8,8 +8,10 @@ Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root
   94.43% combined / 91.19% branch coverage, native six-mutant acceptance,
   static/arena/animation/sprite recovery, actual crash/timeout/quarantine/resume,
   forensic repair and 18 offline install checks. Five fresh-review findings and
-  failed-log/input-selection follow-ups resolved. Publication checks are recorded
-  in reports/phase-9.md. Phase 10 has not started.
+  failed-log/input-selection follow-ups resolved. Implementation e94bcc8 passed
+  all three branch CI jobs in run 40855451985; main receives the qualified result
+  by fast-forward. See reports/phase-9.md for raw evidence and live publication
+  checks. Phase 10 has not started.
 
 - Work in the explicitly requested folder. It had no existing application or Git
   repository; initialize codex/polyforge-phase-0 rather than create a second checkout.

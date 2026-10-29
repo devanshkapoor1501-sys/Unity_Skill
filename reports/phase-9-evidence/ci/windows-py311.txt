@@ -1,0 +1,1595 @@
+﻿2026-10-29T10:10:38.7103292Z Current runner version: '2.338.0'
+2026-10-29T10:10:38.7139059Z ##[group]Runner Image Provisioner
+2026-10-29T10:10:38.7140283Z Hosted Compute Agent
+2026-10-29T10:10:38.7141361Z Version: 20261021.618
+2026-10-29T10:10:38.7142828Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-29T10:10:38.7144136Z Build Date: 2026-10-21T00:45:21Z
+2026-10-29T10:10:38.7145617Z Worker ID: {448fac40-4aaa-4e9e-955d-eba8005e21d7}
+2026-10-29T10:10:38.7146944Z Region: eastus
+2026-10-29T10:10:38.7147865Z Cloud: Azure
+2026-10-29T10:10:38.7148930Z ##[endgroup]
+2026-10-29T10:10:38.7151179Z ##[group]Operating System
+2026-10-29T10:10:38.7152340Z Microsoft Windows Server 2025
+2026-10-29T10:10:38.7153453Z 10.0.26100
+2026-10-29T10:10:38.7154352Z Datacenter
+2026-10-29T10:10:38.7155216Z ##[endgroup]
+2026-10-29T10:10:38.7156141Z ##[group]Runner Image
+2026-10-29T10:10:38.7157199Z Image: windows-2025-vs2026
+2026-10-29T10:10:38.7158226Z Version: 20261021.278.1
+2026-10-29T10:10:38.7160735Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261021.278/images/windows/Windows2025-VS2026-Readme.md
+2026-10-29T10:10:38.7164476Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261021.278
+2026-10-29T10:10:38.7166330Z ##[endgroup]
+2026-10-29T10:10:38.7168125Z ##[group]GITHUB_TOKEN Permissions
+2026-10-29T10:10:38.7170952Z Contents: read
+2026-10-29T10:10:38.7171885Z Metadata: read
+2026-10-29T10:10:38.7172883Z ##[endgroup]
+2026-10-29T10:10:38.7175751Z Secret source: Actions
+2026-10-29T10:10:38.7177211Z Cache mode: write
+2026-10-29T10:10:38.7178444Z Prepare workflow directory
+2026-10-29T10:10:38.7655444Z Prepare all required actions
+2026-10-29T10:10:38.7726069Z Getting action download info
+2026-10-29T10:10:38.9701567Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-29T10:10:39.1260064Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-29T10:10:39.4310715Z Complete job name: foundation (windows-latest, 3.11)
+2026-10-29T10:10:39.5923595Z ##[group]Run actions/checkout@v4
+2026-10-29T10:10:39.5924593Z with:
+2026-10-29T10:10:39.5925061Z   repository: devanshkapoor1501-sys/Unity_Skill
+2026-10-29T10:10:39.5929087Z   token: ***
+2026-10-29T10:10:39.5929483Z   ssh-strict: true
+2026-10-29T10:10:39.5929887Z   ssh-user: git
+2026-10-29T10:10:39.5930294Z   persist-credentials: true
+2026-10-29T10:10:39.5930743Z   clean: true
+2026-10-29T10:10:39.5931160Z   sparse-checkout-cone-mode: true
+2026-10-29T10:10:39.5931653Z   fetch-depth: 1
+2026-10-29T10:10:39.5932041Z   fetch-tags: false
+2026-10-29T10:10:39.5932446Z   show-progress: true
+2026-10-29T10:10:39.5932859Z   lfs: false
+2026-10-29T10:10:39.5933232Z   submodules: false
+2026-10-29T10:10:39.5933644Z   set-safe-directory: true
+2026-10-29T10:10:39.5934111Z   allow-unsafe-pr-checkout: false
+2026-10-29T10:10:39.5934798Z ##[endgroup]
+2026-10-29T10:10:41.4645524Z Syncing repository: devanshkapoor1501-sys/Unity_Skill
+2026-10-29T10:10:41.4649754Z ##[group]Getting Git version info
+2026-10-29T10:10:41.4651807Z Working directory is 'D:\a\Unity_Skill\Unity_Skill'
+2026-10-29T10:10:41.4655391Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-29T10:10:41.4658131Z git version 2.56.0.windows.2
+2026-10-29T10:10:41.4664782Z ##[endgroup]
+2026-10-29T10:10:41.4681917Z Temporarily overriding HOME='D:\a\_temp\bc0d55e9-c15c-496a-9a14-589f2a5d3943' before making global git config changes
+2026-10-29T10:10:41.4686604Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T10:10:41.4691635Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\Unity_Skill\Unity_Skill
+2026-10-29T10:10:41.4699146Z Deleting the contents of 'D:\a\Unity_Skill\Unity_Skill'
+2026-10-29T10:10:41.4703250Z ##[group]Initializing the repository
+2026-10-29T10:10:41.4706761Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\Unity_Skill\Unity_Skill
+2026-10-29T10:10:41.4723548Z Initialized empty Git repository in D:/a/Unity_Skill/Unity_Skill/.git/
+2026-10-29T10:10:41.4730782Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/devanshkapoor1501-sys/Unity_Skill
+2026-10-29T10:10:41.4740711Z ##[endgroup]
+2026-10-29T10:10:41.4744380Z ##[group]Disabling automatic garbage collection
+2026-10-29T10:10:41.4747496Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-29T10:10:41.4753445Z ##[endgroup]
+2026-10-29T10:10:41.4755886Z ##[group]Setting up auth
+2026-10-29T10:10:41.4759085Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-29T10:10:41.4767619Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-29T10:10:42.2023306Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-29T10:10:42.2395357Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-29T10:10:42.8970784Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-29T10:10:42.9648736Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-29T10:10:43.5431709Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-29T10:10:43.5819936Z ##[endgroup]
+2026-10-29T10:10:43.5821300Z ##[group]Fetching the repository
+2026-10-29T10:10:43.5846253Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e94bcc81cf5a6ad9ce609659961144f9e6bcac4e:refs/remotes/origin/codex/polyforge-phase-9
+2026-10-29T10:10:45.9905555Z From https://github.com/devanshkapoor1501-sys/Unity_Skill
+2026-10-29T10:10:45.9907263Z  * [new ref]         e94bcc81cf5a6ad9ce609659961144f9e6bcac4e -> origin/codex/polyforge-phase-9
+2026-10-29T10:10:45.9991696Z ##[endgroup]
+2026-10-29T10:10:45.9993793Z ##[group]Determining the checkout info
+2026-10-29T10:10:46.0005905Z ##[endgroup]
+2026-10-29T10:10:46.0006558Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-29T10:10:46.0652200Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-29T10:10:46.1012695Z ##[group]Checking out the ref
+2026-10-29T10:10:46.1021299Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B codex/polyforge-phase-9 refs/remotes/origin/codex/polyforge-phase-9
+2026-10-29T10:10:47.4444059Z Updating files:  74% (3047/4103)
+2026-10-29T10:10:47.4579691Z Updating files:  75% (3078/4103)
+2026-10-29T10:10:47.4685593Z Updating files:  76% (3119/4103)
+2026-10-29T10:10:47.4783886Z Updating files:  77% (3160/4103)
+2026-10-29T10:10:47.4886916Z Updating files:  78% (3201/4103)
+2026-10-29T10:10:47.5033170Z Updating files:  79% (3242/4103)
+2026-10-29T10:10:47.5217001Z Updating files:  80% (3283/4103)
+2026-10-29T10:10:47.5339600Z Updating files:  81% (3324/4103)
+2026-10-29T10:10:47.5453863Z Updating files:  82% (3365/4103)
+2026-10-29T10:10:47.5545881Z Updating files:  83% (3406/4103)
+2026-10-29T10:10:47.5647374Z Updating files:  84% (3447/4103)
+2026-10-29T10:10:47.5793980Z Updating files:  85% (3488/4103)
+2026-10-29T10:10:47.5973626Z Updating files:  86% (3529/4103)
+2026-10-29T10:10:47.6094316Z Updating files:  87% (3570/4103)
+2026-10-29T10:10:47.6189005Z Updating files:  88% (3611/4103)
+2026-10-29T10:10:47.6292536Z Updating files:  89% (3652/4103)
+2026-10-29T10:10:47.6424970Z Updating files:  90% (3693/4103)
+2026-10-29T10:10:47.6604088Z Updating files:  91% (3734/4103)
+2026-10-29T10:10:47.6725508Z Updating files:  92% (3775/4103)
+2026-10-29T10:10:47.6836734Z Updating files:  93% (3816/4103)
+2026-10-29T10:10:47.6933841Z Updating files:  94% (3857/4103)
+2026-10-29T10:10:47.7033789Z Updating files:  95% (3898/4103)
+2026-10-29T10:10:47.7152765Z Updating files:  96% (3939/4103)
+2026-10-29T10:10:47.7261675Z Updating files:  97% (3980/4103)
+2026-10-29T10:10:47.7351909Z Updating files:  98% (4021/4103)
+2026-10-29T10:10:47.7442471Z Updating files:  99% (4062/4103)
+2026-10-29T10:10:47.7443412Z Updating files: 100% (4103/4103)
+2026-10-29T10:10:47.7443856Z Updating files: 100% (4103/4103), done.
+2026-10-29T10:10:47.7629491Z Switched to a new branch 'codex/polyforge-phase-9'
+2026-10-29T10:10:47.7658054Z branch 'codex/polyforge-phase-9' set up to track 'origin/codex/polyforge-phase-9'.
+2026-10-29T10:10:47.7871448Z ##[endgroup]
+2026-10-29T10:10:47.8299371Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-29T10:10:47.8740382Z e94bcc81cf5a6ad9ce609659961144f9e6bcac4e
+2026-10-29T10:10:47.9317244Z ##[group]Run actions/setup-python@v5
+2026-10-29T10:10:47.9317735Z with:
+2026-10-29T10:10:47.9318036Z   python-version: 3.11
+2026-10-29T10:10:47.9318384Z   check-latest: false
+2026-10-29T10:10:47.9324429Z   token: ***
+2026-10-29T10:10:47.9324757Z   update-environment: true
+2026-10-29T10:10:47.9325134Z   allow-prereleases: false
+2026-10-29T10:10:47.9325492Z   freethreaded: false
+2026-10-29T10:10:47.9325807Z ##[endgroup]
+2026-10-29T10:10:48.1154450Z ##[group]Installed versions
+2026-10-29T10:10:48.1318867Z (node:6640) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-29T10:10:48.1320349Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-29T10:10:48.1321474Z Successfully set up CPython (3.11.9)
+2026-10-29T10:10:48.1322530Z ##[endgroup]
+2026-10-29T10:10:48.1644218Z ##[group]Run python -m pip install -r requirements-dev.lock
+2026-10-29T10:10:48.1644786Z [36;1mpython -m pip install -r requirements-dev.lock[0m
+2026-10-29T10:10:48.2360078Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:10:48.2360577Z env:
+2026-10-29T10:10:48.2360926Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:10:48.2361546Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:10:48.2362136Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:10:48.2362690Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:10:48.2363291Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:10:48.2363644Z ##[endgroup]
+2026-10-29T10:10:53.9032216Z Collecting attrs==26.1.0 (from -r requirements-dev.lock (line 2))
+2026-10-29T10:10:54.1333736Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-29T10:10:54.1831707Z Collecting build==1.3.0 (from -r requirements-dev.lock (line 3))
+2026-10-29T10:10:54.1904991Z   Downloading build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+2026-10-29T10:10:54.2496725Z Collecting colorama==0.4.6 (from -r requirements-dev.lock (line 4))
+2026-10-29T10:10:54.2552751Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+2026-10-29T10:10:54.8421201Z Collecting coverage==7.17.0 (from -r requirements-dev.lock (line 5))
+2026-10-29T10:10:54.8485039Z   Downloading coverage-7.17.0-cp311-cp311-win_amd64.whl.metadata (8.3 kB)
+2026-10-29T10:10:54.9025731Z Collecting iniconfig==2.3.1 (from -r requirements-dev.lock (line 6))
+2026-10-29T10:10:54.9090191Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-10-29T10:10:54.9695774Z Collecting jsonschema==4.25.1 (from -r requirements-dev.lock (line 7))
+2026-10-29T10:10:54.9751603Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-29T10:10:55.0237394Z Collecting jsonschema-specifications==2025.9.1 (from -r requirements-dev.lock (line 8))
+2026-10-29T10:10:55.0290969Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-29T10:10:55.2007548Z Collecting mypy==1.18.2 (from -r requirements-dev.lock (line 9))
+2026-10-29T10:10:55.2071574Z   Downloading mypy-1.18.2-cp311-cp311-win_amd64.whl.metadata (2.2 kB)
+2026-10-29T10:10:55.2539939Z Collecting mypy_extensions==1.1.0 (from -r requirements-dev.lock (line 10))
+2026-10-29T10:10:55.2591889Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2026-10-29T10:10:55.3171550Z Collecting packaging==26.3 (from -r requirements-dev.lock (line 11))
+2026-10-29T10:10:55.3239955Z   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+2026-10-29T10:10:55.3815607Z Collecting pathspec==1.1.1 (from -r requirements-dev.lock (line 12))
+2026-10-29T10:10:55.3868201Z   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+2026-10-29T10:10:55.4320090Z Collecting pluggy==1.7.0 (from -r requirements-dev.lock (line 13))
+2026-10-29T10:10:55.4368312Z   Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+2026-10-29T10:10:55.4814339Z Collecting pygments==2.21.0 (from -r requirements-dev.lock (line 14))
+2026-10-29T10:10:55.4866777Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-29T10:10:55.5306273Z Collecting pyproject_hooks==1.3.3 (from -r requirements-dev.lock (line 15))
+2026-10-29T10:10:55.5374606Z   Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+2026-10-29T10:10:55.5914843Z Collecting pytest==8.4.2 (from -r requirements-dev.lock (line 16))
+2026-10-29T10:10:55.6192668Z   Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+2026-10-29T10:10:55.6618056Z Collecting pytest-cov==6.3.0 (from -r requirements-dev.lock (line 17))
+2026-10-29T10:10:55.6672723Z   Downloading pytest_cov-6.3.0-py3-none-any.whl.metadata (30 kB)
+2026-10-29T10:10:55.7237207Z Collecting referencing==0.37.0 (from -r requirements-dev.lock (line 18))
+2026-10-29T10:10:55.7323047Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-10-29T10:10:56.0696607Z Collecting rpds-py==2026.9.1 (from -r requirements-dev.lock (line 19))
+2026-10-29T10:10:56.0763443Z   Downloading rpds_py-2026.9.1-cp311-cp311-win_amd64.whl.metadata (4.2 kB)
+2026-10-29T10:10:56.4903925Z Collecting ruff==0.13.3 (from -r requirements-dev.lock (line 20))
+2026-10-29T10:10:56.4967608Z   Downloading ruff-0.13.3-py3-none-win_amd64.whl.metadata (26 kB)
+2026-10-29T10:10:56.6283933Z Collecting setuptools==80.9.0 (from -r requirements-dev.lock (line 21))
+2026-10-29T10:10:56.6336165Z   Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-29T10:10:56.6899082Z Collecting types-jsonschema==4.25.1.20250822 (from -r requirements-dev.lock (line 22))
+2026-10-29T10:10:56.6965891Z   Downloading types_jsonschema-4.25.1.20250822-py3-none-any.whl.metadata (1.8 kB)
+2026-10-29T10:10:56.7532873Z Collecting typing_extensions==4.16.0 (from -r requirements-dev.lock (line 23))
+2026-10-29T10:10:56.7573689Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-29T10:10:56.8231854Z Collecting wheel==0.45.1 (from -r requirements-dev.lock (line 24))
+2026-10-29T10:10:56.8282951Z   Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+2026-10-29T10:10:56.8730886Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-29T10:10:56.8956180Z Downloading build-1.3.0-py3-none-any.whl (23 kB)
+2026-10-29T10:10:56.9208360Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+2026-10-29T10:10:56.9422640Z Downloading coverage-7.17.0-cp311-cp311-win_amd64.whl (228 kB)
+2026-10-29T10:10:56.9695120Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-10-29T10:10:56.9900993Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+2026-10-29T10:10:57.0114523Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-29T10:10:57.0359781Z Downloading mypy-1.18.2-cp311-cp311-win_amd64.whl (9.8 MB)
+2026-10-29T10:10:57.1430818Z    ---------------------------------------- 9.8/9.8 MB 102.1 MB/s  0:00:00
+2026-10-29T10:10:57.1480868Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2026-10-29T10:10:57.1710391Z Downloading packaging-26.3-py3-none-any.whl (129 kB)
+2026-10-29T10:10:57.1930068Z Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+2026-10-29T10:10:57.2161594Z Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+2026-10-29T10:10:57.2466829Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-29T10:10:57.2779104Z    ---------------------------------------- 1.3/1.3 MB 31.9 MB/s  0:00:00
+2026-10-29T10:10:57.2826241Z Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+2026-10-29T10:10:57.3100625Z Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+2026-10-29T10:10:57.3406750Z Downloading pytest_cov-6.3.0-py3-none-any.whl (25 kB)
+2026-10-29T10:10:57.3652343Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-29T10:10:57.3880300Z Downloading rpds_py-2026.9.1-cp311-cp311-win_amd64.whl (226 kB)
+2026-10-29T10:10:57.4285385Z Downloading ruff-0.13.3-py3-none-win_amd64.whl (13.5 MB)
+2026-10-29T10:10:57.5848792Z    ---------------------------------------- 13.5/13.5 MB 93.6 MB/s  0:00:00
+2026-10-29T10:10:57.5899896Z Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+2026-10-29T10:10:57.6356237Z    ---------------------------------------- 1.2/1.2 MB 20.4 MB/s  0:00:00
+2026-10-29T10:10:57.6416929Z Downloading types_jsonschema-4.25.1.20250822-py3-none-any.whl (15 kB)
+2026-10-29T10:10:57.6653332Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-29T10:10:57.6919829Z Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+2026-10-29T10:10:58.0544197Z Installing collected packages: wheel, typing_extensions, setuptools, ruff, rpds-py, pyproject_hooks, pygments, pluggy, pathspec, packaging, mypy_extensions, iniconfig, coverage, colorama, attrs, referencing, pytest, mypy, build, types-jsonschema, pytest-cov, jsonschema-specifications, jsonschema
+2026-10-29T10:10:58.6628872Z   Attempting uninstall: setuptools
+2026-10-29T10:10:58.6630255Z     Found existing installation: setuptools 65.5.0
+2026-10-29T10:10:58.7881466Z     Uninstalling setuptools-65.5.0:
+2026-10-29T10:10:58.8700979Z       Successfully uninstalled setuptools-65.5.0
+2026-10-29T10:11:11.2067038Z 
+2026-10-29T10:11:11.2070247Z Successfully installed attrs-26.1.0 build-1.3.0 colorama-0.4.6 coverage-7.17.0 iniconfig-2.3.1 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 mypy-1.18.2 mypy_extensions-1.1.0 packaging-26.3 pathspec-1.1.1 pluggy-1.7.0 pygments-2.21.0 pyproject_hooks-1.3.3 pytest-8.4.2 pytest-cov-6.3.0 referencing-0.37.0 rpds-py-2026.9.1 ruff-0.13.3 setuptools-80.9.0 types-jsonschema-4.25.1.20250822 typing_extensions-4.16.0 wheel-0.45.1
+2026-10-29T10:11:11.2400170Z ##[group]Run python -m pip install --no-build-isolation --no-deps -e .
+2026-10-29T10:11:11.2400760Z [36;1mpython -m pip install --no-build-isolation --no-deps -e .[0m
+2026-10-29T10:11:11.2480242Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:11:11.2480593Z env:
+2026-10-29T10:11:11.2480866Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:11.2481327Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:11:11.2481776Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:11.2482170Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:11.2482564Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:11.2482872Z ##[endgroup]
+2026-10-29T10:11:12.7753776Z Obtaining file:///D:/a/Unity_Skill/Unity_Skill
+2026-10-29T10:11:12.7779474Z   Checking if build backend supports build_editable: started
+2026-10-29T10:11:13.0165631Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-29T10:11:13.0191901Z   Preparing editable metadata (pyproject.toml): started
+2026-10-29T10:11:13.5093528Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-29T10:11:13.5156715Z Building wheels for collected packages: polyforge
+2026-10-29T10:11:13.5184987Z   Building editable for polyforge (pyproject.toml): started
+2026-10-29T10:11:14.1680298Z   Building editable for polyforge (pyproject.toml): finished with status 'done'
+2026-10-29T10:11:14.1717438Z   Created wheel for polyforge: filename=polyforge-0.0.1-0.editable-py3-none-any.whl size=9384 sha256=24b660f465aaae421c0dd932801bac214229abe047884aa35bb30c37c1275a03
+2026-10-29T10:11:14.1719861Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-jwz8qhit\wheels\69\d8\ad\724fb0ba831f8342db5ba547edc1f75e66c313389078c8f975
+2026-10-29T10:11:14.1753957Z Successfully built polyforge
+2026-10-29T10:11:14.1936588Z Installing collected packages: polyforge
+2026-10-29T10:11:14.2505510Z Successfully installed polyforge-0.0.1
+2026-10-29T10:11:14.4604224Z ##[group]Run python -m ruff check .
+2026-10-29T10:11:14.4604585Z [36;1mpython -m ruff check .[0m
+2026-10-29T10:11:14.4676500Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:11:14.4676866Z env:
+2026-10-29T10:11:14.4677131Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:14.4677584Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:11:14.4678039Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:14.4678431Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:14.4678828Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:14.4679136Z ##[endgroup]
+2026-10-29T10:11:15.1004383Z All checks passed!
+2026-10-29T10:11:15.2293570Z ##[group]Run python -m mypy
+2026-10-29T10:11:15.2294068Z [36;1mpython -m mypy[0m
+2026-10-29T10:11:15.2378468Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:11:15.2378808Z env:
+2026-10-29T10:11:15.2379085Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:15.2379542Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:11:15.2379992Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:15.2380379Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:15.2380763Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:15.2381068Z ##[endgroup]
+2026-10-29T10:11:19.0506688Z Success: no issues found in 92 source files
+2026-10-29T10:11:19.1858626Z ##[group]Run python -m pytest --cov --cov-report=term-missing --cov-report=json
+2026-10-29T10:11:19.1859281Z [36;1mpython -m pytest --cov --cov-report=term-missing --cov-report=json[0m
+2026-10-29T10:11:19.1930832Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:11:19.1931186Z env:
+2026-10-29T10:11:19.1931452Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:19.1931898Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:11:19.1932339Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:19.1932754Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:19.1933159Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:11:19.1933494Z ##[endgroup]
+2026-10-29T10:11:21.4359787Z ============================= test session starts =============================
+2026-10-29T10:11:21.4360869Z platform win32 -- Python 3.11.9, pytest-8.4.2, pluggy-1.7.0
+2026-10-29T10:11:21.4361646Z rootdir: D:\a\Unity_Skill\Unity_Skill
+2026-10-29T10:11:21.4362222Z configfile: pyproject.toml
+2026-10-29T10:11:21.4362768Z testpaths: tests
+2026-10-29T10:11:21.4363269Z plugins: cov-6.3.0
+2026-10-29T10:11:21.4363899Z collected 407 items / 12 deselected / 395 selected
+2026-10-29T10:11:21.4364472Z 
+2026-10-29T10:11:21.6090047Z tests\test_animation.py .........                                        [  2%]
+2026-10-29T10:11:22.6454710Z tests\test_assets.py ......                                              [  3%]
+2026-10-29T10:11:30.2962021Z tests\test_contract_boundaries.py .................                      [  8%]
+2026-10-29T10:11:40.4065176Z tests\test_foundation.py .................                               [ 12%]
+2026-10-29T10:11:46.0350777Z tests\test_phase1_cli.py .....                                           [ 13%]
+2026-10-29T10:11:47.2205424Z tests\test_phase1_failures.py ...........                                [ 16%]
+2026-10-29T10:11:50.0554661Z tests\test_phase1_policy.py ......                                       [ 17%]
+2026-10-29T10:11:50.3266146Z tests\test_phase1_review.py ....                                         [ 18%]
+2026-10-29T10:11:51.4310248Z tests\test_phase1_runner.py .......                                      [ 20%]
+2026-10-29T10:12:03.7709023Z tests\test_phase2_boundaries.py ..............                           [ 24%]
+2026-10-29T10:12:10.0109939Z tests\test_phase2_contracts.py ..............                            [ 27%]
+2026-10-29T10:12:15.9005874Z tests\test_phase3_cli.py ......                                          [ 29%]
+2026-10-29T10:12:19.9182096Z tests\test_phase3_recipes.py .......                                     [ 31%]
+2026-10-29T10:12:23.5927588Z tests\test_phase4_contracts.py ...........                               [ 33%]
+2026-10-29T10:12:24.7547821Z tests\test_phase5_contracts.py ......................................... [ 44%]
+2026-10-29T10:12:24.9833272Z .                                                                        [ 44%]
+2026-10-29T10:12:27.1198611Z tests\test_phase6_contracts.py .....................................     [ 53%]
+2026-10-29T10:12:29.1766918Z tests\test_phase7_review.py .........                                    [ 56%]
+2026-10-29T10:12:32.0672078Z tests\test_phase8_review.py ...............                              [ 60%]
+2026-10-29T10:12:34.4226307Z tests\test_phase9_amendments.py ........                                 [ 62%]
+2026-10-29T10:12:34.6391342Z tests\test_phase9_diagnostics.py ............................            [ 69%]
+2026-10-29T10:12:34.9618966Z tests\test_phase9_forensic_execution.py ...                              [ 69%]
+2026-10-29T10:12:36.2603239Z tests\test_phase9_mutations.py .....                                     [ 71%]
+2026-10-29T10:12:45.9129387Z tests\test_phase9_recovery.py .......................................... [ 81%]
+2026-10-29T10:12:45.9145378Z                                                                          [ 81%]
+2026-10-29T10:12:53.0284315Z tests\test_phase9_review.py .........................                    [ 88%]
+2026-10-29T10:12:53.2987624Z tests\test_phase9_routing.py ......                                      [ 89%]
+2026-10-29T10:14:21.8571985Z tests\test_phase9_sprite_gate.py .........                               [ 91%]
+2026-10-29T10:14:41.9401904Z tests\test_sprites.py .....                                              [ 93%]
+2026-10-29T10:14:44.5654497Z tests\test_windows_alias_paths.py ..                                     [ 93%]
+2026-10-29T10:15:00.3544849Z tests\test_workforce.py ........................                         [ 99%]
+2026-10-29T10:15:03.4436370Z tests\test_workforce_crash.py .                                          [100%]
+2026-10-29T10:15:03.4505138Z 
+2026-10-29T10:15:03.5223123Z =============================== tests coverage ================================
+2026-10-29T10:15:03.5437429Z _______________ coverage: platform win32, python 3.11.9-final-0 _______________
+2026-10-29T10:15:03.5439592Z 
+2026-10-29T10:15:03.5460491Z Name                                  Stmts   Miss Branch BrPart  Cover   Missing
+2026-10-29T10:15:03.5465689Z ---------------------------------------------------------------------------------
+2026-10-29T10:15:03.5564272Z polyforge\animation\contract.py          41      0     30      0   100%
+2026-10-29T10:15:03.5582948Z polyforge\assets\contracts.py            82      3     40      3    95%   131, 153, 166
+2026-10-29T10:15:03.5585229Z polyforge\blender\interchange.py          9      0      4      0   100%
+2026-10-29T10:15:03.5587273Z polyforge\blender\recipes.py            146      8     78      8    93%   33, 43, 53, 61, 64, 239, 251, 314
+2026-10-29T10:15:03.5588650Z polyforge\contracts\__init__.py           0      0      0      0   100%
+2026-10-29T10:15:03.5898947Z polyforge\contracts\images.py            87      0     42      0   100%
+2026-10-29T10:15:03.6182848Z polyforge\contracts\manifest.py         152      7     72      6    94%   66-67, 75->78, 123, 159, 166, 169, 171
+2026-10-29T10:15:03.6188452Z polyforge\contracts\results.py           54      0     14      0   100%
+2026-10-29T10:15:03.6190846Z polyforge\contracts\validation.py        55      1     12      1    97%   45
+2026-10-29T10:15:03.6528079Z polyforge\repairs\diagnostics.py        136      9     58      9    91%   81, 114, 128, 137, 147, 150, 379, 382, 392
+2026-10-29T10:15:03.6563006Z polyforge\review\acceptance.py           49      2     10      0    97%   35-36
+2026-10-29T10:15:03.6565059Z polyforge\review\amendments.py           52      1     24      1    97%   127
+2026-10-29T10:15:03.6568349Z polyforge\review\board.py               129      5     56      7    94%   71, 125, 153, 171, 178->180, 208, 210->216
+2026-10-29T10:15:03.6572244Z polyforge\review\sprite_source.py        59      3     24      3    93%   43, 46, 94
+2026-10-29T10:15:03.6574250Z polyforge\runner\locks.py               110      7     32      6    91%   35, 71, 105-107, 113, 159-161, 169->exit
+2026-10-29T10:15:03.6575777Z polyforge\scenarios\arena_oracle.py      96      6     68      6    93%   64, 83, 88, 96, 99, 197
+2026-10-29T10:15:03.6864763Z polyforge\security\__init__.py            0      0      0      0   100%
+2026-10-29T10:15:03.6873470Z polyforge\security\paths.py              69      2     28      2    96%   36, 81
+2026-10-29T10:15:03.6877441Z polyforge\security\policy.py             40      0     14      0   100%
+2026-10-29T10:15:03.7040364Z polyforge\sprites\contracts.py            9      0      6      0   100%
+2026-10-29T10:15:03.7043955Z polyforge\sprites\images.py              35      0     12      0   100%
+2026-10-29T10:15:03.7053963Z polyforge\unity\bootstrap.py             89      9     36      7    86%   26->exit, 28->26, 38-43, 58, 61, 67, 73, 100
+2026-10-29T10:15:03.7055259Z polyforge\unity\evidence.py              81      0     50      0   100%
+2026-10-29T10:15:03.7057840Z polyforge\unity\transactions.py         184     13    102     13    91%   43, 71, 82, 100, 104, 109, 118, 241, 270, 273, 295, 298, 313
+2026-10-29T10:15:03.7059610Z polyforge\unity\upgrade.py               63      1     28      2    97%   50->48, 60
+2026-10-29T10:15:03.7060834Z polyforge\workforce\ledger.py            98      1     34      2    98%   69->81, 76
+2026-10-29T10:15:03.7061926Z polyforge\workforce\models.py            13      0      6      0   100%
+2026-10-29T10:15:03.7063018Z polyforge\workforce\permissions.py       31      0     14      0   100%
+2026-10-29T10:15:03.7064116Z polyforge\workforce\router.py            88      6     48      3    92%   54, 56, 104-108
+2026-10-29T10:15:03.7065197Z ---------------------------------------------------------------------------------
+2026-10-29T10:15:03.7066126Z TOTAL                                  2057     84    942     79    94%
+2026-10-29T10:15:03.7066957Z Coverage JSON written to file coverage.json
+2026-10-29T10:15:03.7067827Z Required test coverage of 90.0% reached. Total coverage: 94.43%
+2026-10-29T10:15:03.7068848Z =============== 395 passed, 12 deselected in 223.05s (0:03:43) ================
+2026-10-29T10:15:03.7379496Z ##[group]Run python -m tools.check_coverage
+2026-10-29T10:15:03.7380196Z [36;1mpython -m tools.check_coverage[0m
+2026-10-29T10:15:03.7495858Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:15:03.7496550Z env:
+2026-10-29T10:15:03.7497089Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:03.7498036Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:15:03.7499511Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:03.7500377Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:03.7501180Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:03.7501882Z ##[endgroup]
+2026-10-29T10:15:04.7718817Z Combined coverage: 94.43%; branches: 91.19%
+2026-10-29T10:15:05.0873618Z ##[group]Run python -m tools.generate_cli_docs --check
+2026-10-29T10:15:05.0874421Z [36;1mpython -m tools.generate_cli_docs --check[0m
+2026-10-29T10:15:05.0983979Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:15:05.0984675Z env:
+2026-10-29T10:15:05.0985211Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:05.0986093Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:15:05.0986969Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:05.0987784Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:05.0988580Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:05.0989271Z ##[endgroup]
+2026-10-29T10:15:05.9361227Z CLI documentation is current
+2026-10-29T10:15:06.1203730Z ##[group]Run python -m build --no-isolation
+2026-10-29T10:15:06.1204439Z [36;1mpython -m build --no-isolation[0m
+2026-10-29T10:15:06.1312924Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:15:06.1313607Z env:
+2026-10-29T10:15:06.1314159Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:06.1315052Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:15:06.1315959Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:06.1316767Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:06.1317570Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:06.1318247Z ##[endgroup]
+2026-10-29T10:15:07.2135003Z * Getting build dependencies for sdist...
+2026-10-29T10:15:07.8951731Z running egg_info
+2026-10-29T10:15:07.9374714Z creating polyforge.egg-info
+2026-10-29T10:15:07.9529257Z writing polyforge.egg-info\PKG-INFO
+2026-10-29T10:15:07.9706026Z writing dependency_links to polyforge.egg-info\dependency_links.txt
+2026-10-29T10:15:08.0022321Z writing entry points to polyforge.egg-info\entry_points.txt
+2026-10-29T10:15:08.0341126Z writing requirements to polyforge.egg-info\requires.txt
+2026-10-29T10:15:08.0909979Z writing top-level names to polyforge.egg-info\top_level.txt
+2026-10-29T10:15:08.0911935Z writing manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:08.0929343Z reading manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:08.0933271Z reading manifest template 'MANIFEST.in'
+2026-10-29T10:15:08.0936496Z adding license file 'LICENSE'
+2026-10-29T10:15:08.1315077Z adding license file 'NOTICE'
+2026-10-29T10:15:08.1754658Z writing manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:08.1823053Z * Building sdist...
+2026-10-29T10:15:08.7414253Z running sdist
+2026-10-29T10:15:08.7754262Z running egg_info
+2026-10-29T10:15:08.8090043Z writing polyforge.egg-info\PKG-INFO
+2026-10-29T10:15:08.8409038Z writing dependency_links to polyforge.egg-info\dependency_links.txt
+2026-10-29T10:15:08.8727975Z writing entry points to polyforge.egg-info\entry_points.txt
+2026-10-29T10:15:08.9044274Z writing requirements to polyforge.egg-info\requires.txt
+2026-10-29T10:15:08.9363429Z writing top-level names to polyforge.egg-info\top_level.txt
+2026-10-29T10:15:08.9952678Z reading manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:08.9979999Z reading manifest template 'MANIFEST.in'
+2026-10-29T10:15:08.9980945Z adding license file 'LICENSE'
+2026-10-29T10:15:09.0044849Z adding license file 'NOTICE'
+2026-10-29T10:15:09.0045714Z writing manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:09.0227350Z running check
+2026-10-29T10:15:09.0291883Z creating polyforge-0.0.1
+2026-10-29T10:15:09.0315988Z creating polyforge-0.0.1\.agents\skills\polyforge
+2026-10-29T10:15:09.0317116Z creating polyforge-0.0.1\.agents\skills\polyforge\references
+2026-10-29T10:15:09.0318101Z creating polyforge-0.0.1\.github\workflows
+2026-10-29T10:15:09.0318899Z creating polyforge-0.0.1\benchmarks
+2026-10-29T10:15:09.0319707Z creating polyforge-0.0.1\benchmarks\development-v1
+2026-10-29T10:15:09.0320654Z creating polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.0321602Z creating polyforge-0.0.1\benchmarks\tasks
+2026-10-29T10:15:09.0322448Z creating polyforge-0.0.1\capabilities
+2026-10-29T10:15:09.0323338Z creating polyforge-0.0.1\docs
+2026-10-29T10:15:09.0324138Z creating polyforge-0.0.1\docs\superpowers\plans
+2026-10-29T10:15:09.0327547Z creating polyforge-0.0.1\docs\superpowers\specs
+2026-10-29T10:15:09.0328456Z creating polyforge-0.0.1\examples\phase7
+2026-10-29T10:15:09.0329265Z creating polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.0330419Z creating polyforge-0.0.1\examples\simple_arena
+2026-10-29T10:15:09.0331237Z creating polyforge-0.0.1\examples\simple_arena\recipes
+2026-10-29T10:15:09.0334248Z creating polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.0335163Z creating polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.0852449Z creating polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.0856780Z creating polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.0857651Z creating polyforge-0.0.1\polyforge\assets
+2026-10-29T10:15:09.0858387Z creating polyforge-0.0.1\polyforge\benchmark
+2026-10-29T10:15:09.0859108Z creating polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.0859827Z creating polyforge-0.0.1\polyforge\capabilities
+2026-10-29T10:15:09.0860563Z creating polyforge-0.0.1\polyforge\compiler
+2026-10-29T10:15:09.0861638Z creating polyforge-0.0.1\polyforge\composition
+2026-10-29T10:15:09.0862460Z creating polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.0863187Z creating polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.0863886Z creating polyforge-0.0.1\polyforge\invariants
+2026-10-29T10:15:09.0864599Z creating polyforge-0.0.1\polyforge\planner
+2026-10-29T10:15:09.0865298Z creating polyforge-0.0.1\polyforge\repairs
+2026-10-29T10:15:09.0865974Z creating polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.0866694Z creating polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.0867470Z creating polyforge-0.0.1\polyforge\scenarios
+2026-10-29T10:15:09.0868186Z creating polyforge-0.0.1\polyforge\security
+2026-10-29T10:15:09.0868924Z creating polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.0869692Z creating polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.0889587Z creating polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.0890529Z creating polyforge-0.0.1\profiles
+2026-10-29T10:15:09.0891196Z creating polyforge-0.0.1\roles
+2026-10-29T10:15:09.0891891Z creating polyforge-0.0.1\tests
+2026-10-29T10:15:09.0892745Z creating polyforge-0.0.1\tests\fixtures
+2026-10-29T10:15:09.0893524Z creating polyforge-0.0.1\tests\fixtures\intent
+2026-10-29T10:15:09.0916350Z creating polyforge-0.0.1\tests\fixtures\manifests
+2026-10-29T10:15:09.0930188Z creating polyforge-0.0.1\tests\fixtures\phase8
+2026-10-29T10:15:09.0931022Z creating polyforge-0.0.1\tests\fixtures\phase9
+2026-10-29T10:15:09.0931788Z creating polyforge-0.0.1\tests\fixtures\recipes
+2026-10-29T10:15:09.0932517Z creating polyforge-0.0.1\tools
+2026-10-29T10:15:09.0933126Z creating polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.0951672Z creating polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.0952510Z creating polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.0953260Z creating polyforge-0.0.1\unity_package\SpriteEditor
+2026-10-29T10:15:09.0954030Z creating polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.0954840Z creating polyforge-0.0.1\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:09.0955807Z creating polyforge-0.0.1\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:09.0956963Z creating polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.0957771Z creating polyforge-0.0.1\unity_package\Tests\GameEditor
+2026-10-29T10:15:09.0958593Z creating polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.0959420Z creating polyforge-0.0.1\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:09.1142588Z creating polyforge-0.0.1\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:09.1144223Z copying files to polyforge-0.0.1...
+2026-10-29T10:15:09.1145948Z copying CHANGELOG.md -> polyforge-0.0.1
+2026-10-29T10:15:09.1147180Z copying CONTRIBUTING.md -> polyforge-0.0.1
+2026-10-29T10:15:09.1403868Z copying LICENSE -> polyforge-0.0.1
+2026-10-29T10:15:09.1404722Z copying MANIFEST.in -> polyforge-0.0.1
+2026-10-29T10:15:09.1405486Z copying NOTICE -> polyforge-0.0.1
+2026-10-29T10:15:09.1406299Z copying README.md -> polyforge-0.0.1
+2026-10-29T10:15:09.1406977Z copying SECURITY.md -> polyforge-0.0.1
+2026-10-29T10:15:09.1407697Z copying pyproject.toml -> polyforge-0.0.1
+2026-10-29T10:15:09.1408585Z copying requirements-dev.lock -> polyforge-0.0.1
+2026-10-29T10:15:09.1409656Z copying .agents\skills\polyforge\SKILL.md -> polyforge-0.0.1\.agents\skills\polyforge
+2026-10-29T10:15:09.1412250Z copying .agents\skills\polyforge\references\assets-and-sprites.md -> polyforge-0.0.1\.agents\skills\polyforge\references
+2026-10-29T10:15:09.1414152Z copying .agents\skills\polyforge\references\review-and-recovery.md -> polyforge-0.0.1\.agents\skills\polyforge\references
+2026-10-29T10:15:09.1415902Z copying .agents\skills\polyforge\references\workflow.md -> polyforge-0.0.1\.agents\skills\polyforge\references
+2026-10-29T10:15:09.1417232Z copying .github\workflows\ci.yml -> polyforge-0.0.1\.github\workflows
+2026-10-29T10:15:09.1418224Z copying benchmarks\README.md -> polyforge-0.0.1\benchmarks
+2026-10-29T10:15:09.1419334Z copying benchmarks\development-v1\README.md -> polyforge-0.0.1\benchmarks\development-v1
+2026-10-29T10:15:09.1421008Z copying benchmarks\development-v1\suite.json -> polyforge-0.0.1\benchmarks\development-v1
+2026-10-29T10:15:09.1422533Z copying benchmarks\development-v1\briefs\contact_damage.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1424176Z copying benchmarks\development-v1\briefs\crate_mesh.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1425713Z copying benchmarks\development-v1\briefs\doorway_mesh.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1427221Z copying benchmarks\development-v1\briefs\player_movement.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1428868Z copying benchmarks\development-v1\briefs\repair_material.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1430503Z copying benchmarks\development-v1\briefs\repair_scale.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1449993Z copying benchmarks\development-v1\briefs\robot_idle_import.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1451672Z copying benchmarks\development-v1\briefs\robot_mesh.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1964629Z copying benchmarks\development-v1\briefs\robot_walk_import.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1966542Z copying benchmarks\development-v1\briefs\sprite_survival_game.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1968252Z copying benchmarks\development-v1\briefs\wall_collision.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1988221Z copying benchmarks\development-v1\briefs\wall_mesh.md -> polyforge-0.0.1\benchmarks\development-v1\briefs
+2026-10-29T10:15:09.1989783Z copying benchmarks\tasks\arena_development.json -> polyforge-0.0.1\benchmarks\tasks
+2026-10-29T10:15:09.1991356Z copying capabilities\README.md -> polyforge-0.0.1\capabilities
+2026-10-29T10:15:09.1992332Z copying docs\architecture.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1993542Z copying docs\arena.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1994366Z copying docs\asset-workflow.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1995255Z copying docs\audit-export.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1996054Z copying docs\cli.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1996839Z copying docs\development-guide.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1997734Z copying docs\implementation-plan.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1998649Z copying docs\manifests.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.1999503Z copying docs\progress.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.2000313Z copying docs\recipes.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.2001183Z copying docs\review-and-recovery.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.2002123Z copying docs\unity-integration.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.2002986Z copying docs\workforce.md -> polyforge-0.0.1\docs
+2026-10-29T10:15:09.2004079Z copying docs\superpowers\plans\2026-10-28-phase-7.md -> polyforge-0.0.1\docs\superpowers\plans
+2026-10-29T10:15:09.2005484Z copying docs\superpowers\plans\2026-10-28-phase-8.md -> polyforge-0.0.1\docs\superpowers\plans
+2026-10-29T10:15:09.2007061Z copying docs\superpowers\plans\2026-10-29-phase-9.md -> polyforge-0.0.1\docs\superpowers\plans
+2026-10-29T10:15:09.2008497Z copying docs\superpowers\specs\2026-10-29-phase-9-design.md -> polyforge-0.0.1\docs\superpowers\specs
+2026-10-29T10:15:09.2009820Z copying examples\phase7\animation-brief.md -> polyforge-0.0.1\examples\phase7
+2026-10-29T10:15:09.2011298Z copying examples\phase7\animation-task.json -> polyforge-0.0.1\examples\phase7
+2026-10-29T10:15:09.2012485Z copying examples\phase7\crate-brief.md -> polyforge-0.0.1\examples\phase7
+2026-10-29T10:15:09.2013618Z copying examples\phase7\crate-task.json -> polyforge-0.0.1\examples\phase7
+2026-10-29T10:15:09.2014817Z copying examples\phase8\crate-asset.json -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2015958Z copying examples\phase8\crate-brief.md -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2017082Z copying examples\phase8\crate-task.json -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2018224Z copying examples\phase8\wall-asset.json -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2019324Z copying examples\phase8\wall-brief.md -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2020469Z copying examples\phase8\wall-task.json -> polyforge-0.0.1\examples\phase8
+2026-10-29T10:15:09.2021579Z copying examples\simple_arena\README.md -> polyforge-0.0.1\examples\simple_arena
+2026-10-29T10:15:09.2022780Z copying examples\simple_arena\brief.md -> polyforge-0.0.1\examples\simple_arena
+2026-10-29T10:15:09.2024053Z copying examples\simple_arena\game_manifest.json -> polyforge-0.0.1\examples\simple_arena
+2026-10-29T10:15:09.2025640Z copying examples\simple_arena\recipes\crate_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+2026-10-29T10:15:09.2027092Z copying examples\simple_arena\recipes\ground_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+2026-10-29T10:15:09.2028605Z copying examples\simple_arena\recipes\robot_a.json -> polyforge-0.0.1\examples\simple_arena\recipes
+2026-10-29T10:15:09.2029983Z copying examples\static_recipes\audit.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2031558Z copying examples\static_recipes\crate.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2032887Z copying examples\static_recipes\doorway.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2034184Z copying examples\static_recipes\ground.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2054320Z copying examples\static_recipes\robot.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2055636Z copying examples\static_recipes\wall.json -> polyforge-0.0.1\examples\static_recipes
+2026-10-29T10:15:09.2056751Z copying polyforge\__init__.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2057909Z copying polyforge\__main__.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2058769Z copying polyforge\cli.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2059733Z copying polyforge\commands.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2060550Z copying polyforge\config.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2061351Z copying polyforge\doctor.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2062142Z copying polyforge\py.typed -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2063011Z copying polyforge\workspace.py -> polyforge-0.0.1\polyforge
+2026-10-29T10:15:09.2063965Z copying polyforge.egg-info\PKG-INFO -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2065090Z copying polyforge.egg-info\SOURCES.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2595681Z copying polyforge.egg-info\dependency_links.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2604618Z copying polyforge.egg-info\entry_points.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2606063Z copying polyforge.egg-info\requires.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2607209Z copying polyforge.egg-info\top_level.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.2626825Z copying polyforge\animation\__init__.py -> polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.2628490Z copying polyforge\animation\adapter.py -> polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.2629629Z copying polyforge\animation\contract.py -> polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.2630764Z copying polyforge\animation\integration.py -> polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.2631875Z copying polyforge\animation\worker.py -> polyforge-0.0.1\polyforge\animation
+2026-10-29T10:15:09.2632906Z copying polyforge\assets\__init__.py -> polyforge-0.0.1\polyforge\assets
+2026-10-29T10:15:09.2633917Z copying polyforge\assets\contracts.py -> polyforge-0.0.1\polyforge\assets
+2026-10-29T10:15:09.2634941Z copying polyforge\assets\pipeline.py -> polyforge-0.0.1\polyforge\assets
+2026-10-29T10:15:09.2636044Z copying polyforge\benchmark\__init__.py -> polyforge-0.0.1\polyforge\benchmark
+2026-10-29T10:15:09.2637135Z copying polyforge\benchmark\protocol.py -> polyforge-0.0.1\polyforge\benchmark
+2026-10-29T10:15:09.2638198Z copying polyforge\blender\__init__.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2639205Z copying polyforge\blender\adapter.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2640194Z copying polyforge\blender\audit.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2641217Z copying polyforge\blender\audit_worker.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2642247Z copying polyforge\blender\build.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2643286Z copying polyforge\blender\interchange.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2644347Z copying polyforge\blender\recipes.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2645374Z copying polyforge\blender\worker.py -> polyforge-0.0.1\polyforge\blender
+2026-10-29T10:15:09.2646440Z copying polyforge\capabilities\__init__.py -> polyforge-0.0.1\polyforge\capabilities
+2026-10-29T10:15:09.2647601Z copying polyforge\capabilities\dispatch.py -> polyforge-0.0.1\polyforge\capabilities
+2026-10-29T10:15:09.2649122Z copying polyforge\capabilities\protocol.py -> polyforge-0.0.1\polyforge\capabilities
+2026-10-29T10:15:09.2650328Z copying polyforge\capabilities\registry.py -> polyforge-0.0.1\polyforge\capabilities
+2026-10-29T10:15:09.2651452Z copying polyforge\compiler\__init__.py -> polyforge-0.0.1\polyforge\compiler
+2026-10-29T10:15:09.2652514Z copying polyforge\compiler\commands.py -> polyforge-0.0.1\polyforge\compiler
+2026-10-29T10:15:09.2653643Z copying polyforge\compiler\contract_compiler.py -> polyforge-0.0.1\polyforge\compiler
+2026-10-29T10:15:09.2654808Z copying polyforge\composition\__init__.py -> polyforge-0.0.1\polyforge\composition
+2026-10-29T10:15:09.2656190Z copying polyforge\composition\grammar.py -> polyforge-0.0.1\polyforge\composition
+2026-10-29T10:15:09.2657291Z copying polyforge\contracts\__init__.py -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2658490Z copying polyforge\contracts\animation_import.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2659770Z copying polyforge\contracts\asset_build.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2661035Z copying polyforge\contracts\asset_bundle.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2662301Z copying polyforge\contracts\asset_spec.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2663557Z copying polyforge\contracts\audit_request.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2664913Z copying polyforge\contracts\benchmark_task.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2666244Z copying polyforge\contracts\candidate_review.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2667587Z copying polyforge\contracts\capability.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2669157Z copying polyforge\contracts\game_build.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2689723Z copying polyforge\contracts\game_manifest.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2691115Z copying polyforge\contracts\handoff.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2692330Z copying polyforge\contracts\images.py -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2693474Z copying polyforge\contracts\job_ticket.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2694650Z copying polyforge\contracts\manifest.py -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2695771Z copying polyforge\contracts\recipe.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2697029Z copying polyforge\contracts\recipe_request.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2698276Z copying polyforge\contracts\result.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.2862011Z copying polyforge\contracts\results.py -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3259150Z copying polyforge\contracts\review_board.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3311012Z copying polyforge\contracts\review_verdict.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3329191Z copying polyforge\contracts\scenario.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3337220Z copying polyforge\contracts\sprite_bake.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3338572Z copying polyforge\contracts\sprite_import.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3340357Z copying polyforge\contracts\unity_build.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3341623Z copying polyforge\contracts\validation.py -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3342846Z copying polyforge\contracts\workforce_task.schema.json -> polyforge-0.0.1\polyforge\contracts
+2026-10-29T10:15:09.3344061Z copying polyforge\data\arena_acceptance.json -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3345134Z copying polyforge\data\arena_brief.md -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3346168Z copying polyforge\data\arena_manifest.json -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3347231Z copying polyforge\data\arena_recipes.json -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3348285Z copying polyforge\data\arena_scenarios.json -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3349308Z copying polyforge\data\catalog.json -> polyforge-0.0.1\polyforge\data
+2026-10-29T10:15:09.3350341Z copying polyforge\invariants\__init__.py -> polyforge-0.0.1\polyforge\invariants
+2026-10-29T10:15:09.3351468Z copying polyforge\invariants\handoff.py -> polyforge-0.0.1\polyforge\invariants
+2026-10-29T10:15:09.3352831Z copying polyforge\planner\__init__.py -> polyforge-0.0.1\polyforge\planner
+2026-10-29T10:15:09.3353879Z copying polyforge\planner\cache.py -> polyforge-0.0.1\polyforge\planner
+2026-10-29T10:15:09.3354919Z copying polyforge\planner\dag.py -> polyforge-0.0.1\polyforge\planner
+2026-10-29T10:15:09.3355920Z copying polyforge\planner\plans.py -> polyforge-0.0.1\polyforge\planner
+2026-10-29T10:15:09.3356933Z copying polyforge\repairs\__init__.py -> polyforge-0.0.1\polyforge\repairs
+2026-10-29T10:15:09.3358062Z copying polyforge\repairs\diagnostics.py -> polyforge-0.0.1\polyforge\repairs
+2026-10-29T10:15:09.3359434Z copying polyforge\repairs\execution.py -> polyforge-0.0.1\polyforge\repairs
+2026-10-29T10:15:09.3360560Z copying polyforge\review\__init__.py -> polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.3361647Z copying polyforge\review\acceptance.py -> polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.3362701Z copying polyforge\review\amendments.py -> polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.3363748Z copying polyforge\review\board.py -> polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.3365599Z copying polyforge\review\sprite_source.py -> polyforge-0.0.1\polyforge\review
+2026-10-29T10:15:09.3366756Z copying polyforge\runner\__init__.py -> polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.3367812Z copying polyforge\runner\locks.py -> polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.3368828Z copying polyforge\runner\ownership.py -> polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.3369849Z copying polyforge\runner\processes.py -> polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.3370830Z copying polyforge\runner\state.py -> polyforge-0.0.1\polyforge\runner
+2026-10-29T10:15:09.3371843Z copying polyforge\scenarios\__init__.py -> polyforge-0.0.1\polyforge\scenarios
+2026-10-29T10:15:09.3372932Z copying polyforge\scenarios\arena_oracle.py -> polyforge-0.0.1\polyforge\scenarios
+2026-10-29T10:15:09.3374034Z copying polyforge\scenarios\schema.py -> polyforge-0.0.1\polyforge\scenarios
+2026-10-29T10:15:09.3375070Z copying polyforge\security\__init__.py -> polyforge-0.0.1\polyforge\security
+2026-10-29T10:15:09.3376082Z copying polyforge\security\paths.py -> polyforge-0.0.1\polyforge\security
+2026-10-29T10:15:09.3377094Z copying polyforge\security\policy.py -> polyforge-0.0.1\polyforge\security
+2026-10-29T10:15:09.3378117Z copying polyforge\sprites\__init__.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3379103Z copying polyforge\sprites\bake.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3380512Z copying polyforge\sprites\contracts.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3381564Z copying polyforge\sprites\images.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3382593Z copying polyforge\sprites\integration.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3383616Z copying polyforge\sprites\worker.py -> polyforge-0.0.1\polyforge\sprites
+2026-10-29T10:15:09.3384603Z copying polyforge\unity\__init__.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3385566Z copying polyforge\unity\bootstrap.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3386530Z copying polyforge\unity\bridge.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3387475Z copying polyforge\unity\evidence.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3388410Z copying polyforge\unity\game.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3389340Z copying polyforge\unity\recovery.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3390309Z copying polyforge\unity\repairs.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3391493Z copying polyforge\unity\transactions.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3513076Z copying polyforge\unity\upgrade.py -> polyforge-0.0.1\polyforge\unity
+2026-10-29T10:15:09.3514207Z copying polyforge\workforce\__init__.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3626591Z copying polyforge\workforce\cli.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3627715Z copying polyforge\workforce\discovery.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3719194Z copying polyforge\workforce\ledger.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3725032Z copying polyforge\workforce\models.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3798438Z copying polyforge\workforce\operations.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3800186Z copying polyforge\workforce\orchestrator.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3801419Z copying polyforge\workforce\permissions.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3802563Z copying polyforge\workforce\router.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3803649Z copying polyforge\workforce\workers.py -> polyforge-0.0.1\polyforge\workforce
+2026-10-29T10:15:09.3804658Z copying profiles\windows-arena.json -> polyforge-0.0.1\profiles
+2026-10-29T10:15:09.3805614Z copying roles\animation_inspector.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3806461Z copying roles\asset_architect.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3807614Z copying roles\asset_quality_inspector.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3808539Z copying roles\asset_refiner.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3809329Z copying roles\intent_analyst.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3810090Z copying roles\modeler.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3810876Z copying roles\rig_animation_artist.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3811722Z copying roles\unity_integration.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3812549Z copying roles\uv_material_artist.md -> polyforge-0.0.1\roles
+2026-10-29T10:15:09.3813426Z copying tests\blender_audit_fault_probe.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3814330Z copying tests\blender_fault_probe.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3815173Z copying tests\test_animation.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3815974Z copying tests\test_assets.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3816802Z copying tests\test_contract_boundaries.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3818015Z copying tests\test_foundation.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3818821Z copying tests\test_phase1_cli.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3819638Z copying tests\test_phase1_failures.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3820493Z copying tests\test_phase1_policy.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3821590Z copying tests\test_phase1_review.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3822492Z copying tests\test_phase1_runner.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3823364Z copying tests\test_phase2_boundaries.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3824237Z copying tests\test_phase2_contracts.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3825116Z copying tests\test_phase3_blender.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3825928Z copying tests\test_phase3_cli.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3826728Z copying tests\test_phase3_recipes.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3827565Z copying tests\test_phase4_blender.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3828437Z copying tests\test_phase4_contracts.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3829286Z copying tests\test_phase5_contracts.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3830121Z copying tests\test_phase5_unity.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3830940Z copying tests\test_phase6_contracts.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3831770Z copying tests\test_phase7_review.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3832586Z copying tests\test_phase8_review.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3833424Z copying tests\test_phase9_amendments.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3834528Z copying tests\test_phase9_diagnostics.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3835458Z copying tests\test_phase9_forensic_execution.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3836388Z copying tests\test_phase9_mutations.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3837239Z copying tests\test_phase9_recovery.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3838403Z copying tests\test_phase9_review.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3839231Z copying tests\test_phase9_routing.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3840079Z copying tests\test_phase9_sprite_gate.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3840961Z copying tests\test_sprites.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3841807Z copying tests\test_windows_alias_paths.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3842656Z copying tests\test_workforce.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3843462Z copying tests\test_workforce_crash.py -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3844293Z copying tests\unity_fault_probe.cs -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3845115Z copying tests\unity_recovery_fault.cs -> polyforge-0.0.1\tests
+2026-10-29T10:15:09.3846312Z copying tests\fixtures\capability_invalid.json -> polyforge-0.0.1\tests\fixtures
+2026-10-29T10:15:09.3847432Z copying tests\fixtures\capability_valid.json -> polyforge-0.0.1\tests\fixtures
+2026-10-29T10:15:09.4118797Z copying tests\fixtures\cli_commands.json -> polyforge-0.0.1\tests\fixtures
+2026-10-29T10:15:09.4120006Z copying tests\fixtures\intent\dungeon.json -> polyforge-0.0.1\tests\fixtures\intent
+2026-10-29T10:15:09.4150352Z copying tests\fixtures\intent\stealth.json -> polyforge-0.0.1\tests\fixtures\intent
+2026-10-29T10:15:09.4151580Z copying tests\fixtures\manifests\cases.json -> polyforge-0.0.1\tests\fixtures\manifests
+2026-10-29T10:15:09.4153239Z copying tests\fixtures\phase8\logical-geometry.json -> polyforge-0.0.1\tests\fixtures\phase8
+2026-10-29T10:15:09.4154449Z copying tests\fixtures\phase8\material.json -> polyforge-0.0.1\tests\fixtures\phase8
+2026-10-29T10:15:09.4155643Z copying tests\fixtures\phase8\metrics.json -> polyforge-0.0.1\tests\fixtures\phase8
+2026-10-29T10:15:09.4156827Z copying tests\fixtures\phase9\native-fault.json -> polyforge-0.0.1\tests\fixtures\phase9
+2026-10-29T10:15:09.4158030Z copying tests\fixtures\phase9\native-request.json -> polyforge-0.0.1\tests\fixtures\phase9
+2026-10-29T10:15:09.4159294Z copying tests\fixtures\recipes\asymmetric.json -> polyforge-0.0.1\tests\fixtures\recipes
+2026-10-29T10:15:09.4160268Z copying tools\__init__.py -> polyforge-0.0.1\tools
+2026-10-29T10:15:09.4161026Z copying tools\check_coverage.py -> polyforge-0.0.1\tools
+2026-10-29T10:15:09.4161819Z copying tools\generate_cli_docs.py -> polyforge-0.0.1\tools
+2026-10-29T10:15:09.4162690Z copying unity_package\Editor.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4163653Z copying unity_package\LICENSE.md -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4164583Z copying unity_package\LICENSE.md.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4165529Z copying unity_package\README.md -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4166444Z copying unity_package\README.md.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4167396Z copying unity_package\Runtime.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4168360Z copying unity_package\SpriteEditor.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4169302Z copying unity_package\Tests.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4170182Z copying unity_package\__init__.py -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4171080Z copying unity_package\package.json -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4172322Z copying unity_package\package.json.meta -> polyforge-0.0.1\unity_package
+2026-10-29T10:15:09.4173451Z copying unity_package\Editor\AnimationBuilder.cs -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4174707Z copying unity_package\Editor\AnimationBuilder.cs.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4177121Z copying unity_package\Editor\AnimationInspector.cs -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4178462Z copying unity_package\Editor\AnimationInspector.cs.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4179711Z copying unity_package\Editor\GameBuilder.cs -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4180868Z copying unity_package\Editor\GameBuilder.cs.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4182101Z copying unity_package\Editor\PolyForge.Editor.asmdef -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4183398Z copying unity_package\Editor\PolyForge.Editor.asmdef.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4184659Z copying unity_package\Editor\PolyForgeBuilder.cs -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4185895Z copying unity_package\Editor\PolyForgeBuilder.cs.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4187107Z copying unity_package\Editor\RecoveryProbe.cs -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4188291Z copying unity_package\Editor\RecoveryProbe.cs.meta -> polyforge-0.0.1\unity_package\Editor
+2026-10-29T10:15:09.4189621Z copying unity_package\Runtime\ArenaHud.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4190788Z copying unity_package\Runtime\ArenaHud.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4191979Z copying unity_package\Runtime\ArenaPerformance.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4193586Z copying unity_package\Runtime\ArenaPerformance.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4194866Z copying unity_package\Runtime\ArenaSession.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4196106Z copying unity_package\Runtime\ArenaSession.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4197335Z copying unity_package\Runtime\ContactDamage.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4198561Z copying unity_package\Runtime\ContactDamage.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4199732Z copying unity_package\Runtime\Health.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4200826Z copying unity_package\Runtime\Health.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4201956Z copying unity_package\Runtime\PatrolEnemy.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4203126Z copying unity_package\Runtime\PatrolEnemy.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4204355Z copying unity_package\Runtime\PlayerController.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.4255029Z copying unity_package\Runtime\PlayerController.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.5673935Z copying unity_package\Runtime\PlayerInput.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.5996980Z copying unity_package\Runtime\PlayerInput.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.6315778Z copying unity_package\Runtime\PolyForge.Runtime.asmdef -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.6659817Z copying unity_package\Runtime\PolyForge.Runtime.asmdef.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.6984485Z copying unity_package\Runtime\PrefabBinding.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.7303664Z copying unity_package\Runtime\PrefabBinding.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.7642389Z copying unity_package\Runtime\RobotAnimationDriver.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.7961409Z copying unity_package\Runtime\RobotAnimationDriver.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.8461798Z copying unity_package\Runtime\SpritePlayer.cs -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.8558075Z copying unity_package\Runtime\SpritePlayer.cs.meta -> polyforge-0.0.1\unity_package\Runtime
+2026-10-29T10:15:09.9016150Z copying unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef -> polyforge-0.0.1\unity_package\SpriteEditor
+2026-10-29T10:15:09.9278476Z copying unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef.meta -> polyforge-0.0.1\unity_package\SpriteEditor
+2026-10-29T10:15:09.9283141Z copying unity_package\SpriteEditor\SpriteBuilder.cs -> polyforge-0.0.1\unity_package\SpriteEditor
+2026-10-29T10:15:09.9319773Z copying unity_package\SpriteEditor\SpriteBuilder.cs.meta -> polyforge-0.0.1\unity_package\SpriteEditor
+2026-10-29T10:15:09.9324335Z copying unity_package\Tests\AnimationEditor.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9328214Z copying unity_package\Tests\AnimationPlayMode.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9385940Z copying unity_package\Tests\Editor.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9597836Z copying unity_package\Tests\GameEditor.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9599071Z copying unity_package\Tests\PlayMode.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9600468Z copying unity_package\Tests\SpriteEditor.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9601663Z copying unity_package\Tests\SpritePlayMode.meta -> polyforge-0.0.1\unity_package\Tests
+2026-10-29T10:15:09.9603073Z copying unity_package\Tests\AnimationEditor\AnimationTests.cs -> polyforge-0.0.1\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:09.9604677Z copying unity_package\Tests\AnimationEditor\AnimationTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:09.9606467Z copying unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:09.9608790Z copying unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:09.9610637Z copying unity_package\Tests\AnimationPlayMode\MotionTests.cs -> polyforge-0.0.1\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:09.9612243Z copying unity_package\Tests\AnimationPlayMode\MotionTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:09.9614058Z copying unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:09.9616095Z copying unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:09.9617773Z copying unity_package\Tests\Editor\ForensicsTests.cs -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9619067Z copying unity_package\Tests\Editor\ForensicsTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9620330Z copying unity_package\Tests\Editor\ImportTests.cs -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9621585Z copying unity_package\Tests\Editor\ImportTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9622951Z copying unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9624417Z copying unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\Editor
+2026-10-29T10:15:09.9625812Z copying unity_package\Tests\GameEditor\GameTests.cs -> polyforge-0.0.1\unity_package\Tests\GameEditor
+2026-10-29T10:15:09.9627135Z copying unity_package\Tests\GameEditor\GameTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\GameEditor
+2026-10-29T10:15:09.9628901Z copying unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\GameEditor
+2026-10-29T10:15:09.9649299Z copying unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\GameEditor
+2026-10-29T10:15:09.9651290Z copying unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9652911Z copying unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9654384Z copying unity_package\Tests\PlayMode\RuntimeTests.cs -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9655718Z copying unity_package\Tests\PlayMode\RuntimeTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9657061Z copying unity_package\Tests\PlayMode\ScenarioTests.cs -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9658405Z copying unity_package\Tests\PlayMode\ScenarioTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\PlayMode
+2026-10-29T10:15:09.9659960Z copying unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:09.9661730Z copying unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:09.9663480Z copying unity_package\Tests\SpriteEditor\SpriteTests.cs -> polyforge-0.0.1\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:09.9664926Z copying unity_package\Tests\SpriteEditor\SpriteTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:09.9666564Z copying unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef -> polyforge-0.0.1\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:09.9668427Z copying unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef.meta -> polyforge-0.0.1\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:09.9670530Z copying unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs -> polyforge-0.0.1\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:09.9672116Z copying unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs.meta -> polyforge-0.0.1\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:09.9673444Z copying polyforge.egg-info\SOURCES.txt -> polyforge-0.0.1\polyforge.egg-info
+2026-10-29T10:15:09.9674232Z Writing polyforge-0.0.1\setup.cfg
+2026-10-29T10:15:09.9674725Z Creating tar archive
+2026-10-29T10:15:09.9675220Z removing 'polyforge-0.0.1' (and everything under it)
+2026-10-29T10:15:11.3353947Z * Building wheel from sdist
+2026-10-29T10:15:11.3375588Z * Getting build dependencies for wheel...
+2026-10-29T10:15:11.8322126Z running egg_info
+2026-10-29T10:15:11.8420122Z writing polyforge.egg-info\PKG-INFO
+2026-10-29T10:15:11.8757018Z writing dependency_links to polyforge.egg-info\dependency_links.txt
+2026-10-29T10:15:11.9075769Z writing entry points to polyforge.egg-info\entry_points.txt
+2026-10-29T10:15:11.9399946Z writing requirements to polyforge.egg-info\requires.txt
+2026-10-29T10:15:11.9731697Z writing top-level names to polyforge.egg-info\top_level.txt
+2026-10-29T10:15:12.0070146Z reading manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:12.0396968Z reading manifest template 'MANIFEST.in'
+2026-10-29T10:15:12.0730978Z adding license file 'LICENSE'
+2026-10-29T10:15:12.0979531Z adding license file 'NOTICE'
+2026-10-29T10:15:12.0980909Z writing manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:12.1162741Z * Building wheel...
+2026-10-29T10:15:12.6268216Z running bdist_wheel
+2026-10-29T10:15:12.6399110Z running build
+2026-10-29T10:15:12.6465070Z running build_py
+2026-10-29T10:15:12.6465644Z creating build\lib\polyforge
+2026-10-29T10:15:12.6466297Z copying polyforge\cli.py -> build\lib\polyforge
+2026-10-29T10:15:12.6467037Z copying polyforge\commands.py -> build\lib\polyforge
+2026-10-29T10:15:12.6468200Z copying polyforge\config.py -> build\lib\polyforge
+2026-10-29T10:15:12.6468929Z copying polyforge\doctor.py -> build\lib\polyforge
+2026-10-29T10:15:12.6469665Z copying polyforge\workspace.py -> build\lib\polyforge
+2026-10-29T10:15:12.6597407Z copying polyforge\__init__.py -> build\lib\polyforge
+2026-10-29T10:15:12.6598626Z copying polyforge\__main__.py -> build\lib\polyforge
+2026-10-29T10:15:12.6599359Z creating build\lib\unity_package
+2026-10-29T10:15:12.6600066Z copying unity_package\__init__.py -> build\lib\unity_package
+2026-10-29T10:15:12.6600813Z creating build\lib\polyforge\animation
+2026-10-29T10:15:12.6601597Z copying polyforge\animation\adapter.py -> build\lib\polyforge\animation
+2026-10-29T10:15:12.6602587Z copying polyforge\animation\contract.py -> build\lib\polyforge\animation
+2026-10-29T10:15:12.6603648Z copying polyforge\animation\integration.py -> build\lib\polyforge\animation
+2026-10-29T10:15:12.6605093Z copying polyforge\animation\worker.py -> build\lib\polyforge\animation
+2026-10-29T10:15:12.6606100Z copying polyforge\animation\__init__.py -> build\lib\polyforge\animation
+2026-10-29T10:15:12.6762720Z creating build\lib\polyforge\assets
+2026-10-29T10:15:12.6763611Z copying polyforge\assets\contracts.py -> build\lib\polyforge\assets
+2026-10-29T10:15:12.6764959Z copying polyforge\assets\pipeline.py -> build\lib\polyforge\assets
+2026-10-29T10:15:12.6765942Z copying polyforge\assets\__init__.py -> build\lib\polyforge\assets
+2026-10-29T10:15:12.6766729Z creating build\lib\polyforge\benchmark
+2026-10-29T10:15:12.6767787Z copying polyforge\benchmark\protocol.py -> build\lib\polyforge\benchmark
+2026-10-29T10:15:12.6768832Z copying polyforge\benchmark\__init__.py -> build\lib\polyforge\benchmark
+2026-10-29T10:15:12.6769654Z creating build\lib\polyforge\blender
+2026-10-29T10:15:12.6770406Z copying polyforge\blender\adapter.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.6771464Z copying polyforge\blender\audit.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.6772413Z copying polyforge\blender\audit_worker.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.6773364Z copying polyforge\blender\build.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.6774305Z copying polyforge\blender\interchange.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.7023349Z copying polyforge\blender\recipes.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.7024457Z copying polyforge\blender\worker.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.7025422Z copying polyforge\blender\__init__.py -> build\lib\polyforge\blender
+2026-10-29T10:15:12.7026237Z creating build\lib\polyforge\capabilities
+2026-10-29T10:15:12.7027101Z copying polyforge\capabilities\dispatch.py -> build\lib\polyforge\capabilities
+2026-10-29T10:15:12.7028189Z copying polyforge\capabilities\protocol.py -> build\lib\polyforge\capabilities
+2026-10-29T10:15:12.7029276Z copying polyforge\capabilities\registry.py -> build\lib\polyforge\capabilities
+2026-10-29T10:15:12.7030355Z copying polyforge\capabilities\__init__.py -> build\lib\polyforge\capabilities
+2026-10-29T10:15:12.7031205Z creating build\lib\polyforge\compiler
+2026-10-29T10:15:12.7031974Z copying polyforge\compiler\commands.py -> build\lib\polyforge\compiler
+2026-10-29T10:15:12.7033021Z copying polyforge\compiler\contract_compiler.py -> build\lib\polyforge\compiler
+2026-10-29T10:15:12.7034061Z copying polyforge\compiler\__init__.py -> build\lib\polyforge\compiler
+2026-10-29T10:15:12.7034938Z creating build\lib\polyforge\composition
+2026-10-29T10:15:12.7035799Z copying polyforge\composition\grammar.py -> build\lib\polyforge\composition
+2026-10-29T10:15:12.7036853Z copying polyforge\composition\__init__.py -> build\lib\polyforge\composition
+2026-10-29T10:15:12.7037723Z creating build\lib\polyforge\contracts
+2026-10-29T10:15:12.7236306Z copying polyforge\contracts\images.py -> build\lib\polyforge\contracts
+2026-10-29T10:15:12.7237380Z copying polyforge\contracts\manifest.py -> build\lib\polyforge\contracts
+2026-10-29T10:15:12.7238394Z copying polyforge\contracts\results.py -> build\lib\polyforge\contracts
+2026-10-29T10:15:12.7239436Z copying polyforge\contracts\validation.py -> build\lib\polyforge\contracts
+2026-10-29T10:15:12.7240472Z copying polyforge\contracts\__init__.py -> build\lib\polyforge\contracts
+2026-10-29T10:15:12.7241679Z creating build\lib\polyforge\invariants
+2026-10-29T10:15:12.7242485Z copying polyforge\invariants\handoff.py -> build\lib\polyforge\invariants
+2026-10-29T10:15:12.7243491Z copying polyforge\invariants\__init__.py -> build\lib\polyforge\invariants
+2026-10-29T10:15:12.7244323Z creating build\lib\polyforge\planner
+2026-10-29T10:15:12.7245069Z copying polyforge\planner\cache.py -> build\lib\polyforge\planner
+2026-10-29T10:15:12.7246320Z copying polyforge\planner\dag.py -> build\lib\polyforge\planner
+2026-10-29T10:15:12.7247223Z copying polyforge\planner\plans.py -> build\lib\polyforge\planner
+2026-10-29T10:15:12.7248137Z copying polyforge\planner\__init__.py -> build\lib\polyforge\planner
+2026-10-29T10:15:12.7333083Z creating build\lib\polyforge\repairs
+2026-10-29T10:15:12.7334079Z copying polyforge\repairs\diagnostics.py -> build\lib\polyforge\repairs
+2026-10-29T10:15:12.7335165Z copying polyforge\repairs\execution.py -> build\lib\polyforge\repairs
+2026-10-29T10:15:12.7336225Z copying polyforge\repairs\__init__.py -> build\lib\polyforge\repairs
+2026-10-29T10:15:12.7337021Z creating build\lib\polyforge\review
+2026-10-29T10:15:12.7337780Z copying polyforge\review\acceptance.py -> build\lib\polyforge\review
+2026-10-29T10:15:12.7338957Z copying polyforge\review\amendments.py -> build\lib\polyforge\review
+2026-10-29T10:15:12.7339968Z copying polyforge\review\board.py -> build\lib\polyforge\review
+2026-10-29T10:15:12.7340923Z copying polyforge\review\sprite_source.py -> build\lib\polyforge\review
+2026-10-29T10:15:12.7341943Z copying polyforge\review\__init__.py -> build\lib\polyforge\review
+2026-10-29T10:15:12.7342717Z creating build\lib\polyforge\runner
+2026-10-29T10:15:12.7343439Z copying polyforge\runner\locks.py -> build\lib\polyforge\runner
+2026-10-29T10:15:12.7344343Z copying polyforge\runner\ownership.py -> build\lib\polyforge\runner
+2026-10-29T10:15:12.7345278Z copying polyforge\runner\processes.py -> build\lib\polyforge\runner
+2026-10-29T10:15:12.7346227Z copying polyforge\runner\state.py -> build\lib\polyforge\runner
+2026-10-29T10:15:12.7347502Z copying polyforge\runner\__init__.py -> build\lib\polyforge\runner
+2026-10-29T10:15:12.7525180Z creating build\lib\polyforge\scenarios
+2026-10-29T10:15:12.7526160Z copying polyforge\scenarios\arena_oracle.py -> build\lib\polyforge\scenarios
+2026-10-29T10:15:12.7527234Z copying polyforge\scenarios\schema.py -> build\lib\polyforge\scenarios
+2026-10-29T10:15:12.7528240Z copying polyforge\scenarios\__init__.py -> build\lib\polyforge\scenarios
+2026-10-29T10:15:12.7529066Z creating build\lib\polyforge\security
+2026-10-29T10:15:12.7529812Z copying polyforge\security\paths.py -> build\lib\polyforge\security
+2026-10-29T10:15:12.7530763Z copying polyforge\security\policy.py -> build\lib\polyforge\security
+2026-10-29T10:15:12.7531717Z copying polyforge\security\__init__.py -> build\lib\polyforge\security
+2026-10-29T10:15:12.7532577Z creating build\lib\polyforge\sprites
+2026-10-29T10:15:12.7533312Z copying polyforge\sprites\bake.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7534289Z copying polyforge\sprites\contracts.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7535369Z copying polyforge\sprites\images.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7536364Z copying polyforge\sprites\integration.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7537374Z copying polyforge\sprites\worker.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7641994Z copying polyforge\sprites\__init__.py -> build\lib\polyforge\sprites
+2026-10-29T10:15:12.7643061Z creating build\lib\polyforge\unity
+2026-10-29T10:15:12.7643820Z copying polyforge\unity\bootstrap.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7644753Z copying polyforge\unity\bridge.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7645643Z copying polyforge\unity\evidence.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7646520Z copying polyforge\unity\game.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7647374Z copying polyforge\unity\recovery.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7648510Z copying polyforge\unity\repairs.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7764892Z copying polyforge\unity\transactions.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7765977Z copying polyforge\unity\upgrade.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7766903Z copying polyforge\unity\__init__.py -> build\lib\polyforge\unity
+2026-10-29T10:15:12.7767691Z creating build\lib\polyforge\workforce
+2026-10-29T10:15:12.7768474Z copying polyforge\workforce\cli.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.7769464Z copying polyforge\workforce\discovery.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.7770890Z copying polyforge\workforce\ledger.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.7771871Z copying polyforge\workforce\models.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.7772874Z copying polyforge\workforce\operations.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.7871849Z copying polyforge\workforce\orchestrator.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.8667067Z copying polyforge\workforce\permissions.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.9078383Z copying polyforge\workforce\router.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:12.9543108Z copying polyforge\workforce\workers.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:13.0012569Z copying polyforge\workforce\__init__.py -> build\lib\polyforge\workforce
+2026-10-29T10:15:13.0447589Z running egg_info
+2026-10-29T10:15:13.0902390Z writing polyforge.egg-info\PKG-INFO
+2026-10-29T10:15:13.1355909Z writing dependency_links to polyforge.egg-info\dependency_links.txt
+2026-10-29T10:15:13.1737986Z writing entry points to polyforge.egg-info\entry_points.txt
+2026-10-29T10:15:13.1877473Z writing requirements to polyforge.egg-info\requires.txt
+2026-10-29T10:15:13.2073927Z writing top-level names to polyforge.egg-info\top_level.txt
+2026-10-29T10:15:13.2074942Z reading manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:13.2075695Z reading manifest template 'MANIFEST.in'
+2026-10-29T10:15:13.2076658Z adding license file 'LICENSE'
+2026-10-29T10:15:13.2077248Z adding license file 'NOTICE'
+2026-10-29T10:15:13.2077888Z writing manifest file 'polyforge.egg-info\SOURCES.txt'
+2026-10-29T10:15:13.2078646Z copying polyforge\py.typed -> build\lib\polyforge
+2026-10-29T10:15:13.2079851Z copying polyforge\contracts\animation_import.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2081048Z copying polyforge\contracts\asset_build.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2082200Z copying polyforge\contracts\asset_bundle.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2083355Z copying polyforge\contracts\asset_spec.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2084512Z copying polyforge\contracts\audit_request.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2085774Z copying polyforge\contracts\benchmark_task.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2086983Z copying polyforge\contracts\candidate_review.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2088169Z copying polyforge\contracts\capability.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2089303Z copying polyforge\contracts\game_build.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2090441Z copying polyforge\contracts\game_manifest.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2091578Z copying polyforge\contracts\handoff.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2141221Z copying polyforge\contracts\job_ticket.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2142422Z copying polyforge\contracts\recipe.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2143592Z copying polyforge\contracts\recipe_request.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2144808Z copying polyforge\contracts\result.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2146450Z copying polyforge\contracts\review_board.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2147652Z copying polyforge\contracts\review_verdict.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2383465Z copying polyforge\contracts\scenario.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2656631Z copying polyforge\contracts\sprite_bake.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2657903Z copying polyforge\contracts\sprite_import.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2659092Z copying polyforge\contracts\unity_build.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2660264Z copying polyforge\contracts\workforce_task.schema.json -> build\lib\polyforge\contracts
+2026-10-29T10:15:13.2661178Z creating build\lib\polyforge\data
+2026-10-29T10:15:13.2661983Z copying polyforge\data\arena_acceptance.json -> build\lib\polyforge\data
+2026-10-29T10:15:13.2663027Z copying polyforge\data\arena_manifest.json -> build\lib\polyforge\data
+2026-10-29T10:15:13.2663994Z copying polyforge\data\arena_recipes.json -> build\lib\polyforge\data
+2026-10-29T10:15:13.2784385Z copying polyforge\data\arena_scenarios.json -> build\lib\polyforge\data
+2026-10-29T10:15:13.2785477Z copying polyforge\data\catalog.json -> build\lib\polyforge\data
+2026-10-29T10:15:13.2786386Z copying polyforge\data\arena_brief.md -> build\lib\polyforge\data
+2026-10-29T10:15:13.2787264Z copying unity_package\Editor.meta -> build\lib\unity_package
+2026-10-29T10:15:13.2788113Z copying unity_package\LICENSE.md -> build\lib\unity_package
+2026-10-29T10:15:13.2788964Z copying unity_package\LICENSE.md.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3019502Z copying unity_package\README.md -> build\lib\unity_package
+2026-10-29T10:15:13.3020487Z copying unity_package\README.md.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3021384Z copying unity_package\Runtime.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3022289Z copying unity_package\SpriteEditor.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3023149Z copying unity_package\Tests.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3023974Z copying unity_package\package.json -> build\lib\unity_package
+2026-10-29T10:15:13.3024845Z copying unity_package\package.json.meta -> build\lib\unity_package
+2026-10-29T10:15:13.3025610Z creating build\lib\unity_package\Editor
+2026-10-29T10:15:13.3026450Z copying unity_package\Editor\AnimationBuilder.cs -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.3027581Z copying unity_package\Editor\AnimationInspector.cs -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.3029163Z copying unity_package\Editor\GameBuilder.cs -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.3030268Z copying unity_package\Editor\PolyForgeBuilder.cs -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.3180845Z copying unity_package\Editor\RecoveryProbe.cs -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.3181892Z creating build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3182731Z copying unity_package\Runtime\ArenaHud.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3183869Z copying unity_package\Runtime\ArenaPerformance.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3184999Z copying unity_package\Runtime\ArenaSession.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3186089Z copying unity_package\Runtime\ContactDamage.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3859207Z copying unity_package\Runtime\Health.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3862152Z copying unity_package\Runtime\PatrolEnemy.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3863500Z copying unity_package\Runtime\PlayerController.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3865133Z copying unity_package\Runtime\PlayerInput.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3866266Z copying unity_package\Runtime\PrefabBinding.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3867806Z copying unity_package\Runtime\RobotAnimationDriver.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3868974Z copying unity_package\Runtime\SpritePlayer.cs -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.3869881Z creating build\lib\unity_package\SpriteEditor
+2026-10-29T10:15:13.3870831Z copying unity_package\SpriteEditor\SpriteBuilder.cs -> build\lib\unity_package\SpriteEditor
+2026-10-29T10:15:13.3871847Z creating build\lib\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:13.4048582Z copying unity_package\Tests\AnimationEditor\AnimationTests.cs -> build\lib\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:13.4050147Z creating build\lib\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:13.4051342Z copying unity_package\Tests\AnimationPlayMode\MotionTests.cs -> build\lib\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:13.4052487Z creating build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.4053457Z copying unity_package\Tests\Editor\ForensicsTests.cs -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.4054732Z copying unity_package\Tests\Editor\ImportTests.cs -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.4056244Z creating build\lib\unity_package\Tests\GameEditor
+2026-10-29T10:15:13.4057402Z copying unity_package\Tests\GameEditor\GameTests.cs -> build\lib\unity_package\Tests\GameEditor
+2026-10-29T10:15:13.4058408Z creating build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.4059376Z copying unity_package\Tests\PlayMode\RuntimeTests.cs -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.4060656Z copying unity_package\Tests\PlayMode\ScenarioTests.cs -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.4061666Z creating build\lib\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:13.4062709Z copying unity_package\Tests\SpriteEditor\SpriteTests.cs -> build\lib\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:13.4099580Z creating build\lib\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:13.4100875Z copying unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs -> build\lib\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:13.4102469Z copying unity_package\Editor\PolyForge.Editor.asmdef -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4103697Z copying unity_package\Runtime\PolyForge.Runtime.asmdef -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4105051Z copying unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef -> build\lib\unity_package\SpriteEditor
+2026-10-29T10:15:13.4106728Z copying unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef -> build\lib\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:13.4108635Z copying unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef -> build\lib\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:13.4110316Z copying unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.4111886Z copying unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef -> build\lib\unity_package\Tests\GameEditor
+2026-10-29T10:15:13.4113561Z copying unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.4364434Z copying unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef -> build\lib\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:13.4366337Z copying unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef -> build\lib\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:13.4367881Z copying unity_package\Editor\AnimationBuilder.cs.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4369118Z copying unity_package\Editor\AnimationInspector.cs.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4370307Z copying unity_package\Editor\GameBuilder.cs.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4371488Z copying unity_package\Editor\PolyForge.Editor.asmdef.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4372974Z copying unity_package\Editor\PolyForgeBuilder.cs.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4374481Z copying unity_package\Editor\RecoveryProbe.cs.meta -> build\lib\unity_package\Editor
+2026-10-29T10:15:13.4375648Z copying unity_package\Runtime\ArenaHud.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4376801Z copying unity_package\Runtime\ArenaPerformance.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4378027Z copying unity_package\Runtime\ArenaSession.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4379183Z copying unity_package\Runtime\ContactDamage.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4380290Z copying unity_package\Runtime\Health.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4381386Z copying unity_package\Runtime\PatrolEnemy.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4382559Z copying unity_package\Runtime\PlayerController.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4412902Z copying unity_package\Runtime\PlayerInput.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4485833Z copying unity_package\Runtime\PolyForge.Runtime.asmdef.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4487240Z copying unity_package\Runtime\PrefabBinding.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4488831Z copying unity_package\Runtime\RobotAnimationDriver.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4490415Z copying unity_package\Runtime\SpritePlayer.cs.meta -> build\lib\unity_package\Runtime
+2026-10-29T10:15:13.4491913Z copying unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef.meta -> build\lib\unity_package\SpriteEditor
+2026-10-29T10:15:13.4675050Z copying unity_package\SpriteEditor\SpriteBuilder.cs.meta -> build\lib\unity_package\SpriteEditor
+2026-10-29T10:15:13.4676668Z copying unity_package\Tests\AnimationEditor.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4678012Z copying unity_package\Tests\AnimationPlayMode.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4679221Z copying unity_package\Tests\Editor.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4680369Z copying unity_package\Tests\GameEditor.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4681569Z copying unity_package\Tests\PlayMode.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4682732Z copying unity_package\Tests\SpriteEditor.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4698777Z copying unity_package\Tests\SpritePlayMode.meta -> build\lib\unity_package\Tests
+2026-10-29T10:15:13.4700176Z copying unity_package\Tests\AnimationEditor\AnimationTests.cs.meta -> build\lib\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:13.5255093Z copying unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef.meta -> build\lib\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:13.5257001Z copying unity_package\Tests\AnimationPlayMode\MotionTests.cs.meta -> build\lib\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:13.6434960Z copying unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef.meta -> build\lib\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:13.6436757Z copying unity_package\Tests\Editor\ForensicsTests.cs.meta -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.6438027Z copying unity_package\Tests\Editor\ImportTests.cs.meta -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.6439372Z copying unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef.meta -> build\lib\unity_package\Tests\Editor
+2026-10-29T10:15:13.6441178Z copying unity_package\Tests\GameEditor\GameTests.cs.meta -> build\lib\unity_package\Tests\GameEditor
+2026-10-29T10:15:13.7229336Z copying unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef.meta -> build\lib\unity_package\Tests\GameEditor
+2026-10-29T10:15:13.7231096Z copying unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef.meta -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.7232809Z copying unity_package\Tests\PlayMode\RuntimeTests.cs.meta -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.7234139Z copying unity_package\Tests\PlayMode\ScenarioTests.cs.meta -> build\lib\unity_package\Tests\PlayMode
+2026-10-29T10:15:13.7235731Z copying unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef.meta -> build\lib\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:13.7520452Z copying unity_package\Tests\SpriteEditor\SpriteTests.cs.meta -> build\lib\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:13.7522231Z copying unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef.meta -> build\lib\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:13.7594049Z copying unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs.meta -> build\lib\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:13.8541738Z installing to build\bdist.win-amd64\wheel
+2026-10-29T10:15:13.8542449Z running install
+2026-10-29T10:15:13.8542854Z running install_lib
+2026-10-29T10:15:13.8543301Z creating build\bdist.win-amd64\wheel
+2026-10-29T10:15:13.8543880Z creating build\bdist.win-amd64\wheel\polyforge
+2026-10-29T10:15:13.8544790Z creating build\bdist.win-amd64\wheel\polyforge\animation
+2026-10-29T10:15:13.8545838Z copying build\lib\polyforge\animation\adapter.py -> build\bdist.win-amd64\wheel\.\polyforge\animation
+2026-10-29T10:15:13.8547175Z copying build\lib\polyforge\animation\contract.py -> build\bdist.win-amd64\wheel\.\polyforge\animation
+2026-10-29T10:15:13.8549952Z copying build\lib\polyforge\animation\integration.py -> build\bdist.win-amd64\wheel\.\polyforge\animation
+2026-10-29T10:15:13.8551281Z copying build\lib\polyforge\animation\worker.py -> build\bdist.win-amd64\wheel\.\polyforge\animation
+2026-10-29T10:15:13.8552556Z copying build\lib\polyforge\animation\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\animation
+2026-10-29T10:15:13.8658380Z creating build\bdist.win-amd64\wheel\polyforge\assets
+2026-10-29T10:15:13.8659565Z copying build\lib\polyforge\assets\contracts.py -> build\bdist.win-amd64\wheel\.\polyforge\assets
+2026-10-29T10:15:13.8660847Z copying build\lib\polyforge\assets\pipeline.py -> build\bdist.win-amd64\wheel\.\polyforge\assets
+2026-10-29T10:15:13.8662059Z copying build\lib\polyforge\assets\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\assets
+2026-10-29T10:15:13.8663023Z creating build\bdist.win-amd64\wheel\polyforge\benchmark
+2026-10-29T10:15:13.8664032Z copying build\lib\polyforge\benchmark\protocol.py -> build\bdist.win-amd64\wheel\.\polyforge\benchmark
+2026-10-29T10:15:13.8665316Z copying build\lib\polyforge\benchmark\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\benchmark
+2026-10-29T10:15:13.8666304Z creating build\bdist.win-amd64\wheel\polyforge\blender
+2026-10-29T10:15:13.8776959Z copying build\lib\polyforge\blender\adapter.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.8778343Z copying build\lib\polyforge\blender\audit.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.8779594Z copying build\lib\polyforge\blender\audit_worker.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.8780858Z copying build\lib\polyforge\blender\build.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.8782105Z copying build\lib\polyforge\blender\interchange.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.9796037Z copying build\lib\polyforge\blender\recipes.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.9799762Z copying build\lib\polyforge\blender\worker.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.9801202Z copying build\lib\polyforge\blender\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\blender
+2026-10-29T10:15:13.9802249Z creating build\bdist.win-amd64\wheel\polyforge\capabilities
+2026-10-29T10:15:13.9803354Z copying build\lib\polyforge\capabilities\dispatch.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+2026-10-29T10:15:13.9805814Z copying build\lib\polyforge\capabilities\protocol.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+2026-10-29T10:15:13.9807261Z copying build\lib\polyforge\capabilities\registry.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+2026-10-29T10:15:13.9808627Z copying build\lib\polyforge\capabilities\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\capabilities
+2026-10-29T10:15:13.9809789Z copying build\lib\polyforge\cli.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:13.9811300Z copying build\lib\polyforge\commands.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:13.9832528Z creating build\bdist.win-amd64\wheel\polyforge\compiler
+2026-10-29T10:15:13.9833594Z copying build\lib\polyforge\compiler\commands.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+2026-10-29T10:15:13.9834974Z copying build\lib\polyforge\compiler\contract_compiler.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+2026-10-29T10:15:13.9836308Z copying build\lib\polyforge\compiler\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\compiler
+2026-10-29T10:15:13.9837556Z creating build\bdist.win-amd64\wheel\polyforge\composition
+2026-10-29T10:15:13.9838638Z copying build\lib\polyforge\composition\grammar.py -> build\bdist.win-amd64\wheel\.\polyforge\composition
+2026-10-29T10:15:13.9839975Z copying build\lib\polyforge\composition\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\composition
+2026-10-29T10:15:13.9841150Z copying build\lib\polyforge\config.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:13.9842038Z creating build\bdist.win-amd64\wheel\polyforge\contracts
+2026-10-29T10:15:13.9843164Z copying build\lib\polyforge\contracts\animation_import.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:13.9844993Z copying build\lib\polyforge\contracts\asset_build.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:13.9846498Z copying build\lib\polyforge\contracts\asset_bundle.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0310777Z copying build\lib\polyforge\contracts\asset_spec.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0312703Z copying build\lib\polyforge\contracts\audit_request.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0314334Z copying build\lib\polyforge\contracts\benchmark_task.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0315949Z copying build\lib\polyforge\contracts\candidate_review.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0317510Z copying build\lib\polyforge\contracts\capability.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0319112Z copying build\lib\polyforge\contracts\game_build.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0320652Z copying build\lib\polyforge\contracts\game_manifest.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0322542Z copying build\lib\polyforge\contracts\handoff.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0324003Z copying build\lib\polyforge\contracts\images.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0325438Z copying build\lib\polyforge\contracts\job_ticket.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0326879Z copying build\lib\polyforge\contracts\manifest.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0328283Z copying build\lib\polyforge\contracts\recipe.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0329794Z copying build\lib\polyforge\contracts\recipe_request.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0331595Z copying build\lib\polyforge\contracts\result.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0332993Z copying build\lib\polyforge\contracts\results.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.0334456Z copying build\lib\polyforge\contracts\review_board.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1145533Z copying build\lib\polyforge\contracts\review_verdict.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1147219Z copying build\lib\polyforge\contracts\scenario.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1148755Z copying build\lib\polyforge\contracts\sprite_bake.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1150294Z copying build\lib\polyforge\contracts\sprite_import.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1151879Z copying build\lib\polyforge\contracts\unity_build.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1153389Z copying build\lib\polyforge\contracts\validation.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1155134Z copying build\lib\polyforge\contracts\workforce_task.schema.json -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1176568Z copying build\lib\polyforge\contracts\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\contracts
+2026-10-29T10:15:14.1177959Z creating build\bdist.win-amd64\wheel\polyforge\data
+2026-10-29T10:15:14.1179067Z copying build\lib\polyforge\data\arena_acceptance.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.1180379Z copying build\lib\polyforge\data\arena_brief.md -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.1181664Z copying build\lib\polyforge\data\arena_manifest.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.2019762Z copying build\lib\polyforge\data\arena_recipes.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.2021485Z copying build\lib\polyforge\data\arena_scenarios.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.2022825Z copying build\lib\polyforge\data\catalog.json -> build\bdist.win-amd64\wheel\.\polyforge\data
+2026-10-29T10:15:14.2024005Z copying build\lib\polyforge\doctor.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:14.2024962Z creating build\bdist.win-amd64\wheel\polyforge\invariants
+2026-10-29T10:15:14.2026038Z copying build\lib\polyforge\invariants\handoff.py -> build\bdist.win-amd64\wheel\.\polyforge\invariants
+2026-10-29T10:15:14.2027419Z copying build\lib\polyforge\invariants\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\invariants
+2026-10-29T10:15:14.2028509Z creating build\bdist.win-amd64\wheel\polyforge\planner
+2026-10-29T10:15:14.2029510Z copying build\lib\polyforge\planner\cache.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+2026-10-29T10:15:14.2118377Z copying build\lib\polyforge\planner\dag.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+2026-10-29T10:15:14.2119773Z copying build\lib\polyforge\planner\plans.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+2026-10-29T10:15:14.2121085Z copying build\lib\polyforge\planner\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\planner
+2026-10-29T10:15:14.2122274Z copying build\lib\polyforge\py.typed -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:14.2123220Z creating build\bdist.win-amd64\wheel\polyforge\repairs
+2026-10-29T10:15:14.2124288Z copying build\lib\polyforge\repairs\diagnostics.py -> build\bdist.win-amd64\wheel\.\polyforge\repairs
+2026-10-29T10:15:14.2125631Z copying build\lib\polyforge\repairs\execution.py -> build\bdist.win-amd64\wheel\.\polyforge\repairs
+2026-10-29T10:15:14.2126953Z copying build\lib\polyforge\repairs\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\repairs
+2026-10-29T10:15:14.2127990Z creating build\bdist.win-amd64\wheel\polyforge\review
+2026-10-29T10:15:14.2129352Z copying build\lib\polyforge\review\acceptance.py -> build\bdist.win-amd64\wheel\.\polyforge\review
+2026-10-29T10:15:14.2302699Z copying build\lib\polyforge\review\amendments.py -> build\bdist.win-amd64\wheel\.\polyforge\review
+2026-10-29T10:15:14.2304548Z copying build\lib\polyforge\review\board.py -> build\bdist.win-amd64\wheel\.\polyforge\review
+2026-10-29T10:15:14.2306139Z copying build\lib\polyforge\review\sprite_source.py -> build\bdist.win-amd64\wheel\.\polyforge\review
+2026-10-29T10:15:14.2307582Z copying build\lib\polyforge\review\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\review
+2026-10-29T10:15:14.2308626Z creating build\bdist.win-amd64\wheel\polyforge\runner
+2026-10-29T10:15:14.2309659Z copying build\lib\polyforge\runner\locks.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+2026-10-29T10:15:14.2310931Z copying build\lib\polyforge\runner\ownership.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+2026-10-29T10:15:14.2312560Z copying build\lib\polyforge\runner\processes.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+2026-10-29T10:15:14.2313833Z copying build\lib\polyforge\runner\state.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+2026-10-29T10:15:14.2420859Z copying build\lib\polyforge\runner\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\runner
+2026-10-29T10:15:14.2422104Z creating build\bdist.win-amd64\wheel\polyforge\scenarios
+2026-10-29T10:15:14.2423527Z copying build\lib\polyforge\scenarios\arena_oracle.py -> build\bdist.win-amd64\wheel\.\polyforge\scenarios
+2026-10-29T10:15:14.2424959Z copying build\lib\polyforge\scenarios\schema.py -> build\bdist.win-amd64\wheel\.\polyforge\scenarios
+2026-10-29T10:15:14.2426346Z copying build\lib\polyforge\scenarios\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\scenarios
+2026-10-29T10:15:14.2427418Z creating build\bdist.win-amd64\wheel\polyforge\security
+2026-10-29T10:15:14.2428466Z copying build\lib\polyforge\security\paths.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+2026-10-29T10:15:14.2429781Z copying build\lib\polyforge\security\policy.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+2026-10-29T10:15:14.2431406Z copying build\lib\polyforge\security\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\security
+2026-10-29T10:15:14.2552768Z creating build\bdist.win-amd64\wheel\polyforge\sprites
+2026-10-29T10:15:14.2553848Z copying build\lib\polyforge\sprites\bake.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2555156Z copying build\lib\polyforge\sprites\contracts.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2556473Z copying build\lib\polyforge\sprites\images.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2557802Z copying build\lib\polyforge\sprites\integration.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2559115Z copying build\lib\polyforge\sprites\worker.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2560485Z copying build\lib\polyforge\sprites\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\sprites
+2026-10-29T10:15:14.2561521Z creating build\bdist.win-amd64\wheel\polyforge\unity
+2026-10-29T10:15:14.2562531Z copying build\lib\polyforge\unity\bootstrap.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2563761Z copying build\lib\polyforge\unity\bridge.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2713966Z copying build\lib\polyforge\unity\evidence.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2715406Z copying build\lib\polyforge\unity\game.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2716670Z copying build\lib\polyforge\unity\recovery.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2717930Z copying build\lib\polyforge\unity\repairs.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2719227Z copying build\lib\polyforge\unity\transactions.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2720757Z copying build\lib\polyforge\unity\upgrade.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2721993Z copying build\lib\polyforge\unity\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\unity
+2026-10-29T10:15:14.2723018Z creating build\bdist.win-amd64\wheel\polyforge\workforce
+2026-10-29T10:15:14.2724045Z copying build\lib\polyforge\workforce\cli.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2725432Z copying build\lib\polyforge\workforce\discovery.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2726774Z copying build\lib\polyforge\workforce\ledger.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2728088Z copying build\lib\polyforge\workforce\models.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2729421Z copying build\lib\polyforge\workforce\operations.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2730902Z copying build\lib\polyforge\workforce\orchestrator.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2732805Z copying build\lib\polyforge\workforce\permissions.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2734216Z copying build\lib\polyforge\workforce\router.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2735595Z copying build\lib\polyforge\workforce\workers.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2736905Z copying build\lib\polyforge\workforce\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge\workforce
+2026-10-29T10:15:14.2738127Z copying build\lib\polyforge\workspace.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:14.2739213Z copying build\lib\polyforge\__init__.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:14.2740266Z copying build\lib\polyforge\__main__.py -> build\bdist.win-amd64\wheel\.\polyforge
+2026-10-29T10:15:14.2741172Z creating build\bdist.win-amd64\wheel\unity_package
+2026-10-29T10:15:14.2741920Z creating build\bdist.win-amd64\wheel\unity_package\Editor
+2026-10-29T10:15:14.2743068Z copying build\lib\unity_package\Editor\AnimationBuilder.cs -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2744624Z copying build\lib\unity_package\Editor\AnimationBuilder.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2762283Z copying build\lib\unity_package\Editor\AnimationInspector.cs -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2940371Z copying build\lib\unity_package\Editor\AnimationInspector.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2942025Z copying build\lib\unity_package\Editor\GameBuilder.cs -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2943540Z copying build\lib\unity_package\Editor\GameBuilder.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2945093Z copying build\lib\unity_package\Editor\PolyForge.Editor.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2946687Z copying build\lib\unity_package\Editor\PolyForge.Editor.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2948242Z copying build\lib\unity_package\Editor\PolyForgeBuilder.cs -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2950055Z copying build\lib\unity_package\Editor\PolyForgeBuilder.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.2951599Z copying build\lib\unity_package\Editor\RecoveryProbe.cs -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.3066090Z copying build\lib\unity_package\Editor\RecoveryProbe.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Editor
+2026-10-29T10:15:14.3067506Z copying build\lib\unity_package\Editor.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3068966Z copying build\lib\unity_package\LICENSE.md -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3070179Z copying build\lib\unity_package\LICENSE.md.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3071488Z copying build\lib\unity_package\package.json -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3072730Z copying build\lib\unity_package\package.json.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3073936Z copying build\lib\unity_package\README.md -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3075116Z copying build\lib\unity_package\README.md.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3076131Z creating build\bdist.win-amd64\wheel\unity_package\Runtime
+2026-10-29T10:15:14.3077216Z copying build\lib\unity_package\Runtime\ArenaHud.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3078657Z copying build\lib\unity_package\Runtime\ArenaHud.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3080232Z copying build\lib\unity_package\Runtime\ArenaPerformance.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3081975Z copying build\lib\unity_package\Runtime\ArenaPerformance.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3289446Z copying build\lib\unity_package\Runtime\ArenaSession.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3291471Z copying build\lib\unity_package\Runtime\ArenaSession.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3294293Z copying build\lib\unity_package\Runtime\ContactDamage.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3296134Z copying build\lib\unity_package\Runtime\ContactDamage.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3297604Z copying build\lib\unity_package\Runtime\Health.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3299014Z copying build\lib\unity_package\Runtime\Health.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3300434Z copying build\lib\unity_package\Runtime\PatrolEnemy.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3301904Z copying build\lib\unity_package\Runtime\PatrolEnemy.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3427030Z copying build\lib\unity_package\Runtime\PlayerController.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3428850Z copying build\lib\unity_package\Runtime\PlayerController.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3430420Z copying build\lib\unity_package\Runtime\PlayerInput.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3431927Z copying build\lib\unity_package\Runtime\PlayerInput.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3433495Z copying build\lib\unity_package\Runtime\PolyForge.Runtime.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3435194Z copying build\lib\unity_package\Runtime\PolyForge.Runtime.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3437038Z copying build\lib\unity_package\Runtime\PrefabBinding.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3438648Z copying build\lib\unity_package\Runtime\PrefabBinding.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3440207Z copying build\lib\unity_package\Runtime\RobotAnimationDriver.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3441831Z copying build\lib\unity_package\Runtime\RobotAnimationDriver.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3443394Z copying build\lib\unity_package\Runtime\SpritePlayer.cs -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3445117Z copying build\lib\unity_package\Runtime\SpritePlayer.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Runtime
+2026-10-29T10:15:14.3446489Z copying build\lib\unity_package\Runtime.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3529265Z creating build\bdist.win-amd64\wheel\unity_package\SpriteEditor
+2026-10-29T10:15:14.3532485Z copying build\lib\unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\SpriteEditor
+2026-10-29T10:15:14.3534500Z copying build\lib\unity_package\SpriteEditor\PolyForge.Sprite.Editor.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\SpriteEditor
+2026-10-29T10:15:14.3536322Z copying build\lib\unity_package\SpriteEditor\SpriteBuilder.cs -> build\bdist.win-amd64\wheel\.\unity_package\SpriteEditor
+2026-10-29T10:15:14.3538106Z copying build\lib\unity_package\SpriteEditor\SpriteBuilder.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\SpriteEditor
+2026-10-29T10:15:14.3539678Z copying build\lib\unity_package\SpriteEditor.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.3540770Z creating build\bdist.win-amd64\wheel\unity_package\Tests
+2026-10-29T10:15:14.3541890Z creating build\bdist.win-amd64\wheel\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:14.3543381Z copying build\lib\unity_package\Tests\AnimationEditor\AnimationTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:14.3545318Z copying build\lib\unity_package\Tests\AnimationEditor\AnimationTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:14.3547422Z copying build\lib\unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:14.3629415Z copying build\lib\unity_package\Tests\AnimationEditor\PolyForge.Animation.Editor.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationEditor
+2026-10-29T10:15:14.3631448Z copying build\lib\unity_package\Tests\AnimationEditor.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.3632752Z creating build\bdist.win-amd64\wheel\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:14.3634226Z copying build\lib\unity_package\Tests\AnimationPlayMode\MotionTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:14.3636143Z copying build\lib\unity_package\Tests\AnimationPlayMode\MotionTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:14.3638257Z copying build\lib\unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:14.3670064Z copying build\lib\unity_package\Tests\AnimationPlayMode\PolyForge.Animation.PlayMode.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\AnimationPlayMode
+2026-10-29T10:15:14.3672201Z copying build\lib\unity_package\Tests\AnimationPlayMode.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.3745547Z creating build\bdist.win-amd64\wheel\unity_package\Tests\Editor
+2026-10-29T10:15:14.3746881Z copying build\lib\unity_package\Tests\Editor\ForensicsTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3748556Z copying build\lib\unity_package\Tests\Editor\ForensicsTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3750592Z copying build\lib\unity_package\Tests\Editor\ImportTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3752261Z copying build\lib\unity_package\Tests\Editor\ImportTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3847819Z copying build\lib\unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3852133Z copying build\lib\unity_package\Tests\Editor\PolyForge.Editor.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\Editor
+2026-10-29T10:15:14.3853809Z copying build\lib\unity_package\Tests\Editor.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.3855030Z creating build\bdist.win-amd64\wheel\unity_package\Tests\GameEditor
+2026-10-29T10:15:14.3856350Z copying build\lib\unity_package\Tests\GameEditor\GameTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\GameEditor
+2026-10-29T10:15:14.3858052Z copying build\lib\unity_package\Tests\GameEditor\GameTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\GameEditor
+2026-10-29T10:15:14.3933691Z copying build\lib\unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\GameEditor
+2026-10-29T10:15:14.3935844Z copying build\lib\unity_package\Tests\GameEditor\PolyForge.Game.Editor.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\GameEditor
+2026-10-29T10:15:14.3937632Z copying build\lib\unity_package\Tests\GameEditor.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.3939016Z creating build\bdist.win-amd64\wheel\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.3940460Z copying build\lib\unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.3942389Z copying build\lib\unity_package\Tests\PlayMode\PolyForge.PlayMode.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.3944182Z copying build\lib\unity_package\Tests\PlayMode\RuntimeTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.4069024Z copying build\lib\unity_package\Tests\PlayMode\RuntimeTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.4071329Z copying build\lib\unity_package\Tests\PlayMode\ScenarioTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.4073365Z copying build\lib\unity_package\Tests\PlayMode\ScenarioTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\PlayMode
+2026-10-29T10:15:14.4074991Z copying build\lib\unity_package\Tests\PlayMode.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.4076171Z creating build\bdist.win-amd64\wheel\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:14.4077694Z copying build\lib\unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:14.4079811Z copying build\lib\unity_package\Tests\SpriteEditor\PolyForge.Sprite.Editor.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:14.4081752Z copying build\lib\unity_package\Tests\SpriteEditor\SpriteTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:14.4928453Z copying build\lib\unity_package\Tests\SpriteEditor\SpriteTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpriteEditor
+2026-10-29T10:15:14.4930250Z copying build\lib\unity_package\Tests\SpriteEditor.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.4931490Z creating build\bdist.win-amd64\wheel\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:14.4933098Z copying build\lib\unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:14.4935320Z copying build\lib\unity_package\Tests\SpritePlayMode\PolyForge.Sprite.PlayMode.Tests.asmdef.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:14.4937406Z copying build\lib\unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:14.6704598Z copying build\lib\unity_package\Tests\SpritePlayMode\SpriteMotionTests.cs.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests\SpritePlayMode
+2026-10-29T10:15:14.6706476Z copying build\lib\unity_package\Tests\SpritePlayMode.meta -> build\bdist.win-amd64\wheel\.\unity_package\Tests
+2026-10-29T10:15:14.6707846Z copying build\lib\unity_package\Tests.meta -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.6709443Z copying build\lib\unity_package\__init__.py -> build\bdist.win-amd64\wheel\.\unity_package
+2026-10-29T10:15:14.6710337Z running install_egg_info
+2026-10-29T10:15:14.6711178Z Copying polyforge.egg-info to build\bdist.win-amd64\wheel\.\polyforge-0.0.1-py3.11.egg-info
+2026-10-29T10:15:14.6905061Z running install_scripts
+2026-10-29T10:15:14.8538463Z creating build\bdist.win-amd64\wheel\polyforge-0.0.1.dist-info\WHEEL
+2026-10-29T10:15:14.8855088Z creating 'D:\a\Unity_Skill\Unity_Skill\dist\.tmp-him9a6ty\polyforge-0.0.1-py3-none-any.whl' and adding 'build\bdist.win-amd64\wheel' to it
+2026-10-29T10:15:14.9239312Z adding 'polyforge/__init__.py'
+2026-10-29T10:15:14.9243188Z adding 'polyforge/__main__.py'
+2026-10-29T10:15:14.9425946Z adding 'polyforge/cli.py'
+2026-10-29T10:15:14.9792517Z adding 'polyforge/commands.py'
+2026-10-29T10:15:14.9793434Z adding 'polyforge/config.py'
+2026-10-29T10:15:14.9794038Z adding 'polyforge/doctor.py'
+2026-10-29T10:15:14.9794589Z adding 'polyforge/py.typed'
+2026-10-29T10:15:14.9795156Z adding 'polyforge/workspace.py'
+2026-10-29T10:15:14.9795733Z adding 'polyforge/animation/__init__.py'
+2026-10-29T10:15:14.9796359Z adding 'polyforge/animation/adapter.py'
+2026-10-29T10:15:14.9796966Z adding 'polyforge/animation/contract.py'
+2026-10-29T10:15:14.9797670Z adding 'polyforge/animation/integration.py'
+2026-10-29T10:15:14.9798311Z adding 'polyforge/animation/worker.py'
+2026-10-29T10:15:14.9798911Z adding 'polyforge/assets/__init__.py'
+2026-10-29T10:15:14.9799514Z adding 'polyforge/assets/contracts.py'
+2026-10-29T10:15:14.9800114Z adding 'polyforge/assets/pipeline.py'
+2026-10-29T10:15:14.9800738Z adding 'polyforge/benchmark/__init__.py'
+2026-10-29T10:15:14.9801349Z adding 'polyforge/benchmark/protocol.py'
+2026-10-29T10:15:14.9801949Z adding 'polyforge/blender/__init__.py'
+2026-10-29T10:15:14.9802584Z adding 'polyforge/blender/adapter.py'
+2026-10-29T10:15:14.9805301Z adding 'polyforge/blender/audit.py'
+2026-10-29T10:15:14.9806091Z adding 'polyforge/blender/audit_worker.py'
+2026-10-29T10:15:14.9806737Z adding 'polyforge/blender/build.py'
+2026-10-29T10:15:14.9807342Z adding 'polyforge/blender/interchange.py'
+2026-10-29T10:15:14.9807961Z adding 'polyforge/blender/recipes.py'
+2026-10-29T10:15:14.9808555Z adding 'polyforge/blender/worker.py'
+2026-10-29T10:15:14.9809165Z adding 'polyforge/capabilities/__init__.py'
+2026-10-29T10:15:15.0311190Z adding 'polyforge/capabilities/dispatch.py'
+2026-10-29T10:15:15.0314981Z adding 'polyforge/capabilities/protocol.py'
+2026-10-29T10:15:15.0315741Z adding 'polyforge/capabilities/registry.py'
+2026-10-29T10:15:15.0316464Z adding 'polyforge/compiler/__init__.py'
+2026-10-29T10:15:15.0317077Z adding 'polyforge/compiler/commands.py'
+2026-10-29T10:15:15.0317740Z adding 'polyforge/compiler/contract_compiler.py'
+2026-10-29T10:15:15.0318423Z adding 'polyforge/composition/__init__.py'
+2026-10-29T10:15:15.0319066Z adding 'polyforge/composition/grammar.py'
+2026-10-29T10:15:15.0693655Z adding 'polyforge/contracts/__init__.py'
+2026-10-29T10:15:15.0694472Z adding 'polyforge/contracts/animation_import.schema.json'
+2026-10-29T10:15:15.0695282Z adding 'polyforge/contracts/asset_build.schema.json'
+2026-10-29T10:15:15.0696035Z adding 'polyforge/contracts/asset_bundle.schema.json'
+2026-10-29T10:15:15.0696766Z adding 'polyforge/contracts/asset_spec.schema.json'
+2026-10-29T10:15:15.0697577Z adding 'polyforge/contracts/audit_request.schema.json'
+2026-10-29T10:15:15.0698351Z adding 'polyforge/contracts/benchmark_task.schema.json'
+2026-10-29T10:15:15.0699156Z adding 'polyforge/contracts/candidate_review.schema.json'
+2026-10-29T10:15:15.0700267Z adding 'polyforge/contracts/capability.schema.json'
+2026-10-29T10:15:15.0701395Z adding 'polyforge/contracts/game_build.schema.json'
+2026-10-29T10:15:15.0702148Z adding 'polyforge/contracts/game_manifest.schema.json'
+2026-10-29T10:15:15.0702891Z adding 'polyforge/contracts/handoff.schema.json'
+2026-10-29T10:15:15.0703562Z adding 'polyforge/contracts/images.py'
+2026-10-29T10:15:15.0704216Z adding 'polyforge/contracts/job_ticket.schema.json'
+2026-10-29T10:15:15.0704889Z adding 'polyforge/contracts/manifest.py'
+2026-10-29T10:15:15.0705538Z adding 'polyforge/contracts/recipe.schema.json'
+2026-10-29T10:15:15.0706264Z adding 'polyforge/contracts/recipe_request.schema.json'
+2026-10-29T10:15:15.0707015Z adding 'polyforge/contracts/result.schema.json'
+2026-10-29T10:15:15.0707675Z adding 'polyforge/contracts/results.py'
+2026-10-29T10:15:15.0708342Z adding 'polyforge/contracts/review_board.schema.json'
+2026-10-29T10:15:15.0709098Z adding 'polyforge/contracts/review_verdict.schema.json'
+2026-10-29T10:15:15.0709856Z adding 'polyforge/contracts/scenario.schema.json'
+2026-10-29T10:15:15.0710579Z adding 'polyforge/contracts/sprite_bake.schema.json'
+2026-10-29T10:15:15.0711327Z adding 'polyforge/contracts/sprite_import.schema.json'
+2026-10-29T10:15:15.0712267Z adding 'polyforge/contracts/unity_build.schema.json'
+2026-10-29T10:15:15.0713002Z adding 'polyforge/contracts/validation.py'
+2026-10-29T10:15:15.0713744Z adding 'polyforge/contracts/workforce_task.schema.json'
+2026-10-29T10:15:15.0714458Z adding 'polyforge/data/arena_acceptance.json'
+2026-10-29T10:15:15.0715106Z adding 'polyforge/data/arena_brief.md'
+2026-10-29T10:15:15.0715713Z adding 'polyforge/data/arena_manifest.json'
+2026-10-29T10:15:15.0716341Z adding 'polyforge/data/arena_recipes.json'
+2026-10-29T10:15:15.0716987Z adding 'polyforge/data/arena_scenarios.json'
+2026-10-29T10:15:15.0717600Z adding 'polyforge/data/catalog.json'
+2026-10-29T10:15:15.0718191Z adding 'polyforge/invariants/__init__.py'
+2026-10-29T10:15:15.0718816Z adding 'polyforge/invariants/handoff.py'
+2026-10-29T10:15:15.0719466Z adding 'polyforge/planner/__init__.py'
+2026-10-29T10:15:15.0720073Z adding 'polyforge/planner/cache.py'
+2026-10-29T10:15:15.0720649Z adding 'polyforge/planner/dag.py'
+2026-10-29T10:15:15.0721514Z adding 'polyforge/planner/plans.py'
+2026-10-29T10:15:15.0722104Z adding 'polyforge/repairs/__init__.py'
+2026-10-29T10:15:15.0722701Z adding 'polyforge/repairs/diagnostics.py'
+2026-10-29T10:15:15.0723312Z adding 'polyforge/repairs/execution.py'
+2026-10-29T10:15:15.0723906Z adding 'polyforge/review/__init__.py'
+2026-10-29T10:15:15.0724502Z adding 'polyforge/review/acceptance.py'
+2026-10-29T10:15:15.0725104Z adding 'polyforge/review/amendments.py'
+2026-10-29T10:15:15.0725701Z adding 'polyforge/review/board.py'
+2026-10-29T10:15:15.0726284Z adding 'polyforge/review/sprite_source.py'
+2026-10-29T10:15:15.0726897Z adding 'polyforge/runner/__init__.py'
+2026-10-29T10:15:15.0727469Z adding 'polyforge/runner/locks.py'
+2026-10-29T10:15:15.0728042Z adding 'polyforge/runner/ownership.py'
+2026-10-29T10:15:15.0728634Z adding 'polyforge/runner/processes.py'
+2026-10-29T10:15:15.0729204Z adding 'polyforge/runner/state.py'
+2026-10-29T10:15:15.0729781Z adding 'polyforge/scenarios/__init__.py'
+2026-10-29T10:15:15.0730418Z adding 'polyforge/scenarios/arena_oracle.py'
+2026-10-29T10:15:15.0731047Z adding 'polyforge/scenarios/schema.py'
+2026-10-29T10:15:15.0731631Z adding 'polyforge/security/__init__.py'
+2026-10-29T10:15:15.0732222Z adding 'polyforge/security/paths.py'
+2026-10-29T10:15:15.0732846Z adding 'polyforge/security/policy.py'
+2026-10-29T10:15:15.0733423Z adding 'polyforge/sprites/__init__.py'
+2026-10-29T10:15:15.0734004Z adding 'polyforge/sprites/bake.py'
+2026-10-29T10:15:15.0753477Z adding 'polyforge/sprites/contracts.py'
+2026-10-29T10:15:15.0754144Z adding 'polyforge/sprites/images.py'
+2026-10-29T10:15:15.0754768Z adding 'polyforge/sprites/integration.py'
+2026-10-29T10:15:15.0755395Z adding 'polyforge/sprites/worker.py'
+2026-10-29T10:15:15.0756216Z adding 'polyforge/unity/__init__.py'
+2026-10-29T10:15:15.0756810Z adding 'polyforge/unity/bootstrap.py'
+2026-10-29T10:15:15.0757457Z adding 'polyforge/unity/bridge.py'
+2026-10-29T10:15:15.0760553Z adding 'polyforge/unity/evidence.py'
+2026-10-29T10:15:15.0761198Z adding 'polyforge/unity/game.py'
+2026-10-29T10:15:15.0761784Z adding 'polyforge/unity/recovery.py'
+2026-10-29T10:15:15.0762390Z adding 'polyforge/unity/repairs.py'
+2026-10-29T10:15:15.0762988Z adding 'polyforge/unity/transactions.py'
+2026-10-29T10:15:15.0763592Z adding 'polyforge/unity/upgrade.py'
+2026-10-29T10:15:15.0764169Z adding 'polyforge/workforce/__init__.py'
+2026-10-29T10:15:15.0764762Z adding 'polyforge/workforce/cli.py'
+2026-10-29T10:15:15.0765345Z adding 'polyforge/workforce/discovery.py'
+2026-10-29T10:15:15.0765962Z adding 'polyforge/workforce/ledger.py'
+2026-10-29T10:15:15.0766558Z adding 'polyforge/workforce/models.py'
+2026-10-29T10:15:15.0767169Z adding 'polyforge/workforce/operations.py'
+2026-10-29T10:15:15.0767818Z adding 'polyforge/workforce/orchestrator.py'
+2026-10-29T10:15:15.0768471Z adding 'polyforge/workforce/permissions.py'
+2026-10-29T10:15:15.0769095Z adding 'polyforge/workforce/router.py'
+2026-10-29T10:15:15.0769684Z adding 'polyforge/workforce/workers.py'
+2026-10-29T10:15:15.0770551Z adding 'polyforge-0.0.1.dist-info/licenses/LICENSE'
+2026-10-29T10:15:15.0771318Z adding 'polyforge-0.0.1.dist-info/licenses/NOTICE'
+2026-10-29T10:15:15.0771986Z adding 'unity_package/Editor.meta'
+2026-10-29T10:15:15.0772551Z adding 'unity_package/LICENSE.md'
+2026-10-29T10:15:15.0773120Z adding 'unity_package/LICENSE.md.meta'
+2026-10-29T10:15:15.0773743Z adding 'unity_package/README.md'
+2026-10-29T10:15:15.0774293Z adding 'unity_package/README.md.meta'
+2026-10-29T10:15:15.0774874Z adding 'unity_package/Runtime.meta'
+2026-10-29T10:15:15.0775464Z adding 'unity_package/SpriteEditor.meta'
+2026-10-29T10:15:15.0776061Z adding 'unity_package/Tests.meta'
+2026-10-29T10:15:15.0776627Z adding 'unity_package/__init__.py'
+2026-10-29T10:15:15.1734769Z adding 'unity_package/package.json'
+2026-10-29T10:15:15.2016661Z adding 'unity_package/package.json.meta'
+2026-10-29T10:15:15.2017912Z adding 'unity_package/Editor/AnimationBuilder.cs'
+2026-10-29T10:15:15.2035892Z adding 'unity_package/Editor/AnimationBuilder.cs.meta'
+2026-10-29T10:15:15.2039519Z adding 'unity_package/Editor/AnimationInspector.cs'
+2026-10-29T10:15:15.2042713Z adding 'unity_package/Editor/AnimationInspector.cs.meta'
+2026-10-29T10:15:15.2098499Z adding 'unity_package/Editor/GameBuilder.cs'
+2026-10-29T10:15:15.2863218Z adding 'unity_package/Editor/GameBuilder.cs.meta'
+2026-10-29T10:15:15.3071604Z adding 'unity_package/Editor/PolyForge.Editor.asmdef'
+2026-10-29T10:15:15.4985397Z adding 'unity_package/Editor/PolyForge.Editor.asmdef.meta'
+2026-10-29T10:15:15.5208388Z adding 'unity_package/Editor/PolyForgeBuilder.cs'
+2026-10-29T10:15:15.5209759Z adding 'unity_package/Editor/PolyForgeBuilder.cs.meta'
+2026-10-29T10:15:15.5242106Z adding 'unity_package/Editor/RecoveryProbe.cs'
+2026-10-29T10:15:15.5245746Z adding 'unity_package/Editor/RecoveryProbe.cs.meta'
+2026-10-29T10:15:15.5249257Z adding 'unity_package/Runtime/ArenaHud.cs'
+2026-10-29T10:15:15.5282619Z adding 'unity_package/Runtime/ArenaHud.cs.meta'
+2026-10-29T10:15:15.5311469Z adding 'unity_package/Runtime/ArenaPerformance.cs'
+2026-10-29T10:15:15.5313442Z adding 'unity_package/Runtime/ArenaPerformance.cs.meta'
+2026-10-29T10:15:15.5314541Z adding 'unity_package/Runtime/ArenaSession.cs'
+2026-10-29T10:15:15.5315481Z adding 'unity_package/Runtime/ArenaSession.cs.meta'
+2026-10-29T10:15:15.6147474Z adding 'unity_package/Runtime/ContactDamage.cs'
+2026-10-29T10:15:15.6325630Z adding 'unity_package/Runtime/ContactDamage.cs.meta'
+2026-10-29T10:15:15.6403279Z adding 'unity_package/Runtime/Health.cs'
+2026-10-29T10:15:15.6406028Z adding 'unity_package/Runtime/Health.cs.meta'
+2026-10-29T10:15:15.6407770Z adding 'unity_package/Runtime/PatrolEnemy.cs'
+2026-10-29T10:15:15.6767213Z adding 'unity_package/Runtime/PatrolEnemy.cs.meta'
+2026-10-29T10:15:15.6981848Z adding 'unity_package/Runtime/PlayerController.cs'
+2026-10-29T10:15:15.6983671Z adding 'unity_package/Runtime/PlayerController.cs.meta'
+2026-10-29T10:15:15.6984809Z adding 'unity_package/Runtime/PlayerInput.cs'
+2026-10-29T10:15:15.7394576Z adding 'unity_package/Runtime/PlayerInput.cs.meta'
+2026-10-29T10:15:15.7597278Z adding 'unity_package/Runtime/PolyForge.Runtime.asmdef'
+2026-10-29T10:15:15.7604154Z adding 'unity_package/Runtime/PolyForge.Runtime.asmdef.meta'
+2026-10-29T10:15:15.7607476Z adding 'unity_package/Runtime/PrefabBinding.cs'
+2026-10-29T10:15:15.7739970Z adding 'unity_package/Runtime/PrefabBinding.cs.meta'
+2026-10-29T10:15:15.7850061Z adding 'unity_package/Runtime/RobotAnimationDriver.cs'
+2026-10-29T10:15:15.7851667Z adding 'unity_package/Runtime/RobotAnimationDriver.cs.meta'
+2026-10-29T10:15:15.7852457Z adding 'unity_package/Runtime/SpritePlayer.cs'
+2026-10-29T10:15:15.7853178Z adding 'unity_package/Runtime/SpritePlayer.cs.meta'
+2026-10-29T10:15:15.7855618Z adding 'unity_package/SpriteEditor/PolyForge.Sprite.Editor.asmdef'
+2026-10-29T10:15:15.7856629Z adding 'unity_package/SpriteEditor/PolyForge.Sprite.Editor.asmdef.meta'
+2026-10-29T10:15:15.7869359Z adding 'unity_package/SpriteEditor/SpriteBuilder.cs'
+2026-10-29T10:15:15.7870479Z adding 'unity_package/SpriteEditor/SpriteBuilder.cs.meta'
+2026-10-29T10:15:15.7871274Z adding 'unity_package/Tests/AnimationEditor.meta'
+2026-10-29T10:15:15.7872017Z adding 'unity_package/Tests/AnimationPlayMode.meta'
+2026-10-29T10:15:15.7872731Z adding 'unity_package/Tests/Editor.meta'
+2026-10-29T10:15:15.7873972Z adding 'unity_package/Tests/GameEditor.meta'
+2026-10-29T10:15:15.7874654Z adding 'unity_package/Tests/PlayMode.meta'
+2026-10-29T10:15:15.7875322Z adding 'unity_package/Tests/SpriteEditor.meta'
+2026-10-29T10:15:15.7876007Z adding 'unity_package/Tests/SpritePlayMode.meta'
+2026-10-29T10:15:15.7876827Z adding 'unity_package/Tests/AnimationEditor/AnimationTests.cs'
+2026-10-29T10:15:15.7881862Z adding 'unity_package/Tests/AnimationEditor/AnimationTests.cs.meta'
+2026-10-29T10:15:15.7882994Z adding 'unity_package/Tests/AnimationEditor/PolyForge.Animation.Editor.Tests.asmdef'
+2026-10-29T10:15:15.7884291Z adding 'unity_package/Tests/AnimationEditor/PolyForge.Animation.Editor.Tests.asmdef.meta'
+2026-10-29T10:15:15.7885399Z adding 'unity_package/Tests/AnimationPlayMode/MotionTests.cs'
+2026-10-29T10:15:15.7886354Z adding 'unity_package/Tests/AnimationPlayMode/MotionTests.cs.meta'
+2026-10-29T10:15:15.7887455Z adding 'unity_package/Tests/AnimationPlayMode/PolyForge.Animation.PlayMode.Tests.asmdef'
+2026-10-29T10:15:15.7888781Z adding 'unity_package/Tests/AnimationPlayMode/PolyForge.Animation.PlayMode.Tests.asmdef.meta'
+2026-10-29T10:15:15.7889860Z adding 'unity_package/Tests/Editor/ForensicsTests.cs'
+2026-10-29T10:15:15.7890643Z adding 'unity_package/Tests/Editor/ForensicsTests.cs.meta'
+2026-10-29T10:15:15.7891402Z adding 'unity_package/Tests/Editor/ImportTests.cs'
+2026-10-29T10:15:15.7892137Z adding 'unity_package/Tests/Editor/ImportTests.cs.meta'
+2026-10-29T10:15:15.7892975Z adding 'unity_package/Tests/Editor/PolyForge.Editor.Tests.asmdef'
+2026-10-29T10:15:15.7893910Z adding 'unity_package/Tests/Editor/PolyForge.Editor.Tests.asmdef.meta'
+2026-10-29T10:15:15.7894768Z adding 'unity_package/Tests/GameEditor/GameTests.cs'
+2026-10-29T10:15:15.7895529Z adding 'unity_package/Tests/GameEditor/GameTests.cs.meta'
+2026-10-29T10:15:15.7896492Z adding 'unity_package/Tests/GameEditor/PolyForge.Game.Editor.Tests.asmdef'
+2026-10-29T10:15:15.7897936Z adding 'unity_package/Tests/GameEditor/PolyForge.Game.Editor.Tests.asmdef.meta'
+2026-10-29T10:15:15.7899047Z adding 'unity_package/Tests/PlayMode/PolyForge.PlayMode.Tests.asmdef'
+2026-10-29T10:15:15.7900060Z adding 'unity_package/Tests/PlayMode/PolyForge.PlayMode.Tests.asmdef.meta'
+2026-10-29T10:15:15.7900974Z adding 'unity_package/Tests/PlayMode/RuntimeTests.cs'
+2026-10-29T10:15:15.7901747Z adding 'unity_package/Tests/PlayMode/RuntimeTests.cs.meta'
+2026-10-29T10:15:15.7904793Z adding 'unity_package/Tests/PlayMode/ScenarioTests.cs'
+2026-10-29T10:15:15.7905623Z adding 'unity_package/Tests/PlayMode/ScenarioTests.cs.meta'
+2026-10-29T10:15:15.7906588Z adding 'unity_package/Tests/SpriteEditor/PolyForge.Sprite.Editor.Tests.asmdef'
+2026-10-29T10:15:15.7907755Z adding 'unity_package/Tests/SpriteEditor/PolyForge.Sprite.Editor.Tests.asmdef.meta'
+2026-10-29T10:15:15.7908766Z adding 'unity_package/Tests/SpriteEditor/SpriteTests.cs'
+2026-10-29T10:15:15.7909582Z adding 'unity_package/Tests/SpriteEditor/SpriteTests.cs.meta'
+2026-10-29T10:15:15.7910585Z adding 'unity_package/Tests/SpritePlayMode/PolyForge.Sprite.PlayMode.Tests.asmdef'
+2026-10-29T10:15:15.7911798Z adding 'unity_package/Tests/SpritePlayMode/PolyForge.Sprite.PlayMode.Tests.asmdef.meta'
+2026-10-29T10:15:15.7912883Z adding 'unity_package/Tests/SpritePlayMode/SpriteMotionTests.cs'
+2026-10-29T10:15:15.7913811Z adding 'unity_package/Tests/SpritePlayMode/SpriteMotionTests.cs.meta'
+2026-10-29T10:15:15.7914635Z adding 'polyforge-0.0.1.dist-info/METADATA'
+2026-10-29T10:15:15.7915278Z adding 'polyforge-0.0.1.dist-info/WHEEL'
+2026-10-29T10:15:15.7915942Z adding 'polyforge-0.0.1.dist-info/entry_points.txt'
+2026-10-29T10:15:15.7916643Z adding 'polyforge-0.0.1.dist-info/top_level.txt'
+2026-10-29T10:15:15.7918131Z adding 'polyforge-0.0.1.dist-info/RECORD'
+2026-10-29T10:15:15.7918873Z removing build\bdist.win-amd64\wheel
+2026-10-29T10:15:15.7919727Z Successfully built polyforge-0.0.1.tar.gz and polyforge-0.0.1-py3-none-any.whl
+2026-10-29T10:15:15.9091591Z ##[group]Run polyforge capability list --json
+2026-10-29T10:15:15.9092558Z [36;1mpolyforge capability list --json[0m
+2026-10-29T10:15:15.9247116Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-29T10:15:15.9247685Z env:
+2026-10-29T10:15:15.9248109Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:15.9248882Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.11.9\x64/lib/pkgconfig
+2026-10-29T10:15:15.9249665Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:15.9250348Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:15.9251037Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.11.9\x64
+2026-10-29T10:15:15.9251581Z ##[endgroup]
+2026-10-29T10:15:17.4010899Z {"status": "PASS", "exit_code": 0, "error_code": null, "data": {"capabilities": [{"id": "contract.capability.validate.v1", "version": "1.0.0", "input_schema": "contracts/capability.schema.json", "runner": "python.registry_validator", "deterministic": true, "requires": ["python>=3.11"], "tests": ["valid_descriptor", "invalid_descriptor", "dry_run_no_writes"], "output_types": ["validation_result"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "contract.manifest.validate.v1", "version": "1.0.0", "input_schema": "contracts/game_manifest.schema.json", "runner": "python.manifest_validator", "deterministic": true, "requires": ["python>=3.11"], "tests": ["valid_manifest", "invalid_manifest", "read_only_result"], "output_types": ["validation_result"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "contract.scene.compile.v1", "version": "1.0.0", "input_schema": "contracts/game_manifest.schema.json", "runner": "python.contract_compiler", "deterministic": true, "requires": ["python>=3.11"], "tests": ["valid_manifest", "invalid_manifest", "read_only_result"], "output_types": ["scene_contract"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "plan.scene.v1", "version": "1.0.0", "input_schema": "contracts/game_manifest.schema.json", "runner": "python.scene_planner", "deterministic": true, "requires": ["python>=3.11"], "tests": ["valid_manifest", "invalid_manifest", "read_only_result"], "output_types": ["plan"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "mesh.robot.modular.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.static.robot", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["finite_geometry", "semantic_bindings", "bounds_and_budget", "saved_source_roundtrip", "uv_faces"], "output_types": ["blend", "mesh_metrics"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "mesh.props.crate.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.static.crate", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["finite_geometry", "semantic_bindings", "bounds_and_budget", "saved_source_roundtrip", "uv_faces"], "output_types": ["blend", "mesh_metrics"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "mesh.architecture.wall.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.static.wall", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["finite_geometry", "semantic_bindings", "bounds_and_budget", "saved_source_roundtrip", "uv_faces"], "output_types": ["blend", "mesh_metrics"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "mesh.architecture.doorway.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.static.doorway", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["finite_geometry", "semantic_bindings", "bounds_and_budget", "saved_source_roundtrip", "uv_faces"], "output_types": ["blend", "mesh_metrics"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "mesh.environment.tile.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.static.ground", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["finite_geometry", "semantic_bindings", "bounds_and_budget", "saved_source_roundtrip", "uv_faces"], "output_types": ["blend", "mesh_metrics"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "audit.static.multiview.v1", "version": "1.0.0", "input_schema": "contracts/audit_request.schema.json", "runner": "blender.audit.static", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["four_nonblank_views", "geometry_preflight", "fbx_roundtrip", "source_integrity"], "output_types": ["png", "fbx", "materials", "audit_report", "review_bundle"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "unity.scene.static.v1", "version": "1.0.0", "input_schema": "contracts/unity_build.schema.json", "runner": "unity.scene.static", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2", "unity==6000.6.3f1"], "tests": ["native_compilation", "source_dimensions_and_sockets", "material_parameters", "stable_guids_and_scene_counts", "fault_detection"], "output_types": ["unity_project", "prefab", "scene", "bindings", "editmode_xml"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "unity.game.arena.v1", "version": "1.0.0", "input_schema": "contracts/game_build.schema.json", "runner": "unity.game.arena", "deterministic": false, "requires": ["python>=3.11", "blender==5.2.2", "unity==6000.6.3f1"], "tests": ["native_compilation", "core_gameplay", "keyboard_adapter", "collision_and_restart_mutants"], "output_types": ["unity_project", "scene", "editmode_xml", "playmode_xml", "telemetry", "public_oracles"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "animation.robot.rig.v1", "version": "1.0.0", "input_schema": "contracts/recipe_request.schema.json", "runner": "blender.animation.robot.rigid", "deterministic": true, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["slotted_actions", "source_reopen", "sampled_skin_and_socket_bindings", "in_place_root", "idle_walk_loop"], "output_types": ["blend", "fbx", "motion_samples", "png"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "artifact.candidate.inspect.v1", "version": "1.0.0", "input_schema": "contracts/candidate_review.schema.json", "runner": "workforce.candidate.inspect", "deterministic": false, "requires": ["python>=3.11"], "tests": ["candidate_identity", "review_binding", "read_only_inspection"], "output_types": ["review"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "animation.robot.unity.v1", "version": "1.0.0", "input_schema": "contracts/animation_import.schema.json", "runner": "unity.animation.robot", "deterministic": false, "requires": ["python>=3.11", "unity==6000.6.3f1"], "tests": ["native_clips", "skin_bone_mapping", "missing_transition_rejection", "actual_playmode_motion"], "output_types": ["scene", "prefab", "animator_controller", "test_xml"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "asset.package.build.v1", "version": "1.0.0", "input_schema": "contracts/asset_build.schema.json", "runner": "workforce.asset.package", "deterministic": false, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["source_slots", "reference_policy", "scoped_refinement", "technical_approval"], "output_types": ["blend", "fbx", "asset_bundle", "review", "png"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "sprite.robot.bake.v1", "version": "1.0.0", "input_schema": "contracts/sprite_bake.schema.json", "runner": "blender.sprite.bake", "deterministic": false, "requires": ["python>=3.11", "blender==5.2.2"], "tests": ["six_frames", "fixed_pivot", "transparent_atlas", "pixel_order"], "output_types": ["blend", "png", "atlas", "metadata"], "trust_requirement": "TRUSTED_LOCAL"}, {"id": "sprite.unity.strip.v1", "version": "1.0.0", "input_schema": "contracts/sprite_import.schema.json", "runner": "unity.sprite.strip", "deterministic": false, "requires": ["python>=3.11", "unity==6000.6.3f1"], "tests": ["native_sprite_data_provider", "sprite_reference_curve", "loop_and_2d_input", "wall_collision"], "output_types": ["prefab", "scene", "animation_clip", "test_xml"], "trust_requirement": "TRUSTED_LOCAL"}]}, "diagnostics": [], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 313.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "PASS"}
+2026-10-29T10:15:17.6846169Z Post job cleanup.
+2026-10-29T10:15:18.3589912Z (node:7892) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-29T10:15:18.3611793Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-29T10:15:18.4165084Z Post job cleanup.
+2026-10-29T10:15:18.9090281Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-29T10:15:18.9886948Z git version 2.56.0.windows.2
+2026-10-29T10:15:19.0782547Z Temporarily overriding HOME='D:\a\_temp\4cbe43fd-569c-4643-835f-999df49abe32' before making global git config changes
+2026-10-29T10:15:19.0789165Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-29T10:15:19.0792765Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\Unity_Skill\Unity_Skill
+2026-10-29T10:15:19.1075240Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-29T10:15:19.1748678Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-29T10:15:20.5316568Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-29T10:15:20.5807067Z http.https://github.com/.extraheader
+2026-10-29T10:15:20.6100387Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-10-29T10:15:20.6871759Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-29T10:15:21.9749551Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-29T10:15:22.0516779Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-29T10:15:23.3795567Z Cleaning up orphan processes
+2026-10-29T10:15:23.5631771Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

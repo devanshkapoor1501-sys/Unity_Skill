@@ -1,6 +1,6 @@
 # Phase 9 — review vetoes, forensic routing and verified recovery
 
-**Development scope: qualified locally; publication checks pending. Game
+**Development scope: PASS. Game
 acceptance: PARTIAL.** Required human/artistic decisions remain REVIEW unless
 explicitly supplied for the exact candidate. External evaluation is NOT_SUPPLIED.
 
@@ -129,5 +129,13 @@ artifact registries can reference excluded ephemeral compiler files. The bundle
 is audit evidence plus editable project sources, not a self-contained licensed
 toolchain or protected evaluator.
 
-Publication status and exact final quality totals are recorded after the last
-local/remote gates. Phase 10 is the next delivery and has not started.
+Implementation commit `e94bcc81cf5a6ad9ce609659961144f9e6bcac4e` passed all three
+jobs in [branch CI run 40855451985](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions/runs/40855451985):
+Windows Python 3.11, Windows Python 3.12 and Ubuntu Python 3.12. Each executed
+395 tests plus both coverage gates, lint, strict types, CLI docs and package
+build. Raw job logs and step outcomes are retained under `phase-9-evidence/ci/`.
+
+Publication uses a fast-forward of main from the verified Phase 8 history,
+preserving all earlier phases. The final documentation/evidence commit is also
+checked on push; [main Actions](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions?query=branch%3Amain)
+is the authoritative post-publication status. Phase 10 is next and has not started.
