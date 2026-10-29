@@ -224,10 +224,27 @@ class BoundaryTests(unittest.TestCase):
                 if line.startswith("polyforge ")
             ]
             self.assertTrue(commands, str(path))
-            for command in commands:
-                with self.subTest(command=command):
-                    result = cli(*shlex.split(command)[1:])
-                    self.assertEqual(result.returncode, 0, result.stderr)
+            with tempfile.TemporaryDirectory() as directory:
+                workspace = Path(directory)
+                (workspace / "request.json").write_text(
+                    json.dumps(
+                        {
+                            "schema_version": "1.0.0",
+                            "query": "Explain Geometry Nodes versus manual mesh",
+                            "output": "EXPLAIN",
+                        }
+                    ),
+                    encoding="utf-8",
+                )
+                before = {p.name: p.read_bytes() for p in workspace.iterdir()}
+                for command in commands:
+                    with self.subTest(command=command):
+                        arguments = [
+                            directory if arg == "ROOT" else arg for arg in shlex.split(command)[1:]
+                        ]
+                        result = cli(*arguments)
+                        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertEqual({p.name: p.read_bytes() for p in workspace.iterdir()}, before)
 
     def test_readme_installs_the_existing_polyforge_skill(self) -> None:
         readme = (ROOT / "README.md").read_text("utf-8")

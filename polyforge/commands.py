@@ -26,6 +26,46 @@ class CommandSpec:
 
 COMMANDS = (
     CommandSpec(
+        ("knowledge", "list"),
+        "List versioned DATA_ONLY reference cards",
+        implemented=True,
+        phase=10,
+        example=("knowledge", "list", "--json"),
+    ),
+    CommandSpec(
+        ("knowledge", "route"),
+        "Select bounded local references and a non-executing operation plan",
+        (WORKSPACE, (("--request",), {"required": True})),
+        implemented=True,
+        phase=10,
+        example=(
+            "knowledge",
+            "route",
+            "--workspace",
+            "workspace/arena_demo",
+            "--request",
+            "knowledge-request.json",
+            "--json",
+        ),
+    ),
+    CommandSpec(
+        ("knowledge", "probe"),
+        "Run a fixed registered installed-tool API probe",
+        (WORKSPACE, (("--tool",), {"required": True, "choices": ["blender", "unity"]}), DRY_RUN),
+        implemented=True,
+        phase=10,
+        example=(
+            "knowledge",
+            "probe",
+            "--workspace",
+            "workspace/arena_demo",
+            "--tool",
+            "blender",
+            "--dry-run",
+            "--json",
+        ),
+    ),
+    CommandSpec(
         ("review", "sprite-source"),
         "Inspect and seal sprite sources before native import",
         (WORKSPACE, (("--input",), {"required": True})),
@@ -535,9 +575,10 @@ COMMANDS = (
     ),
     CommandSpec(
         ("mcp", "serve"),
-        "Serve bounded capability tools through optional stdio MCP",
-        ((("--transport",), {"choices": ["stdio"], "default": "stdio"}),),
+        "Serve read-only catalog, references and descriptor validation through stdio MCP",
+        (WORKSPACE, (("--transport",), {"choices": ["stdio"], "default": "stdio"})),
+        implemented=True,
         phase=10,
-        example=("mcp", "serve", "--transport", "stdio"),
+        example=("mcp", "serve", "--workspace", "workspace/arena_demo", "--transport", "stdio"),
     ),
 )

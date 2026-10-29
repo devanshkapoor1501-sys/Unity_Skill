@@ -63,6 +63,31 @@ def build_parser() -> argparse.ArgumentParser:
 def dispatch(args: argparse.Namespace) -> Result:
     """Dispatch only implemented capabilities; placeholders never claim tool success."""
     spec: CommandSpec = args.spec
+    if spec.path[0] == "knowledge":
+        from polyforge.knowledge.catalog import catalog_cards
+        from polyforge.security.paths import WorkspacePolicy
+
+        if spec.path[-1] == "list":
+            return Result(
+                data={
+                    "knowledge_cards": catalog_cards(),
+                    "execution_status": "NOT_RUN",
+                    "network": "DISABLED",
+                }
+            )
+        if spec.path[-1] == "probe":
+            from polyforge.knowledge.probes import probe_tool
+
+            return probe_tool(Path(args.workspace), args.tool, dry_run=args.dry_run)
+        from polyforge.knowledge.router import route_reference
+
+        policy = WorkspacePolicy(Path(args.workspace))
+        route = route_reference(policy, load_json(policy.path(args.request)))
+        return Result(
+            status=route["status"],
+            exit_code=0 if route["status"] == "PASS" else 3 if route["status"] == "BLOCKED" else 4,
+            data={"reference_route": route},
+        )
     if spec.path in {("resume",), ("repair", "rollback")}:
         from polyforge.unity.recovery import repair_rollback, resume_run
 
@@ -219,6 +244,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     started = time.monotonic()
     try:
         args = build_parser().parse_args(values)
+        if args.spec.path == ("mcp", "serve"):
+            from polyforge.host.stdio import serve
+
+            return serve(args.workspace)
         json_output = args.json or args.format == "json"
         result = dispatch(args)
     except InputError as exc:

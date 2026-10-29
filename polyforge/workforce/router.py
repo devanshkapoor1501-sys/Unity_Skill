@@ -26,6 +26,7 @@ def engine_digest() -> str:
                 ".cs",
                 ".asmdef",
                 ".meta",
+                ".txt",
             }:
                 identities[name] = hashlib.sha256(child.read_bytes()).hexdigest()
 

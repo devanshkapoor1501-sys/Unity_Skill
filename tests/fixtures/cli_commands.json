@@ -3,6 +3,42 @@
   "commands": [
     {
       "argv": [
+        "knowledge",
+        "list",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 10
+    },
+    {
+      "argv": [
+        "knowledge",
+        "route",
+        "--workspace",
+        "workspace/arena_demo",
+        "--request",
+        "knowledge-request.json",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 10
+    },
+    {
+      "argv": [
+        "knowledge",
+        "probe",
+        "--workspace",
+        "workspace/arena_demo",
+        "--tool",
+        "blender",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 10
+    },
+    {
+      "argv": [
         "review",
         "sprite-source",
         "--workspace",
@@ -457,10 +493,12 @@
       "argv": [
         "mcp",
         "serve",
+        "--workspace",
+        "workspace/arena_demo",
         "--transport",
         "stdio"
       ],
-      "implemented": false,
+      "implemented": true,
       "phase": 10
     }
   ]

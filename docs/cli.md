@@ -9,6 +9,9 @@ are syntax fixtures, not evidence of execution or functionality.
 
 | Command | Availability | Example |
 | --- | --- | --- |
+| `knowledge list` | Implemented | `polyforge knowledge list --json` |
+| `knowledge route` | Implemented | `polyforge knowledge route --workspace workspace/arena_demo --request knowledge-request.json --json` |
+| `knowledge probe` | Implemented | `polyforge knowledge probe --workspace workspace/arena_demo --tool blender --dry-run --json` |
 | `review sprite-source` | Implemented | `polyforge review sprite-source --workspace workspace/arena_demo --input sprite-input.json --json` |
 | `review amend` | Implemented | `polyforge review amend --workspace workspace/arena_demo --task task.json --amendment amendment.json --operator operator --reason 'Approved addition' --approved --json` |
 | `repair inspect` | Implemented | `polyforge repair inspect --workspace workspace/arena_demo --evidence failure.json --json` |
@@ -45,7 +48,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `benchmark run` | NOT_RUN; Phase 6 | `polyforge benchmark run --suite benchmark_core --arm D --output workspace/benchmarks --dry-run --json` |
 | `benchmark report` | NOT_RUN; Phase 6 | `polyforge benchmark report --run benchmark-example --format json` |
 | `inspect-project` | NOT_RUN; Phase 11 | `polyforge inspect-project --project workspace/existing_project --read-only --json` |
-| `mcp serve` | NOT_RUN; Phase 10 | `polyforge mcp serve --transport stdio` |
+| `mcp serve` | Implemented | `polyforge mcp serve --workspace workspace/arena_demo --transport stdio` |
 
 ## Status and process exit
 
