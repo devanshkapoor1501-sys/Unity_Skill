@@ -1,0 +1,91 @@
+--- unity_package/Editor/PolyForgeBuilder.cs
++++ unity_package/Editor/PolyForgeBuilder.cs
+@@ -11,7 +11,7 @@
+ {
+     [Serializable] public class TextureSpec { public string kind; public string path; public string color_space; public string sha256; public string source_path; }
+     [Serializable] public class MaterialSpec { public string id; public float[] base_color_rgba; public float metallic; public float roughness; public TextureSpec[] textures; }
+-    [Serializable] public class TextureObserved { public string material_id; public string kind; public string path; public string sha256; public bool srgb; public string texture_type; public string material_texture_path; public bool normal_keyword; public bool convert_to_normal; }
++    [Serializable] public class TextureObserved { public string material_id; public string kind; public string path; public string sha256; public bool srgb; public string texture_type; public string material_texture_path; public bool normal_keyword; public bool convert_to_normal; public bool has_texture; }
+     [Serializable] public class ModuleSpec { public string id; public string name; public string[] material_ids; }
+     [Serializable] public class SocketSpec { public string id; public string name; public float[] position_m; }
+     [Serializable] public class AssetSpec
+@@ -302,19 +302,30 @@
+                             Math.Abs(m.GetFloat("_Metallic") - spec.metallic) > .0001f ||
+                             Math.Abs(m.GetFloat("_Smoothness") - (1-spec.roughness)) > .0001f)
+                             Fail("material", a.id, spec.id, "changed material parameters");
+-                        foreach (var texture in spec.textures ?? Array.Empty<TextureSpec>())
++                        var supplied = spec.textures ?? Array.Empty<TextureSpec>();
++                        bool expectedNormal = supplied.Any(x => x.kind == "normal");
++                        foreach (var role in new[]{"base_color", "normal"})
+                         {
+-                            var ti = AssetImporter.GetAtPath(texture.path) as TextureImporter;
+-                            var bound = m.GetTexture(texture.kind == "normal" ? "_BumpMap" : "_BaseMap");
+-                            var observedTexture = new TextureObserved {material_id=spec.id,kind=texture.kind,path=texture.path,
+-                                sha256=File.Exists(texture.path)?Hash(texture.path):"",srgb=ti!=null&&ti.sRGBTexture,
+-                                texture_type=ti==null?"missing":ti.textureType.ToString(),material_texture_path=AssetDatabase.GetAssetPath(bound),normal_keyword=m.IsKeywordEnabled("_NORMALMAP"),convert_to_normal=ti!=null&&ti.convertToNormalmap};
++                            var texture = supplied.SingleOrDefault(x => x.kind == role);
++                            string path = texture == null ? "" : texture.path;
++                            var ti = string.IsNullOrEmpty(path) ? null : AssetImporter.GetAtPath(path) as TextureImporter;
++                            var bound = m.GetTexture(role == "normal" ? "_BumpMap" : "_BaseMap");
++                            var observedTexture = new TextureObserved {material_id=spec.id,kind=role,path=path,
++                                sha256=File.Exists(path)?Hash(path):"",srgb=ti!=null&&ti.sRGBTexture,
++                                texture_type=ti==null?"missing":ti.textureType.ToString(),material_texture_path=AssetDatabase.GetAssetPath(bound),
++                                normal_keyword=m.IsKeywordEnabled("_NORMALMAP"),convert_to_normal=ti!=null&&ti.convertToNormalmap,has_texture=bound!=null};
+                             textures.Add(observedTexture);
+-                            if (observedTexture.sha256 != texture.sha256 || ti == null ||
+-                                ti.sRGBTexture != (texture.kind == "base_color") || ti.convertToNormalmap ||
+-                                ti.textureType != (texture.kind == "normal" ? TextureImporterType.NormalMap : TextureImporterType.Default) ||
+-                                observedTexture.material_texture_path != texture.path || texture.kind == "normal" && !observedTexture.normal_keyword)
+-                                Fail("texture",a.id,spec.id+":"+texture.kind,"changed bytes/import settings/material reference");
++                            if (observedTexture.normal_keyword != expectedNormal)
++                                Fail("texture",a.id,spec.id+":"+role,"normal keyword differs from declared intent");
++                            if (texture == null)
++                            {
++                                if (bound != null) Fail("texture",a.id,spec.id+":"+role,"undeclared texture reference");
++                            }
++                            else if (observedTexture.sha256 != texture.sha256 || ti == null || bound == null ||
++                                ti.sRGBTexture != (role == "base_color") || ti.convertToNormalmap ||
++                                ti.textureType != (role == "normal" ? TextureImporterType.NormalMap : TextureImporterType.Default) ||
++                                observedTexture.material_texture_path != texture.path)
++                                Fail("texture",a.id,spec.id+":"+role,"changed bytes/import settings/material reference");
+                         }
+                     }
+                     var binding = instance.GetComponent<PrefabBinding>();
+--- unity_package/Tests/Editor/ForensicsTests.cs
++++ unity_package/Tests/Editor/ForensicsTests.cs
+@@ -12,6 +12,35 @@
+ {
+     public class ForensicsTests
+     {
++        [Test] public void UndeclaredTextureBindingsAreDetected()
++        {
++            var original=PolyForgeBuilder.ReadRequest();
++            var request=JsonUtility.FromJson<BuildRequest>(JsonUtility.ToJson(original));
++            var asset=request.assets[0];var spec=asset.materials[0];spec.textures=Array.Empty<TextureSpec>();
++            var image=new Texture2D(2,2);
++            try
++            {
++                PolyForgeBuilder.Build(request);
++                var m=AssetDatabase.LoadAssetAtPath<Material>(PolyForgeBuilder.MaterialPath(asset.id,spec.id));
++                Assert.That(PolyForgeBuilder.Observe(request).issues,Is.Empty);
++                foreach(var role in new[]{"base_color","normal","normalKeyword"})
++                {
++                    m.SetTexture("_BaseMap",null);m.SetTexture("_BumpMap",null);m.DisableKeyword("_NORMALMAP");
++                    if(role=="normalKeyword")m.EnableKeyword("_NORMALMAP");
++                    else m.SetTexture(role=="normal"?"_BumpMap":"_BaseMap",image);
++                    var report=PolyForgeBuilder.Observe(request);
++                    Assert.That(report.issues.Any(x=>x.category=="texture"&&x.asset_id==asset.id),Is.True,role);
++                    if(role!="normalKeyword")
++                    {
++                        var observed=report.objects.Single(x=>x.id==asset.id).textures.Single(x=>x.material_id==spec.id&&x.kind==role);
++                        Assert.That(observed.has_texture,Is.True,"Actual in-memory Texture2D reference");
++                        Assert.That(observed.material_texture_path,Is.Empty,"Transient texture has no asset path");
++                    }
++                }
++            }
++            finally {Object.DestroyImmediate(image);PolyForgeBuilder.Build(original);}
++        }
++
+         [TestCase("srgb")][TestCase("normalType")][TestCase("normalKeyword")][TestCase("reference")][TestCase("bytes")]
+         public void SuppliedTextureFaultsAreDetected(string fault)
+         {

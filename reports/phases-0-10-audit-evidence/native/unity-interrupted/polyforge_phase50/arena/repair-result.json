@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "repair_status": "COMMITTED",
+    "plan": {
+      "schema_version": "1.0.0",
+      "input_digest": "8ab363933014725a2760898c4fdef256e98000d46235b3bfcf23b0370e196c13",
+      "issue_id": "ISSUE-b271977d5c56",
+      "category": "scale",
+      "asset_id": "robot_a",
+      "operation": "rebuild_native_binding"
+    },
+    "remaining_issues": [
+      {
+        "category": "material",
+        "asset_id": "crate_a",
+        "expected": "crate_a:module:body",
+        "actual": "lost material reference"
+      },
+      {
+        "category": "scene_instance",
+        "asset_id": "crate_a",
+        "expected": "matching material bindings",
+        "actual": "asset:crate_a: scene material override"
+      },
+      {
+        "category": "scene_instance",
+        "asset_id": "crate_a",
+        "expected": "matching material bindings",
+        "actual": "asset:crate_a: scene material override"
+      }
+    ]
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": null,
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": null,
+  "artifact_ids": [],
+  "evidence_paths": [
+    "transactions/tx-726a476694324b22/journal.json",
+    "transactions/tx-726a476694324b22/after.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": "tx-726a476694324b22",
+  "evaluated_test_status": "NOT_RUN",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

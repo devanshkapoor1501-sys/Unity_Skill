@@ -1,0 +1,787 @@
+....................FF......F........F...........FFFFF.FFFFFF........... [ 66%]
+...............................FF...                                     [100%]
+================================== FAILURES ===================================
+____ test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_supplied_textures_are_cop0')
+
+    def test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance(tmp_path):
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.unity import bridge
+    
+>       model = texture_model(tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_unity_gaps.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_audit_unity_gaps.py:108: in texture_model
+    init_workspace(tmp_path, "simple_arena")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_supplied_textures_are_cop0')
+template = 'simple_arena'
+
+    def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Result:
+        """Create only a new explicitly named directory; never overwrite existing data."""
+        if template != "simple_arena":
+            raise InputError("Only the simple_arena template is available")
+        if ".." in target.parts:
+            raise InputError("Workspace initialization cannot use parent traversal")
+        target = target.absolute()
+        parent = WorkspacePolicy(target.parent)
+        target = parent.path(target)
+        if target.exists():
+>           raise InputError("Initialization requires a new directory; existing paths are preserved")
+E           polyforge.contracts.validation.InputError: Initialization requires a new directory; existing paths are preserved
+
+polyforge\workspace.py:48: InputError
+_____________ test_texture_dry_run_is_supported_and_has_no_writes _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_texture_dry_run_is_suppor0')
+
+    def test_texture_dry_run_is_supported_and_has_no_writes(tmp_path):
+        from polyforge.blender.build import build_assets
+>       model = texture_model(tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_unity_gaps.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_audit_unity_gaps.py:108: in texture_model
+    init_workspace(tmp_path, "simple_arena")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_texture_dry_run_is_suppor0')
+template = 'simple_arena'
+
+    def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Result:
+        """Create only a new explicitly named directory; never overwrite existing data."""
+        if template != "simple_arena":
+            raise InputError("Only the simple_arena template is available")
+        if ".." in target.parts:
+            raise InputError("Workspace initialization cannot use parent traversal")
+        target = target.absolute()
+        parent = WorkspacePolicy(target.parent)
+        target = parent.path(target)
+        if target.exists():
+>           raise InputError("Initialization requires a new directory; existing paths are preserved")
+E           polyforge.contracts.validation.InputError: Initialization requires a new directory; existing paths are preserved
+
+polyforge\workspace.py:48: InputError
+_ test_observed_report_rejects_stale_identity_missing_guid_and_socket_position _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_observed_report_rejects_s0')
+
+    def test_observed_report_rejects_stale_identity_missing_guid_and_socket_position(tmp_path: Path):
+        import copy
+    
+        from polyforge.unity.evidence import reconcile_report
+    
+        request = {
+            "schema_version": "1.0.0",
+            "input_digest": "f" * 64,
+            "assets": [
+                {
+                    "id": "robot",
+                    "bounds_m": [1, 2, 3],
+                    "sockets": [{"id": "front", "position_m": [0, 1, 1.5]}],
+                    "materials": [{"id": "blue"}],
+                }
+            ],
+        }
+        raw = {
+            "schema_version": "1.0.0",
+            "input_digest": "f" * 64,
+            "unity_version": "6000.6.3f1",
+            "verification_scope": "UNITY_EDITOR_STATIC",
+            "status": "PASS",
+            "issues": [],
+            "scene_guids": ["a" * 32, "b" * 32],
+            "scene_object_count": 12,
+            "objects": [
+                {
+                    "id": "robot",
+                    "guid": "a" * 32,
+                    "prefab_guid": "b" * 32,
+                    "prefab_id": "Assets/PolyForgeGenerated/Prefabs/robot.prefab",
+                    "bounds_m": [1, 2, 3],
+                    "socket_ids": ["front"],
+                    "sockets": [{"id": "front", "position_m": [0, 1, 1.5]}],
+                    "material_ids": ["blue"],
+                    "transform_count": 3,
+                    "nodes": [
+                        {
+                            "id": "front",
+                            "kind": "socket",
+                            "path": "robot/front",
+                            "guid": "a" * 32,
+                            "local_id": 123,
+                            "component": "Transform",
+                        }
+                    ],
+                }
+            ],
+        }
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:164: AssertionError
+__ test_project_preflight_denies_busy_editor_and_hardlinked_generated_output __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_project_preflight_denies_0')
+
+    def test_project_preflight_denies_busy_editor_and_hardlinked_generated_output(tmp_path: Path):
+        from polyforge.unity.bootstrap import check_project_idle
+    
+        p = WorkspacePolicy(tmp_path)
+        busy = tmp_path / "UnityProject/Temp/UnityLockfile"
+        busy.parent.mkdir(parents=True)
+        busy.write_text("busy")
+        with pytest.raises(InputError):
+            check_project_idle(p)
+        busy.unlink()
+        original = tmp_path / "original"
+        original.write_text("untouched")
+        target = tmp_path / "UnityProject/Assets/PolyForgeGenerated/outside.fbx"
+        target.parent.mkdir(parents=True)
+>       target.hardlink_to(original)
+
+tests\test_phase5_contracts.py:337: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_project_preflight_denies_0/UnityProject/Assets/PolyForgeGenerated/outside.fbx')
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_project_preflight_denies_0/original')
+
+    def hardlink_to(self, target):
+        """
+        Make this path a hard link pointing to the same file as *target*.
+    
+        Note the order of arguments (self, target) is the reverse of os.link's.
+        """
+        if not hasattr(os, "link"):
+            raise NotImplementedError("os.link() not available on this system")
+>       os.link(target, self)
+E       PermissionError: [WinError 5] Access is denied: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\pytest-unity-interim\\test_project_preflight_denies_0\\original' -> 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\pytest-unity-interim\\test_project_preflight_denies_0\\UnityProject\\Assets\\PolyForgeGenerated\\outside.fbx'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1396: PermissionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change0-scene] _
+
+change = {'scene_guids': []}, category = 'scene'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E049F206C0>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change1-scene] _
+
+change = {'scene_guids': ['aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa']}
+category = 'scene'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E049F217D0>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change2-scene] _
+
+change = {'scene_object_count': 0}, category = 'scene'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E049F20A00>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change3-scene] _
+
+change = {'scene_object_count': 23}, category = 'scene'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E049F21700>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change4-worker] _
+
+change = {'status': 'FAIL'}, category = 'worker'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E04A01FAC0>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_native_scene_counts_faults_and_incomplete_payloads_fail[change6-collider] _
+
+change = {'issues': [{'actual': 'none', 'asset_id': 'robot', 'category': 'collider', 'expected': 'box'}]}
+category = 'collider'
+
+    @pytest.mark.parametrize(
+        "change,category",
+        [
+            ({"scene_guids": []}, "scene"),
+            ({"scene_guids": ["a" * 32, "a" * 32]}, "scene"),
+            ({"scene_object_count": 0}, "scene"),
+            ({"scene_object_count": 23}, "scene"),
+            ({"status": "FAIL"}, "worker"),
+            ({"objects": None}, "contract"),
+            (
+                {
+                    "issues": [
+                        {
+                            "category": "collider",
+                            "asset_id": "robot",
+                            "expected": "box",
+                            "actual": "none",
+                        }
+                    ]
+                },
+                "collider",
+            ),
+        ],
+    )
+    def test_native_scene_counts_faults_and_incomplete_payloads_fail(change, category):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+        raw.update(change)
+        result = reconcile_report(request, raw)
+        assert result["status"] == "FAIL"
+>       assert any(x["category"] == category for x in result["issues"])
+E       assert False
+E        +  where False = any(<generator object test_native_scene_counts_faults_and_incomplete_payloads_fail.<locals>.<genexpr> at 0x000002E04A01CD40>)
+
+tests\test_phase5_contracts.py:508: AssertionError
+_ test_semantic_node_reference_mutations_are_detected[guid-cccccccccccccccccccccccccccccccc] _
+
+field = 'guid', value = 'cccccccccccccccccccccccccccccccc'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("guid", "c" * 32),
+            ("local_id", 0),
+            ("local_id", "123"),
+            ("path", ""),
+            ("component", "MissingRenderer"),
+        ],
+    )
+    def test_semantic_node_reference_mutations_are_detected(field, value):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:525: AssertionError
+_______ test_semantic_node_reference_mutations_are_detected[local_id-0] _______
+
+field = 'local_id', value = 0
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("guid", "c" * 32),
+            ("local_id", 0),
+            ("local_id", "123"),
+            ("path", ""),
+            ("component", "MissingRenderer"),
+        ],
+    )
+    def test_semantic_node_reference_mutations_are_detected(field, value):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:525: AssertionError
+______ test_semantic_node_reference_mutations_are_detected[local_id-123] ______
+
+field = 'local_id', value = '123'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("guid", "c" * 32),
+            ("local_id", 0),
+            ("local_id", "123"),
+            ("path", ""),
+            ("component", "MissingRenderer"),
+        ],
+    )
+    def test_semantic_node_reference_mutations_are_detected(field, value):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:525: AssertionError
+_________ test_semantic_node_reference_mutations_are_detected[path-] __________
+
+field = 'path', value = ''
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("guid", "c" * 32),
+            ("local_id", 0),
+            ("local_id", "123"),
+            ("path", ""),
+            ("component", "MissingRenderer"),
+        ],
+    )
+    def test_semantic_node_reference_mutations_are_detected(field, value):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:525: AssertionError
+_ test_semantic_node_reference_mutations_are_detected[component-MissingRenderer] _
+
+field = 'component', value = 'MissingRenderer'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("guid", "c" * 32),
+            ("local_id", 0),
+            ("local_id", "123"),
+            ("path", ""),
+            ("component", "MissingRenderer"),
+        ],
+    )
+    def test_semantic_node_reference_mutations_are_detected(field, value):
+        from polyforge.unity.evidence import reconcile_report
+    
+        request, raw = native_contract_fixture()
+>       assert reconcile_report(request, raw)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_contracts.py:525: AssertionError
+_________ test_all_six_mutations_have_explicit_independent_scenarios __________
+
+    def test_all_six_mutations_have_explicit_independent_scenarios():
+        from polyforge.scenarios.arena_oracle import MUTANT_SCENARIOS, evaluate, validate_trace
+    
+>       assert MUTANT_SCENARIOS == MUTANTS
+E       AssertionError: assert {'collision_d...patrols', ...} == {'collision_d...patrols', ...}
+E         
+E         Omitting 6 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'obstacle_collision_disabled': 'obstacle_collision'}
+E         Use -v to get more diff
+
+tests\test_phase9_mutations.py:89: AssertionError
+__ test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant ___
+
+trace = {'arena_half_extents': [10, 10], 'baseline_enemy_positions': [{'id': 'enemy', 'position': [3, 0, 3]}], 'baseline_player_position': [-3, 0, -3], 'events': [], ...}
+game = {'enemies': [{'id': 'enemy'}], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'main', 'seed': 42}
+identifier = 'obstacle_collision', ticks = 1500
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int
+    ) -> None:
+        """Malformed/unexecuted mutants must not count as detected regressions."""
+        canonical_digest(trace)
+        expected_case = {
+            "keyboard_input": "player_moves",
+            "keyboard_restart": "restart_resets",
+            **MUTANT_SCENARIOS,
+        }.get(identifier, identifier)
+        mutant = identifier in MUTANT_SCENARIOS
+        purpose = (
+            "MUTANT" if mutant else "INPUT_ADAPTER" if identifier.startswith("keyboard_") else "NOMINAL"
+        )
+        try:
+            if (
+                trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["scenario_id"] != expected_case
+                or trace["purpose"] != purpose
+                or trace["seed"] != game["seed"]
+                or (mutant and trace["mutant"] != identifier)
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-6)
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+                or len(trace["samples"]) < 2
+            ):
+                raise ValueError("identity/role/frame schedule mismatch")
+            frames = [s["frame"] for s in trace["samples"]]
+            if any(type(f) is not int for f in frames) or any(
+                a >= b for a, b in zip(frames, frames[1:], strict=False)
+            ):
+                raise ValueError("nonmonotonic observed frames")
+            if frames[-1] - frames[0] != trace["frames_executed"]:
+                raise ValueError("frame count mismatch")
+            enemy_ids = {e["id"] for e in game["enemies"]}
+    
+            def positions(records: Any) -> None:
+                if (
+                    not isinstance(records, list)
+                    or len(records) != len(enemy_ids)
+                    or {e["id"] for e in records} != enemy_ids
+                ):
+                    raise ValueError("missing/duplicate semantic enemy IDs")
+                for record in records:
+                    vector(record["position"])
+    
+            def vector(value: Any) -> None:
+                if (
+                    not isinstance(value, list)
+                    or len(value) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in value)
+                ):
+                    raise ValueError("invalid position vector")
+    
+            if not isinstance(trace["events"], list) or any(
+                not isinstance(e["name"], str) for e in trace["events"]
+            ):
+                raise ValueError("invalid events")
+            if expected_case == "wall_collision":
+                half = trace["arena_half_extents"]
+                if (
+                    not isinstance(half, list)
+                    or len(half) != 2
+                    or any(type(n) not in {int, float} or not math.isfinite(n) or n <= 0 for n in half)
+                ):
+                    raise ValueError("invalid arena bounds")
+                for key in ("player_radius", "wall_thickness"):
+                    if type(trace[key]) not in {int, float} or not 0 < trace[key] < min(half):
+                        raise ValueError("invalid collision dimensions")
+            if expected_case == "obstacle_collision":
+>               obstacle = game["obstacles"][0]
+                           ^^^^^^^^^^^^^^^^^
+E               KeyError: 'obstacles'
+
+polyforge\scenarios\arena_oracle.py:103: KeyError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-interim/test_score_counts_all_six_actu0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002E049EF5D60>
+
+    def test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant(tmp_path, monkeypatch):
+        from polyforge.unity.game import score_telemetry
+    
+        p = populated(tmp_path, monkeypatch)
+>       scored = score_telemetry(p, "runs/probe", GAME)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase9_mutations.py:131: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\game.py:285: in score_telemetry
+    validate_trace(trace, game, identifier, ticks)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+trace = {'arena_half_extents': [10, 10], 'baseline_enemy_positions': [{'id': 'enemy', 'position': [3, 0, 3]}], 'baseline_player_position': [-3, 0, -3], 'events': [], ...}
+game = {'enemies': [{'id': 'enemy'}], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'main', 'seed': 42}
+identifier = 'obstacle_collision', ticks = 1500
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int
+    ) -> None:
+        """Malformed/unexecuted mutants must not count as detected regressions."""
+        canonical_digest(trace)
+        expected_case = {
+            "keyboard_input": "player_moves",
+            "keyboard_restart": "restart_resets",
+            **MUTANT_SCENARIOS,
+        }.get(identifier, identifier)
+        mutant = identifier in MUTANT_SCENARIOS
+        purpose = (
+            "MUTANT" if mutant else "INPUT_ADAPTER" if identifier.startswith("keyboard_") else "NOMINAL"
+        )
+        try:
+            if (
+                trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["scenario_id"] != expected_case
+                or trace["purpose"] != purpose
+                or trace["seed"] != game["seed"]
+                or (mutant and trace["mutant"] != identifier)
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-6)
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+                or len(trace["samples"]) < 2
+            ):
+                raise ValueError("identity/role/frame schedule mismatch")
+            frames = [s["frame"] for s in trace["samples"]]
+            if any(type(f) is not int for f in frames) or any(
+                a >= b for a, b in zip(frames, frames[1:], strict=False)
+            ):
+                raise ValueError("nonmonotonic observed frames")
+            if frames[-1] - frames[0] != trace["frames_executed"]:
+                raise ValueError("frame count mismatch")
+            enemy_ids = {e["id"] for e in game["enemies"]}
+    
+            def positions(records: Any) -> None:
+                if (
+                    not isinstance(records, list)
+                    or len(records) != len(enemy_ids)
+                    or {e["id"] for e in records} != enemy_ids
+                ):
+                    raise ValueError("missing/duplicate semantic enemy IDs")
+                for record in records:
+                    vector(record["position"])
+    
+            def vector(value: Any) -> None:
+                if (
+                    not isinstance(value, list)
+                    or len(value) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in value)
+                ):
+                    raise ValueError("invalid position vector")
+    
+            if not isinstance(trace["events"], list) or any(
+                not isinstance(e["name"], str) for e in trace["events"]
+            ):
+                raise ValueError("invalid events")
+            if expected_case == "wall_collision":
+                half = trace["arena_half_extents"]
+                if (
+                    not isinstance(half, list)
+                    or len(half) != 2
+                    or any(type(n) not in {int, float} or not math.isfinite(n) or n <= 0 for n in half)
+                ):
+                    raise ValueError("invalid arena bounds")
+                for key in ("player_radius", "wall_thickness"):
+                    if type(trace[key]) not in {int, float} or not 0 < trace[key] < min(half):
+                        raise ValueError("invalid collision dimensions")
+            if expected_case == "obstacle_collision":
+                obstacle = game["obstacles"][0]
+                if trace["obstacle_id"] != obstacle["id"] or trace["obstacle_asset_id"] != obstacle["asset_id"]:
+                    raise ValueError("wrong frozen obstacle identity")
+                for field in ("center_m", "size_m"):
+                    observed = trace["obstacle_" + field]
+                    vector(observed)
+                    if any(not math.isclose(n, w, rel_tol=.02, abs_tol=.002)
+                           for n, w in zip(observed, obstacle[field], strict=True)):
+                        raise ValueError("obstacle geometry differs from frozen contract")
+                if type(trace["player_radius"]) not in {int, float} or not 0 < trace["player_radius"] < 5:
+                    raise ValueError("invalid player radius")
+            if expected_case == "restart_resets":
+                vector(trace["baseline_player_position"])
+                positions(trace["baseline_enemy_positions"])
+            for sample in trace["samples"]:
+                positions(sample["enemy_positions"])
+                if (
+                    len(sample["player_position"]) != 3
+                    or sample["state"] not in {"RUNNING", "WON", "FAILED"}
+                    or type(sample["health"]) is not int
+                    or not 0 <= sample["health"] <= 100
+                    or type(sample["round"]) is not int
+                    or sample["round"] < 1
+                    or not 0 <= sample["elapsed_seconds"] <= 30.1
+                    or {e["id"] for e in sample["enemy_positions"]}
+                    != {e["id"] for e in game["enemies"]}
+                ):
+                    raise ValueError("invalid observed state")
+                for position in [
+                    sample["player_position"],
+                    *[e["position"] for e in sample["enemy_positions"]],
+                ]:
+                    if len(position) != 3 or any(
+                        type(n) not in {int, float} or not math.isfinite(n) for n in position
+                    ):
+                        raise ValueError("invalid position vector")
+        except (KeyError, TypeError, ValueError) as exc:
+>           raise InputError(
+                "Invalid gameplay telemetry: " + str(exc),
+                kind=ErrorKind.CONTRACT_FAILURE,
+                code="PF-GAME-TELEMETRY",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Invalid gameplay telemetry: 'obstacles'
+
+polyforge\scenarios\arena_oracle.py:140: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_unity_gaps.py::test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance
+FAILED tests/test_audit_unity_gaps.py::test_texture_dry_run_is_supported_and_has_no_writes
+FAILED tests/test_phase5_contracts.py::test_observed_report_rejects_stale_identity_missing_guid_and_socket_position
+FAILED tests/test_phase5_contracts.py::test_project_preflight_denies_busy_editor_and_hardlinked_generated_output
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change0-scene]
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change1-scene]
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change2-scene]
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change3-scene]
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change4-worker]
+FAILED tests/test_phase5_contracts.py::test_native_scene_counts_faults_and_incomplete_payloads_fail[change6-collider]
+FAILED tests/test_phase5_contracts.py::test_semantic_node_reference_mutations_are_detected[guid-cccccccccccccccccccccccccccccccc]
+FAILED tests/test_phase5_contracts.py::test_semantic_node_reference_mutations_are_detected[local_id-0]
+FAILED tests/test_phase5_contracts.py::test_semantic_node_reference_mutations_are_detected[local_id-123]
+FAILED tests/test_phase5_contracts.py::test_semantic_node_reference_mutations_are_detected[path-]
+FAILED tests/test_phase5_contracts.py::test_semantic_node_reference_mutations_are_detected[component-MissingRenderer]
+FAILED tests/test_phase9_mutations.py::test_all_six_mutations_have_explicit_independent_scenarios
+FAILED tests/test_phase9_mutations.py::test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant
+17 failed, 91 passed in 13.37s

@@ -7,6 +7,7 @@ from uuid import uuid4
 from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
@@ -231,14 +232,20 @@ def import_strip(inputs: dict[str, Any], context: RunContext) -> Result:
             policy,
             relative + "/artifacts.json",
             {
-                "artifacts": [
-                    {
-                        "relative_path": p.relative_to(policy.root).as_posix(),
-                        "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
-                        "bytes": p.stat().st_size,
-                    }
-                    for p in registered
-                ]
+                "artifacts": complete_records(
+                    policy,
+                    run_id,
+                    "S5",
+                    [
+                        {
+                            "relative_path": p.relative_to(policy.root).as_posix(),
+                            "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
+                            "bytes": p.stat().st_size,
+                        }
+                        for p in registered
+                    ],
+                    input_digest=input_digest,
+                )
             },
         )
         return Result(

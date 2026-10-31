@@ -1,0 +1,381 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 568 items / 12 deselected / 556 selected
+
+tests\test_animation.py .........                                        [  1%]
+tests\test_assets.py ......                                              [  2%]
+tests\test_audit_artifact_records.py .............                       [  5%]
+tests\test_audit_probe_lock.py ............                              [  7%]
+tests\test_audit_unity_gaps.py ....................................      [ 13%]
+tests\test_audit_workforce_gaps.py ............                          [ 15%]
+tests\test_contract_boundaries.py .................                      [ 18%]
+tests\test_foundation.py .................                               [ 21%]
+tests\test_phase10_completion.py ................                        [ 24%]
+tests\test_phase10_knowledge.py ...............................          [ 30%]
+tests\test_phase10_mcp.py ................                               [ 33%]
+tests\test_phase10_probes.py ................                            [ 36%]
+tests\test_phase10_skill.py .........                                    [ 37%]
+tests\test_phase1_cli.py .....                                           [ 38%]
+tests\test_phase1_failures.py ...........                                [ 40%]
+tests\test_phase1_policy.py ......                                       [ 41%]
+tests\test_phase1_review.py ....                                         [ 42%]
+tests\test_phase1_runner.py .......                                      [ 43%]
+tests\test_phase2_boundaries.py ..............                           [ 46%]
+tests\test_phase2_contracts.py ..............                            [ 48%]
+tests\test_phase3_cli.py ......                                          [ 49%]
+tests\test_phase3_recipes.py .......                                     [ 51%]
+tests\test_phase4_contracts.py ...........                               [ 53%]
+tests\test_phase5_contracts.py ......................................... [ 60%]
+.                                                                        [ 60%]
+tests\test_phase6_contracts.py .....................................     [ 67%]
+tests\test_phase7_review.py .........                                    [ 68%]
+tests\test_phase8_review.py ...............                              [ 71%]
+tests\test_phase9_amendments.py ........                                 [ 73%]
+tests\test_phase9_diagnostics.py ............................            [ 78%]
+tests\test_phase9_forensic_execution.py ...                              [ 78%]
+tests\test_phase9_mutations.py .....                                     [ 79%]
+tests\test_phase9_recovery.py .......................................... [ 87%]
+                                                                         [ 87%]
+tests\test_phase9_review.py .........................                    [ 91%]
+tests\test_phase9_routing.py ......                                      [ 92%]
+tests\test_phase9_sprite_gate.py .F.......                               [ 94%]
+tests\test_sprites.py ....F                                              [ 95%]
+tests\test_windows_alias_paths.py ..                                     [ 95%]
+tests\test_workforce.py F............F......F...                         [ 99%]
+tests\test_workforce_crash.py .                                          [100%]
+
+================================== FAILURES ===================================
+_____ test_required_sprite_review_vetoes_before_native_import[workforce] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/full-temp/test_required_sprite_review_ve1')
+entry = 'workforce'
+
+    @pytest.mark.parametrize("entry", ["direct", "workforce"])
+    def test_required_sprite_review_vetoes_before_native_import(tmp_path, entry):
+        from polyforge.capabilities.dispatch import execute
+        from polyforge.workforce.orchestrator import run_task
+    
+        p, inputs = sprite_fixture(tmp_path)
+        if entry == "direct":
+            result = execute("sprite.unity.strip.v1", inputs, RunContext(tmp_path))
+        else:
+>           result = run_task(
+                tmp_path,
+                {
+                    "schema_version": "1.0.0",
+                    "brief": "Import these sprites",
+                    "task_class": "CREATE_ASSET",
+                    "domain_tags": ["unity", "2d"],
+                    "feature_ids": ["control_2d"],
+                    "capability_id": "sprite.unity.strip.v1",
+                    "input": inputs,
+                },
+            )
+
+tests\test_phase9_sprite_gate.py:65: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:112: in run_task
+    def run_task(
+               ^^^
+polyforge\workforce\router.py:161: in plan_task
+    validate_schema(jobs[-1], "job_ticket.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW_GATES', '...e requirement review', ...}, 'context_digest': 'af420874a38ed4f9243d3f401d90a8cab60d17a5a8dbe8b5d47cbe12f808d75f', ...}
+name = 'job_ticket.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $[context]: Additional properties are not allowed ('input_digest' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+_______ test_native_2d_missing_license_and_dry_run_have_no_side_effects _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/full-temp/test_native_2d_missing_license0')
+
+    def test_native_2d_missing_license_and_dry_run_have_no_side_effects(tmp_path):
+        import json
+    
+        from polyforge.capabilities.protocol import RunContext
+        from polyforge.sprites.images import atlas
+        from polyforge.sprites.integration import import_strip
+    
+        frames = [sample(i) for i in range(6)]
+        for i, frame in enumerate(frames):
+            (tmp_path / f"frame-{i}.png").write_bytes(frame)
+        (tmp_path / "atlas.png").write_bytes(atlas(frames))
+        metadata = {
+            "schema_version": "1.0.0",
+            "asset_id": "robot_a",
+            "frame_size": 32,
+            "frame_count": 6,
+            "pixels_per_unit": 64,
+            "fps": 6,
+            "pivot": [0.5, 0.1],
+            "trim": "NONE",
+            "order": list(range(6)),
+            "frame_sha256": [hashlib.sha256(f).hexdigest() for f in frames],
+            "source_sha256": "a" * 64,
+            "framing": "FIXED_ORTHOGRAPHIC",
+        }
+        (tmp_path / "atlas.json").write_text(json.dumps(metadata))
+        request = {
+            "schema_version": "1.0.0",
+            "asset_id": "robot_a",
+            "source_kind": "DIRECT_SPRITES",
+            "atlas_file": "atlas.png",
+            "metadata_file": "atlas.json",
+            "frame_files": [f"frame-{i}.png" for i in range(6)],
+        }
+        before = {p.name: p.read_bytes() for p in tmp_path.iterdir()}
+        with pytest.raises(InputError):
+            import_strip(request, RunContext(tmp_path))
+        assert {p.name: p.read_bytes() for p in tmp_path.iterdir()} == before
+        from polyforge.workforce.router import plan_task
+    
+        task = {
+            "schema_version": "1.0.0",
+            "brief": "Use these six existing sprites in a controllable Unity 2D fixture.",
+            "task_class": "CREATE_ASSET",
+            "domain_tags": ["unity", "2d"],
+            "feature_ids": ["control_2d"],
+            "capability_id": "sprite.unity.strip.v1",
+            "input": request,
+        }
+>       plan = plan_task(task, workspace=tmp_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_sprites.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:161: in plan_task
+    validate_schema(jobs[-1], "job_ticket.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW_GATES', '...e requirement review', ...}, 'context_digest': '71e481bce97de675509a89ea265e882e11750795fb3e8ee9054cfe6aa7bfaf13', ...}
+name = 'job_ticket.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $[context]: Additional properties are not allowed ('input_digest' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+____ test_minimal_routing_preserves_brief_and_never_forces_robot_or_unity _____
+
+    def test_minimal_routing_preserves_brief_and_never_forces_robot_or_unity():
+        from polyforge.workforce.router import plan_task
+    
+        for task in ["EXPLAIN", "INSPECT", "CREATE_ASSET"]:
+            value = request(task)
+>           plan = plan_task(value)
+                   ^^^^^^^^^^^^^^^^
+
+tests\test_workforce.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:161: in plan_task
+    validate_schema(jobs[-1], "job_ticket.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW_GATES', '...e requirement review', ...}, 'context_digest': '11a1dde2c8d9d2ba839dd95a3aeaef233758723d6bf68c55895fe7d30958ed1d', ...}
+name = 'job_ticket.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $[context]: Additional properties are not allowed ('input_digest' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+___________ test_dry_run_and_invalid_requests_cannot_create_ledger ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/full-temp/test_dry_run_and_invalid_reque0')
+
+    def test_dry_run_and_invalid_requests_cannot_create_ledger(tmp_path):
+        from polyforge.workforce.orchestrator import run_task
+    
+>       assert run_task(tmp_path, request(), dry_run=True).status == "PASS"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_workforce.py:161: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:112: in run_task
+    def run_task(
+               ^^^
+polyforge\workforce\router.py:161: in plan_task
+    validate_schema(jobs[-1], "job_ticket.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW_GATES', '...e requirement review', ...}, 'context_digest': '0866152fb1c09abf592222b4fc6d9ec858c88e2966ee5b956b36d3e56ed2b480', ...}
+name = 'job_ticket.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $[context]: Additional properties are not allowed ('input_digest' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+_______ test_animation_and_incompatible_task_routes_keep_explicit_scope _______
+
+    def test_animation_and_incompatible_task_routes_keep_explicit_scope():
+        from polyforge.workforce.router import plan_task
+    
+>       plan = plan_task(
+            request(
+                "ANIMATE",
+                capability_id="animation.robot.rig.v1",
+                domain_tags=["blender", "unity", "animation"],
+            )
+        )
+
+tests\test_workforce.py:295: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:161: in plan_task
+    validate_schema(jobs[-1], "job_ticket.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW_GATES', '...e requirement review', ...}, 'context_digest': '15e375bdde259d101e6f40846bb1312ff64daca983c9538943f8d29137c80b0c', ...}
+name = 'job_ticket.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $[context]: Additional properties are not allowed ('input_digest' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\audit-through-phase10\tests-final.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                  Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------------------------------------
+polyforge\animation\contract.py          41      0     30      0   100%
+polyforge\assets\contracts.py            82      3     40      3    95%   131, 153, 166
+polyforge\blender\interchange.py          9      0      4      0   100%
+polyforge\blender\recipes.py            146      8     78      8    93%   33, 43, 53, 61, 64, 239, 251, 314
+polyforge\contracts\__init__.py           0      0      0      0   100%
+polyforge\contracts\images.py            87      0     42      0   100%
+polyforge\contracts\manifest.py         152      7     72      6    94%   66-67, 75->78, 123, 159, 166, 169, 171
+polyforge\contracts\results.py           54      0     14      0   100%
+polyforge\contracts\validation.py        55      1     12      1    97%   45
+polyforge\host\stdio.py                 128      3     46      3    97%   55, 117, 168
+polyforge\knowledge\availability.py      97      7     40      8    89%   52, 58, 61, 63->50, 79, 115, 118, 128
+polyforge\knowledge\catalog.py           42      2     20      2    94%   32, 71
+polyforge\knowledge\probes.py            97      2     32      2    97%   51, 283
+polyforge\knowledge\router.py            68      0     36      0   100%
+polyforge\repairs\diagnostics.py        136      9     58      9    91%   81, 114, 128, 137, 147, 150, 379, 382, 392
+polyforge\review\acceptance.py           49      2     10      0    97%   35-36
+polyforge\review\amendments.py           52      1     24      1    97%   127
+polyforge\review\board.py               129      5     56      7    94%   71, 125, 153, 171, 178->180, 208, 210->216
+polyforge\review\sprite_source.py        59      3     24      3    93%   43, 46, 94
+polyforge\runner\artifacts.py            45      0     22      0   100%
+polyforge\runner\locks.py               110      7     32      6    91%   35, 71, 105-107, 113, 159-161, 169->exit
+polyforge\runner\workspace_lock.py       58      6     14      4    86%   24, 31, 35, 37-38, 57
+polyforge\scenarios\arena_oracle.py     115      7     84      7    93%   66, 85, 90, 98, 101, 192, 246
+polyforge\security\__init__.py            0      0      0      0   100%
+polyforge\security\paths.py              69      2     28      2    96%   36, 81
+polyforge\security\policy.py             40      0     14      0   100%
+polyforge\sprites\contracts.py            9      0      6      0   100%
+polyforge\sprites\images.py              35      0     12      0   100%
+polyforge\unity\bootstrap.py             89      9     36      7    86%   26->exit, 28->26, 38-43, 58, 61, 67, 73, 100
+polyforge\unity\evidence.py             150     15     92     30    77%   115->279, 157->160, 166, 171->178, 178->185, 195->197, 201->208, 208->219, 209->208, 209->218, 221, 231->115, 233-234, 253->272, 262->271, 272->231, 272->273, 279->287, 287->295, 293->295, 295->298, 296->295, 301->302, 301->313, 302->303, 311-312, 313->315, 319, 330->315, 338-345
+polyforge\unity\transactions.py         184     13    102     13    91%   43, 71, 82, 100, 104, 109, 118, 241, 270, 273, 295, 298, 313
+polyforge\unity\upgrade.py               63      1     28      2    97%   50->48, 60
+polyforge\workforce\ledger.py            98      1     34      2    98%   69->81, 76
+polyforge\workforce\models.py            41     15     20      1    54%   20, 99-120
+polyforge\workforce\permissions.py       31      0     14      0   100%
+polyforge\workforce\router.py            94     17     48      8    81%   55, 57, 95, 103, 105-109, 113, 115, 163-169
+---------------------------------------------------------------------------------
+TOTAL                                  2714    146   1224    135    92%
+Coverage JSON written to file coverage.json
+Required test coverage of 90.0% reached. Total coverage: 92.20%
+=========================== short test summary info ===========================
+FAILED tests/test_phase9_sprite_gate.py::test_required_sprite_review_vetoes_before_native_import[workforce]
+FAILED tests/test_sprites.py::test_native_2d_missing_license_and_dry_run_have_no_side_effects
+FAILED tests/test_workforce.py::test_minimal_routing_preserves_brief_and_never_forces_robot_or_unity
+FAILED tests/test_workforce.py::test_dry_run_and_invalid_requests_cannot_create_ledger
+FAILED tests/test_workforce.py::test_animation_and_incompatible_task_routes_keep_explicit_scope
+========== 5 failed, 551 passed, 12 deselected in 446.81s (0:07:26) ===========

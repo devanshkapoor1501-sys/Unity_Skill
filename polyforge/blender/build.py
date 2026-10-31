@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import threading
 from dataclasses import replace
 from pathlib import Path
@@ -17,6 +18,7 @@ from polyforge.config import load_config
 from polyforge.contracts.manifest import load_manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 
@@ -61,13 +63,6 @@ def build_assets(
         raise InputError("$.only: unknown asset ID")
     assets = {a["id"]: a for a in model.data["assets"]}
     materials = {m["id"]: m for m in model.data["materials"]}
-    if through in {"S3", "S4", "S5"} and any(m.get("textures") for m in materials.values()):
-        return failure(
-            ErrorKind.PRODUCER_FAILURE,
-            "PF-EXPORT-TEXTURES-NOT-IMPLEMENTED",
-            "Texture interchange is not implemented; color/metallic/roughness only",
-            status="NOT_RUN",
-        )
     prepared = {}
     for identifier, source in model.recipes.items():
         recipe = copy.deepcopy(source)
@@ -95,6 +90,16 @@ def build_assets(
                 selected.add(dependency)
                 pending.append(dependency)
     identifiers = [key for key in model.asset_order if key in selected]
+    texture_specs: list[dict[str, Any]] = [
+        {"id": key, "materials": [{"id": m} for m in assets[key]["material_ids"]]}
+        for key in identifiers
+    ]
+    if through in {"S3", "S4", "S5"}:
+        from polyforge.unity.bridge import copy_material_textures
+
+        copy_material_textures(
+            policy, policy.path(".polyforge/texture-preflight"), model, texture_specs, dry_run=True
+        )
     if through == "S5":
         from polyforge.unity.game import build_game
 
@@ -146,6 +151,12 @@ def build_assets(
         if result.status != "PASS":
             return replace(result, data={**result.data, "assets": results, "through": through})
     run_id = "build-" + uuid4().hex[:16]
+    if through == "S3":
+        from polyforge.unity.bridge import copy_material_textures
+
+        copy_material_textures(
+            policy, policy.path(f"runs/{run_id}/supplied-textures"), model, texture_specs
+        )
     summary = atomic_json(
         policy,
         f"runs/{run_id}/summary.json",
@@ -153,6 +164,7 @@ def build_assets(
             "input_digest": model.input_digest,
             "input_fingerprints": model.input_fingerprints,
             "through": through,
+            "supplied_textures": texture_specs if through == "S3" else [],
             "assets": results,
             "asset_bindings": {
                 identifier: {
@@ -167,10 +179,43 @@ def build_assets(
             "game_status": "PARTIAL",
         },
     )
+    texture_artifacts = []
+    if through == "S3":
+        for asset in texture_specs:
+            for material in asset["materials"]:
+                for texture in material["textures"]:
+                    relative = f"runs/{run_id}/supplied-textures/{texture['path']}"
+                    target = policy.path(relative)
+                    texture_artifacts.append(
+                        {
+                            "artifact_id": run_id + ":" + relative,
+                            "relative_path": relative,
+                            "sha256": texture["sha256"],
+                            "bytes": target.stat().st_size,
+                            "input_digest": model.input_digest,
+                            "source_path": texture["source_path"],
+                            "source_sha256": texture["sha256"],
+                        }
+                    )
+        if texture_artifacts:
+            summary_relative = summary.relative_to(policy.root).as_posix()
+            texture_artifacts.append(
+                {
+                    "artifact_id": run_id + ":summary.json",
+                    "relative_path": summary_relative,
+                    "sha256": hashlib.sha256(summary.read_bytes()).hexdigest(),
+                    "bytes": summary.stat().st_size,
+                    "input_digest": model.input_digest,
+                }
+            )
+            texture_artifacts = complete_records(
+                policy, run_id, "S3", texture_artifacts, input_digest=model.input_digest
+            )
+            atomic_json(policy, f"runs/{run_id}/artifacts.json", {"artifacts": texture_artifacts})
     return Result(
         run_id=run_id,
         input_digest=model.input_digest,
         data={"through": through, "assets": results, "later_stages": "NOT_RUN"},
-        artifact_ids=list(context.artifact_registry),
+        artifact_ids=[*context.artifact_registry, *[a["artifact_id"] for a in texture_artifacts]],
         evidence_paths=[str(summary.relative_to(policy.root)), *compiled.evidence_paths],
     )

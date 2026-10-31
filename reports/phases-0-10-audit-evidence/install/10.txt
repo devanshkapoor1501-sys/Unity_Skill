@@ -1,0 +1,12 @@
+usage: polyforge mcp serve [-h] --workspace PATH [--transport {stdio}]
+                           [--json] [--format {human,json}]
+
+Serve read-only catalog, references and descriptor validation through stdio
+MCP
+
+options:
+  -h, --help            show this help message and exit
+  --workspace PATH
+  --transport {stdio}
+  --json                Emit the versioned JSON result
+  --format {human,json}

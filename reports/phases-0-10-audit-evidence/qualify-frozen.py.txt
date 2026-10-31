@@ -1,0 +1,25 @@
+"""Run full qualification while verifying the engine identity stays fixed."""
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+from polyforge.workforce.router import engine_digest
+
+root = Path.cwd()
+base = root / '.tmp/audit-through-phase10'
+before = engine_digest()
+env = dict(os.environ, TEMP=str(root / '.tmp'), TMP=str(root / '.tmp'))
+args = [sys.executable, '-m', 'pytest', '--cov', '--cov-report=term-missing', '--cov-report=json',
+        '--junitxml=.tmp/audit-through-phase10/tests-frozen.xml',
+        '--basetemp', '.tmp/audit-through-phase10/frozen-temp']
+with (base / 'tests-frozen.txt').open('w', encoding='utf-8') as stream:
+    result = subprocess.run(args, cwd=root, env=env, stdout=stream, stderr=subprocess.STDOUT)
+after = engine_digest()
+record = {'argv': args, 'exit_code': result.returncode, 'engine_before': before,
+          'engine_after': after, 'source_unchanged': before == after}
+(base / 'source-freeze.json').write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')
+print(json.dumps(record, indent=2), flush=True)
+assert before == after, 'Runtime/native sources changed during qualification'
+assert result.returncode == 0
+raise SystemExit(subprocess.call([sys.executable, '-m', 'tools.check_coverage'], cwd=root, env=env))

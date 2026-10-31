@@ -2,15 +2,17 @@
 
 import threading
 import time
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
 from polyforge.capabilities.dispatch import execute
-from polyforge.capabilities.protocol import RunContext
-from polyforge.contracts.results import Result
-from polyforge.contracts.validation import InputError, canonical_digest, load_json
+from polyforge.contracts.results import ErrorKind, Result, failure
+from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
+from polyforge.runner.locks import FileLock
 from polyforge.runner.state import atomic_json
 from polyforge.workforce.ledger import JobLedger
+from polyforge.workforce.models import resume_plan
 from polyforge.workforce.permissions import authorize, execution_profile
 from polyforge.workforce.router import plan_task
 from polyforge.workforce.workers import require_approval, seal_candidate
@@ -23,17 +25,66 @@ def execute_leased(
     identifier: str,
     inputs: dict[str, Any],
     seed: int,
+    *,
+    job_ticket: dict[str, Any] | None = None,
+    resources: dict[str, Any] | None = None,
 ) -> Result:
+    from polyforge.unity.bridge import configuration
+    from polyforge.workforce.discovery import (
+        admit_resources,
+        check_resource_floors,
+        resource_usage,
+    )
+
+    config = configuration(ledger.policy)
+    budget = 600  # Compatibility default for callers predating optional job metadata.
+    if job_ticket is not None:
+        validate_schema(job_ticket, "job_ticket.schema.json")
+        if job_ticket["job_id"] != job or job_ticket["capability_id"] != identifier:
+            raise InputError("Job ticket does not identify the requested operation")
+        if (
+            "context" in job_ticket
+            and canonical_digest(job_ticket["context"]) != job_ticket["context_digest"]
+        ):
+            raise InputError("Job context digest differs from its frozen metadata")
+        authorize(ledger.policy, job_ticket["role_id"], "tool", identifier)
+        budget = job_ticket["budget_seconds"]
+    ticket_resources = (job_ticket or {}).get("context", {}).get("resources")
+    if resources is not None and ticket_resources is not None and resources != ticket_resources:
+        raise InputError("Job resources differ from its frozen task request")
+    requirements = dict(ticket_resources if ticket_resources is not None else resources or {})
+    admission = admit_resources(ledger.policy, requirements)
+    native_ceiling = (
+        config.unity_timeout_seconds if "unity" in identifier else config.blender_timeout_seconds
+    )
+    budget = min(budget, native_ceiling)
+    deadline = time.monotonic() + budget
     cancel = threading.Event()
     finished = threading.Event()
+    expired = threading.Event()
+    resource_failed = threading.Event()
+
+    def check_running() -> None:
+        try:
+            check_resource_floors(resource_usage(ledger.policy), requirements)
+        except (OSError, ValueError):
+            resource_failed.set()
+            cancel.set()
+            return
+        state = load_json(ledger.policy.path(ledger._state(job)))
+        if state["state"] != "RUNNING":
+            cancel.set()
 
     def monitor() -> None:
         last = time.monotonic()
-        while not finished.wait(0.05):
+        while not finished.wait(0.25):
             try:
-                state = load_json(ledger.policy.path(ledger._state(job)))
-                if state["state"] != "RUNNING":
+                if time.monotonic() >= deadline:
+                    expired.set()
                     cancel.set()
+                    return
+                check_running()
+                if cancel.is_set():
                     return
                 if time.monotonic() - last > 10:
                     ledger.heartbeat(job, lease)
@@ -48,6 +99,12 @@ def execute_leased(
         from polyforge.workforce.operations import operation_context
 
         context = operation_context(ledger.policy.root, ledger.task_id, job, seed, cancel)
+        context = replace(
+            context,
+            timeout_seconds=budget,
+            max_output_bytes=config.max_output_bytes,
+            retry_limit=config.retry_limit,
+        )
         atomic_json(
             ledger.policy,
             ".polyforge/operations/" + str(context.operation_id) + ".intent.json",
@@ -57,9 +114,32 @@ def execute_leased(
                 "capability_id": identifier,
                 "input_digest": canonical_digest(inputs),
                 "seed": seed,
+                "context_digest": job_ticket.get("context_digest") if job_ticket else None,
+                "budget_seconds": budget,
+                "resources": requirements,
+                "resource_admission": admission,
             },
         )
-        return execute(identifier, inputs, context)
+        result = execute(identifier, inputs, context)
+        try:
+            check_running()
+        except (OSError, ValueError):
+            cancel.set()
+        if resource_failed.is_set():
+            return failure(
+                ErrorKind.POLICY_DENIED,
+                "PF-WORKFORCE-RESOURCE",
+                "Required RAM/disk/CPU availability was exhausted or became unknown",
+            )
+        if expired.is_set() or time.monotonic() >= deadline:
+            return failure(
+                ErrorKind.PRODUCER_FAILURE, "PF-WORKFORCE-DEADLINE", "Job budget expired"
+            )
+        if cancel.is_set():
+            if result.status != "PASS":
+                return result
+            return failure(ErrorKind.INTERRUPTED, "PF-WORKFORCE-CANCELLED", "Job was cancelled")
+        return result
     finally:
         finished.set()
         watcher.join(1)
@@ -70,6 +150,11 @@ def run_task(
 ) -> Result:
     plan = plan_task(request, workspace=workspace)
     profile = execution_profile(mode)
+    from polyforge.security.paths import WorkspacePolicy
+    from polyforge.workforce.discovery import admit_resources
+
+    admission = admit_resources(WorkspacePolicy(workspace), request.get("resources", {}))
+    profile["resource_admission"] = admission
     ledger = JobLedger(workspace, plan["task_id"])
     if dry_run or not plan["jobs"]:
         return Result(
@@ -79,7 +164,12 @@ def run_task(
         ledger = JobLedger(workspace, plan["task_id"] + "_single")
     policy = ledger.policy
     relative = ledger.relative
-    atomic_json(policy, relative + "/plan.json", plan)
+    with FileLock(policy, relative + "/plan.lock", wait_seconds=5):
+        frozen = policy.path(relative + "/plan.json")
+        if frozen.is_file():
+            plan = resume_plan(load_json(frozen), plan)
+        else:
+            atomic_json(policy, frozen, plan)
     asset = request["input"].get(
         "asset_id", request["input"].get("spec", {}).get("asset_id", "game_project")
     )
@@ -91,6 +181,8 @@ def run_task(
     review: dict[str, Any] = {}
     lineage = []
     for job in plan["jobs"]:
+        if "context" in job and job["context"]["task_digest"] != plan["input_digest"]:
+            raise InputError("Job metadata belongs to a different frozen task")
         job_id = job["job_id"]
         prior = ledger.completed(job_id)
         lease = ledger.claim(job_id, asset)
@@ -124,6 +216,7 @@ def run_task(
                 ):
                     raise InputError("Committed job lacks a current native operation receipt")
         else:
+            started = time.monotonic()
             if lease is None:
                 raise InputError("Job committed concurrently; resume to read its durable result")
             if job_id == "job_0":
@@ -147,6 +240,8 @@ def run_task(
                         request["capability_id"],
                         request["input"],
                         request.get("seed", 42),
+                        job_ticket=job,
+                        resources=request.get("resources", {}),
                     )
                     if result.status != "PASS":
                         ledger.cancel(job_id)
@@ -161,15 +256,23 @@ def run_task(
             elif job_id == "job_2":
                 authorize(policy, job["role_id"], "tool", "artifact.candidate.inspect.v1")
                 atomic_json(policy, relative + "/handoff.json", candidate)
-                inspected = execute(
+                inspected = execute_leased(
+                    ledger,
+                    job_id,
+                    lease,
                     "artifact.candidate.inspect.v1",
                     {
                         "schema_version": "1.0.0",
                         "candidate_file": relative + "/handoff.json",
                         "task_file": relative + "/plan.json",
                     },
-                    RunContext(workspace),
+                    request.get("seed", 42),
+                    job_ticket=job,
+                    resources=request.get("resources", {}),
                 )
+                if inspected.status != "PASS":
+                    ledger.cancel(job_id)
+                    return inspected
                 value = inspected.data
                 atomic_json(policy, relative + "/review.json", value["review"])
                 atomic_json(policy, relative + "/board.json", value["board"])
@@ -188,6 +291,8 @@ def run_task(
                         "production_file": relative + "/production.json",
                     },
                     request.get("seed", 42),
+                    job_ticket=job,
+                    resources=request.get("resources", {}),
                 )
                 value = {"result": integrated.to_dict()}
                 if value["result"]["status"] != "PASS":
@@ -195,6 +300,11 @@ def run_task(
                     return Result(
                         **{k: v for k, v in value["result"].items() if k != "operation_status"}
                     )
+            if time.monotonic() - started >= job["budget_seconds"]:
+                ledger.cancel(job_id)
+                return failure(
+                    ErrorKind.PRODUCER_FAILURE, "PF-WORKFORCE-DEADLINE", "Job budget expired"
+                )
             ledger.commit(job_id, lease, value)
         if job_id == "job_1":
             candidate = value["candidate"]

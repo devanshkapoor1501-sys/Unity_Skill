@@ -1,0 +1,34 @@
+"""Read-only evidence integrity check; hashes establish bytes, not semantic coverage."""
+import hashlib
+import json
+from pathlib import Path
+
+root=Path.cwd();out=root/'.tmp/audit-through-phase10'
+source=root/'PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx'
+assert hashlib.sha256(source.read_bytes()).hexdigest()=='8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6'
+indexes=[]
+for index in sorted((root/'reports').rglob('index.json')):
+    data=json.loads(index.read_text('utf-8-sig'))
+    rows=data.get('files',[]) if isinstance(data,dict) else []
+    if not isinstance(rows,list) or not rows or not all(isinstance(r,dict) and 'path' in r and 'sha256' in r for r in rows):
+        indexes.append({'index':index.relative_to(root).as_posix(),'format':'OTHER','checked':0})
+        continue
+    bad=[]
+    for row in rows:
+        path=(index.parent/row['path']).resolve()
+        if not path.is_relative_to(index.parent.resolve()):
+            bad.append({'path':row['path'],'reason':'ESCAPING_INDEX'});continue
+        if not path.is_file():bad.append({'path':row['path'],'reason':'MISSING'});continue
+        raw=path.read_bytes()
+        if hashlib.sha256(raw).hexdigest()!=row['sha256']:
+            bad.append({'path':row['path'],'reason':'HASH_MISMATCH'})
+        if 'bytes' in row and len(raw)!=row['bytes']:
+            bad.append({'path':row['path'],'reason':'SIZE_MISMATCH'})
+    indexes.append({'index':index.relative_to(root).as_posix(),'format':'SHA256_FILES','checked':len(rows),'failures':bad})
+registry=[]
+from polyforge.commands import COMMANDS
+for spec in COMMANDS:
+    registry.append({'command':' '.join(spec.path),'phase':spec.phase,'implemented':spec.implemented})
+result={'authority_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'indexes':indexes,'commands':registry,'caveat':'Integrity only; semantic requirements reviewed independently'}
+(out/'evidence-integrity.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'indexes':len(indexes),'files_checked':sum(i['checked'] for i in indexes),'failures':[i for i in indexes if i.get('failures')],'unimplemented_through_phase10':[r for r in registry if r['phase']<=10 and not r['implemented']]},indent=2))

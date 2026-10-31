@@ -18,10 +18,12 @@ from polyforge.blender.worker import name_for
 from polyforge.capabilities.protocol import RunContext
 from polyforge.compiler.commands import manifest_command
 from polyforge.config import Config, load_config
+from polyforge.contracts.images import inspect_png
 from polyforge.contracts.manifest import Manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.doctor import discover_tool
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import RunJournal, atomic_json
@@ -274,6 +276,62 @@ def asset_spec(recipe: dict[str, Any], folder: Path, collider: str) -> dict[str,
     }
 
 
+def copy_material_textures(
+    policy: WorkspacePolicy,
+    destination: Path,
+    model: Manifest,
+    specs: list[dict[str, Any]],
+    *,
+    dry_run: bool = False,
+) -> None:
+    """Transport supplied RGBA8 PNGs only; retain exact input bytes and provenance.
+
+    All inputs are checked before writes, including the frozen manifest fingerprint.
+    ``destination`` is the managed Unity project or a managed S3 export directory.
+    """
+    materials = {m["id"]: m for m in model.data["materials"]}
+    prepared = []
+    for asset in specs:
+        for material in asset["materials"]:
+            textures = []
+            for supplied in materials[material["id"]].get("textures", []):
+                source = policy.path(supplied["path"])
+                with source.open("rb") as stream:
+                    content = stream.read(16_777_217)
+                digest = hashlib.sha256(content).hexdigest()
+                if digest != model.input_digests[supplied["path"]]:
+                    raise InputError(
+                        "Supplied texture changed after validation", kind=ErrorKind.CONTRACT_FAILURE
+                    )
+                if source.suffix.lower() != ".png":
+                    raise InputError("Supplied texture transport supports RGBA8 PNG only")
+                inspect_png(content)
+                relative = (
+                    f"Assets/PolyForgeGenerated/Textures/{asset['id']}/"
+                    f"{material['id']}/{supplied['kind']}.png"
+                )
+                target = policy.path(destination / relative)
+                if target.is_file() and target.stat().st_nlink != 1:
+                    raise InputError("Refusing a hardlinked supplied-texture destination")
+                textures.append(
+                    {
+                        "kind": supplied["kind"],
+                        "path": relative,
+                        "color_space": supplied["color_space"],
+                        "sha256": digest,
+                        "source_path": supplied["path"],
+                    }
+                )
+                prepared.append((target, content))
+            material["textures"] = textures
+    if dry_run:
+        return
+    for target, content in prepared:
+        policy.mkdir(target.parent)
+        if not target.is_file() or target.read_bytes() != content:
+            target.write_bytes(content)
+
+
 def build_unity(
     model: Manifest,
     recipes: dict[str, Any],
@@ -288,6 +346,13 @@ def build_unity(
         )
     policy = WorkspacePolicy(model.workspace)
     config = configuration(policy)
+    preflight_specs = [
+        {"id": a["id"], "materials": [{"id": m} for m in a["material_ids"]]}
+        for a in model.data["assets"]
+    ]
+    copy_material_textures(
+        policy, policy.path("UnityProject"), model, preflight_specs, dry_run=True
+    )
     if dry_run:
         project = policy.path("UnityProject")
         if project.exists() and not policy.path(project / ".polyforge-project.json").is_file():
@@ -367,6 +432,7 @@ def build_unity(
                         "fbx_sha256": spec["sha256"],
                     }
                 )
+            copy_material_textures(policy, project, model, specs)
             request = {
                 "schema_version": "1.0.0",
                 "input_digest": model.input_digest,
@@ -449,6 +515,9 @@ def build_unity(
                         "input_digest": model.input_digest,
                     }
                 )
+            artifacts = complete_records(
+                policy, run_id, "S4", artifacts, input_digest=model.input_digest
+            )
             atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
             atomic_json(policy, ".polyforge/unity-request.json", request)
             atomic_json(

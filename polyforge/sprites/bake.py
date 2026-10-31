@@ -11,6 +11,7 @@ from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
 from polyforge.doctor import discover_tool
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import FileLock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import atomic_json
@@ -147,6 +148,7 @@ def bake_robot(inputs: dict[str, Any], context: RunContext) -> Result:
         for p in sorted(output.iterdir())
         if p.is_file() and p.suffix != ".blend1"
     ]
+    records = complete_records(policy, run_id, "S3", records, input_digest=digest)
     atomic_json(policy, relative + "/artifacts.json", {"artifacts": records})
     return Result(
         run_id=run_id,

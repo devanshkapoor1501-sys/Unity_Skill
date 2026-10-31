@@ -1,0 +1,326 @@
+{
+  "input_digest": "171b4a0d3cded8c0fd0aa62ce2bf995e38ba6f8be7f23300735545b392f76ac7",
+  "manifest": {
+    "schema_version": "1.0.0",
+    "project": {
+      "id": "arena_demo",
+      "name": "Isometric Robot Arena",
+      "kind": "3d",
+      "seed": 42,
+      "render_pipeline": "urp"
+    },
+    "units": {
+      "length": "meter",
+      "up": "Y",
+      "forward": "Z"
+    },
+    "target": {
+      "unity_major": 6,
+      "quality": "prototype",
+      "platform": "standalone_windows"
+    },
+    "scene": {
+      "id": "main",
+      "camera": "isometric",
+      "bounds_m": [
+        20,
+        3,
+        20
+      ]
+    },
+    "materials": [
+      {
+        "id": "metal_blue",
+        "base_color_rgba": [
+          0.8,
+          0.15,
+          0.05,
+          1
+        ],
+        "metallic": 0.4,
+        "roughness": 0.55,
+        "textures": [
+          {
+            "kind": "base_color",
+            "path": "supplied/color.png",
+            "color_space": "srgb"
+          },
+          {
+            "kind": "normal",
+            "path": "supplied/normal.png",
+            "color_space": "linear"
+          }
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "id": "ground_a",
+        "kind": "modular_mesh",
+        "source": "procedural",
+        "recipe": "recipes/ground_a.json",
+        "target_size_m": [
+          20,
+          0.2,
+          20
+        ],
+        "material_ids": [
+          "metal_blue"
+        ],
+        "collider": "box",
+        "animation_ids": [],
+        "dependencies": []
+      },
+      {
+        "id": "crate_a",
+        "kind": "modular_mesh",
+        "source": "procedural",
+        "recipe": "recipes/crate_a.json",
+        "target_size_m": [
+          1,
+          1,
+          1
+        ],
+        "material_ids": [
+          "metal_blue"
+        ],
+        "collider": "box",
+        "animation_ids": [],
+        "dependencies": []
+      },
+      {
+        "id": "robot_a",
+        "kind": "modular_mesh",
+        "source": "procedural",
+        "recipe": "recipes/robot_a.json",
+        "target_size_m": [
+          1,
+          1.8,
+          0.8
+        ],
+        "material_ids": [
+          "metal_blue"
+        ],
+        "collider": "capsule",
+        "animation_ids": [],
+        "dependencies": []
+      }
+    ],
+    "actors": [
+      {
+        "id": "enemy_01",
+        "asset_id": "robot_a",
+        "controller": "PatrolEnemy",
+        "spawn_xyz": [
+          3,
+          0,
+          3
+        ]
+      }
+    ],
+    "gameplay": {
+      "win_condition": "survive_30_seconds",
+      "controls": "wasd",
+      "restart_key": "r"
+    },
+    "audit": {
+      "required_views": [
+        "front",
+        "side",
+        "top",
+        "iso"
+      ],
+      "review_mode": "manual_or_host_vision",
+      "max_retries": 2
+    },
+    "intent": {
+      "brief_path": "brief.md",
+      "requirements": [
+        {
+          "id": "movement",
+          "feature_id": "movement.character_controller.v1",
+          "required": true,
+          "source_span": {
+            "start": 259,
+            "end": 286
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "WASD changes player position"
+          ]
+        },
+        {
+          "id": "collision",
+          "feature_id": "physics.collision.v1",
+          "required": true,
+          "source_span": {
+            "start": 318,
+            "end": 337
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "Walls prevent traversal"
+          ]
+        },
+        {
+          "id": "enemy",
+          "feature_id": "ai.patrol.v1",
+          "required": true,
+          "source_span": {
+            "start": 353,
+            "end": 368
+          },
+          "binding_ids": [
+            "enemy_01"
+          ],
+          "acceptance_intent": [
+            "Enemy changes position along patrol route"
+          ]
+        },
+        {
+          "id": "damage",
+          "feature_id": "combat.damage.v1",
+          "required": true,
+          "source_span": {
+            "start": 373,
+            "end": 402
+          },
+          "binding_ids": [
+            "enemy_01"
+          ],
+          "acceptance_intent": [
+            "Contact decreases health"
+          ]
+        },
+        {
+          "id": "health",
+          "feature_id": "combat.health.v1",
+          "required": true,
+          "source_span": {
+            "start": 404,
+            "end": 415
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "Health is observable"
+          ]
+        },
+        {
+          "id": "timer",
+          "feature_id": "objective.survival.v1",
+          "required": true,
+          "source_span": {
+            "start": 422,
+            "end": 446
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "Surviving thirty seconds wins"
+          ]
+        },
+        {
+          "id": "failure",
+          "feature_id": "objective.failure.v1",
+          "required": true,
+          "source_span": {
+            "start": 464,
+            "end": 487
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "Zero health enters failure"
+          ]
+        },
+        {
+          "id": "restart",
+          "feature_id": "game.restart.v1",
+          "required": true,
+          "source_span": {
+            "start": 489,
+            "end": 496
+          },
+          "binding_ids": [
+            "main"
+          ],
+          "acceptance_intent": [
+            "Restart restores initial state"
+          ]
+        },
+        {
+          "id": "assets",
+          "feature_id": "geometry.static_assets.v1",
+          "required": true,
+          "source_span": {
+            "start": 82,
+            "end": 99
+          },
+          "binding_ids": [
+            "ground_a",
+            "crate_a",
+            "robot_a"
+          ],
+          "acceptance_intent": [
+            "All requested generated assets import"
+          ]
+        },
+        {
+          "id": "audit",
+          "feature_id": "audit.multiview.v1",
+          "required": true,
+          "source_span": {
+            "start": 740,
+            "end": 764
+          },
+          "binding_ids": [
+            "robot_a"
+          ],
+          "acceptance_intent": [
+            "All four views exist"
+          ]
+        },
+        {
+          "id": "sources",
+          "feature_id": "artifact.editable_sources.v1",
+          "required": true,
+          "source_span": {
+            "start": 562,
+            "end": 593
+          },
+          "binding_ids": [
+            "robot_a"
+          ],
+          "acceptance_intent": [
+            "Editable source and native scene artifacts exist"
+          ]
+        }
+      ]
+    }
+  },
+  "input_fingerprints": {
+    "manifest": "cbe58927229871359ba626ca9442c750afae5623906ec9aaf051ca4e3b8671b8",
+    "recipes": {
+      "ground_a": "a204409aca0a3c5782badc5e0fb7d700a6f2126c68373c783349798d5af880ff",
+      "crate_a": "6912da1482542634d28195b6d669e13a106a7fe9d751b458afd645e7c5c6d12d",
+      "robot_a": "dc8413a7d0583bc548541ff7f1878c27084f7d35d74b9241880156a62653e090"
+    },
+    "files": {
+      "supplied/color.png": "b49575fc000ec5c0489594788e93a12e7a5bd22daff4d8948ea0f41fb0bc6498",
+      "supplied/normal.png": "b49575fc000ec5c0489594788e93a12e7a5bd22daff4d8948ea0f41fb0bc6498"
+    },
+    "original_brief": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "parent_static_run": "unity-d122aaac7a9b4c3d",
+  "unity_executable_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+  "security_scope": "TRUSTED_LOCAL",
+  "isolation_verified": false
+}

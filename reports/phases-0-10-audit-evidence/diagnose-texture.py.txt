@@ -1,0 +1,17 @@
+from pathlib import Path
+import json
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.upgrade import sync_package
+from polyforge.unity.bridge import configuration, unity_tool, launch
+
+arena = Path('.tmp/audit-through-phase10/unity-final-temp/polyforge_phase50/arena').resolve()
+policy = WorkspacePolicy(arena)
+sync_package(policy)
+config = configuration(policy)
+request = policy.path('runs/unity-af50d9fc53b844c8/request.json')
+try:
+    value = launch(policy, unity_tool(config), config, 'runs/texture-injection-diagnostic', 'tests', request=request, output=policy.path('runs/texture-injection-diagnostic/tests.xml'))
+    print(json.dumps(value, indent=2))
+except Exception as exc:
+    print(type(exc).__name__, str(exc))
+    raise

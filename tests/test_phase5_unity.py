@@ -27,7 +27,7 @@ def arena(tmp_path_factory):
 def test_real_native_build_has_executed_editmode_and_two_scenes(arena: Path):
     first = load_json(arena / "first-result.json")
     run = arena / "runs" / first["run_id"]
-    assert verify_test_xml(run / "editmode.xml", EDITMODE_TESTS)["executed"] == 17
+    assert verify_test_xml(run / "editmode.xml", EDITMODE_TESTS)["executed"] == 23
     bindings = load_json(run / "bindings.json")
     assert len(bindings["objects"]) == 3
     assert bindings["issues"] == []

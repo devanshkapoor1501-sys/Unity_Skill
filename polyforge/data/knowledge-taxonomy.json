@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0.0",
+  "taxonomy_version": "18.8-minimum-v1",
+  "frozen_at": "2026-10-30",
+  "authority": "v5.1 blueprint 18.8; minimum bundled inventory, not full production knowledge",
+  "priority_policy": "Frozen before broad competency evaluation; T1 common fundamental, T2 common advanced, T3 specialist/platform-dependent. Weights are inventory weights, not evaluated task scores.",
+  "entries": [
+    {
+      "id": "blender.scene-transforms",
+      "domain": "blender",
+      "name": "Scene/object transforms, coordinates, collections",
+      "concepts": [
+        "scene transforms",
+        "coordinates",
+        "collections"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental scene placement and handoff"
+    },
+    {
+      "id": "blender.mesh-modeling",
+      "domain": "blender",
+      "name": "Mesh edit/topology, modifiers, curves/text",
+      "concepts": [
+        "mesh edit",
+        "topology",
+        "modifiers",
+        "curves",
+        "text"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common asset authoring"
+    },
+    {
+      "id": "blender.geometry-nodes",
+      "domain": "blender",
+      "name": "Geometry Nodes/procedural modeling",
+      "concepts": [
+        "geometry nodes",
+        "procedural modeling"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common reusable advanced modeling"
+    },
+    {
+      "id": "blender.sculpt-retopo",
+      "domain": "blender",
+      "name": "Sculpt and retopology",
+      "concepts": [
+        "sculpt",
+        "retopology"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common specialist asset workflow"
+    },
+    {
+      "id": "blender.uv-pbr",
+      "domain": "blender",
+      "name": "UV/images/texture painting, baking and PBR nodes",
+      "concepts": [
+        "uv",
+        "images",
+        "texture painting",
+        "baking",
+        "pbr nodes"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common interoperable asset channels"
+    },
+    {
+      "id": "blender.rig-animation",
+      "domain": "blender",
+      "name": "Rigging, constraints, drivers, shape keys, NLA/actions",
+      "concepts": [
+        "rigging",
+        "constraints",
+        "drivers",
+        "shape keys",
+        "nla",
+        "actions"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common animated asset workflows"
+    },
+    {
+      "id": "blender.simulation",
+      "domain": "blender",
+      "name": "Physical and simulation systems",
+      "concepts": [
+        "rigid body",
+        "soft body",
+        "cloth",
+        "fluids",
+        "particles"
+      ],
+      "priority": "T3",
+      "weight": 1,
+      "priority_rationale": "Resource intensive specialist simulations"
+    },
+    {
+      "id": "blender.rendering",
+      "domain": "blender",
+      "name": "Camera, lighting, render engines, compositing/color management",
+      "concepts": [
+        "camera",
+        "lighting",
+        "render engines",
+        "compositing",
+        "color management"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common review and presentation workflow"
+    },
+    {
+      "id": "blender.grease-pencil",
+      "domain": "blender",
+      "name": "Grease Pencil and 2D",
+      "concepts": [
+        "grease pencil",
+        "2d drawing"
+      ],
+      "priority": "T3",
+      "weight": 1,
+      "priority_rationale": "Specialist drawing workflow"
+    },
+    {
+      "id": "blender.automation-export",
+      "domain": "blender",
+      "name": "Optimization, exporters, automation/bpy context, add-ons and file management",
+      "concepts": [
+        "optimization",
+        "exporters",
+        "bpy context",
+        "addons",
+        "file management"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental repeatable asset handoff"
+    },
+    {
+      "id": "unity.scene-editor",
+      "domain": "unity",
+      "name": "GameObjects/scenes/prefabs/serialization and Editor scripting",
+      "concepts": [
+        "gameobjects",
+        "scenes",
+        "prefabs",
+        "serialization",
+        "editor scripting"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental managed scene workflow"
+    },
+    {
+      "id": "unity.csharp-architecture",
+      "domain": "unity",
+      "name": "C# architecture/ScriptableObjects/assembly definitions",
+      "concepts": [
+        "csharp architecture",
+        "scriptableobjects",
+        "assembly definitions"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental reusable Unity code"
+    },
+    {
+      "id": "unity.input-cameras",
+      "domain": "unity",
+      "name": "Input, cameras/Cinemachine, Timeline/cutscenes",
+      "concepts": [
+        "input",
+        "cameras",
+        "cinemachine",
+        "timeline",
+        "cutscenes"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common player interaction"
+    },
+    {
+      "id": "unity.physics",
+      "domain": "unity",
+      "name": "2D/3D physics, joints and triggers",
+      "concepts": [
+        "2d physics",
+        "3d physics",
+        "joints",
+        "triggers"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common gameplay and collision"
+    },
+    {
+      "id": "unity.animation",
+      "domain": "unity",
+      "name": "Animation, Animator and IK",
+      "concepts": [
+        "animation",
+        "animator",
+        "ik"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common animated gameplay"
+    },
+    {
+      "id": "unity.navigation-ai",
+      "domain": "unity",
+      "name": "Navigation, AI and behavior",
+      "concepts": [
+        "navigation",
+        "ai",
+        "behavior"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common advanced gameplay"
+    },
+    {
+      "id": "unity.rendering",
+      "domain": "unity",
+      "name": "URP, lighting, Shader Graph and VFX Graph",
+      "concepts": [
+        "urp",
+        "lighting",
+        "shader graph",
+        "vfx graph"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common advanced rendering"
+    },
+    {
+      "id": "unity.ui-audio",
+      "domain": "unity",
+      "name": "UI Toolkit/uGUI, audio and mixer",
+      "concepts": [
+        "ui toolkit",
+        "ugui",
+        "audio",
+        "mixer"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common game feedback"
+    },
+    {
+      "id": "unity.assets-loading",
+      "domain": "unity",
+      "name": "Packages, Addressables, assets, saving, scene loading/streaming",
+      "concepts": [
+        "packages",
+        "addressables",
+        "assets",
+        "saving",
+        "scene loading",
+        "streaming"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental content lifecycle"
+    },
+    {
+      "id": "unity.world-platform",
+      "domain": "unity",
+      "name": "Terrain/level tools, networking/multiplayer, profiling, tests, build/deployment/platform differences",
+      "concepts": [
+        "terrain",
+        "level tools",
+        "networking",
+        "multiplayer",
+        "profiling",
+        "tests",
+        "build",
+        "deployment",
+        "platform differences"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Advanced world and platform qualification"
+    }
+  ]
+}

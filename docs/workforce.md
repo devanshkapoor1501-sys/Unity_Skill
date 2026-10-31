@@ -43,6 +43,21 @@ Use IDs and plan paths returned by the engine. `run --dry-run` is also pure.
 Plan identity includes request and implementation fingerprints, preventing a
 changed engine code, schema or Unity package from silently reusing an older job's success.
 
+Optional `budget_seconds` is an integer from 1 to 3600. Execution uses the smaller
+of that job budget and the configured native timeout, including inspection jobs.
+Optional `resources` accepts `min_cpu_count`, `min_free_disk_bytes`,
+`min_available_ram_bytes` and `gpu_required`. Required observations fail closed
+when unavailable. RAM/disk availability is checked during execution and after
+return; exhaustion cancels work and cannot produce PASS. Native Windows memory
+caps remain separate from available-system-RAM floors. Admission reports one
+sequential CPU worker; GPU capacity metadata never qualifies GPU execution.
+
+Optional versioned job context binds the original task/brief, selected cards,
+probe evidence, scopes, risks, approvals and resources. Actual operation intents
+bind dispatched input bytes separately. Resuming a stored plan keeps its
+original context when probes refresh; older tickets retain their original lack
+of context rather than being relabeled with new observations.
+
 ## Roles, ownership and evidence
 
 Animation uses Intent Analyst → Rig/Animation Artist → Animation Inspector →

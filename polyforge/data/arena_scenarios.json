@@ -79,6 +79,41 @@
     },
     {
       "schema_version": "1.0.0",
+      "id": "obstacle_collision",
+      "seed": 42,
+      "setup": {
+        "scene_id": "main",
+        "entity_ids": [
+          "player_01",
+          "enemy_01"
+        ]
+      },
+      "steps": [
+        {
+          "action": "move",
+          "actor_id": "player_01",
+          "direction": [
+            1,
+            0
+          ],
+          "ticks": 100
+        }
+      ],
+      "expected": [
+        {
+          "event": "restarted",
+          "count_gte": 1
+        }
+      ],
+      "tolerance": {
+        "position_m": 0.1,
+        "time_frames": 3
+      },
+      "fixed_delta_seconds": 0.02,
+      "timeout_s": 60
+    },
+    {
+      "schema_version": "1.0.0",
       "id": "enemy_patrols",
       "seed": 42,
       "setup": {

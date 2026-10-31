@@ -1,0 +1,6 @@
+from pathlib import Path
+
+source = Path('.tmp/phase10-completion/install.py').read_text(encoding='utf-8')
+source = source.replace("base=root/'.tmp/phase10-completion'", "base=root/'.tmp/audit-through-phase10'")
+source = source.replace("'data/unity-ui-probe.cs.txt']", "'data/unity-ui-probe.cs.txt','data/knowledge-taxonomy.json','data/knowledge-history.json','runner/artifacts.py','runner/workspace_lock.py']")
+Path('.tmp/audit-through-phase10/install.py').write_text(source, encoding='utf-8')

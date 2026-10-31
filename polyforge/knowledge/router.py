@@ -152,7 +152,8 @@ def route_reference(
         ):
             card["knowledge_state"] = "VERSION_PROBED"
     missing = [t for t in tools if discovered[t]["availability"] == "UNAVAILABLE"]
-    status = "PASS" if selected and (output == "EXPLAIN" or capabilities) else "REVIEW"
+    # A keyword match is a candidate, never proof of all mandatory brief criteria.
+    status = "PASS" if selected and output == "EXPLAIN" else "REVIEW"
     if capabilities and missing:
         status = "BLOCKED"
     roles = (
@@ -181,6 +182,7 @@ def route_reference(
         "context_digest": canonical_digest(selected),
         "loaded_reference_paths": sorted({c["reference_path"] for c in selected}),
         "capability_ids": capabilities,
+        "requirement_coverage": "NOT_APPLICABLE" if output == "EXPLAIN" else "UNVERIFIED",
         "roles": roles,
         "required_probes": [
             {
@@ -195,7 +197,7 @@ def route_reference(
         "tool_observations": observations,
         "gap": None
         if status == "PASS"
-        else "Review unsupported requirements, missing tools and version-sensitive APIs",
+        else "Typed requirement coverage review required; candidate matches do not cover the brief",
         "operation_plan": [
             "preserve exact user constraints",
             "read selected DATA_ONLY references",

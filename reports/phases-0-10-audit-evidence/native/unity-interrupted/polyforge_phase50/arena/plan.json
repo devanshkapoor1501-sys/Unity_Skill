@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0.0",
+  "manifest_digest": "112973258831edef1cc821fe95549336b8505efb8250167289747686dcaaab80",
+  "input_digest": "8ab363933014725a2760898c4fdef256e98000d46235b3bfcf23b0370e196c13",
+  "tasks": [
+    {
+      "id": "precheck:environment",
+      "stage": "S0",
+      "local_input_digest": "f80e6faad8a75f1fa56dcbea404a61791e1cb07296772fa41c15bd269b9f147a",
+      "dependencies": [],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "7e804b0231db5cc2530e3e157769d268dc0fe4516b14e6566ce5474164af8a44",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "contract:scene",
+      "stage": "S1",
+      "local_input_digest": "886d9d96eb04eadfd31d5fc2dd3e7ed29db2bf0d278c5b1751292e5e6984dcc6",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "474836eefa9e75b063139d366d807da29844c8370910b32366ba31c317723eb7",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "geometry_contract:crate_a",
+      "stage": "S1",
+      "local_input_digest": "d79bb5c6d702c0ccb972af05d5b421c129a868a7a49126030c435f94e3b0343f",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "2f37385a5c16f562807ccabbefa46999a3046c5cd9d8eb0966b92b542cf3dedd",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "geometry_contract:ground_a",
+      "stage": "S1",
+      "local_input_digest": "8f112db12c45f6abd369aa03555f442270d8e14fb1f8cb90aced0dce2ec24548",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "e77d1ecc385ca521932064a01977e6797c1f3264f5f09455ddb86b7e14e0352c",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "geometry_contract:robot_a",
+      "stage": "S1",
+      "local_input_digest": "527472df84c51869e45e68752fe5159ce901e52cb383efb3d86cdbb28a335f48",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "c213169e2cec42fcf0983de810643c0ab3695878717231e24664243993072b8d",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "appearance:metal_blue",
+      "stage": "S2",
+      "local_input_digest": "b5ece6079fe6c9067097278dadbefd8cd34970777d73e705917b6724d999d0ba",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "b9c4356bd099a93fc5bccdb33a01c90b4ec2656aaa65b3fcb96c338422df03ad",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "mesh:crate_a",
+      "stage": "S2",
+      "local_input_digest": "d46fa8012119f22dc7975856ff58fa26adda510dc979fd34e4ffa2eab39e7714",
+      "dependencies": [
+        "geometry_contract:crate_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "15ada9ab686b8a12c6784644f4396c8147a7f257cc49b348619532e8cbebe3cc",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "mesh:ground_a",
+      "stage": "S2",
+      "local_input_digest": "c816c572ae1cfc2f757c54bd71a9b12257ea28a257ce6b21b310220c564b8b5d",
+      "dependencies": [
+        "geometry_contract:ground_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "604390f1bbb3be1a97a0aa5ab369cf8d13fe7846d0a3ee6a81c35ed831874785",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "mesh:robot_a",
+      "stage": "S2",
+      "local_input_digest": "c1fec623bce7ef48660c2a107503a850a82499f55f2a48b2bc717c8e42970673",
+      "dependencies": [
+        "geometry_contract:robot_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "d1c0d3a385b326a7f13cff6ec9d63486daef47ef33da54a679876fd1eb848ec7",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "audit:crate_a",
+      "stage": "S3",
+      "local_input_digest": "f4021a5bc6b28934253054f6f0264c907c1d9582df7ec6744ec5951a72825548",
+      "dependencies": [
+        "appearance:metal_blue",
+        "mesh:crate_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 4,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "484c4059362dd31e311e3a202f4ead9b90a102f5aa1e9575f35ea9d574cabfa2",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "export:crate_a",
+      "stage": "S3",
+      "local_input_digest": "8a9aa0a8c7f5122219351d649d1d1b3738d551a52233973c36035f6b8cc05443",
+      "dependencies": [
+        "mesh:crate_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "27c758dd432a6f7b3efe30b199aee854d924d98c4f30e40d6bdfe2b2deaa2eb0",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "audit:ground_a",
+      "stage": "S3",
+      "local_input_digest": "f4021a5bc6b28934253054f6f0264c907c1d9582df7ec6744ec5951a72825548",
+      "dependencies": [
+        "appearance:metal_blue",
+        "mesh:ground_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 4,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "dc89cd9e0d39a1bf68146bc4d7fc139fdde325db318558ecf941594f33e3fc8b",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "export:ground_a",
+      "stage": "S3",
+      "local_input_digest": "8a9aa0a8c7f5122219351d649d1d1b3738d551a52233973c36035f6b8cc05443",
+      "dependencies": [
+        "mesh:ground_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "427a6430005d3cd8d4c508f1b94b0c64f229a916fda349f3133afa320b339a8e",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "audit:robot_a",
+      "stage": "S3",
+      "local_input_digest": "f4021a5bc6b28934253054f6f0264c907c1d9582df7ec6744ec5951a72825548",
+      "dependencies": [
+        "appearance:metal_blue",
+        "mesh:robot_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 4,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "debf750a2f26a07e5cd4cd87adf466e8e587f8c687a506bdc79532f83207c240",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "export:robot_a",
+      "stage": "S3",
+      "local_input_digest": "8a9aa0a8c7f5122219351d649d1d1b3738d551a52233973c36035f6b8cc05443",
+      "dependencies": [
+        "mesh:robot_a"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "58e6baf88c4199b51de21db7d6b6ccdfb3e94d132b488750142e6d0f16be658d",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "material:metal_blue",
+      "stage": "S4",
+      "local_input_digest": "ad3693479432a45df6fe195561375cd03c36b13ab9b99e7fc4f6d635ac5c676d",
+      "dependencies": [
+        "appearance:metal_blue"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "27c6d9703397dfc3a25488b0b7e6ceb0217d14bcb8a1ce22e7ebce5925a4da0d",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "import:crate_a",
+      "stage": "S4",
+      "local_input_digest": "8749dca6982902f418918f75122862eed4d24f352dd3f417d7a392f7741ae174",
+      "dependencies": [
+        "export:crate_a",
+        "material:metal_blue"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "428d5454b17f6485dd8410645e5f4afb432e4782b2d421d7ebd159d326c88840",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "import:ground_a",
+      "stage": "S4",
+      "local_input_digest": "a79c0f793044e6e1a419ef09ec4f76d68ab6e3b28a977791cb5ded4551393c43",
+      "dependencies": [
+        "export:ground_a",
+        "material:metal_blue"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "c5e2ea6f9880a13be63559749588606757277ec51b98c533dbc166b79e8335ff",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "import:robot_a",
+      "stage": "S4",
+      "local_input_digest": "23d47e1dc239057e99fb692b47960b84e099479304eb39402fe9b6d5fefddfaa",
+      "dependencies": [
+        "export:robot_a",
+        "material:metal_blue"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "fefcbc5e333e22954397a62d18c36b2d6fc42623f7a7e8b9e6032f73a37d2a3b",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "runtime:gameplay",
+      "stage": "S4",
+      "local_input_digest": "7ff1489092c2bbc97216feb1a4afb6afad00ac09b1d9e942e7d25eeca5c2a455",
+      "dependencies": [
+        "precheck:environment"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "50ddbbbd3d7e5b2e7f52a32da86e0d4fb7dbb9b53e74e9bdfacec8fa49c51929",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "scene:assemble",
+      "stage": "S4",
+      "local_input_digest": "a2f30f22a57b8bdfbdec119f74ed10670b9da905b518f7d35c096887a0971026",
+      "dependencies": [
+        "contract:scene",
+        "import:crate_a",
+        "import:ground_a",
+        "import:robot_a",
+        "material:metal_blue",
+        "runtime:gameplay"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "e3c8e5b57972edc4142bcc444c928a778897d3227081ca36cbb0a509aae0a4eb",
+      "reason": "execution evidence required"
+    },
+    {
+      "id": "verify:scene",
+      "stage": "S5",
+      "local_input_digest": "120ca1e7b3df8ff3fb282aa34de8c014a8b8842a92daae7b9d499ac14465e12a",
+      "dependencies": [
+        "audit:crate_a",
+        "audit:ground_a",
+        "audit:robot_a",
+        "scene:assemble"
+      ],
+      "execution_status": "NOT_RUN",
+      "cache_status": "NOT_BUILT",
+      "estimated_work_units": 1,
+      "estimate_seconds": null,
+      "estimate_status": "NOT_MEASURED",
+      "input_digest": "d9be6c6eb70dd0fb186b3a0858d60fa4f2ca796a4b260ec0053af6087f3bd531",
+      "reason": "execution evidence required"
+    }
+  ],
+  "game_status": "PARTIAL",
+  "requirement_coverage": {
+    "requested_features_total": 11,
+    "supported_features_total": 0,
+    "implemented_features_total": 0,
+    "independently_verified_features_total": 0,
+    "blocked_requirements": [
+      "movement",
+      "collision",
+      "enemy",
+      "damage",
+      "health",
+      "timer",
+      "failure",
+      "restart",
+      "assets",
+      "audit",
+      "sources"
+    ],
+    "unsupported_requirements": [],
+    "unresolved_requirements": [
+      "unreviewed_brief_text"
+    ],
+    "game_status": "PARTIAL",
+    "annotation_status": "REVIEW",
+    "authority": "DEVELOPMENT_ONLY",
+    "original_brief_sha256": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "work_estimate": {
+    "assets": 3,
+    "render_views": 12
+  },
+  "execution_status": "NOT_RUN",
+  "affected_tasks": [
+    "appearance:metal_blue",
+    "audit:crate_a",
+    "audit:ground_a",
+    "audit:robot_a",
+    "contract:scene",
+    "import:crate_a",
+    "import:ground_a",
+    "import:robot_a",
+    "material:metal_blue",
+    "scene:assemble",
+    "verify:scene"
+  ]
+}

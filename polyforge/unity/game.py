@@ -17,6 +17,7 @@ from uuid import uuid4
 from polyforge.contracts.manifest import Manifest
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import unity_project_lock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import RunJournal, atomic_json
@@ -41,6 +42,7 @@ PLAY_TESTS = {
         for name in (
             "PlayerMoves",
             "WallCollision",
+            "ObstacleCollision",
             "EnemyPatrols",
             "ContactDealsDamage",
             "HealthFailure",
@@ -49,6 +51,7 @@ PLAY_TESTS = {
             "KeyboardAdapterMovesPlayer",
             "KeyboardAdapterRestarts",
             "CollisionDisabledMutant",
+            "ObstacleCollisionDisabledMutant",
             "RestartDisabledMutant",
             "ReversedWinMutant",
             "DamageWithoutHealthMutant",
@@ -60,7 +63,12 @@ PLAY_TESTS = {
 
 FEATURE_SCENARIOS = {
     "movement.character_controller.v1": ["player_moves", "keyboard_input"],
-    "physics.collision.v1": ["wall_collision", "collision_disabled"],
+    "physics.collision.v1": [
+        "wall_collision",
+        "obstacle_collision",
+        "collision_disabled",
+        "obstacle_collision_disabled",
+    ],
     "ai.patrol.v1": ["enemy_patrols"],
     "combat.damage.v1": ["contact_damage"],
     "combat.health.v1": ["contact_damage", "health_failure"],
@@ -165,6 +173,18 @@ def compile_game_request(model: Manifest) -> dict[str, Any]:
         "wall_thickness": 0.5,
         "player_origin": "DECLARED" if players else "DERIVED_FROM_ROBOT_FAMILY",
     }
+    crates = [a for a in data["assets"] if a["id"] in value["obstacle_ids"]]
+    if not crates:
+        raise InputError("The supported arena obstacle collision gate requires a crate obstacle")
+    value["obstacles"] = [
+        {
+            "id": f"Obstacle_{i}",
+            "asset_id": a["id"],
+            "size_m": a["target_size_m"],
+            "center_m": [i * 2, a["target_size_m"][1] / 2, 0],
+        }
+        for i, a in enumerate(crates)
+    ]
     value["game_contract_digest"] = canonical_digest(value)
     return value
 
@@ -241,6 +261,9 @@ def register_game_artifacts(policy: WorkspacePolicy, relative: str, digest: str)
                 "input_digest": digest,
             }
         )
+    artifacts = complete_records(
+        policy, relative.split("/")[-1], "S5", artifacts, input_digest=digest
+    )
     atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
     return [a["artifact_id"] for a in artifacts]
 

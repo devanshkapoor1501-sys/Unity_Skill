@@ -1,0 +1,49 @@
+"""Final real supplied-texture transport and obstacle/game qualification."""
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+root = Path.cwd()
+sys.path.insert(0, str(root / 'tests'))
+from test_audit_unity_gaps import png
+from polyforge.blender.build import build_assets
+from polyforge.unity.evidence import EDITMODE_TESTS, verify_test_xml
+
+base = root / '.tmp/audit-through-phase10'
+arena = base / 'unity-final-temp/polyforge_phase50/arena'
+assert (arena / 'second-result.json').is_file()
+supplied = arena / 'supplied'
+supplied.mkdir(exist_ok=True)
+for name in ['color.png', 'normal.png']:
+    (supplied / name).write_bytes(png())
+manifest_path = arena / 'game_manifest.json'
+manifest = json.loads(manifest_path.read_text())
+manifest['materials'][0]['textures'] = [
+    {'kind': 'base_color', 'path': 'supplied/color.png', 'color_space': 'srgb'},
+    {'kind': 'normal', 'path': 'supplied/normal.png', 'color_space': 'linear'},
+]
+manifest_path.write_text(json.dumps(manifest, indent=2), encoding='utf-8')
+print('Starting owned final texture/game/standalone build', flush=True)
+result = build_assets(arena, through='S5', allow_package_downloads=True, standalone=True)
+(base / 'native-texture-game-result.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print(json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()
+matching = []
+for path in (arena / 'runs').glob('unity-*/bindings.json'):
+    report = json.loads(path.read_text())
+    textures = [t for obj in report['objects'] for t in obj.get('textures', []) if t['path']]
+    if textures:
+        matching.append((path, textures))
+assert matching
+path, textures = max(matching, key=lambda pair: pair[0].stat().st_mtime_ns)
+assert verify_test_xml(path.parent / 'editmode.xml', EDITMODE_TESTS)['executed'] == 23
+assert {t['kind'] for t in textures} == {'base_color', 'normal'}
+for texture in textures:
+    assert texture['sha256'] == hashlib.sha256(png()).hexdigest()
+    assert texture['material_texture_path'] == texture['path']
+    assert texture['has_texture'] and texture['normal_keyword']
+    assert texture['srgb'] == (texture['kind'] == 'base_color')
+    assert texture['texture_type'] == ('NormalMap' if texture['kind'] == 'normal' else 'Default')
+    assert not texture['convert_to_normal']
+print('Real transport bytes, importer settings and material slots PASS', flush=True)

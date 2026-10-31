@@ -29,6 +29,7 @@ namespace PolyForge.Game.Tests
         public string purpose;public string mutant;public int seed;public int frames_executed;
         public float fixed_delta_seconds;public float[] arena_half_extents;public float wall_thickness;
         public float player_radius;public float[] baseline_player_position;public EnemyPosition[] baseline_enemy_positions;
+        public string obstacle_id;public string obstacle_asset_id;public float[] obstacle_center_m;public float[] obstacle_size_m;
         public Sample[] samples;public ArenaEvent[] events;
     }
     public sealed class InjectedInput : IPlayerInput
@@ -66,6 +67,16 @@ namespace PolyForge.Game.Tests
                 session.player.ResetAt(new Vector3(scenario.setup.player_position[0],scenario.setup.player_position[1],scenario.setup.player_position[2]));
             if(scenario.setup.initial_health>0 && scenario.setup.initial_health<100)session.player.Health.Damage(100-scenario.setup.initial_health);
             if(mutant=="collision_disabled")foreach(var name in new[]{"WallNorth","WallSouth","WallEast","WallWest"})GameObject.Find(name).GetComponent<BoxCollider>().enabled=false;
+            GameObject obstacle=null;Bounds obstacleBounds=default;
+            if(id=="obstacle_collision")
+            {
+                obstacle=GameObject.Find("Obstacle_0");Assert.That(obstacle,Is.Not.Null,"Frozen brief requires an obstacle");
+                var renderers=obstacle.GetComponentsInChildren<MeshRenderer>();Assert.That(renderers,Is.Not.Empty);
+                obstacleBounds=renderers[0].bounds;foreach(var r in renderers.Skip(1))obstacleBounds.Encapsulate(r.bounds);
+                session.player.ResetAt(new Vector3(obstacleBounds.min.x-session.player.Motor.radius-2,0,obstacleBounds.center.z));
+                if(mutant=="obstacle_collision_disabled")foreach(var c in obstacle.GetComponentsInChildren<Collider>())c.enabled=false;
+                Physics.SyncTransforms();
+            }
             Keyboard device=null;
             var oldEditorInput=InputSystem.settings.editorInputBehaviorInPlayMode;
             var oldBackground=InputSystem.settings.backgroundBehavior;
@@ -111,11 +122,13 @@ namespace PolyForge.Game.Tests
             var trace=new Trace{scenario_id=keyboardRestart?"restart_resets":id,scene_id=session.sceneId,input_digest=session.inputDigest,seed=session.seed,purpose=mutant==null?keyboard?"INPUT_ADAPTER":"NOMINAL":"MUTANT",mutant=mutant,
                 frames_executed=session.Frame-initial,fixed_delta_seconds=Time.fixedDeltaTime,arena_half_extents=contract.half_extents,wall_thickness=contract.wall_thickness,player_radius=session.player.Motor.radius,
                 baseline_player_position=P(session.playerSpawn),baseline_enemy_positions=session.enemies.Select(e=>new EnemyPosition{id=e.name,position=P(e.spawn)}).ToArray(),samples=samples.ToArray(),events=session.Events.ToArray()};
+            if(obstacle!=null){trace.obstacle_id=obstacle.name;trace.obstacle_asset_id=obstacle.GetComponent<PrefabBinding>().semanticId;trace.obstacle_center_m=P(obstacleBounds.center);trace.obstacle_size_m=P(obstacleBounds.size);}
             string file=mutant??(keyboardRestart?"keyboard_restart":keyboard?"keyboard_input":id);var directory=Arg("-polyforgeTelemetry");Directory.CreateDirectory(directory);File.WriteAllText(Path.Combine(directory,file+".json"),JsonUtility.ToJson(trace,true));
             Assert.That(trace.frames_executed,Is.GreaterThan(0));Assert.That(samples.Count,Is.GreaterThan(1));
         }
         [UnityTest] public IEnumerator PlayerMoves()=>Run("player_moves");
         [UnityTest] public IEnumerator WallCollision()=>Run("wall_collision");
+        [UnityTest] public IEnumerator ObstacleCollision()=>Run("obstacle_collision");
         [UnityTest] public IEnumerator EnemyPatrols()=>Run("enemy_patrols");
         [UnityTest] public IEnumerator ContactDealsDamage()=>Run("contact_damage");
         [UnityTest] public IEnumerator HealthFailure()=>Run("health_failure");
@@ -124,6 +137,7 @@ namespace PolyForge.Game.Tests
         [UnityTest] public IEnumerator KeyboardAdapterMovesPlayer()=>Run("player_moves",keyboard:true);
         [UnityTest] public IEnumerator KeyboardAdapterRestarts()=>Run("player_moves",keyboard:true,keyboardRestart:true);
         [UnityTest] public IEnumerator CollisionDisabledMutant()=>Run("wall_collision","collision_disabled");
+        [UnityTest] public IEnumerator ObstacleCollisionDisabledMutant()=>Run("obstacle_collision","obstacle_collision_disabled");
         [UnityTest] public IEnumerator RestartDisabledMutant()=>Run("restart_resets","restart_disabled");
         [UnityTest] public IEnumerator ReversedWinMutant()=>Run("survival_win","win_reversed");
         [UnityTest] public IEnumerator DamageWithoutHealthMutant()=>Run("contact_damage","damage_no_health");

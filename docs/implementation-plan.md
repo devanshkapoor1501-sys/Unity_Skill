@@ -33,7 +33,7 @@ archived byte-for-byte in docs/source and available in Git history. The original
 | 6 | Playable arena, input/health/patrol/timer/restart, independent public behavior harness | Five real PlayMode scenarios, two mutants, manual play; player claims need standalone smoke |
 | 7 | Workforce contracts, classification, discovery, role/authority boundaries, leases; original robot rig, Idle/Walk and Animator | Baseline/migration inventory, sequential-role parity, non-robot orchestration, real animation/binding tests |
 | 8 | Specialist asset/texture handoffs; original six-frame sprite pipeline | Role permissions, handoff inspection, alpha/pivots and real controllable 2D tests |
-| 9 | Supervision, human review, eight repairs, cross-app rollback, 12 recipes | Twelve faults, six mutants, authority/misleading-test challenges, race/crash/cache recovery |
+| 9 | Supervision, human review, eight repairs, cross-app rollback, 12 defect fixtures | Twelve faults, six mutants, authority/misleading-test challenges, race/crash/cache recovery |
 | 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
 | 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
 | 12 | Advanced Blender modeling, topology, sculpt and procedural geometry | Section-12/v5.1 per-domain good/bad and transfer fixtures |
@@ -44,6 +44,11 @@ archived byte-for-byte in docs/source and available in Git history. The original
 | 17 | Generalist production orchestra and expert v2 release | Separately controlled holdouts, frozen competency denominators and explicit domain gaps |
 
 ## Non-negotiable qualification
+
+Audit erratum (2026-10-30): the Phase 9 table originally said “12 recipes”. The
+preserved v4 work order 9.8 requires “Fault-inject 12 cross-application cases”,
+and v5.1 retains that defect gate. The table now reflects that requirement;
+the twelve defect cases and separate detection/repair evidence remain required.
 
 Maintain >=90% branch coverage for security/contracts. Separate Blender, Unity
 compile, EditMode, PlayMode, player-build, manual and hidden-evaluator outcomes.

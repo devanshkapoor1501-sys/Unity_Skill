@@ -380,6 +380,8 @@ def test_public_acceptance_replays_all_oracles_and_retains_verifier_veto(tmp_pat
         value["samples"][-1]["frame"] = ticks
         if name.startswith("keyboard_"):
             value["purpose"] = "INPUT_ADAPTER"
+        if scenario == "obstacle_collision":
+            value["obstacle_asset_id"] = game["obstacles"][0]["asset_id"]
         for records in [
             value["baseline_enemy_positions"],
             *[s["enemy_positions"] for s in value["samples"]],
@@ -391,7 +393,7 @@ def test_public_acceptance_replays_all_oracles_and_retains_verifier_veto(tmp_pat
     spec = public_acceptance_spec(p)
     good = check_acceptance(p, spec, {"run_id": "public"})
     assert good["status"] == "PASS" and good["game_status"] == "PARTIAL"
-    assert len(good["mutations"]) == 6
+    assert len(good["mutations"]) == 7
     from polyforge.review.amendments import append_amendment
 
     task = {

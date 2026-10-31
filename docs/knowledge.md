@@ -47,6 +47,20 @@ Unknown required features remain REVIEW. Explicit output/domain take precedence
 over lexical hints. Existing sprites omit Blender; explanation omits native
 tools; unfamiliar authoring gets a SAFE_DISCOVERY proposal, never silent fallback.
 
+Every non-explanation proposal remains REVIEW until its complete typed
+requirements are checked. Matching one capability or reference in a mixed brief
+does not establish support for the whole request. Candidate IDs are suggestions,
+not execution permission.
+
+`reports/knowledge_coverage.json` uses the versioned, digest-bound minimum
+taxonomy in `polyforge/data/knowledge-taxonomy.json`: two domains, twenty
+subfeature groups, total inventory weight 51. Documented, probed, workflow,
+executable and independently evaluated states are separate. Narrow evidence is
+PARTIAL; no whole subfeature is currently COMPLETE. Missing concepts remain in
+the denominator. This inventory does not measure all production knowledge and
+does not publish a production coverage percentage. Historical records remain
+preserved in `polyforge/data/knowledge-history.json`.
+
 Knowledge state is separate from execution support and game acceptance. Fresh
 cards start REFERENCE_ONLY. Successful fixed probes establish VERSION_PROBED for
 their exact APIs/tool versions, without promoting an executable action. Broader

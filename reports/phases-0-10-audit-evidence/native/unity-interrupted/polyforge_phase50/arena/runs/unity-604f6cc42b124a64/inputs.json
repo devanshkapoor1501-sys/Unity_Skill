@@ -1,0 +1,55 @@
+{
+  "manifest_digest": "112973258831edef1cc821fe95549336b8505efb8250167289747686dcaaab80",
+  "input_fingerprints": {
+    "manifest": "112973258831edef1cc821fe95549336b8505efb8250167289747686dcaaab80",
+    "recipes": {
+      "ground_a": "a204409aca0a3c5782badc5e0fb7d700a6f2126c68373c783349798d5af880ff",
+      "crate_a": "6912da1482542634d28195b6d669e13a106a7fe9d751b458afd645e7c5c6d12d",
+      "robot_a": "dc8413a7d0583bc548541ff7f1878c27084f7d35d74b9241880156a62653e090"
+    },
+    "files": {},
+    "original_brief": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "sources": [
+    {
+      "asset_id": "crate_a",
+      "source": "runs\\mesh-f1605054368c4bae\\asset",
+      "reused_geometry": true,
+      "fbx_sha256": "4f2ea0e4a19c7b205159e7427e0b8f37d0c385cae7bf01e4621c8fea225051a0"
+    },
+    {
+      "asset_id": "ground_a",
+      "source": "runs\\mesh-2ec40c8695f24d10\\asset",
+      "reused_geometry": true,
+      "fbx_sha256": "6492ea64dc615558ff78156ad6445edb44c29ca2406615f88bddff621370f334"
+    },
+    {
+      "asset_id": "robot_a",
+      "source": "runs\\mesh-18e2e9f9704b43ce\\asset",
+      "reused_geometry": true,
+      "fbx_sha256": "bbac5019e17d766e8a41f7b1f2a941160c4c35b9817e842edf0bc0e732fdb9e5"
+    }
+  ],
+  "unity_executable_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+  "package_downloads_authorized": true,
+  "security_scope": "TRUSTED_LOCAL",
+  "isolation_verified": false,
+  "package_manifest": {
+    "dependencies": {
+      "com.unity.ai.navigation": "2.0.12",
+      "com.unity.collab-proxy": "2.12.4",
+      "com.unity.ide.rider": "3.0.38",
+      "com.unity.ide.visualstudio": "2.0.26",
+      "com.unity.inputsystem": "1.19.0",
+      "com.unity.render-pipelines.universal": "17.6.0",
+      "com.unity.test-framework": "1.8.0",
+      "com.unity.timeline": "6.6.0",
+      "com.unity.ugui": "2.6.0",
+      "com.unity.visualscripting": "1.9.11",
+      "com.polyforge.engine": "file:com.polyforge.engine"
+    },
+    "testables": [
+      "com.polyforge.engine"
+    ]
+  }
+}

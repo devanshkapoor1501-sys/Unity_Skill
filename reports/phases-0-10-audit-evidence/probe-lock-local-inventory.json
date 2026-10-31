@@ -1,0 +1,78 @@
+{
+  "graphics": {
+    "display": {
+      "status": "OBSERVED",
+      "count": 1,
+      "source": "GetSystemMetrics(SM_CMONITORS)"
+    },
+    "gpu": {
+      "status": "OBSERVED",
+      "devices": [
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "device": "\\\\.\\DISPLAY1",
+          "state_flags": 5
+        },
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "device": "\\\\.\\DISPLAY2",
+          "state_flags": 0
+        },
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "device": "\\\\.\\DISPLAY3",
+          "state_flags": 0
+        },
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "device": "\\\\.\\DISPLAY4",
+          "state_flags": 0
+        },
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "device": "\\\\.\\DISPLAY5",
+          "state_flags": 0
+        },
+        {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "device": "\\\\.\\DISPLAY7",
+          "state_flags": 0
+        }
+      ],
+      "source": "EnumDisplayDevicesW"
+    },
+    "render": {
+      "status": "NOT_RUN"
+    },
+    "headless_render": {
+      "status": "UNKNOWN"
+    },
+    "qualification": "Metadata does not establish driver, render or headless support"
+  },
+  "integrations": {
+    "blender_mcp_cli": null,
+    "unity_mcp_cli": null,
+    "host_sessions": [],
+    "offline_core": true,
+    "matrix": {
+      "blender_build": {
+        "offline": "UNKNOWN",
+        "assisted": "UNKNOWN"
+      },
+      "interactive_scene_edit": {
+        "offline": "BLOCKED",
+        "assisted": "UNKNOWN"
+      },
+      "plan": {
+        "offline": "OBSERVED",
+        "assisted": "UNKNOWN"
+      },
+      "unity_build": {
+        "offline": "UNKNOWN",
+        "assisted": "UNKNOWN"
+      }
+    },
+    "operational_probe": "NOT_RUN",
+    "execution_authority": "NONE"
+  }
+}

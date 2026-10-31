@@ -16,12 +16,13 @@
       ]
     },
     {
-      "original_phrase": "collides with walls",
+      "original_phrase": "collides with walls\nand obstacles",
       "feature_id": "physics.collision.v1",
       "artifact_id": "main",
       "unity_component": "BoxCollider",
       "oracles": [
-        "wall_collision"
+        "wall_collision",
+        "obstacle_collision"
       ]
     },
     {

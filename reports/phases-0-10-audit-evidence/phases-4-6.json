@@ -1,0 +1,1373 @@
+{
+  "audit": "Exhaustive semantic read-only PolyForge Phase4-6 requirements matrix",
+  "head": "07dfa752df56407d4dd57d79ea860fbc8389a140",
+  "authority": {
+    "blueprint": ".tmp/phase9/blueprint.txt",
+    "paragraphs": "983-1059; crossrefs691-692/720/931/1108/1520-1524/1667/1795/1972",
+    "plan": "docs/implementation-plan.md"
+  },
+  "method": "Actual code/tests/native artifact inspection; reports used only as indexes. Targeted offline current tests. No network or native app invocation. IMPLEMENTED is bounded requirement implementation, not release qualification.",
+  "current_offline_tests": {
+    "command": ".venv/Scripts/python.exe -B -m pytest tests/test_phase4_contracts.py tests/test_phase5_contracts.py tests/test_phase6_contracts.py -p no:cacheprovider --basetemp .tmp/audit-through-phase10/pytest-phases-4-6 -q",
+    "passed": 89,
+    "environment_failed": 1,
+    "reason": "WinError5 creating hardlink in tests/test_phase5_contracts.py:337 before guard assertion; not product defect. Parent owns broader approved-filesystem verification."
+  },
+  "findings": [
+    {
+      "id": "P46-1",
+      "priority": "P2",
+      "requirements": [
+        "5.3"
+      ],
+      "finding": "Basic optional supplied texture-file transfer/import absent; all textures truthfully rejected.",
+      "reproduction": "Nonempty schema-valid manifest material textures -> PF-EXPORT-TEXTURES-NOT-IMPLEMENTED throughS3/S4/S5. Native MaterialSpec only scalar fields."
+    },
+    {
+      "id": "P46-2",
+      "priority": "P2",
+      "requirements": [
+        "4.V3.multiview-invariants",
+        "5.8"
+      ],
+      "finding": "Pure independent reconciliation ignores emitted collider/scene-instance observables.",
+      "reproduction": "native_contract_fixture; expected colliderbox, observed collidernone/colliders[]/scene_instances[]/camera_count0/light_count0 -> reconcile_report PASS. Native C# Observe does check real faults."
+    },
+    {
+      "id": "P46-3",
+      "priority": "P2",
+      "requirements": [
+        "6.V4-gate"
+      ],
+      "finding": "Frozen brief obstacle-collision duty omitted from independent behavior acceptance.",
+      "reproduction": "arena_brief.md walls and obstacles vs arena_acceptance.json walls-only collision row and CORE_SCENARIOS wall_collision; no obstacle blocking/native mutant/manual check."
+    }
+  ],
+  "phase_verdicts": {
+    "4": "PARTIAL: core export implemented; refined independent collider evidence gap shared5.8",
+    "5": "PARTIAL: basic texture files and independent observable reconciliation incomplete",
+    "6": "PARTIAL: core playable arena/native/manual/two mutants implemented; mandatory obstacle acceptance omitted"
+  },
+  "rows": [
+    {
+      "phase": 4,
+      "id": "4.1",
+      "blueprint_paragraph": 987,
+      "status": "IMPLEMENTED",
+      "requirement": "Front/side/top/isometric deterministic cameras",
+      "code": [
+        "polyforge/blender/audit_worker.py:render_views"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_three_real_fixtures_have_four_views_and_repeatable_export_metadata"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-4-evidence/blender-tests.xml"
+      ],
+      "assessment": "Four orthographic directions, fixed CPU Cycles seed/samples, transparent RGBA, fitted camera extents and identical repeated metadata.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.2",
+      "blueprint_paragraph": 988,
+      "status": "IMPLEMENTED",
+      "requirement": "Geometric diagnostics and optional vision bundle",
+      "code": [
+        "polyforge/blender/audit_worker.py:diagnostics",
+        "polyforge/blender/adapter.py:execute_recipe"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_real_fault_taxonomy_identifies_originating_modules"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/audit-faults.json",
+        "reports/phase-4-evidence/golden"
+      ],
+      "assessment": "Checks unit transforms, material assignments, UV, inward primitive normals, collapsed faces, parenting/sockets; HTML review bundle emitted.",
+      "qualification_limits": "Supported convex primitive scope; numerical checks do not approve artistic quality. Missing vision remains REVIEW."
+    },
+    {
+      "phase": 4,
+      "id": "4.3",
+      "blueprint_paragraph": 989,
+      "status": "IMPLEMENTED",
+      "requirement": "Transform/geometry preflight and selected static hierarchy FBX export",
+      "code": [
+        "polyforge/blender/audit_worker.py:diagnostics",
+        "polyforge/blender/audit_worker.py:run"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_real_fault_taxonomy_identifies_originating_modules"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/audit-faults.json",
+        "reports/phase-4-evidence/golden"
+      ],
+      "assessment": "Selects semantic EMPTY/MESH hierarchy only; static preflight refuses armatures and excludes camera/light/animation export.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.4",
+      "blueprint_paragraph": 990,
+      "status": "IMPLEMENTED",
+      "requirement": "Material sidecars, manifest FBX bindings and output checksums",
+      "code": [
+        "polyforge/blender/audit_worker.py:run",
+        "polyforge/blender/adapter.py:execute_recipe",
+        "polyforge/blender/build.py:build_assets",
+        "polyforge/unity/bridge.py:reusable_export"
+      ],
+      "tests": [
+        "tests/test_phase4_contracts.py:test_exchange_sidecars_reject_changed_bindings_units_and_material_values",
+        "tests/test_phase5_contracts.py:test_reuse_requires_registered_fbx_metrics_and_source_bytes"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-6-evidence/blender"
+      ],
+      "assessment": "Sidecar values/bindings validated against recipe/metrics; export bindings and artifact registries carry canonical IDs, paths and SHA256.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.5",
+      "blueprint_paragraph": 991,
+      "status": "IMPLEMENTED",
+      "requirement": "Axis/asymmetry fixture and explicit Unity importer settings",
+      "code": [
+        "polyforge/blender/audit_worker.py:EXPORT_OPTIONS",
+        "unity_package/Editor/PolyForgeBuilder.cs:Build",
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_fbx_reimport_preserves_asymmetric_front_height_and_semantic_names",
+        "unity_package/Tests/Editor/ImportTests.cs:ImportedDimensionsSocketsAndBindingsMatchIndependentSource"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml"
+      ],
+      "assessment": "Asymmetric dimensions/sockets distinguish height/front. Explicit globalScale/useFileScale/bakeAxisConversion and reflected child X basis; native source/socket comparisons close later import gate.",
+      "qualification_limits": "Blender-only roundtrip accurately labels Unity NOT_RUN; subsequent Phase5 import evidence needed and exists."
+    },
+    {
+      "phase": 4,
+      "id": "4.6",
+      "blueprint_paragraph": 992,
+      "status": "IMPLEMENTED",
+      "requirement": "Normalized basis, meter dimensions, sockets, materials and geometry hashes",
+      "code": [
+        "polyforge/blender/worker.py:measure",
+        "polyforge/blender/audit_worker.py:run",
+        "polyforge/blender/audit.py:validate_exchange"
+      ],
+      "tests": [
+        "tests/test_phase4_contracts.py:test_exchange_sidecars_reject_changed_bindings_units_and_material_values"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/blender"
+      ],
+      "assessment": "metrics/logical geometry/handoff/audit preserve native and canonical basis, dimensions, IDs, socket positions and source geometry digest.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.7",
+      "blueprint_paragraph": 993,
+      "status": "IMPLEMENTED",
+      "requirement": "Pure synthetic cross-engine reconciliation checker",
+      "code": [
+        "polyforge/invariants/handoff.py:check_handoff"
+      ],
+      "tests": [
+        "tests/test_phase4_contracts.py:test_handoff_checks_asymmetric_axis_units_and_binding_faults"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/python-tests.xml"
+      ],
+      "assessment": "Pure checker validates basis, units, dimensions, material/socket ID sets and prefab binding with evidence graph.",
+      "qualification_limits": "Synthetic PASS explicitly application_execution NOT_RUN; independent collider observations have separate shared5.8 gap."
+    },
+    {
+      "phase": 4,
+      "id": "4.8",
+      "blueprint_paragraph": 994,
+      "status": "IMPLEMENTED",
+      "requirement": "Normals/scale/UV/orientation/socket failure taxonomy",
+      "code": [
+        "polyforge/blender/audit_worker.py:diagnostics"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_real_fault_taxonomy_identifies_originating_modules"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/audit-faults.json"
+      ],
+      "assessment": "Native injected failure categories identify semantic module and detailed origin.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.9",
+      "blueprint_paragraph": 995,
+      "status": "IMPLEMENTED",
+      "requirement": "Separate visual review from geometry validation",
+      "code": [
+        "polyforge/blender/audit_worker.py:run",
+        "polyforge/blender/audit.py:validate_audit"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_three_real_fixtures_have_four_views_and_repeatable_export_metadata"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden"
+      ],
+      "assessment": "visual_review_status REVIEW is enforced independently while mathematical checks PASS; substituted artistic PASS is rejected.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.V3.multiview-invariants",
+      "blueprint_paragraph": 996,
+      "status": "PARTIAL",
+      "requirement": "Reproducible QA thresholds/asymmetry and independent material/collider/socket evidence",
+      "code": [
+        "polyforge/contracts/images.py:inspect_png",
+        "polyforge/blender/audit.py:validate_exchange",
+        "polyforge/unity/evidence.py:reconcile_report",
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe"
+      ],
+      "tests": [
+        "tests/test_phase4_contracts.py:PNGTests",
+        "unity_package/Tests/Editor/ForensicsTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Nonblank/framing/material/socket evidence implemented. Native C# collider invariants implemented, but Python independent checker ignores emitted collider observations.",
+      "qualification_limits": "Same underlying gap as5.8; not missing native colliders."
+    },
+    {
+      "phase": 4,
+      "id": "4.V3.failure-origin",
+      "blueprint_paragraph": 997,
+      "status": "IMPLEMENTED",
+      "requirement": "Report originating module/export setting",
+      "code": [
+        "polyforge/blender/audit_worker.py:diagnostics"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_real_fault_taxonomy_identifies_originating_modules"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/audit-faults.json"
+      ],
+      "assessment": "Structured category,module_id,detail,origin replaces generic Blender-failed-only reporting.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.deliverables",
+      "blueprint_paragraph": 999,
+      "status": "IMPLEMENTED",
+      "requirement": "Four PNGs, audit metadata, FBX and material JSON",
+      "code": [
+        "polyforge/blender/audit_worker.py:run",
+        "polyforge/blender/adapter.py:execute_recipe"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_three_real_fixtures_have_four_views_and_repeatable_export_metadata"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-6-evidence/blender"
+      ],
+      "assessment": "All listed artifact classes exist, plus editable Blender source and normalized handoff.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.axis-options-deliverable",
+      "blueprint_paragraph": 1000,
+      "status": "IMPLEMENTED",
+      "requirement": "Axis fixture and standardized options",
+      "code": [
+        "tests/fixtures/recipes/asymmetric.json",
+        "polyforge/blender/audit_worker.py:EXPORT_OPTIONS",
+        "unity_package/Editor/PolyForgeBuilder.cs:Build"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py:test_fbx_reimport_preserves_asymmetric_front_height_and_semantic_names"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Fixture and explicit validated settings retained.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.verify-views",
+      "blueprint_paragraph": 1002,
+      "status": "IMPLEMENTED",
+      "requirement": "Expected dimensions/nonblank alpha/metadata",
+      "code": [
+        "polyforge/contracts/images.py:inspect_png",
+        "polyforge/blender/adapter.py:execute_recipe"
+      ],
+      "tests": [
+        "tests/test_phase4_contracts.py:PNGTests",
+        "tests/test_phase4_blender.py"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden"
+      ],
+      "assessment": "Independent bounded PNG decoder enforces RGBA8/CRC/structure/size, alpha foreground/colors and unclipped framing.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.verify-native-import",
+      "blueprint_paragraph": 1003,
+      "status": "IMPLEMENTED",
+      "requirement": "Actual Unity fixture import after Phase5",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Build",
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs:ImportedDimensionsSocketsAndBindingsMatchIndependentSource"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml"
+      ],
+      "assessment": "Actual imported GUIDs/bounds/sockets observed, not inferred from Blender roundtrip.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 4,
+      "id": "4.V4-gate",
+      "blueprint_paragraph": 1004,
+      "status": "IMPLEMENTED",
+      "requirement": "Stable IDs/scale/axis and replayable files; no artistic-perfect claim",
+      "code": [
+        "polyforge/blender/audit.py:validate_exchange",
+        "polyforge/blender/adapter.py:execute_recipe"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-6-evidence/blender"
+      ],
+      "assessment": "Technical source/export identity and replay artifacts exist; visual status honest.",
+      "qualification_limits": "Reproducibility is geometry/settings identity, not universal byte-identical FBX containers."
+    },
+    {
+      "phase": 4,
+      "id": "4.exit-gate",
+      "blueprint_paragraph": 1005,
+      "status": "PARTIAL",
+      "requirement": "Reproducible indexed exports/audits with unknown visual quality marked",
+      "code": [
+        "polyforge/blender/adapter.py:execute_recipe",
+        "polyforge/blender/audit_worker.py:run"
+      ],
+      "tests": [
+        "tests/test_phase4_blender.py"
+      ],
+      "evidence": [
+        "reports/phase-4-evidence/golden",
+        "reports/phase-4-evidence/blender-tests.xml"
+      ],
+      "assessment": "Core static export/PNG/identity gate evidenced; full refined independent collider invariant obligation remains partial.",
+      "qualification_limits": "Arbitrary animation explicitly out of Phase4 scope."
+    },
+    {
+      "phase": 5,
+      "id": "5.1",
+      "blueprint_paragraph": 1011,
+      "status": "IMPLEMENTED",
+      "requirement": "Pinned Unity6 URP and separated Editor package",
+      "code": [
+        "polyforge/unity/bootstrap.py",
+        "unity_package/package.json",
+        "unity_package/Editor/PolyForge.Editor.asmdef",
+        "unity_package/Runtime/PolyForge.Runtime.asmdef"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/compile/process.json",
+        "reports/phase-5-evidence/packages.json"
+      ],
+      "assessment": "Safe bounded template copy; explicit6000.6.3f1; actual URP/Input/Test package pins retained; runtime/editor assembly split.",
+      "qualification_limits": "TRUSTED_LOCAL with first package-download opt-in, not sandbox-qualified execution."
+    },
+    {
+      "phase": 5,
+      "id": "5.2",
+      "blueprint_paragraph": 1012,
+      "status": "IMPLEMENTED",
+      "requirement": "Validated JSON registry/stable IDs/managed FBX paths",
+      "code": [
+        "polyforge/unity/bridge.py:asset_spec",
+        "unity_package/Editor/PolyForgeBuilder.cs:ReadRequest",
+        "polyforge/unity/repairs.py:verify_source_hashes"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py:test_reconciliation_requires_frozen_source_hash_before_native_launch"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/request.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Python schema/semantic validation produces typed request; native path/ID restriction and frozen source SHA256 identity.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.3",
+      "blueprint_paragraph": 1013,
+      "status": "PARTIAL",
+      "requirement": "URP scalar material mapper and optional texture files",
+      "code": [
+        "polyforge/blender/build.py:build_assets",
+        "polyforge/unity/bridge.py:asset_spec",
+        "unity_package/Editor/PolyForgeBuilder.cs:MaterialSpec",
+        "unity_package/Editor/PolyForgeBuilder.cs:Build"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs:NativeMaterialParametersMatchLinearSidecars"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Scalar RGBA/metallic/smoothness implemented and tested. Any nonempty textures rejects with PF-EXPORT-TEXTURES-NOT-IMPLEMENTED; no native texture fields/import settings/copy path.",
+      "qualification_limits": "P2 missing basic supplied-file mapper. Paragraphs691-692/720 explicitly require optional paths, SHA256 copy and base-color/normal import settings.8.5 paragraph1108 defers advanced PBR, not all basic supplied texture files. Paragraph1795 preserves original0-6."
+    },
+    {
+      "phase": 5,
+      "id": "5.4",
+      "blueprint_paragraph": 1014,
+      "status": "IMPLEMENTED",
+      "requirement": "Native scenes/prefabs/components/colliders/lights/camera",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Build",
+        "unity_package/Editor/PolyForgeBuilder.cs:BuildScene"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs",
+        "unity_package/Tests/Editor/ForensicsTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/native-output.zip"
+      ],
+      "assessment": "Actual native APIs produce ground/robot/obstacle prefabs and scene structures.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.5",
+      "blueprint_paragraph": 1015,
+      "status": "IMPLEMENTED",
+      "requirement": "Idempotent native scene/prefab save",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Build",
+        "unity_package/Editor/PolyForgeBuilder.cs:BuildScene"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs:RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml",
+        "reports/phase-5-evidence/workspace/first-result.json",
+        "reports/phase-5-evidence/workspace/second-result.json"
+      ],
+      "assessment": "New empty scene then fixed managed paths; native repeat tests preserve counts/GUIDs/local bindings.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.6",
+      "blueprint_paragraph": 1016,
+      "status": "IMPLEMENTED",
+      "requirement": "Batchmode executeMethod and separate compilation invocations",
+      "code": [
+        "polyforge/unity/bridge.py:launch",
+        "polyforge/unity/bridge.py:build_unity"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py:test_unity_failed_test_process_maps_to_test_exit_seven"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/compile/process.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/build/process.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode/process.json"
+      ],
+      "assessment": "Separate compile/build/test process records with owned argument arrays and failure mappings.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.7",
+      "blueprint_paragraph": 1017,
+      "status": "IMPLEMENTED",
+      "requirement": "Reconciler and typed ID-to-GUID/prefab/component report",
+      "code": [
+        "polyforge/unity/evidence.py:reconcile_report",
+        "unity_package/Editor/PolyForgeBuilder.cs:BindingReport",
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py:test_semantic_node_reference_mutations_are_detected"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Semantic equivalent implemented regardless literal class names; asset/model/prefab GUID, node IDs/local IDs/path/component retained.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.8",
+      "blueprint_paragraph": 1018,
+      "status": "PARTIAL",
+      "requirement": "Socket/collider/material/import differences; no serialization string edits",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe",
+        "polyforge/unity/evidence.py:reconcile_report"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ForensicsTests.cs:ColliderFaultsAreDetected",
+        "tests/test_phase5_contracts.py:test_native_report_mutations_fail_independent_contract"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json",
+        "reports/phase-9-evidence/managed-workspace/runs/phase9-static-regression/editmode.xml"
+      ],
+      "assessment": "Native C# checks collider geometry/material values/scene overrides. Python independent checker ignores collider/colliders,scene_instances,camera_count,light_count; trusts issues for those. No YAML editing found.",
+      "qualification_limits": "P2 confirmed: native_contract_fixture; declare expected collider=box; observed collider=none/colliders=[]/scene_instances=[]/camera_count=0/light_count=0 still PASS. Migrate fixtures to complete observables, no absent-field bypass."
+    },
+    {
+      "phase": 5,
+      "id": "5.9",
+      "blueprint_paragraph": 1019,
+      "status": "IMPLEMENTED",
+      "requirement": "100x scale/material loss/child rename/missing component negatives",
+      "code": [
+        "unity_package/Tests/Editor/ImportTests.cs:IndependentFaultsAreDetected",
+        "tests/unity_fault_probe.cs"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py:test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml",
+        "reports/phase-5-evidence/workspace/repair-result.json"
+      ],
+      "assessment": "Native scale/material/socket rename and missing PrefabBinding faults executed.",
+      "qualification_limits": "Phase5 static controller/binding component; playable PlayerController belongs Phase6, which checks its scene bindings."
+    },
+    {
+      "phase": 5,
+      "id": "5.10",
+      "blueprint_paragraph": 1020,
+      "status": "IMPLEMENTED",
+      "requirement": "Repeat import reference/count stability",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:BuildScene"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs:RepeatedNativeBuildPreservesGuidsHierarchyAndSceneInstances",
+        "tests/test_phase5_unity.py:test_material_only_rebuild_preserves_fbx_code_guids_and_object_counts"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/first-result.json",
+        "reports/phase-5-evidence/workspace/second-result.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml"
+      ],
+      "assessment": "Actual two builds and native assertions preserve counts/GUIDs/hierarchy/semantic local bindings.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.V3.early-repair",
+      "blueprint_paragraph": 1021,
+      "status": "IMPLEMENTED",
+      "requirement": "GUID/scale/prefab diagnosis, dry patch and exact snapshot",
+      "code": [
+        "polyforge/unity/repairs.py",
+        "polyforge/unity/transactions.py:ManagedTransaction"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py:test_managed_snapshot_restores_exact_bytes_and_removes_new_owned_files",
+        "tests/test_phase5_unity.py:test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/repair-result.json",
+        "reports/phase-5-evidence/workspace/faulty-baseline-rollback.json",
+        "reports/phase-5-evidence/workspace/transactions"
+      ],
+      "assessment": "Recorded typed issue/request binds minimal plan; exact snapshots/journals/reimport rollback exist.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.V3.diff-rebuild",
+      "blueprint_paragraph": 1022,
+      "status": "IMPLEMENTED",
+      "requirement": "Read-only diff and material-only dependency rebuild proof",
+      "code": [
+        "polyforge/unity/repairs.py:reconcile_workspace",
+        "polyforge/unity/bridge.py:geometry_identity",
+        "polyforge/unity/bridge.py:reusable_export"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py:test_material_only_rebuild_preserves_fbx_code_guids_and_object_counts"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/first-result.json",
+        "reports/phase-5-evidence/workspace/second-result.json",
+        "reports/phase-5-evidence/workspace/transactions"
+      ],
+      "assessment": "Read-only observation returns expected/actual issues; scalar material edit reuses geometry and unchanged C#/FBX hashes.",
+      "qualification_limits": "Managed project only; arbitrary original project native inspection prohibited."
+    },
+    {
+      "phase": 5,
+      "id": "5.V3.scene-family",
+      "blueprint_paragraph": 1023,
+      "status": "IMPLEMENTED",
+      "requirement": "Two-scene family sharing prefab/template",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:BuildScene"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py:test_real_native_build_has_executed_editmode_and_two_scenes"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/native-output.zip",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Arena/Training variants share generated prefab/static binding templates.",
+      "qualification_limits": "Scene-family reuse is not two playable genres. Paragraphs1049/1057/1667 expressly reserve second playable game/generalization forPhase11."
+    },
+    {
+      "phase": 5,
+      "id": "5.deliverables.UPM",
+      "blueprint_paragraph": 1025,
+      "status": "IMPLEMENTED",
+      "requirement": "Runtime/editor UPM and Editor builder",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs",
+        "unity_package/Runtime/PrefabBinding.cs",
+        "unity_package/package.json"
+      ],
+      "tests": [
+        "tests/test_phase5_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/native-output.zip"
+      ],
+      "assessment": "UPM package with separate runtime/editor assemblies and callable builder exists.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.deliverables.assets",
+      "blueprint_paragraph": 1026,
+      "status": "IMPLEMENTED",
+      "requirement": "Generated materials/prefabs/example scenes",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/native-output.zip",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "All listed native artifact categories in generated project archive.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.deliverables.tests",
+      "blueprint_paragraph": 1027,
+      "status": "IMPLEMENTED",
+      "requirement": "EditMode import/idempotence suite",
+      "code": [
+        "unity_package/Tests/Editor/ImportTests.cs",
+        "unity_package/Tests/Editor/ForensicsTests.cs"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml"
+      ],
+      "assessment": "Seventeen native static tests executed.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.verify-compile-open",
+      "blueprint_paragraph": 1029,
+      "status": "IMPLEMENTED",
+      "requirement": "Zero C# errors and actual generated scene opens",
+      "code": [
+        "polyforge/unity/bridge.py:launch",
+        "unity_package/Tests/Editor/ImportTests.cs"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py:test_real_native_build_has_executed_editmode_and_two_scenes"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/compile/process.json",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml"
+      ],
+      "assessment": "Compile exit0 and actual scene-opening native test evidence.",
+      "qualification_limits": "Pinned recorded host execution; no cross-platform or fresh-native-run claim."
+    },
+    {
+      "phase": 5,
+      "id": "5.verify-axis-material-repeat",
+      "blueprint_paragraph": 1030,
+      "status": "IMPLEMENTED",
+      "requirement": "Orientation/scale/material checks and repeat counts/GUID",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Observe"
+      ],
+      "tests": [
+        "unity_package/Tests/Editor/ImportTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/editmode.xml",
+        "reports/phase-5-evidence/workspace/first-result.json",
+        "reports/phase-5-evidence/workspace/second-result.json"
+      ],
+      "assessment": "Native socket/dimension/scalar material comparisons and repeat references checked.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 5,
+      "id": "5.V4-gate",
+      "blueprint_paragraph": 1031,
+      "status": "PARTIAL",
+      "requirement": "Injected axis/scale/reference repair, transaction/rollback and GUID mapping",
+      "code": [
+        "polyforge/unity/repairs.py",
+        "polyforge/unity/transactions.py",
+        "unity_package/Tests/Editor/ImportTests.cs"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py:test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/repair-result.json",
+        "reports/phase-5-evidence/workspace/rollback-result.json",
+        "reports/phase-5-evidence/workspace/faulty-baseline-rollback.json",
+        "reports/phase-5-evidence/workspace/transactions"
+      ],
+      "assessment": "Core minimal repair/managed rollback/GUID mechanism evidenced; full independent invariant verification has5.8 gap.",
+      "qualification_limits": "Full cross-app crash/post-reimport release qualification belongsPhase9, not external evaluator/sandbox blockers here."
+    },
+    {
+      "phase": 5,
+      "id": "5.exit-gate",
+      "blueprint_paragraph": 1032,
+      "status": "IMPLEMENTED",
+      "requirement": "Ground/robot/obstacles native scene without YAML edits",
+      "code": [
+        "unity_package/Editor/PolyForgeBuilder.cs:Build",
+        "unity_package/Editor/PolyForgeBuilder.cs:BuildScene"
+      ],
+      "tests": [
+        "tests/test_phase5_unity.py"
+      ],
+      "evidence": [
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/native-output.zip",
+        "reports/phase-5-evidence/workspace/runs/unity-971ac764ce924dfa/bindings.json"
+      ],
+      "assessment": "Core static scene exit exists.",
+      "qualification_limits": "Whole-phase every-requirement claim remains PARTIAL due5.3/5.8."
+    },
+    {
+      "phase": 6,
+      "id": "6.1",
+      "blueprint_paragraph": 1038,
+      "status": "IMPLEMENTED",
+      "requirement": "Lean movement/collision/patrol/timer win runtime",
+      "code": [
+        "unity_package/Runtime/PlayerController.cs",
+        "unity_package/Runtime/PatrolEnemy.cs",
+        "unity_package/Runtime/ArenaSession.cs",
+        "unity_package/Runtime/Health.cs",
+        "unity_package/Runtime/ContactDamage.cs"
+      ],
+      "tests": [
+        "unity_package/Tests/PlayMode/ScenarioTests.cs",
+        "unity_package/Tests/PlayMode/RuntimeTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry",
+        "reports/phase-9-evidence/managed-workspace/runs/game-check-2df5c952c278467b/telemetry"
+      ],
+      "assessment": "CharacterController movement, walls, seeded patrol, contact health damage, failure and timer state actually observed.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 6,
+      "id": "6.2",
+      "blueprint_paragraph": 1039,
+      "status": "IMPLEMENTED",
+      "requirement": "Pinned Input System adapter and movement seam",
+      "code": [
+        "unity_package/Runtime/PlayerInput.cs",
+        "unity_package/Runtime/PlayerController.cs",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:InjectedInput"
+      ],
+      "tests": [
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:KeyboardAdapterMovesPlayer",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:KeyboardAdapterRestarts"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry/keyboard_input.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry/keyboard_restart.json"
+      ],
+      "assessment": "IPlayerInput seam plus actual keyboard InputSystem device tests; queued R edge avoids missed fixed-step polling.",
+      "qualification_limits": "Native test-only focus/background setup; actual interactive player reviewed separately."
+    },
+    {
+      "phase": 6,
+      "id": "6.3",
+      "blueprint_paragraph": 1040,
+      "status": "IMPLEMENTED",
+      "requirement": "Robust references and missing-actor-component errors",
+      "code": [
+        "unity_package/Runtime/PlayerController.cs",
+        "unity_package/Runtime/ArenaSession.cs",
+        "unity_package/Editor/GameBuilder.cs"
+      ],
+      "tests": [
+        "unity_package/Tests/GameEditor/GameTests.cs:PlayableSceneHasLiveRuntimeBindingsAndFourBoundaries"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode.xml"
+      ],
+      "assessment": "RequireComponent, Start validation, null-input fallback, source-prefab guards and native binding tests.",
+      "qualification_limits": "Bounded generated arena scope, not arbitrary corrupt-scene recovery."
+    },
+    {
+      "phase": 6,
+      "id": "6.4",
+      "blueprint_paragraph": 1041,
+      "status": "IMPLEMENTED",
+      "requirement": "Separate native suites and strict XML collector",
+      "code": [
+        "polyforge/unity/game.py:execute_game_checks",
+        "polyforge/unity/evidence.py:verify_test_xml",
+        "polyforge/unity/bridge.py:launch"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_playmode_launch_is_distinct_and_rejects_unknown_test_filters_before_writes"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode/process.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode/process.json",
+        "reports/phase-10-evidence/baseline-native/playmode.xml"
+      ],
+      "assessment": "Separate invocation records; exact unique passing identities and bounded safe XML enforced. OriginalPhase6 has12 PlayMode, later current suite16.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 6,
+      "id": "6.5",
+      "blueprint_paragraph": 1042,
+      "status": "IMPLEMENTED",
+      "requirement": "Manual movement/enemy/collision/win/failure/restart",
+      "code": [
+        "unity_package/Runtime/ArenaHud.cs",
+        "unity_package/Runtime/PlayerInput.cs"
+      ],
+      "tests": [
+        "User manual review receipt"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/manual-review.json",
+        "reports/phase-6-evidence/interactive/health-damage.png"
+      ],
+      "assessment": "Receipt binds USER, input digest and final player; exact confirmation All listed play checks passed for seven checks.",
+      "qualification_limits": "Receipt proves historical user confirmation; audit cannot recreate it. Checklist says wall collision, not obstacle collision."
+    },
+    {
+      "phase": 6,
+      "id": "6.6",
+      "blueprint_paragraph": 1043,
+      "status": "IMPLEMENTED",
+      "requirement": "Declarative seeded/frame-step scenario runner and event JSON",
+      "code": [
+        "polyforge/data/arena_scenarios.json",
+        "polyforge/unity/game.py:core_suite",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:Run",
+        "polyforge/scenarios/schema.py"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_core_scenario_data_validates_bounded_setup_and_known_entities"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/scenarios.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry"
+      ],
+      "assessment": "Bounded move/wait/restart JSON DSL, fixed steps, seed, frame samples/events, identity validation.",
+      "qualification_limits": "Public bounded arena runner, not arbitrary mechanic support."
+    },
+    {
+      "phase": 6,
+      "id": "6.7",
+      "blueprint_paragraph": 1044,
+      "status": "IMPLEMENTED",
+      "requirement": "Move/wall/patrol/damage/win/restart behaviors",
+      "code": [
+        "polyforge/data/arena_scenarios.json",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs",
+        "polyforge/scenarios/arena_oracle.py:evaluate"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry",
+        "reports/phase-9-evidence/managed-workspace/runs/game-check-2df5c952c278467b/telemetry"
+      ],
+      "assessment": "Seven core cases plus keyboard and injected regressions emit independently scored native values.",
+      "qualification_limits": "Task explicitly requires wall scenario; satisfied. Frozen brief additionally requires obstacles, covered by separate6.V4-gate gap."
+    },
+    {
+      "phase": 6,
+      "id": "6.8",
+      "blueprint_paragraph": 1045,
+      "status": "IMPLEMENTED",
+      "requirement": "Independent telemetry/XML behavioral scoring",
+      "code": [
+        "polyforge/scenarios/arena_oracle.py:validate_trace",
+        "polyforge/scenarios/arena_oracle.py:evaluate",
+        "polyforge/unity/game.py:score_telemetry"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_public_movement_oracle_requires_observed_motion_not_success_events",
+        "tests/test_phase6_contracts.py:test_trace_identity_and_execution_are_required_before_mutant_scoring"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/public-oracles.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry",
+        "reports/phase-9-evidence/managed-workspace/runs/game-check-2df5c952c278467b/telemetry"
+      ],
+      "assessment": "Separate Python checks transforms/health/state/time/per-enemy movement; success labels or malformed/unexecuted mutants insufficient.",
+      "qualification_limits": "Public logical independence, protected evaluator external. Full brief coverage has obstacle omission."
+    },
+    {
+      "phase": 6,
+      "id": "6.9",
+      "blueprint_paragraph": 1046,
+      "status": "IMPLEMENTED",
+      "requirement": "Benchmark suitev1 and available baseline runs or NOT_RUN",
+      "code": [
+        "benchmarks/development-v1/suite.json",
+        "polyforge/benchmark/protocol.py"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_development_benchmark_inventory_has_frozen_briefs_and_separate_task_classes"
+      ],
+      "evidence": [
+        "benchmarks/development-v1/suite.json",
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "Twelve frozen brief tasks across asset/animation/mechanic/repair/complete2D; trials honestly NOT_RUN.",
+      "qualification_limits": "Unavailable baseline execution explicitly permitted here; no superiority claim."
+    },
+    {
+      "phase": 6,
+      "id": "6.V4.trace-harness",
+      "blueprint_paragraph": 1047,
+      "status": "IMPLEMENTED",
+      "requirement": "DEVELOPMENT feature trace and basic independent acceptance",
+      "code": [
+        "polyforge/unity/game.py:feature_trace",
+        "polyforge/review/acceptance.py:public_acceptance_spec",
+        "polyforge/data/arena_acceptance.json"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_game_job_must_match_fresh_contract_and_optional_gaps_remain_visible",
+        "tests/test_phase9_review.py:test_arena_acceptance_is_frozen_independently_of_manifest"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-build-5bccbde03d0848ac/feature-trace.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/public-oracles.json"
+      ],
+      "assessment": "Feature source spans/components/scenarios and honest PARTIAL status; later public acceptance freezes separate from mutable manifest.",
+      "qualification_limits": "Basic harness exists but mandatory frozen-brief obstacle coverage incomplete."
+    },
+    {
+      "phase": 6,
+      "id": "6.V4.two-mutants",
+      "blueprint_paragraph": 1047,
+      "status": "IMPLEMENTED",
+      "requirement": "Collision/restart smoke mutants killed",
+      "code": [
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:CollisionDisabledMutant",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs:RestartDisabledMutant",
+        "polyforge/unity/game.py:score_telemetry"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py:test_collision_oracle_detects_disabled_walls_and_restart_oracle_requires_state_reset"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry/collision_disabled.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry/restart_disabled.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/public-oracles.json"
+      ],
+      "assessment": "Actual valid native mutant traces fail behavioral checks; gate inversion only after trace validation.",
+      "qualification_limits": "Only2 requiredPhase6. Additional4 exist now but belong later release gates."
+    },
+    {
+      "phase": 6,
+      "id": "6.V4.instrumentation",
+      "blueprint_paragraph": 1048,
+      "status": "IMPLEMENTED",
+      "requirement": "Performance instrumentation and pinned sample profile",
+      "code": [
+        "unity_package/Runtime/ArenaPerformance.cs",
+        "profiles/windows-arena.json",
+        "unity_package/Editor/GameBuilder.cs:BuildPlayerBatch"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player/smoke-evidence.json",
+        "profiles/windows-arena.json"
+      ],
+      "assessment": "Frame-time/load/hardware/RSS collection, sample Windows profile and truthful profile_status NOT_RUN.",
+      "qualification_limits": "Null Device1422x693 smoke is not1280x720 rendered target profiling. RSS0 unavailable, qualification=false; full target profilePhase11."
+    },
+    {
+      "phase": 6,
+      "id": "6.V4.reuse",
+      "blueprint_paragraph": 1049,
+      "status": "IMPLEMENTED",
+      "requirement": "Reusable primitives; ONE playable arena",
+      "code": [
+        "unity_package/Runtime/PlayerInput.cs",
+        "unity_package/Runtime/Health.cs",
+        "unity_package/Runtime/PlayerController.cs",
+        "unity_package/Runtime/PatrolEnemy.cs",
+        "unity_package/Runtime/ArenaSession.cs"
+      ],
+      "tests": [
+        "unity_package/Tests/PlayMode/RuntimeTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode.xml"
+      ],
+      "assessment": "Input/health/movement/patrol/session/HUD primitives separated and working.",
+      "qualification_limits": "Second playable genre and genuine holdouts explicitlyPhase11; no missingPhase6 generalization claim."
+    },
+    {
+      "phase": 6,
+      "id": "6.deliverables.runtime",
+      "blueprint_paragraph": 1051,
+      "status": "IMPLEMENTED",
+      "requirement": "PlayerController/PatrolEnemy/game state/HUD/restart",
+      "code": [
+        "unity_package/Runtime",
+        "unity_package/Editor/GameBuilder.cs"
+      ],
+      "tests": [
+        "unity_package/Tests/PlayMode/ScenarioTests.cs"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-build-5bccbde03d0848ac/native-output.zip"
+      ],
+      "assessment": "All named runtime artifact categories exist in source and native archive.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 6,
+      "id": "6.deliverables.tests",
+      "blueprint_paragraph": 1052,
+      "status": "IMPLEMENTED",
+      "requirement": "EditMode/PlayMode suites and collector",
+      "code": [
+        "unity_package/Tests/GameEditor/GameTests.cs",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs",
+        "polyforge/unity/game.py:execute_game_checks"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode.xml"
+      ],
+      "assessment": "Separate suites and exact-identity result collector implemented.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 6,
+      "id": "6.optional-standalone",
+      "blueprint_paragraph": 1053,
+      "status": "IMPLEMENTED",
+      "requirement": "Optional standalone builder",
+      "code": [
+        "unity_package/Editor/GameBuilder.cs:BuildPlayerBatch",
+        "polyforge/unity/game.py:execute_game_checks"
+      ],
+      "tests": [
+        "Native Windows player smoke"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player-build/process.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player-smoke/process.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player/smoke-evidence.json",
+        "reports/phase-6-evidence/player-inventory.json"
+      ],
+      "assessment": "Actual Windows Mono player build and owned150-fixed-frame smoke observed enemy motion.",
+      "qualification_limits": "Raw executable intentionally local-only; inventory/logs retained. Smoke not rendered performance/full acceptance."
+    },
+    {
+      "phase": 6,
+      "id": "6.verify-bindings-behavior",
+      "blueprint_paragraph": 1055,
+      "status": "IMPLEMENTED",
+      "requirement": "EditMode scene bindings; movement/state/restart behavior",
+      "code": [
+        "unity_package/Tests/GameEditor/GameTests.cs",
+        "unity_package/Tests/PlayMode/ScenarioTests.cs",
+        "polyforge/scenarios/arena_oracle.py"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry"
+      ],
+      "assessment": "Actual native bindings and behavioral observations separately checked.",
+      "qualification_limits": "Recorded native evidence inspected; no Blender/Unity applications launched in this audit."
+    },
+    {
+      "phase": 6,
+      "id": "6.verify-xml-manual",
+      "blueprint_paragraph": 1056,
+      "status": "IMPLEMENTED",
+      "requirement": "No unhandled exceptions, passing XML, manual checklist",
+      "code": [
+        "polyforge/unity/evidence.py:verify_test_xml",
+        "polyforge/unity/game.py:execute_game_checks"
+      ],
+      "tests": [
+        "Native suites/manual receipt"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode/stdout.txt",
+        "reports/phase-6-evidence/manual-review.json"
+      ],
+      "assessment": "Expected actual identities passed; user completed checklist.",
+      "qualification_limits": "Shutdown allocation warnings retained; no leak-free claim. Current16 identities additionally retained inPhase10 baseline."
+    },
+    {
+      "phase": 6,
+      "id": "6.V4-gate",
+      "blueprint_paragraph": 1057,
+      "status": "PARTIAL",
+      "requirement": "Mandatory frozen-brief oracles/native suites/two mutants",
+      "code": [
+        "polyforge/data/arena_brief.md",
+        "polyforge/data/arena_acceptance.json",
+        "polyforge/unity/game.py:score_telemetry",
+        "unity_package/Tests/GameEditor/GameTests.cs"
+      ],
+      "tests": [
+        "tests/test_phase6_contracts.py",
+        "tests/test_phase9_review.py"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/telemetry",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/editmode.xml",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/playmode.xml",
+        "reports/phase-6-evidence/manual-review.json"
+      ],
+      "assessment": "Core arena7 behaviors/two mutants pass; frozen brief says walls AND obstacles. Acceptance maps walls only, no obstacle-blocking scenario; GameTests never inspects Obstacle_*; manual list walls only.",
+      "qualification_limits": "P2 acceptance coverage gap, not proven missing collision functionality. Need actual obstacle-specific behavioral trace and disabled-obstacle negative. External holdouts/performance/benchmarks are notPhase6 blockers."
+    },
+    {
+      "phase": 6,
+      "id": "6.exit-gate",
+      "blueprint_paragraph": 1058,
+      "status": "IMPLEMENTED",
+      "requirement": "Open/play isometric Blender-object arena",
+      "code": [
+        "unity_package/Editor/GameBuilder.cs",
+        "unity_package/Runtime"
+      ],
+      "tests": [
+        "User manual play receipt"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player-build/process.json",
+        "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16/player/smoke-evidence.json",
+        "reports/phase-6-evidence/manual-review.json"
+      ],
+      "assessment": "Bounded actual playable MVP supported by build/smoke/manual evidence.",
+      "qualification_limits": "Core demo exists; whole-phase refined coverage remains PARTIAL. Art direction/complex rigging explicitly out of scope."
+    },
+    {
+      "phase": 6,
+      "id": "6.external-evaluator",
+      "blueprint_paragraph": 1057,
+      "status": "PERMITTED_BLOCKED",
+      "requirement": "Protected evaluator and genuinely withheld brief",
+      "code": [
+        "docs/implementation-plan.md",
+        "profiles/windows-arena.json",
+        "polyforge/contracts/results.py"
+      ],
+      "tests": [
+        "Explicit normative staging"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "External/unavailable or expressly later release qualification; not a missing bounded trusted MVP implementation.",
+      "qualification_limits": "No release PASS/hidden acceptance/SANDBOXED_UNTRUSTED claim permitted."
+    },
+    {
+      "phase": 6,
+      "id": "6.performance-release",
+      "blueprint_paragraph": 1048,
+      "status": "PERMITTED_BLOCKED",
+      "requirement": "Full rendered target hardware/profile qualification",
+      "code": [
+        "docs/implementation-plan.md",
+        "profiles/windows-arena.json",
+        "polyforge/contracts/results.py"
+      ],
+      "tests": [
+        "Explicit normative staging"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "External/unavailable or expressly later release qualification; not a missing bounded trusted MVP implementation.",
+      "qualification_limits": "No release PASS/hidden acceptance/SANDBOXED_UNTRUSTED claim permitted."
+    },
+    {
+      "phase": 6,
+      "id": "6.second-genre",
+      "blueprint_paragraph": 1049,
+      "status": "PERMITTED_BLOCKED",
+      "requirement": "Second playable genre/generalization",
+      "code": [
+        "docs/implementation-plan.md",
+        "profiles/windows-arena.json",
+        "polyforge/contracts/results.py"
+      ],
+      "tests": [
+        "Explicit normative staging"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "External/unavailable or expressly later release qualification; not a missing bounded trusted MVP implementation.",
+      "qualification_limits": "No release PASS/hidden acceptance/SANDBOXED_UNTRUSTED claim permitted."
+    },
+    {
+      "phase": 6,
+      "id": "6.four-baselines",
+      "blueprint_paragraph": 1057,
+      "status": "PERMITTED_BLOCKED",
+      "requirement": "Four complete baseline arms/tool parity",
+      "code": [
+        "docs/implementation-plan.md",
+        "profiles/windows-arena.json",
+        "polyforge/contracts/results.py"
+      ],
+      "tests": [
+        "Explicit normative staging"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "External/unavailable or expressly later release qualification; not a missing bounded trusted MVP implementation.",
+      "qualification_limits": "No release PASS/hidden acceptance/SANDBOXED_UNTRUSTED claim permitted."
+    },
+    {
+      "phase": 6,
+      "id": "trusted-local-sandbox",
+      "blueprint_paragraph": 931,
+      "status": "PERMITTED_BLOCKED",
+      "requirement": "OS-isolated untrusted execution qualification",
+      "code": [
+        "docs/implementation-plan.md",
+        "profiles/windows-arena.json",
+        "polyforge/contracts/results.py"
+      ],
+      "tests": [
+        "Explicit normative staging"
+      ],
+      "evidence": [
+        "reports/phase-6-evidence/summary.json"
+      ],
+      "assessment": "External/unavailable or expressly later release qualification; not a missing bounded trusted MVP implementation.",
+      "qualification_limits": "No release PASS/hidden acceptance/SANDBOXED_UNTRUSTED claim permitted."
+    }
+  ],
+  "status_counts": {
+    "IMPLEMENTED": 51,
+    "PARTIAL": 6,
+    "MISSING": 0,
+    "PERMITTED_BLOCKED": 5
+  },
+  "qualification_limits": [
+    "No new Blender/Unity execution in audit. Retained native evidence checked instead.",
+    "Phase6 historical PlayMode XML12 cases, laterPhase9/10 current16; historical12 is not exact current identity qualification.",
+    "Portable evidence omits original disposable compiler caches/player binaries; original registries may name omitted bytes.",
+    "TRUSTED_LOCAL and external evaluator/performance/genre/release baselines kept separate from core missing functionality."
+  ],
+  "independent_evidence_rechecks": {
+    "reconciler_fault_reproduction": "CONFIRMED PASS despite collider none and empty scenes/cameras/lights",
+    "phase4_pngs": {
+      "audit_bundles": 3,
+      "verified_nonblank_framed_views": 12
+    },
+    "phase6_pngs": {
+      "audit_bundles": 4,
+      "verified_nonblank_framed_views": 16
+    },
+    "xml_exact_identity_rechecks": {
+      "reports/phase-9-evidence/managed-workspace/runs/phase9-static-regression/editmode.xml": 17,
+      "reports/phase-10-evidence/baseline-native/editmode.xml": 1,
+      "reports/phase-10-evidence/baseline-native/playmode.xml": 16
+    },
+    "native_telemetry_rescoring": {
+      "reports/phase-6-evidence/native/game-check-d9ccc8eca7304c16": "9 nominal/input behaviors PASS; collision/restart mutants fail as expected; all11 gate outcomes PASS",
+      "reports/phase-9-evidence/managed-workspace/runs/game-check-2df5c952c278467b": "9 nominal/input behaviors PASS; all6 mutants fail as expected; all15 gate outcomes PASS"
+    }
+  }
+}

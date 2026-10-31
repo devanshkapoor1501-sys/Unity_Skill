@@ -15,6 +15,7 @@ from polyforge.blender.recipes import expand_recipe
 from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import canonical_digest, validate_schema
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.state import atomic_json
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.bridge import configuration
@@ -154,14 +155,20 @@ def build_asset(inputs: dict[str, Any], context: RunContext) -> Result:
             policy,
             relative + "/artifacts.json",
             {
-                "artifacts": [
-                    {
-                        "relative_path": p.relative_to(policy.root).as_posix(),
-                        "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
-                        "bytes": p.stat().st_size,
-                    }
-                    for p in registered
-                ]
+                "artifacts": complete_records(
+                    policy,
+                    identity,
+                    "S3",
+                    [
+                        {
+                            "relative_path": p.relative_to(policy.root).as_posix(),
+                            "sha256": hashlib.sha256(p.read_bytes()).hexdigest(),
+                            "bytes": p.stat().st_size,
+                        }
+                        for p in registered
+                    ],
+                    input_digest=canonical_digest(inputs),
+                )
             },
         )
         result = Result(

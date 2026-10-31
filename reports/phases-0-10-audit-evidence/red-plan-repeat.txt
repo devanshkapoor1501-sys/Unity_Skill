@@ -1,0 +1,106 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___ test_repeated_interruption_preserves_current_lock_when_new_plan_changes ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-plan-repeat/test_repeated_interruption_pre0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001625E922300>
+
+    def test_repeated_interruption_preserves_current_lock_when_new_plan_changes(tmp_path, monkeypatch):
+        import importlib
+        from test_phase2_contracts import arena
+        from polyforge.compiler import commands
+    
+        arena(tmp_path)
+        monkeypatch.setattr(importlib.import_module("polyforge.doctor"), "discover_tool", lambda *a: None)
+        manifest = tmp_path / "game_manifest.json"
+        original = commands.atomic_json
+        checkpoint = ["commit"]
+        def interrupt(policy, relative, value):
+            if (checkpoint[0] == "commit" and str(relative) == ".polyforge/planning-state.json"
+                    and value.get("status") == "COMMITTED") or (checkpoint[0] == "lock" and str(relative) == "polyforge.lock.json"):
+                raise OSError("injected interruption")
+            return original(policy, relative, value)
+        monkeypatch.setattr(commands, "atomic_json", interrupt)
+        with pytest.raises(OSError):
+            commands.manifest_command(manifest, "plan")
+        value = json.loads(manifest.read_text("utf-8"))
+        value["project"]["seed"] = 43
+        manifest.write_text(json.dumps(value), encoding="utf-8")
+        checkpoint[0] = "lock"
+        with pytest.raises(OSError):
+            commands.manifest_command(manifest, "plan")
+        monkeypatch.setattr(commands, "atomic_json", original)
+>       assert commands.manifest_command(manifest, "plan").status == "PASS"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_artifact_records.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\compiler\commands.py:208: in manifest_command
+    _preflight(model, named, path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = Manifest(data={'schema_version': '1.0.0', 'project': {'id': 'arena_demo', 'name': 'Isometric Robot Arena', 'kind': '3d...n-brief oracles.\n', brief_sha256='883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8', input_digests={})
+outputs = {'feature_contract.json': {'authority': 'DEVELOPMENT_ONLY', 'composition': {'authority': 'DEVELOPMENT_ONLY', 'connecti...quirements': ['movement', 'collision', 'enemy', 'damage', 'health', 'timer', ...], 'game_status': 'PARTIAL', ...}, ...}
+source = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-plan-repeat/test_repeated_interruption_pre0/game_manifest.json')
+
+    def _preflight(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
+        """Reject collisions with immutable inputs before even taking a writing lock."""
+        policy = WorkspacePolicy(model.workspace)
+        inputs = [
+            source.absolute(),
+            *[policy.path(a["recipe"]) for a in model.data["assets"]],
+            *[policy.path(name) for name in model.input_digests],
+            policy.path("polyforge.toml"),
+            policy.path("doctor.json"),
+            policy.path("UnityProject/ProjectSettings/ProjectVersion.txt"),
+            policy.path("UnityProject/Packages/manifest.json"),
+            policy.path("UnityProject/Packages/packages-lock.json"),
+        ]
+        if model.brief is not None:
+            inputs.append(policy.path(model.data.get("intent", {}).get("brief_path", "brief.md")))
+        for name in [
+            *outputs,
+            ".polyforge/planning-state.json",
+            ".polyforge/brief-lock.json",
+            ".polyforge/original_prompt.txt",
+            ".polyforge/locks/planning.lock",
+        ]:
+            path = policy.path(name)
+            if any(
+                str(path).casefold() == str(value).casefold()
+                or (path.exists() and value.exists() and path.samefile(value))
+                for value in inputs
+            ):
+                raise InputError(f"$.outputs[{name}]: destination overlaps immutable input")
+            if path.exists() and not path.is_file():
+                raise InputError(f"$.outputs[{name}]: expected a file destination")
+            for parent in path.parents:
+                if parent == policy.root:
+                    break
+                if parent.exists() and not parent.is_dir():
+                    raise InputError(f"$.outputs[{name}]: destination parent must be a directory")
+            if name == "polyforge.lock.json" and path.is_file():
+                state_path = policy.path(".polyforge/planning-state.json")
+                state = load_json(state_path) if state_path.is_file() else {}
+                records = state.get("artifacts", []) if isinstance(state, dict) else []
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                prior_owned = isinstance(records, list) and any(
+                    isinstance(record, dict)
+                    and record.get("relative_path") == name
+                    and record.get("sha256") == digest
+                    for record in records
+                )
+                pending_owned = (
+                    isinstance(state, dict)
+                    and state.get("status") == "PREPARING"
+                    and state.get("project_id") == model.data["project"]["id"]
+                    and state.get("pending_lock_sha256") == digest
+                )
+                if not (prior_owned or pending_owned):
+>                   raise InputError("Existing workspace lock is not an unchanged owned artifact")
+E                   polyforge.contracts.validation.InputError: Existing workspace lock is not an unchanged owned artifact
+
+polyforge\compiler\commands.py:89: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_artifact_records.py::test_repeated_interruption_preserves_current_lock_when_new_plan_changes
+1 failed, 12 deselected in 2.16s

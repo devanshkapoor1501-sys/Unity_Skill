@@ -1,0 +1,167 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+____ test_texture_native_observables_are_independently_checked[srgb-False] ____
+
+field = 'srgb', value = False
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+_ test_texture_native_observables_are_independently_checked[texture_type-NormalMap] _
+
+field = 'texture_type', value = 'NormalMap'
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+_ test_texture_native_observables_are_independently_checked[sha256-0000000000000000000000000000000000000000000000000000000000000000] _
+
+field = 'sha256'
+value = '0000000000000000000000000000000000000000000000000000000000000000'
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+_ test_texture_native_observables_are_independently_checked[path-Assets/User.png] _
+
+field = 'path', value = 'Assets/User.png'
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+_ test_texture_native_observables_are_independently_checked[material_texture_path-] _
+
+field = 'material_texture_path', value = ''
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+_ test_texture_native_observables_are_independently_checked[convert_to_normal-True] _
+
+field = 'convert_to_normal', value = True
+
+    @pytest.mark.parametrize("field,value", [
+        ("srgb", False), ("texture_type", "NormalMap"), ("sha256", "0" * 64),
+        ("path", "Assets/User.png"), ("material_texture_path", ""),
+        ("convert_to_normal", True),
+    ])
+    def test_texture_native_observables_are_independently_checked(field, value):
+        request, report = complete_native()
+        path = "Assets/PolyForgeGenerated/Textures/robot/blue/base_color.png"
+        request["assets"][0]["materials"][0]["textures"] = [dict(
+            kind="base_color", path=path, sha256="a" * 64, source_path="supplied/color.png", color_space="srgb")]
+        report["objects"][0]["textures"] = [dict(material_id="blue", kind="base_color", path=path,
+            sha256="a" * 64, srgb=True, texture_type="Default", material_texture_path=path,
+            normal_keyword=False, convert_to_normal=False)]
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0]["textures"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:164: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[srgb-False]
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[texture_type-NormalMap]
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[sha256-0000000000000000000000000000000000000000000000000000000000000000]
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[path-Assets/User.png]
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[material_texture_path-]
+FAILED tests/test_audit_unity_gaps.py::test_texture_native_observables_are_independently_checked[convert_to_normal-True]
+6 failed, 25 deselected in 0.40s

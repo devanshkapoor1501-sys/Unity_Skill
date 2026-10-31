@@ -1,0 +1,23 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_planning_inventory_binds_project_stage_and_lock_bytes __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-planning-records2/test_planning_inventory_binds_0')
+
+    def test_planning_inventory_binds_project_stage_and_lock_bytes(tmp_path):
+        from test_phase2_contracts import arena
+        from polyforge.compiler.commands import manifest_command
+    
+        arena(tmp_path)
+        result = manifest_command(tmp_path / "game_manifest.json", "plan")
+        assert result.status == "PASS"
+        state = json.loads((tmp_path / ".polyforge/planning-state.json").read_text("utf-8"))
+        lock = next(row for row in state["artifacts"] if row["relative_path"] == "polyforge.lock.json")
+>       assert lock["project_id"] == "arena_demo" and lock["stage"] == "S1"
+               ^^^^^^^^^^^^^^^^^^
+E       KeyError: 'project_id'
+
+tests\test_audit_artifact_records.py:97: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_artifact_records.py::test_planning_inventory_binds_project_stage_and_lock_bytes
+1 failed, 8 deselected in 1.52s

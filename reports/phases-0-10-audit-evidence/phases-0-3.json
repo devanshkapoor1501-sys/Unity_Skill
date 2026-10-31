@@ -1,0 +1,1439 @@
+{
+  "scope": "PolyForge Phase0–3 semantic requirements audit",
+  "head": "07dfa752df56407d4dd57d79ea860fbc8389a140",
+  "authority": ".tmp/phase9/blueprint.txt paragraphs887–982, Sections5/6/7/8 crossrefs; docs/implementation-plan.md",
+  "method": "Read actual source/tests/evidence; inspected real source .blend and metrics paths without launching native apps/network. Source unchanged; only audit artifacts and disposable test temp outputs written.",
+  "status_definitions": {
+    "IMPLEMENTED": "Requirement has concrete code/data and corresponding tests/artifacts. Recorded historical native results are not a new native rerun.",
+    "PARTIAL": "Concrete mandatory implementation/output gap remains.",
+    "MISSING": "No implementation exists for mandatory in-scope behavior.",
+    "PERMITTED_BLOCKED": "External ownership, unsupported untrusted profile, or expressly excluded/later phase scope."
+  },
+  "verification": {
+    "command": ".venv/Scripts/python.exe -m pytest tests/test_foundation.py tests/test_contract_boundaries.py tests/test_phase1_cli.py tests/test_phase1_failures.py tests/test_phase1_policy.py tests/test_phase1_review.py tests/test_phase1_runner.py tests/test_phase2_boundaries.py tests/test_phase2_contracts.py tests/test_phase3_cli.py tests/test_phase3_recipes.py -p no:cacheprovider -q --basetemp=.tmp/audit-through-phase10/pytest-0-3",
+    "passed": 107,
+    "failed": 1,
+    "duration_seconds": 85.95,
+    "failure": "tests/test_phase1_policy.py::PolicyTests::test_real_directory_link_is_denied_before_writing: mklink /J fixture setup Access denied at line118.",
+    "failure_classification": "ENVIRONMENT_BLOCKED: fixture creation, not observed policy bypass",
+    "native_execution": "NOT_RUN during audit by explicit scope",
+    "remote_ci": "NOT_RUN",
+    "independent_holdout": "PERMITTED_BLOCKED: external evaluator absent"
+  },
+  "findings": [
+    {
+      "id": "P013-F1",
+      "priority": "P2",
+      "requirement_ids": [
+        "1.2"
+      ],
+      "title": "Doctor has no graphics availability detector",
+      "code": "polyforge/doctor.py:158",
+      "reproduction": "Call hardware_fingerprint() with any host: gpu and graphics_render_probe always equal NOT_RUN; inspect function for unconditional constants. doctor() never invokes any graphics detector.",
+      "impact": "Required Phase1 graphics capability/readiness classification cannot distinguish unavailable, supported headless rendering, or unknown environment.",
+      "fix": "Implement bounded read-only graphics/headless availability observations with explicit UNKNOWN/BLOCKED reasons; keep actual render qualification separate and require native render evidence for PASS."
+    },
+    {
+      "id": "P013-F2",
+      "priority": "P2",
+      "requirement_ids": [
+        "1.7"
+      ],
+      "title": "Optional interactive MCP discovery and execution-mode matrix are incomplete",
+      "code": "polyforge/doctor.py:277",
+      "reproduction": "doctor data.integrations contains only blender_mcp_cli, unity_mcp_cli, host_sessions=NOT_RUN, offline_core=true. Search workforce.discovery and knowledge.availability: host binary/API receipts exist but no registered interactive MCP inventory or offline/assisted matrix.",
+      "impact": "Installed host plugins without conventional CLI names are invisible; consumers cannot select assisted mode from an explicit availability matrix.",
+      "fix": "Accept bounded host-supplied read-only MCP discovery evidence and expose explicit offline/assisted per-operation states, preserving core offline availability and UNKNOWN when host inventory is absent."
+    },
+    {
+      "id": "P013-F3",
+      "priority": "P2",
+      "requirement_ids": [
+        "2.1",
+        "2.X-6.3"
+      ],
+      "title": "Section6.3 workspace lock and artifact metadata are incomplete",
+      "code": "polyforge/compiler/commands.py:97",
+      "reproduction": "rg polyforge.lock.json polyforge returns no match; current registry producer in blender/adapter.py:384 emits artifact_id/relative_path/hash/bytes/input_digest/validation_status/toolchain only. Planning-state artifacts omit project/run/stage/timestamp as well. Per-run input.json and journal recover much context, but no unified lock of canonical manifest, tool/package versions and seeds exists.",
+      "impact": "A consumer must reconstruct environment/ownership from heterogeneous enclosing files rather than consume required canonical lock/artifact contract; complete schema guarantees cannot be checked independently.",
+      "fix": "Define complete registry/lock schema and shared publisher, explicitly preserve project/run/stage/kind/time and upstream inputs, and write a single coherent version/package/seed/manifest snapshot. Keep absolute locations only local and safe paths published.",
+      "qualification": "This is partial required metadata/output, not lack of hashing/provenance. Run ID is inferable from artifact_id/path and toolchain/seed identities are already captured per run."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "0.1",
+      "source_paragraph": 891,
+      "requirement": "Scaffold single Python package and separate Unity package following Section5 ownership",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/__init__.py",
+        "unity_package/package.json",
+        "docs/architecture.md"
+      ],
+      "tests": [
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "Functional modules are grouped differently from illustrative Section5 names; no missing functionality inferred from empty-directory or filename differences."
+    },
+    {
+      "id": "0.2",
+      "source_paragraph": 892,
+      "requirement": "Editable Python3.11+ package, polyforge console script, pytest/ruff/validation stack",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "pyproject.toml",
+        "requirements-dev.lock"
+      ],
+      "tests": [
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/fresh-installs.json",
+        "reports/evidence/fresh-editable-install.txt",
+        "reports/evidence/fresh-editable-help.txt"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.3",
+      "source_paragraph": 893,
+      "requirement": "Docstrings, typed public boundaries, errors, dry-run and no-network defaults",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/results.py",
+        "polyforge/capabilities/protocol.py",
+        "polyforge/contracts/validation.py",
+        "polyforge/security/policy.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "TRUSTED_LOCAL policy is not OS-level egress containment."
+    },
+    {
+      "id": "0.4",
+      "source_paragraph": 894,
+      "requirement": "Lightweight Python CI without public Unity licensing secret",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        ".github/workflows/ci.yml"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "Remote CI execution was not repeated by this offline audit; definition inspected."
+    },
+    {
+      "id": "0.5",
+      "source_paragraph": 895,
+      "requirement": "Small arena brief/fixtures and generated versus source ownership",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "examples/simple_arena/brief.md",
+        "examples/simple_arena/game_manifest.json",
+        "docs/architecture.md",
+        "CONTRIBUTING.md"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.6",
+      "source_paragraph": 896,
+      "requirement": "Capability-first ADR, prior-art differentiation, executable release criticality",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "docs/architecture.md"
+      ],
+      "tests": [
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.7",
+      "source_paragraph": 897,
+      "requirement": "Versioned capability schema and benchmark task format with fixtures",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/capability.schema.json",
+        "polyforge/contracts/benchmark_task.schema.json",
+        "polyforge/data/catalog.json",
+        "benchmarks/tasks/arena_development.json"
+      ],
+      "tests": [
+        "tests/test_foundation.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.8",
+      "source_paragraph": 898,
+      "requirement": "Baseline runner and separate unavailable acceptance-grader interface",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/benchmark/protocol.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py::ContractAcceptanceTests::test_no_evaluator_is_not_a_passing_grade"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "Interface/stub required here; executable four-arm benchmarks are later scope."
+    },
+    {
+      "id": "0.V3-CLI",
+      "source_paragraph": 899,
+      "requirement": "Canonical CLI grammar/status/exit enums, README command tests, model-free Protocol/RunContext/result contract",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/cli.py",
+        "polyforge/contracts/results.py",
+        "polyforge/capabilities/protocol.py",
+        "tools/generate_cli_docs.py",
+        "polyforge/commands.py"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py",
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "tests/fixtures/cli_commands.json",
+        "docs/cli.md"
+      ],
+      "notes": "Registry module path is validated below; CLI uses shared command data. Status and game acceptance are separated."
+    },
+    {
+      "id": "0.V3-HOLDOUT",
+      "source_paragraph": 900,
+      "requirement": "Evaluator-controlled frozen holdout identities/hashes outside agent workspace",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "benchmarks/README.md",
+        "polyforge/contracts/benchmark_task.schema.json",
+        "polyforge/benchmark/protocol.py"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py::BoundaryTests::test_benchmark_task_requires_category_and_matching_frozen_brief"
+      ],
+      "artifact_paths": [
+        "benchmarks/tasks/arena_development.json"
+      ],
+      "notes": "No external evaluator/private rubric was provided. Development fixtures are explicitly DEV_FIXTURE; do not request agent-owned hidden tests as a substitute."
+    },
+    {
+      "id": "0.D-PACKAGE",
+      "source_paragraph": 902,
+      "requirement": "Package, pytest/ruff/type/CI deliverables",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "pyproject.toml",
+        ".github/workflows/ci.yml"
+      ],
+      "tests": [
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/distribution.json",
+        "reports/evidence/mypy.txt",
+        "reports/evidence/ruff.txt"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.D-DOCS",
+      "source_paragraph": 903,
+      "requirement": "Windows quickstart and CONTRIBUTING/SECURITY/LICENSE",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "README.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md",
+        "LICENSE"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/cli-docs.txt"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.D-SKILL",
+      "source_paragraph": 904,
+      "requirement": "Skill frontmatter and sample manifests",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        ".agents/skills/polyforge/SKILL.md",
+        "examples/simple_arena/game_manifest.json",
+        "tools/validate_skill.py"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py",
+        "tests/test_phase10_skill.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.V-INSTALL",
+      "source_paragraph": 906,
+      "requirement": "Fresh editable install and help",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "pyproject.toml",
+        "polyforge/cli.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py::CLIAcceptanceTests::test_help_exposes_pipeline_and_capability_commands"
+      ],
+      "artifact_paths": [
+        "reports/evidence/fresh-installs.json",
+        "reports/evidence/fresh-editable-help.txt"
+      ],
+      "notes": "Historical offline fresh venv evidence inspected; no install mutation repeated during audit."
+    },
+    {
+      "id": "0.V-QUALITY",
+      "source_paragraph": 907,
+      "requirement": "pytest/ruff, valid skill, runnable README examples",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "pyproject.toml",
+        "tools/validate_skill.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/python-tests.xml",
+        "reports/evidence/ruff.txt",
+        "reports/evidence/cli-docs.txt"
+      ],
+      "notes": "Current scoped run:107 pass and one junction creation blocked by audit sandbox, not an implementation failure."
+    },
+    {
+      "id": "0.V4-GATE",
+      "source_paragraph": 908,
+      "requirement": "Model-free Protocol fixtures; invalid/dry-run leave no writes",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/capabilities/protocol.py",
+        "polyforge/capabilities/registry.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py::ContractAcceptanceTests::test_model_free_capability_obeys_protocol_and_context_policy",
+        "tests/test_foundation.py::CLIAcceptanceTests::test_invalid_input_and_dry_run_leave_workspace_unchanged"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "0.EXIT",
+      "source_paragraph": 909,
+      "requirement": "Installation/import/test harness gate precedes generation",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/adapter.py",
+        "docs/implementation-plan.md"
+      ],
+      "tests": [
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "Historical phase sequence evidenced; current generated assets do not make a game ACCEPTED."
+    },
+    {
+      "id": "0.SCOPE",
+      "source_paragraph": 910,
+      "requirement": "Cloud/Docker execution/GitHub app integration excluded",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "docs/implementation-plan.md"
+      ],
+      "tests": [],
+      "artifact_paths": [
+        "reports/evidence/verification.json"
+      ],
+      "notes": "No requirement for these to be implemented by Phase0."
+    },
+    {
+      "id": "1.1",
+      "source_paragraph": 915,
+      "requirement": "Discover plausible Blender/Unity binaries with explicit overrides",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/doctor.py:25",
+        "polyforge/config.py"
+      ],
+      "tests": [
+        "tests/test_phase1_failures.py::FailureTests::test_unity_editor_installation_wins_over_unrelated_path_cli",
+        "tests/test_phase1_policy.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/application-probes"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.2",
+      "source_paragraph": 916,
+      "requirement": "Doctor versions, Unity readiness, writable workspace, graphics availability, package warnings",
+      "status": "PARTIAL",
+      "code_paths": [
+        "polyforge/doctor.py:66",
+        "polyforge/doctor.py:113",
+        "polyforge/doctor.py:158",
+        "polyforge/doctor.py:274"
+      ],
+      "tests": [
+        "tests/test_phase1_cli.py",
+        "tests/test_phase1_review.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/application-probes"
+      ],
+      "notes": "Version/project/package/actual write paths exist. GPU and graphics_render_probe are unconditional NOT_RUN; no graphics availability detector is implemented. License activation remains explicitly unqualified, not misreported."
+    },
+    {
+      "id": "1.3",
+      "source_paragraph": 917,
+      "requirement": "Resolved allowlisted roots; reject traversal/drive/symlink/junction hazards",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/security/paths.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py",
+        "tests/test_windows_alias_paths.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "Current actual-junction fixture could not create a junction:Access denied; historical successful evidence available."
+    },
+    {
+      "id": "1.4",
+      "source_paragraph": 918,
+      "requirement": "Run stage manager, atomic JSON/journal, cancellation/timeouts/logs/locks",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/runner/state.py",
+        "polyforge/runner/processes.py",
+        "polyforge/runner/locks.py",
+        "polyforge/runner/ownership.py"
+      ],
+      "tests": [
+        "tests/test_phase1_runner.py",
+        "tests/test_phase1_failures.py",
+        "tests/test_phase1_review.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.5",
+      "source_paragraph": 919,
+      "requirement": "Typed fail-fast categories, redacted logs, shell=False",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/results.py",
+        "polyforge/security/policy.py",
+        "polyforge/runner/processes.py"
+      ],
+      "tests": [
+        "tests/test_phase1_review.py",
+        "tests/test_phase1_failures.py",
+        "tests/test_phase1_policy.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.6",
+      "source_paragraph": 920,
+      "requirement": "Stable JSON/exit taxonomy and capability list/show",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/cli.py",
+        "polyforge/contracts/results.py",
+        "polyforge/capabilities/registry.py"
+      ],
+      "tests": [
+        "tests/test_foundation.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.7",
+      "source_paragraph": 921,
+      "requirement": "Optional interactive MCP discovery and offline-versus-assisted execution matrix",
+      "status": "PARTIAL",
+      "code_paths": [
+        "polyforge/doctor.py:277",
+        "polyforge/workforce/discovery.py",
+        "polyforge/knowledge/availability.py"
+      ],
+      "tests": [
+        "tests/test_phase10_completion.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/application-probes"
+      ],
+      "notes": "doctor only checks PATH blender-mcp/unity-mcp, exposes host_sessions=NOT_RUN and offline_core=true. Later host binary/API observations do not enumerate interactive MCP plugins; no structured offline/assisted matrix exists. Optional plugins must remain unnecessary."
+    },
+    {
+      "id": "1.8",
+      "source_paragraph": 922,
+      "requirement": "Environment fingerprint hardware/packages/Blender/Python/git for benchmark provenance",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/doctor.py:113",
+        "polyforge/doctor.py:229",
+        "polyforge/knowledge/availability.py:20"
+      ],
+      "tests": [
+        "tests/test_phase1_cli.py",
+        "tests/test_phase10_completion.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/application-probes"
+      ],
+      "notes": "CPU/threads/RAM/Python/git/tool versions and project declared package versions are captured. GPU unavailable explicitly; real benchmark run attachment remains Phase11, not falsely claimed here."
+    },
+    {
+      "id": "1.V3-PROFILE",
+      "source_paragraph": 923,
+      "requirement": "OS feasibility/profile report and UNSANDBOXED state",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/security/policy.py:116",
+        "polyforge/config.py",
+        "polyforge/capabilities/protocol.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "Conservative detector reports WindowsSandbox/container executable availability; it does not qualify real isolation."
+    },
+    {
+      "id": "1.V3-FAULTS",
+      "source_paragraph": 924,
+      "requirement": "Read-only inherited secret/network flags; resource limits/process ownership/isolation fixtures",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/security/policy.py",
+        "polyforge/runner/processes.py",
+        "polyforge/runner/ownership.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py::PolicyTests::test_redaction_and_environment_do_not_forward_secret_canaries",
+        "tests/test_phase1_failures.py::FailureTests::test_worker_descendants_are_terminated_on_timeout",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "OS denial probes remain NOT_RUN and untrusted execution is refused."
+    },
+    {
+      "id": "1.D-CLI",
+      "source_paragraph": 926,
+      "requirement": "doctor/validate/init/status commands",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/cli.py",
+        "polyforge/doctor.py",
+        "polyforge/workspace.py",
+        "polyforge/compiler/commands.py"
+      ],
+      "tests": [
+        "tests/test_phase1_cli.py",
+        "tests/test_phase2_contracts.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "Manifest validate intentionally implemented in Phase2 and present at audited HEAD."
+    },
+    {
+      "id": "1.D-RUNTIME",
+      "source_paragraph": 927,
+      "requirement": "TOML/path/subprocess/run-journal modules",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/config.py",
+        "polyforge/security/paths.py",
+        "polyforge/runner/processes.py",
+        "polyforge/runner/state.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py",
+        "tests/test_phase1_runner.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.V-REPORT",
+      "source_paragraph": 929,
+      "requirement": "doctor.json saved when dependencies absent",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/doctor.py:208"
+      ],
+      "tests": [
+        "tests/test_phase1_cli.py::PhaseOneCLITests::test_doctor_missing_dependencies_writes_specific_report_and_state"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.V-BOUNDARIES",
+      "source_paragraph": 930,
+      "requirement": "Unicode/spaces/traversal/missing binaries/timeouts/locked project tests",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/security/paths.py",
+        "polyforge/runner/processes.py",
+        "polyforge/runner/locks.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py",
+        "tests/test_phase1_runner.py",
+        "tests/test_phase1_failures.py",
+        "tests/test_phase1_cli.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "Current offline sample rerun exercises all except successful junction creation."
+    },
+    {
+      "id": "1.V4-TRUSTED",
+      "source_paragraph": 931,
+      "requirement": "Test/document TRUSTED_LOCAL; deny untrusted absent real OS isolation",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "SECURITY.md",
+        "polyforge/security/policy.py",
+        "polyforge/capabilities/protocol.py",
+        "polyforge/config.py"
+      ],
+      "tests": [
+        "tests/test_phase1_policy.py",
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.V4-UNTRUSTED",
+      "source_paragraph": 931,
+      "requirement": "SANDBOXED_UNTRUSTED only with actual OS qualification",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "polyforge/security/policy.py",
+        "polyforge/capabilities/protocol.py"
+      ],
+      "tests": [
+        "tests/test_contract_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "V4 expressly allows trusted development without sandbox; absence is not a missing trusted MVP feature."
+    },
+    {
+      "id": "1.EXIT",
+      "source_paragraph": 932,
+      "requirement": "Specific recoverable failed precheck confined to approved workspace",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/doctor.py",
+        "polyforge/security/paths.py",
+        "polyforge/runner/state.py"
+      ],
+      "tests": [
+        "tests/test_phase1_failures.py",
+        "tests/test_phase1_cli.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "1.SCOPE",
+      "source_paragraph": 933,
+      "requirement": "MCP network listener excluded",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "polyforge/host/stdio.py"
+      ],
+      "tests": [
+        "tests/test_phase10_mcp.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-1-evidence/verification.json"
+      ],
+      "notes": "Phase10 implements optional bounded stdio; no network listener required."
+    },
+    {
+      "id": "2.1",
+      "source_paragraph": 938,
+      "requirement": "Section6 bounded v1 schemas and stable compatibility",
+      "status": "PARTIAL",
+      "code_paths": [
+        "polyforge/contracts/game_manifest.schema.json",
+        "polyforge/contracts/manifest.py",
+        "polyforge/contracts/recipe.schema.json",
+        "polyforge/compiler/commands.py:97"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py",
+        "tests/test_phase2_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "Manifest/schema validation implemented. Section6.3 workspace lock/artifact metadata completeness remains partial; see2.X-6.3."
+    },
+    {
+      "id": "2.2",
+      "source_paragraph": 939,
+      "requirement": "Manifest parser and canonical JSON serializer",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/manifest.py",
+        "polyforge/contracts/validation.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::ManifestTests::test_public_arena_roundtrips_and_orders_dependencies"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.3",
+      "source_paragraph": 940,
+      "requirement": "Unique IDs/crossrefs/safe relative files/cycles",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/manifest.py",
+        "polyforge/planner/dag.py",
+        "polyforge/security/paths.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py",
+        "tests/test_phase2_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.4",
+      "source_paragraph": 941,
+      "requirement": "Deterministic ordered stage planner and dry-run estimates/reasons",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/planner/plans.py",
+        "polyforge/compiler/commands.py"
+      ],
+      "tests": [
+        "tests/test_phase2_boundaries.py::CacheTests::test_plan_order_and_stage_dependencies_are_consistent",
+        "tests/test_phase2_contracts.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/smoke-repeat-plan.json"
+      ],
+      "notes": "Work-unit estimates implemented, durations explicitly NOT_MEASURED instead of invented measurements."
+    },
+    {
+      "id": "2.5",
+      "source_paragraph": 942,
+      "requirement": "Content digest changes/invalidation DAG and integrity checked artifact cache",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/planner/plans.py",
+        "polyforge/planner/cache.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::PlannerTests::test_material_changes_leave_geometry_fingerprints_unchanged",
+        "tests/test_phase2_boundaries.py::CacheTests::test_hits_require_validated_existing_matching_artifacts"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/material-invalidation.json"
+      ],
+      "notes": "Build producers regenerate rather than populate generic cache; required invalidation/cache verification engine exists."
+    },
+    {
+      "id": "2.6",
+      "source_paragraph": 943,
+      "requirement": "Stable semantic contract IDs/sockets/import graph/material/rig bindings",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/compiler/contract_compiler.py",
+        "polyforge/contracts/manifest.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::CompilerTests::test_contract_has_stable_ids_basis_bindings_and_never_accepts_a_game",
+        "tests/test_phase2_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "Bindings are expected/not actual until native import. Later Unity bridge expands recipe modules for import reconciliation."
+    },
+    {
+      "id": "2.7",
+      "source_paragraph": 944,
+      "requirement": "Pure invariant engine/evidence graph over synthetic handoffs; dangling/units",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/invariants/handoff.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::CompilerTests::test_normalized_handoff_catches_scale_socket_material_and_missing_binding",
+        "tests/test_phase2_boundaries.py::ProvenanceTests::test_handoff_rejects_malformed_contracts_and_vacuous_success"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/synthetic-handoff.json"
+      ],
+      "notes": "PASS explicitly states application_execution=NOT_RUN."
+    },
+    {
+      "id": "2.8",
+      "source_paragraph": 945,
+      "requirement": "Scenario DSL setup/steps/expected/tolerances/timeout/seed",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/scenario.schema.json",
+        "polyforge/scenarios/schema.py"
+      ],
+      "tests": [
+        "tests/test_phase2_boundaries.py::ScenarioTests::test_actions_timing_and_entity_references_are_checked"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.9",
+      "source_paragraph": 946,
+      "requirement": "At least8 positive/negative contract fixtures, compiler without Unity",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "tests/fixtures/manifests/cases.json",
+        "tests/fixtures/intent/stealth.json",
+        "tests/fixtures/intent/dungeon.json"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::ManifestTests::test_named_golden_contract_fixtures"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "10 named manifest cases; actual Unity unnecessary."
+    },
+    {
+      "id": "2.V3-INTENT",
+      "source_paragraph": 947,
+      "requirement": "Creative feature/source-span/acceptance intent and required/optional grammar states",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/compiler/contract_compiler.py",
+        "polyforge/composition/grammar.py",
+        "polyforge/contracts/game_manifest.schema.json"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::CompilerTests",
+        "tests/test_phase2_boundaries.py::ProvenanceTests"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/synthetic-handoff.json"
+      ],
+      "notes": "Generator carries development acceptance_intent, not protected acceptance_spec. Independent qualification belongs external evaluator."
+    },
+    {
+      "id": "2.V3-GENRES",
+      "source_paragraph": 948,
+      "requirement": "Stealth/dungeon fixtures, explicit unsupported/incompatible mechanics/coverage JSON",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "tests/fixtures/intent/stealth.json",
+        "tests/fixtures/intent/dungeon.json",
+        "polyforge/composition/grammar.py"
+      ],
+      "tests": [
+        "tests/test_phase2_boundaries.py::ProvenanceTests::test_public_stealth_and_dungeon_cases_are_unsupported",
+        "tests/test_phase2_contracts.py::CompilerTests::test_incompatible_movement_ports_are_rejected"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "Visible DEV_FIXTURE cases are permitted public probes, not privately heldout qualification."
+    },
+    {
+      "id": "2.D-SCHEMAS",
+      "source_paragraph": 950,
+      "requirement": "JSON schema/Python validated model deliverable",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/game_manifest.schema.json",
+        "polyforge/contracts/manifest.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.D-FIXTURES",
+      "source_paragraph": 951,
+      "requirement": "Valid/invalid manifest examples",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "examples/simple_arena/game_manifest.json",
+        "tests/fixtures/manifests/cases.json"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.D-DAG",
+      "source_paragraph": 952,
+      "requirement": "plan.json and validated DAG",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/compiler/commands.py",
+        "polyforge/planner/plans.py",
+        "polyforge/planner/dag.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::PhaseTwoCLITests"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.V-REJECT",
+      "source_paragraph": 954,
+      "requirement": "Reject cycles/duplicates/NaN/absolute paths/dangling refs",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/validation.py",
+        "polyforge/contracts/manifest.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py",
+        "tests/test_phase2_boundaries.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.V-INVALIDATION",
+      "source_paragraph": 955,
+      "requirement": "Material invalidates dependent Unity material stages, unrelated mesh digest preserved",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/planner/plans.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::PlannerTests::test_material_changes_leave_geometry_fingerprints_unchanged"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/material-invalidation.json",
+        "reports/phase-3-evidence/cli-verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.V4-GATE",
+      "source_paragraph": 956,
+      "requirement": "Every frozen mandatory feature supported with acceptance intent or explicit unsupported/blocked; game never accepted by planning",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/compiler/contract_compiler.py",
+        "polyforge/compiler/commands.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::CompilerTests",
+        "tests/test_phase2_boundaries.py::ProvenanceTests"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "All known templates conservatively BLOCKED even after later native implementations; this remains truthful fail-closed under V4 gate."
+    },
+    {
+      "id": "2.EXIT",
+      "source_paragraph": 957,
+      "requirement": "Sample roundtrip/invalid actionable field paths",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/manifest.py"
+      ],
+      "tests": [
+        "tests/test_phase2_contracts.py::ManifestTests"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "2.X-6.3",
+      "source_paragraph": 505,
+      "requirement": "Section6.3 complete artifact records and workspace versions/packages/seeds/manifest lock",
+      "status": "PARTIAL",
+      "code_paths": [
+        "polyforge/compiler/commands.py:97",
+        "polyforge/blender/adapter.py:384",
+        "polyforge/blender/adapter.py:105",
+        "polyforge/unity/bridge.py:381"
+      ],
+      "tests": [
+        "tests/test_phase2_boundaries.py::ProvenanceTests::test_input_identity_covers_recipe_bytes_beyond_manifest_document",
+        "tests/test_phase2_boundaries.py::CacheTests"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/robot/runs/mesh-f9d064f6cda642bb/artifacts.json",
+        "reports/phase-3-evidence/golden/robot/runs/mesh-f9d064f6cda642bb/input.json"
+      ],
+      "notes": "Per-run input recipes/seeds/toolchain/digests and enclosing path recover significant identity. Missing unified workspace lock snapshot (no polyforge.lock.json implementation) and explicit project_id/stage/kind/timestamp metadata in Blender artifact records. Planning registry has kind/validator but omits run/project/stage/timestamp. Earliest assignment2.1 requires Section6 schemas; do not describe this as no provenance or corrupt hashes."
+    },
+    {
+      "id": "2.X-6.7",
+      "source_paragraph": 531,
+      "requirement": "Separate protected acceptance spec and independent frozen-brief evaluator",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "polyforge/benchmark/protocol.py",
+        "benchmarks/README.md"
+      ],
+      "tests": [
+        "tests/test_foundation.py::ContractAcceptanceTests::test_no_evaluator_is_not_a_passing_grade"
+      ],
+      "artifact_paths": [
+        "reports/phase-2-evidence/verification.json"
+      ],
+      "notes": "Externally owned qualification unavailable; public development intent never claims evaluator authority."
+    },
+    {
+      "id": "3.1",
+      "source_paragraph": 962,
+      "requirement": "Typed primitives/parents/attachments/deterministic seed",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py",
+        "polyforge/contracts/recipe.schema.json"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.2",
+      "source_paragraph": 963,
+      "requirement": "Background Blender JSON input/output worker, shell-free args",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/adapter.py",
+        "polyforge/blender/worker.py",
+        "polyforge/runner/processes.py"
+      ],
+      "tests": [
+        "tests/test_phase3_cli.py",
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.3",
+      "source_paragraph": 964,
+      "requirement": "Beveled box/sphere/cylinder/ground, materials/UV/semantic tags",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py:45",
+        "polyforge/blender/recipes.py",
+        "examples/static_recipes/ground.json"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py",
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.4",
+      "source_paragraph": 965,
+      "requirement": "Finite bounds/degenerate checks/polygon budget and preserved source .blend",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py:174",
+        "polyforge/blender/recipes.py:224",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py",
+        "tests/test_phase3_blender.py::test_real_saved_geometry_faults_are_rejected"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.5",
+      "source_paragraph": 966,
+      "requirement": "Asymmetric arrows/arena prop/block robot golden fixtures",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "tests/fixtures/recipes/asymmetric.json",
+        "examples/static_recipes/robot.json",
+        "examples/static_recipes/crate.json"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py::test_real_golden_fixtures_and_repeatability"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.6",
+      "source_paragraph": 967,
+      "requirement": "Five versioned reusable robot/crate/wall/doorway/environment recipes",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py",
+        "polyforge/data/catalog.json",
+        "examples/static_recipes"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py::RecipeTests::test_five_recipes_expand_deterministically_with_real_semantic_parts",
+        "tests/test_phase3_blender.py::test_five_registered_families_and_two_briefs_produce_distinct_parameterized_geometry"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/blender-tests.xml"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.7",
+      "source_paragraph": 968,
+      "requirement": "Sockets/parent-joint refs/pivots/bounds/unsupported rejection",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py:23",
+        "polyforge/contracts/recipe.schema.json",
+        "polyforge/blender/worker.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.8",
+      "source_paragraph": 969,
+      "requirement": "Every recipe input schema/seed/assertions/error examples",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/recipe_request.schema.json",
+        "polyforge/data/catalog.json",
+        "docs/recipes.md",
+        "polyforge/blender/recipes.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py",
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/fresh-installs.json"
+      ],
+      "notes": "Shared reviewed schema plus family-specific parameter rejection; separate physical schema file per family not necessary."
+    },
+    {
+      "id": "3.9",
+      "source_paragraph": 970,
+      "requirement": "CLI recipe generation without LLM/custom pasted Python",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/cli.py",
+        "polyforge/capabilities/dispatch.py",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_cli.py",
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/fresh-installs.json",
+        "reports/phase-3-evidence/cli-verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.V3-REUSE",
+      "source_paragraph": 971,
+      "requirement": "Semantic parts/bounded ops/attached sockets/wall-door kit/robot family",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py",
+        "polyforge/blender/worker.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py::RecipeTests::test_five_recipes_expand_deterministically_with_real_semantic_parts",
+        "tests/test_phase3_blender.py::test_five_registered_families_and_two_briefs_produce_distinct_parameterized_geometry"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/blender-tests.xml"
+      ],
+      "notes": "Parameterized robot size/seed family, mirrored named limbs and kit connectors; later advanced domain coverage not inferred."
+    },
+    {
+      "id": "3.V3-NEGATIVES",
+      "source_paragraph": 972,
+      "requirement": "Broken UV/reversed socket/expansion bomb/meaningful size variation",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py",
+        "tests/blender_fault_probe.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py",
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/blender-tests.xml"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.D-DSL",
+      "source_paragraph": 974,
+      "requirement": "Primitive DSL validator and Blender builder",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/contracts/recipe.schema.json",
+        "polyforge/blender/recipes.py",
+        "polyforge/blender/worker.py"
+      ],
+      "tests": [
+        "tests/test_phase3_recipes.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.D-SOURCES",
+      "source_paragraph": 975,
+      "requirement": "Three actual source blend files and machine mesh metrics",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": "Golden index links real BLENDER-header files and normalized/logical metrics; no native app launched in this audit."
+    },
+    {
+      "id": "3.D-ADAPTER",
+      "source_paragraph": 976,
+      "requirement": "CLI Blender adapter and catalog entries",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/adapter.py",
+        "polyforge/capabilities/dispatch.py",
+        "polyforge/data/catalog.json"
+      ],
+      "tests": [
+        "tests/test_phase3_cli.py",
+        "tests/test_foundation.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/verification.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.V-HEADLESS",
+      "source_paragraph": 978,
+      "requirement": "Real headless fixtures with correct names/dimensions",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/blender-tests.xml",
+        "reports/phase-3-evidence/blender-verification.json",
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": "Historical native evidence observed. Current native execution NOT_RUN by read-only/offline audit constraint; do not imply current native rerun."
+    },
+    {
+      "id": "3.V-REPEAT",
+      "source_paragraph": 979,
+      "requirement": "Repeat same pinned toolchain logical metrics/content hashes",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py:27",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py::test_real_golden_fixtures_and_repeatability"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": "Two retained runs per golden asset, logical digests match; .blend binary equality not asserted."
+    },
+    {
+      "id": "3.V4-GATE",
+      "source_paragraph": 980,
+      "requirement": "Same capability in two briefs yields different parameterized outputs, finite labels/budgets",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/recipes.py",
+        "polyforge/blender/recipes.py:224"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py::test_five_registered_families_and_two_briefs_produce_distinct_parameterized_geometry",
+        "tests/test_phase3_recipes.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/blender-tests.xml",
+        "reports/phase-3-evidence/blender-verification.json"
+      ],
+      "notes": "Recorded real native gate; bounded pure fixtures rerun."
+    },
+    {
+      "id": "3.EXIT",
+      "source_paragraph": 981,
+      "requirement": "Three fixtures constructible/validated/stably named",
+      "status": "IMPLEMENTED",
+      "code_paths": [
+        "polyforge/blender/worker.py",
+        "polyforge/blender/adapter.py"
+      ],
+      "tests": [
+        "tests/test_phase3_blender.py"
+      ],
+      "artifact_paths": [
+        "reports/phase-3-evidence/golden/index.json"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "3.SCOPE",
+      "source_paragraph": 982,
+      "requirement": "Photorealism and advanced Geometry Nodes excluded",
+      "status": "PERMITTED_BLOCKED",
+      "code_paths": [
+        "docs/implementation-plan.md",
+        "docs/recipes.md"
+      ],
+      "tests": [],
+      "artifact_paths": [
+        "reports/phase-3-evidence/verification.json"
+      ],
+      "notes": "Do not count excluded advanced art as missing Phase3."
+    }
+  ]
+}

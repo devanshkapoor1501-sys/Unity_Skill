@@ -1,8 +1,19 @@
 # Execution ledger — PolyForge approved implementation sequence
 
-Plan: docs/implementation-plan.md. Spec: original corrected v4 blueprint at root.
+Plan: docs/implementation-plan.md. Current authority: v5.1 blueprint at root,
+with preserved original v4 tasks and gates where applicable.
 
 ## Rulings
+
+- Semantic audit through Phase 10 complete: 281 requirements reconciled,
+  264 implemented and 17 explicitly permitted external/later blocks. Corrected
+  provenance, native texture/collider/scene checking, obstacle acceptance,
+  worker context/live budgets, routing and knowledge inventory. Final frozen
+  suite: 660 passed, 94.87% combined / 91.68% branch coverage. Nine real Blender
+  cases, three native Unity gates, 23 EditMode / 18 PlayMode identities, eight
+  scenarios/two keyboard checks/seven mutants, standalone build/smoke and 16
+  offline installation checks pass. Full scope, limits and raw evidence are in
+  reports/phases-0-10-audit.md; prior completion reports remain historical.
 
 - Phase 10 semantic completion recheck corrected the original blanket claim:
   add explicit host/UI/package probes, package/architecture reference coverage

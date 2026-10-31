@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "orientation_arrows",
+  "shader_intent": "URP_LIT",
+  "color_space": "LINEAR_RGBA",
+  "materials": [
+    {
+      "id": "axis",
+      "base_color_rgba": [
+        0.800000011920929,
+        0.10000000149011612,
+        0.05000000074505806,
+        1.0
+      ],
+      "metallic": 0.0,
+      "roughness": 0.6499999761581421
+    }
+  ],
+  "module_materials": {
+    "x_shaft": [
+      "axis"
+    ],
+    "up_shaft": [
+      "axis"
+    ],
+    "forward_shaft": [
+      "axis"
+    ],
+    "front_tip": [
+      "axis"
+    ],
+    "rear_marker": [
+      "axis"
+    ]
+  }
+}

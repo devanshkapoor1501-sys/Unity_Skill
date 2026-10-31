@@ -1,0 +1,118 @@
+..FFF....                                                                [100%]
+================================== FAILURES ===================================
+_ test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints _
+
+    def test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints():
+        doctor = importlib.import_module("polyforge.doctor")
+        inventory = getattr(doctor, "integration_availability", None)
+        assert callable(inventory), "interactive inventory must accept explicit caller observations"
+        unknown = inventory({})
+        assert unknown["matrix"]["interactive_scene_edit"]["assisted"] == "UNKNOWN"
+        assert unknown["matrix"]["plan"]["offline"] == "OBSERVED"
+        sessions = [{"tool": "blender", "transport": "http", "endpoint": "http://127.0.0.1:8080/mcp",
+                     "connected": True, "operations": ["interactive_scene_edit"]}]
+        observed = inventory({}, sessions=sessions)
+        assert observed["matrix"]["interactive_scene_edit"]["assisted"] == "OBSERVED"
+        assert observed["execution_authority"] == "NONE"
+        assert observed["operational_probe"] == "NOT_RUN"
+>       assert "endpoint" not in observed["host_sessions"][0]
+E       AssertionError: assert 'endpoint' not in {'connected': True, 'endpoint': 'http://127.0.0.1:8080/mcp', 'operations': ['interactive_scene_edit'], 'source': 'CALLER_SUPPLIED', ...}
+
+tests\test_audit_probe_lock.py:72: AssertionError
+_____ test_malformed_mcp_field_types_are_recoverable_without_writes[tool] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-boundary-tmp/test_malformed_mcp_field_types0')
+field = 'tool'
+
+    @pytest.mark.parametrize("field", ["tool", "transport"])
+    def test_malformed_mcp_field_types_are_recoverable_without_writes(tmp_path, field):
+        doctor = importlib.import_module("polyforge.doctor")
+        session = {"tool": "blender", "transport": "stdio", "connected": False, "operations": []}
+        session[field] = []
+        before = snapshot(tmp_path)
+        with pytest.raises(InputError):
+>           doctor.doctor(tmp_path, mcp_sessions=[session])
+
+tests\test_audit_probe_lock.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\doctor.py:360: in doctor
+    integration_availability({}, sessions=mcp_sessions)  # Validate before any writes.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tools = {}
+
+    def integration_availability(
+        tools: dict[str, Any], *, sessions: list[dict[str, Any]] | None = None
+    ) -> dict[str, Any]:
+        """Validate explicit host metadata; never scan private config or connect endpoints."""
+        operations = {"plan", "blender_build", "unity_build", "interactive_scene_edit"}
+        if sessions is not None and (not isinstance(sessions, list) or len(sessions) > 32):
+            raise InputError("MCP session inventory must be a list of at most 32 descriptors")
+        observed = []
+        for session in sessions or []:
+            if (
+                not isinstance(session, dict)
+                or set(session) - {"tool", "transport", "endpoint", "connected", "operations"}
+>               or session.get("tool") not in {"blender", "unity"}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                or session.get("transport") not in {"stdio", "http"}
+                or type(session.get("connected")) is not bool
+                or not isinstance(session.get("operations"), list)
+                or len(session["operations"]) > len(operations)
+                or any(not isinstance(op, str) or op not in operations for op in session["operations"])
+            ):
+E           TypeError: unhashable type: 'list'
+
+polyforge\doctor.py:214: TypeError
+__ test_malformed_mcp_field_types_are_recoverable_without_writes[transport] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-boundary-tmp/test_malformed_mcp_field_types1')
+field = 'transport'
+
+    @pytest.mark.parametrize("field", ["tool", "transport"])
+    def test_malformed_mcp_field_types_are_recoverable_without_writes(tmp_path, field):
+        doctor = importlib.import_module("polyforge.doctor")
+        session = {"tool": "blender", "transport": "stdio", "connected": False, "operations": []}
+        session[field] = []
+        before = snapshot(tmp_path)
+        with pytest.raises(InputError):
+>           doctor.doctor(tmp_path, mcp_sessions=[session])
+
+tests\test_audit_probe_lock.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\doctor.py:360: in doctor
+    integration_availability({}, sessions=mcp_sessions)  # Validate before any writes.
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tools = {}
+
+    def integration_availability(
+        tools: dict[str, Any], *, sessions: list[dict[str, Any]] | None = None
+    ) -> dict[str, Any]:
+        """Validate explicit host metadata; never scan private config or connect endpoints."""
+        operations = {"plan", "blender_build", "unity_build", "interactive_scene_edit"}
+        if sessions is not None and (not isinstance(sessions, list) or len(sessions) > 32):
+            raise InputError("MCP session inventory must be a list of at most 32 descriptors")
+        observed = []
+        for session in sessions or []:
+            if (
+                not isinstance(session, dict)
+                or set(session) - {"tool", "transport", "endpoint", "connected", "operations"}
+                or session.get("tool") not in {"blender", "unity"}
+>               or session.get("transport") not in {"stdio", "http"}
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                or type(session.get("connected")) is not bool
+                or not isinstance(session.get("operations"), list)
+                or len(session["operations"]) > len(operations)
+                or any(not isinstance(op, str) or op not in operations for op in session["operations"])
+            ):
+E           TypeError: unhashable type: 'list'
+
+polyforge\doctor.py:215: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_probe_lock.py::test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints
+FAILED tests/test_audit_probe_lock.py::test_malformed_mcp_field_types_are_recoverable_without_writes[tool]
+FAILED tests/test_audit_probe_lock.py::test_malformed_mcp_field_types_are_recoverable_without_writes[transport]
+3 failed, 6 passed in 4.65s

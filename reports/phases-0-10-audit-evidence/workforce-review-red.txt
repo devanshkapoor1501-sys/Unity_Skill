@@ -1,0 +1,337 @@
+FFFFFF                                                                   [100%]
+================================== FAILURES ===================================
+___________ test_cross_engine_job_context_preserves_both_toolchains ___________
+
+    def test_cross_engine_job_context_preserves_both_toolchains():
+        from polyforge.workforce.router import plan_task
+    
+        plan = plan_task(
+            task(
+                task_class="ANIMATE",
+                capability_id="animation.robot.rig.v1",
+                domain_tags=["blender", "unity", "animation"],
+            )
+        )
+        context = plan["jobs"][1]["context"]
+        assert {p["tool"] for p in context["toolchain_probes"]} == {"blender", "unity"}
+        assert any(c["knowledge_id"] == "unity.animation" for c in context["selected_knowledge_cards"])
+        assert any(
+            c["knowledge_id"] == "blender.animation" for c in context["selected_knowledge_cards"]
+        )
+>       assert plan["jobs"][3]["context"]["original_task_input_digest"] == canonical_digest(task()["input"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'original_task_input_digest'
+
+tests\test_audit_workforce_gaps.py:107: KeyError
+_____ test_execute_leased_consumes_job_budget_and_native_ceiling[1-600-1] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_execute_leased_consumes_j0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021454143770>
+budget = 1, ceiling = 600, expected = 1
+
+    @pytest.mark.parametrize("budget,ceiling,expected", [(1, 600, 1), (30, 7, 7)])
+    def test_execute_leased_consumes_job_budget_and_native_ceiling(
+        tmp_path, monkeypatch, budget, ceiling, expected
+    ):
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.ledger import JobLedger
+        from polyforge.workforce.router import plan_task
+    
+        (tmp_path / "polyforge.toml").write_text(
+            f"[execution]\nblender_timeout_seconds = {ceiling}\n", encoding="utf-8"
+        )
+        ticket = plan_task(task(budget_seconds=budget), workspace=tmp_path)["jobs"][1]
+        ledger = JobLedger(tmp_path, "budget_task")
+        lease = ledger.claim("job_1", "crate")
+    
+        # Trusted native dispatch is replaced to observe the real coordinator boundary.
+        def execute(identifier, inputs, context):
+            return Result(data={"timeout": context.timeout_seconds})
+    
+        monkeypatch.setattr(module, "execute", execute)
+        result = module.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], task()["input"], 42, job_ticket=ticket
+        )
+        assert result.data["timeout"] == expected
+        intent = json.loads(next((tmp_path / ".polyforge/operations").glob("*.intent.json")).read_text())
+>       assert intent["context_digest"] == ticket["context_digest"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'context_digest'
+
+tests\test_audit_workforce_gaps.py:155: KeyError
+_____ test_execute_leased_consumes_job_budget_and_native_ceiling[30-7-7] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_execute_leased_consumes_j1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000214541CB560>
+budget = 30, ceiling = 7, expected = 7
+
+    @pytest.mark.parametrize("budget,ceiling,expected", [(1, 600, 1), (30, 7, 7)])
+    def test_execute_leased_consumes_job_budget_and_native_ceiling(
+        tmp_path, monkeypatch, budget, ceiling, expected
+    ):
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.ledger import JobLedger
+        from polyforge.workforce.router import plan_task
+    
+        (tmp_path / "polyforge.toml").write_text(
+            f"[execution]\nblender_timeout_seconds = {ceiling}\n", encoding="utf-8"
+        )
+        ticket = plan_task(task(budget_seconds=budget), workspace=tmp_path)["jobs"][1]
+        ledger = JobLedger(tmp_path, "budget_task")
+        lease = ledger.claim("job_1", "crate")
+    
+        # Trusted native dispatch is replaced to observe the real coordinator boundary.
+        def execute(identifier, inputs, context):
+            return Result(data={"timeout": context.timeout_seconds})
+    
+        monkeypatch.setattr(module, "execute", execute)
+        result = module.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], task()["input"], 42, job_ticket=ticket
+        )
+        assert result.data["timeout"] == expected
+        intent = json.loads(next((tmp_path / ".polyforge/operations").glob("*.intent.json")).read_text())
+>       assert intent["context_digest"] == ticket["context_digest"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'context_digest'
+
+tests\test_audit_workforce_gaps.py:155: KeyError
+_ test_inspection_failure_or_deadline_never_commits_or_reads_success_data[False] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_inspection_failure_or_dea0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000214541FAAE0>
+expired = False
+
+    @pytest.mark.parametrize("expired", [False, True])
+    def test_inspection_failure_or_deadline_never_commits_or_reads_success_data(
+        tmp_path, monkeypatch, expired
+    ):
+        import time
+    
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import ErrorKind, Result, failure
+        from polyforge.workforce.ledger import JobLedger
+    
+        monkeypatch.setattr(module, "seal_candidate", lambda *args: {})
+        monkeypatch.setattr(module, "require_approval", lambda *args: None)
+    
+        def execute(identifier, inputs, context):
+            if identifier == "artifact.candidate.inspect.v1":
+                if expired:
+                    time.sleep(1.1)
+                    return Result(data={"review": {}, "board": {}})
+                return failure(ErrorKind.TEST_FAILURE, "PF-TEST-INSPECT", "Inspection rejected")
+            return Result()
+    
+        monkeypatch.setattr(module, "execute", execute)
+>       result = module.run_task(tmp_path, task(budget_seconds=1))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_workforce_gaps.py:181: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+workspace = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_inspection_failure_or_dea0')
+request = {'brief': 'Make a crate with editable source', 'budget_seconds': 1, 'capability_id': 'mesh.props.crate.v1', 'domain_tags': ['blender'], ...}
+
+    def run_task(
+        workspace: Path, request: dict[str, Any], *, dry_run: bool = False, mode: str = "sequential"
+    ) -> Result:
+        plan = plan_task(request, workspace=workspace)
+        profile = execution_profile(mode)
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.workforce.discovery import admit_resources
+    
+        admission = admit_resources(WorkspacePolicy(workspace), request.get("resources", {}))
+        profile["resource_admission"] = admission
+        ledger = JobLedger(workspace, plan["task_id"])
+        if dry_run or not plan["jobs"]:
+            return Result(
+                input_digest=plan["input_digest"], data={"plan": plan, **profile, "dry_run": dry_run}
+            )
+        if mode == "single":
+            ledger = JobLedger(workspace, plan["task_id"] + "_single")
+        policy = ledger.policy
+        relative = ledger.relative
+        atomic_json(policy, relative + "/plan.json", plan)
+        asset = request["input"].get(
+            "asset_id", request["input"].get("spec", {}).get("asset_id", "game_project")
+        )
+        if request["capability_id"] == "asset.package.build.v1":
+            # The inner specialist transaction owns the canonical asset lease; the outer workflow
+            # owns its admission ticket, avoiding a self-conflict while preserving both fences.
+            asset = "wf_" + canonical_digest(asset)[:40]
+        candidate: dict[str, Any] = {}
+        review: dict[str, Any] = {}
+        lineage = []
+        for job in plan["jobs"]:
+            if job["context"]["task_digest"] != plan["input_digest"]:
+                raise InputError("Job metadata belongs to a different frozen task")
+            job_id = job["job_id"]
+            prior = ledger.completed(job_id)
+            lease = ledger.claim(job_id, asset)
+            if prior is not None:
+                value = prior
+                if job_id in {"job_1", "job_3"}:
+                    from polyforge.workforce.operations import operation_context, recover
+    
+                    identifier = (
+                        request["capability_id"] if job_id == "job_1" else "animation.robot.unity.v1"
+                    )
+                    inputs = (
+                        request["input"]
+                        if job_id == "job_1"
+                        else {
+                            "schema_version": "1.0.0",
+                            "candidate_file": relative + "/handoff.json",
+                            "review_file": relative + "/review.json",
+                            "production_file": relative + "/production.json",
+                        }
+                    )
+                    if (
+                        recover(
+                            identifier,
+                            inputs,
+                            operation_context(
+                                workspace, ledger.task_id, job_id, request.get("seed", 42), None
+                            ),
+                        )
+                        is None
+                    ):
+                        raise InputError("Committed job lacks a current native operation receipt")
+            else:
+                if lease is None:
+                    raise InputError("Job committed concurrently; resume to read its durable result")
+                if job_id == "job_0":
+                    value = {
+                        "original_request": request,
+                        "brief_digest": canonical_digest(request["brief"]),
+                    }
+                elif job_id == "job_1":
+                    authorize(policy, job["role_id"], "tool", request["capability_id"])
+                    checkpoint = policy.path(relative + "/production.json")
+                    if checkpoint.is_file():
+                        value = load_json(checkpoint)
+                        from polyforge.workforce.workers import check_candidate
+    
+                        check_candidate(policy, value["candidate"])
+                    else:
+                        result = execute_leased(
+                            ledger,
+                            job_id,
+                            lease,
+                            request["capability_id"],
+                            request["input"],
+                            request.get("seed", 42),
+                            job_ticket=job,
+                        )
+                        if result.status != "PASS":
+                            ledger.cancel(job_id)
+                            return result
+                        value = {
+                            "result": result.to_dict(),
+                            "candidate": seal_candidate(
+                                policy, result, canonical_digest(request["brief"])
+                            ),
+                        }
+                        atomic_json(policy, checkpoint, value)
+                elif job_id == "job_2":
+                    authorize(policy, job["role_id"], "tool", "artifact.candidate.inspect.v1")
+                    atomic_json(policy, relative + "/handoff.json", candidate)
+                    inspected = execute(
+                        "artifact.candidate.inspect.v1",
+                        {
+                            "schema_version": "1.0.0",
+                            "candidate_file": relative + "/handoff.json",
+                            "task_file": relative + "/plan.json",
+                        },
+                        RunContext(workspace),
+                    )
+                    value = inspected.data
+>                   atomic_json(policy, relative + "/review.json", value["review"])
+                                                                   ^^^^^^^^^^^^^^^
+E                   KeyError: 'review'
+
+polyforge\workforce\orchestrator.py:223: KeyError
+_ test_inspection_failure_or_deadline_never_commits_or_reads_success_data[True] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_inspection_failure_or_dea1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021453E05430>
+expired = True
+
+    @pytest.mark.parametrize("expired", [False, True])
+    def test_inspection_failure_or_deadline_never_commits_or_reads_success_data(
+        tmp_path, monkeypatch, expired
+    ):
+        import time
+    
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import ErrorKind, Result, failure
+        from polyforge.workforce.ledger import JobLedger
+    
+        monkeypatch.setattr(module, "seal_candidate", lambda *args: {})
+        monkeypatch.setattr(module, "require_approval", lambda *args: None)
+    
+        def execute(identifier, inputs, context):
+            if identifier == "artifact.candidate.inspect.v1":
+                if expired:
+                    time.sleep(1.1)
+                    return Result(data={"review": {}, "board": {}})
+                return failure(ErrorKind.TEST_FAILURE, "PF-TEST-INSPECT", "Inspection rejected")
+            return Result()
+    
+        monkeypatch.setattr(module, "execute", execute)
+        result = module.run_task(tmp_path, task(budget_seconds=1))
+>       assert result.status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_workforce_gaps.py:182: AssertionError
+____ test_probe_refresh_preserves_original_plan_and_committed_job_context _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-review-red-tmp/test_probe_refresh_preserves_o0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021453E04EF0>
+
+    def test_probe_refresh_preserves_original_plan_and_committed_job_context(tmp_path, monkeypatch):
+        import polyforge.knowledge.probes as probes
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import ErrorKind, failure
+        from polyforge.runner.state import atomic_json
+        from polyforge.workforce.ledger import JobLedger
+    
+        receipt = {"receipt": {"run_id": "knowledge-1111111111111111"}}
+        monkeypatch.setattr(probes, "read_probe", lambda *args: copy.deepcopy(receipt))
+        request = task()
+        frozen = module.plan_task(request, workspace=tmp_path)
+        ledger = JobLedger(tmp_path, frozen["task_id"])
+        atomic_json(ledger.policy, ledger.relative + "/plan.json", frozen)
+        lease = ledger.claim("job_0", "crate")
+        ledger.commit("job_0", lease, {"original_request": request, "brief_digest": canonical_digest(request["brief"])})
+        prior = ledger.completed("job_0")
+        receipt["receipt"]["run_id"] = "knowledge-2222222222222222"
+        refreshed = module.plan_task(request, workspace=tmp_path)
+        assert frozen["task_id"] == refreshed["task_id"]
+        assert frozen["jobs"][1]["context_digest"] != refreshed["jobs"][1]["context_digest"]
+        monkeypatch.setattr(module, "execute", lambda *args: failure(ErrorKind.TEST_FAILURE, "PF-TEST-STOP", "Stop before native work"))
+        result = module.run_task(tmp_path, request)
+        assert result.status == "FAIL"
+        retained = json.loads(ledger.policy.path(ledger.relative + "/plan.json").read_text())
+>       assert retained == frozen
+E       AssertionError: assert {'engine_dige...', ...}], ...} == {'engine_dige...', ...}], ...}
+E         
+E         Omitting 11 identical items, use -vv to show
+E         Differing items:
+E         {'jobs': [{'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW...requirement review', ...}, 'context_digest': 'd6597840407e9818cc7c6285e8893eb3b11aa264781baa2bee773aa42ca5f883', ...}]} != {'jobs': [{'budget_seconds': 3600, 'capability_id': 'intent.freeze.v1', 'context': {'approval_owner': 'EXISTING_REVIEW...requirement review', ...}, 'context_digest': 'e48f4e35f23e8fcd9fb2d50e7a078a47fd6e3df5752cc4a5ef86b4bc51069f6a', ...}]}
+E         Use -v to get more diff
+
+tests\test_audit_workforce_gaps.py:214: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_workforce_gaps.py::test_cross_engine_job_context_preserves_both_toolchains
+FAILED tests/test_audit_workforce_gaps.py::test_execute_leased_consumes_job_budget_and_native_ceiling[1-600-1]
+FAILED tests/test_audit_workforce_gaps.py::test_execute_leased_consumes_job_budget_and_native_ceiling[30-7-7]
+FAILED tests/test_audit_workforce_gaps.py::test_inspection_failure_or_deadline_never_commits_or_reads_success_data[False]
+FAILED tests/test_audit_workforce_gaps.py::test_inspection_failure_or_deadline_never_commits_or_reads_success_data[True]
+FAILED tests/test_audit_workforce_gaps.py::test_probe_refresh_preserves_original_plan_and_committed_job_context
+6 failed, 9 deselected in 15.34s

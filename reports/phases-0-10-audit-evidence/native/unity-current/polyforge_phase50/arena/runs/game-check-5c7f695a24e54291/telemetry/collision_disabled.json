@@ -1,0 +1,4478 @@
+{
+    "schema_version": "1.0.0",
+    "scenario_id": "wall_collision",
+    "input_digest": "171b4a0d3cded8c0fd0aa62ce2bf995e38ba6f8be7f23300735545b392f76ac7",
+    "scene_id": "main",
+    "purpose": "MUTANT",
+    "mutant": "collision_disabled",
+    "seed": 42,
+    "frames_executed": 200,
+    "fixed_delta_seconds": 0.019999992102384567,
+    "arena_half_extents": [
+        10.0,
+        10.0
+    ],
+    "wall_thickness": 0.5,
+    "player_radius": 0.3499999940395355,
+    "baseline_player_position": [
+        -3.0,
+        0.0,
+        -3.0
+    ],
+    "baseline_enemy_positions": [
+        {
+            "id": "enemy_01",
+            "position": [
+                3.0,
+                0.0,
+                3.0
+            ]
+        }
+    ],
+    "obstacle_id": "",
+    "obstacle_asset_id": "",
+    "obstacle_center_m": [],
+    "obstacle_size_m": [],
+    "samples": [
+        {
+            "frame": 0,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.0,
+            "player_position": [
+                -7.0,
+                0.0,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.0,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 1,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.019999992102384567,
+            "player_position": [
+                -7.079999923706055,
+                0.029998779296875,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.0260000228881836,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 2,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.039999984204769135,
+            "player_position": [
+                -7.159999847412109,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.052000045776367,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 3,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.0599999763071537,
+            "player_position": [
+                -7.239999771118164,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.078000068664551,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 4,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.07999996840953827,
+            "player_position": [
+                -7.319999694824219,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.1040000915527344,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 5,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.09999996423721313,
+            "player_position": [
+                -7.399999618530273,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.130000114440918,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 6,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.119999960064888,
+            "player_position": [
+                -7.480000019073486,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.1560001373291016,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 7,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.13999995589256287,
+            "player_position": [
+                -7.559999942779541,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.182000160217285,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 8,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.15999995172023773,
+            "player_position": [
+                -7.639999866485596,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.2080001831054688,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 9,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.1799999475479126,
+            "player_position": [
+                -7.71999979019165,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.2340002059936523,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 10,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.19999994337558746,
+            "player_position": [
+                -7.799999713897705,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.260000228881836,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 11,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.21999993920326233,
+            "player_position": [
+                -7.87999963760376,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.2860002517700195,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 12,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.2399999350309372,
+            "player_position": [
+                -7.9599995613098145,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.312000274658203,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 13,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.25999993085861206,
+            "player_position": [
+                -8.039999961853027,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.3380002975463867,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 14,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.27999991178512573,
+            "player_position": [
+                -8.119999885559082,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.3640003204345703,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 15,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.2999998927116394,
+            "player_position": [
+                -8.199999809265137,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.390000343322754,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 16,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.3199998736381531,
+            "player_position": [
+                -8.279999732971191,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.4160003662109375,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 17,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.33999985456466675,
+            "player_position": [
+                -8.359999656677246,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.442000389099121,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 18,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.3599998354911804,
+            "player_position": [
+                -8.4399995803833,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.4680004119873047,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 19,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.3799998164176941,
+            "player_position": [
+                -8.519999504089355,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.4940004348754883,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 20,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.39999979734420776,
+            "player_position": [
+                -8.59999942779541,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.520000457763672,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 21,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.41999977827072144,
+            "player_position": [
+                -8.679999351501465,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.5460004806518555,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 22,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.4399997591972351,
+            "player_position": [
+                -8.75999927520752,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.572000503540039,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 23,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.4599997401237488,
+            "player_position": [
+                -8.839999198913574,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.5980005264282227,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 24,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.47999972105026245,
+            "player_position": [
+                -8.919999122619629,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.6240005493164063,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 25,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.4999997019767761,
+            "player_position": [
+                -8.999999046325684,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.65000057220459,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 26,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.5199996829032898,
+            "player_position": [
+                -9.079998970031738,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.6760005950927734,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 27,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.5399996638298035,
+            "player_position": [
+                -9.159998893737793,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.702000617980957,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 28,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.5599996447563171,
+            "player_position": [
+                -9.239998817443848,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.7280006408691406,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 29,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.5799996256828308,
+            "player_position": [
+                -9.319998741149902,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.754000663757324,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 30,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.5999996066093445,
+            "player_position": [
+                -9.399998664855957,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.780000686645508,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 31,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.6199995875358582,
+            "player_position": [
+                -9.479998588562012,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.8060007095336914,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 32,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.6399995684623718,
+            "player_position": [
+                -9.559999465942383,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.832000732421875,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 33,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.6599995493888855,
+            "player_position": [
+                -9.639999389648438,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.8580007553100586,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 34,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.6799995303153992,
+            "player_position": [
+                -9.719999313354492,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.884000778198242,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 35,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.6999995112419128,
+            "player_position": [
+                -9.799999237060547,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.910000801086426,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 36,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.7199994921684265,
+            "player_position": [
+                -9.879999160766602,
+                0.029998719692230225,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.9360008239746094,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 37,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.7399994730949402,
+            "player_position": [
+                -9.959999084472656,
+                0.02999866008758545,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.962000846862793,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 38,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.7599994540214539,
+            "player_position": [
+                -10.039999008178711,
+                0.027705609798431396,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.9880008697509766,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 39,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.7799994349479675,
+            "player_position": [
+                -10.119998931884766,
+                0.008784770965576172,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.01400089263916,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 40,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.7999994158744812,
+            "player_position": [
+                -10.19999885559082,
+                -0.031215250492095947,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.040000915527344,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 41,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.8199993968009949,
+            "player_position": [
+                -10.279998779296875,
+                -0.07513922452926636,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.066000938415527,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 42,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.8399993777275085,
+            "player_position": [
+                -10.35999870300293,
+                -0.12298721075057983,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.092000961303711,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 43,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.8599993586540222,
+            "player_position": [
+                -10.439998626708984,
+                -0.1747591495513916,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.1180009841918945,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 44,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.8799993395805359,
+            "player_position": [
+                -10.519998550415039,
+                -0.2304551601409912,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.144001007080078,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 45,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.8999993205070496,
+            "player_position": [
+                -10.599998474121094,
+                -0.2900751233100891,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.170001029968262,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 46,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.9199993014335632,
+            "player_position": [
+                -10.679998397827148,
+                -0.3536190986633301,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.196001052856445,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 47,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.9399992823600769,
+            "player_position": [
+                -10.759998321533203,
+                -0.4210870563983917,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.222001075744629,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 48,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.9599992632865906,
+            "player_position": [
+                -10.839998245239258,
+                -0.49247899651527405,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.2480010986328125,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 49,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.9799992442131042,
+            "player_position": [
+                -10.919998168945313,
+                -0.567794919013977,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.274001121520996,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 50,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 0.9999992251396179,
+            "player_position": [
+                -10.999998092651367,
+                -0.6470348834991455,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.30000114440918,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 51,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.0199992656707764,
+            "player_position": [
+                -11.079998016357422,
+                -0.730198860168457,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.326001167297363,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 52,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.03999924659729,
+            "player_position": [
+                -11.159997940063477,
+                -0.8172867894172668,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.352001190185547,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 53,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.0599992275238037,
+            "player_position": [
+                -11.239997863769531,
+                -0.9082987308502197,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.3780012130737305,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 54,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.0799992084503174,
+            "player_position": [
+                -11.319998741149902,
+                -1.003234624862671,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.404001235961914,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 55,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.099999189376831,
+            "player_position": [
+                -11.399998664855957,
+                -1.1020946502685547,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.430001258850098,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 56,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.1199991703033447,
+            "player_position": [
+                -11.479998588562012,
+                -1.204878568649292,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.456001281738281,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 57,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.1399991512298584,
+            "player_position": [
+                -11.559998512268066,
+                -1.3115863800048828,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.482001304626465,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 58,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.159999132156372,
+            "player_position": [
+                -11.639998435974121,
+                -1.4222183227539063,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.508001327514648,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 59,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.1799991130828857,
+            "player_position": [
+                -11.719998359680176,
+                -1.5367742776870728,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.534001350402832,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 60,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.1999990940093994,
+            "player_position": [
+                -11.79999828338623,
+                -1.6552541255950928,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.560001373291016,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 61,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.219999074935913,
+            "player_position": [
+                -11.879998207092285,
+                -1.7776581048965454,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.586001396179199,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 62,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.2399990558624268,
+            "player_position": [
+                -11.95999813079834,
+                -1.9039859771728516,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.612001419067383,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 63,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.2599990367889404,
+            "player_position": [
+                -12.039998054504395,
+                -2.034237861633301,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.638001441955566,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 64,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.279999017715454,
+            "player_position": [
+                -12.11999797821045,
+                -2.1684136390686035,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.66400146484375,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 65,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.2999989986419678,
+            "player_position": [
+                -12.199997901916504,
+                -2.306513786315918,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.690001487731934,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 66,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.3199989795684814,
+            "player_position": [
+                -12.279997825622559,
+                -2.448537588119507,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.716001510620117,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 67,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.3399989604949951,
+            "player_position": [
+                -12.359997749328613,
+                -2.594485282897949,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.742001533508301,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 68,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.3599989414215088,
+            "player_position": [
+                -12.439997673034668,
+                -2.7443573474884033,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.768001556396484,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 69,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.3799989223480225,
+            "player_position": [
+                -12.519997596740723,
+                -2.898153305053711,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.794001579284668,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 70,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.3999989032745361,
+            "player_position": [
+                -12.599997520446777,
+                -3.055872917175293,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.820001602172852,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 71,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.4199988842010498,
+            "player_position": [
+                -12.679997444152832,
+                -3.217517137527466,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.846001625061035,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 72,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.4399988651275635,
+            "player_position": [
+                -12.759997367858887,
+                -3.383084774017334,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.872001647949219,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 73,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.4599988460540771,
+            "player_position": [
+                -12.839997291564941,
+                -3.552576780319214,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.898001670837402,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 74,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.4799988269805908,
+            "player_position": [
+                -12.919997215270996,
+                -3.725992441177368,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.924001693725586,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 75,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.4999988079071045,
+            "player_position": [
+                -12.999998092651367,
+                -3.903332471847534,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9500017166137695,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 76,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.5199987888336182,
+            "player_position": [
+                -13.079998016357422,
+                -4.084596633911133,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.976001739501953,
+                        0.0,
+                        3.0
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 77,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.5399987697601318,
+            "player_position": [
+                -13.159997940063477,
+                -4.269784450531006,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.976313591003418,
+                        0.0,
+                        3.025998115539551
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 78,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.5599987506866455,
+            "player_position": [
+                -13.239997863769531,
+                -4.458896636962891,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.976625442504883,
+                        0.0,
+                        3.0519962310791016
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 79,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.5799987316131592,
+            "player_position": [
+                -13.319997787475586,
+                -4.651932716369629,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.976937294006348,
+                        0.0,
+                        3.0779943466186523
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 80,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.5999987125396729,
+            "player_position": [
+                -13.39999771118164,
+                -4.8488922119140625,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9772491455078125,
+                        0.0,
+                        3.103992462158203
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 81,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.6199986934661865,
+            "player_position": [
+                -13.479997634887695,
+                -5.049776077270508,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.977560997009277,
+                        0.0,
+                        3.129990577697754
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 82,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.6399986743927002,
+            "player_position": [
+                -13.55999755859375,
+                -5.254584312438965,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.977872848510742,
+                        0.0,
+                        3.1559886932373047
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 83,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.6599986553192139,
+            "player_position": [
+                -13.639997482299805,
+                -5.463315963745117,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.978184700012207,
+                        0.0,
+                        3.1819868087768555
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 84,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.6799986362457275,
+            "player_position": [
+                -13.71999740600586,
+                -5.675971984863281,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.978496551513672,
+                        0.0,
+                        3.2079849243164063
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 85,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.6999986171722412,
+            "player_position": [
+                -13.799997329711914,
+                -5.892551898956299,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.978808403015137,
+                        0.0,
+                        3.233983039855957
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 86,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.7199985980987549,
+            "player_position": [
+                -13.879997253417969,
+                -6.113056182861328,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.979120254516602,
+                        0.0,
+                        3.259981155395508
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 87,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.7399985790252686,
+            "player_position": [
+                -13.959997177124023,
+                -6.337483882904053,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.979432106018066,
+                        0.0,
+                        3.2859792709350586
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 88,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.7599985599517822,
+            "player_position": [
+                -14.039997100830078,
+                -6.565835952758789,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.979743957519531,
+                        0.0,
+                        3.3119773864746094
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 89,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.779998540878296,
+            "player_position": [
+                -14.119997024536133,
+                -6.798111915588379,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.980055809020996,
+                        0.0,
+                        3.33797550201416
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 90,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.7999985218048096,
+            "player_position": [
+                -14.199996948242188,
+                -7.034311771392822,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.980367660522461,
+                        0.0,
+                        3.363973617553711
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 91,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.8199985027313232,
+            "player_position": [
+                -14.279996871948242,
+                -7.274435997009277,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.980679512023926,
+                        0.0,
+                        3.3899717330932617
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 92,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.839998483657837,
+            "player_position": [
+                -14.359996795654297,
+                -7.518484115600586,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.980991363525391,
+                        0.0,
+                        3.4159698486328125
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 93,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.8599984645843506,
+            "player_position": [
+                -14.439996719360352,
+                -7.766456127166748,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9813032150268555,
+                        0.0,
+                        3.4419679641723633
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 94,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.8799984455108643,
+            "player_position": [
+                -14.519996643066406,
+                -8.018352508544922,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.98161506652832,
+                        0.0,
+                        3.467966079711914
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 95,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.899998426437378,
+            "player_position": [
+                -14.599996566772461,
+                -8.274171829223633,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.981926918029785,
+                        0.0,
+                        3.493964195251465
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 96,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.9199984073638916,
+            "player_position": [
+                -14.679996490478516,
+                -8.533916473388672,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.98223876953125,
+                        0.0,
+                        3.5199623107910156
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 97,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.9399983882904053,
+            "player_position": [
+                -14.759997367858887,
+                -8.797584533691406,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.982550621032715,
+                        0.0,
+                        3.5459604263305664
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 98,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.959998369216919,
+            "player_position": [
+                -14.839997291564941,
+                -9.065176010131836,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.98286247253418,
+                        0.0,
+                        3.571958541870117
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 99,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.9799983501434326,
+            "player_position": [
+                -14.919997215270996,
+                -9.336691856384277,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9831743240356445,
+                        0.0,
+                        3.597956657409668
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 100,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 1.9999983310699463,
+            "player_position": [
+                -14.99999713897705,
+                -9.61213207244873,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.983486175537109,
+                        0.0,
+                        3.6239547729492188
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 101,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.01999831199646,
+            "player_position": [
+                -15.079997062683105,
+                -9.891495704650879,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.983798027038574,
+                        0.0,
+                        3.6499528884887695
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 102,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.0399982929229736,
+            "player_position": [
+                -15.15999698638916,
+                -10.174783706665039,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.984109878540039,
+                        0.0,
+                        3.6759510040283203
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 103,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.0599982738494873,
+            "player_position": [
+                -15.239996910095215,
+                -10.461996078491211,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.984421730041504,
+                        0.0,
+                        3.701949119567871
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 104,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.079998254776001,
+            "player_position": [
+                -15.31999683380127,
+                -10.753131866455078,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.984733581542969,
+                        0.0,
+                        3.727947235107422
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 105,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.0999982357025146,
+            "player_position": [
+                -15.399996757507324,
+                -11.048192024230957,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.985045433044434,
+                        0.0,
+                        3.7539453506469727
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 106,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.1199982166290283,
+            "player_position": [
+                -15.479996681213379,
+                -11.347176551818848,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.985357284545898,
+                        0.0,
+                        3.7799434661865234
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 107,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.139998197555542,
+            "player_position": [
+                -15.559996604919434,
+                -11.650084495544434,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.985669136047363,
+                        0.0,
+                        3.805941581726074
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 108,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.1599981784820557,
+            "player_position": [
+                -15.639996528625488,
+                -11.956916809082031,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.985980987548828,
+                        0.0,
+                        3.831939697265625
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 109,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.1799981594085693,
+            "player_position": [
+                -15.719996452331543,
+                -12.267672538757324,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.986292839050293,
+                        0.0,
+                        3.857937812805176
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 110,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.199998140335083,
+            "player_position": [
+                -15.799996376037598,
+                -12.582352638244629,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.986604690551758,
+                        0.0,
+                        3.8839359283447266
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 111,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.2199981212615967,
+            "player_position": [
+                -15.879996299743652,
+                -12.900957107543945,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.986916542053223,
+                        0.0,
+                        3.9099340438842773
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 112,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.2399981021881104,
+            "player_position": [
+                -15.959996223449707,
+                -13.223484992980957,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9872283935546875,
+                        0.0,
+                        3.935932159423828
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 113,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.259998083114624,
+            "player_position": [
+                -16.039997100830078,
+                -13.54993724822998,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.987540245056152,
+                        0.0,
+                        3.961930274963379
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 114,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.2799980640411377,
+            "player_position": [
+                -16.119997024536133,
+                -13.8803129196167,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.987852096557617,
+                        0.0,
+                        3.9879283905029297
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 115,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.2999980449676514,
+            "player_position": [
+                -16.199996948242188,
+                -14.21461296081543,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.988163948059082,
+                        0.0,
+                        4.0139265060424805
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 116,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.319998025894165,
+            "player_position": [
+                -16.279996871948242,
+                -14.552837371826172,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.988475799560547,
+                        0.0,
+                        4.039924621582031
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 117,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.3399980068206787,
+            "player_position": [
+                -16.359996795654297,
+                -14.89498519897461,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.988787651062012,
+                        0.0,
+                        4.065922737121582
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 118,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.3599979877471924,
+            "player_position": [
+                -16.43999671936035,
+                -15.241057395935059,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.989099502563477,
+                        0.0,
+                        4.091920852661133
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 119,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.379997968673706,
+            "player_position": [
+                -16.519996643066406,
+                -15.591053009033203,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.989411354064941,
+                        0.0,
+                        4.117918968200684
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 120,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.3999979496002197,
+            "player_position": [
+                -16.59999656677246,
+                -15.94497299194336,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.989723205566406,
+                        0.0,
+                        4.143917083740234
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 121,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.4199979305267334,
+            "player_position": [
+                -16.679996490478516,
+                -16.302818298339844,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.990035533905029,
+                        0.0,
+                        4.169915199279785
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 122,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.439997911453247,
+            "player_position": [
+                -16.75999641418457,
+                -16.66458511352539,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.990347385406494,
+                        0.0,
+                        4.195913314819336
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 123,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.4599978923797607,
+            "player_position": [
+                -16.839996337890625,
+                -17.030277252197266,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.990659713745117,
+                        0.0,
+                        4.221911430358887
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 124,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.4799978733062744,
+            "player_position": [
+                -16.91999626159668,
+                -17.399892807006836,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.990971565246582,
+                        0.0,
+                        4.2479095458984375
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 125,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.499997854232788,
+            "player_position": [
+                -16.999996185302734,
+                -17.773433685302734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.991283893585205,
+                        0.0,
+                        4.273907661437988
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 126,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.5199978351593018,
+            "player_position": [
+                -17.07999610900879,
+                -18.150896072387695,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.99159574508667,
+                        0.0,
+                        4.299905776977539
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 127,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.5399978160858154,
+            "player_position": [
+                -17.159996032714844,
+                -18.532283782958984,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.991908073425293,
+                        0.0,
+                        4.32590389251709
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 128,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.559997797012329,
+            "player_position": [
+                -17.2399959564209,
+                -18.9175968170166,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.992219924926758,
+                        0.0,
+                        4.351902008056641
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 129,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.5799977779388428,
+            "player_position": [
+                -17.319995880126953,
+                -19.306833267211914,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.992532253265381,
+                        0.0,
+                        4.377900123596191
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 130,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.5999977588653564,
+            "player_position": [
+                -17.399995803833008,
+                -19.699993133544922,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.992844104766846,
+                        0.0,
+                        4.403898239135742
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 131,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.61999773979187,
+            "player_position": [
+                -17.479995727539063,
+                -20.097076416015625,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.993156433105469,
+                        0.0,
+                        4.429896354675293
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 132,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.639997720718384,
+            "player_position": [
+                -17.559995651245117,
+                -20.498083114624023,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.993468284606934,
+                        0.0,
+                        4.455894470214844
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 133,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.6599977016448975,
+            "player_position": [
+                -17.639995574951172,
+                -20.90301513671875,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.993780612945557,
+                        0.0,
+                        4.4818925857543945
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 134,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.679997682571411,
+            "player_position": [
+                -17.719995498657227,
+                -21.311872482299805,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9940924644470215,
+                        0.0,
+                        4.507890701293945
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 135,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.699997663497925,
+            "player_position": [
+                -17.79999542236328,
+                -21.724651336669922,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9944047927856445,
+                        0.0,
+                        4.533888816833496
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 136,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.7199976444244385,
+            "player_position": [
+                -17.879995346069336,
+                -22.141355514526367,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.994716644287109,
+                        0.0,
+                        4.559886932373047
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 137,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.739997625350952,
+            "player_position": [
+                -17.95999526977539,
+                -22.561983108520508,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.995028972625732,
+                        0.0,
+                        4.585885047912598
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 138,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.759997606277466,
+            "player_position": [
+                -18.039995193481445,
+                -22.986534118652344,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.995340824127197,
+                        0.0,
+                        4.611883163452148
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 139,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.7799975872039795,
+            "player_position": [
+                -18.1199951171875,
+                -23.415010452270508,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.99565315246582,
+                        0.0,
+                        4.637881278991699
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 140,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.799997568130493,
+            "player_position": [
+                -18.199995040893555,
+                -23.847410202026367,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.995965003967285,
+                        0.0,
+                        4.66387939453125
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 141,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.819997549057007,
+            "player_position": [
+                -18.27999496459961,
+                -24.283733367919922,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.996277332305908,
+                        0.0,
+                        4.689877510070801
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 142,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.8399975299835205,
+            "player_position": [
+                -18.359994888305664,
+                -24.723981857299805,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.996589183807373,
+                        0.0,
+                        4.715875625610352
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 143,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.859997510910034,
+            "player_position": [
+                -18.43999481201172,
+                -25.168153762817383,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.996901512145996,
+                        0.0,
+                        4.741873741149902
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 144,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.879997491836548,
+            "player_position": [
+                -18.519994735717773,
+                -25.616249084472656,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.997213363647461,
+                        0.0,
+                        4.767871856689453
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 145,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.8999974727630615,
+            "player_position": [
+                -18.599994659423828,
+                -26.068267822265625,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.997525691986084,
+                        0.0,
+                        4.793869972229004
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 146,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.919997453689575,
+            "player_position": [
+                -18.679994583129883,
+                -26.524211883544922,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.997837543487549,
+                        0.0,
+                        4.819868087768555
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 147,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.939997434616089,
+            "player_position": [
+                -18.759994506835938,
+                -26.984079360961914,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.998149871826172,
+                        0.0,
+                        4.8458662033081055
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 148,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.9599974155426025,
+            "player_position": [
+                -18.839994430541992,
+                -27.447872161865234,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.998461723327637,
+                        0.0,
+                        4.871864318847656
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 149,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.979997396469116,
+            "player_position": [
+                -18.919994354248047,
+                -27.915586471557617,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.99877405166626,
+                        0.0,
+                        4.897862434387207
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 150,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 2.99999737739563,
+            "player_position": [
+                -18.999996185302734,
+                -28.387226104736328,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.999085903167725,
+                        0.0,
+                        4.923860549926758
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 151,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.0199973583221436,
+            "player_position": [
+                -19.07999610900879,
+                -28.862791061401367,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.999398231506348,
+                        0.0,
+                        4.949858665466309
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 152,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.0399973392486572,
+            "player_position": [
+                -19.159996032714844,
+                -29.34227752685547,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.9997100830078125,
+                        0.0,
+                        4.975856781005859
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 153,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.059997320175171,
+            "player_position": [
+                -19.2399959564209,
+                -29.8256893157959,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.973711967468262,
+                        0.0,
+                        4.976170539855957
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 154,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.0799973011016846,
+            "player_position": [
+                -19.319995880126953,
+                -30.313024520874023,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.947713851928711,
+                        0.0,
+                        4.976484298706055
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 155,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.0999972820281982,
+            "player_position": [
+                -19.399995803833008,
+                -30.804285049438477,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.92171573638916,
+                        0.0,
+                        4.976798057556152
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 156,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.119997262954712,
+            "player_position": [
+                -19.479995727539063,
+                -31.299468994140625,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.895717620849609,
+                        0.0,
+                        4.97711181640625
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 157,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.1399972438812256,
+            "player_position": [
+                -19.559995651245117,
+                -31.79857635498047,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.869719505310059,
+                        0.0,
+                        4.977425575256348
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 158,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.1599972248077393,
+            "player_position": [
+                -19.639995574951172,
+                -32.301605224609375,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.843721389770508,
+                        0.0,
+                        4.977739334106445
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 159,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.179997205734253,
+            "player_position": [
+                -19.719995498657227,
+                -32.808563232421875,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.817723274230957,
+                        0.0,
+                        4.978053092956543
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 160,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.1999971866607666,
+            "player_position": [
+                -19.79999542236328,
+                -33.31944274902344,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.791725158691406,
+                        0.0,
+                        4.978366851806641
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 161,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.2199971675872803,
+            "player_position": [
+                -19.879995346069336,
+                -33.83424758911133,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.7657270431518555,
+                        0.0,
+                        4.978680610656738
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 162,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.239997148513794,
+            "player_position": [
+                -19.95999526977539,
+                -34.35297393798828,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.739728927612305,
+                        0.0,
+                        4.978994369506836
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 163,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.2599971294403076,
+            "player_position": [
+                -20.039995193481445,
+                -34.87562561035156,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.713730812072754,
+                        0.0,
+                        4.979308128356934
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 164,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.2799971103668213,
+            "player_position": [
+                -20.1199951171875,
+                -35.40220260620117,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.687732696533203,
+                        0.0,
+                        4.979621887207031
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 165,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.299997091293335,
+            "player_position": [
+                -20.199995040893555,
+                -35.932701110839844,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.661734580993652,
+                        0.0,
+                        4.979935646057129
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 166,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.3199970722198486,
+            "player_position": [
+                -20.27999496459961,
+                -36.467124938964844,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.635736465454102,
+                        0.0,
+                        4.980249404907227
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 167,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.3399970531463623,
+            "player_position": [
+                -20.359994888305664,
+                -37.005470275878906,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.609738349914551,
+                        0.0,
+                        4.980563163757324
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 168,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.359997034072876,
+            "player_position": [
+                -20.43999481201172,
+                -37.54774475097656,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.583740234375,
+                        0.0,
+                        4.980876922607422
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 169,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.3799970149993896,
+            "player_position": [
+                -20.519994735717773,
+                -38.093936920166016,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.557742118835449,
+                        0.0,
+                        4.9811906814575195
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 170,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.3999969959259033,
+            "player_position": [
+                -20.599994659423828,
+                -38.64405822753906,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.531744003295898,
+                        0.0,
+                        4.981504440307617
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 171,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.419996976852417,
+            "player_position": [
+                -20.679994583129883,
+                -39.19810104370117,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.505745887756348,
+                        0.0,
+                        4.981818199157715
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 172,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.4399969577789307,
+            "player_position": [
+                -20.759994506835938,
+                -39.75606918334961,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.479747772216797,
+                        0.0,
+                        4.9821319580078125
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 173,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.4599969387054443,
+            "player_position": [
+                -20.839994430541992,
+                -40.31795883178711,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.453749656677246,
+                        0.0,
+                        4.98244571685791
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 174,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.479996919631958,
+            "player_position": [
+                -20.919994354248047,
+                -40.88377380371094,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.427751541137695,
+                        0.0,
+                        4.982759475708008
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 175,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.4999969005584717,
+            "player_position": [
+                -20.9999942779541,
+                -41.453514099121094,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.4017534255981445,
+                        0.0,
+                        4.9830732345581055
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 176,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.5199968814849854,
+            "player_position": [
+                -21.079994201660156,
+                -42.02717590332031,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.375755310058594,
+                        0.0,
+                        4.983386993408203
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 177,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.539996862411499,
+            "player_position": [
+                -21.15999412536621,
+                -42.60476303100586,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.349757194519043,
+                        0.0,
+                        4.983700752258301
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 178,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.5599968433380127,
+            "player_position": [
+                -21.239994049072266,
+                -43.186275482177734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.323759078979492,
+                        0.0,
+                        4.984014511108398
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 179,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.5799968242645264,
+            "player_position": [
+                -21.31999397277832,
+                -43.77171325683594,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.297760963439941,
+                        0.0,
+                        4.984328269958496
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 180,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.59999680519104,
+            "player_position": [
+                -21.399993896484375,
+                -44.36106872558594,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.271762847900391,
+                        0.0,
+                        4.984642028808594
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 181,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.6199967861175537,
+            "player_position": [
+                -21.47999382019043,
+                -44.95435333251953,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.24576473236084,
+                        0.0,
+                        4.984955787658691
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 182,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.6399967670440674,
+            "player_position": [
+                -21.559993743896484,
+                -45.55155944824219,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.219766616821289,
+                        0.0,
+                        4.985269546508789
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 183,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.659996747970581,
+            "player_position": [
+                -21.63999366760254,
+                -46.15156173706055,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.193768501281738,
+                        0.0,
+                        4.985583305358887
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 184,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.6799967288970947,
+            "player_position": [
+                -21.719993591308594,
+                -46.75156021118164,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.1677703857421875,
+                        0.0,
+                        4.985897064208984
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 185,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.6999967098236084,
+            "player_position": [
+                -21.79999351501465,
+                -47.351558685302734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.141772270202637,
+                        0.0,
+                        4.986210823059082
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 186,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.719996690750122,
+            "player_position": [
+                -21.879993438720703,
+                -47.951560974121094,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.115774154663086,
+                        0.0,
+                        4.98652458190918
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 187,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.7399966716766357,
+            "player_position": [
+                -21.959993362426758,
+                -48.55155944824219,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.089776039123535,
+                        0.0,
+                        4.986838340759277
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 188,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.7599966526031494,
+            "player_position": [
+                -22.039993286132813,
+                -49.15155792236328,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.063777923583984,
+                        0.0,
+                        4.987152099609375
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 189,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.779996633529663,
+            "player_position": [
+                -22.119993209838867,
+                -49.75156021118164,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.037779808044434,
+                        0.0,
+                        4.987465858459473
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 190,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.7999966144561768,
+            "player_position": [
+                -22.199993133544922,
+                -50.351558685302734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        4.011781692504883,
+                        0.0,
+                        4.9877800941467285
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 191,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.8199965953826904,
+            "player_position": [
+                -22.279993057250977,
+                -50.95155715942383,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.985783576965332,
+                        0.0,
+                        4.988093852996826
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 192,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.839996576309204,
+            "player_position": [
+                -22.35999298095703,
+                -51.55155944824219,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.9597854614257813,
+                        0.0,
+                        4.988408088684082
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 193,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.8599965572357178,
+            "player_position": [
+                -22.43999481201172,
+                -52.15155792236328,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.9337873458862305,
+                        0.0,
+                        4.98872184753418
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 194,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.8799965381622314,
+            "player_position": [
+                -22.519994735717773,
+                -52.75156021118164,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.9077892303466797,
+                        0.0,
+                        4.9890360832214355
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 195,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.899996519088745,
+            "player_position": [
+                -22.599994659423828,
+                -53.351558685302734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.881791114807129,
+                        0.0,
+                        4.989349842071533
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 196,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.919996500015259,
+            "player_position": [
+                -22.679994583129883,
+                -53.95155715942383,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.855792999267578,
+                        0.0,
+                        4.989664077758789
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 197,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.9399964809417725,
+            "player_position": [
+                -22.759994506835938,
+                -54.55155944824219,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.8297948837280273,
+                        0.0,
+                        4.989977836608887
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 198,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.959996461868286,
+            "player_position": [
+                -22.839994430541992,
+                -55.15155792236328,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.8037967681884766,
+                        0.0,
+                        4.990292072296143
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 199,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.9799964427948,
+            "player_position": [
+                -22.919994354248047,
+                -55.751556396484375,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.777798652648926,
+                        0.0,
+                        4.99060583114624
+                    ]
+                }
+            ]
+        },
+        {
+            "frame": 200,
+            "round": 1,
+            "state": "RUNNING",
+            "health": 100,
+            "elapsed_seconds": 3.9999964237213135,
+            "player_position": [
+                -22.9999942779541,
+                -56.351558685302734,
+                0.0
+            ],
+            "enemy_positions": [
+                {
+                    "id": "enemy_01",
+                    "position": [
+                        3.751800537109375,
+                        0.0,
+                        4.990920066833496
+                    ]
+                }
+            ]
+        }
+    ],
+    "events": [
+        {
+            "name": "restarted",
+            "actor": "arena",
+            "frame": 0,
+            "round": 1,
+            "time": 0.0,
+            "value": 1.0
+        },
+        {
+            "name": "arena_started",
+            "actor": "arena",
+            "frame": 0,
+            "round": 1,
+            "time": 0.0,
+            "value": 0.0
+        }
+    ]
+}

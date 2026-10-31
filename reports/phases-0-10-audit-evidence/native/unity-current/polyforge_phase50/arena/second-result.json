@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "through": "S4",
+    "project": "UnityProject",
+    "source_bindings": [
+      {
+        "asset_id": "crate_a",
+        "source": "runs\\mesh-e6cf6ce1813a4de8\\asset",
+        "reused_geometry": true,
+        "fbx_sha256": "18d124c6789a0189014e4e24337f60e1df284e24e3b26cb28ea573300091c403"
+      },
+      {
+        "asset_id": "ground_a",
+        "source": "runs\\mesh-82dfc75e91e94f2b\\asset",
+        "reused_geometry": true,
+        "fbx_sha256": "2b7e15dd22ef990bcb8da833f5a3eeea404048eb178fd48e3608b8a7e4f9dd51"
+      },
+      {
+        "asset_id": "robot_a",
+        "source": "runs\\mesh-1fc492c41a754b20\\asset",
+        "reused_geometry": true,
+        "fbx_sha256": "20d138c7c1187711687b9b4a6cd777a0cf908917f6c6942223923668f19e80c1"
+      }
+    ],
+    "static_import_status": "PASS",
+    "playmode_status": "NOT_RUN",
+    "visual_review_status": "REVIEW",
+    "security_scope": "TRUSTED_LOCAL",
+    "isolation_verified": false,
+    "network_policy": "explicit Unity package resolution authorization"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "unity-6063a81933714934",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "8ab363933014725a2760898c4fdef256e98000d46235b3bfcf23b0370e196c13",
+  "artifact_ids": [
+    "unity-6063a81933714934:request.json",
+    "unity-6063a81933714934:inputs.json",
+    "unity-6063a81933714934:bindings.json",
+    "unity-6063a81933714934:reconcile.json",
+    "unity-6063a81933714934:editmode.xml",
+    "unity-6063a81933714934:tests.json",
+    "unity-6063a81933714934:native-output.zip"
+  ],
+  "evidence_paths": [
+    "runs/unity-6063a81933714934/bindings.json",
+    "runs/unity-6063a81933714934/reconcile.json",
+    "runs/unity-6063a81933714934/editmode.xml",
+    "runs/unity-6063a81933714934/inputs.json",
+    "scene_contract.json",
+    "feature_contract.json",
+    "requirement_coverage.json",
+    "plan.json",
+    "polyforge.lock.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

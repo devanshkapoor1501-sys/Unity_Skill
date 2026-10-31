@@ -1,0 +1,323 @@
+FFFFFFFF.F                                                               [100%]
+================================== FAILURES ===================================
+_ test_natural_language_candidate_never_proves_complete_requirements[Make a crate and sculpt a detailed organic dragon-ASSET-mesh.props.crate.v1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_natural_language_candidat0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EBE708C0>
+query = 'Make a crate and sculpt a detailed organic dragon', output = 'ASSET'
+candidate = 'mesh.props.crate.v1'
+
+    @pytest.mark.parametrize("query,output,candidate", [
+        ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+        ("Build a multiplayer survival arena with inventory and save/load", "GAME", "unity.game.arena.v1"),
+        ("Animate a robot with facial expressions and humanoid retargeting", "ANIMATE", "animation.robot.rig.v1"),
+        ("Make a crate", "ASSET", "mesh.props.crate.v1"),
+    ])
+    def test_natural_language_candidate_never_proves_complete_requirements(
+        tmp_path, monkeypatch, query, output, candidate
+    ):
+        from polyforge.knowledge.router import route_reference
+        from polyforge.workforce import discovery
+    
+        monkeypatch.setattr(discovery, "discover_tool", lambda *args: Path(sys.executable))
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": output
+        })
+>       assert result["status"] == "REVIEW"
+E       AssertionError: assert 'PASS' == 'REVIEW'
+E         
+E         - REVIEW
+E         + PASS
+
+tests\test_audit_workforce_gaps.py:46: AssertionError
+_ test_natural_language_candidate_never_proves_complete_requirements[Build a multiplayer survival arena with inventory and save/load-GAME-unity.game.arena.v1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_natural_language_candidat1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EC19E4B0>
+query = 'Build a multiplayer survival arena with inventory and save/load'
+output = 'GAME', candidate = 'unity.game.arena.v1'
+
+    @pytest.mark.parametrize("query,output,candidate", [
+        ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+        ("Build a multiplayer survival arena with inventory and save/load", "GAME", "unity.game.arena.v1"),
+        ("Animate a robot with facial expressions and humanoid retargeting", "ANIMATE", "animation.robot.rig.v1"),
+        ("Make a crate", "ASSET", "mesh.props.crate.v1"),
+    ])
+    def test_natural_language_candidate_never_proves_complete_requirements(
+        tmp_path, monkeypatch, query, output, candidate
+    ):
+        from polyforge.knowledge.router import route_reference
+        from polyforge.workforce import discovery
+    
+        monkeypatch.setattr(discovery, "discover_tool", lambda *args: Path(sys.executable))
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": output
+        })
+>       assert result["status"] == "REVIEW"
+E       AssertionError: assert 'PASS' == 'REVIEW'
+E         
+E         - REVIEW
+E         + PASS
+
+tests\test_audit_workforce_gaps.py:46: AssertionError
+_ test_natural_language_candidate_never_proves_complete_requirements[Animate a robot with facial expressions and humanoid retargeting-ANIMATE-animation.robot.rig.v1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_natural_language_candidat2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EBE88AA0>
+query = 'Animate a robot with facial expressions and humanoid retargeting'
+output = 'ANIMATE', candidate = 'animation.robot.rig.v1'
+
+    @pytest.mark.parametrize("query,output,candidate", [
+        ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+        ("Build a multiplayer survival arena with inventory and save/load", "GAME", "unity.game.arena.v1"),
+        ("Animate a robot with facial expressions and humanoid retargeting", "ANIMATE", "animation.robot.rig.v1"),
+        ("Make a crate", "ASSET", "mesh.props.crate.v1"),
+    ])
+    def test_natural_language_candidate_never_proves_complete_requirements(
+        tmp_path, monkeypatch, query, output, candidate
+    ):
+        from polyforge.knowledge.router import route_reference
+        from polyforge.workforce import discovery
+    
+        monkeypatch.setattr(discovery, "discover_tool", lambda *args: Path(sys.executable))
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": output
+        })
+>       assert result["status"] == "REVIEW"
+E       AssertionError: assert 'PASS' == 'REVIEW'
+E         
+E         - REVIEW
+E         + PASS
+
+tests\test_audit_workforce_gaps.py:46: AssertionError
+_ test_natural_language_candidate_never_proves_complete_requirements[Make a crate-ASSET-mesh.props.crate.v1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_natural_language_candidat3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EBFA1910>
+query = 'Make a crate', output = 'ASSET', candidate = 'mesh.props.crate.v1'
+
+    @pytest.mark.parametrize("query,output,candidate", [
+        ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+        ("Build a multiplayer survival arena with inventory and save/load", "GAME", "unity.game.arena.v1"),
+        ("Animate a robot with facial expressions and humanoid retargeting", "ANIMATE", "animation.robot.rig.v1"),
+        ("Make a crate", "ASSET", "mesh.props.crate.v1"),
+    ])
+    def test_natural_language_candidate_never_proves_complete_requirements(
+        tmp_path, monkeypatch, query, output, candidate
+    ):
+        from polyforge.knowledge.router import route_reference
+        from polyforge.workforce import discovery
+    
+        monkeypatch.setattr(discovery, "discover_tool", lambda *args: Path(sys.executable))
+        result = route_reference(WorkspacePolicy(tmp_path), {
+            "schema_version": "1.0.0", "query": query, "output": output
+        })
+>       assert result["status"] == "REVIEW"
+E       AssertionError: assert 'PASS' == 'REVIEW'
+E         
+E         - REVIEW
+E         + PASS
+
+tests\test_audit_workforce_gaps.py:46: AssertionError
+_________ test_job_context_binds_original_task_and_engine_owned_scope _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_job_context_binds_origina0')
+
+    def test_job_context_binds_original_task_and_engine_owned_scope(tmp_path):
+        from polyforge.workforce.router import plan_task
+    
+        request = task()
+        plan = plan_task(request, workspace=tmp_path)
+        job = plan["jobs"][1]
+>       context = job["context"]
+                  ^^^^^^^^^^^^^^
+E       KeyError: 'context'
+
+tests\test_audit_workforce_gaps.py:58: KeyError
+_____ test_execute_leased_consumes_job_budget_and_native_ceiling[1-600-1] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_execute_leased_consumes_j0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EC1FCE90>
+budget = 1, ceiling = 600, expected = 1
+
+    @pytest.mark.parametrize("budget,ceiling,expected", [(1, 600, 1), (30, 7, 7)])
+    def test_execute_leased_consumes_job_budget_and_native_ceiling(
+        tmp_path, monkeypatch, budget, ceiling, expected
+    ):
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.ledger import JobLedger
+        from polyforge.workforce.router import plan_task
+    
+        (tmp_path / "polyforge.toml").write_text(
+            f"[execution]\nblender_timeout_seconds = {ceiling}\n", encoding="utf-8"
+        )
+>       ticket = plan_task(task(budget_seconds=budget), workspace=tmp_path)["jobs"][1]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_workforce_gaps.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:39: in plan_task
+    digest = validate_task(value)
+             ^^^^^^^^^^^^^^^^^^^^
+polyforge\workforce\models.py:17: in validate_task
+    validate_schema(value, "workforce_task.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'brief': 'Make a crate with editable source', 'budget_seconds': 1, 'capability_id': 'mesh.props.crate.v1', 'domain_tags': ['blender'], ...}
+name = 'workforce_task.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('budget_seconds' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+_____ test_execute_leased_consumes_job_budget_and_native_ceiling[30-7-7] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_execute_leased_consumes_j1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EC22CB60>
+budget = 30, ceiling = 7, expected = 7
+
+    @pytest.mark.parametrize("budget,ceiling,expected", [(1, 600, 1), (30, 7, 7)])
+    def test_execute_leased_consumes_job_budget_and_native_ceiling(
+        tmp_path, monkeypatch, budget, ceiling, expected
+    ):
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.ledger import JobLedger
+        from polyforge.workforce.router import plan_task
+    
+        (tmp_path / "polyforge.toml").write_text(
+            f"[execution]\nblender_timeout_seconds = {ceiling}\n", encoding="utf-8"
+        )
+>       ticket = plan_task(task(budget_seconds=budget), workspace=tmp_path)["jobs"][1]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_workforce_gaps.py:90: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:39: in plan_task
+    digest = validate_task(value)
+             ^^^^^^^^^^^^^^^^^^^^
+polyforge\workforce\models.py:17: in validate_task
+    validate_schema(value, "workforce_task.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'brief': 'Make a crate with editable source', 'budget_seconds': 30, 'capability_id': 'mesh.props.crate.v1', 'domain_tags': ['blender'], ...}
+name = 'workforce_task.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('budget_seconds' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+______ test_execute_leased_deadline_cancels_work_and_cannot_report_pass _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_execute_leased_deadline_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000284EC22E6C0>
+
+    def test_execute_leased_deadline_cancels_work_and_cannot_report_pass(tmp_path, monkeypatch):
+        import polyforge.workforce.orchestrator as module
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.ledger import JobLedger
+        from polyforge.workforce.router import plan_task
+    
+>       ticket = plan_task(task(budget_seconds=1))["jobs"][1]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_workforce_gaps.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:39: in plan_task
+    digest = validate_task(value)
+             ^^^^^^^^^^^^^^^^^^^^
+polyforge\workforce\models.py:17: in validate_task
+    validate_schema(value, "workforce_task.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'brief': 'Make a crate with editable source', 'budget_seconds': 1, 'capability_id': 'mesh.props.crate.v1', 'domain_tags': ['blender'], ...}
+name = 'workforce_task.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+            raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+        canonical_digest(value)
+        errors = sorted(
+            Draft202012Validator(schema_document(name)).iter_errors(value),
+            key=lambda error: str(list(error.absolute_path)),
+        )
+        if errors:
+            error = errors[0]
+            location = "$" + "".join(f"[{part}]" for part in error.absolute_path)
+>           raise InputError(f"{location}: {error.message}")
+E           polyforge.contracts.validation.InputError: $: Additional properties are not allowed ('budget_seconds' was unexpected)
+
+polyforge\contracts\validation.py:124: InputError
+_ test_coverage_generator_includes_fixed_gaps_and_retains_historical_records __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/workforce-red-tmp/test_coverage_generator_includ0')
+
+    def test_coverage_generator_includes_fixed_gaps_and_retains_historical_records(tmp_path):
+        root = Path(__file__).resolve().parents[1]
+        output = tmp_path / "coverage.json"
+        result = subprocess.run(
+            [sys.executable, str(root / "tools/generate_knowledge_coverage.py"), "--output", str(output)],
+            cwd=root, capture_output=True, text=True, check=False
+        )
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe: can't open file 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\tools\\generate_knowledge_coverage.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe', 'C:\\Users\\...or\\\\OneDrive\\\\Desktop\\\\skill\\\\tools\\\\generate_knowledge_coverage.py': [Errno 2] No such file or directory\n").returncode
+
+tests\test_audit_workforce_gaps.py:142: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_workforce_gaps.py::test_natural_language_candidate_never_proves_complete_requirements[Make a crate and sculpt a detailed organic dragon-ASSET-mesh.props.crate.v1]
+FAILED tests/test_audit_workforce_gaps.py::test_natural_language_candidate_never_proves_complete_requirements[Build a multiplayer survival arena with inventory and save/load-GAME-unity.game.arena.v1]
+FAILED tests/test_audit_workforce_gaps.py::test_natural_language_candidate_never_proves_complete_requirements[Animate a robot with facial expressions and humanoid retargeting-ANIMATE-animation.robot.rig.v1]
+FAILED tests/test_audit_workforce_gaps.py::test_natural_language_candidate_never_proves_complete_requirements[Make a crate-ASSET-mesh.props.crate.v1]
+FAILED tests/test_audit_workforce_gaps.py::test_job_context_binds_original_task_and_engine_owned_scope
+FAILED tests/test_audit_workforce_gaps.py::test_execute_leased_consumes_job_budget_and_native_ceiling[1-600-1]
+FAILED tests/test_audit_workforce_gaps.py::test_execute_leased_consumes_job_budget_and_native_ceiling[30-7-7]
+FAILED tests/test_audit_workforce_gaps.py::test_execute_leased_deadline_cancels_work_and_cannot_report_pass
+FAILED tests/test_audit_workforce_gaps.py::test_coverage_generator_includes_fixed_gaps_and_retains_historical_records
+9 failed, 1 passed in 2.52s

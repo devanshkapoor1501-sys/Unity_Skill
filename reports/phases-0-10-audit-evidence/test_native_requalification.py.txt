@@ -1,0 +1,29 @@
+"""Execute the original three native tests against the owned audit project."""
+import json
+import sys
+from pathlib import Path
+import pytest
+
+sys.path.insert(0, str(Path.cwd() / 'tests'))
+import test_phase5_unity as original
+from polyforge.blender.build import build_assets
+
+pytestmark = pytest.mark.unity
+
+@pytest.fixture(scope='module')
+def owned_arena():
+    root = Path('.tmp/audit-through-phase10/unity-final-temp/polyforge_phase50/arena').resolve()
+    assert (root / 'UnityProject/.polyforge-project.json').is_file()
+    result = build_assets(root, through='S4', allow_package_downloads=True)
+    (root / 'first-result.json').write_text(json.dumps(result.to_dict(), indent=2))
+    assert result.status == 'PASS', result.to_dict()
+    return root
+
+def test_native_import_and_scenes(owned_arena):
+    original.test_real_native_build_has_executed_editmode_and_two_scenes(owned_arena)
+
+def test_native_material_only_guid_and_code_stability(owned_arena):
+    original.test_material_only_rebuild_preserves_fbx_code_guids_and_object_counts(owned_arena)
+
+def test_native_fault_repair_and_rollback(owned_arena, monkeypatch):
+    original.test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback(owned_arena, monkeypatch)

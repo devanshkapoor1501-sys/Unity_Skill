@@ -6,7 +6,7 @@ from typing import Any
 
 from polyforge.capabilities.registry import lookup
 from polyforge.contracts.validation import InputError, canonical_digest, validate_schema
-from polyforge.workforce.models import validate_task
+from polyforge.workforce.models import job_context, validate_task
 
 
 def engine_digest() -> str:
@@ -150,17 +150,23 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
                     else "S2"
                     if index == 1
                     else "S1",
-                    "budget_seconds": 3600,
+                    "budget_seconds": value.get("budget_seconds", 3600),
                     "write_root": "runs/",
                     "feature_ids": value["feature_ids"],
                 }
             )
+            context = job_context(value, workspace_inputs, role, workspace=workspace)
+            jobs[-1]["context"] = context
+            jobs[-1]["context_digest"] = canonical_digest(context)
             validate_schema(jobs[-1], "job_ticket.schema.json")
     if capability == "sprite.unity.strip.v1" and task == "CREATE_ASSET":
         stages = ["S0", "S1", "S4", "S5"]
         jobs[1]["role_id"] = "unity_integration"
         jobs[1]["stage"] = "S4"
         jobs[2]["stage"] = "S5"
+        context = job_context(value, workspace_inputs, "unity_integration", workspace=workspace)
+        jobs[1]["context"] = context
+        jobs[1]["context_digest"] = canonical_digest(context)
     return {
         "schema_version": "1.0.0",
         "task_id": "task_" + digest[:16] + "_" + tool_digest[:8],

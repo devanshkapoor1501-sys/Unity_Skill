@@ -1,0 +1,22 @@
+E501 Line too long (102 > 100)
+   --> tests\test_audit_artifact_records.py:151:101
+    |
+150 |     arena(tmp_path)
+151 |     monkeypatch.setattr(importlib.import_module("polyforge.doctor"), "discover_tool", lambda *a: None)
+    |                                                                                                     ^^
+152 |     manifest = tmp_path / "game_manifest.json"
+153 |     original = commands.atomic_json
+    |
+
+E501 Line too long (128 > 100)
+   --> tests\test_audit_artifact_records.py:157:101
+    |
+155 |     def interrupt(policy, relative, value):
+156 |         if (checkpoint[0] == "commit" and str(relative) == ".polyforge/planning-state.json"
+157 |                 and value.get("status") == "COMMITTED") or (checkpoint[0] == "lock" and str(relative) == "polyforge.lock.json"):
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+158 |             raise OSError("injected interruption")
+159 |         return original(policy, relative, value)
+    |
+
+Found 3 errors (1 fixed, 2 remaining).

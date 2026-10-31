@@ -20,6 +20,7 @@ from polyforge.contracts.images import inspect_png
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.doctor import discover_tool
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import FileLock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import RunJournal, atomic_json
@@ -145,6 +146,9 @@ def execute_recipe(
                 }
                 for item in receipt["files"]
             ]
+            recovered_artifacts = complete_records(
+                policy, run_id, "S2", recovered_artifacts, input_digest=input_digest
+            )
             atomic_json(
                 policy, "runs/" + run_id + "/artifacts.json", {"artifacts": recovered_artifacts}
             )
@@ -392,6 +396,9 @@ def execute_recipe(
                     "toolchain": fingerprint,
                 }
             )
+        artifacts = complete_records(
+            policy, run_id, "S3" if audit_export else "S2", artifacts, input_digest=input_digest
+        )
         registry = atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
         if audit_export:
             binding = atomic_json(
@@ -402,14 +409,26 @@ def execute_recipe(
                     "asset_id": recipe["asset_id"],
                     "input_digest": input_digest,
                     "source_geometry_digest": metrics["geometry_digest"],
-                    "artifacts": artifacts,
+                    "artifacts": [
+                        {k: v for k, v in row.items() if k != "resolved_location"}
+                        for row in artifacts
+                    ],
                     "visual_review_status": "REVIEW",
                     "unity_import_status": "NOT_RUN",
                 },
             )
-            context.artifact_registry[run_id + ":export_binding.json"] = {
-                "relative_path": str(binding.relative_to(policy.root))
-            }
+            context.artifact_registry[run_id + ":export_binding.json"] = complete_records(
+                policy,
+                run_id,
+                "S3",
+                [
+                    {
+                        "artifact_id": run_id + ":export_binding.json",
+                        "relative_path": binding.relative_to(policy.root).as_posix(),
+                    }
+                ],
+                input_digest=input_digest,
+            )[0]
         journal.transition(
             active_stage, "passed", evidence=[str(registry.relative_to(policy.root))]
         )

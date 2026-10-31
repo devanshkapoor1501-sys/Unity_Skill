@@ -1,0 +1,5 @@
+from pathlib import Path
+p=Path('pyproject.toml')
+s=p.read_text('utf-8')
+s=s.replace('"polyforge.runner.locks",', '"polyforge.runner.locks", "polyforge.runner.artifacts", "polyforge.runner.workspace_lock",')
+p.write_text(s,encoding='utf-8')

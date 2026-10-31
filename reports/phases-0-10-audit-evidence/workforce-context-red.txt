@@ -1,0 +1,23 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+___________ test_cross_engine_job_context_preserves_both_toolchains ___________
+
+    def test_cross_engine_job_context_preserves_both_toolchains():
+        from polyforge.workforce.router import plan_task
+    
+        plan = plan_task(task(
+            task_class="ANIMATE", capability_id="animation.robot.rig.v1",
+            domain_tags=["blender", "unity", "animation"],
+        ))
+        context = plan["jobs"][1]["context"]
+>       assert {p["tool"] for p in context["toolchain_probes"]} == {"blender", "unity"}
+E       AssertionError: assert {'blender'} == {'blender', 'unity'}
+E         
+E         Extra items in the right set:
+E         'unity'
+E         Use -v to get more diff
+
+tests\test_audit_workforce_gaps.py:99: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_workforce_gaps.py::test_cross_engine_job_context_preserves_both_toolchains
+1 failed, 10 deselected in 1.55s

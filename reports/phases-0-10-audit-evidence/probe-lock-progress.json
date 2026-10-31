@@ -1,0 +1,36 @@
+{
+  "slice": "read-only graphics, optional MCP inventory and canonical workspace lock",
+  "rulings": [
+    "Graphics device/display metadata is an observation; render remains NOT_RUN and headless qualification UNKNOWN.",
+    "Optional MCP descriptors are supplied explicitly by the caller, validated locally and stripped of endpoint details in output. No home config scan or connection occurs.",
+    "An assisted OBSERVED matrix entry records a caller-supplied connected descriptor and declared operation; operational_probe remains NOT_RUN and execution_authority NONE.",
+    "Plan and compile publication both include the canonical lock so intervening compilation cannot discard ownership provenance needed by a later plan.",
+    "Tool versions remain UNPROBED unless a local doctor report matches the current config, executable path and observed binary hash; matching report observations are labeled OBSERVED_REPORT.",
+    "Declared/resolved package metadata does not establish cached installation or API compatibility.",
+    "The engine source hash identifies the explicitly named source component, not an inferred complete Git revision.",
+    "All destinations, immutable input aliases, parent file collisions and prior lock ownership are checked before writing; invalid and dry-run paths preserve inputs."
+  ],
+  "files": [
+    "polyforge/doctor.py",
+    "polyforge/runner/workspace_lock.py",
+    "polyforge/compiler/commands.py",
+    "tests/test_audit_probe_lock.py"
+  ],
+  "evidence": {
+    "initial_red": "probe-lock-red.txt: 7 failed",
+    "initial_green": "probe-lock-green.txt: 7 passed",
+    "boundary_red": "probe-lock-red-boundary.txt: 3 failed, 6 passed",
+    "review_red": "probe-lock-red-review.txt: 2 failed, 10 passed",
+    "focused_green": "probe-lock-final2.txt: 12 passed (prior to final review regression fixes)",
+    "related_green": "probe-lock-related.txt: 57 passed (prior to final review regression fixes)",
+    "final_regression": "probe-lock-handoff.txt",
+    "lint": "probe-lock-ruff.txt",
+    "types": "probe-lock-mypy.txt",
+    "actual_host_metadata": "probe-lock-local-inventory.json"
+  },
+  "limits": [
+    "No native application was launched by this slice; actual render, headless support and MCP operation remain unprobed.",
+    "No external network, SDK, dependencies or commits were used.",
+    "Full integrated tests and the unchanged 90 percent coverage gate are coordinated by the root agent."
+  ]
+}

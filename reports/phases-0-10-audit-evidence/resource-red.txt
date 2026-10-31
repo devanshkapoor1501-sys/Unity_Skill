@@ -1,0 +1,575 @@
+F.FFFFFFFFFFFFFFFF                                                       [100%]
+================================== FAILURES ===================================
+_________ test_request_resource_floors_are_frozen_typed_job_metadata __________
+
+    def test_request_resource_floors_are_frozen_typed_job_metadata():
+        value = request({"min_available_ram_bytes": 2_000_000})
+        plan = plan_task(value)
+        ticket = plan["jobs"][1]
+>       assert ticket["context"]["resources"] == {"min_available_ram_bytes": 2_000_000}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'resources'
+
+tests\test_audit_resource_policy.py:49: KeyError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[False-None-available_ram_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124688BBA70>
+field = 'available_ram_bytes', remaining = None, wait_for_monitor = False
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+        result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+>       assert result.status != "PASS"
+E       AssertionError: assert 'PASS' != 'PASS'
+E        +  where 'PASS' = Result(status='PASS', exit_code=0, error_code=None, data={}, diagnostics=[], operation_id=None, run_id=None, version='...evidence_paths=[], metrics={}, duration_ms=0, rollback_id=None, evaluated_test_status='NOT_RUN', game_status='PARTIAL').status
+
+tests\test_audit_resource_policy.py:99: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[False-None-disk_free_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124688ECF20>
+field = 'disk_free_bytes', remaining = None, wait_for_monitor = False
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+        result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+>       assert result.status != "PASS"
+E       AssertionError: assert 'PASS' != 'PASS'
+E        +  where 'PASS' = Result(status='PASS', exit_code=0, error_code=None, data={}, diagnostics=[], operation_id=None, run_id=None, version='...evidence_paths=[], metrics={}, duration_ms=0, rollback_id=None, evaluated_test_status='NOT_RUN', game_status='PARTIAL').status
+
+tests\test_audit_resource_policy.py:99: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[False-1-available_ram_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468948AD0>
+field = 'available_ram_bytes', remaining = 1, wait_for_monitor = False
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+        result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+>       assert result.status != "PASS"
+E       AssertionError: assert 'PASS' != 'PASS'
+E        +  where 'PASS' = Result(status='PASS', exit_code=0, error_code=None, data={}, diagnostics=[], operation_id=None, run_id=None, version='...evidence_paths=[], metrics={}, duration_ms=0, rollback_id=None, evaluated_test_status='NOT_RUN', game_status='PARTIAL').status
+
+tests\test_audit_resource_policy.py:99: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[False-1-disk_free_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468921DC0>
+field = 'disk_free_bytes', remaining = 1, wait_for_monitor = False
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+        result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+>       assert result.status != "PASS"
+E       AssertionError: assert 'PASS' != 'PASS'
+E        +  where 'PASS' = Result(status='PASS', exit_code=0, error_code=None, data={}, diagnostics=[], operation_id=None, run_id=None, version='...evidence_paths=[], metrics={}, duration_ms=0, rollback_id=None, evaluated_test_status='NOT_RUN', game_status='PARTIAL').status
+
+tests\test_audit_resource_policy.py:99: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[True-None-available_ram_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124689CF9B0>
+field = 'available_ram_bytes', remaining = None, wait_for_monitor = True
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+>       result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+
+tests\test_audit_resource_policy.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:101: in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'mesh.props.crate.v1', inputs = {}
+context = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x124688ee5d0: unset>)
+
+    def execute(identifier, inputs, context):
+        cancel_events.append(context.cancel)
+        current[field] = remaining
+        if wait_for_monitor:
+>           assert context.cancel.wait(2), "Resource loss did not cancel native work"
+E           AssertionError: Resource loss did not cancel native work
+E           assert False
+E            +  where False = wait(2)
+E            +    where wait = <threading.Event at 0x124688ee5d0: unset>.wait
+E            +      where <threading.Event at 0x124688ee5d0: unset> = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x124688ee5d0: unset>).cancel
+
+tests\test_audit_resource_policy.py:92: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[True-None-disk_free_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468921F40>
+field = 'disk_free_bytes', remaining = None, wait_for_monitor = True
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+>       result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+
+tests\test_audit_resource_policy.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:101: in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'mesh.props.crate.v1', inputs = {}
+context = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x1246894b770: unset>)
+
+    def execute(identifier, inputs, context):
+        cancel_events.append(context.cancel)
+        current[field] = remaining
+        if wait_for_monitor:
+>           assert context.cancel.wait(2), "Resource loss did not cancel native work"
+E           AssertionError: Resource loss did not cancel native work
+E           assert False
+E            +  where False = wait(2)
+E            +    where wait = <threading.Event at 0x1246894b770: unset>.wait
+E            +      where <threading.Event at 0x1246894b770: unset> = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x1246894b770: unset>).cancel
+
+tests\test_audit_resource_policy.py:92: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[True-1-available_ram_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468922F60>
+field = 'available_ram_bytes', remaining = 1, wait_for_monitor = True
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+>       result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+
+tests\test_audit_resource_policy.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:101: in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'mesh.props.crate.v1', inputs = {}
+context = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x124689cdca0: unset>)
+
+    def execute(identifier, inputs, context):
+        cancel_events.append(context.cancel)
+        current[field] = remaining
+        if wait_for_monitor:
+>           assert context.cancel.wait(2), "Resource loss did not cancel native work"
+E           AssertionError: Resource loss did not cancel native work
+E           assert False
+E            +  where False = wait(2)
+E            +    where wait = <threading.Event at 0x124689cdca0: unset>.wait
+E            +      where <threading.Event at 0x124689cdca0: unset> = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x124689cdca0: unset>).cancel
+
+tests\test_audit_resource_policy.py:92: AssertionError
+_ test_resource_floor_loss_cancels_and_rejects_executor_pass[True-1-disk_free_bytes] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_resource_floor_loss_cance7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468921EB0>
+field = 'disk_free_bytes', remaining = 1, wait_for_monitor = True
+
+    @pytest.mark.parametrize("field", ["available_ram_bytes", "disk_free_bytes"])
+    @pytest.mark.parametrize("remaining", [None, 1])
+    @pytest.mark.parametrize("wait_for_monitor", [False, True])
+    def test_resource_floor_loss_cancels_and_rejects_executor_pass(
+        tmp_path, monkeypatch, field, remaining, wait_for_monitor
+    ):
+        ticket = plan_task(
+            request({"min_available_ram_bytes": 2_000_000, "min_free_disk_bytes": 2_000_000})
+        )["jobs"][1]
+        ledger = JobLedger(tmp_path, "resources_task")
+        lease = ledger.claim("job_1", "crate")
+        current = snapshot()
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: dict(current))
+        cancel_events = []
+    
+        def execute(identifier, inputs, context):
+            cancel_events.append(context.cancel)
+            current[field] = remaining
+            if wait_for_monitor:
+                assert context.cancel.wait(2), "Resource loss did not cancel native work"
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+>       result = orchestrator.execute_leased(
+            ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+        )
+
+tests\test_audit_resource_policy.py:96: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:101: in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'mesh.props.crate.v1', inputs = {}
+context = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x12468922300: unset>)
+
+    def execute(identifier, inputs, context):
+        cancel_events.append(context.cancel)
+        current[field] = remaining
+        if wait_for_monitor:
+>           assert context.cancel.wait(2), "Resource loss did not cancel native work"
+E           AssertionError: Resource loss did not cancel native work
+E           assert False
+E            +  where False = wait(2)
+E            +    where wait = <threading.Event at 0x12468922300: unset>.wait
+E            +      where <threading.Event at 0x12468922300: unset> = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x12468922300: unset>).cancel
+
+tests\test_audit_resource_policy.py:92: AssertionError
+____________ test_preflight_unknown_required_ram_prevents_dispatch ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_preflight_unknown_require0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124689701D0>
+
+    def test_preflight_unknown_required_ram_prevents_dispatch(tmp_path, monkeypatch):
+        ticket = plan_task(request({"min_available_ram_bytes": 2000}))["jobs"][1]
+        ledger = JobLedger(tmp_path, "unknown_ram")
+        lease = ledger.claim("job_1", "crate")
+        monkeypatch.setattr(
+            discovery, "resource_snapshot", lambda policy: snapshot(available_ram_bytes=None)
+        )
+        with pytest.raises(InputError):
+            orchestrator.execute_leased(
+                ledger, "job_1", lease, ticket["capability_id"], {}, 42, job_ticket=ticket
+            )
+>       assert not ledger.policy.path(".polyforge/operations").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_preflight_unknown_require0/.polyforge/operations').exists
+E        +      where WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_preflight_unknown_require0/.polyforge/operations') = path('.polyforge/operations')
+E        +        where path = <polyforge.security.paths.WorkspacePolicy object at 0x00000124688ECF50>.path
+E        +          where <polyforge.security.paths.WorkspacePolicy object at 0x00000124688ECF50> = <polyforge.workforce.ledger.JobLedger object at 0x00000124688EF290>.policy
+
+tests\test_audit_resource_policy.py:116: AssertionError
+______ test_ledger_cancellation_cannot_be_ignored_by_successful_executor ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_ledger_cancellation_canno0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124688D83B0>
+
+    def test_ledger_cancellation_cannot_be_ignored_by_successful_executor(tmp_path, monkeypatch):
+        ledger = JobLedger(tmp_path, "cancel_task")
+        lease = ledger.claim("produce", "crate")
+    
+        def execute(identifier, inputs, context):
+            ledger.cancel("produce")
+            return Result()
+    
+        monkeypatch.setattr(orchestrator, "execute", execute)
+        result = orchestrator.execute_leased(ledger, "produce", lease, "mesh.props.crate.v1", {}, 42)
+>       assert result.status != "PASS" and result.exit_code == 9
+E       AssertionError: assert ('PASS' != 'PASS')
+E        +  where 'PASS' = Result(status='PASS', exit_code=0, error_code=None, data={}, diagnostics=[], operation_id=None, run_id=None, version='...evidence_paths=[], metrics={}, duration_ms=0, rollback_id=None, evaluated_test_status='NOT_RUN', game_status='PARTIAL').status
+
+tests\test_audit_resource_policy.py:129: AssertionError
+_____________ test_live_discovery_failures_cancel_and_reject_pass _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_live_discovery_failures_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000124688EC8F0>
+
+    def test_live_discovery_failures_cancel_and_reject_pass(tmp_path, monkeypatch):
+        ledger = JobLedger(tmp_path, "probe_failure")
+        lease = ledger.claim("produce", "crate")
+        unavailable = threading.Event()
+    
+        def observe(policy):
+            if unavailable.is_set():
+                raise OSError("volume disappeared")
+            return snapshot()
+    
+        def execute(identifier, inputs, context):
+            unavailable.set()
+            assert context.cancel.wait(2)
+            return Result()
+    
+        monkeypatch.setattr(discovery, "resource_snapshot", observe)
+        monkeypatch.setattr(orchestrator, "execute", execute)
+>       result = orchestrator.execute_leased(ledger, "produce", lease, "mesh.props.crate.v1", {}, 42)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_resource_policy.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\orchestrator.py:101: in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'mesh.props.crate.v1', inputs = {}
+context = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x1246855e990: unset>)
+
+    def execute(identifier, inputs, context):
+        unavailable.set()
+>       assert context.cancel.wait(2)
+E       AssertionError: assert False
+E        +  where False = wait(2)
+E        +    where wait = <threading.Event at 0x1246855e990: unset>.wait
+E        +      where <threading.Event at 0x1246855e990: unset> = RunContext(workspace=WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f668...act_registry={}, lock_path=None, logger=<Logger polyforge (WARNING)>, cancel=<threading.Event at 0x1246855e990: unset>).cancel
+
+tests\test_audit_resource_policy.py:144: AssertionError
+___ test_sequential_limits_require_measured_admission_and_never_qualify_gpu ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_sequential_limits_require0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001246855FF20>
+
+    def test_sequential_limits_require_measured_admission_and_never_qualify_gpu(tmp_path, monkeypatch):
+        monkeypatch.setattr(discovery, "resource_snapshot", lambda policy: snapshot())
+        admitted = discovery.admit_resources(WorkspacePolicy(tmp_path), {})
+>       assert admitted["mode"] == "LOCAL_SEQUENTIAL"
+               ^^^^^^^^^^^^^^^^
+E       KeyError: 'mode'
+
+tests\test_audit_resource_policy.py:156: KeyError
+__ test_linux_gpu_metadata_reports_capacity_without_execution_qualification ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_linux_gpu_metadata_report0')
+
+    def test_linux_gpu_metadata_reports_capacity_without_execution_qualification(tmp_path):
+        card = tmp_path / "card0" / "device"
+        card.mkdir(parents=True)
+        (card / "vendor").write_text("0x1002\n")
+        (card / "device").write_text("0x73bf\n")
+        (card / "mem_info_vram_total").write_text("8589934592\n")
+>       metadata = discovery.gpu_metadata(platform="linux", drm_root=tmp_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'polyforge.workforce.discovery' has no attribute 'gpu_metadata'
+
+tests\test_audit_resource_policy.py:172: AttributeError
+_________________ test_unsupported_gpu_observation_is_unknown _________________
+
+    def test_unsupported_gpu_observation_is_unknown():
+>       metadata = discovery.gpu_metadata(platform="unavailable")
+                   ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'polyforge.workforce.discovery' has no attribute 'gpu_metadata'
+
+tests\test_audit_resource_policy.py:182: AttributeError
+_________ test_windows_gpu_registry_metadata_is_read_only_and_bounded _________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468970B30>
+
+    def test_windows_gpu_registry_metadata_is_read_only_and_bounded(monkeypatch):
+        import sys
+        from types import SimpleNamespace
+    
+        class Key:
+            def __enter__(self):
+                return self
+    
+            def __exit__(self, *args):
+                pass
+    
+        def query(key, name):
+            return {"DriverDesc": "Local adapter", "HardwareInformation.qwMemorySize": 2**33}[name], 1
+    
+        calls = []
+    
+        def open_key(root, name):
+            calls.append(name)
+            return Key()
+    
+        def enum_key(root, index):
+            if index == 1:
+                raise OSError("end of enumeration")
+            return "0000"
+    
+        monkeypatch.setitem(sys.modules, "winreg", SimpleNamespace(
+            HKEY_LOCAL_MACHINE=1, OpenKey=open_key, EnumKey=enum_key, QueryValueEx=query
+        ))
+>       metadata = discovery.gpu_metadata(platform="win32")
+                   ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'polyforge.workforce.discovery' has no attribute 'gpu_metadata'
+
+tests\test_audit_resource_policy.py:215: AttributeError
+________________ test_snapshot_exposes_read_only_gpu_metadata _________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{09dc36bd-c8f4-4361-afcc-f6684c0be90e}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_snapshot_exposes_read_onl0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012468970A70>
+
+    def test_snapshot_exposes_read_only_gpu_metadata(tmp_path, monkeypatch):
+>       monkeypatch.setattr(discovery, "gpu_metadata", lambda: {
+            "gpu_observation": "UNKNOWN", "gpu_execution": "UNVERIFIED",
+            "vram_bytes": None, "adapters": [],
+        })
+E       AttributeError: <module 'polyforge.workforce.discovery' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\workforce\\discovery.py'> has no attribute 'gpu_metadata'
+
+tests\test_audit_resource_policy.py:222: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_resource_policy.py::test_request_resource_floors_are_frozen_typed_job_metadata
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[False-None-available_ram_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[False-None-disk_free_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[False-1-available_ram_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[False-1-disk_free_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[True-None-available_ram_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[True-None-disk_free_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[True-1-available_ram_bytes]
+FAILED tests/test_audit_resource_policy.py::test_resource_floor_loss_cancels_and_rejects_executor_pass[True-1-disk_free_bytes]
+FAILED tests/test_audit_resource_policy.py::test_preflight_unknown_required_ram_prevents_dispatch
+FAILED tests/test_audit_resource_policy.py::test_ledger_cancellation_cannot_be_ignored_by_successful_executor
+FAILED tests/test_audit_resource_policy.py::test_live_discovery_failures_cancel_and_reject_pass
+FAILED tests/test_audit_resource_policy.py::test_sequential_limits_require_measured_admission_and_never_qualify_gpu
+FAILED tests/test_audit_resource_policy.py::test_linux_gpu_metadata_reports_capacity_without_execution_qualification
+FAILED tests/test_audit_resource_policy.py::test_unsupported_gpu_observation_is_unknown
+FAILED tests/test_audit_resource_policy.py::test_windows_gpu_registry_metadata_is_read_only_and_bounded
+FAILED tests/test_audit_resource_policy.py::test_snapshot_exposes_read_only_gpu_metadata
+17 failed, 1 passed in 28.82s

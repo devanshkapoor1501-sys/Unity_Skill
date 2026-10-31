@@ -1,0 +1,31 @@
+{
+  "workspace": ".tmp\\audit-through-phase10\\resource-final-temp\\test_probe_refresh_preserves_o0",
+  "plans": [
+    {
+      "task_id": "task_6f4a8ced926949b5_964504e0",
+      "engine_digest": "964504e07d407b95f9145c4e3d7094ff8607bb60cbbce0ec606d2433244a106f",
+      "workspace_inputs": {
+        "polyforge.toml": "MISSING",
+        "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+      },
+      "input_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+      "plan_mtime": 1793434358.2633142
+    },
+    {
+      "task_id": "task_6f4a8ced926949b5_ae467779",
+      "engine_digest": "ae4677797af4947c3f0932d39553725a92505c097912d2e417afdcbe7b4585a3",
+      "workspace_inputs": {
+        "polyforge.toml": "MISSING",
+        "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+      },
+      "input_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+      "plan_mtime": 1793434360.658183
+    }
+  ]
+}
+
+Confirmed root cause: parent edited unity_package/Tests/Editor/ForensicsTests.cs during original full-suite probe-refresh regression. Its mtime1793434358.8214846 (2026-10-31 08:12:38.821485UTC) falls between initial frozen planmtime1793434358.2633142 and run_task planmtime1793434360.658183. Input digest and workspace_inputs are identical; engine source fingerprint changed from964504e0 toae467779, creating another taskidentity. This is correct source immutability behavior, not GPU/mock leakage. Parent confirmed concurrent native assertions/HideFlags edits; product/native sources now frozen for full rerun.
+Linux platform type fix: direct optional winreg import used empty Linux typeshed stub and caused6attr-defined diagnostics (resource-linux-red.txt). Dynamic import_module('winreg') preserves platform optionality without type suppression.
+Fresh complete strict mypy --platform linux PASS103sourcefiles:resource-mypy-linux-full.txt; --platform win32 PASS103sourcefiles:resource-mypy-win32-full.txt. Ruff clean:resource-integration-lint.txt.
+Fresh focused resource+workforce undercoverage PASS43tests77.25s:resource-integration-tests.txt. Isolated COVERAGE_FILE=.tmp/audit-through-phase10/.coverage-resource-integration, JSON=resource-integration-coverage.json. Limited focus emits expected module-not-imported coverage warnings; root coverage data/report not overwritten.
+Only integration product change was importlib Windows optional-module import; no new tests or other product/native changes. No fullsuite or native execution by this subagent. Sources frozen.

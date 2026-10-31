@@ -2,6 +2,11 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Audit every Phase 0–10 task and gate against the updated blueprint; retain per-requirement findings and qualification evidence.
+- Add canonical workspace locks, complete artifact provenance, graphics metadata and explicit optional MCP availability descriptors.
+- Transport supplied color/normal PNGs, reconcile native texture/collider/scene evidence independently and verify obstacle collision with a dedicated mutant.
+- Enforce worker deadlines and frozen context lineage; require complete requirement review for non-explanation proposals and report knowledge gaps against a fixed taxonomy.
+
 - Complete Phase 10 package/architecture references, explicit host and Unity UI availability probes, and local package version inspection.
 - Exercise inline and fenced command examples across the full skill reference tree; keep new sprite art out of the supplied-sprite import route.
 

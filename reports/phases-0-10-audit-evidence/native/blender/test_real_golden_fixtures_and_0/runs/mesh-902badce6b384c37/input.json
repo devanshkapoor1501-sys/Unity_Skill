@@ -1,0 +1,133 @@
+{
+  "recipe": {
+    "schema_version": "1.0.0",
+    "asset_id": "crate",
+    "kind": "crate",
+    "capability_id": "mesh.props.crate.v1",
+    "parameters": {
+      "size_m": [
+        1,
+        1,
+        1
+      ]
+    },
+    "modules": [
+      {
+        "id": "body",
+        "primitive": "beveled_box",
+        "size_m": [
+          1,
+          1,
+          1
+        ],
+        "location": [
+          0,
+          0.5,
+          0
+        ],
+        "material_id": "base",
+        "bevel_m": 0.037788535969157676
+      },
+      {
+        "id": "brace_left",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.12,
+          0.96,
+          0.08
+        ],
+        "location": [
+          -0.36,
+          0,
+          0.49
+        ],
+        "material_id": "trim",
+        "parent": "body",
+        "bevel_m": 0.003023082877532614
+      },
+      {
+        "id": "brace_right",
+        "primitive": "beveled_box",
+        "size_m": [
+          0.12,
+          0.96,
+          0.08
+        ],
+        "location": [
+          0.36,
+          0,
+          0.49
+        ],
+        "material_id": "trim",
+        "parent": "body",
+        "bevel_m": 0.003023082877532614
+      }
+    ],
+    "sockets": [
+      {
+        "id": "top",
+        "module_id": "body",
+        "position": [
+          0,
+          0.5,
+          0
+        ]
+      },
+      {
+        "id": "front",
+        "module_id": "body",
+        "position": [
+          0,
+          0,
+          0.5
+        ]
+      }
+    ],
+    "pivot": "base_center",
+    "max_polygons": 25000,
+    "materials": [
+      {
+        "id": "base",
+        "color_rgba": [
+          0.12,
+          0.3,
+          0.5,
+          1
+        ]
+      },
+      {
+        "id": "trim",
+        "color_rgba": [
+          0.05,
+          0.07,
+          0.09,
+          1
+        ]
+      },
+      {
+        "id": "accent",
+        "color_rgba": [
+          0.9,
+          0.55,
+          0.05,
+          1
+        ]
+      }
+    ]
+  },
+  "seed": 42,
+  "input_digest": "ec4af8c1ae3bde721a043acd7af183542ce80863687210d340b6555fe49a3a7c",
+  "toolchain": {
+    "worker_sha256": "ac4898a212cd03983fcb53010191c3b750256a92fabd9c96b2905a40f3e7f5f1",
+    "audit_worker_sha256": "af90b6b2b23fd0c9e1e6caacaf79ea2e8613f4a8a948d73d26269767f4484115",
+    "interchange_sha256": "d63c771a4bae3d39aba1c52c5cf249acdbc642beac2b7bd62aacdafb975030bb",
+    "executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+    "executable": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+    "required_version": "5.2.2",
+    "validator": "geometry.v1"
+  },
+  "audit_export": false,
+  "preview_resolution": 512,
+  "source": null,
+  "source_sha256": null
+}

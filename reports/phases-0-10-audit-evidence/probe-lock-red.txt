@@ -1,0 +1,193 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+___ test_graphics_inventory_observes_windows_metadata_without_render_claim ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023EF422D6D0>
+
+    def test_graphics_inventory_observes_windows_metadata_without_render_claim(monkeypatch):
+        doctor = importlib.import_module("polyforge.doctor")
+    
+        class User32:
+            def GetSystemMetrics(self, index):
+                return 2
+    
+            def EnumDisplayDevicesW(self, unused, index, output, flags):
+                if index:
+                    return 0
+                output._obj.DeviceString = "Fixture GPU"
+                output._obj.DeviceName = "DISPLAY1"
+                output._obj.StateFlags = 1
+                return 1
+    
+        monkeypatch.setattr(doctor.sys, "platform", "win32")
+        monkeypatch.setattr(doctor.ct, "WinDLL", lambda *a, **k: User32(), raising=False)
+        detector = getattr(doctor, "graphics_availability", None)
+>       assert callable(detector), "doctor needs an actual read-only graphics detector"
+E       AssertionError: doctor needs an actual read-only graphics detector
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_audit_probe_lock.py:36: AssertionError
+________________ test_graphics_unavailable_api_remains_unknown ________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023EF660EFC0>
+
+    def test_graphics_unavailable_api_remains_unknown(monkeypatch):
+        doctor = importlib.import_module("polyforge.doctor")
+        monkeypatch.setattr(doctor.sys, "platform", "win32")
+    
+        def unavailable(*args, **kwargs):
+            raise OSError("no API")
+    
+        monkeypatch.setattr(doctor.ct, "WinDLL", unavailable, raising=False)
+        detector = getattr(doctor, "graphics_availability", None)
+>       assert callable(detector), "missing metadata must remain an explicit unknown"
+E       AssertionError: missing metadata must remain an explicit unknown
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_audit_probe_lock.py:54: AssertionError
+_ test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints _
+
+    def test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints():
+        doctor = importlib.import_module("polyforge.doctor")
+        inventory = getattr(doctor, "integration_availability", None)
+>       assert callable(inventory), "interactive inventory must accept explicit caller observations"
+E       AssertionError: interactive inventory must accept explicit caller observations
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_audit_probe_lock.py:63: AssertionError
+__________ test_plan_publishes_canonical_lock_without_running_tools ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_plan_publishes_canonical_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023EF658B890>
+
+    def test_plan_publishes_canonical_lock_without_running_tools(tmp_path, monkeypatch):
+        arena(tmp_path)
+        doctor = importlib.import_module("polyforge.doctor")
+        monkeypatch.setattr(doctor, "discover_tool", lambda *args: None)
+        before = snapshot(tmp_path)
+        result = manifest_command(tmp_path / "game_manifest.json", "plan", dry_run=True)
+>       assert "polyforge.lock.json" in result.data["planned_writes"]
+E       AssertionError: assert 'polyforge.lock.json' in ['scene_contract.json', 'feature_contract.json', 'requirement_coverage.json', 'plan.json']
+
+tests\test_audit_probe_lock.py:85: AssertionError
+_____ test_new_lock_destination_preflight_preserves_all_inputs[user_lock] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_new_lock_destination_pref0')
+collision = 'user_lock'
+
+    @pytest.mark.parametrize("collision", ["user_lock", "parent_file", "manifest_input"])
+    def test_new_lock_destination_preflight_preserves_all_inputs(tmp_path, collision):
+        value = arena(tmp_path)
+        if collision == "user_lock":
+            (tmp_path / "polyforge.lock.json").write_text("user content")
+        elif collision == "parent_file":
+            (tmp_path / ".polyforge").write_text("user content")
+        else:
+            (tmp_path / "game_manifest.json").rename(tmp_path / "polyforge.lock.json")
+        before = snapshot(tmp_path)
+        path = tmp_path / ("polyforge.lock.json" if collision == "manifest_input"
+                           else "game_manifest.json")
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_audit_probe_lock.py:110: Failed
+____ test_new_lock_destination_preflight_preserves_all_inputs[parent_file] ____
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_new_lock_destination_pref1/.polyforge/locks')
+mode = 511, parents = True, exist_ok = True
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\probe-lock-red-tmp\\test_new_lock_destination_pref1\\.polyforge\\locks'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_new_lock_destination_pref1')
+collision = 'parent_file'
+
+    @pytest.mark.parametrize("collision", ["user_lock", "parent_file", "manifest_input"])
+    def test_new_lock_destination_preflight_preserves_all_inputs(tmp_path, collision):
+        value = arena(tmp_path)
+        if collision == "user_lock":
+            (tmp_path / "polyforge.lock.json").write_text("user content")
+        elif collision == "parent_file":
+            (tmp_path / ".polyforge").write_text("user content")
+        else:
+            (tmp_path / "game_manifest.json").rename(tmp_path / "polyforge.lock.json")
+        before = snapshot(tmp_path)
+        path = tmp_path / ("polyforge.lock.json" if collision == "manifest_input"
+                           else "game_manifest.json")
+        with pytest.raises(InputError):
+>           manifest_command(path, "plan")
+
+tests\test_audit_probe_lock.py:111: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\compiler\commands.py:159: in manifest_command
+    _publish(model, named, path)
+polyforge\compiler\commands.py:64: in _publish
+    with FileLock(policy, ".polyforge/locks/planning.lock"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\runner\locks.py:86: in __enter__
+    return self._enter_once()
+           ^^^^^^^^^^^^^^^^^^
+polyforge\runner\locks.py:95: in _enter_once
+    self.policy.mkdir(path.parent)
+polyforge\security\paths.py:85: in mkdir
+    path.mkdir(parents=True, exist_ok=True)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1315: in mkdir
+    self.parent.mkdir(parents=True, exist_ok=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_new_lock_destination_pref1/.polyforge')
+mode = 511, parents = True, exist_ok = True
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\probe-lock-red-tmp\\test_new_lock_destination_pref1\\.polyforge'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileExistsError
+__ test_new_lock_destination_preflight_preserves_all_inputs[manifest_input] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-tmp/test_new_lock_destination_pref2')
+collision = 'manifest_input'
+
+    @pytest.mark.parametrize("collision", ["user_lock", "parent_file", "manifest_input"])
+    def test_new_lock_destination_preflight_preserves_all_inputs(tmp_path, collision):
+        value = arena(tmp_path)
+        if collision == "user_lock":
+            (tmp_path / "polyforge.lock.json").write_text("user content")
+        elif collision == "parent_file":
+            (tmp_path / ".polyforge").write_text("user content")
+        else:
+            (tmp_path / "game_manifest.json").rename(tmp_path / "polyforge.lock.json")
+        before = snapshot(tmp_path)
+        path = tmp_path / ("polyforge.lock.json" if collision == "manifest_input"
+                           else "game_manifest.json")
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_audit_probe_lock.py:110: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_audit_probe_lock.py::test_graphics_inventory_observes_windows_metadata_without_render_claim
+FAILED tests/test_audit_probe_lock.py::test_graphics_unavailable_api_remains_unknown
+FAILED tests/test_audit_probe_lock.py::test_explicit_mcp_inventory_is_metadata_and_rejects_remote_or_secret_endpoints
+FAILED tests/test_audit_probe_lock.py::test_plan_publishes_canonical_lock_without_running_tools
+FAILED tests/test_audit_probe_lock.py::test_new_lock_destination_preflight_preserves_all_inputs[user_lock]
+FAILED tests/test_audit_probe_lock.py::test_new_lock_destination_preflight_preserves_all_inputs[parent_file]
+FAILED tests/test_audit_probe_lock.py::test_new_lock_destination_preflight_preserves_all_inputs[manifest_input]
+7 failed in 2.21s

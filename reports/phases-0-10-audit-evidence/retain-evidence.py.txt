@@ -1,0 +1,56 @@
+"""Retain bounded audit logs and native observations; never native caches/auth state."""
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+from pathlib import Path
+
+root = Path.cwd()
+base = root / '.tmp/audit-through-phase10'
+dest = root / 'reports/phases-0-10-audit-evidence'
+dest.mkdir(exist_ok=True)
+
+def retain(source, relative):
+    assert source.stat().st_size <= 16_777_216, source
+    target = dest / relative
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, target)
+
+for source in base.iterdir():
+    if source.is_file() and source.suffix in {'.txt', '.json', '.xml', '.md', '.py', '.patch'}:
+        retain(source, source.name + ('.txt' if source.suffix in {'.py', '.patch'} else ''))
+for source in (base / 'install').iterdir():
+    if source.is_file():
+        retain(source, Path('install') / source.name)
+
+for folder, label in [('blender-native-temp', 'blender'), ('unity-native-temp', 'unity-interrupted'), ('unity-final-temp', 'unity-current')]:
+    start = base / folder
+    for current, directories, files in os.walk(start):
+        directories[:] = [name for name in directories if name not in {
+            'UnityProject', '.polyforge', 'Library', 'Temp', 'tmp', '__pycache__', 'transactions',
+        }]
+        for name in files:
+            source = Path(current) / name
+            if source.suffix in {'.json', '.jsonl', '.xml', '.txt', '.cs', '.py'}:
+                relative = Path('native') / label / source.relative_to(start)
+                retain(source, str(relative) + ('.txt' if source.suffix in {'.cs', '.py'} else ''))
+
+paths = subprocess.check_output(['git', 'ls-files', '-z', '--cached', '--others', '--exclude-standard'], cwd=root).decode().split('\0')
+source_files = []
+for relative in sorted(set(paths)):
+    if not relative or Path(relative).parts[0] not in {'polyforge', 'unity_package', 'tests', 'tools'}:
+        continue
+    path = root / relative
+    if path.is_file():
+        raw = path.read_bytes()
+        source_files.append({'path': relative, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
+(dest / 'qualified-source-snapshot.json').write_text(json.dumps({'files': source_files}, indent=2) + '\n', encoding='utf-8')
+
+records = []
+for path in sorted(dest.rglob('*')):
+    if path.is_file() and path.name != 'index.json':
+        raw = path.read_bytes()
+        records.append({'path': path.relative_to(dest).as_posix(), 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
+(dest / 'index.json').write_text(json.dumps({'scope': 'Phase 0–10 semantic audit and correction qualification; raw failed/incomplete attempts retained separately by filename; hashes prove byte integrity only', 'files': records}, indent=2) + '\n', encoding='utf-8')
+print(f'Retained {len(records)} audit evidence files, {sum(item["bytes"] for item in records)} bytes')

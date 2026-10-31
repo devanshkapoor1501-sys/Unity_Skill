@@ -1,0 +1,68 @@
+"""Check concrete current audit qualification outputs before publication."""
+import hashlib
+import json
+import xml.etree.ElementTree as ET
+from pathlib import Path
+from polyforge.workforce.router import engine_digest
+from polyforge.unity.evidence import verify_test_xml
+from polyforge.unity.game import PLAY_TESTS, GAME_EDIT_TESTS
+
+root = Path.cwd()
+base = root / '.tmp/audit-through-phase10'
+
+def suite(name):
+    node = ET.parse(base / name).getroot().find('testsuite')
+    assert node is not None
+    assert all(int(node.get(key, '-1')) == 0 for key in ['failures', 'errors', 'skipped'])
+    return int(node.get('tests'))
+
+offline = suite('tests-frozen.xml')
+assert offline >= 636
+assert suite('unity-qualified.xml') == 3
+assert suite('blender-native.xml') == 9
+coverage = json.loads((root / 'coverage.json').read_text())
+totals = coverage['totals']
+branches = 100 * totals['covered_branches'] / totals['num_branches']
+assert totals['percent_covered'] >= 90 and branches >= 90
+for required in ['runner/artifacts.py', 'runner/workspace_lock.py', 'workforce/discovery.py']:
+    assert any(name.replace('\\', '/').endswith(required) for name in coverage['files'])
+freeze = json.loads((base / 'source-freeze.json').read_text())
+assert freeze['exit_code'] == 0 and freeze['source_unchanged']
+assert freeze['engine_before'] == freeze['engine_after'] == engine_digest()
+native = json.loads((base / 'native-texture-game-result.json').read_text())
+assert native['status'] == 'PASS'
+assert native['data']['development_acceptance'] == 'PASS'
+assert native['data']['standalone_build'] == native['data']['player_smoke'] == 'PASS'
+assert native['data']['profiling'] == 'NOT_RUN'
+scenarios = native['data']['oracles']['scenarios']
+assert len(scenarios) == 17 and all(value['gate_status'] == 'PASS' for value in scenarios.values())
+assert sum(value['mutant'] for value in scenarios.values()) == 7
+arena = base / 'unity-final-temp/polyforge_phase50/arena'
+game_run = arena / 'runs' / native['run_id']
+assert verify_test_xml(game_run / 'playmode.xml', PLAY_TESTS)['executed'] == 18
+assert verify_test_xml(game_run / 'editmode.xml', GAME_EDIT_TESTS)['executed'] == 1
+assert 'Real transport bytes, importer settings and material slots PASS' in (base / 'native-texture-game.txt').read_text()
+overlay = json.loads((base / 'requirements-final-review.json').read_text())
+assert overlay['counts'] == {'IMPLEMENTED': 264, 'PERMITTED_BLOCKED': 17}
+assert len(overlay['requirements']) == 281
+for filename, phrase in [
+    ('lint-final.txt', 'All checks passed'), ('format-final.txt', 'already formatted'),
+    ('types-final.txt', 'Success:'), ('types-linux-final.txt', 'Success:'),
+    ('cli-final.txt', 'current'), ('pip-final.txt', 'No broken requirements'),
+    ('build-final.txt', 'Successfully built'), ('install-final.txt', '16 isolated offline'),
+    ('skills-ref-final.txt', 'Valid skill'), ('inventory-final.txt', 'reproducibility PASS'),
+]:
+    assert phrase in (base / filename).read_text(encoding='utf-8'), filename
+installed = json.loads((base / 'install/commands.json').read_text())
+assert len(installed) == 16 and all(item['exit_code'] == item['expected_exit'] for item in installed)
+(base / 'coverage-final.json').write_bytes((root / 'coverage.json').read_bytes())
+result = {'scope': 'Required implementation through Phase10; permitted external/later gates stay explicit',
+          'offline_tests': offline, 'coverage_combined': totals['percent_covered'],
+          'coverage_branches': branches, 'blender_native_cases': 9, 'unity_native_gates': 3,
+          'native_editmode_cases': 23, 'native_game_editmode_cases': 1,
+          'native_playmode_cases': 18, 'core_scenarios': 8, 'keyboard_checks': 2, 'mutants': 7,
+          'standalone_build': 'PASS', 'player_smoke': 'PASS',
+          'installed_checks': 16, 'requirement_rows': overlay['counts'],
+          'engine_digest': engine_digest(), 'phase11_started': False}
+(base / 'qualification.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+print(json.dumps({'status': 'PASS', **result}, indent=2))

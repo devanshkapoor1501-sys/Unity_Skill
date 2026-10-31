@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 from typing import Any
 
@@ -12,8 +13,10 @@ from polyforge.contracts.results import Result
 from polyforge.contracts.validation import InputError, load_json
 from polyforge.planner.cache import cache_hit
 from polyforge.planner.plans import build_plan, changed_tasks
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import FileLock
 from polyforge.runner.state import atomic_json
+from polyforge.runner.workspace_lock import build_workspace_lock
 from polyforge.security.paths import WorkspacePolicy
 
 
@@ -36,6 +39,11 @@ def _preflight(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
         source.absolute(),
         *[policy.path(a["recipe"]) for a in model.data["assets"]],
         *[policy.path(name) for name in model.input_digests],
+        policy.path("polyforge.toml"),
+        policy.path("doctor.json"),
+        policy.path("UnityProject/ProjectSettings/ProjectVersion.txt"),
+        policy.path("UnityProject/Packages/manifest.json"),
+        policy.path("UnityProject/Packages/packages-lock.json"),
     ]
     if model.brief is not None:
         inputs.append(policy.path(model.data.get("intent", {}).get("brief_path", "brief.md")))
@@ -49,12 +57,36 @@ def _preflight(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
         path = policy.path(name)
         if any(
             str(path).casefold() == str(value).casefold()
-            or (path.exists() and path.samefile(value))
+            or (path.exists() and value.exists() and path.samefile(value))
             for value in inputs
         ):
             raise InputError(f"$.outputs[{name}]: destination overlaps immutable input")
         if path.exists() and not path.is_file():
             raise InputError(f"$.outputs[{name}]: expected a file destination")
+        for parent in path.parents:
+            if parent == policy.root:
+                break
+            if parent.exists() and not parent.is_dir():
+                raise InputError(f"$.outputs[{name}]: destination parent must be a directory")
+        if name == "polyforge.lock.json" and path.is_file():
+            state_path = policy.path(".polyforge/planning-state.json")
+            state = load_json(state_path) if state_path.is_file() else {}
+            records = state.get("artifacts", []) if isinstance(state, dict) else []
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            prior_owned = isinstance(records, list) and any(
+                isinstance(record, dict)
+                and record.get("relative_path") == name
+                and record.get("sha256") == digest
+                for record in records
+            )
+            pending_owned = (
+                isinstance(state, dict)
+                and state.get("status") == "PREPARING"
+                and state.get("project_id") == model.data["project"]["id"]
+                and digest in (state.get("pending_lock_sha256"), state.get("previous_lock_sha256"))
+            )
+            if not (prior_owned or pending_owned):
+                raise InputError("Existing workspace lock is not an unchanged owned artifact")
 
 
 def _publish(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
@@ -63,6 +95,7 @@ def _publish(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
     _preflight(model, outputs, source)
     with FileLock(policy, ".polyforge/locks/planning.lock"):
         _check_frozen(model, policy)
+        _preflight(model, outputs, source)
         if model.brief is not None:
             frozen = policy.path(".polyforge/original_prompt.txt")
             policy.mkdir(frozen.parent)
@@ -81,11 +114,26 @@ def _publish(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
                     "owner": "DEVELOPMENT_FREEZE",
                 },
             )
+        state_path = policy.path(".polyforge/planning-state.json")
+        previous = load_json(state_path) if state_path.is_file() else {}
+        lock_path = policy.path("polyforge.lock.json")
+        # _preflight established ownership of these exact current bytes above.
+        previous_lock_sha256 = (
+            hashlib.sha256(lock_path.read_bytes()).hexdigest() if lock_path.is_file() else None
+        )
+        pending_lock = (
+            json.dumps(outputs["polyforge.lock.json"], indent=2, ensure_ascii=True, allow_nan=False)
+            + "\n"
+        ).encode()
         atomic_json(
             policy,
             ".polyforge/planning-state.json",
             {
                 "status": "PREPARING",
+                "project_id": model.data["project"]["id"],
+                "artifacts": previous.get("artifacts", []) if isinstance(previous, dict) else [],
+                "pending_lock_sha256": hashlib.sha256(pending_lock).hexdigest(),
+                "previous_lock_sha256": previous_lock_sha256,
                 "manifest_digest": model.digest,
                 "input_digest": model.input_digest,
             },
@@ -106,6 +154,14 @@ def _publish(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
                     "validator": "polyforge.contract_compiler.v1",
                 }
             )
+        inventory = complete_records(
+            policy,
+            "planning_" + model.input_digest[:16],
+            "S1",
+            inventory,
+            input_digest=model.input_digest,
+            project_id=model.data["project"]["id"],
+        )
         atomic_json(
             policy,
             ".polyforge/planning-state.json",
@@ -154,6 +210,7 @@ def manifest_command(path: Path, operation: str, *, dry_run: bool = False) -> Re
             )
         outputs["plan"] = plan
     named = {name + ".json": value for name, value in outputs.items()}
+    named["polyforge.lock.json"] = build_workspace_lock(model)
     _preflight(model, named, path)
     if not dry_run:
         _publish(model, named, path)

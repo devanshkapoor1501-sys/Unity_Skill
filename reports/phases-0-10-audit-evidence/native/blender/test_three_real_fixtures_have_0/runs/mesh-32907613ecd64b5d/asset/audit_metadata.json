@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "orientation_arrows",
+  "geometry_digest": "8464eefa0a2f3252ca4f614e471ef56ad4bc503c66842e5bf6c88752cc0961a8",
+  "diagnostics": {
+    "status": "PASS",
+    "issues": []
+  },
+  "view_ids": [
+    "front",
+    "side",
+    "top",
+    "iso"
+  ],
+  "cameras": {
+    "front": {
+      "position_native_m": [
+        0.0,
+        -11.224973,
+        1.0
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ortho_scale": 2.4,
+      "resolution": 512
+    },
+    "side": {
+      "position_native_m": [
+        11.224973,
+        0.0,
+        1.0
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ortho_scale": 3.6,
+      "resolution": 512
+    },
+    "top": {
+      "position_native_m": [
+        0.0,
+        0.0,
+        12.224973
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ortho_scale": 3.6,
+      "resolution": 512
+    },
+    "iso": {
+      "position_native_m": [
+        6.480741,
+        -6.480741,
+        7.480741
+      ],
+      "target_native_m": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "ortho_scale": 2.736503,
+      "resolution": 512
+    }
+  },
+  "export": {
+    "axis_forward": "-Z",
+    "axis_up": "Y",
+    "global_scale": 1.0,
+    "apply_unit_scale": true,
+    "apply_scale_options": "FBX_SCALE_UNITS",
+    "bake_space_transform": false,
+    "bake_anim": false,
+    "use_selection": true,
+    "use_custom_props": true,
+    "object_types": [
+      "EMPTY",
+      "MESH"
+    ]
+  },
+  "material_ids": [
+    "axis"
+  ],
+  "socket_ids": [
+    "front"
+  ],
+  "visual_review_status": "REVIEW",
+  "unity_import_status": "NOT_RUN",
+  "source_basis": {
+    "up": "Z",
+    "forward": "-Y"
+  },
+  "canonical_basis": {
+    "up": "Y",
+    "forward": "Z"
+  },
+  "meters_per_unit": 1.0,
+  "unity_import_intent": {
+    "global_scale": 1.0,
+    "use_file_scale": true,
+    "bake_axis_conversion": false
+  },
+  "renderer": {
+    "engine": "CYCLES",
+    "device": "CPU",
+    "samples": 8,
+    "seed": 42
+  }
+}

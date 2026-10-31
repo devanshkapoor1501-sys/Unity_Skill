@@ -1,0 +1,10 @@
+Resource policy audit implementation (originalv5.1 sections16.6/18.10)
+Changed only assigned discovery.py, models.py, orchestrator.py, job_ticket.schema.json and tests/test_audit_resource_policy.py.
+TDD: initial resource-red.txt:17failed/1passed (legacycompatibility alreadyworked); resource-green.txt:18passed before expanded boundarycoverage; resource-regression.txt:68passed across resourcepolicy+workforcegap+workforce+crash tests after expansion (28resourcecases).
+Fresh resource-lint.txt:allcheckspassed. resource-mypy.txt:noissues in3sourcefiles.
+New job context.resources is copied and digest-bound; optional schema property preserves old contexts and9fieldtickets. Historical plans retain context; execution receives floors from frozen originalrequest where absent.
+Admission measures CPU/RAM/disk, refuses unknown requiredresource, and blocks GPUrequiredwork. Windows read-only bounded32adapterregistry metadata and Linux32cardDRMsysfs metadata report largest known adapter capacity, not freeVRAM or renderqualification. Missing/inaccessible/invalidmetadata remainsUNKNOWN.
+Live guard checks only CPU/RAM/disk every0.25seconds; fullGPU/OSfingerprint stays atadmission. Requirement exhaustion/unknown sets nativecancel and returnsBLOCKED PF-WORKFORCE-RESOURCE even ifexecutor ignorescancel and returnsPASS. Postreturncheck closes subinterval cases. Cancelledledger cannotreportPASS. Existing deadline behavior retained.
+Measured admission reports LOCAL_SEQUENTIAL with Blender1/Unity1/model0 and existing BlenderCPUthreads1; registeredfixedCPUquality retained, parallel/GPU/adaptivequality unqualifiedexplicitly.
+Local observation resource-observed-local.txt:CPU16; availableRAM10578497536bytes; diskfree524565012480bytes; metadataonly NVIDIA8546942976bytes/AMD536870912bytes. Values are instantaneous observations, not performanceclaims.
+Per parentinstruction no nativeexecution/fullsuite/commit was run here. Parent owns integratedfullsuite/nativeverification. Existing native WindowsJob processmemorylimit remains independent of minimumsystemRAMfloor.

@@ -12,6 +12,7 @@ from polyforge.capabilities.protocol import RunContext
 from polyforge.contracts.results import ErrorKind, Result, failure
 from polyforge.contracts.validation import InputError, canonical_digest, load_json
 from polyforge.doctor import discover_tool
+from polyforge.runner.artifacts import complete_records
 from polyforge.runner.locks import FileLock
 from polyforge.runner.processes import ProcessPolicy, run_process
 from polyforge.runner.state import atomic_json
@@ -122,6 +123,7 @@ def animate_robot(inputs: dict[str, Any], context: RunContext) -> Result:
                     "input_digest": digest,
                 }
             )
+    artifacts = complete_records(policy, run_id, "S2", artifacts, input_digest=digest)
     atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
     return Result(
         run_id=run_id,

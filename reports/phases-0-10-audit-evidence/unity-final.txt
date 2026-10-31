@@ -1,0 +1,70 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collected 3 items
+
+tests\test_phase5_unity.py EEE                                           [100%]
+
+=================================== ERRORS ====================================
+_ ERROR at setup of test_real_native_build_has_executed_editmode_and_two_scenes _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10...poor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/unity-final-temp'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def arena(tmp_path_factory):
+        root = tmp_path_factory.mktemp("polyforge_phase5") / "arena"
+        init_workspace(root, "simple_arena")
+        result = build_assets(root, through="S4", allow_package_downloads=True)
+        (root / "first-result.json").write_text(json.dumps(result.to_dict(), indent=2))
+>       assert result.status == "PASS", result.to_dict()
+E       AssertionError: {'artifact_ids': [], 'contract_version': '1.0.0', 'data': {}, 'diagnostics': [{'code': 'PF-UNITY-S4', 'message': 'Unity tests failed: exit, exit 2; see runs/unity-af50d9fc53b844c8/editmode/stdout.txt'}], ...}
+E       assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_unity.py:23: AssertionError
+_ ERROR at setup of test_material_only_rebuild_preserves_fbx_code_guids_and_object_counts _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10...poor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/unity-final-temp'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def arena(tmp_path_factory):
+        root = tmp_path_factory.mktemp("polyforge_phase5") / "arena"
+        init_workspace(root, "simple_arena")
+        result = build_assets(root, through="S4", allow_package_downloads=True)
+        (root / "first-result.json").write_text(json.dumps(result.to_dict(), indent=2))
+>       assert result.status == "PASS", result.to_dict()
+E       AssertionError: {'artifact_ids': [], 'contract_version': '1.0.0', 'data': {}, 'diagnostics': [{'code': 'PF-UNITY-S4', 'message': 'Unity tests failed: exit, exit 2; see runs/unity-af50d9fc53b844c8/editmode/stdout.txt'}], ...}
+E       assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_unity.py:23: AssertionError
+_ ERROR at setup of test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10...poor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/unity-final-temp'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def arena(tmp_path_factory):
+        root = tmp_path_factory.mktemp("polyforge_phase5") / "arena"
+        init_workspace(root, "simple_arena")
+        result = build_assets(root, through="S4", allow_package_downloads=True)
+        (root / "first-result.json").write_text(json.dumps(result.to_dict(), indent=2))
+>       assert result.status == "PASS", result.to_dict()
+E       AssertionError: {'artifact_ids': [], 'contract_version': '1.0.0', 'data': {}, 'diagnostics': [{'code': 'PF-UNITY-S4', 'message': 'Unity tests failed: exit, exit 2; see runs/unity-af50d9fc53b844c8/editmode/stdout.txt'}], ...}
+E       assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_phase5_unity.py:23: AssertionError
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\audit-through-phase10\unity-final.xml -
+=========================== short test summary info ===========================
+ERROR tests/test_phase5_unity.py::test_real_native_build_has_executed_editmode_and_two_scenes
+ERROR tests/test_phase5_unity.py::test_material_only_rebuild_preserves_fbx_code_guids_and_object_counts
+ERROR tests/test_phase5_unity.py::test_real_scale_diagnosis_minimal_repair_and_snapshot_reimport_rollback
+======================== 3 errors in 493.26s (0:08:13) ========================

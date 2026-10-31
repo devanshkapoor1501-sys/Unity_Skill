@@ -1,0 +1,476 @@
+FFFFFFFFFFFFFFFFFFFFFFFF                                                 [100%]
+================================== FAILURES ===================================
+________ test_collider_intent_is_independently_checked[collider-none] _________
+
+field = 'collider', value = 'none'
+
+    @pytest.mark.parametrize("field,value", [
+        ("collider", "none"), ("colliders", []),
+    ])
+    def test_collider_intent_is_independently_checked(field, value):
+        request, report = complete_native()
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:44: AssertionError
+_______ test_collider_intent_is_independently_checked[colliders-value1] _______
+
+field = 'colliders', value = []
+
+    @pytest.mark.parametrize("field,value", [
+        ("collider", "none"), ("colliders", []),
+    ])
+    def test_collider_intent_is_independently_checked(field, value):
+        request, report = complete_native()
+        assert reconcile_report(request, report)["status"] == "PASS"
+        report["objects"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:44: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[enabled-False] _
+
+field = 'enabled', value = False
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[is_trigger-True] _
+
+field = 'is_trigger', value = True
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[kind-CapsuleCollider] _
+
+field = 'kind', value = 'CapsuleCollider'
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[center_m-value3] _
+
+field = 'center_m', value = [0, 0, 0]
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[size_m-value4] _
+
+field = 'size_m', value = [1, 2, 30]
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+_ test_collider_geometry_and_state_cannot_hide_behind_worker_pass[path-wrong/child] _
+
+field = 'path', value = 'wrong/child'
+
+    @pytest.mark.parametrize("field,value", [
+        ("enabled", False), ("is_trigger", True), ("kind", "CapsuleCollider"),
+        ("center_m", [0, 0, 0]), ("size_m", [1, 2, 30]), ("path", "wrong/child"),
+    ])
+    def test_collider_geometry_and_state_cannot_hide_behind_worker_pass(field, value):
+        request, report = complete_native()
+        report["objects"][0]["colliders"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:54: AssertionError
+________ test_capsule_direction_and_mesh_filter_references_are_checked ________
+
+    def test_capsule_direction_and_mesh_filter_references_are_checked():
+        request, report = complete_native()
+        asset, actual = request["assets"][0], report["objects"][0]
+        asset["collider"] = actual["collider"] = "capsule"
+        actual["colliders"][0].update(kind="CapsuleCollider", size_m=[3, 3, 3], direction=1)
+        assert reconcile_report(request, report)["status"] == "PASS"
+        actual["colliders"][0]["direction"] = 0
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:64: AssertionError
+_________ test_scene_observables_are_required[scene_instances-value0] _________
+
+field = 'scene_instances', value = []
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene_instances", []), ("camera_count", 0), ("light_count", 0),
+    ])
+    def test_scene_observables_are_required(field, value):
+        request, report = complete_native()
+        report[field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:81: AssertionError
+_____________ test_scene_observables_are_required[camera_count-0] _____________
+
+field = 'camera_count', value = 0
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene_instances", []), ("camera_count", 0), ("light_count", 0),
+    ])
+    def test_scene_observables_are_required(field, value):
+        request, report = complete_native()
+        report[field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:81: AssertionError
+_____________ test_scene_observables_are_required[light_count-0] ______________
+
+field = 'light_count', value = 0
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene_instances", []), ("camera_count", 0), ("light_count", 0),
+    ])
+    def test_scene_observables_are_required(field, value):
+        request, report = complete_native()
+        report[field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:81: AssertionError
+__ test_scene_identity_pose_and_prefab_source_are_independent[scene-Unknown] __
+
+field = 'scene', value = 'Unknown'
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[id-actor:other] __
+
+field = 'id', value = 'actor:other'
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[asset_id-other] __
+
+field = 'asset_id', value = 'other'
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[prefab_guid-cccccccccccccccccccccccccccccccc] _
+
+field = 'prefab_guid', value = 'cccccccccccccccccccccccccccccccc'
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[source_guid-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb] _
+
+field = 'source_guid', value = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[position_m-value5] _
+
+field = 'position_m', value = [1, 0, 0]
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+__ test_scene_identity_pose_and_prefab_source_are_independent[scale-value6] ___
+
+field = 'scale', value = [1, 2, 1]
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+_ test_scene_identity_pose_and_prefab_source_are_independent[rotation_xyzw-value7] _
+
+field = 'rotation_xyzw', value = [0, 1, 0, 0]
+
+    @pytest.mark.parametrize("field,value", [
+        ("scene", "Unknown"), ("id", "actor:other"), ("asset_id", "other"),
+        ("prefab_guid", "c" * 32), ("source_guid", "b" * 32),
+        ("position_m", [1, 0, 0]), ("scale", [1, 2, 1]), ("rotation_xyzw", [0, 1, 0, 0]),
+    ])
+    def test_scene_identity_pose_and_prefab_source_are_independent(field, value):
+        request, report = complete_native()
+        report["scene_instances"][0][field] = value
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:94: AssertionError
+____ test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-red/test_supplied_textures_are_cop0')
+
+    def test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance(tmp_path):
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.unity import bridge
+    
+>       model = texture_model(tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_unity_gaps.py:126: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_audit_unity_gaps.py:108: in texture_model
+    init_workspace(tmp_path, "simple_arena")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-red/test_supplied_textures_are_cop0')
+template = 'simple_arena'
+
+    def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Result:
+        """Create only a new explicitly named directory; never overwrite existing data."""
+        if template != "simple_arena":
+            raise InputError("Only the simple_arena template is available")
+        if ".." in target.parts:
+            raise InputError("Workspace initialization cannot use parent traversal")
+        target = target.absolute()
+        parent = WorkspacePolicy(target.parent)
+        target = parent.path(target)
+        if target.exists():
+>           raise InputError("Initialization requires a new directory; existing paths are preserved")
+E           polyforge.contracts.validation.InputError: Initialization requires a new directory; existing paths are preserved
+
+polyforge\workspace.py:48: InputError
+_____________ test_texture_dry_run_is_supported_and_has_no_writes _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-red/test_texture_dry_run_is_suppor0')
+
+    def test_texture_dry_run_is_supported_and_has_no_writes(tmp_path):
+        from polyforge.blender.build import build_assets
+>       model = texture_model(tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_unity_gaps.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_audit_unity_gaps.py:108: in texture_model
+    init_workspace(tmp_path, "simple_arena")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+target = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-unity-red/test_texture_dry_run_is_suppor0')
+template = 'simple_arena'
+
+    def init_workspace(target: Path, template: str, *, dry_run: bool = False) -> Result:
+        """Create only a new explicitly named directory; never overwrite existing data."""
+        if template != "simple_arena":
+            raise InputError("Only the simple_arena template is available")
+        if ".." in target.parts:
+            raise InputError("Workspace initialization cannot use parent traversal")
+        target = target.absolute()
+        parent = WorkspacePolicy(target.parent)
+        target = parent.path(target)
+        if target.exists():
+>           raise InputError("Initialization requires a new directory; existing paths are preserved")
+E           polyforge.contracts.validation.InputError: Initialization requires a new directory; existing paths are preserved
+
+polyforge\workspace.py:48: InputError
+__ test_obstacle_oracle_requires_actual_blocking_and_kills_disabled_obstacle __
+
+    def test_obstacle_oracle_requires_actual_blocking_and_kills_disabled_obstacle():
+        from polyforge.scenarios.arena_oracle import CORE_SCENARIOS, MUTANT_SCENARIOS, evaluate
+>       assert "obstacle_collision" in CORE_SCENARIOS
+E       AssertionError: assert 'obstacle_collision' in ('player_moves', 'wall_collision', 'enemy_patrols', 'contact_damage', 'health_failure', 'survival_win', ...)
+
+tests\test_audit_unity_gaps.py:160: AssertionError
+__________________ test_frozen_acceptance_includes_obstacles __________________
+
+    def test_frozen_acceptance_includes_obstacles():
+        from importlib.resources import files
+        acceptance = json.loads(files("polyforge").joinpath("data/arena_acceptance.json").read_text())
+>       assert any("obstacle_collision" in row["oracles"] and "obstacles" in row["original_phrase"]
+                   for row in acceptance["requirements"])
+E       assert False
+E        +  where False = any(<generator object test_frozen_acceptance_includes_obstacles.<locals>.<genexpr> at 0x00000169A7AC58A0>)
+
+tests\test_audit_unity_gaps.py:173: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_unity_gaps.py::test_collider_intent_is_independently_checked[collider-none]
+FAILED tests/test_audit_unity_gaps.py::test_collider_intent_is_independently_checked[colliders-value1]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[enabled-False]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[is_trigger-True]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[kind-CapsuleCollider]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[center_m-value3]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[size_m-value4]
+FAILED tests/test_audit_unity_gaps.py::test_collider_geometry_and_state_cannot_hide_behind_worker_pass[path-wrong/child]
+FAILED tests/test_audit_unity_gaps.py::test_capsule_direction_and_mesh_filter_references_are_checked
+FAILED tests/test_audit_unity_gaps.py::test_scene_observables_are_required[scene_instances-value0]
+FAILED tests/test_audit_unity_gaps.py::test_scene_observables_are_required[camera_count-0]
+FAILED tests/test_audit_unity_gaps.py::test_scene_observables_are_required[light_count-0]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[scene-Unknown]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[id-actor:other]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[asset_id-other]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[prefab_guid-cccccccccccccccccccccccccccccccc]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[source_guid-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[position_m-value5]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[scale-value6]
+FAILED tests/test_audit_unity_gaps.py::test_scene_identity_pose_and_prefab_source_are_independent[rotation_xyzw-value7]
+FAILED tests/test_audit_unity_gaps.py::test_supplied_textures_are_copied_exactly_with_frozen_hash_provenance
+FAILED tests/test_audit_unity_gaps.py::test_texture_dry_run_is_supported_and_has_no_writes
+FAILED tests/test_audit_unity_gaps.py::test_obstacle_oracle_requires_actual_blocking_and_kills_disabled_obstacle
+FAILED tests/test_audit_unity_gaps.py::test_frozen_acceptance_includes_obstacles
+24 failed in 0.93s

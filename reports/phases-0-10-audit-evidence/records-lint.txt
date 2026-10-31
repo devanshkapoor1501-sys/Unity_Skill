@@ -1,0 +1,34 @@
+E501 Line too long (105 > 100)
+   --> polyforge\blender\adapter.py:152:101
+    |
+150 |                 policy, run_id, "S2", recovered_artifacts, input_digest=input_digest
+151 |             )
+152 |             atomic_json(policy, "runs/" + run_id + "/artifacts.json", {"artifacts": recovered_artifacts})
+    |                                                                                                     ^^^^^
+153 |             recovered_journal = RunJournal(policy, run_id)
+154 |             if recovered_journal.read()["stages"]["S2"]["status"] == "running":
+    |
+
+E501 Line too long (106 > 100)
+   --> polyforge\unity\bridge.py:453:101
+    |
+451 |                     }
+452 |                 )
+453 |             artifacts = complete_records(policy, run_id, "S4", artifacts, input_digest=model.input_digest)
+    |                                                                                                     ^^^^^^
+454 |             atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
+455 |             atomic_json(policy, ".polyforge/unity-request.json", request)
+    |
+
+E501 Line too long (103 > 100)
+   --> polyforge\unity\game.py:245:101
+    |
+243 |             }
+244 |         )
+245 |     artifacts = complete_records(policy, relative.split("/")[-1], "S5", artifacts, input_digest=digest)
+    |                                                                                                     ^^^
+246 |     atomic_json(policy, relative + "/artifacts.json", {"artifacts": artifacts})
+247 |     return [a["artifact_id"] for a in artifacts]
+    |
+
+Found 10 errors (7 fixed, 3 remaining).

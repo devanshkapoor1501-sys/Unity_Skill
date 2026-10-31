@@ -1,0 +1,20 @@
+import hashlib
+import json
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path.cwd()))
+from tools.generate_knowledge_coverage import generate
+
+root = Path.cwd()
+source = root / 'PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx'
+assert hashlib.sha256(source.read_bytes()).hexdigest() == '8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6'
+taxonomy = json.loads((root / 'polyforge/data/knowledge-taxonomy.json').read_text())
+expected = generate(taxonomy)
+actual = json.loads((root / 'reports/knowledge_coverage.json').read_text())
+for value in [expected, actual]:
+    value.pop('generated_at')
+assert actual == expected
+assert actual['denominator']['subfeature_count'] == 20
+assert actual['denominator']['inventory_weight'] == 51
+assert all(state['COMPLETE'] == 0 for state in actual['counts'].values())
+print('Blueprint identity and frozen 20-row knowledge report reproducibility PASS')

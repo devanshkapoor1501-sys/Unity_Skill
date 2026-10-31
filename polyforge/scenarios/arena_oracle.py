@@ -11,6 +11,7 @@ from polyforge.contracts.validation import InputError, canonical_digest
 CORE_SCENARIOS = (
     "player_moves",
     "wall_collision",
+    "obstacle_collision",
     "enemy_patrols",
     "contact_damage",
     "health_failure",
@@ -25,6 +26,7 @@ MUTANT_SCENARIOS = {
     "damage_no_health": "contact_damage",
     "navigation_stuck": "enemy_patrols",
     "input_disconnected": "player_moves",
+    "obstacle_collision_disabled": "obstacle_collision",
 }
 
 
@@ -97,6 +99,26 @@ def validate_trace(
             for key in ("player_radius", "wall_thickness"):
                 if type(trace[key]) not in {int, float} or not 0 < trace[key] < min(half):
                     raise ValueError("invalid collision dimensions")
+        if expected_case == "obstacle_collision":
+            obstacle = game["obstacles"][0]
+            if (
+                trace["obstacle_id"] != obstacle["id"]
+                or trace["obstacle_asset_id"] != obstacle["asset_id"]
+            ):
+                raise ValueError("wrong frozen obstacle identity")
+            for field in ("center_m", "size_m"):
+                observed = trace["obstacle_" + field]
+                vector(observed)
+                if any(
+                    not math.isclose(n, w, rel_tol=0.02, abs_tol=0.002)
+                    for n, w in zip(observed, obstacle[field], strict=True)
+                ):
+                    raise ValueError("obstacle geometry differs from frozen contract")
+            if (
+                type(trace["player_radius"]) not in {int, float}
+                or not 0 < trace["player_radius"] < 5
+            ):
+                raise ValueError("invalid player radius")
         if expected_case == "restart_resets":
             vector(trace["baseline_player_position"])
             positions(trace["baseline_enemy_positions"])
@@ -155,6 +177,33 @@ def evaluate(trace: dict[str, Any]) -> dict[str, Any]:
                 or distance(first["player_position"], last["player_position"]) < 1
             ):
                 issues.append("Wall did not stop actual player movement at its inner boundary")
+        elif identifier == "obstacle_collision":
+            center, size, radius = (
+                trace["obstacle_center_m"],
+                trace["obstacle_size_m"],
+                trace["player_radius"],
+            )
+            if (
+                len(center) != 3
+                or len(size) != 3
+                or any(n <= 0 for n in size)
+                or not 0 < radius < 5
+            ):
+                raise ValueError("Invalid obstacle geometry")
+            boundary = center[0] - size[0] / 2 - radius
+            initial, final = first["player_position"], last["player_position"]
+            if (
+                initial[0] > boundary - 1
+                or final[0] > boundary + 0.1
+                or final[0] < boundary - 0.5
+                or final[0] - initial[0] < 1
+                or any(
+                    abs(s["player_position"][2] - center[2]) > 0.1
+                    or s["player_position"][0] > boundary + 0.1
+                    for s in samples
+                )
+            ):
+                issues.append("Obstacle did not stop actual player movement at its near face")
         elif identifier == "enemy_patrols":
             initial = {e["id"]: e["position"] for e in first["enemy_positions"]}
             final = {e["id"]: e["position"] for e in last["enemy_positions"]}

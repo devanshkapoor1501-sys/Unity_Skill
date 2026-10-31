@@ -53,6 +53,279 @@
         "type": "string",
         "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$"
       }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0.0"
+        },
+        "task_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "brief_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "task_class": {
+          "enum": [
+            "EXPLAIN",
+            "INSPECT",
+            "CREATE_ASSET",
+            "ANIMATE",
+            "FIX_PROJECT",
+            "ADD_MECHANIC",
+            "BUILD_GAME"
+          ]
+        },
+        "required_concepts": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "selected_knowledge_cards": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "knowledge_id",
+              "doc_digest",
+              "knowledge_state",
+              "versions"
+            ],
+            "properties": {
+              "knowledge_id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "doc_digest": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "knowledge_state": {
+                "enum": [
+                  "REFERENCE_ONLY",
+                  "VERSION_PROBED",
+                  "EXPERIMENTAL",
+                  "VERIFIED_IN_WORKFLOW",
+                  "UNAVAILABLE"
+                ]
+              },
+              "versions": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "array",
+                  "maxItems": 128,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  }
+                }
+              }
+            }
+          }
+        },
+        "toolchain_probes": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "status",
+              "evidence_digest"
+            ],
+            "properties": {
+              "tool": {
+                "enum": [
+                  "blender",
+                  "unity"
+                ]
+              },
+              "status": {
+                "enum": [
+                  "UNKNOWN",
+                  "VERSION_PROBED"
+                ]
+              },
+              "evidence_digest": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "reference_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "support_state": {
+          "const": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED"
+        },
+        "originality_or_license": {
+          "const": "REQUEST_METADATA_ONLY_NOT_INFERRED"
+        },
+        "observed_inputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "capability_gap": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "proposed_experiment_id": {
+          "type": "null"
+        },
+        "risk_level": {
+          "const": "TRUSTED_REGISTERED_LOCAL"
+        },
+        "approval_owner": {
+          "const": "EXISTING_REVIEW_GATES"
+        },
+        "evaluator_ref": {
+          "const": "EXTERNAL_NOT_SUPPLIED"
+        },
+        "evaluator_access": {
+          "const": "DENIED"
+        },
+        "tool_allowlist": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "read_roots": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "authorized_write_roots": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "permissions_from_references": {
+          "const": false
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "expected_evidence": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        },
+        "review_policy": {
+          "const": "EXISTING_L1_L2_L3_GATES"
+        },
+        "deadline_policy": {
+          "const": "START_PLUS_BUDGET_SECONDS"
+        },
+        "lease_ref": {
+          "const": "RUNTIME_LEDGER"
+        },
+        "original_task_input_digest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "resources": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "min_cpu_count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1024
+            },
+            "min_free_disk_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854775807
+            },
+            "min_available_ram_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854775807
+            },
+            "gpu_required": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "required": [
+        "schema_version",
+        "task_digest",
+        "brief_digest",
+        "task_class",
+        "required_concepts",
+        "selected_knowledge_cards",
+        "toolchain_probes",
+        "reference_digest",
+        "support_state",
+        "originality_or_license",
+        "observed_inputs",
+        "capability_gap",
+        "proposed_experiment_id",
+        "risk_level",
+        "approval_owner",
+        "evaluator_ref",
+        "evaluator_access",
+        "tool_allowlist",
+        "read_roots",
+        "authorized_write_roots",
+        "permissions_from_references",
+        "seed",
+        "original_task_input_digest",
+        "expected_evidence",
+        "review_policy",
+        "deadline_policy",
+        "lease_ref"
+      ]
+    },
+    "context_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
     }
   },
   "required": [
@@ -65,5 +338,13 @@
     "budget_seconds",
     "write_root",
     "feature_ids"
-  ]
+  ],
+  "dependentRequired": {
+    "context": [
+      "context_digest"
+    ],
+    "context_digest": [
+      "context"
+    ]
+  }
 }

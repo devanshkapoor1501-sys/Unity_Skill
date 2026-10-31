@@ -11,6 +11,7 @@ import sys
 from dataclasses import asdict
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 from uuid import uuid4
 
 from polyforge.config import Config, load_config
@@ -122,6 +123,167 @@ def inspect_project(project: Path) -> dict[str, Any]:
     return result
 
 
+def graphics_availability() -> dict[str, Any]:
+    """Read OS display/device metadata without opening a display or testing rendering."""
+    result: dict[str, Any] = {
+        "display": {"status": "UNKNOWN", "count": None},
+        "gpu": {"status": "UNKNOWN", "devices": []},
+        "render": {"status": "NOT_RUN"},
+        "headless_render": {"status": "UNKNOWN"},
+        "qualification": "Metadata does not establish driver, render or headless support",
+    }
+    try:
+        if sys.platform == "win32":
+            from ctypes import wintypes
+
+            class DisplayDevice(ct.Structure):
+                _fields_ = [
+                    ("cb", wintypes.DWORD),
+                    ("DeviceName", wintypes.WCHAR * 32),
+                    ("DeviceString", wintypes.WCHAR * 128),
+                    ("StateFlags", wintypes.DWORD),
+                    ("DeviceID", wintypes.WCHAR * 128),
+                    ("DeviceKey", wintypes.WCHAR * 128),
+                ]
+
+            api = ct.WinDLL("user32", use_last_error=True)
+            count = int(api.GetSystemMetrics(80))  # SM_CMONITORS, current desktop only.
+            result["display"] = {
+                "status": "OBSERVED" if count > 0 else "BLOCKED",
+                "count": count,
+                "source": "GetSystemMetrics(SM_CMONITORS)",
+            }
+            for index in range(32):
+                device = DisplayDevice()
+                device.cb = ct.sizeof(device)
+                if not api.EnumDisplayDevicesW(None, index, ct.byref(device), 0):
+                    break
+                result["gpu"]["devices"].append(
+                    {
+                        "name": device.DeviceString,
+                        "device": device.DeviceName,
+                        "state_flags": int(device.StateFlags),
+                    }
+                )
+            if result["gpu"]["devices"]:
+                result["gpu"].update(status="OBSERVED", source="EnumDisplayDevicesW")
+        elif sys.platform.startswith("linux"):
+            # Read only fixed kernel metadata; environment display names are hints.
+            for index in range(32):
+                device = Path(f"/sys/class/drm/card{index}/device")
+                if not device.is_dir():
+                    continue
+                metadata = {}
+                for name in ("vendor", "device"):
+                    path = device / name
+                    if path.is_file():
+                        with path.open("r", encoding="ascii") as stream:
+                            value = stream.read(32).strip()
+                        if re.fullmatch(r"0x[0-9a-fA-F]{4}", value):
+                            metadata[name] = value
+                if metadata:
+                    result["gpu"]["devices"].append({"card": index, **metadata})
+            if result["gpu"]["devices"]:
+                result["gpu"].update(status="OBSERVED", source="linux_drm_sysfs")
+            result["display"]["configured"] = bool(
+                os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")
+            )
+        elif sys.platform == "darwin":
+            api = ct.CDLL("/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics")
+            count = ct.c_uint32()
+            if api.CGGetActiveDisplayList(0, None, ct.byref(count)) == 0:
+                result["display"] = {
+                    "status": "OBSERVED" if count.value else "BLOCKED",
+                    "count": count.value,
+                    "source": "CGGetActiveDisplayList",
+                }
+    except (OSError, AttributeError, ValueError):
+        pass  # Partial metadata remains useful; missing observations never become PASS.
+    return result
+
+
+def integration_availability(
+    tools: dict[str, Any], *, sessions: list[dict[str, Any]] | None = None
+) -> dict[str, Any]:
+    """Validate explicit host metadata; never scan private config or connect endpoints."""
+    operations = {"plan", "blender_build", "unity_build", "interactive_scene_edit"}
+    if sessions is not None and (not isinstance(sessions, list) or len(sessions) > 32):
+        raise InputError("MCP session inventory must be a list of at most 32 descriptors")
+    observed = []
+    for session in sessions or []:
+        if (
+            not isinstance(session, dict)
+            or set(session) - {"tool", "transport", "endpoint", "connected", "operations"}
+            or not isinstance(session.get("tool"), str)
+            or session.get("tool") not in {"blender", "unity"}
+            or not isinstance(session.get("transport"), str)
+            or session.get("transport") not in {"stdio", "http"}
+            or type(session.get("connected")) is not bool
+            or not isinstance(session.get("operations"), list)
+            or len(session["operations"]) > len(operations)
+            or any(not isinstance(op, str) or op not in operations for op in session["operations"])
+        ):
+            raise InputError("Invalid explicit MCP session descriptor")
+        endpoint = session.get("endpoint")
+        if session["transport"] == "http":
+            if not isinstance(endpoint, str) or len(endpoint) > 2048:
+                raise InputError("MCP endpoint must be an explicit localhost URL")
+            try:
+                url = urlsplit(endpoint)
+                valid = (
+                    url.scheme in {"http", "https"}
+                    and url.hostname in {"localhost", "127.0.0.1", "::1"}
+                    and url.port is not None
+                    and url.port > 0
+                    and not (url.username or url.password or url.query or url.fragment)
+                    and not any(ord(char) < 32 for char in endpoint)
+                )
+            except ValueError:
+                valid = False
+            if not valid:
+                raise InputError("MCP endpoint must be localhost without credentials or parameters")
+        elif endpoint is not None:
+            raise InputError("stdio descriptors cannot include endpoints or launch commands")
+        observed.append(
+            {
+                "tool": session["tool"],
+                "transport": session["transport"],
+                "connected": session["connected"],
+                "operations": list(session["operations"]),
+                "status": "OBSERVED",
+                "source": "CALLER_SUPPLIED",
+            }
+        )
+    matrix = {
+        operation: {
+            "offline": (
+                "OBSERVED"
+                if operation == "plan"
+                else "BLOCKED"
+                if operation == "interactive_scene_edit"
+                else "OBSERVED"
+                if tools.get(operation.split("_")[0], {}).get("status") == "PASS"
+                else "UNKNOWN"
+            ),
+            "assisted": "OBSERVED"
+            if any(
+                session["connected"] and operation in session["operations"] for session in observed
+            )
+            else "UNKNOWN",
+        }
+        for operation in sorted(operations)
+    }
+    return {
+        "blender_mcp_cli": shutil.which("blender-mcp"),
+        "unity_mcp_cli": shutil.which("unity-mcp"),
+        "host_sessions": observed,
+        "offline_core": True,
+        "matrix": matrix,
+        "operational_probe": "NOT_RUN",
+        "execution_authority": "NONE",
+    }
+
+
 def hardware_fingerprint() -> dict[str, Any]:
     """Best-effort measurements; no GPU/performance result is inferred."""
     memory: int | None = None
@@ -150,12 +312,14 @@ def hardware_fingerprint() -> dict[str, Any]:
             memory = int(os.sysconf("SC_PHYS_PAGES") * os.sysconf("SC_PAGE_SIZE"))
         except (ValueError, OSError):
             pass
+    graphics = graphics_availability()
     return {
         "os": platform.platform(),
         "cpu": platform.processor() or "NOT_RUN",
         "logical_cpus": os.cpu_count(),
         "physical_memory_bytes": memory,
-        "gpu": "NOT_RUN",
+        "gpu": graphics["gpu"],
+        "graphics": graphics,
         "graphics_render_probe": "NOT_RUN",
         "python": sys.version,
     }
@@ -189,10 +353,13 @@ def probe_tool(
         r"Blender (5\.\d+\.\d+)" if name == "blender" else r"(6000\.\d+\.\d+[a-z]\d+)", text
     )
     success = outcome.reason == "exit" and outcome.returncode == 0 and match is not None
+    from polyforge.runner.workspace_lock import binary_identity
+
     return {
         "status": "PASS" if success else "FAIL",
         "path": str(executable),
         "version": match.group(1) if match else None,
+        "binary_identity": binary_identity(executable),
         "worker": asdict(outcome),
         "error_code": None if success else f"PF-{name.upper()}-VERSION-PROBE",
     }
@@ -204,12 +371,14 @@ def doctor(
     config_path: Path | None = None,
     project: Path | None = None,
     dry_run: bool = False,
+    mcp_sessions: list[dict[str, Any]] | None = None,
 ) -> Result:
     """Always save a valid precheck report, including missing-tool outcomes."""
     policy = WorkspacePolicy(root)
     if config_path is None and policy.path("polyforge.toml").is_file():
         config_path = policy.path("polyforge.toml")
     config = load_config(config_path)
+    integration_availability({}, sessions=mcp_sessions)  # Validate before any writes.
     readiness = inspect_project(project) if project else {"status": "NOT_RUN", "packages": {}}
     if dry_run:
         return Result(
@@ -274,12 +443,7 @@ def doctor(
             "workspace_writable": True,
             "engine_git_revision": git_revision,
             "license": {"status": "NOT_RUN", "reason": "Version output does not verify activation"},
-            "integrations": {
-                "blender_mcp_cli": shutil.which("blender-mcp"),
-                "unity_mcp_cli": shutil.which("unity-mcp"),
-                "host_sessions": "NOT_RUN",
-                "offline_core": True,
-            },
+            "integrations": integration_availability(tools, sessions=mcp_sessions),
             "execution_limits": {
                 "timeout_seconds": config.version_probe_timeout_seconds,
                 "max_output_bytes": config.max_output_bytes,

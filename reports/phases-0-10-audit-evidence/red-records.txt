@@ -1,0 +1,86 @@
+FFFFFFF                                                                  [100%]
+================================== FAILURES ===================================
+_________ test_registration_records_real_bytes_and_explicit_ownership _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_records_real0')
+
+    def test_registration_records_real_bytes_and_explicit_ownership(tmp_path):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:13: ModuleNotFoundError
+__ test_registration_rejects_forged_or_escaping_entries_without_writes[hash] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg0')
+damage = 'hash'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+__ test_registration_rejects_forged_or_escaping_entries_without_writes[size] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg1')
+damage = 'size'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+_ test_registration_rejects_forged_or_escaping_entries_without_writes[escape] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg2')
+damage = 'escape'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+_ test_registration_rejects_forged_or_escaping_entries_without_writes[missing] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg3')
+damage = 'missing'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+_ test_registration_rejects_forged_or_escaping_entries_without_writes[stage] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg4')
+damage = 'stage'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+__ test_registration_rejects_forged_or_escaping_entries_without_writes[run] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/red-records/test_registration_rejects_forg5')
+damage = 'run'
+
+    @pytest.mark.parametrize("damage", ["hash", "size", "escape", "missing", "stage", "run"])
+    def test_registration_rejects_forged_or_escaping_entries_without_writes(tmp_path, damage):
+>       from polyforge.runner.artifacts import complete_records
+E       ModuleNotFoundError: No module named 'polyforge.runner.artifacts'
+
+tests\test_audit_artifact_records.py:39: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_artifact_records.py::test_registration_records_real_bytes_and_explicit_ownership
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[hash]
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[size]
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[escape]
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[missing]
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[stage]
+FAILED tests/test_audit_artifact_records.py::test_registration_rejects_forged_or_escaping_entries_without_writes[run]
+7 failed in 0.39s

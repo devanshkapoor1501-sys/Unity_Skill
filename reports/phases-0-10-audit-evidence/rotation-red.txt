@@ -1,0 +1,18 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____________ test_scene_rotation_uses_the_native_angular_tolerance ____________
+
+    def test_scene_rotation_uses_the_native_angular_tolerance():
+        import math
+        request, report = complete_native()
+        report["scene_instances"][0]["rotation_xyzw"] = [0, .001, 0, math.sqrt(1 - .001**2)]
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:302: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_unity_gaps.py::test_scene_rotation_uses_the_native_angular_tolerance
+1 failed, 35 deselected in 0.40s

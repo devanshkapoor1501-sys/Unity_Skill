@@ -1,0 +1,58 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+______ test_both_empty_texture_slots_are_observed_and_missing_slots_fail ______
+
+    def test_both_empty_texture_slots_are_observed_and_missing_slots_fail():
+        request, report = complete_native()
+        report["objects"][0]["textures"] = []
+>       assert reconcile_report(request, report)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_audit_unity_gaps.py:261: AssertionError
+___ test_empty_texture_slot_observations_pass_without_undeclared_references ___
+
+    def test_empty_texture_slot_observations_pass_without_undeclared_references():
+        request, report = complete_native()
+        report["objects"][0]["textures"] = [
+            dict(material_id="blue", kind=role, path="", sha256="", srgb=False,
+                 texture_type="missing", material_texture_path="", has_texture=False,
+                 normal_keyword=False, convert_to_normal=False)
+            for role in ("base_color", "normal")
+        ]
+>       assert reconcile_report(request, report)["status"] == "PASS"
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_audit_unity_gaps.py:272: AssertionError
+_________ test_original_mutation_ids_remain_stable_and_obstacle_is_m7 _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/pytest-texture-slots-red/test_original_mutation_ids_rem0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B4767771D0>
+
+    def test_original_mutation_ids_remain_stable_and_obstacle_is_m7(tmp_path, monkeypatch):
+        from test_phase9_mutations import GAME, populated
+        from polyforge.unity.game import score_telemetry
+        policy = populated(tmp_path, monkeypatch)
+        results = score_telemetry(policy, "runs/probe", GAME)["scenarios"]
+        for identifier, mutation_id in {
+            "collision_disabled": "M1", "restart_disabled": "M2", "win_reversed": "M3",
+            "damage_no_health": "M4", "navigation_stuck": "M5", "input_disconnected": "M6",
+            "obstacle_collision_disabled": "M7",
+        }.items():
+>           assert results[identifier]["mutation_id"] == mutation_id
+E           AssertionError: assert 'M3' == 'M2'
+E             
+E             - M2
+E             + M3
+
+tests\test_audit_unity_gaps.py:290: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_unity_gaps.py::test_both_empty_texture_slots_are_observed_and_missing_slots_fail
+FAILED tests/test_audit_unity_gaps.py::test_empty_texture_slot_observations_pass_without_undeclared_references
+FAILED tests/test_audit_unity_gaps.py::test_original_mutation_ids_remain_stable_and_obstacle_is_m7
+3 failed, 36 deselected in 1.59s

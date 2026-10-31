@@ -1,0 +1,132 @@
+.....FF.....                                                             [100%]
+================================== FAILURES ===================================
+__________ test_plan_publishes_canonical_lock_without_running_tools ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-review-tmp/test_plan_publishes_canonical_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FCF0AA6B40>
+
+    def test_plan_publishes_canonical_lock_without_running_tools(tmp_path, monkeypatch):
+        arena(tmp_path)
+        doctor = importlib.import_module("polyforge.doctor")
+        monkeypatch.setattr(doctor, "discover_tool", lambda *args: None)
+        before = snapshot(tmp_path)
+        result = manifest_command(tmp_path / "game_manifest.json", "plan", dry_run=True)
+        assert "polyforge.lock.json" in result.data["planned_writes"]
+        assert snapshot(tmp_path) == before
+        manifest_command(tmp_path / "game_manifest.json", "plan")
+        lock = json.loads((tmp_path / "polyforge.lock.json").read_text())
+        assert lock["manifest_digest"] == load_manifest(tmp_path / "game_manifest.json").digest
+        assert lock["seed"] == 42
+        assert lock["tools"]["blender"]["version_status"] == "UNPROBED"
+        assert lock["packages"]["status"] == "UNPROBED"
+        assert len(lock["engine"]["source_sha256"]) == 64
+        assert lock["execution_authority"] == "NONE"
+        manifest_command(tmp_path / "game_manifest.json", "compile")
+>       manifest_command(tmp_path / "game_manifest.json", "plan")
+
+tests\test_audit_probe_lock.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\compiler\commands.py:183: in manifest_command
+    _preflight(model, named, path)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model = Manifest(data={'schema_version': '1.0.0', 'project': {'id': 'arena_demo', 'name': 'Isometric Robot Arena', 'kind': '3d...n-brief oracles.\n', brief_sha256='883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8', input_digests={})
+outputs = {'feature_contract.json': {'authority': 'DEVELOPMENT_ONLY', 'composition': {'authority': 'DEVELOPMENT_ONLY', 'connecti...quirements': ['movement', 'collision', 'enemy', 'damage', 'health', 'timer', ...], 'game_status': 'PARTIAL', ...}, ...}
+source = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-review-tmp/test_plan_publishes_canonical_0/game_manifest.json')
+
+    def _preflight(model: Manifest, outputs: dict[str, Any], source: Path) -> None:
+        """Reject collisions with immutable inputs before even taking a writing lock."""
+        policy = WorkspacePolicy(model.workspace)
+        inputs = [
+            source.absolute(),
+            *[policy.path(a["recipe"]) for a in model.data["assets"]],
+            *[policy.path(name) for name in model.input_digests],
+            policy.path("polyforge.toml"),
+            policy.path("doctor.json"),
+            policy.path("UnityProject/ProjectSettings/ProjectVersion.txt"),
+            policy.path("UnityProject/Packages/manifest.json"),
+            policy.path("UnityProject/Packages/packages-lock.json"),
+        ]
+        if model.brief is not None:
+            inputs.append(policy.path(model.data.get("intent", {}).get("brief_path", "brief.md")))
+        for name in [
+            *outputs,
+            ".polyforge/planning-state.json",
+            ".polyforge/brief-lock.json",
+            ".polyforge/original_prompt.txt",
+            ".polyforge/locks/planning.lock",
+        ]:
+            path = policy.path(name)
+            if any(
+                str(path).casefold() == str(value).casefold()
+                or (path.exists() and value.exists() and path.samefile(value))
+                for value in inputs
+            ):
+                raise InputError(f"$.outputs[{name}]: destination overlaps immutable input")
+            if path.exists() and not path.is_file():
+                raise InputError(f"$.outputs[{name}]: expected a file destination")
+            for parent in path.parents:
+                if parent == policy.root:
+                    break
+                if parent.exists() and not parent.is_dir():
+                    raise InputError(f"$.outputs[{name}]: destination parent must be a directory")
+            if name == "polyforge.lock.json" and path.is_file():
+                state_path = policy.path(".polyforge/planning-state.json")
+                state = load_json(state_path) if state_path.is_file() else {}
+                records = state.get("artifacts", []) if isinstance(state, dict) else []
+                digest = hashlib.sha256(path.read_bytes()).hexdigest()
+                if not isinstance(records, list) or not any(
+                    isinstance(record, dict)
+                    and record.get("relative_path") == name
+                    and record.get("sha256") == digest
+                    for record in records
+                ):
+>                   raise InputError("Existing workspace lock is not an unchanged owned artifact")
+E                   polyforge.contracts.validation.InputError: Existing workspace lock is not an unchanged owned artifact
+
+polyforge\compiler\commands.py:80: InputError
+______ test_lock_only_uses_version_report_for_matching_config_and_binary ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-red-review-tmp/test_lock_only_uses_version_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001FCF15C4B30>
+
+    def test_lock_only_uses_version_report_for_matching_config_and_binary(tmp_path, monkeypatch):
+        from polyforge.runner.workspace_lock import binary_identity, build_workspace_lock
+    
+        arena(tmp_path)
+        executable = tmp_path / "blender.exe"
+        executable.write_bytes(b"fixture binary; never executed")
+        doctor = importlib.import_module("polyforge.doctor")
+        monkeypatch.setattr(doctor, "discover_tool", lambda name, override: executable)
+        config = load_config()
+        report = {"data": {"config_digest": canonical_digest(asdict(config)), "tools": {
+            "blender": {"status": "PASS", "path": str(executable), "version": "5.0.0",
+                        "binary_identity": binary_identity(executable)}}}}
+        (tmp_path / "doctor.json").write_text(json.dumps(report))
+        before = snapshot(tmp_path)
+        model = load_manifest(tmp_path / "game_manifest.json")
+        lock = build_workspace_lock(model)
+        assert lock["tools"]["blender"]["version"] == "5.0.0"
+        assert lock["tools"]["blender"]["version_status"] == "OBSERVED_REPORT"
+        assert lock["tools"]["unity"]["version_status"] == "UNPROBED"
+        assert snapshot(tmp_path) == before
+        executable.write_bytes(b"changed binary")
+        assert build_workspace_lock(model)["tools"]["blender"]["version_status"] == "UNPROBED"
+        report["data"]["config_digest"] = "0" * 64
+        (tmp_path / "doctor.json").write_text(json.dumps(report))
+        assert build_workspace_lock(model)["tools"]["blender"]["version"] is None
+        report["data"]["config_digest"] = canonical_digest(asdict(config))
+        report["data"]["tools"]["blender"]["binary_identity"] = binary_identity(executable)
+        report["data"]["tools"]["blender"]["version"] = "arbitrary secret data"
+        (tmp_path / "doctor.json").write_text(json.dumps(report))
+>       assert build_workspace_lock(model)["tools"]["blender"]["version_status"] == "UNPROBED"
+E       AssertionError: assert 'OBSERVED_REPORT' == 'UNPROBED'
+E         
+E         - UNPROBED
+E         + OBSERVED_REPORT
+
+tests\test_audit_probe_lock.py:141: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_probe_lock.py::test_plan_publishes_canonical_lock_without_running_tools
+FAILED tests/test_audit_probe_lock.py::test_lock_only_uses_version_report_for_matching_config_and_binary
+2 failed, 10 passed in 5.94s

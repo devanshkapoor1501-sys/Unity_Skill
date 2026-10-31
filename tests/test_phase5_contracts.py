@@ -161,6 +161,27 @@ def test_observed_report_rejects_stale_identity_missing_guid_and_socket_position
             }
         ],
     }
+    request["scene_bounds_m"] = [20, 5, 20]
+    request["assets"][0]["collider"] = "none"
+    raw["objects"][0].update(collider="none", colliders=[])
+    raw.update(
+        camera_count=2,
+        light_count=2,
+        scene_instances=[
+            {
+                "scene": scene,
+                "id": "asset:robot",
+                "asset_id": "robot",
+                "prefab_guid": "b" * 32,
+                "source_guid": "a" * 32,
+                "position_m": [0, 0, 0],
+                "scale": [1, 1, 1],
+                "rotation_xyzw": [0, 0, 0, 1],
+            }
+            for scene in ("Arena", "Training")
+        ],
+    )
+    raw["objects"][0]["textures"] = empty_texture_slots("blue")
     assert reconcile_report(request, raw)["status"] == "PASS"
     for mutate in [
         lambda x: x.update(input_digest="0" * 64),
@@ -471,6 +492,41 @@ def native_contract_fixture():
             }
         ],
     }
+    request["scene_bounds_m"] = [20, 5, 20]
+    request["assets"][0]["collider"] = "box"
+    request["actors"] = [{"id": "enemy", "asset_id": "robot", "spawn_xyz": [3, 0, 2]}]
+    raw["objects"][0].update(
+        collider="box",
+        colliders=[
+            {
+                "kind": "BoxCollider",
+                "path": "",
+                "enabled": True,
+                "is_trigger": False,
+                "center_m": [0, 1, 0],
+                "size_m": [1, 2, 3],
+            }
+        ],
+    )
+    raw.update(
+        camera_count=2,
+        light_count=2,
+        scene_instances=[
+            {
+                "scene": scene,
+                "id": identifier,
+                "asset_id": "robot",
+                "prefab_guid": "b" * 32,
+                "source_guid": "a" * 32,
+                "position_m": pose,
+                "scale": [1, 1, 1],
+                "rotation_xyzw": [0, 0, 0, 1],
+            }
+            for scene in ("Arena", "Training")
+            for identifier, pose in (("asset:robot", [0, 0, 0]), ("actor:enemy", [3, 0, 2]))
+        ],
+    )
+    raw["objects"][0]["textures"] = empty_texture_slots("blue")
     return request, raw
 
 
@@ -633,3 +689,21 @@ def test_unapproved_s4_remains_model_free_on_hosts_without_unity(tmp_path: Path,
     init_workspace(root, "simple_arena")
     monkeypatch.setattr(bridge, "discover_tool", lambda *args: None)
     assert build_assets(root, through="S4").exit_code == 4
+
+
+def empty_texture_slots(material):
+    return [
+        dict(
+            material_id=material,
+            kind=role,
+            path="",
+            sha256="",
+            srgb=False,
+            texture_type="missing",
+            material_texture_path="",
+            has_texture=False,
+            normal_keyword=False,
+            convert_to_normal=False,
+        )
+        for role in ("base_color", "normal")
+    ]

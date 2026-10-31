@@ -39,6 +39,13 @@ namespace PolyForge.Game.Editor.Tests
             }
             foreach(var name in new[]{"WallNorth","WallSouth","WallEast","WallWest"})
                 Assert.That(GameObject.Find(name).GetComponent<BoxCollider>().enabled,Is.True);
+            Assert.That(job.obstacle_ids,Is.Not.Empty,"Frozen brief requires crate obstacles");
+            for(int i=0;i<job.obstacle_ids.Length;i++)
+            {
+                var obstacle=GameObject.Find("Obstacle_"+i);Assert.That(obstacle,Is.Not.Null);
+                Assert.That(obstacle.GetComponent<PrefabBinding>().semanticId,Is.EqualTo(job.obstacle_ids[i]));
+                Assert.That(obstacle.GetComponentsInChildren<Collider>().Any(c=>c.enabled&&!c.isTrigger),Is.True);
+            }
             Assert.That(UnityEngine.Object.FindFirstObjectByType<ArenaHud>().session,Is.EqualTo(session));
             Assert.That(Camera.main,Is.Not.Null);
             Assert.That(scene.IsValid(),Is.True);

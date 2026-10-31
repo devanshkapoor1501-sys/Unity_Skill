@@ -1,0 +1,73 @@
+......F.....                                                             [100%]
+================================== FAILURES ===================================
+______ test_lock_only_uses_version_report_for_matching_config_and_binary ______
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-final-tmp/test_lock_only_uses_version_re0/polyforge.toml')
+
+    def load_config(path: Path | None = None) -> Config:
+        """Reject unknown/type-invalid settings before any writes or tool launch."""
+        if path is None:
+            return Config()
+        try:
+>           with path.open("rb") as stream:
+                 ^^^^^^^^^^^^^^^
+
+polyforge\config.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-final-tmp/test_lock_only_uses_version_re0/polyforge.toml')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\probe-lock-final-tmp\\test_lock_only_uses_version_re0\\polyforge.toml'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-final-tmp/test_lock_only_uses_version_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000028755F0ECF0>
+
+    def test_lock_only_uses_version_report_for_matching_config_and_binary(tmp_path, monkeypatch):
+        from polyforge.runner.workspace_lock import binary_identity, build_workspace_lock
+    
+        arena(tmp_path)
+        executable = tmp_path / "blender.exe"
+        executable.write_bytes(b"fixture binary; never executed")
+        doctor = importlib.import_module("polyforge.doctor")
+        monkeypatch.setattr(doctor, "discover_tool", lambda name, override: executable)
+>       config = load_config(tmp_path / "polyforge.toml")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_audit_probe_lock.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/audit-through-phase10/probe-lock-final-tmp/test_lock_only_uses_version_re0/polyforge.toml')
+
+    def load_config(path: Path | None = None) -> Config:
+        """Reject unknown/type-invalid settings before any writes or tool launch."""
+        if path is None:
+            return Config()
+        try:
+            with path.open("rb") as stream:
+                content = stream.read(65537)
+            if len(content) > 65536:
+                raise InputError("Configuration exceeds 64 KiB")
+            data = tomllib.loads(content.decode("utf-8"))
+        except (OSError, ValueError, RecursionError) as exc:
+>           raise InputError(f"Cannot load configuration: {exc}", code="PF-INPUT-CONFIG") from exc
+E           polyforge.contracts.validation.InputError: Cannot load configuration: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\audit-through-phase10\\probe-lock-final-tmp\\test_lock_only_uses_version_re0\\polyforge.toml'
+
+polyforge\config.py:66: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_probe_lock.py::test_lock_only_uses_version_report_for_matching_config_and_binary
+1 failed, 11 passed in 5.57s

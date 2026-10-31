@@ -1,0 +1,40 @@
+E501 Line too long (102 > 100)
+   --> tests\test_audit_artifact_records.py:103:101
+    |
+103 | @pytest.mark.parametrize("existing,checkpoint", [(False, "commit"), (True, "commit"), (True, "lock")])
+    |                                                                                                     ^^
+104 | def test_interrupted_planning_publication_retains_exact_lock_ownership(tmp_path, monkeypatch, existing, checkpoint):
+105 |     import importlib
+    |
+
+E501 Line too long (116 > 100)
+   --> tests\test_audit_artifact_records.py:104:101
+    |
+103 | @pytest.mark.parametrize("existing,checkpoint", [(False, "commit"), (True, "commit"), (True, "lock")])
+104 | def test_interrupted_planning_publication_retains_exact_lock_ownership(tmp_path, monkeypatch, existing, checkpoint):
+    |                                                                                                     ^^^^^^^^^^^^^^^^
+105 |     import importlib
+    |
+
+E501 Line too long (102 > 100)
+   --> tests\test_audit_artifact_records.py:112:101
+    |
+111 |     arena(tmp_path)
+112 |     monkeypatch.setattr(importlib.import_module("polyforge.doctor"), "discover_tool", lambda *a: None)
+    |                                                                                                     ^^
+113 |     manifest = tmp_path / "game_manifest.json"
+114 |     if existing:
+    |
+
+E501 Line too long (125 > 100)
+   --> tests\test_audit_artifact_records.py:123:101
+    |
+121 |     def interrupt(policy, relative, value):
+122 |         if (checkpoint == "commit" and str(relative) == ".polyforge/planning-state.json"
+123 |                 and value.get("status") == "COMMITTED") or (checkpoint == "lock" and str(relative) == "polyforge.lock.json"):
+    |                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+124 |             raise OSError("injected publication interruption")
+125 |         return original(policy, relative, value)
+    |
+
+Found 5 errors (1 fixed, 4 remaining).

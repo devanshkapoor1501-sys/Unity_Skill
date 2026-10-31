@@ -1,0 +1,265 @@
+{
+  "authority_sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
+  "indexes": [
+    {
+      "index": "reports/phase-10-completion-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 73,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-10-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 154,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-3-evidence/golden/index.json",
+      "format": "OTHER",
+      "checked": 0
+    },
+    {
+      "index": "reports/phase-4-evidence/golden/index.json",
+      "format": "OTHER",
+      "checked": 0
+    },
+    {
+      "index": "reports/phase-5-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 581,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-6-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 208,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-7-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 265,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-8-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 790,
+      "failures": []
+    },
+    {
+      "index": "reports/phase-9-evidence/index.json",
+      "format": "SHA256_FILES",
+      "checked": 1435,
+      "failures": []
+    }
+  ],
+  "commands": [
+    {
+      "command": "knowledge availability",
+      "phase": 10,
+      "implemented": true
+    },
+    {
+      "command": "knowledge list",
+      "phase": 10,
+      "implemented": true
+    },
+    {
+      "command": "knowledge route",
+      "phase": 10,
+      "implemented": true
+    },
+    {
+      "command": "knowledge probe",
+      "phase": 10,
+      "implemented": true
+    },
+    {
+      "command": "review sprite-source",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "review amend",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "repair inspect",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "repair propose",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "review board",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "review human",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "workforce roles",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "workforce plan",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "workforce run",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "workforce status",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "workforce review",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "workforce cancel",
+      "phase": 7,
+      "implemented": true
+    },
+    {
+      "command": "doctor",
+      "phase": 1,
+      "implemented": true
+    },
+    {
+      "command": "init",
+      "phase": 1,
+      "implemented": true
+    },
+    {
+      "command": "validate",
+      "phase": 2,
+      "implemented": true
+    },
+    {
+      "command": "plan",
+      "phase": 2,
+      "implemented": true
+    },
+    {
+      "command": "build",
+      "phase": 3,
+      "implemented": true
+    },
+    {
+      "command": "audit",
+      "phase": 4,
+      "implemented": true
+    },
+    {
+      "command": "verify",
+      "phase": 6,
+      "implemented": true
+    },
+    {
+      "command": "status",
+      "phase": 1,
+      "implemented": true
+    },
+    {
+      "command": "resume",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "report",
+      "phase": 1,
+      "implemented": true
+    },
+    {
+      "command": "clean",
+      "phase": 11,
+      "implemented": false
+    },
+    {
+      "command": "capability list",
+      "phase": 0,
+      "implemented": true
+    },
+    {
+      "command": "capability show",
+      "phase": 0,
+      "implemented": true
+    },
+    {
+      "command": "capability run",
+      "phase": 0,
+      "implemented": true
+    },
+    {
+      "command": "compile-contract",
+      "phase": 2,
+      "implemented": true
+    },
+    {
+      "command": "reconcile",
+      "phase": 5,
+      "implemented": true
+    },
+    {
+      "command": "scenario run",
+      "phase": 6,
+      "implemented": true
+    },
+    {
+      "command": "diagnose",
+      "phase": 5,
+      "implemented": true
+    },
+    {
+      "command": "repair plan",
+      "phase": 5,
+      "implemented": true
+    },
+    {
+      "command": "repair apply",
+      "phase": 5,
+      "implemented": true
+    },
+    {
+      "command": "repair rollback",
+      "phase": 9,
+      "implemented": true
+    },
+    {
+      "command": "benchmark run",
+      "phase": 6,
+      "implemented": false
+    },
+    {
+      "command": "benchmark report",
+      "phase": 6,
+      "implemented": false
+    },
+    {
+      "command": "inspect-project",
+      "phase": 11,
+      "implemented": false
+    },
+    {
+      "command": "mcp serve",
+      "phase": 10,
+      "implemented": true
+    }
+  ],
+  "caveat": "Integrity only; semantic requirements reviewed independently"
+}

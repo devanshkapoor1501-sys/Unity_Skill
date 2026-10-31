@@ -1,0 +1,8 @@
+InputError Unity tests failed: exit, exit 2; see runs/texture-injection-diagnostic/stdout.txt
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\audit-through-phase10\diagnose-texture.py", line 13, in <module>
+    value = launch(policy, unity_tool(config), config, 'runs/texture-injection-diagnostic', 'tests', request=request, output=policy.path('runs/texture-injection-diagnostic/tests.xml'))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\bridge.py", line 183, in launch
+    raise InputError(
+polyforge.contracts.validation.InputError: Unity tests failed: exit, exit 2; see runs/texture-injection-diagnostic/stdout.txt

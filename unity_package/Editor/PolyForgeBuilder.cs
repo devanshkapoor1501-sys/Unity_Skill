@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 
 namespace PolyForge.Editor
 {
-    [Serializable] public class MaterialSpec { public string id; public float[] base_color_rgba; public float metallic; public float roughness; }
+    [Serializable] public class TextureSpec { public string kind; public string path; public string color_space; public string sha256; public string source_path; }
+    [Serializable] public class MaterialSpec { public string id; public float[] base_color_rgba; public float metallic; public float roughness; public TextureSpec[] textures; }
+    [Serializable] public class TextureObserved { public string material_id; public string kind; public string path; public string sha256; public bool srgb; public string texture_type; public string material_texture_path; public bool normal_keyword; public bool convert_to_normal; public bool has_texture; }
     [Serializable] public class ModuleSpec { public string id; public string name; public string[] material_ids; }
     [Serializable] public class SocketSpec { public string id; public string name; public float[] position_m; }
     [Serializable] public class AssetSpec
@@ -26,8 +28,8 @@ namespace PolyForge.Editor
     }
     [Serializable] public class Issue { public string category; public string asset_id; public string expected; public string actual; }
     [Serializable] public class SocketObserved { public string id; public float[] position_m; }
-    [Serializable] public class NodeBinding { public string id; public string kind; public string path; public string guid; public long local_id; public string component; }
-    [Serializable] public class ColliderObserved { public string kind; public string path; public bool enabled; public bool is_trigger; public float[] center_m; public float[] size_m; public string mesh_guid; public long mesh_local_id; }
+    [Serializable] public class NodeBinding { public string id; public string kind; public string path; public string guid; public long local_id; public string component; public string mesh_guid; public long mesh_local_id; }
+    [Serializable] public class ColliderObserved { public string kind; public string path; public bool enabled; public bool is_trigger; public float[] center_m; public float[] size_m; public string mesh_guid; public long mesh_local_id; public int direction; public bool convex; }
     [Serializable] public class SceneInstance { public string scene; public string id; public string asset_id; public string prefab_guid; public string source_guid; public float[] position_m; public float[] scale; public float[] rotation_xyzw; }
     [Serializable] public class Observed
     {
@@ -36,6 +38,7 @@ namespace PolyForge.Editor
         public string[] material_ids; public int transform_count; public string collider;
         public NodeBinding[] nodes;
         public ColliderObserved[] colliders;
+        public TextureObserved[] textures;
     }
     [Serializable] public class BindingReport
     {
@@ -51,6 +54,22 @@ namespace PolyForge.Editor
         public const string Generated = "Assets/PolyForgeGenerated";
         public static string PrefabPath(string id) => Generated + "/Prefabs/" + id + ".prefab";
         public static string MaterialPath(string id, string material) => Generated + "/Materials/" + id + "/" + material + ".mat";
+        static string Hash(string path)
+        {
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+                return BitConverter.ToString(sha.ComputeHash(File.ReadAllBytes(path))).Replace("-", "").ToLowerInvariant();
+        }
+        static void ValidateTexture(string asset, string material, TextureSpec texture)
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(asset, @"^[a-zA-Z0-9_-]{1,64}$") ||
+                !System.Text.RegularExpressions.Regex.IsMatch(material, @"^[a-zA-Z0-9_-]{1,64}$") ||
+                (texture.kind != "base_color" && texture.kind != "normal") ||
+                texture.path != Generated + "/Textures/" + asset + "/" + material + "/" + texture.kind + ".png" ||
+                texture.color_space != (texture.kind == "base_color" ? "srgb" : "linear") ||
+                !System.Text.RegularExpressions.Regex.IsMatch(texture.sha256 ?? "", "^[a-f0-9]{64}$") ||
+                Hash(texture.path) != texture.sha256)
+                throw new ArgumentException("Invalid supplied texture path/role/frozen bytes");
+        }
         public static string Argument(string key)
         {
             var args = Environment.GetCommandLineArgs();
@@ -120,6 +139,22 @@ namespace PolyForge.Editor
                     var c = spec.base_color_rgba;
                     m.SetColor("_BaseColor", new Color(c[0], c[1], c[2], c[3]));
                     m.SetFloat("_Metallic", spec.metallic); m.SetFloat("_Smoothness", 1 - spec.roughness);
+                    m.SetTexture("_BaseMap", null); m.SetTexture("_BumpMap", null); m.DisableKeyword("_NORMALMAP");
+                    foreach (var texture in spec.textures ?? Array.Empty<TextureSpec>())
+                    {
+                        ValidateTexture(a.id, spec.id, texture);
+                        var ti = AssetImporter.GetAtPath(texture.path) as TextureImporter;
+                        if (ti == null) throw new Exception("Missing supplied texture importer");
+                        // https://docs.unity3d.com/6000.6/Documentation/ScriptReference/TextureImporter-sRGBTexture.html
+                        // https://docs.unity3d.com/6000.6/Documentation/ScriptReference/TextureImporter-textureType.html
+                        ti.textureType = texture.kind == "normal" ? TextureImporterType.NormalMap : TextureImporterType.Default;
+                        ti.sRGBTexture = texture.kind == "base_color"; ti.convertToNormalmap = false;
+                        ti.SaveAndReimport();
+                        var image = AssetDatabase.LoadAssetAtPath<Texture2D>(texture.path);
+                        if (image == null) throw new Exception("Supplied texture failed native import");
+                        m.SetTexture(texture.kind == "normal" ? "_BumpMap" : "_BaseMap", image);
+                        if (texture.kind == "normal") m.EnableKeyword("_NORMALMAP");
+                    }
                     EditorUtility.SetDirty(m); materials.Add(spec.id, m);
                 }
                 var root = new GameObject(a.id);
@@ -233,7 +268,11 @@ namespace PolyForge.Editor
                         var source = PrefabUtility.GetCorrespondingObjectFromSource(t);
                         AssetDatabase.TryGetGUIDAndLocalFileIdentifier(source, out string nodeGuid, out long localId);
                         if (string.IsNullOrEmpty(nodeGuid) || localId == 0) Fail("binding", a.id, id, "missing local file ID");
-                        nodes.Add(new NodeBinding {id=id, kind=kind, path=AnimationUtility.CalculateTransformPath(t, instance.transform), guid=nodeGuid, local_id=localId, component=component});
+                        var node = new NodeBinding {id=id, kind=kind, path=AnimationUtility.CalculateTransformPath(t, instance.transform), guid=nodeGuid, local_id=localId, component=component};
+                        var filter = t.GetComponent<MeshFilter>();
+                        if (filter != null && filter.sharedMesh != null)
+                            AssetDatabase.TryGetGUIDAndLocalFileIdentifier(filter.sharedMesh, out node.mesh_guid, out node.mesh_local_id);
+                        nodes.Add(node);
                     }
                     foreach (var socket in a.sockets)
                     {
@@ -253,6 +292,7 @@ namespace PolyForge.Editor
                         if (expected.Any(x => x == null) || !r.sharedMaterials.SequenceEqual(expected)) Fail("material", a.id, m.name, "lost material reference");
                         Bind(t, m.id, "module", "MeshRenderer");
                     }
+                    var textures = new List<TextureObserved>();
                     foreach (var spec in a.materials)
                     {
                         var m = AssetDatabase.LoadAssetAtPath<Material>(MaterialPath(a.id, spec.id));
@@ -262,6 +302,31 @@ namespace PolyForge.Editor
                             Math.Abs(m.GetFloat("_Metallic") - spec.metallic) > .0001f ||
                             Math.Abs(m.GetFloat("_Smoothness") - (1-spec.roughness)) > .0001f)
                             Fail("material", a.id, spec.id, "changed material parameters");
+                        var supplied = spec.textures ?? Array.Empty<TextureSpec>();
+                        bool expectedNormal = supplied.Any(x => x.kind == "normal");
+                        foreach (var role in new[]{"base_color", "normal"})
+                        {
+                            var texture = supplied.SingleOrDefault(x => x.kind == role);
+                            string path = texture == null ? "" : texture.path;
+                            var ti = string.IsNullOrEmpty(path) ? null : AssetImporter.GetAtPath(path) as TextureImporter;
+                            var bound = m.GetTexture(role == "normal" ? "_BumpMap" : "_BaseMap");
+                            var observedTexture = new TextureObserved {material_id=spec.id,kind=role,path=path,
+                                sha256=File.Exists(path)?Hash(path):"",srgb=ti!=null&&ti.sRGBTexture,
+                                texture_type=ti==null?"missing":ti.textureType.ToString(),material_texture_path=AssetDatabase.GetAssetPath(bound),
+                                normal_keyword=m.IsKeywordEnabled("_NORMALMAP"),convert_to_normal=ti!=null&&ti.convertToNormalmap,has_texture=bound!=null};
+                            textures.Add(observedTexture);
+                            if (observedTexture.normal_keyword != expectedNormal)
+                                Fail("texture",a.id,spec.id+":"+role,"normal keyword differs from declared intent");
+                            if (texture == null)
+                            {
+                                if (bound != null) Fail("texture",a.id,spec.id+":"+role,"undeclared texture reference");
+                            }
+                            else if (observedTexture.sha256 != texture.sha256 || ti == null || bound == null ||
+                                ti.sRGBTexture != (role == "base_color") || ti.convertToNormalmap ||
+                                ti.textureType != (role == "normal" ? TextureImporterType.NormalMap : TextureImporterType.Default) ||
+                                observedTexture.material_texture_path != texture.path)
+                                Fail("texture",a.id,spec.id+":"+role,"changed bytes/import settings/material reference");
+                        }
                     }
                     var binding = instance.GetComponent<PrefabBinding>();
                     if (binding == null || binding.semanticId != a.id || binding.sourceModel != AssetDatabase.LoadAssetAtPath<GameObject>(a.fbx_path)) Fail("component", a.id, "PrefabBinding with source reference", "missing/mismatched");
@@ -283,10 +348,12 @@ namespace PolyForge.Editor
                         {
                             var radius=Mathf.Max(a.bounds_m[0],a.bounds_m[2])/2; var height=Mathf.Max(a.bounds_m[1],radius*2);
                             detail.center_m=A(capsule.center); detail.size_m=new[]{capsule.radius*2,capsule.height,capsule.radius*2};
+                            detail.direction=capsule.direction;
                             if (capsule.gameObject != instance || capsule.direction != 1 || !Near(capsule.center,expectedCenter) || Math.Abs(capsule.radius-radius)>.002 || Math.Abs(capsule.height-height)>.002) Fail("collider",a.id,"fitted Y capsule","incorrect capsule geometry");
                         }
                         else if (collider is MeshCollider mesh)
                         {
+                            detail.convex=mesh.convex;
                             var filter=mesh.GetComponent<MeshFilter>();
                             if (mesh.sharedMesh == null || filter == null || mesh.sharedMesh != filter.sharedMesh) Fail("collider",a.id,"matching mesh reference","missing/wrong mesh");
                             else AssetDatabase.TryGetGUIDAndLocalFileIdentifier(mesh.sharedMesh,out detail.mesh_guid,out detail.mesh_local_id);
@@ -295,7 +362,7 @@ namespace PolyForge.Editor
                     }
                     if (a.collider == "mesh" && colliders.Length != instance.GetComponentsInChildren<MeshFilter>(true).Length) Fail("collider",a.id,"one collider per mesh","incomplete mesh coverage");
                     objects.Add(new Observed {id=a.id, guid=guid, prefab_guid=AssetDatabase.AssetPathToGUID(PrefabPath(a.id)), prefab_id=PrefabPath(a.id), bounds_m=actual,
-                        socket_ids=sockets.Select(x=>x.id).ToArray(), sockets=sockets.ToArray(), nodes=nodes.ToArray(), colliders=details.ToArray(), material_ids=a.materials.Select(x=>x.id).ToArray(), transform_count=transforms.Length, collider=observedKind});
+                        socket_ids=sockets.Select(x=>x.id).ToArray(), sockets=sockets.ToArray(), nodes=nodes.ToArray(), colliders=details.ToArray(), textures=textures.ToArray(), material_ids=a.materials.Select(x=>x.id).ToArray(), transform_count=transforms.Length, collider=observedKind});
                 }
                 finally { UnityEngine.Object.DestroyImmediate(instance); }
             }

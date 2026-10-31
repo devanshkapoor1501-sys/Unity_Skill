@@ -10,13 +10,22 @@ from polyforge.security.paths import WorkspacePolicy
 
 MUTANTS = {
     "collision_disabled": "wall_collision",
+    "obstacle_collision_disabled": "obstacle_collision",
     "restart_disabled": "restart_resets",
     "win_reversed": "survival_win",
     "damage_no_health": "contact_damage",
     "navigation_stuck": "enemy_patrols",
     "input_disconnected": "player_moves",
 }
-GAME = {"input_digest": "a" * 64, "scene_id": "main", "seed": 42, "enemies": [{"id": "enemy"}]}
+GAME = {
+    "input_digest": "a" * 64,
+    "scene_id": "main",
+    "seed": 42,
+    "enemies": [{"id": "enemy"}],
+    "obstacles": [
+        {"id": "Obstacle_0", "asset_id": "crate", "center_m": [0, 0.5, 0], "size_m": [1, 1, 1]}
+    ],
+}
 
 
 def trace(scenario, mutant=None):
@@ -56,6 +65,15 @@ def trace(scenario, mutant=None):
     if scenario == "wall_collision":
         first["player_position"] = [-7, 0, 0]
         last["player_position"] = [-9.1, 0, 0]
+    elif scenario == "obstacle_collision":
+        value.update(
+            obstacle_id="Obstacle_0",
+            obstacle_asset_id="crate",
+            obstacle_center_m=[0, 0.5, 0],
+            obstacle_size_m=[1, 1, 1],
+        )
+        first["player_position"] = [-2.85, 0, 0]
+        last["player_position"] = [-0.88, 0, 0]
     elif scenario == "enemy_patrols":
         last["enemy_positions"][0]["position"] = [5, 0, 3]
     elif scenario == "contact_damage":
@@ -70,6 +88,8 @@ def trace(scenario, mutant=None):
         last.update(round=2, elapsed_seconds=0, player_position=[-3, 0, -3])
     if mutant == "collision_disabled":
         last["player_position"] = [-20, 0, 0]
+    elif mutant == "obstacle_collision_disabled":
+        last["player_position"] = [4, 0, 0]
     elif mutant == "restart_disabled":
         last.update(round=1, elapsed_seconds=2, health=0, state="FAILED")
     elif mutant == "win_reversed":
@@ -83,7 +103,7 @@ def trace(scenario, mutant=None):
     return value
 
 
-def test_all_six_mutations_have_explicit_independent_scenarios():
+def test_all_seven_mutations_have_explicit_independent_scenarios():
     from polyforge.scenarios.arena_oracle import MUTANT_SCENARIOS, evaluate, validate_trace
 
     assert MUTANT_SCENARIOS == MUTANTS
@@ -124,7 +144,9 @@ def populated(tmp_path, monkeypatch):
     return p
 
 
-def test_score_counts_all_six_actual_failures_and_rejects_a_surviving_mutant(tmp_path, monkeypatch):
+def test_score_counts_all_seven_actual_failures_and_rejects_a_surviving_mutant(
+    tmp_path, monkeypatch
+):
     from polyforge.unity.game import score_telemetry
 
     p = populated(tmp_path, monkeypatch)

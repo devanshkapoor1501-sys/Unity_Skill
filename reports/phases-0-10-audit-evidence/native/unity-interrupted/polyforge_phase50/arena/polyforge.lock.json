@@ -1,0 +1,519 @@
+{
+  "schema_version": "1.0.0",
+  "owner": "polyforge.workspace_lock.v1",
+  "project_id": "arena_demo",
+  "manifest_digest": "112973258831edef1cc821fe95549336b8505efb8250167289747686dcaaab80",
+  "input_digest": "8ab363933014725a2760898c4fdef256e98000d46235b3bfcf23b0370e196c13",
+  "inputs": {
+    "manifest": "112973258831edef1cc821fe95549336b8505efb8250167289747686dcaaab80",
+    "recipes": {
+      "ground_a": "a204409aca0a3c5782badc5e0fb7d700a6f2126c68373c783349798d5af880ff",
+      "crate_a": "6912da1482542634d28195b6d669e13a106a7fe9d751b458afd645e7c5c6d12d",
+      "robot_a": "dc8413a7d0583bc548541ff7f1878c27084f7d35d74b9241880156a62653e090"
+    },
+    "files": {},
+    "original_brief": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "seed": 42,
+  "config_digest": "ce3b8f8195d17728bf4188d61fa0a9d339769373e6a60587d7ea3b6846bd96d6",
+  "engine": {
+    "version": "0.0.1",
+    "python_version": "3.12.14",
+    "source_component": "polyforge/__init__.py",
+    "source_sha256": "7b921766cd14af8c6cd655e43bbe9600bb679da282f7ac919f98a1180f858d73"
+  },
+  "tools": {
+    "blender": {
+      "path": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\blender.exe",
+      "binary_identity": {
+        "status": "OBSERVED",
+        "sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+        "bytes": 113022936
+      },
+      "version": null,
+      "version_status": "UNPROBED",
+      "version_evidence": null
+    },
+    "unity": {
+      "path": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Unity.exe",
+      "binary_identity": {
+        "status": "OBSERVED",
+        "sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+        "bytes": 279984
+      },
+      "version": null,
+      "version_status": "UNPROBED",
+      "version_evidence": null
+    }
+  },
+  "unity_project": {
+    "status": "PASS",
+    "packages": {
+      "com.unity.ai.navigation": "2.0.12",
+      "com.unity.collab-proxy": "2.12.4",
+      "com.unity.ide.rider": "3.0.38",
+      "com.unity.ide.visualstudio": "2.0.26",
+      "com.unity.inputsystem": "1.19.0",
+      "com.unity.render-pipelines.universal": "17.6.0",
+      "com.unity.test-framework": "1.8.0",
+      "com.unity.timeline": "6.6.0",
+      "com.unity.ugui": "2.6.0",
+      "com.unity.visualscripting": "1.9.11",
+      "com.polyforge.engine": "file:com.polyforge.engine"
+    },
+    "version": "6000.6.3f1",
+    "inspection_mode": "STATIC",
+    "error_code": null
+  },
+  "packages": {
+    "status": "OBSERVED",
+    "packages": {
+      "com.polyforge.engine": {
+        "requested": null,
+        "resolved": null,
+        "cached": [
+          "0.0.1"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.2d.sprite": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.ai.navigation": {
+        "requested": "2.0.12",
+        "resolved": "2.0.12",
+        "cached": [
+          "2.0.12"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.burst": {
+        "requested": null,
+        "resolved": "2.0.0",
+        "cached": [
+          "2.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.collab-proxy": {
+        "requested": "2.12.4",
+        "resolved": "2.12.4",
+        "cached": [
+          "2.12.4"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.collections": {
+        "requested": null,
+        "resolved": "6.6.0",
+        "cached": [
+          "6.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.ext.nunit": {
+        "requested": null,
+        "resolved": "2.1.0",
+        "cached": [
+          "2.1.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.graph-authoring": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.ide.rider": {
+        "requested": "3.0.38",
+        "resolved": "3.0.38",
+        "cached": [
+          "3.0.38"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.ide.visualstudio": {
+        "requested": "2.0.26",
+        "resolved": "2.0.26",
+        "cached": [
+          "2.0.26"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.inputsystem": {
+        "requested": "1.19.0",
+        "resolved": "1.19.0",
+        "cached": [
+          "1.19.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.ai": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.animation": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.audio": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.director": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.hierarchycore": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.imgui": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.jsonserialize": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.particlesystem": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.physics": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.physics2d": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.physicscore2d": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.ui": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.modules.uielements": {
+        "requested": null,
+        "resolved": "1.0.0",
+        "cached": [
+          "1.0.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.nuget.mono-cecil": {
+        "requested": null,
+        "resolved": "1.11.6",
+        "cached": [
+          "1.11.6"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.profiling.core": {
+        "requested": null,
+        "resolved": "1.0.3",
+        "cached": [
+          "1.0.3"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.render-pipelines.core": {
+        "requested": null,
+        "resolved": "17.6.0",
+        "cached": [
+          "17.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.render-pipelines.universal": {
+        "requested": "17.6.0",
+        "resolved": "17.6.0",
+        "cached": [
+          "17.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.render-pipelines.universal-config": {
+        "requested": null,
+        "resolved": "17.6.0",
+        "cached": [
+          "17.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.searcher": {
+        "requested": null,
+        "resolved": "4.9.5",
+        "cached": [
+          "4.9.5"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.shadergraph": {
+        "requested": null,
+        "resolved": "17.6.0",
+        "cached": [
+          "17.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.test-framework": {
+        "requested": "1.8.0",
+        "resolved": "1.8.0",
+        "cached": [
+          "1.8.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.test-framework.performance": {
+        "requested": null,
+        "resolved": "6.6.0",
+        "cached": [
+          "6.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.timeline": {
+        "requested": "6.6.0",
+        "resolved": "6.6.0",
+        "cached": [
+          "6.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.ugui": {
+        "requested": "2.6.0",
+        "resolved": "2.6.0",
+        "cached": [
+          "2.6.0"
+        ],
+        "status": "CACHE_OBSERVED"
+      },
+      "com.unity.visualscripting": {
+        "requested": "1.9.11",
+        "resolved": "1.9.11",
+        "cached": [
+          "1.9.11"
+        ],
+        "status": "CACHE_OBSERVED"
+      }
+    },
+    "api_compatibility": "UNKNOWN",
+    "network": "DISABLED",
+    "evidence": [
+      {
+        "path": "UnityProject/Packages/manifest.json",
+        "digest": "d4063202b01afa8d4b86a799773fbc694100df293b3f8b141335e8d5d8a4290c"
+      },
+      {
+        "path": "UnityProject/Packages/packages-lock.json",
+        "digest": "013266d4155f6ee928f1a9a469d94720ec01cfceb4914d88e99f798d329e6993"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.2d.sprite@26bcb5e737a2/package.json",
+        "digest": "8221365c8487c0faaad9b9365c10ec510705f4efcf0932338f1c3f197c9bd1aa"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.ai.navigation@734c2c4c5591/package.json",
+        "digest": "8abf247b83ef65bf20110050676d2bccfe9fe1b6799cd9b12c1e6076b2b62c28"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.burst@626e66ab421b/package.json",
+        "digest": "767fe0405ad4a67f4b3285d2c21e84061fa4b1f964a1ca315bfc5f97eefce66a"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.collab-proxy@0b1559bcd34e/package.json",
+        "digest": "473e0331eea0f8d502967863bb0794e6ae053b4e9215d51c3665d61e71c351ae"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.collections@10fff0607388/package.json",
+        "digest": "cef73b45c829ccbb0440634b757e5ddeecf861d2f983b3b00224cfc63e62044f"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.ext.nunit@0198eae3b53e/package.json",
+        "digest": "9178d506fe0024ee10b7b8faf17dc3b8faea054283e90cee406d90862d2bd276"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.graph-authoring@cfd2588851ee/package.json",
+        "digest": "a541f937f79f3880bb9213d63580491484724833da54f06f455d3302aeef0b9f"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.ide.rider@1f60b3138684/package.json",
+        "digest": "63a715f2e9558dff04956e662c1756b082e2370123321a4f3f652e0ad0384ed9"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.ide.visualstudio@a99d56dec63f/package.json",
+        "digest": "c045cf880e6feabcec750c6b5b8cd1326ccd89440f88f63b1dea2d83da030023"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.inputsystem@21a28c3a6c83/package.json",
+        "digest": "a4a39713468cc9da07834de7a615d821098a278afa302d443eb42b07792e9a7d"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.ai/package.json",
+        "digest": "c0d66586f3ee4ed95043c5dea7975187f54d755e658bcc6f29cd0134c0c8b89b"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.animation/package.json",
+        "digest": "1f6dc0bbae4a9de950333b692152f59eaf4b7d7724dd19a4772465614de8f9e2"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.audio/package.json",
+        "digest": "547ef58553bf5a1d5814345200c8a55f47c978b6ee263cf9852a131876408f8d"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.director/package.json",
+        "digest": "dbf7f8a925734800c0336a5792e55a3cc358fff8d689f33e75060286743621ba"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.hierarchycore/package.json",
+        "digest": "b07641e6b7928ed5a7a5d33c792d4ed64493eb0b94bbcc414fb2c2727cf8cc53"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.imgui/package.json",
+        "digest": "40de7c05fab26ef2038489aa498f30051c5195371e4e2b29cde846b2092d3516"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.jsonserialize/package.json",
+        "digest": "9d61153ebf07818ef41cf3f4ec18a1f8e59313421a8b74a8cdee52628055d938"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.particlesystem/package.json",
+        "digest": "b4e5007c8511ccf4d89aca32e1b40c77d8e9d84429f5529de809d9724763748b"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.physics/package.json",
+        "digest": "d18ab75da9d1118e0bcb14b9bb91857166d359a1a16328adff623b25c3405835"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.physics2d/package.json",
+        "digest": "6111eebf42d7ad17d297b26e5cd1a55c0f782f67bb11e7d927fbf671ab6758ab"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.physicscore2d/package.json",
+        "digest": "c9b5d8be1855620aeedeff09babc63c1badf8536be6d1a93cb091daeca41792b"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.ui/package.json",
+        "digest": "2c235f0266c45e2a7e2fa80dd05c60070ae0e2c7f2d009ffb67b9012beab5611"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.modules.uielements/package.json",
+        "digest": "892b2e0e1975e9b831d3f75b5ed0cd4a635f132c91abae3cfabf9e227608e70f"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.nuget.mono-cecil@ecb9724e46ff/package.json",
+        "digest": "ca4b676b78d8e9bb574136d1c65540c078918d572b590ac9228cb26d4a404603"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.profiling.core@8a49f7027d06/package.json",
+        "digest": "929764fc176563d19df7614fee55d1d3d0b7b1866a4b40c24854d3a6e2f65543"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.render-pipelines.core@02d75770e4b3/package.json",
+        "digest": "670345828fafce88e94c9d111f34cd2cfb92f8d93d3cdc4b7518ff17a6fcbf0e"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.render-pipelines.universal-config@561422b74439/package.json",
+        "digest": "c77be488153179af570b5ca7a6499f94e544044cadc0ddb2061eceacd29e40a4"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.render-pipelines.universal@327d93d1cbc8/package.json",
+        "digest": "9a666b74891e3f7e16a2ffa69598a03e70bec3fffb8f4b51687be7df3a911a0f"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.searcher@a463122f2c00/package.json",
+        "digest": "d23243b208f5706a8f2085483b93d3e066b868c09613342913e10a56bcf4115a"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.shadergraph@1dd0fd24b57e/package.json",
+        "digest": "eb0c72499db9ad786cd9ce45feca584be68ee01f1bc0a99ceb5e62beb2492901"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.test-framework.performance@b6023decb532/package.json",
+        "digest": "3dd8a3124534cba639c02a13009cff69d3fba52300cd18c5e42de95cdcb47257"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.test-framework@80f691d4262b/package.json",
+        "digest": "b3a23c562581b64db0a44b815d9379ee254c7457010d7f1a82dbd6c4233d3261"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.timeline@c56d56b0070b/package.json",
+        "digest": "5ff704b07ef33d4d8c0de19f780a4b6701cc603586532fbdfbdadba87abc556b"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.ugui@0727b404f3a0/package.json",
+        "digest": "c06d7bedf82e1fe7d956a1b866aa8040ce86cef96701c0cabd3eb4baad9dbbb5"
+      },
+      {
+        "path": "UnityProject/Library/PackageCache/com.unity.visualscripting@8bed5ad90189/package.json",
+        "digest": "b79d074ebd4e4cec6eac04d104d1bc5ee394906f4c11bd1eae9964ed82f92cf0"
+      },
+      {
+        "path": "UnityProject/Packages/com.polyforge.engine/package.json",
+        "digest": "5d31026f5ecc54b7b230b513056c9df352e47497dd230a3ff3e3242301aa7ed6"
+      }
+    ]
+  },
+  "execution_authority": "NONE",
+  "qualification": "Local metadata snapshot; no tool launch, package resolution or network"
+}

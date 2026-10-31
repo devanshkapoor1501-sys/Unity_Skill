@@ -47,11 +47,34 @@ Unity 6000.6.3f1. Installed template metadata declares URP 17.6.0, Input System
 1.19.0, and Test Framework 1.8.0. Installation presence is not integration proof.
 Original blueprint baseline versions are not silently advertised as tested.
 
-## Deferred capability claims
+## Current capability boundary through Phase 10
 
-Static Blender asset generation is implemented in Phase 3. No Unity importer, gameplay, animation, sprite baker,
-repair executor, sandbox, profiler, MCP server, or benchmark runner is implemented.
-Registered future CLI commands fail explicitly with NOT_RUN/5.
+The engine implements bounded static Blender assets, supplied base-color/normal
+PNG transport, managed Unity import, the survival arena, robot rig animation,
+sprite baking/import, scoped repair/recovery, worker roles, knowledge routing and
+a read-only stdio MCP server. Each registered capability retains its own input,
+tool, review and evidence requirements. Broad production authoring, an untrusted
+OS sandbox, profiling and comparative benchmark execution remain unavailable;
+registered future commands return explicit NOT_RUN results. The numbered phase
+sections below record the architecture at those historical milestones.
+
+Planning publishes a canonical `polyforge.lock.json` containing the manifest,
+input hashes, seed, configuration, engine/Python identity, tool identities and
+static package observations. Unprobed versions remain explicit. Owned artifact
+records bind actual confined bytes to project/run/stage identity, upstream
+hashes and validator status. A hash check alone does not establish native or
+behavioral acceptance. Interrupted publication preserves the prior owned lock
+and can recover only recognized previous/pending bytes.
+
+Worker context freezes original task/brief, selected knowledge, probe evidence,
+risks, approvals and engine-owned scope. Operation intents additionally bind the
+actual dispatched input digest. Resuming an existing plan preserves that context;
+new probe observations do not relabel earlier work. Job deadlines and declared
+RAM/disk availability floors apply to native and inspector execution. A resource
+loss cancels the operation and prevents a passing result even if its executor
+ignores cancellation. Native Windows workers also retain Job Object memory caps.
+Read-only OS adapter capacity metadata is separate from GPU execution support;
+admission reports conservative single-worker CPU limits and explicit degradation.
 
 ## Phase 1 runtime
 
