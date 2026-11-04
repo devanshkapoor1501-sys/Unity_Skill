@@ -1,0 +1,29 @@
+F..                                                                      [100%]
+================================== FAILURES ===================================
+_ test_posix_absolute_references_do_not_match_an_empty_metadata_string[None] __
+
+reference = None
+
+    @pytest.mark.parametrize("reference", [None, "file", "directory"])
+    def test_posix_absolute_references_do_not_match_an_empty_metadata_string(reference):
+        from polyforge.cleanup import _protected
+    
+        root = PurePosixPath("/workspace")
+        run = root / "runs/native-1"
+        process = run / "compile"
+        candidate = process / "tmp/discard.tmp"
+        references = {""}  # RunJournal includes an empty note by default.
+        if reference is not None:
+            references.add(str(candidate if reference == "file" else candidate.parent))
+    
+>       assert _protected(SimpleNamespace(root=root), candidate, run, process, references) is (
+            reference is not None
+        )
+E       AssertionError: assert True is (None is not None)
+E        +  where True = <function _protected at 0x0000012538EF59E0>(namespace(root=PurePosixPath('/workspace')), PurePosixPath('/workspace/runs/native-1/compile/tmp/discard.tmp'), PurePosixPath('/workspace/runs/native-1'), PurePosixPath('/workspace/runs/native-1/compile'), {''})
+E        +    where namespace(root=PurePosixPath('/workspace')) = SimpleNamespace(root=PurePosixPath('/workspace'))
+
+tests\test_cleanup.py:70: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_cleanup.py::test_posix_absolute_references_do_not_match_an_empty_metadata_string[None]
+1 failed, 2 passed, 73 deselected in 0.39s

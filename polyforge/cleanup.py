@@ -139,8 +139,11 @@ def _protected(
     for spelling in spellings:
         normalized = os.path.normcase(spelling).replace("\\", "/").rstrip("/")
         parts = normalized.split("/")
-        if any("/".join(parts[:end]) in references for end in range(1, len(parts) + 1)):
-            return True
+        for end in range(1, len(parts) + 1):
+            prefix = "/".join(parts[:end])
+            # An absolute POSIX path starts with an empty split component.
+            if prefix and prefix in references:
+                return True
     return False
 
 

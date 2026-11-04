@@ -5,7 +5,8 @@ import json
 import os
 import subprocess
 from contextlib import contextmanager
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+from types import SimpleNamespace
 
 import pytest
 
@@ -53,6 +54,23 @@ def workspace(root: Path) -> tuple[Path, Path]:
 
 def snapshot(root: Path) -> dict[str, bytes]:
     return {p.relative_to(root).as_posix(): p.read_bytes() for p in root.rglob("*") if p.is_file()}
+
+
+@pytest.mark.parametrize("reference", [None, "file", "directory"])
+def test_posix_absolute_references_do_not_match_an_empty_metadata_string(reference):
+    from polyforge.cleanup import _protected
+
+    root = PurePosixPath("/workspace")
+    run = root / "runs/native-1"
+    process = run / "compile"
+    candidate = process / "tmp/discard.tmp"
+    references = {""}  # RunJournal includes an empty note by default.
+    if reference is not None:
+        references.add(str(candidate if reference == "file" else candidate.parent))
+
+    assert _protected(SimpleNamespace(root=root), candidate, run, process, references) is (
+        reference is not None
+    )
 
 
 def test_preview_lists_only_private_terminal_temporary_candidates_without_writes(tmp_path):

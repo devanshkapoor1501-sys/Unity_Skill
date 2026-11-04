@@ -3,7 +3,7 @@
   "phase": 11,
   "reconciled_on": "2026-11-04",
   "authority_sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
-  "engine_digest": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+  "engine_digest": "a1355a7f8698d1e19619f534cab600ff8c1a4edbdf3f6682169c6e6b8624bb31",
   "phase_status": "BLOCKED",
   "game_status": "PARTIAL",
   "stable_release_eligible": false,
@@ -158,11 +158,11 @@
   ],
   "checkpoint_verification": {
     "local": "PASS",
-    "push": "NOT_RUN",
-    "ci": "NOT_RUN",
+    "push": "PASS_FOR_2218EFD",
+    "ci": "FAILED_ON_2218EFD_CORRECTION_PENDING",
     "local_evidence": "reports/phase-11-evidence/closure/release-final-summary.json",
     "packaging": "PASS",
-    "native_final": "PASS",
+    "native_final": "PASS_ON_4711A8C_PRIOR_TO_POSIX_CLEANUP_CORRECTION",
     "offline_tests": {
       "passed": 1218,
       "deselected": 12,
@@ -171,5 +171,11 @@
     },
     "native_evidence": "reports/phase-11-evidence/closure/final-installed-native-summary.json"
   },
-  "qualification": "Reconciled current and historical observations. PASS applies only to the exact bounded scope, never inherited independence or whole-product acceptance."
+  "qualification": "Reconciled current and historical observations. PASS applies only to the exact bounded scope, never inherited independence or whole-product acceptance.",
+  "ci_correction": {
+    "reason": "Synthetic empty POSIX path prefix matched empty metadata string",
+    "focused_passed": 76,
+    "review": "APPROVED",
+    "new_ci": "PENDING"
+  }
 }

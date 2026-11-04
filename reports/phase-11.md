@@ -15,7 +15,7 @@ Historical permission to continue does not waive those gates.
 
 ## Source identity and tools
 
-Final runtime engine identity is
+Checkpoint runtime engine identity is
 `4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b`.
 Earlier native and offline runs used `a7b4b8e…`. The focused cleanup review used
 `b9f91bd…` before the working tree was normalized to Git’s LF line endings.
@@ -258,3 +258,22 @@ and ablation paths, complete required current gameplay/artistic approvals,
 and satisfy every remaining stable-core gate. Verify final remote HEAD and CI,
 then create/verify v1.0 only when justified. Until then, Phase 12 must not start.
 Phases 12–17 remain requested and pending; no v2 qualification is claimed.
+
+## CI correction after the first push
+
+Checkpoint `2218efd` reached the authorized remote. Push workflow
+`41872517019` passed both Windows jobs and failed the Ubuntu Python 3.12
+job in 14 cleanup cases. Blank journal notes matched the synthetic empty
+prefix of an absolute POSIX path, causing all temporary candidates to be
+protected. The correction skips that empty prefix and retains explicit
+file and directory reference checks.
+
+The correction passed 76 cleanup tests locally, including the three new
+POSIX spelling cases and real Windows link fixtures, with 100% statement
+and 99.24% branch coverage. An independent review accepted the change and
+ran 13 relevant cases. Two fresh package builds matched byte for byte.
+Corrected engine identity is
+`a1355a7f8698d1e19619f534cab600ff8c1a4edbdf3f6682169c6e6b8624bb31`.
+The prior native receipts retain their recorded engine identity. The corrected
+commit requires fresh CI confirmation. The publication receipt records that
+result after the push.
