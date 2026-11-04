@@ -1,6 +1,8 @@
 # PolyForge
 
-A skill that helps your AI assistant make simple 3D objects, animate a robot and build small Unity demos. You describe the idea; PolyForge provides the steps and tools to build it, check it, and give you files you can keep editing.
+A portable skill that helps your AI assistant plan, produce and check Blender and Unity projects through specialized worker roles. You describe the idea; PolyForge provides tool knowledge, a production workflow and editable output. The current preview supports the bounded capabilities listed below.
+
+The development goal is broad game production from simple prompts: select the right Blender and Unity tools, compose specialized workers, and verify the requested mechanics and assets. Example games teach and test that workflow. Advanced modeling, materials, characters, gameplay and worlds are being added through the remaining build phases.
 
 ## Available skill
 
@@ -8,7 +10,7 @@ A skill that helps your AI assistant make simple 3D objects, animate a robot and
 | --- | --- |
 | [PolyForge](.agents/skills/polyforge/) | Make simple objects, animate a robot and build a small 3D arena or 2D demo in Unity. |
 
-**Early preview for Windows.** Simple robots, crates, walls, doorways, floor tiles and a survival arena work today. Supported robots can idle and walk in Unity. There is also a small 2D demo with walking animation, keyboard movement and wall collision. More game types and advanced textures are still being developed.
+**Early preview for Windows.** Simple robots, crates, walls, doorways, floor tiles and a survival arena work today. Supported robots can idle and walk in Unity. Supplied sprites can drive a 2D checkpoint course with jumping, hazards, lives, a goal and restart. More game types and advanced textures are still being developed.
 
 ## Install the skill
 
@@ -44,7 +46,7 @@ For example:
 
 You can also ask for just a supported 3D object, such as a crate, without building a game.
 
-For a 2D starting point, ask for the walking robot demo. You can also supply six 128×128 transparent sprite frames that you have permission to use. Your assistant checks whether they fit the current format before building.
+For a 2D starting point, ask for the walking robot demo or the [checkpoint course](docs/checkpoint-platformer.md). Supply six 128×128 transparent sprite frames that you have permission to use. Your assistant checks whether they fit the current format before building.
 
 Required human approval is checked before supported imports. Managed repairs keep
 an evidence trail and restore the project through native reimport and checks if
@@ -56,4 +58,4 @@ Try PolyForge if you want a starting point for simple Blender-to-Unity projects 
 
 The project is free under the [Apache-2.0 license](LICENSE). Your AI assistant and other software may have their own costs or terms.
 
-[Local setup and contributor guide](docs/development-guide.md) · [What has been tested](reports/phase-10.md)
+[Local setup and contributor guide](docs/development-guide.md) · [Current support and gaps](docs/core-support.md) · [Phase 11 qualification](reports/phase-11.md)

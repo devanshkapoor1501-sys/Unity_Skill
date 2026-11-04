@@ -1,0 +1,122 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
+
+namespace PolyForge.Platformer.Tests
+{
+    public class PlatformerTests
+    {
+        sealed class DisposableInput : IPlatformerInput, IDisposable
+        {
+            public bool disposed;
+            public Vector2 Movement => Vector2.zero;
+            public bool ConsumeJump() => false;
+            public bool ConsumeRestart() => false;
+            public void Dispose() { disposed = true; }
+        }
+        static string Arg(string key)
+        {
+            var args = Environment.GetCommandLineArgs(); int i = Array.IndexOf(args, key);
+            if (i < 0 || i + 1 >= args.Length) throw new Exception("Missing " + key); return args[i + 1];
+        }
+        static void KeyboardStep(Keyboard device, PlatformerStep step)
+        {
+            var keys = new List<Key>(); if (step.move > 0) keys.Add(Key.D); if (step.move < 0) keys.Add(Key.A);
+            if (step.jump) keys.Add(Key.Space); if (step.restart) keys.Add(Key.R);
+            InputSystem.QueueStateEvent(device, new KeyboardState(keys.ToArray())); InputSystem.Update();
+        }
+        IEnumerator Run(string id, string mutant = null, bool keyboard = false)
+        {
+            Time.timeScale = 1; Time.fixedDeltaTime = .02f;
+            yield return SceneManager.LoadSceneAsync("SpritePlatformer", LoadSceneMode.Single); yield return null;
+            var session = UnityEngine.Object.FindFirstObjectByType<PlatformerSession>(); Assert.That(session, Is.Not.Null);
+            var suite = JsonUtility.FromJson<PlatformerSuite>(File.ReadAllText(Arg("-polyforgeScenarioInput")));
+            var scenario = suite.scenarios.Single(s => s.id == id);
+            var input = new PlatformerScheduledInput(); session.player.Input = input;
+            yield return new WaitForFixedUpdate(); yield return new WaitForFixedUpdate();
+            session.player.ResetAt(new Vector3(scenario.setup.position[0], scenario.setup.position[1], scenario.setup.position[2]));
+            if (scenario.setup.health > 0) session.player.Health.Damage(3 - scenario.setup.health);
+            // These defects exist only in this test assembly, and every case reloads the scene.
+            if (mutant == "input_disconnected") session.player.Input = null;
+            if (mutant == "jump_disabled") session.player.jumpSpeed = 0;
+            if (mutant == "platform_disabled") GameObject.Find("ground_0").GetComponent<BoxCollider2D>().enabled = false;
+            if (mutant == "checkpoint_disabled") GameObject.Find("Checkpoint").GetComponent<PlatformerTrigger>().enabled = false;
+            if (mutant == "damage_no_health") GameObject.Find("Hazard").GetComponent<PlatformerTrigger>().damage = 0;
+            if (mutant == "goal_disabled") GameObject.Find("Goal").GetComponent<BoxCollider2D>().enabled = false;
+            if (mutant == "win_premature") GameObject.Find("Goal").transform.position = new Vector3(6.5f, 1, 0);
+            Physics2D.SyncTransforms();
+            Keyboard device = null;
+            var oldEditor = InputSystem.settings.editorInputBehaviorInPlayMode;
+            var oldBackground = InputSystem.settings.backgroundBehavior;
+            if (keyboard)
+            {
+                InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+                InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+                device = InputSystem.AddDevice<Keyboard>(); session.player.Input = new KeyboardPlatformerInput();
+            }
+            var samples = new List<PlatformerSample> { PlatformerRecording.Observe(session) };
+            try
+            {
+                foreach (var step in scenario.steps)
+                {
+                    input.move = step.move; input.jump = step.jump; input.restart = step.restart && mutant != "restart_disabled";
+                    if (keyboard) KeyboardStep(device, step);
+                    int target = session.Frame + step.ticks;
+                    while (session.Frame < target)
+                    {
+                        yield return new WaitForFixedUpdate(); samples.Add(PlatformerRecording.Observe(session));
+                        Assert.That(samples.Count, Is.LessThan(4000));
+                    }
+                }
+            }
+            finally
+            {
+                if (device != null) InputSystem.RemoveDevice(device);
+                InputSystem.settings.editorInputBehaviorInPlayMode = oldEditor;
+                InputSystem.settings.backgroundBehavior = oldBackground;
+            }
+            string purpose = mutant != null ? "MUTANT" : keyboard ? "INPUT_ADAPTER" : "NOMINAL";
+            var trace = PlatformerRecording.Trace(session, scenario, samples, purpose, mutant ?? "");
+            string file = mutant ?? (keyboard ? (id == "player_moves" ? "keyboard_move" : id == "grounded_jump" ? "keyboard_jump" : "keyboard_restart") : id);
+            var directory = Arg("-polyforgeTelemetry"); Directory.CreateDirectory(directory);
+            File.WriteAllText(Path.Combine(directory, file + ".json"), JsonUtility.ToJson(trace, true));
+            Assert.That(trace.frames_executed, Is.GreaterThan(0)); Assert.That(samples.Count, Is.GreaterThan(1));
+        }
+        [UnityTest] public IEnumerator PlayerMoves() => Run("player_moves");
+        [UnityTest] public IEnumerator GroundCollision() => Run("ground_collision");
+        [UnityTest] public IEnumerator GroundedJump() => Run("grounded_jump");
+        [UnityTest] public IEnumerator AirborneJump() => Run("airborne_jump");
+        [UnityTest] public IEnumerator CheckpointRespawn() => Run("checkpoint_respawn");
+        [UnityTest] public IEnumerator HazardDamage() => Run("hazard_damage");
+        [UnityTest] public IEnumerator HealthFailure() => Run("health_failure");
+        [UnityTest] public IEnumerator GoalContact() => Run("goal_contact");
+        [UnityTest] public IEnumerator RestartResets() => Run("restart_resets");
+        [UnityTest] public IEnumerator RestartFailure() => Run("restart_failure");
+        [UnityTest] public IEnumerator Journey() => Run("journey");
+        [UnityTest] public IEnumerator KeyboardMove() => Run("player_moves", keyboard: true);
+        [UnityTest] public IEnumerator KeyboardJump() => Run("grounded_jump", keyboard: true);
+        [UnityTest] public IEnumerator KeyboardRestart() => Run("restart_resets", keyboard: true);
+        [UnityTest] public IEnumerator InputDisconnectedMutant() => Run("player_moves", "input_disconnected");
+        [UnityTest] public IEnumerator JumpDisabledMutant() => Run("grounded_jump", "jump_disabled");
+        [UnityTest] public IEnumerator PlatformDisabledMutant() => Run("ground_collision", "platform_disabled");
+        [UnityTest] public IEnumerator CheckpointDisabledMutant() => Run("checkpoint_respawn", "checkpoint_disabled");
+        [UnityTest] public IEnumerator DamageWithoutHealthMutant() => Run("hazard_damage", "damage_no_health");
+        [UnityTest] public IEnumerator GoalDisabledMutant() => Run("goal_contact", "goal_disabled");
+        [UnityTest] public IEnumerator PrematureWinMutant() => Run("goal_contact", "win_premature");
+        [UnityTest] public IEnumerator RestartDisabledMutant() => Run("restart_resets", "restart_disabled");
+        [UnityTest] public IEnumerator DestroyedPlayerDisposesSubscription()
+        {
+            var go = new GameObject("Input disposal"); var player = go.AddComponent<PlatformerPlayer>();
+            var input = new DisposableInput(); player.Input = input; UnityEngine.Object.Destroy(go);
+            yield return null; Assert.That(input.disposed, Is.True);
+        }
+    }
+}

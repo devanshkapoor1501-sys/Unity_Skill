@@ -35,6 +35,27 @@ trusted worker's ambient filesystem or network privileges.
 - Hidden evaluator material must remain outside development workspaces and logs.
 - Missing security evidence remains BLOCKED/NOT_RUN in reports.
 
+## Static inspection and evaluation evidence
+
+`inspect-project --read-only` inventories every regular original file, including
+caches and `.meta` files, before and after analysis. It compares bytes, SHA-256
+and available mtimes, rejects links and changes, and applies file, directory,
+byte and source-node limits. C# syntax uses the pinned Tree-sitter grammar;
+Python syntax uses `ast`. Neither source is executed and Unity never opens the
+original project. Syntax observations do not establish compilation, assembly
+binding, package safety or runtime compatibility.
+
+Benchmark adapters are trusted injected Python interfaces, not a sandbox or an
+authenticated provider connection. They own process deadlines; the harness also
+checks observed end-to-end elapsed time and usage. Digests protect against
+accidental evidence changes but do not authenticate a malicious local owner.
+Imported grades remain declared observations. Missing independent ownership,
+hidden tests or model execution never becomes verified acceptance.
+
+Rendered profiling accepts registered owned player payloads, verifies executable
+and data hashes, and records bounded native process observations. A development
+performance result does not grant game acceptance or untrusted-code isolation.
+
 ## Reporting vulnerabilities
 
 Do not publish credentials or private projects in an issue. A private reporting

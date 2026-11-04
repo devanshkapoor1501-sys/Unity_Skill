@@ -1,0 +1,454 @@
+..........................................FFF....F                       [100%]
+================================== FAILURES ===================================
+_________ test_observer_stops_missing_readiness_or_excess_rss[31-10] __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_observer_stops_missing_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012B4806DFD0>
+elapsed = 31, rss = 10
+
+    @pytest.mark.parametrize("elapsed,rss", [(31, 10), (1, 2 * 1024**3 + 1)])
+    def test_observer_stops_missing_readiness_or_excess_rss(tmp_path, monkeypatch, elapsed, rss):
+        from polyforge.security.paths import WorkspacePolicy
+    
+        metrics = observation_module()
+        monkeypatch.setattr(metrics, "process_identity", lambda pid: "birth")
+        monkeypatch.setattr(metrics.time, "monotonic", lambda: 100.0 + elapsed)
+        monkeypatch.setattr(metrics, "process_counters",
+                            lambda pid, birth: {"peak_rss_bytes": rss, "cpu_seconds": None})
+        observer = metrics.ProcessObservation(WorkspacePolicy(tmp_path), "run", "run/ready.json")
+        observer.start(123, 100.0)
+        observer.poll()
+>       assert observer.fatal
+E       assert False
+E        +  where False = <polyforge.runner.metrics.ProcessObservation object at 0x0000012B4806EF30>.fatal
+
+tests\test_phase11_performance.py:287: AssertionError
+______ test_observer_stops_missing_readiness_or_excess_rss[1-2147483649] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_observer_stops_missing_re1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012B4806EB10>
+elapsed = 1, rss = 2147483649
+
+    @pytest.mark.parametrize("elapsed,rss", [(31, 10), (1, 2 * 1024**3 + 1)])
+    def test_observer_stops_missing_readiness_or_excess_rss(tmp_path, monkeypatch, elapsed, rss):
+        from polyforge.security.paths import WorkspacePolicy
+    
+        metrics = observation_module()
+        monkeypatch.setattr(metrics, "process_identity", lambda pid: "birth")
+        monkeypatch.setattr(metrics.time, "monotonic", lambda: 100.0 + elapsed)
+        monkeypatch.setattr(metrics, "process_counters",
+                            lambda pid, birth: {"peak_rss_bytes": rss, "cpu_seconds": None})
+        observer = metrics.ProcessObservation(WorkspacePolicy(tmp_path), "run", "run/ready.json")
+        observer.start(123, 100.0)
+        observer.poll()
+>       assert observer.fatal
+E       assert False
+E        +  where False = <polyforge.runner.metrics.ProcessObservation object at 0x0000012B4806FAA0>.fatal
+
+tests\test_phase11_performance.py:287: AssertionError
+______ test_runner_rejects_arbitrary_observation_callbacks_before_writes ______
+
+argv = ['C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe', '-c', "print('unreachable')"]
+workspace = <polyforge.security.paths.WorkspacePolicy object at 0x0000012B480965A0>
+relative = 'run'
+policy = ProcessPolicy(allowed_executables=(WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.venv/Scripts/python.exe'),), timeout_seconds=600, max_output_bytes=10485760, memory_limit_mb=8192)
+
+    def run_process(
+        argv: list[str],
+        workspace: WorkspacePolicy,
+        relative: str,
+        policy: ProcessPolicy,
+        *,
+        cancel: threading.Event | None = None,
+        observation: ProcessObservation | None = None,
+    ) -> ProcessOutcome:
+        """Launch only an explicitly allowed binary; cleanup targets only its owned tree."""
+        if not argv or any(not isinstance(arg, str) or "\x00" in arg for arg in argv):
+            raise InputError("Process arguments must be nonempty NUL-free strings")
+        executable = Path(argv[0]).resolve()
+        if executable not in {path.resolve() for path in policy.allowed_executables}:
+            raise InputError(
+                "Executable is not on this operation's allowlist",
+                kind=ErrorKind.POLICY_DENIED,
+                code="PF-POLICY-EXECUTABLE",
+            )
+        if not executable.is_file():
+            raise InputError(
+                "Configured executable is missing",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-EXECUTABLE",
+            )
+        if executable.suffix.lower() in {".bat", ".cmd"}:
+            raise InputError("Shell script launchers are not allowed", kind=ErrorKind.POLICY_DENIED)
+        if (
+            not math.isfinite(policy.timeout_seconds)
+            or policy.timeout_seconds <= 0
+            or policy.max_output_bytes <= 0
+            or policy.memory_limit_mb <= 0
+        ):
+            raise InputError("Invalid worker resource budget")
+        destination = workspace.path(relative)
+        ownership = "WINDOWS_JOB" if os.name == "nt" else "POSIX_PROCESS_GROUP"
+        if cancel is not None and cancel.is_set():
+            return ProcessOutcome(None, "cancelled", None, ownership, 0, "", "", False)
+        workspace.mkdir(destination)
+        temporary = workspace.mkdir(destination / "tmp")
+        unity_profile = None
+        if executable.stem.lower() == "unity":
+            unity_profile = workspace.mkdir(".polyforge/unity-profile")
+            for directory in ("AppData/Local", "AppData/Roaming", "ProgramData", "upm-cache"):
+                workspace.mkdir(unity_profile / directory)
+        started = time.monotonic()
+        job = WindowsJob(policy.memory_limit_mb) if os.name == "nt" else None
+        process: subprocess.Popen[bytes] | None = None
+        buffers: list[bytearray] = [bytearray(), bytearray()]
+        exceeded = threading.Event()
+        guard = threading.Lock()
+        total = 0
+    
+        def collect(stream: BinaryIO, index: int) -> None:
+            nonlocal total
+            try:
+                while chunk := stream.read(4096):
+                    with guard:
+                        available = max(0, policy.max_output_bytes - total)
+                        buffers[index].extend(chunk[:available])
+                        total += len(chunk)
+                        if total > policy.max_output_bytes:
+                            exceeded.set()
+            finally:
+                stream.close()
+    
+        def terminate() -> None:
+            if process is None:
+                return
+            if job is not None:
+                job.terminate()
+            elif sys.platform != "win32":
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+    
+        reason = "exit"
+        try:
+            process = subprocess.Popen(
+                [str(executable), *argv[1:]],
+                cwd=destination,
+                env=worker_environment(executable, temporary, unity_profile=unity_profile),
+                shell=False,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                start_new_session=os.name != "nt",
+                creationflags=0x08000204 if job is not None else 0,
+            )
+            if job is not None:
+                try:
+                    job.assign_and_resume(process.pid)
+                except OSError:
+                    process.kill()
+                    process.wait()
+                    raise
+            if observation is not None:
+>               observation.start(process.pid, started)
+                ^^^^^^^^^^^^^^^^^
+E               AttributeError: 'object' object has no attribute 'start'
+
+polyforge\runner\processes.py:142: AttributeError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_runner_rejects_arbitrary_0')
+
+    def test_runner_rejects_arbitrary_observation_callbacks_before_writes(tmp_path):
+        import sys
+        from pathlib import Path
+        from polyforge.contracts.validation import InputError
+        from polyforge.runner.processes import ProcessPolicy, run_process
+        from polyforge.security.paths import WorkspacePolicy
+    
+        with pytest.raises(InputError):
+>           run_process([sys.executable, "-c", "print('unreachable')"], WorkspacePolicy(tmp_path),
+                        "run", ProcessPolicy((Path(sys.executable),)), observation=object())
+
+tests\test_phase11_performance.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+argv = ['C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe', '-c', "print('unreachable')"]
+workspace = <polyforge.security.paths.WorkspacePolicy object at 0x0000012B480965A0>
+relative = 'run'
+policy = ProcessPolicy(allowed_executables=(WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.venv/Scripts/python.exe'),), timeout_seconds=600, max_output_bytes=10485760, memory_limit_mb=8192)
+
+    def run_process(
+        argv: list[str],
+        workspace: WorkspacePolicy,
+        relative: str,
+        policy: ProcessPolicy,
+        *,
+        cancel: threading.Event | None = None,
+        observation: ProcessObservation | None = None,
+    ) -> ProcessOutcome:
+        """Launch only an explicitly allowed binary; cleanup targets only its owned tree."""
+        if not argv or any(not isinstance(arg, str) or "\x00" in arg for arg in argv):
+            raise InputError("Process arguments must be nonempty NUL-free strings")
+        executable = Path(argv[0]).resolve()
+        if executable not in {path.resolve() for path in policy.allowed_executables}:
+            raise InputError(
+                "Executable is not on this operation's allowlist",
+                kind=ErrorKind.POLICY_DENIED,
+                code="PF-POLICY-EXECUTABLE",
+            )
+        if not executable.is_file():
+            raise InputError(
+                "Configured executable is missing",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-EXECUTABLE",
+            )
+        if executable.suffix.lower() in {".bat", ".cmd"}:
+            raise InputError("Shell script launchers are not allowed", kind=ErrorKind.POLICY_DENIED)
+        if (
+            not math.isfinite(policy.timeout_seconds)
+            or policy.timeout_seconds <= 0
+            or policy.max_output_bytes <= 0
+            or policy.memory_limit_mb <= 0
+        ):
+            raise InputError("Invalid worker resource budget")
+        destination = workspace.path(relative)
+        ownership = "WINDOWS_JOB" if os.name == "nt" else "POSIX_PROCESS_GROUP"
+        if cancel is not None and cancel.is_set():
+            return ProcessOutcome(None, "cancelled", None, ownership, 0, "", "", False)
+        workspace.mkdir(destination)
+        temporary = workspace.mkdir(destination / "tmp")
+        unity_profile = None
+        if executable.stem.lower() == "unity":
+            unity_profile = workspace.mkdir(".polyforge/unity-profile")
+            for directory in ("AppData/Local", "AppData/Roaming", "ProgramData", "upm-cache"):
+                workspace.mkdir(unity_profile / directory)
+        started = time.monotonic()
+        job = WindowsJob(policy.memory_limit_mb) if os.name == "nt" else None
+        process: subprocess.Popen[bytes] | None = None
+        buffers: list[bytearray] = [bytearray(), bytearray()]
+        exceeded = threading.Event()
+        guard = threading.Lock()
+        total = 0
+    
+        def collect(stream: BinaryIO, index: int) -> None:
+            nonlocal total
+            try:
+                while chunk := stream.read(4096):
+                    with guard:
+                        available = max(0, policy.max_output_bytes - total)
+                        buffers[index].extend(chunk[:available])
+                        total += len(chunk)
+                        if total > policy.max_output_bytes:
+                            exceeded.set()
+            finally:
+                stream.close()
+    
+        def terminate() -> None:
+            if process is None:
+                return
+            if job is not None:
+                job.terminate()
+            elif sys.platform != "win32":
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+    
+        reason = "exit"
+        try:
+            process = subprocess.Popen(
+                [str(executable), *argv[1:]],
+                cwd=destination,
+                env=worker_environment(executable, temporary, unity_profile=unity_profile),
+                shell=False,
+                stdin=subprocess.DEVNULL,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                start_new_session=os.name != "nt",
+                creationflags=0x08000204 if job is not None else 0,
+            )
+            if job is not None:
+                try:
+                    job.assign_and_resume(process.pid)
+                except OSError:
+                    process.kill()
+                    process.wait()
+                    raise
+            if observation is not None:
+                observation.start(process.pid, started)
+            assert process.stdout is not None and process.stderr is not None
+            readers = [
+                threading.Thread(target=collect, args=(stream, index), daemon=True)
+                for index, stream in enumerate((process.stdout, process.stderr))
+            ]
+            for reader in readers:
+                reader.start()
+            while process.poll() is None:
+                if observation is not None:
+                    observation.poll()
+                    if observation.fatal:
+                        reason = "observation_failure"
+                        break
+                if cancel is not None and cancel.is_set():
+                    reason = "cancelled"
+                    break
+                if exceeded.is_set():
+                    reason = "output_limit"
+                    break
+                if time.monotonic() - started >= policy.timeout_seconds:
+                    reason = "timeout"
+                    break
+                time.sleep(0.02)
+            terminate()  # Also remove owned descendants if the parent exited normally.
+            process.wait(timeout=10)
+            for reader in readers:
+                reader.join(timeout=10)
+            if exceeded.is_set() and reason == "exit":
+                reason = "output_limit"
+        except KeyboardInterrupt:
+            terminate()
+            if process is not None:
+                process.wait(timeout=10)
+            raise
+        except OSError as exc:
+            raise InputError(
+                f"Worker launch/ownership failed: {exc}",
+                kind=ErrorKind.PRODUCER_FAILURE,
+                code="PF-RUN-LAUNCH",
+            ) from exc
+        finally:
+            terminate()
+            try:
+                if observation is not None:
+>                   observation.finish()
+                    ^^^^^^^^^^^^^^^^^^
+E                   AttributeError: 'object' object has no attribute 'finish'
+
+polyforge\runner\processes.py:187: AttributeError
+_ test_profile_orchestration_preserves_each_observation_and_stops_bad_group[malformed] _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pyt...st_profile_orchestration_pre4/runs/game-check-fixture/player/profiles/profile-e984ccbca1184e9b/sample-0/evidence.json')
+
+    def load_json(path: Path, *, max_bytes: int = 1_048_576) -> Any:
+        """Read a bounded UTF-8 JSON document; reject duplicate fields and NaN."""
+        if type(max_bytes) is not int or not 1 <= max_bytes <= 33_554_432:
+            raise InputError("Invalid bounded JSON read budget")
+        try:
+            with path.open("rb") as stream:
+                content = stream.read(max_bytes + 1)
+            if len(content) > max_bytes:
+                raise InputError(f"Input exceeds the {max_bytes}-byte JSON limit")
+>           return json.loads(
+                content.decode("utf-8"),
+                object_pairs_hook=_unique_object,
+                parse_constant=_reject_constant,
+            )
+
+polyforge\contracts\validation.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\__init__.py:359: in loads
+    return cls(**kw).decode(s)
+           ^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\decoder.py:338: in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <json.decoder.JSONDecoder object at 0x0000012B459C7AD0>, s = 'not json'
+idx = 0
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+    
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+    
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+>           raise JSONDecodeError("Expecting value", s, err.value) from None
+E           json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\json\decoder.py:356: JSONDecodeError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_profile_orchestration_pre4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000012B48096A50>
+case = 'malformed'
+
+    @pytest.mark.parametrize("case", ["pass", "timeout", "missing", "stale", "malformed"])
+    def test_profile_orchestration_preserves_each_observation_and_stops_bad_group(
+        tmp_path, monkeypatch, case
+    ):
+        from pathlib import Path
+        from polyforge.runner.processes import ProcessOutcome
+    
+        module = performance()
+        player = tmp_path / "runs" / "game-check-fixture" / "player" / "Arena.exe"
+        player.parent.mkdir(parents=True)
+        player.write_bytes(b"fixture executable")
+        (player.parent.parent / "game-input.json").write_text(json.dumps({
+            "input_digest": "a" * 64, "scene_id": "main"}))
+        launches = []
+        def run(argv, policy, relative, limits, *, observation):
+            launches.append(argv)
+            assert "-batchmode" not in argv and "-nographics" not in argv
+            assert limits.timeout_seconds == 120
+            job = json.loads(Path(argv[-1]).read_text())
+            record = sample(job["sample_index"])
+            record["profile_digest"] = job["profile_digest"]
+            observation.data.update(record["process"])
+            if case == "stale":
+                record["input_digest"] = "c" * 64
+            if case == "malformed":
+                Path(job["evidence_path"]).write_text("not json")
+            elif case != "missing":
+                Path(job["evidence_path"]).write_text(json.dumps(record))
+            return ProcessOutcome(0 if case != "timeout" else None,
+                                  "exit" if case != "timeout" else "timeout", 123, "WINDOWS_JOB",
+                                  72, "", "", True)
+        monkeypatch.setattr(module, "run_process", run)
+>       result = module.profile_player(tmp_path, player)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:335: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\performance.py:298: in profile_player
+    raw = load_json(evidence, max_bytes=33_554_432) if evidence.is_file() else {}
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b2245e96-5cb4-42f5-986e-99d453aa3d50}/AC/Temp/pyt...st_profile_orchestration_pre4/runs/game-check-fixture/player/profiles/profile-e984ccbca1184e9b/sample-0/evidence.json')
+
+    def load_json(path: Path, *, max_bytes: int = 1_048_576) -> Any:
+        """Read a bounded UTF-8 JSON document; reject duplicate fields and NaN."""
+        if type(max_bytes) is not int or not 1 <= max_bytes <= 33_554_432:
+            raise InputError("Invalid bounded JSON read budget")
+        try:
+            with path.open("rb") as stream:
+                content = stream.read(max_bytes + 1)
+            if len(content) > max_bytes:
+                raise InputError(f"Input exceeds the {max_bytes}-byte JSON limit")
+            return json.loads(
+                content.decode("utf-8"),
+                object_pairs_hook=_unique_object,
+                parse_constant=_reject_constant,
+            )
+        except (OSError, ValueError, RecursionError) as exc:
+>           raise InputError(f"Cannot read JSON input: {exc}") from exc
+E           polyforge.contracts.validation.InputError: Cannot read JSON input: Expecting value: line 1 column 1 (char 0)
+
+polyforge\contracts\validation.py:57: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_observer_stops_missing_readiness_or_excess_rss[31-10]
+FAILED tests/test_phase11_performance.py::test_observer_stops_missing_readiness_or_excess_rss[1-2147483649]
+FAILED tests/test_phase11_performance.py::test_runner_rejects_arbitrary_observation_callbacks_before_writes
+FAILED tests/test_phase11_performance.py::test_profile_orchestration_preserves_each_observation_and_stops_bad_group[malformed]
+4 failed, 46 passed in 3.30s

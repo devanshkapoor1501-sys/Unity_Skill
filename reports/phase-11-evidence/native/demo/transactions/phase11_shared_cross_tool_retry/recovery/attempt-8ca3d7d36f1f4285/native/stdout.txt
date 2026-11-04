@@ -1,0 +1,574 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 31384)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 28760)
+VBCSCompiler prewarm took 23.98 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 31384)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 28760)
+VBCSCompiler prewarm took 23.98 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T10:22:46Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-11-01T10:22:46.4805769Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 3464, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              24eb7c69d5ad413a8084bce6e7580ab3
+  Correlation Id:          b6228fe23682b58c1a212a32d4665e25
+  External correlation Id: 3314756412124206168
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.00s, validation: 0.00s, handshake: 0.06s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-11-01T10:22:46.5454755Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.07s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject
+-logFile
+-
+-upmLogFile
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\transactions\phase11_shared_cross_tool_retry\recovery\attempt-8ca3d7d36f1f4285\native\upm.log
+-polyforgeInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\.polyforge\unity-request.json
+-executeMethod
+PolyForge.Editor.PolyForgeBuilder.ReimportBatch
+-polyforgeOutput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\transactions\phase11_shared_cross_tool_retry\recovery\attempt-8ca3d7d36f1f4285\bindings.json
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/demo/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [31116]  Target information:
+
+Player connection [31116]  * "[IP] 192.168.1.12 [Port] 55504 [Flags] 2 [Guid] 1501733860 [EditorId] 1501733860 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [31116] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31116] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-2524" after 0.3 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: 55a20cbc7a89e7d062de633873bead62
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/demo/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/demo/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56524
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002995 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.985 seconds
+Domain Reload Profiling: 1751ms
+	BeginReloadAssembly (173ms)
+		CreateAndSetChildDomain (12ms)
+	RebuildCommonClasses (6ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (103ms)
+	LoadAllAssembliesAndSetupDomain (461ms)
+		LoadAssemblies (156ms)
+		TypeCache.Refresh (279ms)
+			TypeCache.ScanAssembly (258ms)
+		AnalyzeDomain (2ms)
+	FinalizeReload (988ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (153ms)
+			ProcessInitializeOnLoadAttributes (170ms)
+			ProcessInitializeOnLoadMethodAttributes (314ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+[Package Manager] Done resolving packages in 2.42 seconds
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\demo\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.00 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/demo/UnityProject
+DisplayProgressbar: Compiling Scripts
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+ExitCode: 0 Duration: 0s588ms
+[ 695/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.54 seconds), 1 items updated, 1078 evaluated
+AssetDatabase: script compilation time: 1.274200s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 2.50 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.396 seconds
+Domain Reload Profiling: 2966ms
+	BeginReloadAssembly (477ms)
+		DisableScriptedObjects (34ms)
+		CreateAndSetChildDomain (186ms)
+	RebuildCommonClasses (15ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (97ms)
+	LoadAllAssembliesAndSetupDomain (954ms)
+		LoadAssemblies (553ms)
+		TypeCache.Refresh (237ms)
+			TypeCache.ScanAssembly (221ms)
+		AnalyzeDomain (88ms)
+			BuildScriptInfoCaches (76ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1398ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (185ms)
+			ProcessInitializeOnLoadAttributes (457ms)
+			ProcessInitializeOnLoadMethodAttributes (134ms)
+			AfterProcessingInitializeOnLoad (11ms)
+		AwakeInstancesAfterBackupRestoration (37ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/demo/UnityProject/Logs/AssetImportWorkerHW0.log
+Importing 'GUID: f4d24dfb11f70874fa6d28b786e750ca - Path: Assets/PolyForgeGenerated/Models/robot_a.fbx' with importer (FBXImporter)
+Imported 'GUID: f4d24dfb11f70874fa6d28b786e750ca' -> (Import Result ID: '4175968702f85a2f28c8b5909315ef18') in 0.057 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=18fd408545190d2f9907960b6e823bff DependenciesID=924d690296851d014504a471bbdef91e StaticDependenciesID=8f742ba777c4a1950e4e8a8afb28813b 
+Importing 'GUID: ca60c95055c2f8e45918d505093ba201 - Path: Assets/PolyForgeGenerated/Prefabs/robot_a.prefab' with importer (PrefabImporter)
+Imported 'GUID: ca60c95055c2f8e45918d505093ba201' -> (Import Result ID: '0b3bb472f31e6972fb7c6445f68671c4') in 0.013 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9015ccd07f4197c1f9c577ee7e0cca07 DependenciesID=7e68b8e7f04907e61a08064c09d3e72a StaticDependenciesID=293c1a4ee5bbe8e9c77c66048227223a 
+Importing 'GUID: da19a6da39f343e4d82907a0797f79c4 - Path: Assets/PolyForgeGenerated/Prefabs/crate_a.prefab' with importer (PrefabImporter)
+Imported 'GUID: da19a6da39f343e4d82907a0797f79c4' -> (Import Result ID: 'b9e19d7654b11b57ab26f0e5b8de1aec') in 0.004 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=68fb01d5927ae952700a45fba3f3204b DependenciesID=d872c95360919d286d47143f7d3357b9 StaticDependenciesID=94df0f822c140597d27448588d766943 
+Refreshing native plugins compatible for Editor in 3.09 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=7f73108d33ca0a649a6187d4f03b07db): Total: 8.017 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=3 (actual=3, local cache=0, cache server=0)
+		Asset DB Process Time: managed=16 ms, native=2176 ms
+		Asset DB Callback time: managed=281 ms, native=2478 ms
+		Scripting: domain reloads=1, domain reload time=1667 ms, compile time=1279 ms, other=116 ms
+		Project Asset Count: scripts=1330, non-scripts=2311
+		Asset File Changes: new=0, changed=3, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 2474.463ms
+	ApplyChangesToAssetFolders: 1.345ms
+	Scan: 138.808ms
+	Collect global state as custom dependencies: 30.722ms
+	OnSourceAssetsModified: 0.748ms
+	CategorizeScriptCompilationAssets: 51.295ms
+	ProcessAssetsWithTransientArtifactChanges: 107.836ms
+	CategorizeAssets: 78.399ms
+	CompileScripts: 1279.002ms
+	ImportOutOfDateAssets: 1507.221ms (1408.052ms without children)
+		ImportManagerImport: 78.236ms (2.920ms without children)
+			UpdateCategorizedAssets: 0.074ms
+		ReloadNativeAssets: 0.058ms
+		UnloadImportedAssets: 1.136ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.805ms
+		ImportSchedulerStart: 18.915ms
+	PostProcessAllAssets: 284.305ms
+		VCAutoAddAssetPostprocess 1.073ms
+		XRBuildSystem.XRAssetImported 0.874ms
+		MonoPostProcessAllAssets: 281.031ms
+			AssetPostprocessor.OnPostprocessAllAssets 159.600ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 25.422ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 18.749ms
+			SyncVS.PostprocessSyncProject 18.652ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 9.993ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 4.529ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.235ms
+			AssetChangedListener.OnPostprocessAllAssets 2.604ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.405ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 2.400ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 2.035ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.298ms
+			MaterialPostprocessor.OnPostprocessAllAssets 1.271ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.059ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.765ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.741ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.690ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.683ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.670ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.585ms
+			PostProcessor.OnPostprocessAllAssets 0.483ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.462ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.424ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.389ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.367ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.362ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.355ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.338ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.319ms
+			AssetEvents.OnPostprocessAllAssets 0.316ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.249ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.228ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.218ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.191ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.098ms
+	PostAssetChangesProfiler: 5.979ms
+	UnloadStreamsBegin: 2.367ms
+	PersistCurrentRevisions: 0.251ms
+	GenerateScriptTypeHashes: 2.392ms
+	GenerateScriptTypeSerializationHashes: 4.374ms
+	Untracked: 2010.673ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 0.837ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Isometric Robot Arena
+Unloading 67 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6525 unused Assets / (7.4 MB). Loaded Objects now: 7442.
+Memory consumption went from 394.6 MB to 387.1 MB.
+Total: 18.134700 ms (FindLiveObjects: 0.896900 ms CreateObjectMapping: 0.491300 ms MarkObjects: 11.335900 ms  DeleteObjects: 5.143500 ms)
+
+Importing 'GUID: 5185e5e704eed9b4d99e1929d1310090 - Path: Assets/PolyForgeGenerated' with importer (DefaultImporter)
+Imported 'GUID: 5185e5e704eed9b4d99e1929d1310090' -> (Import Result ID: 'e279128a172b3ef4daeb3cfe78801a22') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=5cb67886495528549aa4d1bde82db365 DependenciesID=65f361063b976b3f07c49536050e3464 StaticDependenciesID=312645afd31e5bbb39e722cfd54cc5d2 
+Importing 'GUID: 815793139cce5544c8eed6bbdee39f48 - Path: Assets/PolyForgeGenerated/Textures' with importer (DefaultImporter)
+Imported 'GUID: 815793139cce5544c8eed6bbdee39f48' -> (Import Result ID: '5526b0043630fbf47ba0f92c9a53fe3f') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=05081d1c17b3f90185956b3c9f29021e DependenciesID=aa0f4725f86291879287df202d123280 StaticDependenciesID=8f72e2f4893705bffec00edc2919c152 
+Importing 'GUID: 12cb156fa9144134cba5d45fb39efe3c - Path: Assets/PolyForgeGenerated/Scenes' with importer (DefaultImporter)
+Imported 'GUID: 12cb156fa9144134cba5d45fb39efe3c' -> (Import Result ID: '48472583462363f3c2e1f7f14416a0d5') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=15078619fffcac305597fac7afd18d4d DependenciesID=dff3e0c811f9603ae366593ea69f2647 StaticDependenciesID=e87a14f64258f2909bfc401fca4591ba 
+Importing 'GUID: c4bc45ff07d6ee947a0df068c8effd0b - Path: Assets/PolyForgeGenerated/Platformer' with importer (DefaultImporter)
+Imported 'GUID: c4bc45ff07d6ee947a0df068c8effd0b' -> (Import Result ID: '5d5e91afa158afd2f185ce8c8d56d7ab') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=04e93906c81163a5ff2a0079ebc6e90e DependenciesID=bdf9d6c90fa30988cfec93607eb679ad StaticDependenciesID=8e2863b29ac10e752536b92328a18cd0 
+Importing 'GUID: b6d692a6950ff3c42af6c16d774b2f4c - Path: Assets/PolyForgeGenerated/Prefabs' with importer (DefaultImporter)
+Imported 'GUID: b6d692a6950ff3c42af6c16d774b2f4c' -> (Import Result ID: '749a539d759ed6e073de2c1ebe2d6fa4') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=544e5a58502081e5b34e96dc7ac1bc6c DependenciesID=cb023d4abb1aa389cf2fe0f63800478d StaticDependenciesID=cce4811e0c6524f2098bb698670ed232 
+Importing 'GUID: 97a73b7a30a66954281b7bc76692ffe4 - Path: Assets/PolyForgeGenerated/Materials' with importer (DefaultImporter)
+Imported 'GUID: 97a73b7a30a66954281b7bc76692ffe4' -> (Import Result ID: 'a82b07c3df4ec85236bd5bf796cd9300') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=4c670f45028bac909f668a234af361e7 DependenciesID=510ee1f00d3dad6e67bd3d862c0302c2 StaticDependenciesID=50875aab7ebbc271e9d75139ad1a396e 
+Importing 'GUID: 89c999f12a0877942af6250dd8d91c0c - Path: Assets/PolyForgeGenerated/Game' with importer (DefaultImporter)
+Imported 'GUID: 89c999f12a0877942af6250dd8d91c0c' -> (Import Result ID: 'ec7ef4ca145d79e3754af7098e839a5c') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=e9cc772ac82494c8cbd2a6e8e2dcb0de DependenciesID=3fd8fcec6452eb91c780b23cf61c51bb StaticDependenciesID=06cf71aaaf622527cc23db5bf1b22dc5 
+Importing 'GUID: 2a26d66b05013e74a833e6faaa1c5693 - Path: Assets/PolyForgeGenerated/Sprites' with importer (DefaultImporter)
+Imported 'GUID: 2a26d66b05013e74a833e6faaa1c5693' -> (Import Result ID: '314c93f809fc955bc64b6fce37a503f0') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=3c9ebe44dac57540a5bd47d01a7abbe6 DependenciesID=429720e4cdfa6ea323e8584a560c6b03 StaticDependenciesID=2e6c5a7a862d4e6908dfba19fb985041 
+Importing 'GUID: 7e0766c0c2c16eb4ca433d871a2f569d - Path: Assets/PolyForgeGenerated/Models' with importer (DefaultImporter)
+Imported 'GUID: 7e0766c0c2c16eb4ca433d871a2f569d' -> (Import Result ID: '88cf7d1634305139f4111d018af0a55c') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=3789b98bebf8743e1b0312bfdd8c08f7 DependenciesID=9b895c505ca14c9dfba86905e75641ea StaticDependenciesID=648861e8dc8ab95c1f2bb8a4ff07f518 
+Importing 'GUID: d211d0a18ee6fb14e8e597d74ef3d277 - Path: Assets/PolyForgeGenerated/Textures/crate_a' with importer (DefaultImporter)
+Imported 'GUID: d211d0a18ee6fb14e8e597d74ef3d277' -> (Import Result ID: '73cd32fda503d67dccfaf31a083fcd84') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=199b0854e20a7b48aa03b8500d733bdb DependenciesID=828c9fe3b016ee9604e02885ad434682 StaticDependenciesID=ccc4eda9ff0e0c73b8017927186a089b 
+Importing 'GUID: db7d5248fc349344482575d788dc9eac - Path: Assets/PolyForgeGenerated/Materials/crate_a' with importer (DefaultImporter)
+Imported 'GUID: db7d5248fc349344482575d788dc9eac' -> (Import Result ID: '4ff4b4a29f4518bda909277c30b697ce') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=39303fb83ca0661362723847e02e9296 DependenciesID=08574340c0b44fc603c7bc5142131533 StaticDependenciesID=3ccf787cd6fae4e994db6a0dc3dfea85 
+Importing 'GUID: 4e5456c19de8e8741902713471328a27 - Path: Assets/PolyForgeGenerated/Materials/robot_a' with importer (DefaultImporter)
+Imported 'GUID: 4e5456c19de8e8741902713471328a27' -> (Import Result ID: 'e70c1fc7234346b08feffb71c76894ec') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=3f782bc1e27d566b05dbef02b2f63809 DependenciesID=32c361bf980ab84892f22510d83e46dc StaticDependenciesID=14381669f214f2b3e17dd0d405cb2426 
+Importing 'GUID: be6ecd7e4591b144ebf542c169f8d0f8 - Path: Assets/PolyForgeGenerated/Materials/ground_a' with importer (DefaultImporter)
+Imported 'GUID: be6ecd7e4591b144ebf542c169f8d0f8' -> (Import Result ID: 'a9b5cf3281b1ba07ec7e3ffae60ac685') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=cccd14313b797836a0f14fdad2587294 DependenciesID=e0699d7bd5cefb831684dd010ffc5762 StaticDependenciesID=72661adc7f9d588df1d8a34ee58bc45d 
+Importing 'GUID: 0fb2247623bfafa4885e7b9bbacd6f1f - Path: Assets/PolyForgeGenerated/Game/Models' with importer (DefaultImporter)
+Imported 'GUID: 0fb2247623bfafa4885e7b9bbacd6f1f' -> (Import Result ID: '90fbf56f24c473f40863b1fecd3e2c5e') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=d08625e7537087233142e6453c4468e6 DependenciesID=d0bf40c08588572be19c11c7d45c39f1 StaticDependenciesID=b73daae33f6909ee89d98574e03278f1 
+Importing 'GUID: 4b14765a036c55242bfffa31462d2453 - Path: Assets/PolyForgeGenerated/Textures/crate_a/metal_blue' with importer (DefaultImporter)
+Imported 'GUID: 4b14765a036c55242bfffa31462d2453' -> (Import Result ID: 'e69ed257ec26ea9c426005210a9c744d') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=5510b123a6df3950fea09c726b336000 DependenciesID=85b22dd434c8ea80f87f4ca8ce7e79a1 StaticDependenciesID=8a701872582d5044c6d7d4db8fcf6b3b 
+Importing 'GUID: b1d64fe006184d44bae3cfa54f92a853 - Path: Assets/PolyForgeGenerated/Scenes/Arena.unity' with importer (DefaultImporter)
+Imported 'GUID: b1d64fe006184d44bae3cfa54f92a853' -> (Import Result ID: '2801a3dec91f592e490eb51cbbae5f5a') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=ced1b770264d159dee2132763cc06df0 DependenciesID=57b1f42a60e51d4b9013f0a871044a83 StaticDependenciesID=07429c9e0ec71a93055772ff6692f04b 
+Importing 'GUID: d1ae2524931f6eb40acd4b5eda8328c7 - Path: Assets/PolyForgeGenerated/Scenes/Training.unity' with importer (DefaultImporter)
+Imported 'GUID: d1ae2524931f6eb40acd4b5eda8328c7' -> (Import Result ID: '1d1aacde28be817a4465be55b8074803') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=7d255a53eba870655f1a0e889eaefc37 DependenciesID=d6605fae827fa2146d9b33e3ecc22c35 StaticDependenciesID=7c6931e046f4f93034b99d381750f6dd 
+Importing 'GUID: 546a2d6c50cc43c46b3c555c4ad0331d - Path: Assets/PolyForgeGenerated/Game/PlayableArena.unity' with importer (DefaultImporter)
+Imported 'GUID: 546a2d6c50cc43c46b3c555c4ad0331d' -> (Import Result ID: '03b768b6672ad566ffe1e9cbfc9e3be9') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=fccf5ee36ef37baf135d6668b3613a37 DependenciesID=b5d2276e033c91241257b83f22e8e814 StaticDependenciesID=b276c9e320219cca5bbfefbfaa73456f 
+Importing 'GUID: 9aa131a84ddd4c546a1334c1df4cc96b - Path: Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity' with importer (DefaultImporter)
+Imported 'GUID: 9aa131a84ddd4c546a1334c1df4cc96b' -> (Import Result ID: 'c13d63e333a0a48348867ac4ca762822') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=393428a796ba6ddc9ba89df120b2315e DependenciesID=7a44a9b4d7048a12383947d0cb680a69 StaticDependenciesID=60d464fe101a708b542b6ce4a5b69020 
+Importing 'GUID: 6cfe231230f9b68418f022697b840311 - Path: Assets/PolyForgeGenerated/Sprites/SpriteArena.unity' with importer (DefaultImporter)
+Imported 'GUID: 6cfe231230f9b68418f022697b840311' -> (Import Result ID: '8d238bc8b99ad4a8f757d8fe99451c9b') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=7a3e3823ed9b8a260a390df96534ada1 DependenciesID=d086b7ba2925e69a1639f8178772c750 StaticDependenciesID=667cc8be4c47f2294ab7bb20b2dc32b2 
+Importing 'GUID: 4462586b953cc6a4f8eceac792a0e6ba - Path: Assets/PolyForgeGenerated/Sprites/atlas.png' with importer (TextureImporter)
+Imported 'GUID: 4462586b953cc6a4f8eceac792a0e6ba' -> (Import Result ID: 'd9a218dc78203c9759d5c06be05729e1') in 0.014 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d517ff6f495534a685ee28b535a6f0dd DependenciesID=61d392eacf96d3cb81bc2c2e28f14943 StaticDependenciesID=2cf557c27d1bae5248127234330456e7 
+Importing 'GUID: c203c6709a9a7d14ba85b4db6b130f9a - Path: Assets/PolyForgeGenerated/Materials/ground_a/metal_blue.mat' with importer (NativeFormatImporter)
+Imported 'GUID: c203c6709a9a7d14ba85b4db6b130f9a' -> (Import Result ID: 'd2ee68db9ab8fd4e9dfc52172de7faf5') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=e947aac3ce6c010a945762c04c2bbb71 DependenciesID=6e7691d2f7240becc0ec332379f73984 StaticDependenciesID=7dbae70627889602e184e1f631b3d875 
+Importing 'GUID: 43cc7af1a797b404f9e8b7e2d12aee16 - Path: Assets/PolyForgeGenerated/Materials/crate_a/metal_blue.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 43cc7af1a797b404f9e8b7e2d12aee16' -> (Import Result ID: '73989b3a95adc19fb6d84eb9fa974a5a') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=2f30c46e8757f381681474d299175566 DependenciesID=386d715812ef3136c53ffdf834959620 StaticDependenciesID=d038cb8bda43378750999d87bbb5ab8e 
+Importing 'GUID: 056b36a4f04283f4ca0f9858ca9823c2 - Path: Assets/PolyForgeGenerated/Materials/robot_a/metal_blue.mat' with importer (NativeFormatImporter)
+Imported 'GUID: 056b36a4f04283f4ca0f9858ca9823c2' -> (Import Result ID: 'dd211c3b82216776637559279e5fa64b') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=4d352b84b3004ce93e3b1d3dfee16e39 DependenciesID=d858165cfd79baf06f5b8306b326037e StaticDependenciesID=16b84c2f5901a7e887defb17276cf50d 
+Importing 'GUID: 2a328fe698de7974b8e9a3d345916a43 - Path: Assets/PolyForgeGenerated/Sprites/Walk.anim' with importer (NativeFormatImporter)
+Imported 'GUID: 2a328fe698de7974b8e9a3d345916a43' -> (Import Result ID: 'e5e31a26877f361cc9277a53d019733d') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=14b027f5219509f59be036c88371118a DependenciesID=a744b378b9a92dee1f18acfe1532421b StaticDependenciesID=1a05f0829ea27c64a57297e3a6b796c3 
+Importing 'GUID: f4d24dfb11f70874fa6d28b786e750ca - Path: Assets/PolyForgeGenerated/Models/robot_a.fbx' with importer (FBXImporter)
+Imported 'GUID: f4d24dfb11f70874fa6d28b786e750ca' -> (Import Result ID: '4175968702f85a2f28c8b5909315ef18') in 0.030 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=18fd408545190d2f9907960b6e823bff DependenciesID=924d690296851d014504a471bbdef91e StaticDependenciesID=8f742ba777c4a1950e4e8a8afb28813b 
+Importing 'GUID: e6d98d41dc97f0b43a7120c74de7bd16 - Path: Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx' with importer (FBXImporter)
+Imported 'GUID: e6d98d41dc97f0b43a7120c74de7bd16' -> (Import Result ID: 'aded341656d4666d53b81b6e4f95bab6') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f6011a7f3f09ad335814c3c7562c82dd DependenciesID=9c272cb4ddbaf160ee6ab5bdbeea81d0 StaticDependenciesID=6ce60e99d3f5c5c010b07d79ff29b589 
+Importing 'GUID: 098197373df92d94ca9018d0b32b2097 - Path: Assets/PolyForgeGenerated/Models/crate_a.fbx' with importer (FBXImporter)
+Imported 'GUID: 098197373df92d94ca9018d0b32b2097' -> (Import Result ID: '7f22d4b86d4a2e44e7fc590378857c71') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0018592e34bff5fb53210e0f96e250d0 DependenciesID=23ff24881f21888c6504af5021f18545 StaticDependenciesID=83a31c8ff3edcd2ef7a23ec56c892ac2 
+Importing 'GUID: 4f663556f95d17f47b81803298a9eb4d - Path: Assets/PolyForgeGenerated/Models/ground_a.fbx' with importer (FBXImporter)
+Imported 'GUID: 4f663556f95d17f47b81803298a9eb4d' -> (Import Result ID: 'f4ac448807eb22c10324db80803f26d8') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8abbfb6a1459b93887d65770ad501381 DependenciesID=e38f4df2836040effb817abb2e7467cf StaticDependenciesID=7d4982bc37fd942726a7db34d97a5ac1 
+Importing 'GUID: 4236b2392569f6a4bab048fa498cd4ad - Path: Assets/PolyForgeGenerated/Sprites/Sprite.controller' with importer (NativeFormatImporter)
+Imported 'GUID: 4236b2392569f6a4bab048fa498cd4ad' -> (Import Result ID: '47e393b1ab53f939c16ae53f03bf2d4e') in 0.003 seconds [static dependencies only]. Details - ImportResultOutputID=1cf810eb61d697f56f12898da9b23b61 DependenciesID=00a132450e87bf84e2be85d3d1cfc5c7 StaticDependenciesID=f30f05304ee459a4bac94da3c2f5e4f6 
+Importing 'GUID: 648d7d5095a25b6488369cff24345c95 - Path: Assets/PolyForgeGenerated/Platformer/Tile.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 648d7d5095a25b6488369cff24345c95' -> (Import Result ID: '4a550f551c002dc3935858388430f00e') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=9084944a43525bb01b43fdc9cdd032e9 DependenciesID=d6683fcf2a59dd006a2a5a1957d1a373 StaticDependenciesID=0a755f8a1bc37a46459bae43247c969c 
+Importing 'GUID: 05a5bafd14c82d2499b7393ef1ed4894 - Path: Assets/PolyForgeGenerated/Platformer/TileSpriteFullRect.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 05a5bafd14c82d2499b7393ef1ed4894' -> (Import Result ID: 'cf5570878e51adc9eba45a33b0f5777d') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=dac4d4de0c712389bd3cb38e8c457f57 DependenciesID=e77f4f13e88372fc7ef0d1854fdd2b12 StaticDependenciesID=20bd1088c7639c903c4f0ec09678b4fa 
+Importing 'GUID: 586dad2b615cdc642a710ceb197b921a - Path: Assets/PolyForgeGenerated/Sprites/Robot2D.prefab' with importer (PrefabImporter)
+Imported 'GUID: 586dad2b615cdc642a710ceb197b921a' -> (Import Result ID: '770a883b31138e39bd3bcfc68fd39fbf') in 0.013 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9886f37d7ee04a5b1b106eb81d30145c DependenciesID=708ea60dca9c6a9709cffd2a8fb615d8 StaticDependenciesID=9953b641cd4a67d93979ce8dd26d9be1 
+Importing 'GUID: a811daeb775a9de4f89d3d51e7781d81 - Path: Assets/PolyForgeGenerated/Prefabs/ground_a.prefab' with importer (PrefabImporter)
+Imported 'GUID: a811daeb775a9de4f89d3d51e7781d81' -> (Import Result ID: 'ea2129188db018621829aaf13fde0089') in 0.004 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0944951a2f07f7e8fab8d3cf69353847 DependenciesID=37b3bea0c3ae963030c346e3d2f7bdfa StaticDependenciesID=1745a20f71d4d6fc6ce4cef6a2560c27 
+Importing 'GUID: ca60c95055c2f8e45918d505093ba201 - Path: Assets/PolyForgeGenerated/Prefabs/robot_a.prefab' with importer (PrefabImporter)
+Imported 'GUID: ca60c95055c2f8e45918d505093ba201' -> (Import Result ID: '0b3bb472f31e6972fb7c6445f68671c4') in 0.007 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9015ccd07f4197c1f9c577ee7e0cca07 DependenciesID=7e68b8e7f04907e61a08064c09d3e72a StaticDependenciesID=293c1a4ee5bbe8e9c77c66048227223a 
+Importing 'GUID: da19a6da39f343e4d82907a0797f79c4 - Path: Assets/PolyForgeGenerated/Prefabs/crate_a.prefab' with importer (PrefabImporter)
+Imported 'GUID: da19a6da39f343e4d82907a0797f79c4' -> (Import Result ID: 'b9e19d7654b11b57ab26f0e5b8de1aec') in 0.004 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=68fb01d5927ae952700a45fba3f3204b DependenciesID=d872c95360919d286d47143f7d3357b9 StaticDependenciesID=94df0f822c140597d27448588d766943 
+Importing 'GUID: 8e3664423fa0b44469abf995cca62ddb - Path: Assets/PolyForgeGenerated/Platformer/PlatformerPlayer.prefab' with importer (PrefabImporter)
+Imported 'GUID: 8e3664423fa0b44469abf995cca62ddb' -> (Import Result ID: '00d0f433c5ad664cde6dc95bbdc10971') in 0.009 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ddd987f1870a960105bbe69ccbf6b494 DependenciesID=0c8acbbdb0bb2ea20c74d0c55eb50751 StaticDependenciesID=ae51eff2c948fe3a96a83d7b5f88d80d 
+Refreshing native plugins compatible for Editor in 2.75 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=baf1b4fbe82db91439d3ffe1d9086023): Total: 0.376 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=37 (actual=37, local cache=0, cache server=0)
+		Asset DB Process Time: managed=8 ms, native=320 ms
+		Asset DB Callback time: managed=34 ms, native=12 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1330, non-scripts=2311
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 2
+	ApplyChangesToAssetFolders: 0.144ms
+	Scan: 37.308ms
+	Collect global state as custom dependencies: 1.350ms
+	CategorizeScriptCompilationAssets: 0.124ms
+	ProcessAssetsWithTransientArtifactChanges: 0.123ms
+	CategorizeAssets: 50.046ms
+	ImportOutOfDateAssets: 211.637ms (0.295ms without children)
+		ImportManagerImport: 210.098ms (4.419ms without children)
+			UpdateCategorizedAssets: 0.407ms
+		ReloadNativeAssets: 0.063ms
+		UnloadImportedAssets: 0.180ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.613ms
+		ImportSchedulerStart: 0.377ms
+	PostProcessAllAssets: 43.974ms
+		XRBuildSystem.XRAssetImported 6.179ms
+		PostProcessCallbackCreateDeferredMaterials 0.146ms
+		ShaderAssetModifiedCallback 0.093ms
+		RaytracingShaderImportPostprocess 0.066ms
+		LocalizationDatabase.AssetDatabasePostprocessCallback 0.063ms
+		MonoPostProcessAllAssets: 34.433ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 16.272ms
+			AssetPostprocessor.OnPostprocessAllAssets 5.693ms
+			SyncVS.PostprocessSyncProject 2.130ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 2.125ms
+			MaterialPostprocessor.OnPostprocessAllAssets 1.729ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 1.245ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.190ms
+			AssetChangedListener.OnPostprocessAllAssets 0.524ms
+			PostProcessor.OnPostprocessAllAssets 0.269ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.249ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.233ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.159ms
+	PostAssetChangesProfiler: 2.962ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.178ms
+	PersistCurrentRevisions: 0.129ms
+	Untracked: 6.131ms
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.303 ms
+	Integration:            17.943 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.025 ms
+	Total Operation Time:   19.274 ms
+Unloading 29 unused Assets / (66.6 KB). Loaded Objects now: 8012.
+Memory consumption went from 369.7 MB to 369.7 MB.
+Total: 10.714800 ms (FindLiveObjects: 0.522600 ms CreateObjectMapping: 0.149500 ms MarkObjects: 9.745200 ms  DeleteObjects: 0.073400 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            1.335 ms
+	Integration:            14.066 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       37.695 ms
+	Total Operation Time:   53.100 ms
+Unloading 5 unused Assets / (12.1 KB). Loaded Objects now: 8012.
+Memory consumption went from 371.5 MB to 371.4 MB.
+Total: 13.000300 ms (FindLiveObjects: 0.594300 ms CreateObjectMapping: 0.224500 ms MarkObjects: 11.834500 ms  DeleteObjects: 0.056000 ms)
+
+MonoPathRemapper: Attempts to remap: 12252; Successful remaps: 170
+Serialized file version minimum: 23, current 23
+Worker ready: AssetImportWorkerHW0 0
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 0000000000001100, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000002568, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 00000000000076EC, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000001100, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000002568, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 00000000000076EC, mono_thread_manage will ignore it
+
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793528588272,"processId":2524,"allocatedMemory":14719841,"memoryLabels":[{"Default":201701},{"Permanent":15516},{"NewDelete":70623},{"Thread":4195280},{"Manager":33949},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":841830},{"Material":68},{"GfxDevice":55968},{"Animation":952},{"Audio":1272},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":16768},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1259880},{"BaseObject":51504},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":10354},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":17893},{"StaticString":3808},{"Utility":2674806},{"Curl":2559},{"PoolAlloc":2264},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":7296},{"WebRequest":5600},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":116760},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4516622},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":278},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3862},{"Windowing":456},{"Licensing":12766},{"AssetReference":32},{"IPCStream":32}]}
+~StackAllocator(ALLOC_TEMP_MAIN) m_LastAlloc not NULL. Did you forget to call FreeAllStackAllocations()? To get more information, run app with -diag-temp-memory-leak-validation cmd line argument

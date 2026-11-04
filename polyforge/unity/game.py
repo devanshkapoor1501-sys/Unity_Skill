@@ -419,6 +419,9 @@ def execute_game_checks(
                 player_status = "PASS" if player_path.is_file() else "FAIL"
                 if player_status != "PASS":
                     raise InputError("Player build produced no executable")
+                from polyforge.unity.performance import seal_player_build
+
+                seal_player_build(policy, player_path)
                 player_evidence = player_path.parent / "smoke-evidence.json"
                 outcome = run_process(
                     [

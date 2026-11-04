@@ -1,0 +1,17 @@
+import faulthandler
+import gc
+from pathlib import Path
+
+from polyforge.inspection import _csharp_source
+
+faulthandler.enable()
+raw = (b'namespace Game { public interface IThing { void Method(); } '
+       b'public class Thing<T> : IThing { public void Method() {} public class Nested {} } }\n')
+log = Path('.tmp/phase11/parser-stress-progress.txt').open('w', encoding='utf-8')
+for i in range(100):
+    value = _csharp_source(raw)
+    assert value[-1] == 'PARSED'
+    assert len(value[1]) == 3
+    log.write(str(i)+'\n'); log.flush()
+    gc.collect()
+print('Completed 100 GC-bound parser calls', flush=True)

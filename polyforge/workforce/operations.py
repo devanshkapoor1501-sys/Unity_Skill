@@ -67,6 +67,19 @@ def complete(
     paths.update(result.evidence_paths)
     if identifier == "sprite.unity.strip.v1":
         paths.update([inputs["metadata_file"], inputs["atlas_file"], *inputs["frame_files"]])
+    elif identifier == "unity.game.platformer.v1":
+        build_run = result.data.get("build_run_id")
+        if not isinstance(build_run, str) or not re.fullmatch(
+            r"platformer-build-[a-f0-9]{16}", build_run
+        ):
+            raise InputError("Platformer operation lacks an owned editable build identity")
+        paths.add("runs/" + build_run)
+        paths.add(".polyforge/platformer-latest.json")
+        receipt = policy.path(inputs["sprite_receipt"])
+        paths.update(
+            str(receipt.parent / name)
+            for name in ("bindings.json", "approval.json", "artifacts.json")
+        )
     elif identifier == "sprite.robot.bake.v1":
         paths.add(inputs["source_blend"])
     elif identifier == "asset.package.build.v1":
@@ -74,6 +87,7 @@ def complete(
     if identifier in {
         "animation.robot.unity.v1",
         "unity.game.arena.v1",
+        "unity.game.platformer.v1",
         "unity.scene.static.v1",
         "sprite.unity.strip.v1",
     }:

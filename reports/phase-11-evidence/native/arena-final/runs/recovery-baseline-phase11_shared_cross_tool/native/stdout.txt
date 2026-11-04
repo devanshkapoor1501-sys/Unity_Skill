@@ -1,0 +1,539 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 29168)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 15228)
+VBCSCompiler prewarm took 24.21 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 29168)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 15228)
+VBCSCompiler prewarm took 24.21 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-11-01T10:00:03.9776879Z"
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T10:00:03Z
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 3464, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              7466da4be13b4b16ae64f2ba4766a84a
+  Correlation Id:          b6228fe23682b58c1a212a32d4665e25
+  External correlation Id: 1229136336365605133
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.00s, validation: 0.00s, handshake: 0.08s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-11-01T10:00:04.0603773Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.10s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject
+-logFile
+-
+-upmLogFile
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\recovery-baseline-phase11_shared_cross_tool\native\upm.log
+-polyforgeInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\.polyforge\unity-request.json
+-executeMethod
+PolyForge.Editor.PolyForgeBuilder.ReconcileBatch
+-polyforgeOutput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\recovery-baseline-phase11_shared_cross_tool\bindings.json
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [13136]  Target information:
+
+Player connection [13136]  * "[IP] 192.168.1.12 [Port] 55504 [Flags] 2 [Guid] 883200030 [EditorId] 883200030 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [13136] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [13136] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-30984" after 0.3 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: 6e258e68d09cdbf5bb83b931693b9c1a
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56984
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003382 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.031 seconds
+Domain Reload Profiling: 1993ms
+	BeginReloadAssembly (247ms)
+		CreateAndSetChildDomain (15ms)
+	RebuildCommonClasses (9ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (119ms)
+	LoadAllAssembliesAndSetupDomain (557ms)
+		LoadAssemblies (224ms)
+		TypeCache.Refresh (374ms)
+			TypeCache.ScanAssembly (350ms)
+		AnalyzeDomain (2ms)
+	FinalizeReload (1033ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (182ms)
+			ProcessInitializeOnLoadMethodAttributes (339ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+DisplayProgressbar: Compiling Scripts
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\DotNetSdk\dotnet.exe "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+ExitCode: 4 Duration: 0s393ms
+Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
+[ 527/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra requires additional run (0.34 seconds), 1 items updated, 526 evaluated
+ExitCode: 0 Duration: 1s804ms
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+ExitCode: 0 Duration: 5s734ms
+Finished compiling graph: 1082 nodes, 20328 flattened edges (17152 ToBuild, 170 ToUse), maximum node priority 1160
+[ 357/1078  0s] WriteText Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.rsp
+[ 495/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others) [CacheMiss 6c7bbf3970c641ef792f13f60b03ed0b00000000000000000000000000000006]
+[1042/1078  1s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others)
+Packages\com.polyforge.engine\Editor\AnimationBuilder.cs(69,29): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll (+2 others) [CacheWrite 6c7bbf3970c641ef792f13f60b03ed0b00000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Sprite.Editor.dll (+2 others) [CacheMiss 22136e5b445046d4d75cfeed10236ab100000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Animation.Editor.Tests.dll (+2 others) [CacheMiss 132c6cdb6b7e26b21a2b9779464eb25500000000000000000000000000000006]
+[1043/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Animation.Editor.Tests.dll (+2 others)
+[1044/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Sprite.Editor.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Animation.Editor.Tests.dll (+2 others) [CacheWrite 132c6cdb6b7e26b21a2b9779464eb25500000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Sprite.Editor.dll (+2 others) [CacheWrite 22136e5b445046d4d75cfeed10236ab100000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Game.Editor.Tests.dll (+2 others) [CacheMiss 45b84551289ff443da6c5e5b1645d80e00000000000000000000000000000006]
+[1045/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Game.Editor.Tests.dll (+2 others)
+Packages\com.polyforge.engine\Tests\GameEditor\GameTests.cs(15,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+
+Packages\com.polyforge.engine\Tests\GameEditor\GameTests.cs(49,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Game.Editor.Tests.dll (+2 others) [CacheWrite 45b84551289ff443da6c5e5b1645d80e00000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others) [CacheMiss 76325b2b29abd2cb0a8a9dca4107220800000000000000000000000000000006]
+[1047/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others)
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll (+2 others) [CacheWrite 76325b2b29abd2cb0a8a9dca4107220800000000000000000000000000000006]
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Platformer.Editor.Tests.dll (+2 others) [CacheMiss 5874f5427a92d812874c4590161b46a200000000000000000000000000000006]
+[1048/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Platformer.Editor.Tests.dll (+2 others)
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(45,27): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(53,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(53,27): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(55,84): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(55,28): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+[           0s] Csc Library/Bee/artifacts/1900b0aE.dag/PolyForge.Platformer.Editor.Tests.dll (+2 others) [CacheWrite 5874f5427a92d812874c4590161b46a200000000000000000000000000000006]
+[1049/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Platformer.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Platformer.Editor.Tests.dll, with 146 defines and 301 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1050/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.Tests.dll, with 146 defines and 301 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1051/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Sprite.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Sprite.Editor.Tests.dll, with 146 defines and 302 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1052/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Game.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Game.Editor.Tests.dll, with 146 defines and 301 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1053/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Sprite.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Sprite.Editor.dll, with 146 defines and 316 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1054/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Animation.Editor.Tests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Animation.Editor.Tests.dll, with 146 defines and 301 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1055/1078  2s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
+[1056/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PolyForge.Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PolyForge.Editor.dll, with 146 defines and 314 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1057/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[1058/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 148 defines and 328 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1059/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 375 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1060/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
+[1061/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
+[1062/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.dll
+[1063/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.pdb
+[1064/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Animation.Editor.Tests.dll
+[1065/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Animation.Editor.Tests.pdb
+[1066/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Sprite.Editor.dll
+[1067/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Sprite.Editor.pdb
+[1068/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Game.Editor.Tests.dll
+[1069/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Game.Editor.Tests.pdb
+[1072/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.Tests.pdb
+[1073/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Editor.Tests.dll
+[1074/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Platformer.Editor.Tests.dll
+[1075/1078  0s] CopyFiles Library/ScriptAssemblies/PolyForge.Platformer.Editor.Tests.pdb
+[1076/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[1077/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (5.70 seconds), 35 items updated, 1078 evaluated
+Packages\com.polyforge.engine\Editor\AnimationBuilder.cs(69,29): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+Packages\com.polyforge.engine\Tests\GameEditor\GameTests.cs(15,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+Packages\com.polyforge.engine\Tests\GameEditor\GameTests.cs(49,25): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(45,27): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(53,79): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(53,27): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(55,84): warning CS0618: 'FindObjectsSortMode' is obsolete: 'FindObjectsSortMode has been deprecated. Use the FindObjectsByType overloads that do not take a FindObjectsSortMode parameter.'
+Packages\com.polyforge.engine\Tests\PlatformerEditor\PlatformerTests.cs(55,28): warning CS0618: 'Object.FindObjectsByType<T>(FindObjectsSortMode)' is obsolete: 'FindObjectsByType with FindObjectsSortMode parameter has been deprecated. Use FindObjectsByType<T>() or FindObjectsByType<T>(FindObjectsInactive) instead. InstanceID will be replaced in the future with EntityId and previous sort order cannot be maintained.'
+AssetDatabase: script compilation time: 9.370111s
+Begin MonoManager ReloadAssembly
+Total cache size 267830423
+Total cache size after purge 267830423, took 00:00:00.8433636
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 4.74 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.746 seconds
+Domain Reload Profiling: 3703ms
+	BeginReloadAssembly (441ms)
+		DisableScriptedObjects (45ms)
+		CreateAndSetChildDomain (88ms)
+	RebuildCommonClasses (16ms)
+	RebuildNativeTypeToScriptingClass (27ms)
+	initialDomainReloadingComplete (126ms)
+	LoadAllAssembliesAndSetupDomain (1346ms)
+		LoadAssemblies (748ms)
+		TypeCache.Refresh (300ms)
+			TypeCache.ScanAssembly (281ms)
+		AnalyzeDomain (159ms)
+			BuildScriptInfoCaches (135ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1747ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			BeforeProcessingInitializeOnLoad (206ms)
+			ProcessInitializeOnLoadAttributes (555ms)
+			ProcessInitializeOnLoadMethodAttributes (188ms)
+			AfterProcessingInitializeOnLoad (16ms)
+		AwakeInstancesAfterBackupRestoration (51ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject/Logs/AssetImportWorkerHW0.log
+Refreshing native plugins compatible for Editor in 3.04 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=ea82ee24db957934b97ef6a6c9df2ce9): Total: 15.047 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2687 ms
+		Asset DB Callback time: managed=737 ms, native=34 ms
+		Scripting: domain reloads=1, domain reload time=2090 ms, compile time=9375 ms, other=122 ms
+		Project Asset Count: scripts=1330, non-scripts=2311
+		Asset File Changes: new=1, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 31.372ms
+	ApplyChangesToAssetFolders: 1.331ms
+	Scan: 219.868ms
+	Collect global state as custom dependencies: 38.037ms
+	OnSourceAssetsModified: 1.294ms
+	CategorizeScriptCompilationAssets: 67.357ms
+	ProcessAssetsWithTransientArtifactChanges: 165.256ms
+	CategorizeAssets: 95.076ms
+	CompileScripts: 9374.716ms
+	ImportOutOfDateAssets: 1788.498ms (1764.786ms without children)
+		ReloadNativeAssets: 0.069ms
+		UnloadImportedAssets: 1.994ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.728ms
+		ImportSchedulerStart: 19.914ms
+	PostProcessAllAssets: 739.362ms
+		XRBuildSystem.XRAssetImported 1.429ms
+		VCAutoAddAssetPostprocess 1.404ms
+		VersionControlSettings.HiddenFilePostprocess 0.136ms
+		MonoPostProcessAllAssets: 735.254ms
+			SyncVS.PostprocessSyncProject 389.022ms
+			AssetPostprocessor.OnPostprocessAllAssets 207.790ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 34.785ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 32.662ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 13.586ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 3.945ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.703ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 3.651ms
+			AssetChangedListener.OnPostprocessAllAssets 3.444ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 3.022ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 2.463ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.811ms
+			MaterialPostprocessor.OnPostprocessAllAssets 1.670ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.549ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 1.452ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 1.065ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 1.019ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.931ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.732ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.605ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.582ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.529ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.528ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.503ms
+			PostProcessor.OnPostprocessAllAssets 0.502ms
+			AssetEvents.OnPostprocessAllAssets 0.492ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.394ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.379ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.328ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.308ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.302ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.281ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.271ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.263ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.170ms
+	PostAssetChangesProfiler: 6.235ms
+	UnloadStreamsBegin: 2.073ms
+	PersistCurrentRevisions: 0.117ms
+	GenerateScriptTypeHashes: 2.306ms
+	GenerateScriptTypeSerializationHashes: 4.041ms
+	Untracked: 2455.127ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 1.187ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Isometric Robot Arena
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6524 unused Assets / (8.1 MB). Loaded Objects now: 7440.
+Memory consumption went from 393.5 MB to 385.4 MB.
+Total: 20.274300 ms (FindLiveObjects: 0.926800 ms CreateObjectMapping: 0.291900 ms MarkObjects: 12.263300 ms  DeleteObjects: 5.741200 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Arena.unity'
+	Deserialize:            1.424 ms
+	Integration:            16.924 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.025 ms
+	Total Operation Time:   18.375 ms
+Unloading 7 unused Assets / (113.3 KB). Loaded Objects now: 8012.
+Memory consumption went from 383.6 MB to 383.5 MB.
+Total: 10.168400 ms (FindLiveObjects: 0.520200 ms CreateObjectMapping: 0.227500 ms MarkObjects: 9.154600 ms  DeleteObjects: 0.046000 ms)
+
+Opening scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/PolyForgeGenerated/Scenes/Training.unity'
+	Deserialize:            1.280 ms
+	Integration:            9.925 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       0.030 ms
+	Total Operation Time:   11.238 ms
+Unloading 5 unused Assets / (Unknown). Loaded Objects now: 8012.
+Memory consumption went from 383.5 MB to 383.5 MB.
+Total: 13.146100 ms (FindLiveObjects: 0.983100 ms CreateObjectMapping: 0.584800 ms MarkObjects: 11.237400 ms  DeleteObjects: 0.105900 ms)
+
+MonoPathRemapper: Attempts to remap: 15787; Successful remaps: 194
+Serialized file version minimum: 23, current 23
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 0000000000004F34, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000007704, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000004F34, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000007704, mono_thread_manage will ignore it
+
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793527224680,"processId":30984,"allocatedMemory":14678417,"memoryLabels":[{"Default":190385},{"Permanent":15516},{"NewDelete":69519},{"Thread":4198064},{"Manager":33949},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":842082},{"Material":68},{"GfxDevice":55968},{"Animation":952},{"Audio":1272},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":16768},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1259880},{"BaseObject":48720},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":10354},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":17473},{"StaticString":3808},{"Utility":2674806},{"Curl":2559},{"PoolAlloc":2264},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8296},{"CloudService":7296},{"WebRequest":8547},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":116737},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4484908},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":278},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3816},{"Windowing":456},{"Licensing":12766},{"AssetReference":32},{"IPCStream":32}]}
+~StackAllocator(ALLOC_TEMP_MAIN) m_LastAlloc not NULL. Did you forget to call FreeAllStackAllocations()? To get more information, run app with -diag-temp-memory-leak-validation cmd line argument

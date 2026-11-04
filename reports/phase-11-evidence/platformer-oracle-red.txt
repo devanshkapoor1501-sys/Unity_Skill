@@ -1,0 +1,21 @@
+.....................F.                                                  [100%]
+================================== FAILURES ===================================
+_____ test_airborne_boost_terminal_motion_and_unobserved_checkpoint_fail ______
+
+    def test_airborne_boost_terminal_motion_and_unobserved_checkpoint_fail():
+        from polyforge.scenarios.platformer_oracle import evaluate
+    
+        observed = trace("goal_contact")
+        observed["samples"][-1].update(state="WON", position=[8, 0, 0])
+        observed["samples"].append({**copy.deepcopy(observed["samples"][-1]),
+                                   "frame": 51, "position": [8.2, 0, 0]})
+>       assert evaluate(observed)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_platformer.py:264: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_airborne_boost_terminal_motion_and_unobserved_checkpoint_fail
+1 failed, 22 passed in 1.47s

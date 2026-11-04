@@ -28,6 +28,18 @@ def execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Res
 
 
 def _execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Result:
+    if identifier == "unity.game.platformer.v1":
+        from polyforge.contracts.validation import validate_schema
+        from polyforge.unity.platformer import build_platformer
+
+        validate_schema(inputs, "platformer.schema.json")
+        return build_platformer(
+            context.workspace,
+            inputs,
+            dry_run=context.dry_run,
+            standalone=inputs.get("standalone", False),
+            cancel=context.cancel,
+        )
     if identifier == "asset.package.build.v1":
         from polyforge.assets.pipeline import build_asset
 

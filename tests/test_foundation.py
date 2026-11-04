@@ -65,6 +65,7 @@ class CLIAcceptanceTests(unittest.TestCase):
         self.assertEqual(
             [c["id"] for c in body["data"]["capabilities"]],
             [
+                "unity.game.platformer.v1",
                 CAPABILITY,
                 "contract.manifest.validate.v1",
                 "contract.scene.compile.v1",

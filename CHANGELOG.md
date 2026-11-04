@@ -2,6 +2,13 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Add bounded static project inventory, syntax/GUID diagnostics and requested/resolved package observations without opening Unity.
+- Add public four-arm benchmark orchestration, full declared repetition schedules, immutable attempt ledgers and offline stratified reports; retain unavailable external evaluation.
+- Add an approved-sprite checkpoint platformer, physical keyboard/gameplay fault checks and sealed workforce delivery inspection.
+- Add birth-bound process counters, registered-player provenance and continuous rendered-loop standalone measurements.
+- Add canonical reproducible packaging, independent artifact comparison, clean-install checks and precise support/worker guides.
+- Preserve experimental preview classification; stable v1, protected holdouts and general production expertise remain unqualified.
+
 - Audit every Phase 0–10 task and gate against the updated blueprint; retain per-requirement findings and qualification evidence.
 - Add canonical workspace locks, complete artifact provenance, graphics metadata and explicit optional MCP availability descriptors.
 - Transport supplied color/normal PNGs, reconcile native texture/collider/scene evidence independently and verify obstacle collision with a dedicated mutant.

@@ -55,10 +55,17 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
             names.append(inputs["source_blend"])
         elif value.get("capability_id") == "asset.package.build.v1":
             names += [r["path"] for r in inputs["spec"]["references"]]
+        elif value.get("capability_id") == "unity.game.platformer.v1":
+            from polyforge.unity.platformer import compile_platformer_request
 
-        if value["task_class"] == "BUILD_GAME" or (
-            value["task_class"] == "ANIMATE" and "unity" in value["domain_tags"]
-        ):
+            compiled = compile_platformer_request(inputs, policy)
+            names += list(compiled["source_hashes"])
+            names.append(str(Path(inputs["sprite_receipt"]).parent / "artifacts.json"))
+
+        if (
+            value["task_class"] == "BUILD_GAME"
+            and value.get("capability_id") == "unity.game.arena.v1"
+        ) or (value["task_class"] == "ANIMATE" and "unity" in value["domain_tags"]):
             names += [
                 "game_manifest.json",
                 "UnityProject/Assets/PolyForgeGenerated/Game/PlayableArena.unity",
@@ -111,7 +118,10 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
         capability is None or not capability.startswith(("mesh.", "asset.package.", "sprite."))
     ):
         raise InputError("CREATE_ASSET requires a supported mesh capability")
-    if task == "BUILD_GAME" and capability != "unity.game.arena.v1":
+    if task == "BUILD_GAME" and capability not in {
+        "unity.game.arena.v1",
+        "unity.game.platformer.v1",
+    }:
         raise InputError("BUILD_GAME requires an implemented game capability")
     stages = ["S0", "S1"]
     jobs = []
@@ -159,6 +169,15 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
             jobs[-1]["context"] = context
             jobs[-1]["context_digest"] = canonical_digest(context)
             validate_schema(jobs[-1], "job_ticket.schema.json")
+    if capability == "unity.game.platformer.v1" and task == "BUILD_GAME":
+        stages = ["S0", "S1", "S4", "S5"]
+        jobs[1]["stage"] = "S4"
+        jobs[2]["stage"] = "S5"
+        jobs[2]["role_id"] = "gameplay_qa_inspector"
+        context = job_context(value, workspace_inputs, "gameplay_qa_inspector", workspace=workspace)
+        jobs[2]["context"] = context
+        jobs[2]["context_digest"] = canonical_digest(context)
+        validate_schema(jobs[2], "job_ticket.schema.json")
     if capability == "sprite.unity.strip.v1" and task == "CREATE_ASSET":
         stages = ["S0", "S1", "S4", "S5"]
         jobs[1]["role_id"] = "unity_integration"

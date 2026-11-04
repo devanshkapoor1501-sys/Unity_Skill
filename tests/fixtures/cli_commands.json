@@ -339,7 +339,7 @@
         "--dry-run",
         "--json"
       ],
-      "implemented": false,
+      "implemented": true,
       "phase": 11
     },
     {
@@ -475,8 +475,8 @@
         "--dry-run",
         "--json"
       ],
-      "implemented": false,
-      "phase": 6
+      "implemented": true,
+      "phase": 11
     },
     {
       "argv": [
@@ -487,8 +487,8 @@
         "--format",
         "json"
       ],
-      "implemented": false,
-      "phase": 6
+      "implemented": true,
+      "phase": 11
     },
     {
       "argv": [
@@ -498,7 +498,34 @@
         "--read-only",
         "--json"
       ],
-      "implemented": false,
+      "implemented": true,
+      "phase": 11
+    },
+    {
+      "argv": [
+        "platformer",
+        "build",
+        "--workspace",
+        "workspace/arena_demo",
+        "--input",
+        "platformer.json",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
+      "phase": 11
+    },
+    {
+      "argv": [
+        "profile-player",
+        "--workspace",
+        "workspace/arena_demo",
+        "--player",
+        "runs/game-check-example/player/PolyForgeArena.exe",
+        "--dry-run",
+        "--json"
+      ],
+      "implemented": true,
       "phase": 11
     },
     {

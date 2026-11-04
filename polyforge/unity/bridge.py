@@ -73,6 +73,8 @@ def launch(
         "PolyForge.Animation.Tests",
         "PolyForge.Sprite.Editor.Tests",
         "PolyForge.Sprite.Tests",
+        "PolyForge.Platformer.Editor.Tests",
+        "PolyForge.Platformer.Tests",
     }:
         raise InputError("Unknown owned Unity test platform/filter")
     policy.mkdir(relative)
@@ -111,6 +113,11 @@ def launch(
             "-testResults",
             str(policy.path(output)),
         ]
+    elif mode in {"platformer", "platformer-player"}:
+        method = "BuildBatch" if mode == "platformer" else "BuildPlayerBatch"
+        args += ["-executeMethod", "PolyForge.Platformer.Editor.PlatformerBuilder." + method]
+        if output is not None:
+            args += ["-polyforgeOutput", str(policy.path(output))]
     elif mode == "sprites":
         args += ["-executeMethod", "PolyForge.Sprite.Editor.SpriteBuilder.BuildBatch"]
         if output is not None:

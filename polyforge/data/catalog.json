@@ -1,5 +1,16 @@
 [
   {
+    "id": "unity.game.platformer.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/platformer.schema.json",
+    "runner": "unity.game.platformer",
+    "deterministic": false,
+    "requires": ["python>=3.11", "unity==6000.6.3f1"],
+    "tests": ["native_editmode_bindings", "native_playmode_physics", "eight_physical_mutants", "standalone_gameplay", "source_preservation"],
+    "output_types": ["prefab", "scene", "test_xml", "telemetry", "editable_project"],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
     "id": "contract.capability.validate.v1",
     "version": "1.0.0",
     "input_schema": "contracts/capability.schema.json",

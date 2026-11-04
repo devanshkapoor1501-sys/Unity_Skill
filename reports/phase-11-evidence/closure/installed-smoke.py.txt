@@ -1,0 +1,74 @@
+"""Isolated clean-wheel CLI/schema/parser/availability verification; no native launch."""
+import contextlib
+import hashlib
+import io
+import json
+import sys
+from importlib.resources import files
+from pathlib import Path
+
+import jsonschema
+import polyforge
+from polyforge.cli import main
+from polyforge.commands import COMMANDS
+from polyforge.contracts.validation import load_json
+from polyforge.inspection import inspect_project, _csharp_source
+from polyforge.workforce.router import engine_digest
+
+root = Path.cwd()
+base = root / '.tmp/phase11-closure'
+assert 'phase11-closure' in str(polyforge.__file__) and 'clean-install' in str(polyforge.__file__), polyforge.__file__
+assert engine_digest() == (base / 'release-complete-engine-before.txt').read_text().strip()
+schemas = []
+for source in files('polyforge').joinpath('contracts').iterdir():
+    if source.name.endswith('.schema.json'):
+        jsonschema.Draft202012Validator.check_schema(json.loads(source.read_text('utf-8')))
+        schemas.append(source.name)
+help_rows = []
+for spec in COMMANDS:
+    stream = io.StringIO()
+    with contextlib.redirect_stdout(stream):
+        try:
+            code = main([*spec.path, '--help'])
+        except SystemExit as exc:
+            code = exc.code
+    assert code == 0, (spec.path, code)
+    help_rows.append({'command': list(spec.path), 'sha256': hashlib.sha256(stream.getvalue().encode()).hexdigest()})
+(base / 'installed-help-final.json').write_text(json.dumps(help_rows, indent=2))
+for i in range(100):
+    assert _csharp_source(b'\n' * 300 + b'namespace Installed { class Actual {} }')[2] == 'PARSED'
+fixture = base / 'clean-static-fixture'
+(fixture / 'ProjectSettings').mkdir(parents=True)
+(fixture / 'Packages').mkdir()
+(fixture / 'ProjectSettings/ProjectVersion.txt').write_text('m_EditorVersion: 6000.6.3f1\n')
+(fixture / 'Packages/manifest.json').write_text('{"dependencies":{"com.example.direct":"1.0.0"}}')
+(fixture / 'Packages/packages-lock.json').write_text('{"dependencies":{"com.example.direct":{"version":"1.1.0"},"com.example.transitive":{"version":"2.0.0"}}}')
+inspection = inspect_project(fixture)
+assert inspection.status == 'PASS' and inspection.data['original_unchanged']
+assert inspection.data['resolved_packages']['com.example.transitive'] == '2.0.0'
+arm_rows = []
+for arm in 'ABCD':
+    output = base / 'installed-benchmarks-final' / arm
+    stream = io.StringIO()
+    with contextlib.redirect_stdout(stream):
+        code = main(['benchmark', 'run', '--suite', 'benchmark_core', '--arm', arm,
+                     '--output', str(output), '--json'])
+    value = json.loads(stream.getvalue())
+    (base / ('installed-final-benchmark-' + arm + '.json')).write_text(stream.getvalue())
+    assert code == 3 and value['status'] == 'BLOCKED'
+    assert len(value['data']['records']) == 60
+    assert not any(row['executed'] for row in value['data']['records'])
+    for fmt in ('json', 'html'):
+        stream = io.StringIO()
+        with contextlib.redirect_stdout(stream):
+            code = main(['benchmark', 'report', '--run', str(output), '--format', fmt])
+        assert code == 0
+        (base / ('installed-final-report-' + arm + '.' + fmt)).write_text(stream.getvalue(), encoding='utf-8')
+    arm_rows.append({'arm': arm, 'planned_cases': 60, 'executed_cases': 0, 'status': 'BLOCKED'})
+report = {'status': 'PASS', 'python': sys.version, 'installed_package': str(polyforge.__file__),
+          'engine_digest': engine_digest(), 'schema_count': len(schemas),
+          'help_commands': len(help_rows), 'parser_repetitions': 100,
+          'static_original_unchanged': inspection.data['original_unchanged'], 'arms': arm_rows,
+          'native_demo': 'PENDING_SEPARATE_RUN'}
+(base / 'clean-installed-final-summary.json').write_text(json.dumps(report, indent=2) + '\n')
+print(json.dumps(report, indent=2))

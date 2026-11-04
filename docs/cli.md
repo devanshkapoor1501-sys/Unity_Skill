@@ -35,7 +35,7 @@ are syntax fixtures, not evidence of execution or functionality.
 | `status` | Implemented | `polyforge status --workspace workspace/arena_demo --json` |
 | `resume` | Implemented | `polyforge resume --workspace workspace/arena_demo --run-id example --json` |
 | `report` | Implemented | `polyforge report --workspace workspace/arena_demo --run-id example --json` |
-| `clean` | NOT_RUN; Phase 11 | `polyforge clean --workspace workspace/arena_demo --dry-run --json` |
+| `clean` | Implemented | `polyforge clean --workspace workspace/arena_demo --dry-run --json` |
 | `capability list` | Implemented | `polyforge capability list --json` |
 | `capability show` | Implemented | `polyforge capability show contract.capability.validate.v1 --json` |
 | `capability run` | Implemented | `polyforge capability run contract.capability.validate.v1 --input input.json --workspace workspace/arena_demo --dry-run --json` |
@@ -46,9 +46,11 @@ are syntax fixtures, not evidence of execution or functionality.
 | `repair plan` | Implemented | `polyforge repair plan --workspace workspace/arena_demo --issue ISSUE-001 --json` |
 | `repair apply` | Implemented | `polyforge repair apply --workspace workspace/arena_demo --plan repair.json --approved --json` |
 | `repair rollback` | Implemented | `polyforge repair rollback --workspace workspace/arena_demo --transaction-id tx-example --json` |
-| `benchmark run` | NOT_RUN; Phase 6 | `polyforge benchmark run --suite benchmark_core --arm D --output workspace/benchmarks --dry-run --json` |
-| `benchmark report` | NOT_RUN; Phase 6 | `polyforge benchmark report --run benchmark-example --format json` |
-| `inspect-project` | NOT_RUN; Phase 11 | `polyforge inspect-project --project workspace/existing_project --read-only --json` |
+| `benchmark run` | Implemented | `polyforge benchmark run --suite benchmark_core --arm D --output workspace/benchmarks --dry-run --json` |
+| `benchmark report` | Implemented | `polyforge benchmark report --run benchmark-example --format json` |
+| `inspect-project` | Implemented | `polyforge inspect-project --project workspace/existing_project --read-only --json` |
+| `platformer build` | Implemented | `polyforge platformer build --workspace workspace/arena_demo --input platformer.json --dry-run --json` |
+| `profile-player` | Implemented | `polyforge profile-player --workspace workspace/arena_demo --player runs/game-check-example/player/PolyForgeArena.exe --dry-run --json` |
 | `mcp serve` | Implemented | `polyforge mcp serve --workspace workspace/arena_demo --transport stdio` |
 
 ## Status and process exit

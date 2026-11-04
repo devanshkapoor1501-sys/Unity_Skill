@@ -1,0 +1,25 @@
+import json
+from pathlib import Path
+from polyforge.inspection import inspect_project
+from polyforge.benchmark.runner import run_suite
+from polyforge.benchmark.tasks import load_suite
+
+ROOT = Path(__file__).resolve().parents[3]
+
+def test_static_inspection_reports_resolved_package_versions(tmp_path):
+    (tmp_path / 'ProjectSettings').mkdir()
+    (tmp_path / 'Packages').mkdir()
+    (tmp_path / 'ProjectSettings/ProjectVersion.txt').write_text('m_EditorVersion: 6000.6.3f1\n')
+    (tmp_path / 'Packages/manifest.json').write_text(json.dumps({'dependencies': {'com.example.direct': '1.0.0'}}))
+    (tmp_path / 'Packages/packages-lock.json').write_text(json.dumps({'dependencies': {'com.example.direct': {'version': '1.1.0', 'depth': 0, 'source': 'registry', 'dependencies': {'com.example.transitive': '2.0.0'}}, 'com.example.transitive': {'version': '2.0.0', 'depth': 1, 'source': 'registry', 'dependencies': {}}}}))
+    result = inspect_project(tmp_path)
+    # The declared package-resolution information must survive static inspection.
+    observed = {key: value for key, value in result.data.items() if key != 'inventory'}
+    assert 'com.example.transitive' in json.dumps(observed)
+    assert '1.1.0' in json.dumps(observed)
+
+
+def test_default_suite_run_preserves_declared_repetition_count(tmp_path):
+    suite = load_suite(ROOT / 'polyforge/data/benchmark-core/suite.json')
+    result = run_suite(suite, 'A', tmp_path / 'run', dry_run=True)
+    assert result.data['planned_cases'] == len(suite['tasks']) * suite['runs_per_task_arm']

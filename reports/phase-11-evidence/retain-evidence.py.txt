@@ -1,0 +1,79 @@
+"""Retain measured evidence and editable demo sources, excluding caches/auth/player binaries."""
+import hashlib
+import json
+import os
+import re
+import shutil
+from pathlib import Path
+
+from polyforge.security.policy import redact
+
+root = Path.cwd()
+base = root / '.tmp/phase11'
+dest = root / 'reports/phase-11-evidence'
+dest.mkdir(exist_ok=True)
+records = []
+text_suffixes = {'.txt', '.err', '.json', '.jsonl', '.xml', '.md', '.py', '.cs', '.patch', '.log', '.html'}
+binary_suffixes = {'.png', '.blend', '.fbx', '.zip'}
+
+def retain(source, relative):
+    if not source.is_file() or source.stat().st_size > 16_777_216:
+        return
+    raw = source.read_bytes()
+    original_sha = hashlib.sha256(raw).hexdigest()
+    changed = False
+    if source.suffix in text_suffixes:
+        text = raw.decode('utf-8-sig', errors='replace')
+        # Native child-process launch diagnostics can contain an Editor license.
+        safe = re.sub(r'(?i)(-cbmEditorLicense\s+)[^\s"\']+', r'\1[REDACTED]', redact(text))
+        raw = safe.encode('utf-8')
+        changed = raw != source.read_bytes()
+    target = dest / relative
+    if source.suffix in {'.py', '.cs', '.patch'}:
+        target = target.with_name(target.name + '.txt')
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_bytes(raw)
+    records.append({'path': target.relative_to(dest).as_posix(), 'bytes': len(raw),
+                    'sha256': hashlib.sha256(raw).hexdigest(),
+                    'source': source.relative_to(root).as_posix(),
+                    'source_sha256': original_sha, 'export_transformed': changed})
+
+for source in base.iterdir():
+    if source.is_file() and source.suffix in text_suffixes:
+        retain(source, source.name)
+
+for name in ('benchmark-arms', 'benchmark-arms-final', 'installed-benchmarks',
+             'installed-benchmarks-final', 'profile-review', 'profile-rereview',
+             'registration-review', 'boundary-final-review', 'final-branch-review',
+             'local-mode-measurements', 'release-current-a', 'release-current-b'):
+    folder = base / name
+    if folder.is_dir():
+        for source in folder.iterdir():
+            if source.is_file() and source.suffix in text_suffixes:
+                retain(source, Path(name) / source.name)
+
+for workspace in ('demo', 'arena-final', 'platformer-demo'):
+    start = base / workspace
+    for current, directories, files in os.walk(start):
+        path = Path(current)
+        if path.name == 'player':
+            directories[:] = [name for name in directories if name == 'profiles']
+        else:
+            directories[:] = [name for name in directories if name not in {
+                'UnityProject', 'Library', 'Temp', 'tmp', '__pycache__', 'unity-profile',
+                'upm-cache', 'snapshots', 'snapshot',
+            }]
+        for name in files:
+            source = path / name
+            if source.suffix in text_suffixes | binary_suffixes:
+                retain(source, Path('native') / workspace / source.relative_to(start))
+
+seen = {record['path'] for record in records}
+assert len(seen) == len(records), 'Duplicate evidence export destinations'
+index = {'schema_version': '1.0.0',
+         'scope': 'Phase 11 public development qualification; retained failed attempts are not PASS. '
+                  'Hashes establish bytes only. Native caches, auth profiles and player binaries excluded.',
+         'files': sorted(records, key=lambda item: item['path'])}
+(dest / 'index.json').write_text(json.dumps(index, indent=2) + '\n', encoding='utf-8')
+print(json.dumps({'files': len(records), 'bytes': sum(r['bytes'] for r in records),
+                  'transformed': sum(r['export_transformed'] for r in records)}))

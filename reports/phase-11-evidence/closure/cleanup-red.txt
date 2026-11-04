@@ -1,0 +1,419 @@
+.F.FF...FFFF.FFFFFFFFF                                                   [100%]
+================================== FAILURES ===================================
+_ test_confirm_deletes_only_candidates_and_keeps_sources_evidence_and_directories _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_confirm_deletes_only_cand0')
+
+    def test_confirm_deletes_only_candidates_and_keeps_sources_evidence_and_directories(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        source = candidate.parent / "source.blend"
+        source.write_bytes(b"editable source")
+        result = clean_workspace(root, confirm=True)
+        assert result.status == "PASS"
+>       assert result.data["dry_run"] is False
+E       assert True is False
+
+tests\test_cleanup.py:73: AssertionError
+_ test_registered_temporary_shaped_artifacts_and_directory_evidence_are_preserved _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_registered_temporary_shap0')
+
+    def test_registered_temporary_shaped_artifacts_and_directory_evidence_are_preserved(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        registry = candidate.parent.parent / "registry.json"
+        registry.write_text(json.dumps({"artifacts": [{"relative_path":
+            candidate.relative_to(root).as_posix()}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:99: AssertionError
+______ test_unproven_or_active_runs_and_processes_are_preserved[missing] ______
+
+self = <polyforge.runner.state.RunJournal object at 0x00000234A9D72600>
+
+    def read(self) -> dict[str, Any]:
+        """Replay complete events without mutating the source or launching a worker."""
+        events = self.policy.path(f"{self.relative}/events.jsonl")
+        try:
+>           with events.open("rb") as stream:
+                 ^^^^^^^^^^^^^^^^^
+
+polyforge\runner\state.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_unproven_or_active_runs_a0/owned/runs/native-1/events.jsonl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\cleanup-repair-red2\\test_unproven_or_active_runs_a0\\owned\\runs\\native-1\\events.jsonl'
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1013: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_unproven_or_active_runs_a0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000234A9D73D70>
+kind = 'missing'
+
+    @pytest.mark.parametrize("kind", ["missing", "empty", "running", "live", "uncertain"])
+    def test_unproven_or_active_runs_and_processes_are_preserved(tmp_path, monkeypatch, kind):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+        if kind == "missing":
+            (root / "runs/native-1/events.jsonl").unlink()
+        elif kind == "empty":
+            journal = RunJournal(WorkspacePolicy(root), "native-1")
+            state = journal.read()
+            for stage in state["stages"].values():
+                stage["status"] = "pending"
+            journal._save(state, "fixture")
+        elif kind == "running":
+            RunJournal(WorkspacePolicy(root), "native-1").transition("S1", "running")
+        else:
+            def identity(pid):
+                if kind == "uncertain":
+                    raise OSError("cannot establish process liveness")
+                return "live-birth-token"
+            monkeypatch.setattr(cleanup, "process_identity", identity)
+        before = snapshot(root)
+>       result = cleanup.clean_workspace(root)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cleanup.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:69: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:49: in _inventory
+    if not _ready(policy, run.name, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:20: in _ready
+    state = RunJournal(policy, run_id).read()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <polyforge.runner.state.RunJournal object at 0x00000234A9D72600>
+
+    def read(self) -> dict[str, Any]:
+        """Replay complete events without mutating the source or launching a worker."""
+        events = self.policy.path(f"{self.relative}/events.jsonl")
+        try:
+            with events.open("rb") as stream:
+                content = stream.read(16_777_217)
+        except OSError as exc:
+>           raise InputError(f"Cannot read run journal: {exc}") from exc
+E           polyforge.contracts.validation.InputError: Cannot read run journal: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\cleanup-repair-red2\\test_unproven_or_active_runs_a0\\owned\\runs\\native-1\\events.jsonl'
+
+polyforge\runner\state.py:96: InputError
+_____ test_unproven_or_active_runs_and_processes_are_preserved[uncertain] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_unproven_or_active_runs_a4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000234AA0489B0>
+kind = 'uncertain'
+
+    @pytest.mark.parametrize("kind", ["missing", "empty", "running", "live", "uncertain"])
+    def test_unproven_or_active_runs_and_processes_are_preserved(tmp_path, monkeypatch, kind):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+        if kind == "missing":
+            (root / "runs/native-1/events.jsonl").unlink()
+        elif kind == "empty":
+            journal = RunJournal(WorkspacePolicy(root), "native-1")
+            state = journal.read()
+            for stage in state["stages"].values():
+                stage["status"] = "pending"
+            journal._save(state, "fixture")
+        elif kind == "running":
+            RunJournal(WorkspacePolicy(root), "native-1").transition("S1", "running")
+        else:
+            def identity(pid):
+                if kind == "uncertain":
+                    raise OSError("cannot establish process liveness")
+                return "live-birth-token"
+            monkeypatch.setattr(cleanup, "process_identity", identity)
+        before = snapshot(root)
+>       result = cleanup.clean_workspace(root)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cleanup.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:69: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:49: in _inventory
+    if not _ready(policy, run.name, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:30: in _ready
+    and process_identity(record["pid"]) is None
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+pid = 2147483646
+
+    def identity(pid):
+        if kind == "uncertain":
+>           raise OSError("cannot establish process liveness")
+E           OSError: cannot establish process liveness
+
+tests\test_cleanup.py:121: OSError
+_ test_invalid_workspace_metadata_rejects_without_mutation[workspace_id-None] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_invalid_workspace_metadat0')
+field = 'workspace_id', value = None
+
+    @pytest.mark.parametrize("field,value", [
+        ("workspace_id", None), ("trusted_local_approved", False),
+        ("security_scope", "SANDBOXED_UNTRUSTED"), ("schema_version", "2"),
+    ])
+    def test_invalid_workspace_metadata_rejects_without_mutation(tmp_path, field, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, _ = workspace(tmp_path / "owned")
+        marker = root / ".polyforge/workspace.json"
+        data = json.loads(marker.read_text())
+        data[field] = value
+        marker.write_text(json.dumps(data))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:144: Failed
+_ test_invalid_workspace_metadata_rejects_without_mutation[trusted_local_approved-False] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_invalid_workspace_metadat1')
+field = 'trusted_local_approved', value = False
+
+    @pytest.mark.parametrize("field,value", [
+        ("workspace_id", None), ("trusted_local_approved", False),
+        ("security_scope", "SANDBOXED_UNTRUSTED"), ("schema_version", "2"),
+    ])
+    def test_invalid_workspace_metadata_rejects_without_mutation(tmp_path, field, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, _ = workspace(tmp_path / "owned")
+        marker = root / ".polyforge/workspace.json"
+        data = json.loads(marker.read_text())
+        data[field] = value
+        marker.write_text(json.dumps(data))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:144: Failed
+_ test_invalid_workspace_metadata_rejects_without_mutation[security_scope-SANDBOXED_UNTRUSTED] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_invalid_workspace_metadat2')
+field = 'security_scope', value = 'SANDBOXED_UNTRUSTED'
+
+    @pytest.mark.parametrize("field,value", [
+        ("workspace_id", None), ("trusted_local_approved", False),
+        ("security_scope", "SANDBOXED_UNTRUSTED"), ("schema_version", "2"),
+    ])
+    def test_invalid_workspace_metadata_rejects_without_mutation(tmp_path, field, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, _ = workspace(tmp_path / "owned")
+        marker = root / ".polyforge/workspace.json"
+        data = json.loads(marker.read_text())
+        data[field] = value
+        marker.write_text(json.dumps(data))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:144: Failed
+_____ test_malformed_process_records_fail_closed_before_deletion[value0] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_malformed_process_records0')
+value = []
+
+    @pytest.mark.parametrize("value", [[], {}, {"pid": True, "returncode": 0, "reason": "exit"},
+        {"pid": 2147483646, "returncode": True, "reason": "exit"},
+        {"pid": 2147483646, "returncode": 0, "reason": "running"}])
+    def test_malformed_process_records_fail_closed_before_deletion(tmp_path, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        (candidate.parent.parent / "process.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:158: Failed
+_____ test_malformed_process_records_fail_closed_before_deletion[value1] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_malformed_process_records1')
+value = {}
+
+    @pytest.mark.parametrize("value", [[], {}, {"pid": True, "returncode": 0, "reason": "exit"},
+        {"pid": 2147483646, "returncode": True, "reason": "exit"},
+        {"pid": 2147483646, "returncode": 0, "reason": "running"}])
+    def test_malformed_process_records_fail_closed_before_deletion(tmp_path, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        (candidate.parent.parent / "process.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:158: Failed
+_____ test_malformed_process_records_fail_closed_before_deletion[value2] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_malformed_process_records2')
+value = {'pid': True, 'reason': 'exit', 'returncode': 0}
+
+    @pytest.mark.parametrize("value", [[], {}, {"pid": True, "returncode": 0, "reason": "exit"},
+        {"pid": 2147483646, "returncode": True, "reason": "exit"},
+        {"pid": 2147483646, "returncode": 0, "reason": "running"}])
+    def test_malformed_process_records_fail_closed_before_deletion(tmp_path, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        (candidate.parent.parent / "process.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:158: Failed
+_____ test_malformed_process_records_fail_closed_before_deletion[value3] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_malformed_process_records3')
+value = {'pid': 2147483646, 'reason': 'exit', 'returncode': True}
+
+    @pytest.mark.parametrize("value", [[], {}, {"pid": True, "returncode": 0, "reason": "exit"},
+        {"pid": 2147483646, "returncode": True, "reason": "exit"},
+        {"pid": 2147483646, "returncode": 0, "reason": "running"}])
+    def test_malformed_process_records_fail_closed_before_deletion(tmp_path, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        (candidate.parent.parent / "process.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:158: Failed
+_____ test_malformed_process_records_fail_closed_before_deletion[value4] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_malformed_process_records4')
+value = {'pid': 2147483646, 'reason': 'running', 'returncode': 0}
+
+    @pytest.mark.parametrize("value", [[], {}, {"pid": True, "returncode": 0, "reason": "exit"},
+        {"pid": 2147483646, "returncode": True, "reason": "exit"},
+        {"pid": 2147483646, "returncode": 0, "reason": "running"}])
+    def test_malformed_process_records_fail_closed_before_deletion(tmp_path, value):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        (candidate.parent.parent / "process.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:158: Failed
+________ test_hardlinked_candidate_is_rejected_and_both_names_survive _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_hardlinked_candidate_is_r0')
+
+    def test_hardlinked_candidate_is_rejected_and_both_names_survive(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        outside = tmp_path / "outside.tmp"
+        os.link(candidate, outside)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:169: Failed
+_________ test_inventory_limits_fail_before_any_deletion[MAX_ENTRIES] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_inventory_limits_fail_bef0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000234A9D70470>
+limit = 'MAX_ENTRIES'
+
+    @pytest.mark.parametrize("limit", ["MAX_ENTRIES", "MAX_FILE_BYTES", "MAX_TOTAL_BYTES"])
+    def test_inventory_limits_fail_before_any_deletion(tmp_path, monkeypatch, limit):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+>       monkeypatch.setattr(cleanup, limit, 1)
+E       AttributeError: <module 'polyforge.cleanup' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\cleanup.py'> has no attribute 'MAX_ENTRIES'
+
+tests\test_cleanup.py:179: AttributeError
+_______ test_inventory_limits_fail_before_any_deletion[MAX_FILE_BYTES] ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_inventory_limits_fail_bef1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000234A9D70E30>
+limit = 'MAX_FILE_BYTES'
+
+    @pytest.mark.parametrize("limit", ["MAX_ENTRIES", "MAX_FILE_BYTES", "MAX_TOTAL_BYTES"])
+    def test_inventory_limits_fail_before_any_deletion(tmp_path, monkeypatch, limit):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+>       monkeypatch.setattr(cleanup, limit, 1)
+E       AttributeError: <module 'polyforge.cleanup' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\cleanup.py'> has no attribute 'MAX_FILE_BYTES'
+
+tests\test_cleanup.py:179: AttributeError
+_______ test_inventory_limits_fail_before_any_deletion[MAX_TOTAL_BYTES] _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red2/test_inventory_limits_fail_bef2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000234A9D60DA0>
+limit = 'MAX_TOTAL_BYTES'
+
+    @pytest.mark.parametrize("limit", ["MAX_ENTRIES", "MAX_FILE_BYTES", "MAX_TOTAL_BYTES"])
+    def test_inventory_limits_fail_before_any_deletion(tmp_path, monkeypatch, limit):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+>       monkeypatch.setattr(cleanup, limit, 1)
+E       AttributeError: <module 'polyforge.cleanup' from 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\polyforge\\cleanup.py'> has no attribute 'MAX_TOTAL_BYTES'
+
+tests\test_cleanup.py:179: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_cleanup.py::test_confirm_deletes_only_candidates_and_keeps_sources_evidence_and_directories
+FAILED tests/test_cleanup.py::test_registered_temporary_shaped_artifacts_and_directory_evidence_are_preserved
+FAILED tests/test_cleanup.py::test_unproven_or_active_runs_and_processes_are_preserved[missing]
+FAILED tests/test_cleanup.py::test_unproven_or_active_runs_and_processes_are_preserved[uncertain]
+FAILED tests/test_cleanup.py::test_invalid_workspace_metadata_rejects_without_mutation[workspace_id-None]
+FAILED tests/test_cleanup.py::test_invalid_workspace_metadata_rejects_without_mutation[trusted_local_approved-False]
+FAILED tests/test_cleanup.py::test_invalid_workspace_metadata_rejects_without_mutation[security_scope-SANDBOXED_UNTRUSTED]
+FAILED tests/test_cleanup.py::test_malformed_process_records_fail_closed_before_deletion[value0]
+FAILED tests/test_cleanup.py::test_malformed_process_records_fail_closed_before_deletion[value1]
+FAILED tests/test_cleanup.py::test_malformed_process_records_fail_closed_before_deletion[value2]
+FAILED tests/test_cleanup.py::test_malformed_process_records_fail_closed_before_deletion[value3]
+FAILED tests/test_cleanup.py::test_malformed_process_records_fail_closed_before_deletion[value4]
+FAILED tests/test_cleanup.py::test_hardlinked_candidate_is_rejected_and_both_names_survive
+FAILED tests/test_cleanup.py::test_inventory_limits_fail_before_any_deletion[MAX_ENTRIES]
+FAILED tests/test_cleanup.py::test_inventory_limits_fail_before_any_deletion[MAX_FILE_BYTES]
+FAILED tests/test_cleanup.py::test_inventory_limits_fail_before_any_deletion[MAX_TOTAL_BYTES]
+16 failed, 6 passed in 4.46s

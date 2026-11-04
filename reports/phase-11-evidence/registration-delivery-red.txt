@@ -1,0 +1,27 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_____ test_build_seals_archive_and_source_preservation_at_native_boundary _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001887C753950>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d5f69db4-4903-4022-b196-4de3cacbc3e1}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_build_seals_archive_and_s0')
+
+    def test_build_seals_archive_and_source_preservation_at_native_boundary(monkeypatch, tmp_path):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        result = platformer.build_platformer(tmp_path, request)
+        assert result.status == "PASS" and result.evaluated_test_status == "PASS"
+        assert [mode for mode, _ in calls] == ["platformer", "tests", "tests"]
+        assert calls[-1][1]["test_filter"] == "PolyForge.Platformer.Tests"
+        latest = json.loads((tmp_path / ".polyforge/platformer-latest.json").read_text())
+        assert (tmp_path / latest["archive"]).is_file()
+        from polyforge.workforce.workers import seal_candidate
+    
+        candidate = seal_candidate(WorkspacePolicy(tmp_path), result, "a" * 64)
+        paths = {row["path"] for row in candidate["files"]}
+>       assert latest["archive"] in paths
+E       AssertionError: assert 'runs/platformer-build-46d3561686d24a4b/native-output.zip' in {'runs/platformer-check-0648a23e3dbf471f/editmode.xml', 'runs/platformer-check-0648a23e3dbf471f/game-input.json', 'run... 'runs/platformer-check-0648a23e3dbf471f/public-oracles.json', 'runs/platformer-check-0648a23e3dbf471f/scenarios.json'}
+
+tests\test_phase11_platformer.py:543: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_build_seals_archive_and_source_preservation_at_native_boundary
+1 failed, 71 deselected in 2.44s

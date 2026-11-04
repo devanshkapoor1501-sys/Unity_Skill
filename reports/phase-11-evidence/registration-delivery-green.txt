@@ -1,0 +1,412 @@
+.............F.......................................................... [ 77%]
+FFF..................                                                    [100%]
+================================== FAILURES ===================================
+_ test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{bbe15be9-1d35-4d1e-8fe9-6a51cdf6e89c}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_inspector_requires_sealed0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F6C9963DA0>
+missing = None
+
+    @pytest.mark.parametrize("missing", [None, "archive", "bindings", "delivery", "standalone"])
+    def test_inspector_requires_sealed_editable_delivery_and_requested_standalone(
+        tmp_path, monkeypatch, missing
+    ):
+        from polyforge.contracts.validation import canonical_digest
+        from polyforge.unity import evidence
+        from polyforge.workforce.workers import inspect_candidate, seal_candidate
+        from test_phase11_platformer import native_boundary
+    
+        # Only the native process/XML/oracle boundaries are simulated here.
+        # Actual native qualification is a separate reported gate.
+        module, _ = native_boundary(monkeypatch, tmp_path)
+        inputs = source_fixture(tmp_path)
+        result = module.build_platformer(tmp_path, inputs)
+        candidate = seal_candidate(WorkspacePolicy(tmp_path), result, canonical_digest(task(inputs)["brief"]))
+        monkeypatch.setattr(evidence, "verify_test_xml", lambda *args: {})
+        request = task(inputs)
+        if missing in {"archive", "bindings", "delivery"}:
+            suffix = {"archive": "/native-output.zip", "bindings": "/bindings.json", "delivery": "/delivery.json"}[missing]
+            candidate["files"] = [row for row in candidate["files"] if not row["path"].endswith(suffix)]
+            candidate["candidate_digest"] = canonical_digest({k:v for k,v in candidate.items() if k != "candidate_digest"})
+        elif missing == "standalone":
+            request["input"] = {**inputs, "standalone": True}
+            job = json.loads((tmp_path / "runs" / result.run_id / "game-input.json").read_text())
+            monkeypatch.setattr(module, "compile_platformer_request", lambda *args: job)
+        if missing is None:
+>           assert inspect_candidate(WorkspacePolicy(tmp_path), candidate, request, technical_only=True)["verdict"] == "APPROVED"
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:202: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001F6C99EDD00>
+candidate = {'artifact_id': 'platformer_check_f89e257ceca04a8c', 'brief_digest': '7ae43ba57bfb5aed110772ceff1e1794a0f254048f425b60...e257ceca04a8c/delivery.json', 'sha256': '877ee6febc27f41a4ca95ea3ad4bed35bd051d923dbb05677facc3fb121cbec2'}, ...], ...}
+request = {'brief': 'Build a 2D checkpoint platformer with grounded jumping and a hazard.', 'capability_id': 'unity.game.platfor...nity', '2d', 'gameplay'], 'feature_ids': ['grounded_jump', 'checkpoint_respawn', 'hazard_damage', 'goal_contact'], ...}
+
+    def inspect_candidate(
+        policy: WorkspacePolicy,
+        candidate: dict[str, Any],
+        request: dict[str, Any],
+        *,
+        technical_only: bool = False,
+    ) -> dict[str, Any]:
+        check_candidate(policy, candidate)
+        if request.get("task_class") not in {"ANIMATE", "CREATE_ASSET", "BUILD_GAME"}:
+            raise InputError("No technical inspector for this task class")
+        if candidate["brief_digest"] != canonical_digest(request["brief"]):
+            raise InputError("Review brief differs from the sealed original brief")
+        inventory = {item["path"] for item in candidate["files"]}
+        roots = {
+            parts[1]
+            for item in candidate["files"]
+            if len(parts := Path(item["path"]).parts) >= 3
+            and parts[0] == "runs"
+            and parts[1].replace("-", "_") == candidate["artifact_id"]
+        }
+        run = candidate.get("production_run_id")
+        if run is None and len(roots) == 1:
+            run = next(iter(roots))  # Backward compatibility for older sealed handoffs.
+        if run not in roots:
+            raise InputError("Candidate lacks a unique sealed production-run identity")
+        if request["task_class"] == "ANIMATE":
+            from polyforge.animation.contract import inspect_motion
+    
+            required = {
+                "runs/" + run + "/asset/" + name
+                for name in ("motion.json", "source.blend", "robot.fbx")
+            }
+            if not required <= inventory or request["capability_id"] != "animation.robot.rig.v1":
+                raise InputError("Animation review requires the complete sealed source bundle")
+            motion = load_json(policy.path("runs/" + run + "/asset/motion.json"))
+            if motion["asset_id"] != request["input"]["asset_id"]:
+                raise InputError("Motion semantic asset identity mismatch")
+            inspect_motion(motion)
+        elif request.get("capability_id") == "asset.package.build.v1":
+            from polyforge.assets.contracts import require_bundle_approval
+    
+            prefix = "runs/" + run + "/"
+            required = {prefix + n for n in ("spec.json", "bundle.json", "review.json")}
+            if not required <= inventory:
+                raise InputError("Asset review lacks sealed specification/bundle/inspection")
+            spec = load_json(policy.path(prefix + "spec.json"))
+            for reference in spec.get("references", []):
+                if isinstance(reference, dict) and isinstance(reference.get("path"), str):
+                    assert_public_path(policy, reference["path"])
+            if spec != request["input"]["spec"] or spec["brief"] != request["brief"]:
+                raise InputError("Specialist specification differs from the original request")
+            bundle = load_json(policy.path(prefix + "bundle.json"))
+            if not {item["path"] for item in bundle["slots"].values()} <= inventory:
+                raise InputError("Asset source slot is not sealed in the candidate")
+            if technical_only:
+                from polyforge.assets.contracts import inspect_bundle
+    
+                observed = inspect_bundle(policy.root, bundle, spec)
+                if observed["technical_verdict"] != "APPROVED":
+                    raise InputError("Asset technical review failed")
+            else:
+                require_bundle_approval(
+                    policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
+                )
+        elif request.get("capability_id", "").startswith("sprite."):
+            from polyforge.sprites.images import inspect_strip
+    
+            if request["capability_id"] == "sprite.robot.bake.v1":
+                folder = "runs/" + run + "/asset/"
+                metadata_file = folder + "atlas.json"
+                atlas_file = folder + "atlas.png"
+                frame_files = [folder + f"frame-{i}.png" for i in range(6)]
+            else:
+                metadata_file = request["input"]["metadata_file"]
+                atlas_file = request["input"]["atlas_file"]
+                frame_files = request["input"]["frame_files"]
+                from polyforge.sprites.integration import EDIT_TESTS, PLAY_TESTS
+                from polyforge.unity.evidence import verify_test_xml
+    
+                for name, tests in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+                    if "runs/" + run + "/" + name not in inventory:
+                        raise InputError("Sprite review lacks sealed native test evidence")
+                    verify_test_xml(policy.path("runs/" + run + "/" + name), tests)
+            if not {metadata_file, atlas_file, *frame_files} <= inventory:
+                raise InputError("Sprite sources are not completely sealed")
+            metadata = load_json(policy.path(metadata_file))
+            if metadata.get("asset_id") != request["input"]["asset_id"] or not metadata.get(
+                "source_license"
+            ):
+                raise InputError("Sprite semantic identity/license mismatch")
+            inspect_strip(
+                [policy.path(p).read_bytes() for p in frame_files],
+                policy.path(atlas_file).read_bytes(),
+                metadata,
+            )
+        elif request["task_class"] == "CREATE_ASSET":
+            from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry
+    
+            kind = next(k for k, v in RECIPES.items() if v == request["capability_id"])
+            recipe = expand_recipe(kind, request["input"], seed=request.get("seed", 42))
+            validate_geometry(recipe, load_json(policy.path("runs/" + run + "/asset/metrics.json")))
+        elif request.get("capability_id") == "unity.game.platformer.v1":
+            from polyforge.unity.evidence import verify_test_xml
+            from polyforge.unity.platformer import (
+                EDIT_TESTS,
+                PLAY_TESTS,
+                compile_platformer_request,
+                score_telemetry,
+            )
+    
+            prefix = "runs/" + run + "/"
+            expected = {prefix + n for n in ("game-input.json", "editmode.xml", "playmode.xml", "delivery.json")}
+            if not expected <= inventory:
+                raise InputError("Platformer review lacks sealed native contract/test evidence")
+            current = compile_platformer_request(request["input"], policy)
+            if load_json(policy.path(prefix + "game-input.json")) != current:
+                raise InputError("Platformer sources differ from the sealed native contract")
+            delivery = load_json(policy.path(prefix + "delivery.json"))
+            if (
+                not isinstance(delivery, dict)
+                or delivery.get("schema_version") != "1.0.0"
+                or delivery.get("input_digest") != current["input_digest"]
+                or not isinstance(delivery.get("build_run_id"), str)
+                or not re.fullmatch(r"platformer-build-[a-f0-9]{16}", delivery["build_run_id"])
+                or type(delivery.get("standalone_requested")) is not bool
+            ):
+                raise InputError("Platformer delivery lacks its matching build identity")
+            build_prefix = "runs/" + delivery["build_run_id"] + "/"
+            required_build = {build_prefix + name for name in (
+                "native-output.zip", "bindings.json", "game-input.json", "inputs.json", "preservation.json",
+            )}
+            if not required_build <= inventory:
+                raise InputError("Platformer review lacks sealed editable production evidence")
+            if (
+                load_json(policy.path(build_prefix + "game-input.json")) != current
+                or load_json(policy.path(build_prefix + "inputs.json")) != request["input"]
+            ):
+                raise InputError("Editable production belongs to a different platformer request")
+            bindings = load_json(policy.path(build_prefix + "bindings.json"))
+            if (
+                not isinstance(bindings, dict) or not bindings.get("scene_guid")
+                or bindings.get("input_digest") != current["input_digest"]
+                or bindings.get("source_prefab_guid") != current["sprite_prefab_guid"]
+            ):
+                raise InputError("Editable platformer bindings differ from its approved sources")
+            from polyforge.scenarios.platformer_oracle import (
+                CORE_SCENARIOS,
+                INPUT_SCENARIOS,
+                MUTANT_SCENARIOS,
+            )
+    
+            traces = {
+                prefix + "telemetry/" + name + ".json"
+                for name in (*CORE_SCENARIOS, *INPUT_SCENARIOS, *MUTANT_SCENARIOS)
+            }
+            if not traces <= inventory:
+>               raise InputError("Platformer review lacks sealed physical scenario evidence")
+E               polyforge.contracts.validation.InputError: Platformer review lacks sealed physical scenario evidence
+
+polyforge\workforce\workers.py:208: InputError
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[none] __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F6C9C21B80>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{bbe15be9-1d35-4d1e-8fe9-6a51cdf6e89c}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an0')
+failure = 'none'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            return SimpleNamespace(reason="exit", returncode=1 if failure == "smoke" else 0)
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+            lambda *a, **k: {
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+>       result = platformer.execute_platformer_checks(WorkspacePolicy(tmp_path), game, standalone=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=0)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[smoke] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F6C99EDFD0>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{bbe15be9-1d35-4d1e-8fe9-6a51cdf6e89c}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an1')
+failure = 'smoke'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            return SimpleNamespace(reason="exit", returncode=1 if failure == "smoke" else 0)
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+            lambda *a, **k: {
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+>       result = platformer.execute_platformer_checks(WorkspacePolicy(tmp_path), game, standalone=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=1)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[gameplay] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F6C9AB4F80>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{bbe15be9-1d35-4d1e-8fe9-6a51cdf6e89c}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an2')
+failure = 'gameplay'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            return SimpleNamespace(reason="exit", returncode=1 if failure == "smoke" else 0)
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+            lambda *a, **k: {
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+>       result = platformer.execute_platformer_checks(WorkspacePolicy(tmp_path), game, standalone=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=0)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None]
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[none]
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[smoke]
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[gameplay]
+4 failed, 89 passed in 33.27s

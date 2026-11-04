@@ -161,6 +161,48 @@ def dispatch(args: argparse.Namespace) -> Result:
         from polyforge.workforce.cli import dispatch as workforce_dispatch
 
         return workforce_dispatch(args)
+    if spec.path == ("inspect-project",):
+        from polyforge.inspection import inspect_project
+
+        return inspect_project(Path(args.project))
+    if spec.path == ("platformer", "build"):
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.unity.platformer import build_platformer
+
+        policy = WorkspacePolicy(Path(args.workspace))
+        inputs = load_json(policy.path(args.input))
+        if not isinstance(inputs, dict):
+            raise InputError("Platformer input must be a JSON object")
+        return build_platformer(
+            policy.root,
+            inputs,
+            dry_run=args.dry_run,
+            standalone=args.standalone or inputs.get("standalone", False),
+        )
+    if spec.path == ("profile-player",):
+        from polyforge.unity.performance import profile_player
+
+        return profile_player(Path(args.workspace), Path(args.player), dry_run=args.dry_run)
+    if spec.path == ("benchmark", "run"):
+        from importlib.resources import files
+
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+
+        suite_path = (
+            Path(str(files("polyforge").joinpath("data/benchmark-core/suite.json")))
+            if args.suite == "benchmark_core"
+            else Path(args.suite)
+        )
+        return run_suite(load_suite(suite_path), args.arm, Path(args.output), dry_run=args.dry_run)
+    if spec.path == ("benchmark", "report"):
+        from polyforge.benchmark.analysis import report_run as benchmark_report
+
+        return benchmark_report(Path(args.run))
+    if spec.path == ("clean",):
+        from polyforge.cleanup import clean_workspace
+
+        return clean_workspace(Path(args.workspace), dry_run=args.dry_run, confirm=args.confirm)
     if not spec.implemented:
         return failure(
             ErrorKind.PRODUCER_FAILURE,
@@ -252,6 +294,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         or any(values[i : i + 2] == ["--format", "json"] for i in range(len(values)))
     )
     started = time.monotonic()
+    formatted_report: str | None = None
     try:
         args = build_parser().parse_args(values)
         if args.spec.path == ("mcp", "serve"):
@@ -260,6 +303,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             return serve(args.workspace)
         json_output = args.json or args.format == "json"
         result = dispatch(args)
+        if args.spec.path == ("benchmark", "report") and not json_output:
+            key = "report_html" if args.format == "html" else "report_human"
+            formatted_report = result.data.get(key)
     except InputError as exc:
         result = failure(exc.kind, exc.code, redact(str(exc)))
     except OSError as exc:
@@ -269,6 +315,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     result = replace(result, duration_ms=round((time.monotonic() - started) * 1000, 3))
     if json_output:
         print(json.dumps(result.to_dict(), ensure_ascii=True, allow_nan=False))
+    elif formatted_report is not None:
+        print(formatted_report)
     else:
         print(f"{result.status}: operation; game={result.game_status}")
         for diagnostic in result.diagnostics:

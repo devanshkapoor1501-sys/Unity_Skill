@@ -1,0 +1,45 @@
+"""Freeze the complete current Phase 0–11 source/fixture inventory without executing it."""
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+
+from polyforge.contracts.validation import canonical_digest
+from polyforge.workforce.router import engine_digest
+
+root = Path.cwd()
+names = subprocess.check_output([
+    'git', 'ls-files', '-z', '--cached', '--others', '--exclude-standard'
+]).decode().split('\0')
+roots = {'polyforge', 'unity_package', 'tests', 'tools', 'benchmarks', 'examples',
+         'profiles', 'capabilities', 'roles'}
+special = {'pyproject.toml', 'requirements-dev.lock', 'MANIFEST.in', '.github/workflows/ci.yml'}
+records = []
+for name in sorted(set(names)):
+    if not name:
+        continue
+    path = Path(name)
+    if not (path.parts[0] in roots or name in special or
+            name.startswith('.agents/skills/polyforge/')):
+        continue
+    source = root / path
+    if source.is_file():
+        raw = source.read_bytes()
+        records.append({'path': name, 'bytes': len(raw), 'sha256': hashlib.sha256(raw).hexdigest()})
+prior = []
+for name in ('reports/v5_1_baseline.json', 'reports/phases-0-10-audit-evidence/index.json'):
+    raw = (root / name).read_bytes()
+    prior.append({'path': name, 'sha256': hashlib.sha256(raw).hexdigest()})
+value = {
+    'schema_version': '1.0.0', 'kind': 'PHASE_0_THROUGH_11_REGRESSION_BASELINE',
+    'frozen_at': '2026-11-01', 'phases': list(range(12)),
+    'base_commit': '31827d134102650604aaa0998c0d06d6f4a579c3',
+    'engine_digest': engine_digest(),
+    'authority_sha256': '8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6',
+    'native_versions': {'blender': '5.2.2', 'unity': '6000.6.3f1', 'urp': '17.6.0'},
+    'prior_baselines': prior, 'files': records, 'fixture_digest': canonical_digest(records),
+    'qualification': 'Byte identity only; see phase-11.md for executed and unmet gates.'
+}
+(root / 'reports/phase-11-baseline.json').write_text(json.dumps(value, indent=2) + '\n', encoding='utf-8')
+print(json.dumps({'files': len(records), 'fixture_digest': value['fixture_digest'],
+                  'engine_digest': value['engine_digest']}))

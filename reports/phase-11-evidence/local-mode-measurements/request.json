@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "brief": "Make a blue industrial crate; preserve editable source.",
+  "task_class": "CREATE_ASSET",
+  "domain_tags": [
+    "blender"
+  ],
+  "feature_ids": [
+    "editable_source"
+  ],
+  "capability_id": "mesh.props.crate.v1",
+  "seed": 42,
+  "input": {
+    "schema_version": "1.0.0",
+    "asset_id": "industrial_box",
+    "parameters": {
+      "size_m": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

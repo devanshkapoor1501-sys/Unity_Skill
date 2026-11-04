@@ -1,0 +1,91 @@
+{
+  "checks": [
+    {
+      "gate": "lint",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-04T16:31:40.801615+00:00",
+      "finished_at": "2026-11-04T16:31:42.588139+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "format",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "polyforge",
+        "tools",
+        "tests"
+      ],
+      "started_at": "2026-11-04T16:31:42.588139+00:00",
+      "finished_at": "2026-11-04T16:31:42.778443+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "types-windows",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy"
+      ],
+      "started_at": "2026-11-04T16:31:42.778443+00:00",
+      "finished_at": "2026-11-04T16:32:09.270460+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "types-linux",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--platform",
+        "linux"
+      ],
+      "started_at": "2026-11-04T16:32:09.270460+00:00",
+      "finished_at": "2026-11-04T16:32:26.414214+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "cli-docs",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "tools.generate_cli_docs",
+        "--check"
+      ],
+      "started_at": "2026-11-04T16:32:26.414214+00:00",
+      "finished_at": "2026-11-04T16:32:26.674350+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "unit",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov",
+        "--cov-report=term-missing",
+        "--cov-report=json:.tmp/phase11-closure/release-final-coverage.json",
+        "--junitxml=.tmp/phase11-closure/release-final-unit.xml",
+        "--basetemp=.tmp/phase11-closure/release-final-unit-temp"
+      ],
+      "started_at": "2026-11-04T16:32:26.674350+00:00",
+      "finished_at": "2026-11-04T16:43:01.451819+00:00",
+      "returncode": 0
+    }
+  ],
+  "engine_before": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+  "engine_after": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+  "engine_unchanged": true,
+  "combined_coverage": 93.81036593660727,
+  "branch_coverage": 90.63324538258576,
+  "status": "PASS"
+}

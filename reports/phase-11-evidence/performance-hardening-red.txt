@@ -1,0 +1,95 @@
+..................................................F
+================================== FAILURES ===================================
+_ test_profile_orchestration_preserves_each_observation_and_stops_bad_group[raises] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{993340fb-c4ce-422d-a9c6-a2bb33ff3568}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_profile_orchestration_pre5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001CCF4C09C10>
+case = 'raises'
+
+    @pytest.mark.parametrize("case", ["pass", "timeout", "missing", "stale", "malformed",
+                                      "raises", "interrupt", "package_changed"])
+    def test_profile_orchestration_preserves_each_observation_and_stops_bad_group(
+        tmp_path, monkeypatch, case
+    ):
+        from pathlib import Path
+    
+        from polyforge.contracts.validation import InputError
+    
+        from polyforge.runner.processes import ProcessOutcome
+    
+        module = performance()
+        player = tmp_path / "runs" / "game-check-fixture" / "player" / "Arena.exe"
+        player.parent.mkdir(parents=True)
+        player.write_bytes(b"fixture executable")
+        (player.parent.parent / "game-input.json").write_text(
+            json.dumps({"input_digest": "a" * 64, "scene_id": "main"})
+        )
+        launches = []
+    
+        def run(argv, policy, relative, limits, *, observation):
+            launches.append(argv)
+            assert "-batchmode" not in argv and "-nographics" not in argv
+            assert limits.timeout_seconds == 120
+            job = json.loads(Path(argv[-1]).read_text())
+            record = sample(job["sample_index"])
+            record["profile_digest"] = job["profile_digest"]
+            record["executable_sha256"] = job["executable_sha256"]
+            observation.data.update(record["process"])
+            if case == "raises":
+                raise InputError("injected launch failure")
+            if case == "interrupt":
+                raise KeyboardInterrupt
+            if case == "package_changed":
+                (player.parent / "UnityPlayer.dll").write_bytes(b"changed player dependency")
+            if case == "stale":
+                record["input_digest"] = "c" * 64
+            if case == "malformed":
+                Path(job["evidence_path"]).write_text("not json")
+            elif case != "missing":
+                Path(job["evidence_path"]).write_text(json.dumps(record))
+            return ProcessOutcome(
+                0 if case != "timeout" else None,
+                "exit" if case != "timeout" else "timeout",
+                123,
+                "WINDOWS_JOB",
+                72,
+                "",
+                "",
+                True,
+            )
+    
+        monkeypatch.setattr(module, "run_process", run)
+>       result = module.profile_player(tmp_path, player)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:364: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\performance.py:273: in profile_player
+    outcome = run_process(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+argv = ['C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{993340fb-c4ce-422d-a9c6-a2bb33ff3568}\\AC\\Temp\\pytes...s\\game-check-fixture\\player\\Arena.exe', '-screen-width', '1280', '-screen-height', '720', '-screen-fullscreen', ...]
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001CCF4C0A990>
+relative = 'runs/game-check-fixture/player/profiles/profile-80eb505111714d1a/sample-0'
+limits = ProcessPolicy(allowed_executables=(WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{993340fb-c4ce-...re5/runs/game-check-fixture/player/Arena.exe'),), timeout_seconds=120, max_output_bytes=10485760, memory_limit_mb=8192)
+
+    def run(argv, policy, relative, limits, *, observation):
+        launches.append(argv)
+        assert "-batchmode" not in argv and "-nographics" not in argv
+        assert limits.timeout_seconds == 120
+        job = json.loads(Path(argv[-1]).read_text())
+        record = sample(job["sample_index"])
+        record["profile_digest"] = job["profile_digest"]
+        record["executable_sha256"] = job["executable_sha256"]
+        observation.data.update(record["process"])
+        if case == "raises":
+>           raise InputError("injected launch failure")
+E           polyforge.contracts.validation.InputError: injected launch failure
+
+tests\test_phase11_performance.py:341: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_profile_orchestration_preserves_each_observation_and_stops_bad_group[raises]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\tests\test_phase11_performance.py:343: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+1 failed, 50 passed in 4.86s

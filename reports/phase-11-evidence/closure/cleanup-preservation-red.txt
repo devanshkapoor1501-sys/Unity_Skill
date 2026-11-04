@@ -1,0 +1,554 @@
+......................FFFF..............FFFFFFFFFFFFF                    [100%]
+================================== FAILURES ===================================
+_ test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[reason] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_nonstring_process_enums_a0')
+field = 'reason'
+
+    @pytest.mark.parametrize("field", ["reason", "ownership"])
+    def test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors(tmp_path, field):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        process = candidate.parent.parent / "process.json"
+        value = json.loads(process.read_text())
+        value[field] = []
+        process.write_text(json.dumps(value))
+        with pytest.raises(InputError):
+>           clean_workspace(root, confirm=True)
+
+tests\test_cleanup.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:276: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:224: in _inventory
+    if not _process_ready(policy, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x00000233133BE6F0>
+process = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_nonstring_process_enums_a0/owned/runs/native-1/compile')
+
+    def _process_ready(policy: WorkspacePolicy, process: Path) -> bool:
+        record = _json(policy, policy.path(process / "process.json"))
+        if (
+            not isinstance(record, dict)
+            or type(record.get("returncode")) is not int
+>           or record.get("reason") not in TERMINAL_REASONS
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            or type(record.get("pid")) is not int
+            or not 0 < record["pid"] < 2**31
+            or record.get("ownership") not in {"WINDOWS_JOB", "POSIX_PROCESS_GROUP"}
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\cleanup.py:86: TypeError
+_ test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[ownership] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_nonstring_process_enums_a1')
+field = 'ownership'
+
+    @pytest.mark.parametrize("field", ["reason", "ownership"])
+    def test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors(tmp_path, field):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        process = candidate.parent.parent / "process.json"
+        value = json.loads(process.read_text())
+        value[field] = []
+        process.write_text(json.dumps(value))
+        with pytest.raises(InputError):
+>           clean_workspace(root, confirm=True)
+
+tests\test_cleanup.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:276: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:224: in _inventory
+    if not _process_ready(policy, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x00000233133BD850>
+process = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_nonstring_process_enums_a1/owned/runs/native-1/compile')
+
+    def _process_ready(policy: WorkspacePolicy, process: Path) -> bool:
+        record = _json(policy, policy.path(process / "process.json"))
+        if (
+            not isinstance(record, dict)
+            or type(record.get("returncode")) is not int
+            or record.get("reason") not in TERMINAL_REASONS
+            or type(record.get("pid")) is not int
+            or not 0 < record["pid"] < 2**31
+>           or record.get("ownership") not in {"WINDOWS_JOB", "POSIX_PROCESS_GROUP"}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\cleanup.py:89: TypeError
+______ test_incomplete_journal_tail_does_not_establish_cleanup_readiness ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_incomplete_journal_tail_d0')
+
+    def test_incomplete_journal_tail_does_not_establish_cleanup_readiness(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        with (root / "runs/native-1/events.jsonl").open("ab") as stream:
+            stream.write(b'{"incomplete":')
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and result.data["skipped"]
+E       AssertionError: assert ([{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:238: AssertionError
+______ test_nested_process_temp_scopes_cannot_duplicate_deletion_targets ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_nested_process_temp_scope0')
+
+    def test_nested_process_temp_scopes_cannot_duplicate_deletion_targets(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        nested = candidate.parent / "nested"
+        (nested / "tmp").mkdir(parents=True)
+        (nested / "process.json").write_bytes((candidate.parent.parent / "process.json").read_bytes())
+        (nested / "tmp/discard.tmp").write_bytes(b"nested")
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:251: Failed
+__ test_references_across_engine_metadata_roots_protect_temporary_files[run] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_references_across_engine_0')
+owner = 'run'
+
+    @pytest.mark.parametrize("owner", ["run", "active_run", "workforce", "transactions", ".polyforge"])
+    def test_references_across_engine_metadata_roots_protect_temporary_files(tmp_path, owner):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        relative = candidate.relative_to(root).as_posix()
+        if owner in {"run", "active_run"}:
+            journal = RunJournal.create(WorkspacePolicy(root), "dependent-2")
+            journal.transition("S0", "running")
+            if owner == "run":
+                journal.transition("S0", "passed", evidence=[relative])
+            folder = root / "runs/dependent-2"
+        else:
+            folder = root / owner / "task-2"
+            folder.mkdir(parents=True)
+        (folder / "handoff.json").write_text(json.dumps({"artifacts": [{"relative_path": relative}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:410: AssertionError
+_ test_references_across_engine_metadata_roots_protect_temporary_files[active_run] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_references_across_engine_1')
+owner = 'active_run'
+
+    @pytest.mark.parametrize("owner", ["run", "active_run", "workforce", "transactions", ".polyforge"])
+    def test_references_across_engine_metadata_roots_protect_temporary_files(tmp_path, owner):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        relative = candidate.relative_to(root).as_posix()
+        if owner in {"run", "active_run"}:
+            journal = RunJournal.create(WorkspacePolicy(root), "dependent-2")
+            journal.transition("S0", "running")
+            if owner == "run":
+                journal.transition("S0", "passed", evidence=[relative])
+            folder = root / "runs/dependent-2"
+        else:
+            folder = root / owner / "task-2"
+            folder.mkdir(parents=True)
+        (folder / "handoff.json").write_text(json.dumps({"artifacts": [{"relative_path": relative}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:410: AssertionError
+_ test_references_across_engine_metadata_roots_protect_temporary_files[workforce] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_references_across_engine_2')
+owner = 'workforce'
+
+    @pytest.mark.parametrize("owner", ["run", "active_run", "workforce", "transactions", ".polyforge"])
+    def test_references_across_engine_metadata_roots_protect_temporary_files(tmp_path, owner):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        relative = candidate.relative_to(root).as_posix()
+        if owner in {"run", "active_run"}:
+            journal = RunJournal.create(WorkspacePolicy(root), "dependent-2")
+            journal.transition("S0", "running")
+            if owner == "run":
+                journal.transition("S0", "passed", evidence=[relative])
+            folder = root / "runs/dependent-2"
+        else:
+            folder = root / owner / "task-2"
+            folder.mkdir(parents=True)
+        (folder / "handoff.json").write_text(json.dumps({"artifacts": [{"relative_path": relative}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:410: AssertionError
+_ test_references_across_engine_metadata_roots_protect_temporary_files[transactions] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_references_across_engine_3')
+owner = 'transactions'
+
+    @pytest.mark.parametrize("owner", ["run", "active_run", "workforce", "transactions", ".polyforge"])
+    def test_references_across_engine_metadata_roots_protect_temporary_files(tmp_path, owner):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        relative = candidate.relative_to(root).as_posix()
+        if owner in {"run", "active_run"}:
+            journal = RunJournal.create(WorkspacePolicy(root), "dependent-2")
+            journal.transition("S0", "running")
+            if owner == "run":
+                journal.transition("S0", "passed", evidence=[relative])
+            folder = root / "runs/dependent-2"
+        else:
+            folder = root / owner / "task-2"
+            folder.mkdir(parents=True)
+        (folder / "handoff.json").write_text(json.dumps({"artifacts": [{"relative_path": relative}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:410: AssertionError
+_ test_references_across_engine_metadata_roots_protect_temporary_files[.polyforge] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_references_across_engine_4')
+owner = '.polyforge'
+
+    @pytest.mark.parametrize("owner", ["run", "active_run", "workforce", "transactions", ".polyforge"])
+    def test_references_across_engine_metadata_roots_protect_temporary_files(tmp_path, owner):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        relative = candidate.relative_to(root).as_posix()
+        if owner in {"run", "active_run"}:
+            journal = RunJournal.create(WorkspacePolicy(root), "dependent-2")
+            journal.transition("S0", "running")
+            if owner == "run":
+                journal.transition("S0", "passed", evidence=[relative])
+            folder = root / "runs/dependent-2"
+        else:
+            folder = root / owner / "task-2"
+            folder.mkdir(parents=True)
+        (folder / "handoff.json").write_text(json.dumps({"artifacts": [{"relative_path": relative}]}))
+        before = snapshot(root)
+>       assert clean_workspace(root, confirm=True).data["candidates"] == []
+E       AssertionError: assert [{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff
+
+tests\test_cleanup.py:410: AssertionError
+_ test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[UnityProject/Library] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_native_project_source_cac0')
+folder = 'UnityProject/Library'
+
+    @pytest.mark.parametrize("folder", ["UnityProject/Library", "Library", "Assets", "transactions"])
+    def test_native_project_source_cache_and_recovery_subtrees_are_never_candidates(tmp_path, folder):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        protected = candidate.parent / folder / "keep.cache"
+        protected.parent.mkdir(parents=True)
+        protected.write_bytes(b"native source or cache")
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and snapshot(root) == before
+E       AssertionError: assert ([{'bytes': 22...d4834509667'}] == []
+E         
+E         Left contains one more item: {'bytes': 22, 'relative_path': 'runs/native-1/compile/tmp/UnityProject/Library/keep.cache', 'sha256': 'd6ac60b8d49eba4a274d928af72ed0322b1f5e8991633f55cb090d4834509667'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:425: AssertionError
+_ test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[Library] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_native_project_source_cac1')
+folder = 'Library'
+
+    @pytest.mark.parametrize("folder", ["UnityProject/Library", "Library", "Assets", "transactions"])
+    def test_native_project_source_cache_and_recovery_subtrees_are_never_candidates(tmp_path, folder):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        protected = candidate.parent / folder / "keep.cache"
+        protected.parent.mkdir(parents=True)
+        protected.write_bytes(b"native source or cache")
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and snapshot(root) == before
+E       AssertionError: assert ([{'bytes': 22...d4834509667'}] == []
+E         
+E         Left contains one more item: {'bytes': 22, 'relative_path': 'runs/native-1/compile/tmp/Library/keep.cache', 'sha256': 'd6ac60b8d49eba4a274d928af72ed0322b1f5e8991633f55cb090d4834509667'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:425: AssertionError
+_ test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[Assets] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_native_project_source_cac2')
+folder = 'Assets'
+
+    @pytest.mark.parametrize("folder", ["UnityProject/Library", "Library", "Assets", "transactions"])
+    def test_native_project_source_cache_and_recovery_subtrees_are_never_candidates(tmp_path, folder):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        protected = candidate.parent / folder / "keep.cache"
+        protected.parent.mkdir(parents=True)
+        protected.write_bytes(b"native source or cache")
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and snapshot(root) == before
+E       AssertionError: assert ([{'bytes': 22...d4834509667'}] == []
+E         
+E         Left contains one more item: {'bytes': 22, 'relative_path': 'runs/native-1/compile/tmp/Assets/keep.cache', 'sha256': 'd6ac60b8d49eba4a274d928af72ed0322b1f5e8991633f55cb090d4834509667'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:425: AssertionError
+_ test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[transactions] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_native_project_source_cac3')
+folder = 'transactions'
+
+    @pytest.mark.parametrize("folder", ["UnityProject/Library", "Library", "Assets", "transactions"])
+    def test_native_project_source_cache_and_recovery_subtrees_are_never_candidates(tmp_path, folder):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        protected = candidate.parent / folder / "keep.cache"
+        protected.parent.mkdir(parents=True)
+        protected.write_bytes(b"native source or cache")
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and snapshot(root) == before
+E       AssertionError: assert ([{'bytes': 22...d4834509667'}] == []
+E         
+E         Left contains one more item: {'bytes': 22, 'relative_path': 'runs/native-1/compile/tmp/transactions/keep.cache', 'sha256': 'd6ac60b8d49eba4a274d928af72ed0322b1f5e8991633f55cb090d4834509667'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:425: AssertionError
+____ test_reference_registration_after_first_unlink_stops_before_next_file ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_reference_registration_af0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023313528C20>
+
+    def test_reference_registration_after_first_unlink_stops_before_next_file(tmp_path, monkeypatch):
+        import polyforge.cleanup as cleanup
+    
+        root, first = workspace(tmp_path / "owned")
+        second = first.parent / "zzz.tmp"
+        second.write_bytes(b"second")
+        unlink = Path.unlink
+    
+        def register_after_unlink(path, *args, **kwargs):
+            result = unlink(path, *args, **kwargs)
+            if path == first:
+                (root / ".polyforge/new-artifact.json").write_text(
+                    json.dumps({"relative_path": second.relative_to(root).as_posix()})
+                )
+            return result
+    
+        monkeypatch.setattr(Path, "unlink", register_after_unlink)
+        result = cleanup.clean_workspace(root, confirm=True)
+>       assert result.status == "FAIL" and result.error_code == "PF-CLEAN-PARTIAL"
+E       AssertionError: assert ('PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS)
+
+tests\test_cleanup.py:446: AssertionError
+___________ test_lock_release_failure_keeps_exact_deletion_receipt ____________
+
+lock = <polyforge.runner.locks.FileLock object at 0x000002331352A5D0>
+args = (None, None, None)
+
+    def failing_exit(lock, *args):
+        exit_lock(lock, *args)
+        if lock.relative.endswith("run-native-1.lock"):
+>           raise OSError("fixture lock release failure")
+E           OSError: fixture lock release failure
+
+tests\test_cleanup.py:460: OSError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_lock_release_failure_keep0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002331352B140>
+
+    def test_lock_release_failure_keeps_exact_deletion_receipt(tmp_path, monkeypatch):
+        import polyforge.cleanup as cleanup
+    
+        root, candidate = workspace(tmp_path / "owned")
+        exit_lock = cleanup.FileLock.__exit__
+    
+        def failing_exit(lock, *args):
+            exit_lock(lock, *args)
+            if lock.relative.endswith("run-native-1.lock"):
+                raise OSError("fixture lock release failure")
+    
+        monkeypatch.setattr(cleanup.FileLock, "__exit__", failing_exit)
+>       result = cleanup.clean_workspace(root, confirm=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_cleanup.py:463: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+root = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_lock_release_failure_keep0/owned')
+
+    def clean_workspace(root: Path, *, dry_run: bool = False, confirm: bool = False) -> Result:
+        """Preview without writes; explicit confirmation unlinks checked files only."""
+        if type(dry_run) is not bool or type(confirm) is not bool:
+            raise InputError("Cleanup flags must be booleans")
+        policy = WorkspacePolicy(root)
+        try:
+            marker = _json(policy, policy.path(".polyforge/workspace.json"))
+            if (
+                not isinstance(marker, dict)
+                or marker.get("schema_version") != "1.0.0"
+                or not isinstance(marker.get("workspace_id"), str)
+                or not re.fullmatch(r"[a-zA-Z0-9_-]{1,128}", marker["workspace_id"])
+                or marker.get("security_scope") != "TRUSTED_LOCAL"
+                or marker.get("trusted_local_approved") is not True
+            ):
+                raise InputError("Cleanup requires an initialized trusted-local PolyForge workspace")
+            candidates, skipped = _inventory(policy)
+            preview = dry_run or not confirm
+            deleted: list[str] = []
+            if preview or not candidates:
+                return Result(data=_data(candidates, skipped, preview, deleted))
+            with FileLock(policy, ".polyforge/locks/cleanup.lock"), ExitStack() as locks:
+                for run_id in sorted({row.run_id for row in candidates}):
+                    locks.enter_context(FileLock(policy, RunJournal(policy, run_id).lock))
+                rechecked, _ = _inventory(policy)
+                if rechecked != candidates:
+                    raise InputError("Cleanup inventory changed before deletion")
+                for row in candidates:
+                    try:
+                        if (
+                            not _journal_ready(policy, row.run_id)[0]
+                            or not _process_ready(policy, policy.path(row.process))
+                            or _candidate(
+                                policy,
+                                policy.path(row.relative_path),
+                                row.run_id,
+                                policy.path(row.process),
+                            )
+                            != row
+                        ):
+                            raise InputError("Cleanup candidate or process changed before deletion")
+                        policy.path(row.relative_path).unlink()
+                        deleted.append(row.relative_path)
+                    except (InputError, OSError) as exc:
+                        if not deleted:
+                            raise
+                        return Result(
+                            status="FAIL",
+                            exit_code=int(ErrorKind.PRODUCER_FAILURE),
+                            error_code="PF-CLEAN-PARTIAL",
+                            data=_data(candidates, skipped, False, deleted),
+                            diagnostics=[{"code": "PF-CLEAN-PARTIAL", "message": str(exc)}],
+                        )
+            return Result(data=_data(candidates, skipped, False, deleted))
+        except OSError as exc:
+>           raise InputError(f"Cleanup inventory or mutation failed: {exc}") from exc
+E           polyforge.contracts.validation.InputError: Cleanup inventory or mutation failed: fixture lock release failure
+
+polyforge\cleanup.py:315: InputError
+_ test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written[cleanup.lock] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_hardlinked_lock_is_reject0')
+lock_name = 'cleanup.lock'
+
+    @pytest.mark.parametrize("lock_name", ["cleanup.lock", "run-native-1.lock"])
+    def test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written(tmp_path, lock_name):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        lock = root / ".polyforge/locks" / lock_name
+        if lock.exists():
+            lock.unlink()
+        outside = tmp_path / "outside.lock"
+        outside.write_text('{"released": true}')
+        before = outside.read_bytes()
+        os.link(outside, lock)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:481: Failed
+_ test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written[run-native-1.lock] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red4/test_hardlinked_lock_is_reject1')
+lock_name = 'run-native-1.lock'
+
+    @pytest.mark.parametrize("lock_name", ["cleanup.lock", "run-native-1.lock"])
+    def test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written(tmp_path, lock_name):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        lock = root / ".polyforge/locks" / lock_name
+        if lock.exists():
+            lock.unlink()
+        outside = tmp_path / "outside.lock"
+        outside.write_text('{"released": true}')
+        before = outside.read_bytes()
+        os.link(outside, lock)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:481: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_cleanup.py::test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[reason]
+FAILED tests/test_cleanup.py::test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[ownership]
+FAILED tests/test_cleanup.py::test_incomplete_journal_tail_does_not_establish_cleanup_readiness
+FAILED tests/test_cleanup.py::test_nested_process_temp_scopes_cannot_duplicate_deletion_targets
+FAILED tests/test_cleanup.py::test_references_across_engine_metadata_roots_protect_temporary_files[run]
+FAILED tests/test_cleanup.py::test_references_across_engine_metadata_roots_protect_temporary_files[active_run]
+FAILED tests/test_cleanup.py::test_references_across_engine_metadata_roots_protect_temporary_files[workforce]
+FAILED tests/test_cleanup.py::test_references_across_engine_metadata_roots_protect_temporary_files[transactions]
+FAILED tests/test_cleanup.py::test_references_across_engine_metadata_roots_protect_temporary_files[.polyforge]
+FAILED tests/test_cleanup.py::test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[UnityProject/Library]
+FAILED tests/test_cleanup.py::test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[Library]
+FAILED tests/test_cleanup.py::test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[Assets]
+FAILED tests/test_cleanup.py::test_native_project_source_cache_and_recovery_subtrees_are_never_candidates[transactions]
+FAILED tests/test_cleanup.py::test_reference_registration_after_first_unlink_stops_before_next_file
+FAILED tests/test_cleanup.py::test_lock_release_failure_keeps_exact_deletion_receipt
+FAILED tests/test_cleanup.py::test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written[cleanup.lock]
+FAILED tests/test_cleanup.py::test_hardlinked_lock_is_rejected_before_its_outside_inode_is_written[run-native-1.lock]
+17 failed, 36 passed in 13.07s

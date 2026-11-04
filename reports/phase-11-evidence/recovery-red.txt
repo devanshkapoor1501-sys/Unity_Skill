@@ -1,0 +1,52 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+________ test_platformer_native_input_is_archived_and_reused_immutably ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{73a4c0bd-22af-4cce-b3bc-f1dcd02e67c8}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_native_input_i0')
+
+    def test_platformer_native_input_is_archived_and_reused_immutably(tmp_path):
+        from polyforge.unity.recovery import _profile_inputs
+    
+        policy, job = fixture(tmp_path)
+        profiles = _profile_inputs(policy)
+>       assert set(profiles) == {"platformer"}
+E       AssertionError: assert set() == {'platformer'}
+E         
+E         Extra items in the right set:
+E         'platformer'
+E         Use -v to get more diff
+
+tests\test_phase11_recovery.py:34: AssertionError
+____ test_new_platformer_scene_cannot_be_omitted_from_recorded_regressions ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{73a4c0bd-22af-4cce-b3bc-f1dcd02e67c8}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_new_platformer_scene_cann0')
+
+    def test_new_platformer_scene_cannot_be_omitted_from_recorded_regressions(tmp_path):
+        from polyforge.unity.recovery import _profile_inputs
+    
+        policy, _ = fixture(tmp_path)
+>       with pytest.raises(InputError, match="profile set changed"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_recovery.py:46: Failed
+________ test_changed_platformer_source_and_archived_input_fail_closed ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{73a4c0bd-22af-4cce-b3bc-f1dcd02e67c8}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_changed_platformer_source0')
+
+    def test_changed_platformer_source_and_archived_input_fail_closed(tmp_path):
+        from polyforge.unity.recovery import _profile_inputs
+    
+        policy, _ = fixture(tmp_path)
+        profiles = _profile_inputs(policy)
+        policy.path("UnityProject/Assets/PolyForgeGenerated/Sprites/atlas.png").write_bytes(b"changed")
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_recovery.py:56: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_recovery.py::test_platformer_native_input_is_archived_and_reused_immutably
+FAILED tests/test_phase11_recovery.py::test_new_platformer_scene_cannot_be_omitted_from_recorded_regressions
+FAILED tests/test_phase11_recovery.py::test_changed_platformer_source_and_archived_input_fail_closed
+3 failed in 0.81s

@@ -1,0 +1,16 @@
+"""Real Phase 11 arena qualification in a fresh disposable managed workspace."""
+import json
+from pathlib import Path
+from polyforge.workspace import init_workspace
+from polyforge.blender.build import build_assets
+
+base = Path('.tmp/phase11').resolve()
+workspace = base / 'demo'
+assert not workspace.exists(), 'Fresh qualification cannot overwrite an existing workspace'
+created = init_workspace(workspace, 'simple_arena')
+assert created.status == 'PASS', created.to_dict()
+print('Fresh managed workspace initialized', flush=True)
+result = build_assets(workspace, through='S5', allow_package_downloads=True, standalone=True)
+(base / 'arena-result.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print(json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()

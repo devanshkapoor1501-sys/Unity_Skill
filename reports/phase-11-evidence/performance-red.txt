@@ -1,0 +1,1408 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF                               [100%]
+================================== FAILURES ===================================
+_ test_three_complete_rendered_samples_pass_without_claiming_game_acceptance __
+
+    def test_three_complete_rendered_samples_pass_without_claiming_game_acceptance():
+>       verdict = performance().score_profile(group())
+                  ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:74: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____________________ test_exact_three_samples_required[0] _____________________
+
+count = 0
+
+    @pytest.mark.parametrize("count", [0, 1, 2, 4])
+    def test_exact_three_samples_required(count):
+        samples = [sample(i) for i in range(count)]
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____________________ test_exact_three_samples_required[1] _____________________
+
+count = 1
+
+    @pytest.mark.parametrize("count", [0, 1, 2, 4])
+    def test_exact_three_samples_required(count):
+        samples = [sample(i) for i in range(count)]
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____________________ test_exact_three_samples_required[2] _____________________
+
+count = 2
+
+    @pytest.mark.parametrize("count", [0, 1, 2, 4])
+    def test_exact_three_samples_required(count):
+        samples = [sample(i) for i in range(count)]
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____________________ test_exact_three_samples_required[4] _____________________
+
+count = 4
+
+    @pytest.mark.parametrize("count", [0, 1, 2, 4])
+    def test_exact_three_samples_required(count):
+        samples = [sample(i) for i in range(count)]
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-Null] _
+
+field = 'graphics_type', value = 'Null'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-] _
+
+field = 'graphics_type', value = ''
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[is_editor-True] _
+
+field = 'is_editor', value = True
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[batchmode-True] _
+
+field = 'batchmode', value = True
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+___ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[width-640] ____
+
+field = 'width', value = 640
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+___ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[height-480] ___
+
+field = 'height', value = 480
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[complete-False] _
+
+field = 'complete', value = False
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[sample_overflow-True] _
+
+field = 'sample_overflow', value = True
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[focused-False] __
+
+field = 'focused', value = False
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[warmup_seconds-9.0] _
+
+field = 'warmup_seconds', value = 9.0
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[measurement_seconds-59.0] _
+
+field = 'measurement_seconds', value = 59.0
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frames_recorded-100] _
+
+field = 'frames_recorded', value = 100
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value12] _
+
+field = 'frame_times_ms', value = [nan]
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value13] _
+
+field = 'frame_times_ms', value = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, ...]
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[reason-timeout] _
+
+field = 'reason', value = 'timeout'
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[returncode-7] _
+
+field = 'returncode', value = 7
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[ready_observed-False] _
+
+field = 'ready_observed', value = False
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-None] _
+
+field = 'peak_rss_bytes', value = None
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-0] _
+
+field = 'peak_rss_bytes', value = 0
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[ready_seconds-None] _
+
+field = 'ready_seconds', value = None
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[ready_seconds-30.01] _
+
+field = 'ready_seconds', value = 30.01
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-2147483649] _
+
+field = 'peak_rss_bytes', value = 2147483649
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [("reason", "timeout"), ("returncode", 7), ("ready_observed", False),
+         ("peak_rss_bytes", None), ("peak_rss_bytes", 0), ("ready_seconds", None),
+         ("ready_seconds", 30.01), ("peak_rss_bytes", 2 * 1024**3 + 1)],
+    )
+    def test_external_process_observations_must_be_complete_and_within_budget(field, value):
+        samples = group()
+        samples[2]["process"][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:122: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+___________ test_a_slow_sample_cannot_be_hidden_by_two_fast_samples ___________
+
+    def test_a_slow_sample_cannot_be_hidden_by_two_fast_samples():
+        samples = group()
+        samples[1]["frame_times_ms"] = [40.0] * 1500
+        samples[1]["frames_recorded"] = 1500
+>       verdict = performance().score_profile(samples)
+                  ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+__________ test_p95_uses_all_frames_and_can_fail_despite_good_median __________
+
+    def test_p95_uses_all_frames_and_can_fail_despite_good_median():
+        samples = group()
+        samples[0]["frame_times_ms"] = [18.0] * 2700 + [60.0] * 300
+        samples[0]["measurement_seconds"] = 66.6
+>       verdict = performance().score_profile(samples)
+                  ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____ test_changed_hardware_quality_or_identity_invalidates_group[hardware] ____
+
+field = 'hardware'
+
+    @pytest.mark.parametrize("field", ["hardware", "quality", "input_digest", "profile_digest"])
+    def test_changed_hardware_quality_or_identity_invalidates_group(field):
+        samples = group()
+        samples[1][field] = ({**samples[1][field], "gpu": "other"}
+                             if field == "hardware" else "changed")
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____ test_changed_hardware_quality_or_identity_invalidates_group[quality] _____
+
+field = 'quality'
+
+    @pytest.mark.parametrize("field", ["hardware", "quality", "input_digest", "profile_digest"])
+    def test_changed_hardware_quality_or_identity_invalidates_group(field):
+        samples = group()
+        samples[1][field] = ({**samples[1][field], "gpu": "other"}
+                             if field == "hardware" else "changed")
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+__ test_changed_hardware_quality_or_identity_invalidates_group[input_digest] __
+
+field = 'input_digest'
+
+    @pytest.mark.parametrize("field", ["hardware", "quality", "input_digest", "profile_digest"])
+    def test_changed_hardware_quality_or_identity_invalidates_group(field):
+        samples = group()
+        samples[1][field] = ({**samples[1][field], "gpu": "other"}
+                             if field == "hardware" else "changed")
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_changed_hardware_quality_or_identity_invalidates_group[profile_digest] _
+
+field = 'profile_digest'
+
+    @pytest.mark.parametrize("field", ["hardware", "quality", "input_digest", "profile_digest"])
+    def test_changed_hardware_quality_or_identity_invalidates_group(field):
+        samples = group()
+        samples[1][field] = ({**samples[1][field], "gpu": "other"}
+                             if field == "hardware" else "changed")
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_______________ test_missing_profile_data_has_explicit_failures _______________
+
+    def test_missing_profile_data_has_explicit_failures():
+>       verdict = performance().score_profile([{}, {}, {}])
+                  ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+_ test_frozen_scene_without_activity_does_not_count_as_rendered_game_workload _
+
+    def test_frozen_scene_without_activity_does_not_count_as_rendered_game_workload():
+        samples = group()
+        samples[0]["activity"]["restarts"] = 0
+        samples[0]["activity"]["enemy_distance"] = 0
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:162: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+___________ test_cpu_counter_unavailable_does_not_fabricate_a_value ___________
+
+    def test_cpu_counter_unavailable_does_not_fabricate_a_value():
+        samples = group()
+        for item in samples:
+            item["process"]["cpu_seconds"] = None
+>       verdict = performance().score_profile(samples)
+                  ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+__________ test_duplicate_sample_identity_is_not_three_measurements ___________
+
+    def test_duplicate_sample_identity_is_not_three_measurements():
+        samples = group()
+        samples[1]["sample_index"] = 0
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+____ test_dry_run_validates_owned_player_without_creating_run_directories _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a640fba6-3102-48ea-96a9-00e02bd4ad44}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_dry_run_validates_owned_p0')
+
+    def test_dry_run_validates_owned_player_without_creating_run_directories(tmp_path):
+        player = tmp_path / "player" / "Arena.exe"
+        player.parent.mkdir()
+        player.write_bytes(b"fixture executable")
+        before = sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob("*"))
+>       result = performance().profile_player(tmp_path, player, dry_run=True)
+                 ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:185: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+______________ test_profile_rejects_outside_player_before_writes ______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a640fba6-3102-48ea-96a9-00e02bd4ad44}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_profile_rejects_outside_p0')
+
+    def test_profile_rejects_outside_player_before_writes(tmp_path):
+        from polyforge.contracts.validation import InputError
+    
+        outside = tmp_path.parent / "outside-profile-fixture.exe"
+        with pytest.raises(InputError):
+>           performance().profile_player(tmp_path, outside, dry_run=True)
+            ^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:200: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def performance():
+        # A useful assertion failure during the first red run, rather than collection failure.
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.unity.performance"), "performance slice missing"
+E       AssertionError: performance slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.unity.performance')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:13: AssertionError
+___ test_owned_observer_retains_real_peak_and_reports_ready_after_fast_exit ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a640fba6-3102-48ea-96a9-00e02bd4ad44}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_owned_observer_retains_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019940BD0440>
+
+    def test_owned_observer_retains_real_peak_and_reports_ready_after_fast_exit(tmp_path, monkeypatch):
+        from polyforge.security.paths import WorkspacePolicy
+    
+>       metrics = observation_module()
+                  ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:214: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def observation_module():
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.runner.metrics"), "owned metrics slice missing"
+E       AssertionError: owned metrics slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.runner.metrics')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:207: AssertionError
+_____ test_observer_missing_counter_is_unknown_and_pid_reuse_not_observed _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a640fba6-3102-48ea-96a9-00e02bd4ad44}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_observer_missing_counter_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019940BEE2A0>
+
+    def test_observer_missing_counter_is_unknown_and_pid_reuse_not_observed(tmp_path, monkeypatch):
+        from polyforge.security.paths import WorkspacePolicy
+    
+>       metrics = observation_module()
+                  ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:238: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def observation_module():
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.runner.metrics"), "owned metrics slice missing"
+E       AssertionError: owned metrics slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.runner.metrics')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:207: AssertionError
+________ test_observer_rejects_paths_outside_workspace_without_writes _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a640fba6-3102-48ea-96a9-00e02bd4ad44}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_observer_rejects_paths_ou0')
+
+    def test_observer_rejects_paths_outside_workspace_without_writes(tmp_path):
+        from polyforge.contracts.validation import InputError
+        from polyforge.security.paths import WorkspacePolicy
+    
+>       metrics = observation_module()
+                  ^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:259: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def observation_module():
+        import importlib.util
+    
+>       assert importlib.util.find_spec("polyforge.runner.metrics"), "owned metrics slice missing"
+E       AssertionError: owned metrics slice missing
+E       assert None
+E        +  where None = <function find_spec at 0x000001993D6E13A0>('polyforge.runner.metrics')
+E        +    where <function find_spec at 0x000001993D6E13A0> = <module 'importlib.util' (frozen)>.find_spec
+E        +      where <module 'importlib.util' (frozen)> = <module 'importlib' from 'C:\\Users\\Divansh Kapoor\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\Lib\\importlib\\__init__.py'>.util
+
+tests\test_phase11_performance.py:207: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_three_complete_rendered_samples_pass_without_claiming_game_acceptance
+FAILED tests/test_phase11_performance.py::test_exact_three_samples_required[0]
+FAILED tests/test_phase11_performance.py::test_exact_three_samples_required[1]
+FAILED tests/test_phase11_performance.py::test_exact_three_samples_required[2]
+FAILED tests/test_phase11_performance.py::test_exact_three_samples_required[4]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-Null]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[is_editor-True]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[batchmode-True]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[width-640]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[height-480]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[complete-False]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[sample_overflow-True]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[focused-False]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[warmup_seconds-9.0]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[measurement_seconds-59.0]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frames_recorded-100]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value12]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value13]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[reason-timeout]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[returncode-7]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[ready_observed-False]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-None]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-0]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[ready_seconds-None]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[ready_seconds-30.01]
+FAILED tests/test_phase11_performance.py::test_external_process_observations_must_be_complete_and_within_budget[peak_rss_bytes-2147483649]
+FAILED tests/test_phase11_performance.py::test_a_slow_sample_cannot_be_hidden_by_two_fast_samples
+FAILED tests/test_phase11_performance.py::test_p95_uses_all_frames_and_can_fail_despite_good_median
+FAILED tests/test_phase11_performance.py::test_changed_hardware_quality_or_identity_invalidates_group[hardware]
+FAILED tests/test_phase11_performance.py::test_changed_hardware_quality_or_identity_invalidates_group[quality]
+FAILED tests/test_phase11_performance.py::test_changed_hardware_quality_or_identity_invalidates_group[input_digest]
+FAILED tests/test_phase11_performance.py::test_changed_hardware_quality_or_identity_invalidates_group[profile_digest]
+FAILED tests/test_phase11_performance.py::test_missing_profile_data_has_explicit_failures
+FAILED tests/test_phase11_performance.py::test_frozen_scene_without_activity_does_not_count_as_rendered_game_workload
+FAILED tests/test_phase11_performance.py::test_cpu_counter_unavailable_does_not_fabricate_a_value
+FAILED tests/test_phase11_performance.py::test_duplicate_sample_identity_is_not_three_measurements
+FAILED tests/test_phase11_performance.py::test_dry_run_validates_owned_player_without_creating_run_directories
+FAILED tests/test_phase11_performance.py::test_profile_rejects_outside_player_before_writes
+FAILED tests/test_phase11_performance.py::test_owned_observer_retains_real_peak_and_reports_ready_after_fast_exit
+FAILED tests/test_phase11_performance.py::test_observer_missing_counter_is_unknown_and_pid_reuse_not_observed
+FAILED tests/test_phase11_performance.py::test_observer_rejects_paths_outside_workspace_without_writes
+42 failed in 1.12s

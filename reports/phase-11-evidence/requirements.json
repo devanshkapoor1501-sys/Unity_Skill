@@ -1,0 +1,844 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "PHASE11_REQUIREMENTS_INVENTORY",
+  "created_date": "2026-10-31",
+  "base_commit": "31827d134102650604aaa0998c0d06d6f4a579c3",
+  "branch": "codex/polyforge-phase-11",
+  "authority": {
+    "file": "PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx",
+    "sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
+    "extraction": ".tmp/phase9/blueprint.txt",
+    "phase11_lines": "1199-1226",
+    "inherited_gates": "1443-1529",
+    "normative_chapters": "16-18",
+    "current_prompt": "Appendix G"
+  },
+  "scope": "Read-only product/native/tests review; only this temporary inventory written. No full-suite/native invocation, commits, tags or external evaluator execution performed.",
+  "status_semantics": {
+    "IMPLEMENTED_PRIOR_EVIDENCE": "Behavior and existing recorded evidence found; not a new Phase11 passing test.",
+    "PARTIAL": "Some existing behavior/evidence, Phase11 gaps remain.",
+    "MISSING": "No sufficient implementation/deliverable observed.",
+    "NOT_RUN": "Declared qualification not executed.",
+    "BLOCKED_EXTERNAL": "Requires separately controlled unavailable owner/environment; cannot fake.",
+    "REQUIRES_PHASE11_RECONCILIATION": "Map existing behavior/tests and add any missing cases before signoff.",
+    "BLOCKED_EXTERNAL_OR_ENVIRONMENT": "Required external owner or proven OS environment unavailable; no false security/evaluation claim.",
+    "REQUIRES_PARENT_RULING": "Parent must reconcile user-authorized sequencing and inherited gates honestly without changing requirements."
+  },
+  "observed_interfaces": {
+    "benchmark": "polyforge/benchmark/protocol.py defines EvaluationRequest, BaselineRunner Protocol, AcceptanceEvaluator Protocol and fail-closed UnavailableEvaluator only. benchmark run/report are unimplemented registry commands returning NOT_RUN/5.",
+    "inspection": "inspect-project --project ... --read-only is a canonical unimplemented Phase11 command. No original Unity launch is authorized.",
+    "performance": "profiles/windows-arena.json declares NOT_RUN rendered standalone target profile.",
+    "workers": "execution_profile accepts single/sequential only; host delegation feature inventory does not prove actual native execution.",
+    "package": "pyproject.toml currently 0.0.1; core version/tag/repro release remains work.",
+    "base_evidence": "reports/phases-0-10-audit.md records 660 offline tests and 94.87% combined/91.68% branch, Blender9, Unity23 EditMode, arena1+18, seven mutants, standalone smoke; parent is rerunning baseline independently."
+  },
+  "release_rulings": [
+    {
+      "id": "R1",
+      "source": "1491-1493",
+      "ruling": "Experimental toolkit publication is expressly allowed without superiority scores. Four-arm missing runs may be NOT_RUN; no outperforming-Codex claim. This does not waive independent holdout, safety or full stable-core gates."
+    },
+    {
+      "id": "R2",
+      "source": "1206,1460,1481-1485,1524",
+      "ruling": "11.4 one held-out case and G13 three unseen combinations are cumulative constraints, not interchangeable minima. Plan at least three separately controlled hidden combinations and satisfy full-game sample composition; no agent-authored hidden fixtures count."
+    },
+    {
+      "id": "R3",
+      "source": "1519,1521-1525,1834-1838",
+      "ruling": "Allowed trusted development, public regression and same-host review cannot confer untrusted sandbox assurance, manual aesthetic approval, target-player performance or external independent evaluation."
+    },
+    {
+      "id": "R4",
+      "source": "1209,1220-1226,1229,1884,2130",
+      "ruling": "Do all feasible implementation/evidence and publish accurate PARTIAL experimental core if authorized, preserving blocked stable gates. A v1.0 stable/completed Phase11 claim or Stable-v1 Phase12 prerequisite remains unsatisfied until those gates pass; no silent redefinition to proceed."
+    },
+    {
+      "id": "R5",
+      "source": "1205,1213,1738,1740,1833,1853",
+      "ruling": "Single vs sequential, inspector-off and generic-worker ablations may be development evaluation modes. Actual concurrency/native delegation requires real measured host support and explicit labels; unavailable cases remain NOT_RUN/BLOCKED, no proxy speedup claims."
+    },
+    {
+      "id": "R6",
+      "source": "1523,2134",
+      "ruling": "Static inspection may read an original project and emit stdout or an external artifact. It must never initialize/write its root or launch Unity against it, including logging/caches. Full original inventory hashes include .meta and reject unverifiable scope."
+    },
+    {
+      "id": "R7",
+      "source": "1886",
+      "ruling": "The user has expressly requested phasewise continuation through17, satisfying permission to continue after a phase report; this does not itself prove or erase Stable-v1 entry gates or independent release requirements. Record continuation as development where prerequisites remain unqualified rather than asserting gates passed."
+    }
+  ],
+  "requirements": [
+    {
+      "id": "11.1",
+      "source": "1203",
+      "requirement": "Preserve cross-platform behavior, Unity licensing, static original-project inspection, trust modes, log redaction and provenance.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/security/",
+        "polyforge/runner/",
+        "polyforge/doctor.py",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Phase11 unchanged baseline and integrated regressions; original-project inspection is still stubbed; do not equate Python Ubuntu CI to native Linux qualification.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.2",
+      "source": "1204",
+      "requirement": "Four-arm A prompt, B text skill, C prompt plus generic adapters, D engine plus identical C adapters; stratify asset/animation/mechanic/repair/complete-game outcomes.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/benchmark/protocol.py",
+        "benchmarks/development-v1/suite.json",
+        "polyforge/commands.py"
+      ],
+      "missing": "Executable runner/report, frozen prompts and adapter inventory/parity checks, real run ledger and comparisons or explicit NOT_RUN; public suite currently has 12 tasks but no added 3D complete-game tasks.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.3",
+      "source": "1205",
+      "requirement": "Ablate sequential vs concurrent roles, inspector off/on for evaluation only, targeted specialist vs general worker; report net quality/time/token/process overhead.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/workforce/permissions.py",
+        "polyforge/workforce/orchestrator.py"
+      ],
+      "missing": "Measurement harness and executed cases. Current engine permits single/sequential only; inspector-off must not become production acceptance bypass.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.4",
+      "source": "1206",
+      "requirement": "At least two distinct game styles reuse shared capabilities plus one evaluator-controlled held-out genre/mechanic; preserve unsupported requests.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "examples/",
+        "reports/phase-6.md",
+        "reports/phase-8.md",
+        "README.md"
+      ],
+      "missing": "Arena and small 2D movement/animation/collision fixture exist; 2D fixture is not evidence of a complete second distinct game loop. Need genuinely distinct second-style demo and public acceptance; hidden case remains external BLOCKED.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.5",
+      "source": "1207",
+      "requirement": "Run independent six-mutant detection, rollback fault injection, multi-worker race/crash tests, and declared-hardware performance.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phases-0-10-audit.md",
+        "reports/phase-9.md",
+        "tests/test_phase9_mutations.py",
+        "profiles/windows-arena.json"
+      ],
+      "missing": "Rerun exact current identities M1-M6 and preserve additive M7; current Phase11 fault/concurrency proof, standalone rendered performance measurements and declared device.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.6",
+      "source": "1208",
+      "requirement": "Complete docs, executable examples, security assumptions, contribution workflows, versioned coverage map and precise NOT SUPPORTED list assigned to later phases.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "README.md",
+        "SECURITY.md",
+        "CONTRIBUTING.md",
+        "docs/",
+        "reports/knowledge_coverage.json"
+      ],
+      "missing": "Phase11 release docs/examples and up-to-date supported/unsupported matrix; executed/not-run example status; cross-reference Phases12-17 without advertising future expertise.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.7",
+      "source": "1209",
+      "requirement": "Reproducible v1.0 tagged release, clean Windows install and full demo; optional Linux/macOS as available.",
+      "current_status": "MISSING",
+      "evidence": [
+        "pyproject.toml",
+        "polyforge/__init__.py",
+        "dist/",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Current version 0.0.1. Need version-aligned package/artifact manifest, repeatability comparison, clean install + full game demo. Stable v1.0 tag must not imply blocked release gates passed; experimental prerelease label if gates remain missing.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.8",
+      "source": "1210",
+      "requirement": "Freeze regression baseline digest for all Phase0-11 fixtures before advanced modules.",
+      "current_status": "MISSING",
+      "evidence": [
+        "reports/v5_1_baseline.json",
+        "reports/phases-0-10-audit-evidence/"
+      ],
+      "missing": "Phase11-inclusive fixture inventory and digest binding source revision, inputs/oracles/evidence/tool versions; verify old entries preserved and additions included.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.9",
+      "source": "1212",
+      "requirement": "Publish only verified CORE v1 foundations; Phases12-17 expertise remains future.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "README.md",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Core-only release labels and limitations; experimental label if stable gates remain incomplete.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.10",
+      "source": "1213",
+      "requirement": "Benchmark logical-role overhead separately from actual host-native delegation, CPU/GPU/RAM/load variance and stop conditions under equal arms.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/knowledge/availability.py",
+        "polyforge/workforce/permissions.py"
+      ],
+      "missing": "Measured role overhead and resource run ledger; native host delegation is UNKNOWN/unavailable in engine, not inferred from feature/help probes or reviewer role labels.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.11",
+      "source": "1214",
+      "requirement": "Unfamiliar Blender and Unity probes plus changed-version failure fixture establish fallback.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/knowledge/probes.py",
+        "tests/test_phase10_knowledge.py",
+        "reports/phase-10.md",
+        "reports/phase-10-completion.md"
+      ],
+      "missing": "Reuse and revalidate fixed actual API probes; add/locate explicit changed-version routing/probe invalidation fixture and demonstrate no stale execution. Documentation alone cannot pass.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "11.12",
+      "source": "1215",
+      "requirement": "Release-check historical CLI flags, latest commands, manifests and contracts against runtime help; unexecuted examples NOT_RUN.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/commands.py",
+        "polyforge/cli.py",
+        "docs/cli.md",
+        "tests/fixtures/cli_commands.json",
+        "tools/"
+      ],
+      "missing": "Extend canonical contract + examples for implemented Phase11 commands; run clean-installed help/examples. No aliases or accepted syntax contradictions; preserve legacy grammar intentionally.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "D1",
+      "source": "1217",
+      "requirement": "Deliver tagged core release, executable demos, XML, benchmark report, capability coverage and worker architecture guide.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phase-9.md",
+        "reports/phase-10.md",
+        "roles/",
+        "docs/workforce.md"
+      ],
+      "missing": "Phase11-specific coherent release bundle with hashes; benchmark report may honestly say NOT_RUN but cannot become empirical comparison evidence.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "D2",
+      "source": "1218",
+      "requirement": "Independent QA review and phase11 report with PASS/PARTIAL/REJECTED and limitations.",
+      "current_status": "MISSING",
+      "evidence": [],
+      "missing": "Fresh implementation/requirements review and reports/phase-11.md; same-host review must state independence grade and cannot satisfy separately controlled hidden evaluator.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "V1",
+      "source": "1220-1226",
+      "requirement": "Inherited release gates, parity/negative results, locks/original preservation, core labels, reproducible playable 3D demo and optional 2D, evidence before completion.",
+      "current_status": "MISSING",
+      "evidence": [
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Run existing tests before extensions; publish exact commands, timestamps, exits, installed versions/artifacts; no unverified PASS. Optional 2D demo does not waive benchmark complete-game 2D task suite.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G1",
+      "source": "1444",
+      "requirement": "Installed CLI, schema and skill validation",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Phase11 clean-installed verification.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G2",
+      "source": "1445",
+      "requirement": "Blender generation/export with attached four-view evidence",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phase-4.md",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Current release demo sources/exports/four views and positive/negative evidence.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G3",
+      "source": "1446",
+      "requirement": "Unity compiles, builds through Editor APIs, scale/axis correct",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/unity/bridge.py",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Phase11 demo compile/import/build/reconcile evidence.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G4",
+      "source": "1447",
+      "requirement": "Playable loop, EditMode, PlayMode and manual functional review",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phase-6.md",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Current 3D and second-style demo behavioral evidence; exact human/manual review where required, no inferred manual PASS.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G5",
+      "source": "1448",
+      "requirement": "Deliberate faults safely handled, cleanup and evidence",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/phase-9.md"
+      ],
+      "missing": "Current integrated negative/fault/cleanup proof.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G6",
+      "source": "1449",
+      "requirement": "Versions, licensing caveats, open-source package and reproducibility",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "LICENSE",
+        "NOTICE",
+        "SECURITY.md",
+        "docs/development-guide.md"
+      ],
+      "missing": "Current release documentation and repeatable clean installation/demo.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7a",
+      "source": "1487",
+      "requirement": "At least five reusable CLI recipes with registry/schema/golden tests and host AI disabled",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "capabilities/",
+        "polyforge/blender/",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Revalidate current installed release without model.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7b",
+      "source": "1488",
+      "requirement": "Semantic compiler catches unit scale, sockets/materials and prefab binding before PlayMode",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/compiler/",
+        "tests/",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Preserve negative fixtures and run current regression.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7c",
+      "source": "1489",
+      "requirement": "At least five declarative gameplay scenarios with independent Unity PlayMode evidence",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/scenarios/arena_oracle.py",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Current release replay and trace/XML integrity.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7d",
+      "source": "1490",
+      "requirement": "At least eight known cross-engine faults and rollback with failures preserved",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "reports/phase-9.md",
+        "polyforge/unity/recovery.py"
+      ],
+      "missing": "Current release replay/retained source validity; twelve defect gate from Phase9 remains preserved.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7e",
+      "source": "1491",
+      "requirement": "Four baselines through reproducible harness or explicitly NOT_RUN, no superiority claim",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/benchmark/protocol.py",
+        "benchmarks/README.md"
+      ],
+      "missing": "Harness and ledger/report implementation; unavailable actual trials may be transparently NOT_RUN, never fabricated.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G7f",
+      "source": "1492",
+      "requirement": "Standalone CLI safe offline mode without MCP/proprietary model",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/cli.py",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Fresh release smoke/install verification.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G8",
+      "source": "1519",
+      "requirement": "Every mandatory game feature independently executed PASS; otherwise PARTIAL/REJECTED",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/contracts/results.py",
+        "reports/acceptance_oracle.json"
+      ],
+      "missing": "Apply to each new demo and external result; no compile/supervisor approval substitution.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G9",
+      "source": "1520",
+      "requirement": "Original-brief oracles reject wrong manifests/misleading tests; six mutants independently killed",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "tests/test_phase9_mutations.py",
+        "reports/phase-9.md",
+        "reports/phases-0-10-audit.md"
+      ],
+      "missing": "Current release execution; M1-M6 stable and M7 preserved. Public independent tests are not true holdout.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G10",
+      "source": "1521",
+      "requirement": "Untrusted execution/security assurance requires OS denial probes; trusted local disclosed",
+      "current_status": "BLOCKED_EXTERNAL_OR_ENVIRONMENT",
+      "evidence": [
+        "SECURITY.md",
+        "polyforge/security/",
+        "reports/phase-9.md"
+      ],
+      "missing": "No proven SANDBOXED_UNTRUSTED barrier: continue TRUSTED_LOCAL only, reject untrusted inputs, no sandbox security claims.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G11",
+      "source": "1522,1525",
+      "requirement": "User-pinned hardware standalone performance; no Editor/nographics substitution",
+      "current_status": "NOT_RUN",
+      "evidence": [
+        "profiles/windows-arena.json"
+      ],
+      "missing": "Actual rendered standalone profile at 1280x720, quality recorded, 10s warmup, 3x60s; FPS median>=30, P95<=50ms, peak RSS<=2GiB, load<=30s, subject to pinned agreed target profile.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G12",
+      "source": "1523",
+      "requirement": "Original project never opened in Unity; complete before/after inventory including meta is unchanged",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/commands.py",
+        "docs/cli.md"
+      ],
+      "missing": "Implement static inspection and external output or stdout only; full files/hash inventories before and after, link/special-file/oversize/race rejection; no Unity launch and no report/cache creation inside original.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G13",
+      "source": "1524",
+      "requirement": "Three unseen mechanic/genre combos only in release evaluation under external protected evaluator; leak check and categories",
+      "current_status": "BLOCKED_EXTERNAL",
+      "evidence": [
+        "polyforge/benchmark/protocol.py",
+        "benchmarks/README.md"
+      ],
+      "missing": "No external owner/service supplied. Agent cannot create genuine holdout by hiding files from itself or calling public tasks held-out. Keep full stable gate BLOCKED.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G14",
+      "source": "1526",
+      "requirement": "CLI parser/docs/skill/examples/statuses/exit codes share versioned contract and no contradictory syntax",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/commands.py",
+        "polyforge/contracts/results.py",
+        "tests/fixtures/cli_commands.json"
+      ],
+      "missing": "Phase11 changes integrated through canonical registry/generated documentation and installed runtime checks.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G15",
+      "source": "1527",
+      "requirement": "Unity reimport fault rollback restores identities and original independent tests, else ROLLBACK_FAILED",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/unity/recovery.py",
+        "polyforge/unity/repairs.py",
+        "reports/phase-9.md"
+      ],
+      "missing": "Current fault replay or hash-valid prior evidence bound to unchanged implementation; preserve quarantine failure path.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G16",
+      "source": "1528",
+      "requirement": "Pinned physics environment/tolerances and event assertions; missing metrics NOT_RUN",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/scenarios/arena_oracle.py",
+        "reports/phase-9.md"
+      ],
+      "missing": "Record current device/mode/version/fixed step/tolerances; no cross-platform bitwise determinism claim.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "G17",
+      "source": "1529",
+      "requirement": "C/D generic-tool parity, eligible task strata, failures/timeouts in denominator",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/contracts/benchmark_task.schema.json",
+        "benchmarks/development-v1/suite.json"
+      ],
+      "missing": "Strict run schema and parity attribution validator, stratified report and adversarial tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B1",
+      "source": "1454-1458",
+      "requirement": "Freeze A/B/C/D prompt, skill, engine flags, same model/effort/hardware/OS/versions/licenses/budgets/assets/retries/interventions. C/D exact same generic inventory/permissions/versions.",
+      "current_status": "MISSING",
+      "evidence": [
+        "benchmarks/development-v1/suite.json"
+      ],
+      "missing": "Pinned baseline files, execution mode/host attestation and parity digests; mismatch NON_ATTRIBUTABLE.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B2",
+      "source": "1460",
+      "requirement": "Frozen 12 base tasks (4 assets,2 animation,3 mechanic,2 repair,1 complete2D) plus >=3 full games (>=2 3D and genuine withheld variant); declare type/schema.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "benchmarks/development-v1/suite.json"
+      ],
+      "missing": "Public suite has exact base mix; add public demo game categories without claiming hidden ownership; external >=3 game evaluation cases remain blocked.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B3",
+      "source": "1461,1475-1478",
+      "requirement": "accepted_game_rate only complete2D+3D; separate exact category numerators/denominators; no executed games means NOT_MEASURABLE.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/contracts/benchmark_task.schema.json"
+      ],
+      "missing": "Executable metric/report code and T02/empty/no-games regression.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B4",
+      "source": "1462-1463",
+      "requirement": "Per-case run ID,arm/task/seed/commit/versions/XML/times/tokens/cost/screens/criteria/errors/evaluator; quality/recovery/defects/intervention/rework.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/benchmark/protocol.py"
+      ],
+      "missing": "Strict complete run ledger, artifact input verification and counters; unknown costs null/NOT_RUN, not zero.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B5",
+      "source": "1464-1466,1479",
+      "requirement": ">=5 independent runs per arm/task when practical; sample sizes and CIs; insufficient resources exploratory; all attempt and accepted-only distributions including censored timeouts.",
+      "current_status": "MISSING",
+      "evidence": [
+        "benchmarks/development-v1/suite.json"
+      ],
+      "missing": "Report CIs/uncertainty, declared sample mix, attempt costs including failures, sample adequacy; do not enforce candidate 20pp/30% goals as fabricated observations.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B6",
+      "source": "1467-1473",
+      "requirement": "Tasks, frozen baselines, independent scorers, complete results JSONL and report; runner never receives evaluator answers, blinded manual ratings where possible.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "benchmarks/tasks/",
+        "benchmarks/development-v1/",
+        "polyforge/benchmark/protocol.py"
+      ],
+      "missing": "Baselines/evaluators/results/report artifacts and protected external scoring boundary; public development scoring must identify itself as public.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B7",
+      "source": "1481-1485",
+      "requirement": "DEV_FIXTURE vs protected outside-repo EVAL_HOLDOUT; freeze task/rubric/scorer/seed before run; evaluator clean environment; tamper evident artifacts; leak probes; publish subset and fresh reserve.",
+      "current_status": "BLOCKED_EXTERNAL",
+      "evidence": [
+        "benchmarks/README.md",
+        "polyforge/workforce/permissions.py"
+      ],
+      "missing": "External owner/store unavailable. Can implement fail-closed protocol and development leak-test fixtures, but not assert external process or true holdout execution.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "B8",
+      "source": "1853",
+      "requirement": "Where relevant compare PolyForge single-role and orchestrated specialists in addition to the four inherited arms.",
+      "current_status": "MISSING",
+      "evidence": [
+        "polyforge/workforce/permissions.py"
+      ],
+      "missing": "Model as D single-vs-specialists variants/ablation while retaining canonical A-D CLI; same tools/constraints and truthful native/sequential labels.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T01",
+      "source": "1658",
+      "requirement": "Mandatory BLOCKED plus compile PASS stays game PARTIAL; numerator unchanged",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T02",
+      "source": "1659",
+      "requirement": "Asset PASS affects only asset metric",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T03",
+      "source": "1660",
+      "requirement": "Hidden data leakage gives EVAL_INVALID and no superiority",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T04",
+      "source": "1661",
+      "requirement": "Wrong manifest and colluding generated test fail original-brief acceptance",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T05",
+      "source": "1662",
+      "requirement": "Unenforced TRUSTED_LOCAL cannot execute untrusted input",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T06",
+      "source": "1663",
+      "requirement": "Report syntax mismatch fails doctest",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T07",
+      "source": "1664",
+      "requirement": "Original Unity open violates static inspection policy",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T08",
+      "source": "1665",
+      "requirement": "Stale Unity GUID/cache after file restore fails rollback",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T09",
+      "source": "1666",
+      "requirement": "C/D adapter mismatch gives NON_ATTRIBUTABLE",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T10",
+      "source": "1667",
+      "requirement": "Single arena without second genre cannot pass release",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T11",
+      "source": "1668",
+      "requirement": "Stale labels/report syntax/exit code contradictions fail spec lint",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing coverage by behavior, add missing benchmark/inspect cases, retain exact expected status and artifact proof; no redundant implementation-only tests.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "T12",
+      "source": "1669",
+      "requirement": "Same seed with platform physics drift passes only within declared tolerance and event-level invariants; outside tolerance FAIL.",
+      "current_status": "REQUIRES_PHASE11_RECONCILIATION",
+      "evidence": [
+        "tests/",
+        "docs/implementation-plan.md"
+      ],
+      "missing": "Locate existing event/tolerance regression, retain pinned environment and exact expected status; do not promise bitwise cross-platform determinism.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "X1",
+      "source": "1672-1742,1829-1838",
+      "requirement": "Preserve S0-S5, immutable candidate handoffs, inspector no writes, leases, single Unity writer, finite budgets/cancel/death before and after publication, idempotent resume, distinct ownership grades.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "polyforge/workforce/",
+        "polyforge/runner/",
+        "reports/phase-9.md"
+      ],
+      "missing": "Phase11 integrated stress and overhead evidence; do not label engine single/sequential modes HOST_MULTI_AGENT.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "X2",
+      "source": "1749-1765,1843-1855",
+      "requirement": "Frozen two-level coverage taxonomy, absent capabilities remain gaps; distinguish knowledge/automation/assisted/evaluation; dated version evidence and no false v2 coverage.",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "reports/knowledge_coverage.json",
+        "polyforge/data/knowledge-taxonomy.json"
+      ],
+      "missing": "Refresh Phase11 coverage links/version/date/costs without reducing denominator; CORE v1 only.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "X3",
+      "source": "1822-1828,1856-1860",
+      "requirement": "Unknown code scratch isolation/approval, offline licenses/resources and no security bypass for success.",
+      "current_status": "IMPLEMENTED_PRIOR_EVIDENCE",
+      "evidence": [
+        "polyforge/knowledge/probes.py",
+        "SECURITY.md",
+        "reports/experimental_actions.jsonl"
+      ],
+      "missing": "Phase11 probes retain exact fixed-code scope and reference trust; no arbitrary generated experiment promotion by claim.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "X4",
+      "source": "2129-2147,2168-2175",
+      "requirement": "G.3 baseline, coverage, workforce, experiment, acceptance and phase report machine evidence; full lineage/provenance plus manual requirements and limitations.",
+      "current_status": "PARTIAL",
+      "evidence": [
+        "reports/v5_1_baseline.json",
+        "reports/knowledge_coverage.json",
+        "reports/workforce_evidence.jsonl",
+        "reports/acceptance_oracle.json"
+      ],
+      "missing": "Phase11 updated/hash-linked records plus reports/phase-11.md; exact execution vs historical evidence distinguished.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    },
+    {
+      "id": "X5",
+      "source": "1884-1886,2130,2140",
+      "requirement": "Earliest incomplete phase only; no gate skip/weakening; latest user amendments may change sequence but not erase inherited safety/acceptance.",
+      "current_status": "REQUIRES_PARENT_RULING",
+      "evidence": [
+        "docs/implementation-plan.md"
+      ],
+      "missing": "User requests Phases11-17 phasewise. Stable core prerequisite in Phase12 and blocked independent gate need explicit honest sequencing disposition; experimental publication does not magically pass stable gate.",
+      "qualification": "READ_ONLY_INVENTORY_NOT_NEW_TEST_RESULT"
+    }
+  ],
+  "priority_implementation_gaps": [
+    "Implement safe static inspect-project with complete nonmutation proof.",
+    "Implement strict public benchmark run ledger/report and parity/eligibility validators, preserving future external evaluator boundary.",
+    "Build genuinely distinct second-game-style demo using reusable primitives and independently executed public acceptance.",
+    "Execute current safety/mutation/race/crash and rendered standalone hardware profile; measure logical-role/native overhead separately.",
+    "Assemble current core-only docs/versioned coverage/repro release and all-phase regression digest.",
+    "Keep external true holdout and unavailable actual baseline/host/manual results explicit; never claim full stable acceptance from development artifacts."
+  ]
+}

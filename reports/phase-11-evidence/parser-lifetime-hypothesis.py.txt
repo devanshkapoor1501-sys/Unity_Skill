@@ -1,0 +1,28 @@
+import faulthandler
+import gc
+import inspect
+import sys
+from pathlib import Path
+
+import polyforge.inspection as module
+
+faulthandler.enable()
+original = inspect.getsource(module._csharp_source)
+replacement = '''language = Language(tree_sitter_c_sharp.language())
+    parser = Parser(language)
+    tree = parser.parse(raw)'''
+if sys.argv[1] == 'kept':
+    code = original.replace('tree = Parser(Language(tree_sitter_c_sharp.language())).parse(raw)', replacement)
+elif sys.argv[1] == 'no-point':
+    code = original.replace('"line": node.start_point.row + 1,', '"line": 1,')
+else:
+    code = original
+namespace = dict(vars(module))
+exec(code, namespace)
+parse = namespace['_csharp_source']
+raw = Path('.tmp/phase11/demo/UnityProject/Library/PackageCache/com.unity.2d.sprite@26bcb5e737a2/Editor/Interface/ISpriteEditorDataProvider.cs').read_bytes().decode('utf-8-sig').encode()
+for index in range(50):
+    result = parse(raw)
+    assert result[-1] == 'PARSED'
+    gc.collect()
+print('50 actual-file parses and garbage collections completed', flush=True)

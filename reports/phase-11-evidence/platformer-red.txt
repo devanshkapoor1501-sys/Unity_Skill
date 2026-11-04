@@ -1,0 +1,170 @@
+FFFFFFFFFFFF.........                                                    [100%]
+================================== FAILURES ===================================
+_______ test_contract_reuses_existing_sprite_and_dry_run_has_no_writes ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_contract_reuses_existing_0')
+
+    def test_contract_reuses_existing_sprite_and_dry_run_has_no_writes(tmp_path):
+>       from polyforge.unity.platformer import build_platformer, compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:39: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change0] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_0')
+change = {'layout': 'arbitrary_world'}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change1] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_1')
+change = {'seed': nan}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change2] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_2')
+change = {'scene_id': '../outside'}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change3] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_3')
+change = {'platforms': []}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change4] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_4')
+change = {'required_features': ['multiplayer']}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+__ test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change5] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unsupported_or_nonfinite_5')
+change = {'sprite_receipt': '../outside.json'}
+
+    @pytest.mark.parametrize("change", [
+        {"layout": "arbitrary_world"}, {"seed": float("nan")}, {"scene_id": "../outside"},
+        {"platforms": []}, {"required_features": ["multiplayer"]},
+        {"sprite_receipt": "../outside.json"},
+    ])
+    def test_unsupported_or_nonfinite_contract_is_rejected_before_writes(tmp_path, change):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:59: ModuleNotFoundError
+___ test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[atlas] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_stale_unapproved_or_unsup0')
+fault = 'atlas'
+
+    @pytest.mark.parametrize("fault", ["atlas", "prefab_guid", "approval", "version", "frames"])
+    def test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected(tmp_path, fault):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:68: ModuleNotFoundError
+_ test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[prefab_guid] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_stale_unapproved_or_unsup1')
+fault = 'prefab_guid'
+
+    @pytest.mark.parametrize("fault", ["atlas", "prefab_guid", "approval", "version", "frames"])
+    def test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected(tmp_path, fault):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:68: ModuleNotFoundError
+__ test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[approval] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_stale_unapproved_or_unsup2')
+fault = 'approval'
+
+    @pytest.mark.parametrize("fault", ["atlas", "prefab_guid", "approval", "version", "frames"])
+    def test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected(tmp_path, fault):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:68: ModuleNotFoundError
+__ test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[version] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_stale_unapproved_or_unsup3')
+fault = 'version'
+
+    @pytest.mark.parametrize("fault", ["atlas", "prefab_guid", "approval", "version", "frames"])
+    def test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected(tmp_path, fault):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:68: ModuleNotFoundError
+___ test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[frames] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{44e71d3e-57e1-486f-aa65-03e858b628e3}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_stale_unapproved_or_unsup4')
+fault = 'frames'
+
+    @pytest.mark.parametrize("fault", ["atlas", "prefab_guid", "approval", "version", "frames"])
+    def test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected(tmp_path, fault):
+>       from polyforge.unity.platformer import compile_platformer_request
+E       ModuleNotFoundError: No module named 'polyforge.unity.platformer'
+
+tests\test_phase11_platformer.py:68: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_contract_reuses_existing_sprite_and_dry_run_has_no_writes
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change0]
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change1]
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change2]
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change3]
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change4]
+FAILED tests/test_phase11_platformer.py::test_unsupported_or_nonfinite_contract_is_rejected_before_writes[change5]
+FAILED tests/test_phase11_platformer.py::test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[atlas]
+FAILED tests/test_phase11_platformer.py::test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[prefab_guid]
+FAILED tests/test_phase11_platformer.py::test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[approval]
+FAILED tests/test_phase11_platformer.py::test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[version]
+FAILED tests/test_phase11_platformer.py::test_stale_unapproved_or_unsupported_sprite_receipt_is_rejected[frames]
+12 failed, 9 passed in 0.76s

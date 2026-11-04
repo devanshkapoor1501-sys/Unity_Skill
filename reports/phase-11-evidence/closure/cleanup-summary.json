@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "tests_passed": 73,
+  "covered_statements": 272,
+  "statements": 272,
+  "covered_branches": 129,
+  "branches": 130,
+  "statement_coverage": 100.0,
+  "branch_coverage": 99.23076923076923,
+  "combined_coverage": 99.75124378109453,
+  "quality": {
+    "ruff": "PASS",
+    "format": "PASS",
+    "mypy_windows": "PASS",
+    "mypy_linux": "PASS"
+  },
+  "files": [
+    {
+      "path": "polyforge/cleanup.py",
+      "sha256": "82f8dab0d8f2813e77961f5423ab6370638705cf3b03a30db95e02dd1d99d5cb"
+    },
+    {
+      "path": "tests/test_cleanup.py",
+      "sha256": "8d4feffb4abe901bf8e1619b5252361702e5d844989aba1c1ba94f212e2fa795"
+    }
+  ],
+  "engine_digest_observed": "b9f91bd59724a1b69298e5bc43f6a450c1fdaf4ab05867da86508583b0490a15",
+  "scope": "Bounded cleanup backend and disposable fixture tests only; parent owns CLI/docs/release integration",
+  "limits": "TRUSTED_LOCAL, no hostile-filesystem race or OS sandbox guarantee; partial deletion reports exact removed paths and does not promise atomic rollback"
+}

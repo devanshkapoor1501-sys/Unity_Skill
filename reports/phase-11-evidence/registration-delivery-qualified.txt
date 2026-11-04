@@ -1,0 +1,218 @@
+........................................................................ [ 77%]
+FFF..................                                                    [100%]
+================================== FAILURES ===================================
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[none] __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B3F3E8E330>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{05018aba-fe89-4c88-90ac-1000cfd09abd}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an0')
+failure = 'none'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            from polyforge.runner.processes import ProcessOutcome
+    
+            return ProcessOutcome(
+                1 if failure == "smoke" else 0, "exit", 123, "UNIT_TEST_BOUNDARY", 1, "", "", False
+            )
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+>           lambda *a, **k: {
+                 ^^^^^^^^^^^^^
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=0)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[smoke] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B3F37DB320>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{05018aba-fe89-4c88-90ac-1000cfd09abd}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an1')
+failure = 'smoke'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            from polyforge.runner.processes import ProcessOutcome
+    
+            return ProcessOutcome(
+                1 if failure == "smoke" else 0, "exit", 123, "UNIT_TEST_BOUNDARY", 1, "", "", False
+            )
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+>           lambda *a, **k: {
+                 ^^^^^^^^^^^^^
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=1)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+_ test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[gameplay] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001B3F37DA810>
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{05018aba-fe89-4c88-90ac-1000cfd09abd}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_standalone_build_smoke_an2')
+failure = 'gameplay'
+
+    @pytest.mark.parametrize("failure", ["none", "smoke", "gameplay"])
+    def test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates(
+        monkeypatch, tmp_path, failure
+    ):
+        platformer, calls = native_boundary(monkeypatch, tmp_path)
+        request = source_fixture(tmp_path)
+        game = platformer.compile_platformer_request(request, WorkspacePolicy(tmp_path))
+    
+        def process(argv, policy, relative, process_policy, **kwargs):
+            report = policy.path(argv[argv.index("-polyforgePlayerEvidence") + 1])
+            report.write_text(
+                json.dumps(
+                    {"input_digest": game["input_digest"], "scene": "SpritePlatformer", "frames": 800}
+                )
+            )
+            from polyforge.runner.processes import ProcessOutcome
+    
+            return ProcessOutcome(
+                1 if failure == "smoke" else 0, "exit", 123, "UNIT_TEST_BOUNDARY", 1, "", "", False
+            )
+    
+        monkeypatch.setattr(platformer, "run_process", process)
+        monkeypatch.setattr(
+            platformer,
+            "score_telemetry",
+>           lambda *a, **k: {
+                 ^^^^^^^^^^^^^
+                "status": "FAIL" if failure == "gameplay" and k.get("standalone") else "PASS"
+            },
+        )
+
+tests\test_phase11_platformer.py:603: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\platformer.py:324: in execute_platformer_checks
+    atomic_json(policy, player_relative + "/process/process.json", asdict(outcome))
+                                                                   ^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+obj = namespace(reason='exit', returncode=0)
+
+    def asdict(obj, *, dict_factory=dict):
+        """Return the fields of a dataclass instance as a new dictionary mapping
+        field names to field values.
+    
+        Example usage::
+    
+          @dataclass
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          assert asdict(c) == {'x': 1, 'y': 2}
+    
+        If given, 'dict_factory' will be used instead of built-in dict.
+        The function applies recursively to field values that are
+        dataclass instances. This will also look into built-in containers:
+        tuples, lists, and dicts. Other objects are copied with 'copy.deepcopy()'.
+        """
+        if not _is_dataclass_instance(obj):
+>           raise TypeError("asdict() should be called on dataclass instances")
+E           TypeError: asdict() should be called on dataclass instances
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\dataclasses.py:1328: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[none]
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[smoke]
+FAILED tests/test_phase11_platformer.py::test_standalone_build_smoke_and_gameplay_are_separate_boundary_gates[gameplay]
+3 failed, 90 passed in 38.75s

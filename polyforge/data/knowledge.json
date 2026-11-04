@@ -463,13 +463,15 @@
       "game",
       "arena",
       "survival",
+      "checkpoint",
+      "platformer",
       "mechanic",
       "restart",
       "win"
     ],
     "when_to_use": "game tasks within the explicitly declared support scope",
     "alternatives": [
-      "Bounded arena only when the request fits; otherwise explicit mechanic gap and assisted design."
+      "Use the survival arena or approved-sprite checkpoint course only when the requirements fit; otherwise preserve the mechanic gap and propose assisted discovery."
     ],
     "prerequisites": [
       "Read exact user constraints; discover capability; probe matching installed version before action"
@@ -506,7 +508,8 @@
     "confidence": 0.9,
     "reviewer": "polyforge.curated-reference-review.v1",
     "capability_ids": [
-      "unity.game.arena.v1"
+      "unity.game.arena.v1",
+      "unity.game.platformer.v1"
     ],
     "content_kind": "CURATED_SUMMARY"
   },

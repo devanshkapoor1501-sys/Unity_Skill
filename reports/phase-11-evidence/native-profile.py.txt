@@ -1,0 +1,27 @@
+"""Profile only the actual successful Phase 11 native arena build."""
+import json
+import sys
+from pathlib import Path
+
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.game import register_game_artifacts
+from polyforge.unity.performance import profile_player, seal_player_build
+
+base = Path('.tmp/phase11').resolve()
+policy = WorkspacePolicy(base / 'demo')
+build = json.loads((base / 'arena-result.json').read_text('utf-8'))
+assert build['status'] == 'PASS'
+assert build['data']['standalone_build'] == 'PASS'
+assert build['data']['player_smoke'] == 'PASS'
+run = build['run_id']
+player = policy.path(f'runs/{run}/player/PolyForgeArena.exe')
+# The successful native build started before the receipt hook was introduced.
+# Seal its actual retained build inputs/process/output; no fabricated provenance.
+seal_player_build(policy, player)
+register_game_artifacts(policy, f'runs/{run}', build['input_digest'])
+output = base / ('profile-result-retry-1.json' if '--retry-1' in sys.argv else 'profile-result.json')
+assert not output.exists(), 'Preserve prior profile outcomes'
+result = profile_player(policy.root, player)
+output.write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print(json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()

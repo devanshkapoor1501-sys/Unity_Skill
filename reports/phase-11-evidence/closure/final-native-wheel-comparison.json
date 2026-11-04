@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "old_wheel": ".tmp\\phase11-closure\\build-a\\polyforge-0.0.1-py3-none-any.whl",
+  "old_sha256": "4618e4f222a09d7a7847b84c8262f1c54a413bb1dca9a0397ffe1f151dcd5272",
+  "final_wheel": ".tmp\\phase11-closure\\final-build-a\\polyforge-0.0.1-py3-none-any.whl",
+  "final_sha256": "a5219b88d704418abbc9b58b14767da1c9b78bd453b05c2bc7c7f16b2d69d8e1",
+  "scope": "unity_package, Python Blender/Unity adapters, and packaged native scripts",
+  "native_entries": 142,
+  "native_exact": 140,
+  "native_lf_only": [
+    "polyforge/unity/evidence.py",
+    "unity_package/Runtime/StandaloneProfile.cs"
+  ],
+  "native_substantive_differences": [],
+  "all_wheel_changed_entries": {
+    "polyforge-0.0.1.dist-info/RECORD": "CONTENT",
+    "polyforge/cli.py": "CONTENT",
+    "polyforge/commands.py": "CONTENT",
+    "polyforge/contracts/audit_request.schema.json": "LF_ONLY",
+    "polyforge/contracts/benchmark_task.schema.json": "LF_ONLY",
+    "polyforge/contracts/capability.schema.json": "LF_ONLY",
+    "polyforge/contracts/game_manifest.schema.json": "LF_ONLY",
+    "polyforge/contracts/job_ticket.schema.json": "LF_ONLY",
+    "polyforge/contracts/recipe.schema.json": "LF_ONLY",
+    "polyforge/contracts/recipe_request.schema.json": "LF_ONLY",
+    "polyforge/contracts/result.schema.json": "LF_ONLY",
+    "polyforge/contracts/workforce_task.schema.json": "LF_ONLY",
+    "polyforge/data/arena_acceptance.json": "LF_ONLY",
+    "polyforge/data/arena_manifest.json": "LF_ONLY",
+    "polyforge/data/arena_recipes.json": "LF_ONLY",
+    "polyforge/data/arena_scenarios.json": "LF_ONLY",
+    "polyforge/data/knowledge-history.json": "LF_ONLY",
+    "polyforge/data/knowledge-taxonomy.json": "LF_ONLY",
+    "polyforge/runner/metrics.py": "LF_ONLY",
+    "polyforge/scenarios/schema.py": "LF_ONLY",
+    "polyforge/unity/evidence.py": "LF_ONLY",
+    "unity_package/Runtime/StandaloneProfile.cs": "LF_ONLY"
+  },
+  "added_entries": [
+    "polyforge/cleanup.py"
+  ],
+  "removed_entries": [],
+  "native_execution": "EARLIER_WHEEL_ONLY"
+}

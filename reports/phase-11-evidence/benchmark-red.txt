@@ -1,0 +1,266 @@
+FFFFFFFFFFFFFFFFFFFFFFF                                                  [100%]
+================================== FAILURES ===================================
+_________________ test_required_public_interfaces_are_present _________________
+
+    def test_required_public_interfaces_are_present() -> None:
+        for module, name in (
+            ("tasks", "load_suite"),
+            ("runner", "run_suite"),
+            ("metrics", "summarize"),
+            ("analysis", "report_run"),
+        ):
+            qualified = f"polyforge.benchmark.{module}"
+>           assert importlib.util.find_spec(qualified) is not None, f"Missing {qualified}"
+E           AssertionError: Missing polyforge.benchmark.tasks
+E           assert None is not None
+E            +  where None = <function find_spec at 0x000001FC009613A0>('polyforge.benchmark.tasks')
+E            +    where <function find_spec at 0x000001FC009613A0> = <module 'importlib.util' (frozen)>.find_spec
+E            +      where <module 'importlib.util' (frozen)> = importlib.util
+
+tests\test_phase11_benchmark.py:78: AssertionError
+___________ test_load_suite_verifies_twelve_briefs_without_mutation ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_load_suite_verifies_twelv0')
+
+    def test_load_suite_verifies_twelve_briefs_without_mutation(tmp_path: Path) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:83: ModuleNotFoundError
+__________ test_suite_rejects_unsafe_or_unbounded_inputs[duplicate] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u0')
+change = 'duplicate'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+__________ test_suite_rejects_unsafe_or_unbounded_inputs[traversal] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u1')
+change = 'traversal'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+___________ test_suite_rejects_unsafe_or_unbounded_inputs[infinite] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u2')
+change = 'infinite'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+_____________ test_suite_rejects_unsafe_or_unbounded_inputs[huge] _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u3')
+change = 'huge'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+_____________ test_suite_rejects_unsafe_or_unbounded_inputs[bool] _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u4')
+change = 'bool'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+____________ test_suite_rejects_unsafe_or_unbounded_inputs[plugin] ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_suite_rejects_unsafe_or_u5')
+change = 'plugin'
+
+    @pytest.mark.parametrize("change", ["duplicate", "traversal", "infinite", "huge", "bool", "plugin"])
+    def test_suite_rejects_unsafe_or_unbounded_inputs(tmp_path: Path, change: str) -> None:
+>       from polyforge.benchmark.tasks import load_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.tasks'
+
+tests\test_phase11_benchmark.py:101: ModuleNotFoundError
+________ test_missing_adapters_are_blocked_and_dry_run_writes_nothing _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_missing_adapters_are_bloc0')
+
+    def test_missing_adapters_are_blocked_and_dry_run_writes_nothing(tmp_path: Path) -> None:
+>       from polyforge.benchmark.runner import run_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.runner'
+
+tests\test_phase11_benchmark.py:124: ModuleNotFoundError
+_______________ test_frozen_identity_is_rechecked_before_writes _______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_frozen_identity_is_rechec0')
+
+    def test_frozen_identity_is_rechecked_before_writes(tmp_path: Path) -> None:
+>       from polyforge.benchmark.runner import run_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.runner'
+
+tests\test_phase11_benchmark.py:145: ModuleNotFoundError
+_ test_real_runner_outcomes_are_retained_and_missing_evaluator_cannot_accept __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_real_runner_outcomes_are_0')
+
+    def test_real_runner_outcomes_are_retained_and_missing_evaluator_cannot_accept(tmp_path: Path) -> None:
+>       from polyforge.benchmark.runner import run_suite
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.runner'
+
+tests\test_phase11_benchmark.py:158: ModuleNotFoundError
+_____ test_metrics_keep_exact_complete_game_denominator_and_failure_costs _____
+
+    def test_metrics_keep_exact_complete_game_denominator_and_failure_costs() -> None:
+>       from polyforge.benchmark.metrics import summarize
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.metrics'
+
+tests\test_phase11_benchmark.py:200: ModuleNotFoundError
+_______ test_unexecuted_games_are_not_measurable_and_configs_never_pool _______
+
+    def test_unexecuted_games_are_not_measurable_and_configs_never_pool() -> None:
+>       from polyforge.benchmark.metrics import summarize
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.metrics'
+
+tests\test_phase11_benchmark.py:223: ModuleNotFoundError
+_____ test_c_d_mismatch_cannot_be_reported_as_attributable[generic_tools] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re0')
+field = 'generic_tools'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+______ test_c_d_mismatch_cannot_be_reported_as_attributable[permissions] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re1')
+field = 'permissions'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+_______ test_c_d_mismatch_cannot_be_reported_as_attributable[hardware] ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re2')
+field = 'hardware'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+_________ test_c_d_mismatch_cannot_be_reported_as_attributable[model] _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re3')
+field = 'model'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+____ test_c_d_mismatch_cannot_be_reported_as_attributable[thinking_effort] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re4')
+field = 'thinking_effort'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+____ test_c_d_mismatch_cannot_be_reported_as_attributable[external_assets] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_c_d_mismatch_cannot_be_re5')
+field = 'external_assets'
+
+    @pytest.mark.parametrize("field", ["generic_tools", "permissions", "hardware", "model", "thinking_effort", "external_assets"])
+    def test_c_d_mismatch_cannot_be_reported_as_attributable(tmp_path: Path, field: str) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:237: ModuleNotFoundError
+__________ test_report_is_offline_escaped_and_preserves_unknown_cost __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{e9117808-77ec-455a-980c-1f6edc8b91ba}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_report_is_offline_escaped0')
+
+    def test_report_is_offline_escaped_and_preserves_unknown_cost(tmp_path: Path) -> None:
+>       from polyforge.benchmark.analysis import report_run
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.analysis'
+
+tests\test_phase11_benchmark.py:259: ModuleNotFoundError
+_ test_metrics_reject_nonfinite_or_impossible_observations[duration_seconds-nan] _
+
+field = 'duration_seconds', value = nan
+
+    @pytest.mark.parametrize("field,value", [("duration_seconds", float("nan")), ("cost_usd", -1), ("interventions", True)])
+    def test_metrics_reject_nonfinite_or_impossible_observations(field: str, value: object) -> None:
+>       from polyforge.benchmark.metrics import summarize
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.metrics'
+
+tests\test_phase11_benchmark.py:277: ModuleNotFoundError
+____ test_metrics_reject_nonfinite_or_impossible_observations[cost_usd--1] ____
+
+field = 'cost_usd', value = -1
+
+    @pytest.mark.parametrize("field,value", [("duration_seconds", float("nan")), ("cost_usd", -1), ("interventions", True)])
+    def test_metrics_reject_nonfinite_or_impossible_observations(field: str, value: object) -> None:
+>       from polyforge.benchmark.metrics import summarize
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.metrics'
+
+tests\test_phase11_benchmark.py:277: ModuleNotFoundError
+_ test_metrics_reject_nonfinite_or_impossible_observations[interventions-True] _
+
+field = 'interventions', value = True
+
+    @pytest.mark.parametrize("field,value", [("duration_seconds", float("nan")), ("cost_usd", -1), ("interventions", True)])
+    def test_metrics_reject_nonfinite_or_impossible_observations(field: str, value: object) -> None:
+>       from polyforge.benchmark.metrics import summarize
+E       ModuleNotFoundError: No module named 'polyforge.benchmark.metrics'
+
+tests\test_phase11_benchmark.py:277: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_required_public_interfaces_are_present
+FAILED tests/test_phase11_benchmark.py::test_load_suite_verifies_twelve_briefs_without_mutation
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[duplicate]
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[traversal]
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[infinite]
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[huge]
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[bool]
+FAILED tests/test_phase11_benchmark.py::test_suite_rejects_unsafe_or_unbounded_inputs[plugin]
+FAILED tests/test_phase11_benchmark.py::test_missing_adapters_are_blocked_and_dry_run_writes_nothing
+FAILED tests/test_phase11_benchmark.py::test_frozen_identity_is_rechecked_before_writes
+FAILED tests/test_phase11_benchmark.py::test_real_runner_outcomes_are_retained_and_missing_evaluator_cannot_accept
+FAILED tests/test_phase11_benchmark.py::test_metrics_keep_exact_complete_game_denominator_and_failure_costs
+FAILED tests/test_phase11_benchmark.py::test_unexecuted_games_are_not_measurable_and_configs_never_pool
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[generic_tools]
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[permissions]
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[hardware]
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[model]
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[thinking_effort]
+FAILED tests/test_phase11_benchmark.py::test_c_d_mismatch_cannot_be_reported_as_attributable[external_assets]
+FAILED tests/test_phase11_benchmark.py::test_report_is_offline_escaped_and_preserves_unknown_cost
+FAILED tests/test_phase11_benchmark.py::test_metrics_reject_nonfinite_or_impossible_observations[duration_seconds-nan]
+FAILED tests/test_phase11_benchmark.py::test_metrics_reject_nonfinite_or_impossible_observations[cost_usd--1]
+FAILED tests/test_phase11_benchmark.py::test_metrics_reject_nonfinite_or_impossible_observations[interventions-True]
+23 failed in 0.85s

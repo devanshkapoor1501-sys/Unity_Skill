@@ -1,0 +1,39 @@
+"""Read-only parser crash isolation; no application or project code is executed."""
+import json
+import faulthandler
+import os
+import sys
+from pathlib import Path
+
+from polyforge import inspection
+
+faulthandler.dump_traceback_later(30, repeat=True)
+progress = Path('.tmp/phase11/parser-stages.jsonl').open('x', encoding='utf-8')
+def record(value):
+    progress.write(json.dumps(value) + '\n')
+    progress.flush()
+record({'stage': 'imported', 'pid': os.getpid()})
+root = Path('.tmp/phase11/demo/UnityProject').resolve()
+paths = sorted(
+    (Path(directory) / name for directory, _, names in os.walk(root) for name in names
+     if Path(name).suffix.lower() in {'.cs', '.py'}),
+    key=lambda p: p.relative_to(root).as_posix(),
+)
+record({'stage': 'enumerated', 'source_count': len(paths)})
+print(json.dumps({'pid': os.getpid(), 'source_count': len(paths)}), flush=True)
+for index, path in enumerate(paths):
+    with path.open('rb') as stream:
+        raw = stream.read(1_048_577)
+    record({'index': index, 'path': path.relative_to(root).as_posix(), 'bytes': len(raw)})
+    if len(raw) > 1_048_576:
+        continue
+    if path.suffix.lower() == '.cs':
+        try:
+            raw = raw.decode('utf-8-sig').encode('utf-8')
+        except UnicodeDecodeError:
+            continue
+        result = inspection._csharp_source(raw)
+    else:
+        result = inspection._python_source(raw, path.relative_to(root))
+    record({'index': index, 'analysis': result[-1]})
+print('ALL_SOURCE_PARSERS_COMPLETED', flush=True)

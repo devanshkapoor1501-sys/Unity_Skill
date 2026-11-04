@@ -1,0 +1,346 @@
+{
+  "schema_version": "1.0.0",
+  "authority": "DEVELOPMENT_ONLY",
+  "original_brief_sha256": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8",
+  "requirements": [
+    {
+      "id": "movement",
+      "feature_id": "movement.character_controller.v1",
+      "required": true,
+      "source_span": {
+        "start": 259,
+        "end": 286
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "WASD changes player position"
+      ],
+      "source_text": "The player moves using WASD",
+      "capability_id": "movement.character_controller.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "PlayerController",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "player_moves",
+        "keyboard_input"
+      ]
+    },
+    {
+      "id": "collision",
+      "feature_id": "physics.collision.v1",
+      "required": true,
+      "source_span": {
+        "start": 318,
+        "end": 337
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Walls prevent traversal"
+      ],
+      "source_text": "collides with walls",
+      "capability_id": "physics.collision.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "Collider",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "wall_collision",
+        "obstacle_collision",
+        "collision_disabled",
+        "obstacle_collision_disabled"
+      ]
+    },
+    {
+      "id": "enemy",
+      "feature_id": "ai.patrol.v1",
+      "required": true,
+      "source_span": {
+        "start": 353,
+        "end": 368
+      },
+      "binding_ids": [
+        "enemy_01"
+      ],
+      "acceptance_intent": [
+        "Enemy changes position along patrol route"
+      ],
+      "source_text": "A robot patrols",
+      "capability_id": "ai.patrol.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "PatrolEnemy",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "enemy_patrols"
+      ]
+    },
+    {
+      "id": "damage",
+      "feature_id": "combat.damage.v1",
+      "required": true,
+      "source_span": {
+        "start": 373,
+        "end": 402
+      },
+      "binding_ids": [
+        "enemy_01"
+      ],
+      "acceptance_intent": [
+        "Contact decreases health"
+      ],
+      "source_text": "damages the player on contact",
+      "capability_id": "combat.damage.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "ContactDamage",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "contact_damage"
+      ]
+    },
+    {
+      "id": "health",
+      "feature_id": "combat.health.v1",
+      "required": true,
+      "source_span": {
+        "start": 404,
+        "end": 415
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Health is observable"
+      ],
+      "source_text": "Show health",
+      "capability_id": "combat.health.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "Health",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "contact_damage",
+        "health_failure"
+      ]
+    },
+    {
+      "id": "timer",
+      "feature_id": "objective.survival.v1",
+      "required": true,
+      "source_span": {
+        "start": 422,
+        "end": 446
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Surviving thirty seconds wins"
+      ],
+      "source_text": "30-second survival timer",
+      "capability_id": "objective.survival.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "SurvivalObjective",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "survival_win"
+      ]
+    },
+    {
+      "id": "failure",
+      "feature_id": "objective.failure.v1",
+      "required": true,
+      "source_span": {
+        "start": 464,
+        "end": 487
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Zero health enters failure"
+      ],
+      "source_text": "losing all health fails",
+      "capability_id": "objective.failure.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "GameState",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "health_failure"
+      ]
+    },
+    {
+      "id": "restart",
+      "feature_id": "game.restart.v1",
+      "required": true,
+      "source_span": {
+        "start": 489,
+        "end": 496
+      },
+      "binding_ids": [
+        "main"
+      ],
+      "acceptance_intent": [
+        "Restart restores initial state"
+      ],
+      "source_text": "Press R",
+      "capability_id": "game.restart.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "RestartController",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "PASS",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": [
+        "restart_resets",
+        "keyboard_restart",
+        "restart_disabled"
+      ]
+    },
+    {
+      "id": "assets",
+      "feature_id": "geometry.static_assets.v1",
+      "required": true,
+      "source_span": {
+        "start": 82,
+        "end": 99
+      },
+      "binding_ids": [
+        "ground_a",
+        "crate_a",
+        "robot_a"
+      ],
+      "acceptance_intent": [
+        "All requested generated assets import"
+      ],
+      "source_text": "Blender-generated",
+      "capability_id": "geometry.static_assets.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": "MeshFilter",
+      "implementation_status": "PASS",
+      "independent_oracle_status": "NOT_RUN",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": []
+    },
+    {
+      "id": "audit",
+      "feature_id": "audit.multiview.v1",
+      "required": true,
+      "source_span": {
+        "start": 740,
+        "end": 764
+      },
+      "binding_ids": [
+        "robot_a"
+      ],
+      "acceptance_intent": [
+        "All four views exist"
+      ],
+      "source_text": "Capture four asset views",
+      "capability_id": "audit.multiview.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": null,
+      "implementation_status": "PASS",
+      "independent_oracle_status": "NOT_RUN",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": []
+    },
+    {
+      "id": "sources",
+      "feature_id": "artifact.editable_sources.v1",
+      "required": true,
+      "source_span": {
+        "start": 562,
+        "end": 593
+      },
+      "binding_ids": [
+        "robot_a"
+      ],
+      "acceptance_intent": [
+        "Editable source and native scene artifacts exist"
+      ],
+      "source_text": "Keep editable Blender originals",
+      "capability_id": "artifact.editable_sources.v1",
+      "capability_version": "1.0.0",
+      "support_state": "SUPPORTED",
+      "reason": "Observed public development checks; external qualification pending",
+      "expected_component": null,
+      "implementation_status": "PASS",
+      "independent_oracle_status": "NOT_RUN",
+      "acceptance_authority": "GENERATOR_DEVELOPMENT_INTENT",
+      "scenario_ids": []
+    }
+  ],
+  "composition": {
+    "grammar_version": "1.0.0",
+    "connections": [
+      {
+        "source": "collision",
+        "target": "damage",
+        "port": "collision"
+      },
+      {
+        "source": "health",
+        "target": "damage",
+        "port": "health"
+      },
+      {
+        "source": "health",
+        "target": "timer",
+        "port": "health"
+      },
+      {
+        "source": "health",
+        "target": "failure",
+        "port": "health"
+      },
+      {
+        "source": "assets",
+        "target": "audit",
+        "port": "assets"
+      },
+      {
+        "source": "assets",
+        "target": "sources",
+        "port": "assets"
+      }
+    ],
+    "unconnected_ports": [],
+    "authority": "DEVELOPMENT_ONLY"
+  },
+  "game_status": "PARTIAL",
+  "check_run_id": "game-check-e8e58a68e50244d2"
+}

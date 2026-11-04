@@ -1,0 +1,212 @@
+FF....F.                                                                 [100%]
+================================== FAILURES ===================================
+__ test_unity_signed_local_file_identifiers_are_valid[-9223372036854775808] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d011670e-e26a-4636-b8ee-16b34fc7eaaf}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unity_signed_local_file_i0')
+local_id = -9223372036854775808
+
+    @pytest.mark.parametrize("local_id", [-(2**63), -1057934527, 2**63 - 1])
+    def test_unity_signed_local_file_identifiers_are_valid(tmp_path, local_id):
+        from polyforge.unity.platformer import compile_platformer_request
+    
+        request = source_fixture(tmp_path)
+        receipt = tmp_path / request["sprite_receipt"]
+        value = json.loads(receipt.read_text())
+        value["sprites"][0]["local_id"] = local_id
+        receipt.write_text(json.dumps(value))
+        registry_path = receipt.parent / "artifacts.json"
+        registry = json.loads(registry_path.read_text())
+        registry["artifacts"][0]["sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
+        registry_path.write_text(json.dumps(registry))
+>       assert compile_platformer_request(request, WorkspacePolicy(tmp_path))["sprite_prefab_guid"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_platformer.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+inputs = {'layout': 'checkpoint_course_v1', 'scene_id': 'checkpoint_course', 'schema_version': '1.0.0', 'seed': 42, ...}
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001839E1E28A0>
+
+    def compile_platformer_request(inputs: dict[str, Any], policy: WorkspacePolicy) -> dict[str, Any]:
+        validate_schema(inputs, "platformer.schema.json")
+        receipt = policy.path(inputs["sprite_receipt"])
+        report = load_json(receipt)
+        approval_path = policy.path(receipt.parent / "approval.json")
+        approval = load_json(approval_path)
+        registry = load_json(policy.path(receipt.parent / "artifacts.json"))
+        if (
+            not isinstance(report, dict)
+            or not isinstance(approval, dict)
+            or not isinstance(registry, dict)
+            or not isinstance(registry.get("artifacts"), list)
+            or len(registry["artifacts"]) > 16384
+            or any(
+                not isinstance(r, dict)
+                or not isinstance(r.get("relative_path"), str)
+                or not isinstance(r.get("sha256"), str)
+                for r in registry["artifacts"]
+            )
+        ):
+            raise InputError("Malformed imported sprite receipt/approval registry")
+        for path in (receipt, approval_path):
+            relative = path.relative_to(policy.root).as_posix()
+            matching = [r for r in registry["artifacts"] if r["relative_path"] == relative]
+            if len(matching) != 1 or matching[0]["sha256"] != _hash(path):
+                raise InputError("Sprite receipt/approval does not match imported artifact registry")
+        if (
+            report.get("status") != "PASS"
+            or report.get("unity_version") != "6000.6.3f1"
+            or approval.get("technical_verdict") != "APPROVED"
+            or approval.get("metadata_digest") != report.get("metadata_digest")
+            or not approval.get("source_license")
+        ):
+            raise InputError("Approved Unity 6000.6.3f1 sprite receipt required")
+        folder = policy.path("UnityProject/Assets/PolyForgeGenerated/Sprites")
+        sources = {}
+        for name in ("atlas.png", "Robot2D.prefab", "Walk.anim", "Sprite.controller"):
+            for suffix in ("", ".meta"):
+                path = policy.path(folder / (name + suffix))
+                if not path.is_file() or path.stat().st_size > 16_777_216:
+                    raise InputError("Missing/bounded imported sprite asset: " + name + suffix)
+                sources[path.relative_to(policy.root).as_posix()] = _hash(path)
+        if _hash(policy.path(folder / "atlas.png")) != report["atlas_sha256"]:
+            raise InputError("Imported atlas changed after source receipt")
+        for name, field in (("Robot2D.prefab", "prefab_guid"), ("Walk.anim", "clip_guid")):
+            meta = policy.path(folder / (name + ".meta")).read_text("utf-8")
+            match = re.search(r"(?m)^guid: ([0-9a-f]{32})\s*$", meta)
+            if not match or match[1] != report.get(field):
+                raise InputError("Imported prefab/animation GUID changed")
+        sprites = report.get("sprites", [])
+        if (
+            not isinstance(sprites, list)
+            or len(sprites) != 6
+            or any(
+                not isinstance(s, dict) or type(s.get("local_id")) is not int or s["local_id"] <= 0
+                for s in sprites
+            )
+            or {s.get("name") for s in sprites} != {f"frame-{i}" for i in range(6)}
+            or len({s.get("local_id") for s in sprites}) != 6
+        ):
+>           raise InputError("Six stable imported sprite frame references required")
+E           polyforge.contracts.validation.InputError: Six stable imported sprite frame references required
+
+polyforge\unity\platformer.py:137: InputError
+_______ test_unity_signed_local_file_identifiers_are_valid[-1057934527] _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d011670e-e26a-4636-b8ee-16b34fc7eaaf}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unity_signed_local_file_i1')
+local_id = -1057934527
+
+    @pytest.mark.parametrize("local_id", [-(2**63), -1057934527, 2**63 - 1])
+    def test_unity_signed_local_file_identifiers_are_valid(tmp_path, local_id):
+        from polyforge.unity.platformer import compile_platformer_request
+    
+        request = source_fixture(tmp_path)
+        receipt = tmp_path / request["sprite_receipt"]
+        value = json.loads(receipt.read_text())
+        value["sprites"][0]["local_id"] = local_id
+        receipt.write_text(json.dumps(value))
+        registry_path = receipt.parent / "artifacts.json"
+        registry = json.loads(registry_path.read_text())
+        registry["artifacts"][0]["sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
+        registry_path.write_text(json.dumps(registry))
+>       assert compile_platformer_request(request, WorkspacePolicy(tmp_path))["sprite_prefab_guid"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_platformer.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+inputs = {'layout': 'checkpoint_course_v1', 'scene_id': 'checkpoint_course', 'schema_version': '1.0.0', 'seed': 42, ...}
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000001839E4D1940>
+
+    def compile_platformer_request(inputs: dict[str, Any], policy: WorkspacePolicy) -> dict[str, Any]:
+        validate_schema(inputs, "platformer.schema.json")
+        receipt = policy.path(inputs["sprite_receipt"])
+        report = load_json(receipt)
+        approval_path = policy.path(receipt.parent / "approval.json")
+        approval = load_json(approval_path)
+        registry = load_json(policy.path(receipt.parent / "artifacts.json"))
+        if (
+            not isinstance(report, dict)
+            or not isinstance(approval, dict)
+            or not isinstance(registry, dict)
+            or not isinstance(registry.get("artifacts"), list)
+            or len(registry["artifacts"]) > 16384
+            or any(
+                not isinstance(r, dict)
+                or not isinstance(r.get("relative_path"), str)
+                or not isinstance(r.get("sha256"), str)
+                for r in registry["artifacts"]
+            )
+        ):
+            raise InputError("Malformed imported sprite receipt/approval registry")
+        for path in (receipt, approval_path):
+            relative = path.relative_to(policy.root).as_posix()
+            matching = [r for r in registry["artifacts"] if r["relative_path"] == relative]
+            if len(matching) != 1 or matching[0]["sha256"] != _hash(path):
+                raise InputError("Sprite receipt/approval does not match imported artifact registry")
+        if (
+            report.get("status") != "PASS"
+            or report.get("unity_version") != "6000.6.3f1"
+            or approval.get("technical_verdict") != "APPROVED"
+            or approval.get("metadata_digest") != report.get("metadata_digest")
+            or not approval.get("source_license")
+        ):
+            raise InputError("Approved Unity 6000.6.3f1 sprite receipt required")
+        folder = policy.path("UnityProject/Assets/PolyForgeGenerated/Sprites")
+        sources = {}
+        for name in ("atlas.png", "Robot2D.prefab", "Walk.anim", "Sprite.controller"):
+            for suffix in ("", ".meta"):
+                path = policy.path(folder / (name + suffix))
+                if not path.is_file() or path.stat().st_size > 16_777_216:
+                    raise InputError("Missing/bounded imported sprite asset: " + name + suffix)
+                sources[path.relative_to(policy.root).as_posix()] = _hash(path)
+        if _hash(policy.path(folder / "atlas.png")) != report["atlas_sha256"]:
+            raise InputError("Imported atlas changed after source receipt")
+        for name, field in (("Robot2D.prefab", "prefab_guid"), ("Walk.anim", "clip_guid")):
+            meta = policy.path(folder / (name + ".meta")).read_text("utf-8")
+            match = re.search(r"(?m)^guid: ([0-9a-f]{32})\s*$", meta)
+            if not match or match[1] != report.get(field):
+                raise InputError("Imported prefab/animation GUID changed")
+        sprites = report.get("sprites", [])
+        if (
+            not isinstance(sprites, list)
+            or len(sprites) != 6
+            or any(
+                not isinstance(s, dict) or type(s.get("local_id")) is not int or s["local_id"] <= 0
+                for s in sprites
+            )
+            or {s.get("name") for s in sprites} != {f"frame-{i}" for i in range(6)}
+            or len({s.get("local_id") for s in sprites}) != 6
+        ):
+>           raise InputError("Six stable imported sprite frame references required")
+E           polyforge.contracts.validation.InputError: Six stable imported sprite frame references required
+
+polyforge\unity\platformer.py:137: InputError
+_ test_invalid_unity_local_file_identifiers_are_rejected[9223372036854775808] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d011670e-e26a-4636-b8ee-16b34fc7eaaf}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_invalid_unity_local_file_3')
+local_id = 9223372036854775808
+
+    @pytest.mark.parametrize("local_id", [0, True, "1", 2**63, -(2**63) - 1])
+    def test_invalid_unity_local_file_identifiers_are_rejected(tmp_path, local_id):
+        from polyforge.unity.platformer import compile_platformer_request
+    
+        request = source_fixture(tmp_path)
+        receipt = tmp_path / request["sprite_receipt"]
+        value = json.loads(receipt.read_text())
+        value["sprites"][0]["local_id"] = local_id
+        receipt.write_text(json.dumps(value))
+        registry_path = receipt.parent / "artifacts.json"
+        registry = json.loads(registry_path.read_text())
+        registry["artifacts"][0]["sha256"] = hashlib.sha256(receipt.read_bytes()).hexdigest()
+        registry_path.write_text(json.dumps(registry))
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_platformer.py:94: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_unity_signed_local_file_identifiers_are_valid[-9223372036854775808]
+FAILED tests/test_phase11_platformer.py::test_unity_signed_local_file_identifiers_are_valid[-1057934527]
+FAILED tests/test_phase11_platformer.py::test_invalid_unity_local_file_identifiers_are_rejected[9223372036854775808]
+3 failed, 5 passed, 47 deselected in 2.05s

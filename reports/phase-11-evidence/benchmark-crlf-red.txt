@@ -1,0 +1,36 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_____ test_uncommitted_finish_after_crlf_checkpoint_cannot_add_acceptance _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{99b3d1b5-ce96-4ff9-af91-f6a793ea3c43}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_uncommitted_finish_after_0')
+
+    def test_uncommitted_finish_after_crlf_checkpoint_cannot_add_acceptance(tmp_path: Path) -> None:
+        import hashlib
+    
+        from polyforge.benchmark.analysis import report_run
+        from polyforge.contracts.validation import canonical_digest
+    
+        started = trial("COMPLETE_GAME_2D", attempt_id="one", run_id="run", event="STARTED",
+                        status="NOT_RUN", evaluation_status="NOT_RUN", censored=True)
+        finished = {**started, "event": "FINISHED", "status": "PASS", "evaluation_status": "PASS",
+                    "task_success": True, "game_status": "ACCEPTED", "censored": False}
+        prefix = (json.dumps({**started, "row_digest": canonical_digest(started)}) + "\r\n").encode()
+        suffix = (json.dumps({**finished, "row_digest": canonical_digest(finished)}) + "\n").encode()
+        manifest = {"run_id": "run", "arm": "D", "configuration_digest": "c" * 64,
+                    "ledger_bytes": len(prefix), "ledger_sha256": hashlib.sha256(prefix).hexdigest()}
+        manifest["manifest_digest"] = canonical_digest(manifest)
+        (tmp_path / "ledger.jsonl").write_bytes(prefix + suffix)
+        (tmp_path / "run.json").write_text(json.dumps(manifest), encoding="utf-8")
+        result = report_run(tmp_path)
+        assert result.status == "REVIEW"
+        metric = result.data["summary"]["accepted_game_rate"]
+>       assert (metric["numerator"], metric["denominator"], metric["censored_count"]) == (0, 1, 1)
+E       assert (1, 1, 0) == (0, 1, 1)
+E         
+E         At index 0 diff: 1 != 0
+E         Use -v to get more diff
+
+tests\test_phase11_benchmark.py:836: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_uncommitted_finish_after_crlf_checkpoint_cannot_add_acceptance
+1 failed, 94 deselected in 0.58s

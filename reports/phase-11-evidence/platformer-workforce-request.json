@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "brief": "Build a 2D checkpoint platformer with grounded jumping and a hazard.",
+  "task_class": "BUILD_GAME",
+  "domain_tags": [
+    "unity",
+    "2d",
+    "gameplay"
+  ],
+  "feature_ids": [
+    "grounded_jump",
+    "checkpoint_respawn",
+    "hazard_damage",
+    "goal_contact"
+  ],
+  "capability_id": "unity.game.platformer.v1",
+  "input": {
+    "schema_version": "1.0.0",
+    "scene_id": "checkpoint_course",
+    "seed": 42,
+    "sprite_receipt": "runs/sprite-unity-a4223c5db47f4f99/bindings.json",
+    "layout": "checkpoint_course_v1",
+    "standalone": true
+  },
+  "seed": 42
+}

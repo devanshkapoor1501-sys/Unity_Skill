@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_historical_inspection_cli_now_executes_static_contract _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{6e75701b-09c9-42d8-848a-c024c6ede4dd}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_historical_inspection_cli0')
+capsys = <_pytest.capture.CaptureFixture object at 0x000002A1266580E0>
+
+    def test_historical_inspection_cli_now_executes_static_contract(tmp_path, capsys):
+        from polyforge.cli import main
+    
+        project(tmp_path)
+        before = snapshot(tmp_path)
+>       assert main(["inspect-project", "--project", str(tmp_path), "--read-only", "--json"]) == 0
+E       AssertionError: assert 5 == 0
+E        +  where 5 = <function main at 0x000002A126F7A020>(['inspect-project', '--project', 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{6e75701b-09c9-42d8-848a-c024c6ede4dd}\\AC\\Temp\\pytest-of-Divansh Kapoor\\pytest-0\\test_historical_inspection_cli0', '--read-only', '--json'])
+
+tests\test_phase11_inspection.py:255: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"status": "NOT_RUN", "exit_code": 5, "error_code": "PF-CAPABILITY-NOT-IMPLEMENTED", "data": {}, "diagnostics": [{"code": "PF-CAPABILITY-NOT-IMPLEMENTED", "message": "inspect-project is planned for Phase 11; no work was run"}], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 15.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "NOT_RUN"}
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_inspection.py::test_historical_inspection_cli_now_executes_static_contract
+1 failed, 26 deselected in 0.50s

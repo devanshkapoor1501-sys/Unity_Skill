@@ -1,0 +1,205 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+______ test_editable_archive_is_bound_to_scene_and_imported_sprite[None] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ae33089d-ff50-4c2c-b57b-036d2ec90ddc}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound0')
+fault = None
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {scene: b"editable scene", scene + ".meta": b"guid: " + b"1" * 32,
+                 prefab: b"prefab", prefab + ".meta": b"guid: " + b"2" * 32,
+                 "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas"}
+        game = {"scene_path": scene, "sprite_prefab": prefab, "sprite_prefab_guid": "2" * 32,
+                "atlas_sha256": hashlib.sha256(b"atlas").hexdigest()}
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+>       assert callable(verify), "Editable archive verification is missing"
+E       AssertionError: Editable archive verification is missing
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_phase11_registration.py:280: AssertionError
+_____ test_editable_archive_is_bound_to_scene_and_imported_sprite[scene] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ae33089d-ff50-4c2c-b57b-036d2ec90ddc}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound1')
+fault = 'scene'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {scene: b"editable scene", scene + ".meta": b"guid: " + b"1" * 32,
+                 prefab: b"prefab", prefab + ".meta": b"guid: " + b"2" * 32,
+                 "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas"}
+        game = {"scene_path": scene, "sprite_prefab": prefab, "sprite_prefab_guid": "2" * 32,
+                "atlas_sha256": hashlib.sha256(b"atlas").hexdigest()}
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+>       assert callable(verify), "Editable archive verification is missing"
+E       AssertionError: Editable archive verification is missing
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_phase11_registration.py:280: AssertionError
+______ test_editable_archive_is_bound_to_scene_and_imported_sprite[guid] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ae33089d-ff50-4c2c-b57b-036d2ec90ddc}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound2')
+fault = 'guid'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {scene: b"editable scene", scene + ".meta": b"guid: " + b"1" * 32,
+                 prefab: b"prefab", prefab + ".meta": b"guid: " + b"2" * 32,
+                 "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas"}
+        game = {"scene_path": scene, "sprite_prefab": prefab, "sprite_prefab_guid": "2" * 32,
+                "atlas_sha256": hashlib.sha256(b"atlas").hexdigest()}
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+>       assert callable(verify), "Editable archive verification is missing"
+E       AssertionError: Editable archive verification is missing
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_phase11_registration.py:280: AssertionError
+_____ test_editable_archive_is_bound_to_scene_and_imported_sprite[atlas] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ae33089d-ff50-4c2c-b57b-036d2ec90ddc}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound3')
+fault = 'atlas'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {scene: b"editable scene", scene + ".meta": b"guid: " + b"1" * 32,
+                 prefab: b"prefab", prefab + ".meta": b"guid: " + b"2" * 32,
+                 "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas"}
+        game = {"scene_path": scene, "sprite_prefab": prefab, "sprite_prefab_guid": "2" * 32,
+                "atlas_sha256": hashlib.sha256(b"atlas").hexdigest()}
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+>       assert callable(verify), "Editable archive verification is missing"
+E       AssertionError: Editable archive verification is missing
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_phase11_registration.py:280: AssertionError
+___ test_editable_archive_is_bound_to_scene_and_imported_sprite[duplicate] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ae33089d-ff50-4c2c-b57b-036d2ec90ddc}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound4')
+fault = 'duplicate'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {scene: b"editable scene", scene + ".meta": b"guid: " + b"1" * 32,
+                 prefab: b"prefab", prefab + ".meta": b"guid: " + b"2" * 32,
+                 "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas"}
+        game = {"scene_path": scene, "sprite_prefab": prefab, "sprite_prefab_guid": "2" * 32,
+                "atlas_sha256": hashlib.sha256(b"atlas").hexdigest()}
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+>       assert callable(verify), "Editable archive verification is missing"
+E       AssertionError: Editable archive verification is missing
+E       assert False
+E        +  where False = callable(None)
+
+tests\test_phase11_registration.py:280: AssertionError
+============================== warnings summary ===============================
+tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[duplicate]
+  C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\zipfile\__init__.py:1625: UserWarning: Duplicate name: 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+    return self._open_to_write(zinfo, force_zip64=force_zip64)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[None]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[scene]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[guid]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[atlas]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[duplicate]
+5 failed, 18 deselected, 1 warning in 0.54s

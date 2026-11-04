@@ -1,0 +1,31 @@
+"""Verify preserved base bytes and public expanded full-game task declarations."""
+import json
+from pathlib import Path
+
+from polyforge.benchmark.tasks import load_suite
+from polyforge.benchmark.runner import run_suite
+
+base = Path('benchmarks/development-v1')
+extension = Path('benchmarks/release-development-v1')
+original = load_suite(base / 'suite.json')
+suite = load_suite(extension / 'suite.json')
+assert suite['tasks'][:12] == original['tasks']
+for task in original['tasks']:
+    assert (base / 'briefs' / (task['task_id'] + '.md')).read_bytes() == (extension / 'briefs' / (task['task_id'] + '.md')).read_bytes()
+games = [t for t in suite['tasks'] if t['task_type'].startswith('COMPLETE_GAME')]
+assert len(games) == 3
+assert sum(t['task_type'] == 'COMPLETE_GAME_3D' for t in games) == 2
+assert all(t['ownership'] == 'DEV_FIXTURE' for t in suite['tasks'])
+results = []
+for arm in 'ABCD':
+    out = Path('.tmp/phase11/release-suite-availability') / arm
+    result = run_suite(suite, arm, out)
+    assert result.status == 'BLOCKED'
+    assert len(result.data['records']) == 70
+    assert not any(r['executed'] for r in result.data['records'])
+    results.append({'arm': arm, 'planned': 70, 'executed': 0, 'status': result.status})
+Path('.tmp/phase11/release-suite-availability.json').write_text(json.dumps({
+    'status': 'PASS', 'scope': 'PUBLIC_DEVELOPMENT_DEFINITIONS_ONLY', 'base_tasks_unchanged': 12,
+    'task_count': 14, 'complete_2d': 1, 'complete_3d': 2, 'arms': results,
+    'external_withheld_variant': 'NOT_PROVIDED', 'independent_scoring': 'NOT_RUN'}, indent=2))
+print(json.dumps(results))

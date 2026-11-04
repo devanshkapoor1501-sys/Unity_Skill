@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\qualify-platformer-workforce.py", line 29, in <module>
+    result = run_task(workspace, request, mode='sequential')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\workforce\orchestrator.py", line 188, in run_task
+    lease = ledger.claim(job_id, asset)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\workforce\ledger.py", line 86, in claim
+    raise InputError(
+polyforge.contracts.validation.InputError: Asset owner is active or lease has not expired
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\qualify-platformer-workforce.py", line 33, in <module>
+    board = json.loads((folder / 'board.json').read_text('utf-8'))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase11\\platformer-demo\\workforce\\task_05b5c0d62bc519f7_a4d0fc34\\board.json'

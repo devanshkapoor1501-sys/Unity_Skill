@@ -1,0 +1,179 @@
+F....                                                                    [100%]
+================================== FAILURES ===================================
+_ test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{8bd895f6-a03a-4ec3-98f0-c5333fa4580d}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_inspector_requires_sealed0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002C777A809B0>
+missing = None
+
+    @pytest.mark.parametrize("missing", [None, "archive", "bindings", "delivery", "standalone"])
+    def test_inspector_requires_sealed_editable_delivery_and_requested_standalone(
+        tmp_path, monkeypatch, missing
+    ):
+        from polyforge.contracts.validation import canonical_digest
+        from polyforge.unity import evidence
+        from polyforge.workforce.workers import inspect_candidate, seal_candidate
+        from test_phase11_platformer import native_boundary
+    
+        # Only the native process/XML/oracle boundaries are simulated here.
+        # Actual native qualification is a separate reported gate.
+        module, _ = native_boundary(monkeypatch, tmp_path)
+        inputs = source_fixture(tmp_path)
+        result = module.build_platformer(tmp_path, inputs)
+        candidate = seal_candidate(WorkspacePolicy(tmp_path), result, canonical_digest(task(inputs)["brief"]))
+        monkeypatch.setattr(evidence, "verify_test_xml", lambda *args: {})
+        request = task(inputs)
+        if missing in {"archive", "bindings", "delivery"}:
+            suffix = {"archive": "/native-output.zip", "bindings": "/bindings.json", "delivery": "/delivery.json"}[missing]
+            candidate["files"] = [row for row in candidate["files"] if not row["path"].endswith(suffix)]
+            candidate["candidate_digest"] = canonical_digest({k:v for k,v in candidate.items() if k != "candidate_digest"})
+        elif missing == "standalone":
+            request["input"] = {**inputs, "standalone": True}
+            job = json.loads((tmp_path / "runs" / result.run_id / "game-input.json").read_text())
+            monkeypatch.setattr(module, "compile_platformer_request", lambda *args: job)
+        if missing is None:
+>           assert inspect_candidate(WorkspacePolicy(tmp_path), candidate, request, technical_only=True)["verdict"] == "APPROVED"
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:202: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x000002C777A19820>
+candidate = {'artifact_id': 'platformer_check_87445697820e4968', 'brief_digest': '7ae43ba57bfb5aed110772ceff1e1794a0f254048f425b60...45697820e4968/delivery.json', 'sha256': '0efbd7d21481479e69799d135f8d300634e78152c2e1a1734afc32cb6cc970c5'}, ...], ...}
+request = {'brief': 'Build a 2D checkpoint platformer with grounded jumping and a hazard.', 'capability_id': 'unity.game.platfor...nity', '2d', 'gameplay'], 'feature_ids': ['grounded_jump', 'checkpoint_respawn', 'hazard_damage', 'goal_contact'], ...}
+
+    def inspect_candidate(
+        policy: WorkspacePolicy,
+        candidate: dict[str, Any],
+        request: dict[str, Any],
+        *,
+        technical_only: bool = False,
+    ) -> dict[str, Any]:
+        check_candidate(policy, candidate)
+        if request.get("task_class") not in {"ANIMATE", "CREATE_ASSET", "BUILD_GAME"}:
+            raise InputError("No technical inspector for this task class")
+        if candidate["brief_digest"] != canonical_digest(request["brief"]):
+            raise InputError("Review brief differs from the sealed original brief")
+        inventory = {item["path"] for item in candidate["files"]}
+        roots = {
+            parts[1]
+            for item in candidate["files"]
+            if len(parts := Path(item["path"]).parts) >= 3
+            and parts[0] == "runs"
+            and parts[1].replace("-", "_") == candidate["artifact_id"]
+        }
+        run = candidate.get("production_run_id")
+        if run is None and len(roots) == 1:
+            run = next(iter(roots))  # Backward compatibility for older sealed handoffs.
+        if run not in roots:
+            raise InputError("Candidate lacks a unique sealed production-run identity")
+        if request["task_class"] == "ANIMATE":
+            from polyforge.animation.contract import inspect_motion
+    
+            required = {
+                "runs/" + run + "/asset/" + name
+                for name in ("motion.json", "source.blend", "robot.fbx")
+            }
+            if not required <= inventory or request["capability_id"] != "animation.robot.rig.v1":
+                raise InputError("Animation review requires the complete sealed source bundle")
+            motion = load_json(policy.path("runs/" + run + "/asset/motion.json"))
+            if motion["asset_id"] != request["input"]["asset_id"]:
+                raise InputError("Motion semantic asset identity mismatch")
+            inspect_motion(motion)
+        elif request.get("capability_id") == "asset.package.build.v1":
+            from polyforge.assets.contracts import require_bundle_approval
+    
+            prefix = "runs/" + run + "/"
+            required = {prefix + n for n in ("spec.json", "bundle.json", "review.json")}
+            if not required <= inventory:
+                raise InputError("Asset review lacks sealed specification/bundle/inspection")
+            spec = load_json(policy.path(prefix + "spec.json"))
+            for reference in spec.get("references", []):
+                if isinstance(reference, dict) and isinstance(reference.get("path"), str):
+                    assert_public_path(policy, reference["path"])
+            if spec != request["input"]["spec"] or spec["brief"] != request["brief"]:
+                raise InputError("Specialist specification differs from the original request")
+            bundle = load_json(policy.path(prefix + "bundle.json"))
+            if not {item["path"] for item in bundle["slots"].values()} <= inventory:
+                raise InputError("Asset source slot is not sealed in the candidate")
+            if technical_only:
+                from polyforge.assets.contracts import inspect_bundle
+    
+                observed = inspect_bundle(policy.root, bundle, spec)
+                if observed["technical_verdict"] != "APPROVED":
+                    raise InputError("Asset technical review failed")
+            else:
+                require_bundle_approval(
+                    policy.root, bundle, load_json(policy.path(prefix + "review.json")), spec
+                )
+        elif request.get("capability_id", "").startswith("sprite."):
+            from polyforge.sprites.images import inspect_strip
+    
+            if request["capability_id"] == "sprite.robot.bake.v1":
+                folder = "runs/" + run + "/asset/"
+                metadata_file = folder + "atlas.json"
+                atlas_file = folder + "atlas.png"
+                frame_files = [folder + f"frame-{i}.png" for i in range(6)]
+            else:
+                metadata_file = request["input"]["metadata_file"]
+                atlas_file = request["input"]["atlas_file"]
+                frame_files = request["input"]["frame_files"]
+                from polyforge.sprites.integration import EDIT_TESTS, PLAY_TESTS
+                from polyforge.unity.evidence import verify_test_xml
+    
+                for name, tests in [("editmode.xml", EDIT_TESTS), ("playmode.xml", PLAY_TESTS)]:
+                    if "runs/" + run + "/" + name not in inventory:
+                        raise InputError("Sprite review lacks sealed native test evidence")
+                    verify_test_xml(policy.path("runs/" + run + "/" + name), tests)
+            if not {metadata_file, atlas_file, *frame_files} <= inventory:
+                raise InputError("Sprite sources are not completely sealed")
+            metadata = load_json(policy.path(metadata_file))
+            if metadata.get("asset_id") != request["input"]["asset_id"] or not metadata.get(
+                "source_license"
+            ):
+                raise InputError("Sprite semantic identity/license mismatch")
+            inspect_strip(
+                [policy.path(p).read_bytes() for p in frame_files],
+                policy.path(atlas_file).read_bytes(),
+                metadata,
+            )
+        elif request["task_class"] == "CREATE_ASSET":
+            from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry
+    
+            kind = next(k for k, v in RECIPES.items() if v == request["capability_id"])
+            recipe = expand_recipe(kind, request["input"], seed=request.get("seed", 42))
+            validate_geometry(recipe, load_json(policy.path("runs/" + run + "/asset/metrics.json")))
+        elif request.get("capability_id") == "unity.game.platformer.v1":
+            from polyforge.unity.evidence import verify_test_xml
+            from polyforge.unity.platformer import (
+                EDIT_TESTS,
+                PLAY_TESTS,
+                compile_platformer_request,
+                score_telemetry,
+            )
+    
+            prefix = "runs/" + run + "/"
+            expected = {prefix + n for n in ("game-input.json", "editmode.xml", "playmode.xml")}
+            if not expected <= inventory:
+                raise InputError("Platformer review lacks sealed native contract/test evidence")
+            current = compile_platformer_request(request["input"], policy)
+            if load_json(policy.path(prefix + "game-input.json")) != current:
+                raise InputError("Platformer sources differ from the sealed native contract")
+            from polyforge.scenarios.platformer_oracle import (
+                CORE_SCENARIOS,
+                INPUT_SCENARIOS,
+                MUTANT_SCENARIOS,
+            )
+    
+            traces = {
+                prefix + "telemetry/" + name + ".json"
+                for name in (*CORE_SCENARIOS, *INPUT_SCENARIOS, *MUTANT_SCENARIOS)
+            }
+            if not traces <= inventory:
+>               raise InputError("Platformer review lacks sealed physical scenario evidence")
+E               polyforge.contracts.validation.InputError: Platformer review lacks sealed physical scenario evidence
+
+polyforge\workforce\workers.py:179: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None]
+1 failed, 4 passed, 13 deselected in 13.09s

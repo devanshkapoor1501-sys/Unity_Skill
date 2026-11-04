@@ -1,0 +1,19 @@
+import json,sys,shutil
+from pathlib import Path
+import polyforge
+from polyforge.blender.build import build_assets
+from polyforge.workforce.router import engine_digest
+base=Path('.tmp/phase11-closure').resolve()
+assert 'phase11-closure' in str(polyforge.__file__) and 'clean-install' in str(polyforge.__file__)
+assert engine_digest()=='a7b4b8e0392db9d97a9124a96ec7cd79765aeecf8133e7f2f68c57d511f09c8a'
+from polyforge.workspace import init_workspace
+workspace=base/'clean-native-demo'
+assert not workspace.exists(), 'Preserve previous attempts'
+assert init_workspace(workspace,'simple_arena').status=='PASS'
+# Existing pinned Unity template/package restore for the requested native qualification.
+result=build_assets(workspace,through='S5',allow_package_downloads=True,standalone=True)
+(base/'clean-installed-native-result.json').write_text(json.dumps(result.to_dict(),indent=2),encoding='utf-8')
+summary={'status':result.status,'game_status':result.game_status,'package':str(polyforge.__file__),'engine_digest':engine_digest(),'workspace':str(workspace),'scope':'CLEAN_WHEEL_ENGINE_FRESH_DISPOSABLE_PROJECT_NATIVE_BUILD_AND_TEST','run_id':result.run_id,'error_code':result.error_code,'data':{k:result.data.get(k) for k in ('development_acceptance','manual_review','standalone_build','player_smoke','through')}}
+(base/'clean-installed-native-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+print(json.dumps(summary),flush=True)
+raise SystemExit(result.exit_code)

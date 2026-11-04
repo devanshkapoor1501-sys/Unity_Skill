@@ -1,0 +1,30 @@
+"""Fixed local BVH probe: polygon ray hit, miss and distance limit, no loaded assets.
+
+Source: https://docs.blender.org/api/current/mathutils.bvhtree.html
+Applicability is established only by the observed Blender 5.2.2 execution.
+"""
+import json
+import sys
+from pathlib import Path
+
+import bpy
+from mathutils.bvhtree import BVHTree
+
+tree = BVHTree.FromPolygons(
+    [(0, 0, 0), (1, 0, 0), (0, 1, 0)], [(0, 1, 2)], all_triangles=True
+)
+location, normal, index, distance = tree.ray_cast((0.25, 0.25, 1), (0, 0, -1), 2)
+hit = (
+    location is not None and normal is not None and index == 0
+    and abs(distance - 1) < 1e-5 and abs(location.z) < 1e-5
+    and normal.z > 0.99
+)
+miss = all(v is None for v in tree.ray_cast((2, 2, 1), (0, 0, -1), 2))
+short = all(v is None for v in tree.ray_cast((0.25, 0.25, 1), (0, 0, -1), 0.5))
+value = {
+    "schema_version": "1.0.0", "probe_id": "blender.bvh-ray.v1",
+    "tool_version": ".".join(map(str, bpy.app.version)),
+    "checks": {"ray_hits_triangle": hit, "ray_misses_triangle": miss, "distance_limit_enforced": short},
+    "artifacts": [],
+}
+Path(sys.argv[sys.argv.index("--") + 1]).write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")

@@ -1,0 +1,122 @@
+using System;
+using System.IO;
+using System.Linq;
+using UnityEditor;
+using UnityEditor.Build;
+using UnityEditor.Build.Reporting;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+namespace PolyForge.Platformer.Editor
+{
+    [Serializable] public class PlatformSpec { public string id; public float[] center, size; }
+    [Serializable] public class PlatformerInput
+    {
+        public string schema_version, input_digest, game_contract_digest, scene_id, scene_path;
+        public string sprite_prefab, sprite_prefab_guid, player_output, layout;
+        public int seed, lives;
+        public float gravity_scale, jump_speed, move_speed, fixed_delta_seconds;
+        public float[] spawn, checkpoint_position, goal_center, goal_size, hazard_center, hazard_size;
+        public PlatformSpec[] platforms;
+    }
+    [Serializable] public class PlatformerReport
+    {
+        public string status = "PASS", input_digest, game_contract_digest, scene_guid, source_prefab_guid, unity_version;
+        public int platforms;
+    }
+    public static class PlatformerBuilder
+    {
+        public const string Folder = "Assets/PolyForgeGenerated/Platformer";
+        public const string ScenePath = Folder + "/SpritePlatformer.unity";
+        static Vector3 V(float[] a) => new Vector3(a[0], a[1], a[2]);
+        static PlatformerInput Read() => JsonUtility.FromJson<PlatformerInput>(File.ReadAllText(PolyForge.Editor.PolyForgeBuilder.Argument("-polyforgeGameInput")));
+        public static void BuildBatch()
+        {
+            try
+            {
+                var job = Read(); Build(job);
+                var report = new PlatformerReport { input_digest = job.input_digest, game_contract_digest = job.game_contract_digest,
+                    scene_guid = AssetDatabase.AssetPathToGUID(ScenePath), source_prefab_guid = job.sprite_prefab_guid,
+                    unity_version = Application.unityVersion, platforms = job.platforms.Length };
+                File.WriteAllText(PolyForge.Editor.PolyForgeBuilder.Argument("-polyforgeOutput"), JsonUtility.ToJson(report, true)); EditorApplication.Exit(0);
+            }
+            catch (Exception e) { Debug.LogException(e); EditorApplication.Exit(5); }
+        }
+        static UnityEngine.Sprite Tile()
+        {
+            string path = Folder + "/Tile.asset";
+            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+            if (texture == null) { texture = new Texture2D(1, 1); texture.SetPixel(0, 0, Color.white); texture.Apply(); AssetDatabase.CreateAsset(texture, path); }
+            string spritePath = Folder + "/TileSprite.asset";
+            var sprite = AssetDatabase.LoadAssetAtPath<UnityEngine.Sprite>(spritePath);
+            if (sprite == null) { sprite = UnityEngine.Sprite.Create(texture, new Rect(0, 0, 1, 1), new Vector2(.5f, .5f), 1); AssetDatabase.CreateAsset(sprite, spritePath); }
+            return sprite;
+        }
+        static GameObject Block(string name, Vector3 center, Vector3 size, Color color, UnityEngine.Sprite tile)
+        {
+            var go = new GameObject(name); go.transform.position = center;
+            var renderer = go.AddComponent<SpriteRenderer>(); renderer.sprite = tile; renderer.color = color;
+            renderer.drawMode = SpriteDrawMode.Sliced; renderer.size = new Vector2(size.x, size.y);
+            go.AddComponent<BoxCollider2D>().size = new Vector2(size.x, size.y); return go;
+        }
+        public static void Build(PlatformerInput job)
+        {
+            if (Application.unityVersion != "6000.6.3f1" || job.schema_version != "1.0.0" || job.layout != "checkpoint_course_v1"
+                || job.scene_path != ScenePath || job.sprite_prefab != "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+                || job.lives != 3 || job.platforms.Length != 4 || job.fixed_delta_seconds != .02f
+                || AssetDatabase.AssetPathToGUID(job.sprite_prefab) != job.sprite_prefab_guid)
+                throw new InvalidOperationException("Unsupported or stale platformer request");
+            Directory.CreateDirectory(Folder);
+            var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(job.sprite_prefab);
+            if (prefab == null || prefab.GetComponent<Animator>()?.runtimeAnimatorController == null || prefab.GetComponent<SpriteRenderer>()?.sprite == null)
+                throw new InvalidOperationException("Missing approved sprite/Animator references");
+            var playerGo = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+            playerGo.name = "PlatformerPlayer"; playerGo.transform.position = V(job.spawn);
+            UnityEngine.Object.DestroyImmediate(playerGo.GetComponent<SpritePlayer>());
+            var body = playerGo.GetComponent<Rigidbody2D>(); body.gravityScale = job.gravity_scale; body.freezeRotation = true;
+            playerGo.AddComponent<Health>().Configure(3, 3);
+            var player = playerGo.AddComponent<PlatformerPlayer>(); player.speed = job.move_speed; player.jumpSpeed = job.jump_speed; player.gravityScale = job.gravity_scale;
+            var session = new GameObject("PlatformerSession").AddComponent<PlatformerSession>();
+            session.player = player; player.session = session; session.inputDigest = job.input_digest; session.sceneId = job.scene_id; session.seed = job.seed;
+            session.spawn = V(job.spawn); session.checkpointPosition = V(job.checkpoint_position);
+            session.goalCenter = V(job.goal_center); session.goalSize = V(job.goal_size); session.hazardCenter = V(job.hazard_center); session.hazardSize = V(job.hazard_size);
+            var tile = Tile();
+            foreach (var platform in job.platforms) Block(platform.id, V(platform.center), V(platform.size), new Color(.2f, .34f, .44f), tile).layer = 8;
+            Action<string, Vector3, Vector3, Color, PlatformerTrigger.Kind> trigger = (name, center, size, color, kind) => {
+                var go = Block(name, center, size, color, tile); go.GetComponent<BoxCollider2D>().isTrigger = true;
+                var t = go.AddComponent<PlatformerTrigger>(); t.session = session; t.actor = player; t.kind = kind;
+            };
+            trigger("Checkpoint", session.checkpointPosition + Vector3.up, new Vector3(.5f, 2, 1), new Color(.95f, .7f, .2f), PlatformerTrigger.Kind.Checkpoint);
+            trigger("Hazard", session.hazardCenter, session.hazardSize, new Color(.9f, .2f, .2f), PlatformerTrigger.Kind.Hazard);
+            trigger("DeathPlane", new Vector3(0, -4, 0), new Vector3(30, 1, 1), new Color(.55f, .1f, .1f), PlatformerTrigger.Kind.Hazard);
+            trigger("Goal", session.goalCenter, session.goalSize, new Color(.2f, .85f, .4f), PlatformerTrigger.Kind.Goal);
+            var camera = new GameObject("Main Camera").AddComponent<Camera>(); camera.tag = "MainCamera";
+            camera.orthographic = true; camera.orthographicSize = 6; camera.transform.position = new Vector3(0, 1, -10);
+            camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = new Color(.055f, .085f, .14f);
+            new GameObject("PlatformerHUD").AddComponent<PlatformerHud>().session = session;
+            new GameObject("StandaloneDriver").AddComponent<PlatformerSmoke>();
+            Time.fixedDeltaTime = .02f;
+            PrefabUtility.SaveAsPrefabAsset(playerGo, Folder + "/PlatformerPlayer.prefab");
+            EditorSceneManager.SaveScene(scene, ScenePath);
+            EditorBuildSettings.scenes = EditorBuildSettings.scenes.Where(s => s.path != ScenePath).Concat(new[] { new EditorBuildSettingsScene(ScenePath, true) }).ToArray();
+            AssetDatabase.SaveAssets();
+        }
+        public static void BuildPlayerBatch()
+        {
+            try
+            {
+                var job = Read(); Directory.CreateDirectory(Path.GetDirectoryName(job.player_output));
+                PlayerSettings.productName = "PolyForge Checkpoint Crossing"; PlayerSettings.companyName = "PolyForge";
+                PlayerSettings.SetScriptingBackend(NamedBuildTarget.Standalone, ScriptingImplementation.Mono2x);
+                PlayerSettings.defaultScreenWidth = 1280; PlayerSettings.defaultScreenHeight = 720; PlayerSettings.fullScreenMode = FullScreenMode.Windowed;
+                var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions { scenes = new[] { ScenePath }, locationPathName = job.player_output,
+                    target = BuildTarget.StandaloneWindows64, options = BuildOptions.Development });
+                if (report.summary.result != BuildResult.Succeeded) throw new Exception("Platformer player build " + report.summary.result);
+                EditorApplication.Exit(0);
+            }
+            catch (Exception e) { Debug.LogException(e); EditorApplication.Exit(5); }
+        }
+    }
+}

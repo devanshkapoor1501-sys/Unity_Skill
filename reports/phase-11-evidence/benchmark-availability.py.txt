@@ -1,0 +1,26 @@
+"""Record actual adapter availability, without inventing model trials."""
+import json
+from pathlib import Path
+
+from polyforge.benchmark.analysis import report_run
+from polyforge.benchmark.runner import run_suite
+from polyforge.benchmark.tasks import load_suite
+
+base = Path('.tmp/phase11/benchmark-arms').resolve()
+suite = load_suite(Path('polyforge/data/benchmark-core/suite.json').resolve())
+outcomes = []
+for arm in 'ABCD':
+    output = base / arm
+    result = run_suite(suite, arm, output)
+    assert result.status == 'BLOCKED'
+    assert all(not row['executed'] for row in result.data['records'])
+    report = report_run(output)
+    assert report.status == 'PASS', report.to_dict()
+    assert report.data['summary']['accepted_game_rate']['status'] == 'NOT_MEASURABLE'
+    (base / (arm + '-result.json')).write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+    (base / (arm + '-report.html')).write_text(report.data['report_html'], encoding='utf-8')
+    (base / (arm + '-report.txt')).write_text(report.data['report_human'], encoding='utf-8')
+    outcomes.append({'arm': arm, 'status': result.status, 'model_execution': 'NOT_RUN',
+                     'records': len(result.data['records']), 'game_rate': report.data['summary']['accepted_game_rate']})
+(base / 'availability.json').write_text(json.dumps(outcomes, indent=2), encoding='utf-8')
+print(json.dumps(outcomes, indent=2))

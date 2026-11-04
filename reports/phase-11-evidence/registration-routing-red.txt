@@ -1,0 +1,189 @@
+..F..FF                                                                  [100%]
+================================== FAILURES ===================================
+_ test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a1be54f6-56b7-4ef9-95c7-0d2319a2317d}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_worker_plan_freezes_impor0')
+
+    def test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution(tmp_path):
+        from polyforge.workforce.router import plan_task
+    
+        inputs = source_fixture(tmp_path)
+        request = task(inputs)
+        plan = plan_task(request, workspace=tmp_path)
+        assert plan["original_request"] == request
+>       assert [job["role_id"] for job in plan["jobs"]] == [
+            "intent_analyst",
+            "unity_integration",
+            "gameplay_qa_inspector",
+        ]
+E       AssertionError: assert ['intent_anal...et_inspector'] == ['intent_anal...qa_inspector']
+E         
+E         At index 2 diff: 'asset_inspector' != 'gameplay_qa_inspector'
+E         Use -v to get more diff
+
+tests\test_phase11_registration.py:62: AssertionError
+_ test_platformer_knowledge_route_preserves_2d_domain_and_does_not_substitute_3d _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a1be54f6-56b7-4ef9-95c7-0d2319a2317d}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_knowledge_rout0')
+
+    def test_platformer_knowledge_route_preserves_2d_domain_and_does_not_substitute_3d(tmp_path):
+        from polyforge.knowledge.router import route_reference
+    
+        policy = WorkspacePolicy(tmp_path)
+        request = {"schema_version": "1.0.0", "output": "GAME",
+                   "query": "Build a 2D checkpoint platformer"}
+        routed = route_reference(policy, request)
+>       assert routed["capability_ids"] == ["unity.game.platformer.v1"]
+E       AssertionError: assert [] == ['unity.game.platformer.v1']
+E         
+E         Right contains one more item: 'unity.game.platformer.v1'
+E         Use -v to get more diff
+
+tests\test_phase11_registration.py:112: AssertionError
+__________ test_platformer_cli_nonobject_is_a_structured_input_error __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a1be54f6-56b7-4ef9-95c7-0d2319a2317d}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_cli_nonobject_0')
+capsys = <_pytest.capture.CaptureFixture object at 0x0000022A693D7B30>
+
+    def test_platformer_cli_nonobject_is_a_structured_input_error(tmp_path, capsys):
+        from polyforge.cli import main
+    
+        (tmp_path / "request.json").write_text("[]")
+>       assert main(["platformer", "build", "--workspace", str(tmp_path),
+                     "--input", "request.json", "--json"]) == 2
+
+tests\test_phase11_registration.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cli.py:299: in main
+    result = dispatch(args)
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = Namespace(workspace='C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{a1be54f6-56b7-4ef9-95c7-0d2319a2317...e=('platformer', 'build', '--workspace', 'workspace/arena_demo', '--input', 'platformer.json', '--dry-run', '--json')))
+
+    def dispatch(args: argparse.Namespace) -> Result:
+        """Dispatch only implemented capabilities; placeholders never claim tool success."""
+        spec: CommandSpec = args.spec
+        if spec.path[0] == "knowledge":
+            from polyforge.knowledge.catalog import catalog_cards
+            from polyforge.security.paths import WorkspacePolicy
+    
+            if spec.path[-1] == "list":
+                return Result(
+                    data={
+                        "knowledge_cards": catalog_cards(),
+                        "execution_status": "NOT_RUN",
+                        "network": "DISABLED",
+                    }
+                )
+            if spec.path[-1] == "probe":
+                from polyforge.knowledge.probes import probe_tool
+    
+                return probe_tool(Path(args.workspace), args.tool, dry_run=args.dry_run)
+            if spec.path[-1] == "availability":
+                from polyforge.knowledge.availability import availability_snapshot, probe_host
+    
+                policy = WorkspacePolicy(Path(args.workspace))
+                snapshot = availability_snapshot(policy, args.project)
+                if args.host:
+                    snapshot["hosts"][args.host].update(
+                        {"status": "NOT_RUN"} if args.dry_run else probe_host(policy, args.host)
+                    )
+                return Result(data={"availability": snapshot, "dry_run": args.dry_run})
+            from polyforge.knowledge.router import route_reference
+    
+            policy = WorkspacePolicy(Path(args.workspace))
+            route = route_reference(policy, load_json(policy.path(args.request)))
+            return Result(
+                status=route["status"],
+                exit_code=0 if route["status"] == "PASS" else 3 if route["status"] == "BLOCKED" else 4,
+                data={"reference_route": route},
+            )
+        if spec.path in {("resume",), ("repair", "rollback")}:
+            from polyforge.unity.recovery import repair_rollback, resume_run
+    
+            if spec.path == ("resume",):
+                return resume_run(Path(args.workspace), args.run_id)
+            return repair_rollback(Path(args.workspace), args.transaction_id)
+        if spec.path in {("repair", "inspect"), ("repair", "propose")}:
+            from polyforge.repairs.diagnostics import diagnose_evidence, plan_repair
+            from polyforge.security.paths import WorkspacePolicy
+    
+            policy = WorkspacePolicy(Path(args.workspace))
+            if spec.path[-1] == "inspect":
+                return Result(
+                    data={"diagnosis": diagnose_evidence(load_json(policy.path(args.evidence)))}
+                )
+            return Result(
+                data={"proposal": plan_repair(policy, load_json(policy.path(args.diagnosis)))}
+            )
+        if spec.path[0] == "review":
+            from polyforge.review.board import record_human_review, review_candidate
+            from polyforge.security.paths import WorkspacePolicy
+    
+            policy = WorkspacePolicy(Path(args.workspace))
+            if spec.path[-1] == "sprite-source":
+                from polyforge.review.sprite_source import review_sprite_source
+    
+                review = review_sprite_source(policy, load_json(policy.path(args.input)))
+                return Result(
+                    status="PASS" if review["promotion"] == "APPROVED" else "REVIEW",
+                    exit_code=0 if review["promotion"] == "APPROVED" else 4,
+                    data={"source_review": review},
+                )
+            if spec.path[-1] == "amend":
+                from polyforge.review.amendments import append_amendment
+    
+                return Result(
+                    data={
+                        "amendments": append_amendment(
+                            policy,
+                            load_json(policy.path(args.task)),
+                            load_json(policy.path(args.amendment)),
+                            operator=args.operator,
+                            reason=args.reason,
+                        )
+                    }
+                )
+            candidate = load_json(policy.path(args.candidate))
+            if spec.path[-1] == "human":
+                receipt = record_human_review(
+                    policy, candidate, verdict=args.verdict, operator=args.operator, reason=args.reason
+                )
+                return Result(data={"human_review": receipt})
+            board = review_candidate(policy, candidate, load_json(policy.path(args.task)))
+            approved = board["promotion"] == "APPROVED"
+            return Result(
+                status="PASS" if approved else "REVIEW",
+                exit_code=0 if approved else 4,
+                data={"review": board},
+            )
+        if spec.path[0] == "workforce":
+            from polyforge.workforce.cli import dispatch as workforce_dispatch
+    
+            return workforce_dispatch(args)
+        if spec.path == ("inspect-project",):
+            from polyforge.inspection import inspect_project
+    
+            return inspect_project(Path(args.project))
+        if spec.path == ("platformer", "build"):
+            from polyforge.security.paths import WorkspacePolicy
+            from polyforge.unity.platformer import build_platformer
+    
+            policy = WorkspacePolicy(Path(args.workspace))
+            inputs = load_json(policy.path(args.input))
+            return build_platformer(
+                policy.root,
+                inputs,
+                dry_run=args.dry_run,
+>               standalone=args.standalone or inputs.get("standalone", False),
+                                              ^^^^^^^^^^
+            )
+E           AttributeError: 'list' object has no attribute 'get'
+
+polyforge\cli.py:178: AttributeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution
+FAILED tests/test_phase11_registration.py::test_platformer_knowledge_route_preserves_2d_domain_and_does_not_substitute_3d
+FAILED tests/test_phase11_registration.py::test_platformer_cli_nonobject_is_a_structured_input_error
+3 failed, 4 passed in 4.18s

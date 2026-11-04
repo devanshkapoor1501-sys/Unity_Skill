@@ -1,0 +1,64 @@
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+
+import pytest
+
+from polyforge.runner.processes import ProcessOutcome
+from polyforge.unity import performance as module
+
+_spec = importlib.util.spec_from_file_location('phase11_fixtures', Path(__file__).resolve().parents[3] / 'tests/test_phase11_performance.py')
+fixtures = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(fixtures)
+
+
+def test_mutation_between_validation_and_freeze_is_accepted(tmp_path, monkeypatch):
+    player = fixtures.registered_player(tmp_path)
+    original_register = module._registered_player
+    changed = player.parent / 'UnityPlayer.dll'
+    changed.write_bytes(b'original registered dependency')
+    # Reseal/registry after adding the dependency, then change it only after validation.
+    from polyforge.security.paths import WorkspacePolicy
+    from polyforge.unity.game import register_game_artifacts
+    policy = WorkspacePolicy(tmp_path)
+    module.seal_player_build(policy, player)
+    register_game_artifacts(policy, player.parent.parent.relative_to(tmp_path).as_posix(), 'a' * 64)
+
+    def validate_then_change(policy, path):
+        result = original_register(policy, path)
+        changed.write_bytes(b'unregistered replacement dependency')
+        return result
+
+    launches = []
+    def run(argv, policy, relative, limits, *, observation):
+        launches.append(argv)
+        request = json.loads(Path(argv[-1]).read_text())
+        record = fixtures.sample(request['sample_index'])
+        record['profile_digest'] = request['profile_digest']
+        record['executable_sha256'] = request['executable_sha256']
+        observation.data.update(record['process'])
+        Path(request['evidence_path']).write_text(json.dumps(record))
+        return ProcessOutcome(0, 'exit', 123, 'WINDOWS_JOB', 72, '', '', True)
+
+    monkeypatch.setattr(module, '_registered_player', validate_then_change)
+    monkeypatch.setattr(module, 'run_process', run)
+    result = module.profile_player(tmp_path, player)
+    assert len(launches) == 3
+    assert result.status == 'PASS'
+    with pytest.raises(Exception, match='payload differs'):
+        original_register(policy, player)
+
+
+def test_corrupt_final_ready_records_error_without_fatal_outcome(tmp_path, monkeypatch):
+    # Determine whether errors are fatal or scorer-only failures; no process launched.
+    from polyforge.runner import metrics
+    from polyforge.security.paths import WorkspacePolicy
+    policy = WorkspacePolicy(tmp_path)
+    policy.mkdir('run')
+    (tmp_path / 'run/ready.json').write_text('[]')
+    observer = metrics.ProcessObservation(policy, 'run', 'run/ready.json')
+    observer.started = metrics.time.monotonic()
+    observer.finish()
+    assert observer.data['errors']
+    assert observer.fatal is False

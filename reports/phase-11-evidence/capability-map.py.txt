@@ -1,0 +1,19 @@
+import json
+from pathlib import Path
+
+from polyforge.capabilities.registry import catalog
+from polyforge.workforce.router import engine_digest
+
+rows = catalog()
+value = {'schema_version': '1.0.0', 'generated_at': '2026-11-01',
+         'engine_digest': engine_digest(), 'release_classification': 'EXPERIMENTAL_PARTIAL_CORE',
+         'qualification': 'Declared executable contracts; validation scope is separate from game acceptance.',
+         'capabilities': rows,
+         'support_and_gaps': 'docs/core-support.md',
+         'knowledge_coverage': 'reports/phase-11-knowledge-coverage.json',
+         'development_evidence': {'prior': 'reports/phases-0-10-audit.md',
+                                  'current': 'reports/phase-11.md'},
+         'unimplemented_expertise_phases': [12, 13, 14, 15, 16, 17],
+         'external_game_acceptance': 'NOT_PROVIDED', 'host_native_delegation': 'UNAVAILABLE'}
+Path('reports/phase-11-capability-map.json').write_text(json.dumps(value, indent=2) + '\n')
+print(json.dumps({'capabilities': len(rows), 'engine_digest': value['engine_digest']}))

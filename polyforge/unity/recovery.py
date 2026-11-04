@@ -74,6 +74,7 @@ def _profile_inputs(
         for name, marker in (
             ("animation", "Animation/AnimationArena.unity"),
             ("sprite", "Sprites/SpriteArena.unity"),
+            ("platformer", "Platformer/SpritePlatformer.unity"),
         )
         if policy.path("UnityProject/Assets/PolyForgeGenerated/" + marker).is_file()
     }
@@ -82,6 +83,7 @@ def _profile_inputs(
     for profile, pattern, marker in (
         ("animation", "animation-*/input.json", "Animation/AnimationArena.unity"),
         ("sprite", "sprite-unity-*/input.json", "Sprites/SpriteArena.unity"),
+        ("platformer", "platformer-build-*/game-input.json", "Platformer/SpritePlatformer.unity"),
     ):
         if not policy.path("UnityProject/Assets/PolyForgeGenerated/" + marker).is_file():
             continue
@@ -99,8 +101,13 @@ def _profile_inputs(
                     r"(?:\.polyforge/native-inputs/"
                     + profile
                     + r"/[a-f0-9]{64}\.json|runs/"
-                    + ("animation-" if profile == "animation" else "sprite-unity-")
-                    + r"[A-Za-z0-9_-]{1,80}/input\.json)",
+                    + {
+                        "animation": "animation-",
+                        "sprite": "sprite-unity-",
+                        "platformer": "platformer-build-",
+                    }[profile]
+                    + r"[A-Za-z0-9_-]{1,80}/"
+                    + (r"game-input\.json)" if profile == "platformer" else r"input\.json)"),
                     item["path"],
                 )
             ):
@@ -115,6 +122,26 @@ def _profile_inputs(
                 profile == "animation" and not isinstance(job.get("model_path"), str)
             ):
                 raise InputError("Malformed native regression input document")
+            if profile == "platformer":
+                sources = job.get("source_hashes")
+                if (
+                    not isinstance(sources, dict)
+                    or not sources
+                    or canonical_digest(
+                        {k: v for k, v in job.items() if k != "game_contract_digest"}
+                    )
+                    != job.get("game_contract_digest")
+                ):
+                    raise InputError("Platformer regression contract identity is invalid")
+                for name, expected_source in sources.items():
+                    source_path = policy.path(name)
+                    if (
+                        not isinstance(expected_source, str)
+                        or not re.fullmatch(r"[a-f0-9]{64}", expected_source)
+                        or not source_path.is_file()
+                        or hashlib.sha256(source_path.read_bytes()).hexdigest() != expected_source
+                    ):
+                        raise InputError("Platformer regression source identity changed")
             model = (
                 "UnityProject/" + job["model_path"]
                 if profile == "animation"
@@ -208,6 +235,19 @@ def observe_state(
         request = policy.path(item["path"])
         if hashlib.sha256(request.read_bytes()).hexdigest() != item["sha256"]:
             raise InputError("Native regression input changed after snapshot")
+        if profile == "platformer":
+            from polyforge.unity.platformer import execute_platformer_checks
+
+            checked = execute_platformer_checks(policy, load_json(request), _lock_held=True)
+            atomic_json(policy, relative + "/platformer-result.json", checked.to_dict())
+            oracles = checked.data.get("oracles", {})
+            if not isinstance(oracles.get("scenarios"), dict) or not oracles["scenarios"]:
+                raise InputError("Native platformer regression did not produce scored scenarios")
+            regressions[profile] = {
+                "status": oracles["status"],
+                "scenarios": {k: v["gate_status"] for k, v in oracles["scenarios"].items()},
+            }
+            continue
         if profile == "animation":
             from polyforge.animation.integration import EDIT_TESTS, PLAY_TESTS
 

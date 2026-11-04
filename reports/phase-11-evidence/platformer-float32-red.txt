@@ -1,0 +1,418 @@
+....FF                                                                   [100%]
+================================== FAILURES ===================================
+_ test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes[hazard_center] _
+
+trace = {'checkpoint_position': [-2, 0, 0], 'events': [], 'fixed_delta_seconds': 0.02, 'frames_executed': 50, ...}
+game = {'hazard_center': [2, 0.3, 0], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'course', 'seed': 42}
+identifier = 'player_moves', ticks = 50
+schedule_digest = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int, schedule_digest: str
+    ) -> None:
+        """Reject malformed or unexecuted mutants before interpreting behavioral failure."""
+        canonical_digest(trace)
+        try:
+            expected = MUTANT_SCENARIOS.get(identifier, INPUT_SCENARIOS.get(identifier, identifier))
+            purpose = (
+                "MUTANT"
+                if identifier in MUTANT_SCENARIOS
+                else ("INPUT_ADAPTER" if identifier in INPUT_SCENARIOS else "NOMINAL")
+            )
+            if (
+                expected not in CORE_SCENARIOS
+                or trace["scenario_id"] != expected
+                or trace["purpose"] != purpose
+                or trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["seed"] != game["seed"]
+                or trace["schedule_digest"] != schedule_digest
+                or trace.get("mutant", "") != (identifier if purpose == "MUTANT" else "")
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-7)
+                or type(trace["frames_executed"]) is not int
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+            ):
+                raise ValueError("identity, purpose or executed schedule mismatch")
+            samples = trace["samples"]
+            if not isinstance(samples, list) or not 2 <= len(samples) <= 4000:
+                raise ValueError("missing/bounded physical samples")
+            frames = [s["frame"] for s in samples]
+            if (
+                any(type(f) is not int for f in frames)
+                or any(a >= b for a, b in zip(frames, frames[1:], strict=False))
+                or frames[-1] - frames[0] != trace["frames_executed"]
+            ):
+                raise ValueError("nonmonotonic/inconsistent frame observations")
+            for s in samples:
+                for field in ("position", "velocity"):
+                    if (
+                        not isinstance(s[field], list)
+                        or len(s[field]) != 3
+                        or any(type(n) not in {int, float} or not math.isfinite(n) for n in s[field])
+                    ):
+                        raise ValueError("nonfinite physical vector")
+                if (
+                    type(s["grounded"]) is not bool
+                    or type(s["health"]) is not int
+                    or not 0 <= s["health"] <= 3
+                    or s["state"] not in {"RUNNING", "WON", "FAILED"}
+                    or type(s["round"]) is not int
+                    or s["round"] < 1
+                    or s["checkpoint"] not in {"spawn", "checkpoint"}
+                    or type(s["elapsed_seconds"]) not in {int, float}
+                    or not 0 <= s["elapsed_seconds"] <= 80
+                ):
+                    raise ValueError("invalid observed session state")
+            for field in (
+                "spawn",
+                "checkpoint_position",
+                "goal_center",
+                "goal_size",
+                "hazard_center",
+                "hazard_size",
+            ):
+                vector = trace[field]
+                if (
+                    not isinstance(vector, list)
+                    or len(vector) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in vector)
+                ):
+                    raise ValueError("invalid observed scene geometry")
+                if field in game and vector != game[field]:
+>                   raise ValueError("geometry differs from frozen contract")
+E                   ValueError: geometry differs from frozen contract
+
+polyforge\scenarios\platformer_oracle.py:113: ValueError
+
+The above exception was the direct cause of the following exception:
+
+field = 'hazard_center'
+
+    @pytest.mark.parametrize("field", ["spawn", "checkpoint_position", "goal_center", "goal_size", "hazard_center", "hazard_size"])
+    def test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes(field):
+        import struct
+    
+        from polyforge.scenarios.platformer_oracle import validate_trace
+    
+        observed = trace()
+        game = {"input_digest": "a" * 64, "scene_id": "course", "seed": 42,
+                field: copy.deepcopy(observed[field])}
+        # The same JSON coordinate crosses Unity's float32 Vector3 boundary.
+        observed[field] = [struct.unpack("f", struct.pack("f", n))[0] for n in observed[field]]
+>       validate_trace(observed, game, "player_moves", 50, "b" * 64)
+
+tests\test_phase11_platformer.py:300: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+trace = {'checkpoint_position': [-2, 0, 0], 'events': [], 'fixed_delta_seconds': 0.02, 'frames_executed': 50, ...}
+game = {'hazard_center': [2, 0.3, 0], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'course', 'seed': 42}
+identifier = 'player_moves', ticks = 50
+schedule_digest = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int, schedule_digest: str
+    ) -> None:
+        """Reject malformed or unexecuted mutants before interpreting behavioral failure."""
+        canonical_digest(trace)
+        try:
+            expected = MUTANT_SCENARIOS.get(identifier, INPUT_SCENARIOS.get(identifier, identifier))
+            purpose = (
+                "MUTANT"
+                if identifier in MUTANT_SCENARIOS
+                else ("INPUT_ADAPTER" if identifier in INPUT_SCENARIOS else "NOMINAL")
+            )
+            if (
+                expected not in CORE_SCENARIOS
+                or trace["scenario_id"] != expected
+                or trace["purpose"] != purpose
+                or trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["seed"] != game["seed"]
+                or trace["schedule_digest"] != schedule_digest
+                or trace.get("mutant", "") != (identifier if purpose == "MUTANT" else "")
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-7)
+                or type(trace["frames_executed"]) is not int
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+            ):
+                raise ValueError("identity, purpose or executed schedule mismatch")
+            samples = trace["samples"]
+            if not isinstance(samples, list) or not 2 <= len(samples) <= 4000:
+                raise ValueError("missing/bounded physical samples")
+            frames = [s["frame"] for s in samples]
+            if (
+                any(type(f) is not int for f in frames)
+                or any(a >= b for a, b in zip(frames, frames[1:], strict=False))
+                or frames[-1] - frames[0] != trace["frames_executed"]
+            ):
+                raise ValueError("nonmonotonic/inconsistent frame observations")
+            for s in samples:
+                for field in ("position", "velocity"):
+                    if (
+                        not isinstance(s[field], list)
+                        or len(s[field]) != 3
+                        or any(type(n) not in {int, float} or not math.isfinite(n) for n in s[field])
+                    ):
+                        raise ValueError("nonfinite physical vector")
+                if (
+                    type(s["grounded"]) is not bool
+                    or type(s["health"]) is not int
+                    or not 0 <= s["health"] <= 3
+                    or s["state"] not in {"RUNNING", "WON", "FAILED"}
+                    or type(s["round"]) is not int
+                    or s["round"] < 1
+                    or s["checkpoint"] not in {"spawn", "checkpoint"}
+                    or type(s["elapsed_seconds"]) not in {int, float}
+                    or not 0 <= s["elapsed_seconds"] <= 80
+                ):
+                    raise ValueError("invalid observed session state")
+            for field in (
+                "spawn",
+                "checkpoint_position",
+                "goal_center",
+                "goal_size",
+                "hazard_center",
+                "hazard_size",
+            ):
+                vector = trace[field]
+                if (
+                    not isinstance(vector, list)
+                    or len(vector) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in vector)
+                ):
+                    raise ValueError("invalid observed scene geometry")
+                if field in game and vector != game[field]:
+                    raise ValueError("geometry differs from frozen contract")
+            contacts = trace.get("contacts", [])
+            if not isinstance(contacts, list) or len(contacts) > 256:
+                raise ValueError("invalid contact observation budget")
+            for contact in contacts:
+                if (
+                    contact["kind"] not in {"Checkpoint", "Hazard", "Goal"}
+                    or type(contact["frame"]) is not int
+                    or not frames[0] <= contact["frame"] <= frames[-1]
+                    or not isinstance(contact["position"], list)
+                    or len(contact["position"]) != 3
+                    or any(
+                        type(n) not in {int, float} or not math.isfinite(n) for n in contact["position"]
+                    )
+                ):
+                    raise ValueError("invalid observed contact")
+        except (KeyError, TypeError, ValueError) as exc:
+>           raise InputError(
+                "Invalid platformer telemetry: " + str(exc),
+                kind=ErrorKind.CONTRACT_FAILURE,
+                code="PF-PLATFORMER-TELEMETRY",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Invalid platformer telemetry: geometry differs from frozen contract
+
+polyforge\scenarios\platformer_oracle.py:130: InputError
+_ test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes[hazard_size] _
+
+trace = {'checkpoint_position': [-2, 0, 0], 'events': [], 'fixed_delta_seconds': 0.02, 'frames_executed': 50, ...}
+game = {'hazard_size': [1, 0.6, 1], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'course', 'seed': 42}
+identifier = 'player_moves', ticks = 50
+schedule_digest = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int, schedule_digest: str
+    ) -> None:
+        """Reject malformed or unexecuted mutants before interpreting behavioral failure."""
+        canonical_digest(trace)
+        try:
+            expected = MUTANT_SCENARIOS.get(identifier, INPUT_SCENARIOS.get(identifier, identifier))
+            purpose = (
+                "MUTANT"
+                if identifier in MUTANT_SCENARIOS
+                else ("INPUT_ADAPTER" if identifier in INPUT_SCENARIOS else "NOMINAL")
+            )
+            if (
+                expected not in CORE_SCENARIOS
+                or trace["scenario_id"] != expected
+                or trace["purpose"] != purpose
+                or trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["seed"] != game["seed"]
+                or trace["schedule_digest"] != schedule_digest
+                or trace.get("mutant", "") != (identifier if purpose == "MUTANT" else "")
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-7)
+                or type(trace["frames_executed"]) is not int
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+            ):
+                raise ValueError("identity, purpose or executed schedule mismatch")
+            samples = trace["samples"]
+            if not isinstance(samples, list) or not 2 <= len(samples) <= 4000:
+                raise ValueError("missing/bounded physical samples")
+            frames = [s["frame"] for s in samples]
+            if (
+                any(type(f) is not int for f in frames)
+                or any(a >= b for a, b in zip(frames, frames[1:], strict=False))
+                or frames[-1] - frames[0] != trace["frames_executed"]
+            ):
+                raise ValueError("nonmonotonic/inconsistent frame observations")
+            for s in samples:
+                for field in ("position", "velocity"):
+                    if (
+                        not isinstance(s[field], list)
+                        or len(s[field]) != 3
+                        or any(type(n) not in {int, float} or not math.isfinite(n) for n in s[field])
+                    ):
+                        raise ValueError("nonfinite physical vector")
+                if (
+                    type(s["grounded"]) is not bool
+                    or type(s["health"]) is not int
+                    or not 0 <= s["health"] <= 3
+                    or s["state"] not in {"RUNNING", "WON", "FAILED"}
+                    or type(s["round"]) is not int
+                    or s["round"] < 1
+                    or s["checkpoint"] not in {"spawn", "checkpoint"}
+                    or type(s["elapsed_seconds"]) not in {int, float}
+                    or not 0 <= s["elapsed_seconds"] <= 80
+                ):
+                    raise ValueError("invalid observed session state")
+            for field in (
+                "spawn",
+                "checkpoint_position",
+                "goal_center",
+                "goal_size",
+                "hazard_center",
+                "hazard_size",
+            ):
+                vector = trace[field]
+                if (
+                    not isinstance(vector, list)
+                    or len(vector) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in vector)
+                ):
+                    raise ValueError("invalid observed scene geometry")
+                if field in game and vector != game[field]:
+>                   raise ValueError("geometry differs from frozen contract")
+E                   ValueError: geometry differs from frozen contract
+
+polyforge\scenarios\platformer_oracle.py:113: ValueError
+
+The above exception was the direct cause of the following exception:
+
+field = 'hazard_size'
+
+    @pytest.mark.parametrize("field", ["spawn", "checkpoint_position", "goal_center", "goal_size", "hazard_center", "hazard_size"])
+    def test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes(field):
+        import struct
+    
+        from polyforge.scenarios.platformer_oracle import validate_trace
+    
+        observed = trace()
+        game = {"input_digest": "a" * 64, "scene_id": "course", "seed": 42,
+                field: copy.deepcopy(observed[field])}
+        # The same JSON coordinate crosses Unity's float32 Vector3 boundary.
+        observed[field] = [struct.unpack("f", struct.pack("f", n))[0] for n in observed[field]]
+>       validate_trace(observed, game, "player_moves", 50, "b" * 64)
+
+tests\test_phase11_platformer.py:300: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+trace = {'checkpoint_position': [-2, 0, 0], 'events': [], 'fixed_delta_seconds': 0.02, 'frames_executed': 50, ...}
+game = {'hazard_size': [1, 0.6, 1], 'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'scene_id': 'course', 'seed': 42}
+identifier = 'player_moves', ticks = 50
+schedule_digest = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+
+    def validate_trace(
+        trace: dict[str, Any], game: dict[str, Any], identifier: str, ticks: int, schedule_digest: str
+    ) -> None:
+        """Reject malformed or unexecuted mutants before interpreting behavioral failure."""
+        canonical_digest(trace)
+        try:
+            expected = MUTANT_SCENARIOS.get(identifier, INPUT_SCENARIOS.get(identifier, identifier))
+            purpose = (
+                "MUTANT"
+                if identifier in MUTANT_SCENARIOS
+                else ("INPUT_ADAPTER" if identifier in INPUT_SCENARIOS else "NOMINAL")
+            )
+            if (
+                expected not in CORE_SCENARIOS
+                or trace["scenario_id"] != expected
+                or trace["purpose"] != purpose
+                or trace["input_digest"] != game["input_digest"]
+                or trace["scene_id"] != game["scene_id"]
+                or trace["seed"] != game["seed"]
+                or trace["schedule_digest"] != schedule_digest
+                or trace.get("mutant", "") != (identifier if purpose == "MUTANT" else "")
+                or not math.isclose(trace["fixed_delta_seconds"], 0.02, abs_tol=1e-7)
+                or type(trace["frames_executed"]) is not int
+                or not ticks <= trace["frames_executed"] <= ticks + 3
+            ):
+                raise ValueError("identity, purpose or executed schedule mismatch")
+            samples = trace["samples"]
+            if not isinstance(samples, list) or not 2 <= len(samples) <= 4000:
+                raise ValueError("missing/bounded physical samples")
+            frames = [s["frame"] for s in samples]
+            if (
+                any(type(f) is not int for f in frames)
+                or any(a >= b for a, b in zip(frames, frames[1:], strict=False))
+                or frames[-1] - frames[0] != trace["frames_executed"]
+            ):
+                raise ValueError("nonmonotonic/inconsistent frame observations")
+            for s in samples:
+                for field in ("position", "velocity"):
+                    if (
+                        not isinstance(s[field], list)
+                        or len(s[field]) != 3
+                        or any(type(n) not in {int, float} or not math.isfinite(n) for n in s[field])
+                    ):
+                        raise ValueError("nonfinite physical vector")
+                if (
+                    type(s["grounded"]) is not bool
+                    or type(s["health"]) is not int
+                    or not 0 <= s["health"] <= 3
+                    or s["state"] not in {"RUNNING", "WON", "FAILED"}
+                    or type(s["round"]) is not int
+                    or s["round"] < 1
+                    or s["checkpoint"] not in {"spawn", "checkpoint"}
+                    or type(s["elapsed_seconds"]) not in {int, float}
+                    or not 0 <= s["elapsed_seconds"] <= 80
+                ):
+                    raise ValueError("invalid observed session state")
+            for field in (
+                "spawn",
+                "checkpoint_position",
+                "goal_center",
+                "goal_size",
+                "hazard_center",
+                "hazard_size",
+            ):
+                vector = trace[field]
+                if (
+                    not isinstance(vector, list)
+                    or len(vector) != 3
+                    or any(type(n) not in {int, float} or not math.isfinite(n) for n in vector)
+                ):
+                    raise ValueError("invalid observed scene geometry")
+                if field in game and vector != game[field]:
+                    raise ValueError("geometry differs from frozen contract")
+            contacts = trace.get("contacts", [])
+            if not isinstance(contacts, list) or len(contacts) > 256:
+                raise ValueError("invalid contact observation budget")
+            for contact in contacts:
+                if (
+                    contact["kind"] not in {"Checkpoint", "Hazard", "Goal"}
+                    or type(contact["frame"]) is not int
+                    or not frames[0] <= contact["frame"] <= frames[-1]
+                    or not isinstance(contact["position"], list)
+                    or len(contact["position"]) != 3
+                    or any(
+                        type(n) not in {int, float} or not math.isfinite(n) for n in contact["position"]
+                    )
+                ):
+                    raise ValueError("invalid observed contact")
+        except (KeyError, TypeError, ValueError) as exc:
+>           raise InputError(
+                "Invalid platformer telemetry: " + str(exc),
+                kind=ErrorKind.CONTRACT_FAILURE,
+                code="PF-PLATFORMER-TELEMETRY",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Invalid platformer telemetry: geometry differs from frozen contract
+
+polyforge\scenarios\platformer_oracle.py:130: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes[hazard_center]
+FAILED tests/test_phase11_platformer.py::test_frozen_geometry_accepts_float32_round_trip_but_rejects_real_changes[hazard_size]
+2 failed, 4 passed, 55 deselected in 0.39s

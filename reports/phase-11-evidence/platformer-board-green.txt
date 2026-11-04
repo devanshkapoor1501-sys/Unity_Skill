@@ -1,0 +1,92 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_ test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{617b1359-d553-4f42-9b9b-6f090c5921de}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_inspector_requires_sealed0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000023C1F4B97F0>
+missing = None
+
+    @pytest.mark.parametrize("missing", [None, "archive", "bindings", "delivery", "standalone"])
+    def test_inspector_requires_sealed_editable_delivery_and_requested_standalone(
+        tmp_path, monkeypatch, missing
+    ):
+        from test_phase11_platformer import native_boundary
+    
+        from polyforge.contracts.validation import canonical_digest
+        from polyforge.unity import evidence
+        from polyforge.workforce.workers import inspect_candidate, seal_candidate
+    
+        # Only the native process/XML/oracle boundaries are simulated here.
+        # Actual native qualification is a separate reported gate.
+        module, _ = native_boundary(monkeypatch, tmp_path)
+        from polyforge.scenarios.platformer_oracle import (
+            CORE_SCENARIOS,
+            INPUT_SCENARIOS,
+            MUTANT_SCENARIOS,
+        )
+    
+        boundary_launch = module.launch
+    
+        def launch(*args, **kwargs):
+            boundary_launch(*args, **kwargs)
+            if args[4] == "platformer":
+                folder = tmp_path / "UnityProject/Assets/PolyForgeGenerated/Platformer"
+                folder.mkdir(parents=True, exist_ok=True)
+                (folder / "SpritePlatformer.unity").write_text("unit native-scene boundary")
+                (folder / "SpritePlatformer.unity.meta").write_text("guid: " + "1" * 32)
+            if args[4] == "tests":
+                telemetry = kwargs["telemetry_directory"]
+                telemetry.mkdir(parents=True, exist_ok=True)
+                for identifier in (*CORE_SCENARIOS, *INPUT_SCENARIOS, *MUTANT_SCENARIOS):
+                    (telemetry / (identifier + ".json")).write_text("{}")
+    
+        monkeypatch.setattr(module, "launch", launch)
+        inputs = source_fixture(tmp_path)
+        result = module.build_platformer(tmp_path, inputs)
+        candidate = seal_candidate(
+            WorkspacePolicy(tmp_path), result, canonical_digest(task(inputs)["brief"])
+        )
+        monkeypatch.setattr(evidence, "verify_test_xml", lambda *args: {})
+        request = task(inputs)
+        if missing in {"archive", "bindings", "delivery"}:
+            suffix = {
+                "archive": "/native-output.zip",
+                "bindings": "/bindings.json",
+                "delivery": "/delivery.json",
+            }[missing]
+            candidate["files"] = [row for row in candidate["files"] if not row["path"].endswith(suffix)]
+            candidate["candidate_digest"] = canonical_digest(
+                {k: v for k, v in candidate.items() if k != "candidate_digest"}
+            )
+        elif missing == "standalone":
+            import hashlib
+    
+            delivery = tmp_path / "runs" / result.run_id / "delivery.json"
+            value = json.loads(delivery.read_text())
+            value["standalone_requested"] = True
+            delivery.write_text(json.dumps(value))
+            for row in candidate["files"]:
+                if row["path"].endswith("/delivery.json"):
+                    row["sha256"] = hashlib.sha256(delivery.read_bytes()).hexdigest()
+            candidate["candidate_digest"] = canonical_digest(
+                {k: v for k, v in candidate.items() if k != "candidate_digest"}
+            )
+        if missing is None:
+            assert (
+                inspect_candidate(WorkspacePolicy(tmp_path), candidate, request, technical_only=True)[
+                    "verdict"
+                ]
+                == "APPROVED"
+            )
+            from polyforge.review.board import review_candidate
+    
+            board = review_candidate(WorkspacePolicy(tmp_path), candidate, request)
+            assert board["promotion"] == "REVIEW"
+>           assert board["L3_acceptance"]["game_status"] == "PARTIAL"
+                   ^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'L3_acceptance'
+
+tests\test_phase11_registration.py:252: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_inspector_requires_sealed_editable_delivery_and_requested_standalone[None]
+1 failed, 25 deselected in 4.96s

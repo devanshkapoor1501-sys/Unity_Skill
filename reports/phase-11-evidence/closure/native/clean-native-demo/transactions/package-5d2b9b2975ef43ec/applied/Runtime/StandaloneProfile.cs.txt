@@ -1,0 +1,244 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
+
+namespace PolyForge
+{
+    [Serializable] public sealed class StandaloneProfileRequest
+    {
+        public string schema_version,game_kind,input_digest,scene_id,profile_digest;
+        public string quality_name,ready_path,evidence_path,executable_sha256;
+        public string focus_policy,renderer_observation;
+        public bool run_in_background;
+        public int sample_index;
+    }
+    [Serializable] public sealed class ProfileHardware
+    {
+        public string cpu,gpu,gpu_driver,os;
+        public int logical_cpus,gpu_memory_mb;
+        public long ram_bytes;
+    }
+    [Serializable] public sealed class ProfileActivity
+    {
+        public int ticks,restarts;
+        public float player_distance,enemy_distance;
+    }
+    [Serializable] public sealed class StandaloneProfileEvidence
+    {
+        public string schema_version="1.0.0",scope="WINDOWS_STANDALONE_RENDERED";
+        public string input_digest,profile_digest,scene_id,scene,game_kind,unity_version;
+        public string build_type,graphics_type,quality,error,executable_sha256;
+        public int sample_index,width,height,v_sync,target_frame_rate,frames_recorded;
+        public int focused_frames,unfocused_frames,focus_changes;
+        public string focus_policy,renderer_observation;
+        public bool run_in_background;
+        public string gpu_presentation="NOT_MEASURED";
+        public string telemetry_limitations="CPU wall-clock end-of-frame intervals; GPU execution and physical display presentation are not independently measured. Focus classifies interval-closing observations, not entire intervals or intervening events.";
+        public bool is_editor,batchmode,complete,sample_overflow,focused=true;
+        public double warmup_seconds,measurement_seconds;
+        public double[] frame_times_ms;
+        public ProfileHardware hardware;
+        public ProfileActivity activity=new ProfileActivity();
+    }
+
+    // Explicit profiling mode only. Normal gameplay and the existing smoke are unchanged.
+    public sealed class StandaloneProfile : MonoBehaviour
+    {
+        public string gameKind="arena",inputDigest,sceneId;
+        const string FocusPolicy="OBSERVE_CONTINUOUS_BACKGROUND_ENABLED";
+        const string RendererObservation="UNITY_END_OF_FRAME";
+        sealed class ProfileInput : IPlayerInput
+        {
+            public Vector2 direction;
+            public bool restart;
+            public Vector2 Movement=>direction;
+            public bool ConsumeRestart(){bool value=restart;restart=false;return value;}
+        }
+        // CPU wall time between Unity end-of-frame callbacks is not GPU/display timing.
+        readonly Stopwatch clock=new Stopwatch();
+        readonly List<double> intervals=new List<double>();
+        StandaloneProfileRequest request;
+        StandaloneProfileEvidence evidence;
+        ArenaSession arena;
+        ProfileInput input;
+        Vector3 previousPlayer;
+        Vector3[] previousEnemies;
+        int initialRound;
+        bool ready,measuring,finished,configured,previousMeasurementFocus;
+        double readyAt,measureAt,lastFrame;
+
+        static string Argument(string key)
+        {
+            var args=Environment.GetCommandLineArgs();int i=Array.IndexOf(args,key);
+            return i>=0 && i+1<args.Length?args[i+1]:null;
+        }
+        static string OwnedPath(string value,string requestFolder)
+        {
+            string root=Path.GetFullPath(Path.GetDirectoryName(Application.dataPath))+Path.DirectorySeparatorChar;
+            string path=Path.GetFullPath(value);
+            if(!path.StartsWith(root,StringComparison.OrdinalIgnoreCase) ||
+               Path.GetDirectoryName(path)!=requestFolder)
+                throw new InvalidOperationException("Profile paths must stay in the owned player request directory");
+            return path;
+        }
+        static void AtomicWrite(string path,string value)
+        {
+            string temporary=path+".tmp";File.WriteAllText(temporary,value);
+            if(File.Exists(path))File.Delete(path);
+            File.Move(temporary,path);
+        }
+        bool Configure()
+        {
+            string source=Argument("-polyforgeProfileInput");
+            if(string.IsNullOrEmpty(source))return false;
+            try
+            {
+                clock.Start();
+                source=Path.GetFullPath(source);
+                string folder=Path.GetDirectoryName(source);OwnedPath(source,folder);
+                if(new FileInfo(source).Length>65536)throw new InvalidOperationException("Profile request too large");
+                request=JsonUtility.FromJson<StandaloneProfileRequest>(File.ReadAllText(source));
+                if(request==null || request.schema_version!="1.0.0" || request.game_kind!="arena" ||
+                   gameKind!="arena" || request.input_digest!=inputDigest || request.scene_id!=sceneId ||
+                   request.sample_index<0 || request.sample_index>2 || request.quality_name!="PC" ||
+                   request.focus_policy!=FocusPolicy || request.renderer_observation!=RendererObservation ||
+                   !request.run_in_background)
+                    throw new InvalidOperationException("Profile request/runtime binding mismatch");
+                request.ready_path=OwnedPath(request.ready_path,folder);
+                request.evidence_path=OwnedPath(request.evidence_path,folder);
+                evidence=new StandaloneProfileEvidence{
+                    input_digest=inputDigest,profile_digest=request.profile_digest,scene_id=sceneId,
+                    scene=SceneManager.GetActiveScene().name,game_kind=gameKind,
+                    sample_index=request.sample_index,unity_version=Application.unityVersion,
+                    focus_policy=FocusPolicy,renderer_observation=RendererObservation,
+                    build_type=Debug.isDebugBuild?"Development":"Release",
+                    executable_sha256=request.executable_sha256,
+                    is_editor=Application.isEditor,batchmode=Application.isBatchMode,
+                    graphics_type=SystemInfo.graphicsDeviceType.ToString(),
+                    hardware=new ProfileHardware{cpu=SystemInfo.processorType,
+                        logical_cpus=SystemInfo.processorCount,ram_bytes=(long)SystemInfo.systemMemorySize*1024*1024,
+                        gpu=SystemInfo.graphicsDeviceName,gpu_driver=SystemInfo.graphicsDeviceVersion,
+                        gpu_memory_mb=SystemInfo.graphicsMemorySize,os=SystemInfo.operatingSystem}};
+                configured=true;
+                if(Application.isEditor || Application.isBatchMode ||
+                   SystemInfo.graphicsDeviceType==GraphicsDeviceType.Null ||
+                   Array.Exists(Environment.GetCommandLineArgs(),a=>a.Equals("-nographics",StringComparison.OrdinalIgnoreCase)) ||
+                   Argument("-polyforgePlayerEvidence")!=null)
+                    throw new InvalidOperationException("Profile requires a rendered standalone player without smoke");
+                int quality=Array.IndexOf(QualitySettings.names,request.quality_name);
+                if(quality<0)throw new InvalidOperationException("Declared PC quality is missing from player build");
+                QualitySettings.SetQualityLevel(quality,true);QualitySettings.vSyncCount=0;
+                Application.targetFrameRate=-1;Application.runInBackground=true;
+                evidence.run_in_background=Application.runInBackground;
+                Screen.SetResolution(1280,720,FullScreenMode.Windowed);
+                arena=GetComponent<ArenaSession>();
+                if(arena==null || arena.inputDigest!=inputDigest || arena.sceneId!=sceneId ||
+                   arena.player==null || arena.enemies==null || arena.enemies.Length==0 || Camera.main==null)
+                    throw new InvalidOperationException("Profile arena/camera bindings missing");
+                input=new ProfileInput();arena.player.Input=input;
+                initialRound=arena.Round;previousPlayer=arena.player.transform.position;
+                previousEnemies=new Vector3[arena.enemies.Length];
+                for(int i=0;i<previousEnemies.Length;i++)previousEnemies[i]=arena.enemies[i].transform.position;
+                return true;
+            }
+            catch(Exception exception)
+            {
+                Finish(false,exception.Message);return false;
+            }
+        }
+        IEnumerator Start()
+        {
+            if(!Configure())yield break;
+            var end=new WaitForEndOfFrame();
+            while(!finished)
+            {
+                yield return end;
+                CaptureRenderedFrame();
+            }
+        }
+        void FixedUpdate()
+        {
+            if(!configured || finished || arena==null || input==null)return;
+            evidence.activity.ticks++;
+            int tick=evidence.activity.ticks;
+            // A fixed one-second square movement schedule, with twenty-second rounds.
+            input.direction=new[]{Vector2.right,Vector2.up,Vector2.left,Vector2.down}[(tick/50)%4];
+            input.restart=tick%1000==0 || arena.State!="RUNNING";
+            evidence.activity.restarts=Math.Max(0,arena.Round-initialRound);
+            var player=arena.player.transform.position;
+            evidence.activity.player_distance+=Vector3.Distance(player,previousPlayer);previousPlayer=player;
+            for(int i=0;i<previousEnemies.Length;i++)
+            {
+                var position=arena.enemies[i].transform.position;
+                evidence.activity.enemy_distance+=Vector3.Distance(position,previousEnemies[i]);
+                previousEnemies[i]=position;
+            }
+        }
+        void CaptureRenderedFrame()
+        {
+            double now=clock.Elapsed.TotalSeconds;
+            if(!ready)
+            {
+                if(Screen.width!=1280 || Screen.height!=720)
+                {
+                    if(now>30)Finish(false,"Rendered resolution readiness deadline");
+                    return;
+                }
+                ready=true;readyAt=now;
+                AtomicWrite(request.ready_path,"{\"ready\":true}");
+                return;
+            }
+            // Focus never pauses, resets, filters or aborts the continuous window.
+            if(Screen.width!=1280 || Screen.height!=720 ||
+               QualitySettings.names[QualitySettings.GetQualityLevel()]!="PC" ||
+               QualitySettings.vSyncCount!=0 || Application.targetFrameRate!=-1 ||
+               !Application.runInBackground)
+            {Finish(false,"Resolution/quality/pacing/background policy changed during profile");return;}
+            if(!measuring)
+            {
+                if(now-readyAt<10)return;
+                evidence.warmup_seconds=now-readyAt;measuring=true;measureAt=now;lastFrame=now;
+                previousMeasurementFocus=Application.isFocused;return;
+            }
+            double interval=(now-lastFrame)*1000;lastFrame=now;
+            if(interval<=0 || double.IsNaN(interval) || double.IsInfinity(interval))
+            {Finish(false,"Invalid rendered frame interval");return;}
+            if(intervals.Count>=1000000)
+            {evidence.sample_overflow=true;Finish(false,"Rendered frame sample limit");return;}
+            intervals.Add(interval);evidence.measurement_seconds=now-measureAt;
+            // Classify every recorded interval by its closing observation only.
+            // Transitions inside an interval are not measured by these counters.
+            bool focused=Application.isFocused;
+            if(focused)evidence.focused_frames++;else evidence.unfocused_frames++;
+            if(focused!=previousMeasurementFocus)evidence.focus_changes++;
+            previousMeasurementFocus=focused;evidence.focused=evidence.unfocused_frames==0;
+            if(evidence.measurement_seconds>=60)Finish(true,null);
+        }
+        void Finish(bool complete,string error)
+        {
+            if(finished)return;finished=true;
+            if(evidence!=null)
+            {
+                evidence.complete=complete;evidence.error=error;
+                evidence.frame_times_ms=intervals.ToArray();evidence.frames_recorded=intervals.Count;
+                evidence.width=Screen.width;evidence.height=Screen.height;
+                evidence.quality=QualitySettings.names[QualitySettings.GetQualityLevel()];
+                evidence.v_sync=QualitySettings.vSyncCount;evidence.target_frame_rate=Application.targetFrameRate;
+                evidence.run_in_background=Application.runInBackground;
+                AtomicWrite(request.evidence_path,JsonUtility.ToJson(evidence,true));
+            }
+            if(!string.IsNullOrEmpty(error))Debug.LogError("POLYFORGE_PROFILE_FAILED "+error);
+            Application.Quit(complete?0:7);
+        }
+        void OnApplicationQuit()
+        {
+            if(configured && !finished)Finish(false,"Player exited before complete rendered measurement");
+        }
+    }
+}

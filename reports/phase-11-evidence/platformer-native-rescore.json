@@ -1,0 +1,203 @@
+{
+  "status": "FAIL",
+  "scenarios": {
+    "player_moves": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "ground_collision": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "grounded_jump": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "airborne_jump": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "checkpoint_respawn": {
+      "status": "FAIL",
+      "issues": [
+        "Hazard did not cause observed health loss and physical respawn"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "FAIL"
+    },
+    "hazard_damage": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "health_failure": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "goal_contact": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "restart_resets": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "restart_failure": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "journey": {
+      "status": "FAIL",
+      "issues": [
+        "Goal victory requires actual spatial contact and a live actor"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "FAIL"
+    },
+    "keyboard_move": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "keyboard_jump": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "keyboard_restart": {
+      "status": "PASS",
+      "issues": [],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": false,
+      "gate_status": "PASS"
+    },
+    "input_disconnected": {
+      "status": "FAIL",
+      "issues": [
+        "Horizontal input produced no physical movement"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "jump_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Grounded jump did not physically rise and land"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "platform_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Falling actor did not land on the declared platform"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "checkpoint_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Hazard did not cause observed health loss and physical respawn"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "damage_no_health": {
+      "status": "FAIL",
+      "issues": [
+        "Hazard did not cause observed health loss and physical respawn"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "goal_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Goal victory requires actual spatial contact and a live actor"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "win_premature": {
+      "status": "FAIL",
+      "issues": [
+        "Goal victory requires actual spatial contact and a live actor"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    },
+    "restart_disabled": {
+      "status": "FAIL",
+      "issues": [
+        "Restart did not restore full initial state after a terminal state"
+      ],
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN",
+      "mutant": true,
+      "gate_status": "PASS"
+    }
+  },
+  "scope": "PUBLIC_DEVELOPMENT",
+  "hidden_evaluation": "NOT_RUN"
+}

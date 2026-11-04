@@ -1,6 +1,8 @@
 """Immutable candidate seals and read-only technical review receipts."""
 
 import hashlib
+import re
+import zipfile
 from pathlib import Path
 from typing import Any
 
@@ -9,6 +11,52 @@ from polyforge.contracts.validation import InputError, canonical_digest, load_js
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.workforce.models import validate_review
 from polyforge.workforce.permissions import assert_public_path
+
+
+def verify_platformer_archive(path: Path, game: dict[str, Any], scene_guid: str) -> None:
+    """Read bounded editable-delivery members, without extraction or code execution."""
+    try:
+        if path.stat().st_size > 1_073_741_824:
+            raise InputError("Editable platformer archive exceeds its byte budget")
+        with zipfile.ZipFile(path) as archive:
+            entries = archive.infolist()
+            if len(entries) > 8192 or len({item.filename for item in entries}) != len(entries):
+                raise InputError("Ambiguous or oversized editable platformer archive")
+            names = {item.filename for item in entries}
+            scene, prefab = game["scene_path"], game["sprite_prefab"]
+            atlas = "Assets/PolyForgeGenerated/Sprites/atlas.png"
+            if not {scene, scene + ".meta", prefab, prefab + ".meta", atlas} <= names:
+                raise InputError("Editable platformer archive lacks its scene/sprite sources")
+            if not 0 < archive.getinfo(scene).file_size <= 16_777_216:
+                raise InputError("Editable platformer scene is empty or oversized")
+
+            def read(name: str, limit: int) -> bytes:
+                if archive.getinfo(name).file_size > limit:
+                    raise InputError("Editable source exceeds its bounded read budget")
+                with archive.open(name) as stream:
+                    data = stream.read(limit + 1)
+                if len(data) > limit:
+                    raise InputError("Editable source exceeds its bounded read budget")
+                return data
+
+            for name, expected in ((scene, scene_guid), (prefab, game["sprite_prefab_guid"])):
+                meta = read(name + ".meta", 4096).decode("utf-8-sig")
+                if re.findall(r"(?m)^guid:\s*([a-f0-9]{32})\s*$", meta) != [expected]:
+                    raise InputError("Editable scene/prefab GUID differs from native bindings")
+            if hashlib.sha256(read(atlas, 16_777_216)).hexdigest() != game["atlas_sha256"]:
+                raise InputError("Editable sprite atlas differs from the approved native source")
+            for source, digest in game.get("source_hashes", {}).items():
+                if source.startswith("UnityProject/"):
+                    name = source.removeprefix("UnityProject/")
+                    if (
+                        name not in names
+                        or hashlib.sha256(read(name, 16_777_216)).hexdigest() != digest
+                    ):
+                        raise InputError(
+                            "Editable imported source differs from its frozen fingerprint"
+                        )
+    except (OSError, ValueError, KeyError, zipfile.BadZipFile) as exc:
+        raise InputError("Invalid editable platformer archive: " + str(exc)) from exc
 
 
 def seal_candidate(policy: WorkspacePolicy, result: Result, brief_digest: str) -> dict[str, Any]:
@@ -149,6 +197,109 @@ def inspect_candidate(
         kind = next(k for k, v in RECIPES.items() if v == request["capability_id"])
         recipe = expand_recipe(kind, request["input"], seed=request.get("seed", 42))
         validate_geometry(recipe, load_json(policy.path("runs/" + run + "/asset/metrics.json")))
+    elif request.get("capability_id") == "unity.game.platformer.v1":
+        from polyforge.unity.evidence import verify_test_xml
+        from polyforge.unity.platformer import (
+            EDIT_TESTS,
+            PLAY_TESTS,
+            compile_platformer_request,
+            score_telemetry,
+        )
+
+        prefix = "runs/" + run + "/"
+        expected = {
+            prefix + n for n in ("game-input.json", "editmode.xml", "playmode.xml", "delivery.json")
+        }
+        if not expected <= inventory:
+            raise InputError("Platformer review lacks sealed native contract/test evidence")
+        current = compile_platformer_request(request["input"], policy)
+        if load_json(policy.path(prefix + "game-input.json")) != current:
+            raise InputError("Platformer sources differ from the sealed native contract")
+        delivery = load_json(policy.path(prefix + "delivery.json"))
+        if (
+            not isinstance(delivery, dict)
+            or delivery.get("schema_version") != "1.0.0"
+            or delivery.get("input_digest") != current["input_digest"]
+            or not isinstance(delivery.get("build_run_id"), str)
+            or not re.fullmatch(r"platformer-build-[a-f0-9]{16}", delivery["build_run_id"])
+            or type(delivery.get("standalone_requested")) is not bool
+        ):
+            raise InputError("Platformer delivery lacks its matching build identity")
+        build_prefix = "runs/" + delivery["build_run_id"] + "/"
+        required_build = {
+            build_prefix + name
+            for name in (
+                "native-output.zip",
+                "bindings.json",
+                "game-input.json",
+                "inputs.json",
+                "preservation.json",
+            )
+        }
+        if not required_build <= inventory:
+            raise InputError("Platformer review lacks sealed editable production evidence")
+        if (
+            load_json(policy.path(build_prefix + "game-input.json")) != current
+            or load_json(policy.path(build_prefix + "inputs.json")) != request["input"]
+        ):
+            raise InputError("Editable production belongs to a different platformer request")
+        bindings = load_json(policy.path(build_prefix + "bindings.json"))
+        if (
+            not isinstance(bindings, dict)
+            or not bindings.get("scene_guid")
+            or bindings.get("input_digest") != current["input_digest"]
+            or bindings.get("source_prefab_guid") != current["sprite_prefab_guid"]
+        ):
+            raise InputError("Editable platformer bindings differ from its approved sources")
+        verify_platformer_archive(
+            policy.path(build_prefix + "native-output.zip"), current, bindings["scene_guid"]
+        )
+        from polyforge.scenarios.platformer_oracle import (
+            CORE_SCENARIOS,
+            INPUT_SCENARIOS,
+            MUTANT_SCENARIOS,
+        )
+
+        traces = {
+            prefix + "telemetry/" + name + ".json"
+            for name in (*CORE_SCENARIOS, *INPUT_SCENARIOS, *MUTANT_SCENARIOS)
+        }
+        if not traces <= inventory:
+            raise InputError("Platformer review lacks sealed physical scenario evidence")
+        verify_test_xml(policy.path(prefix + "editmode.xml"), EDIT_TESTS)
+        verify_test_xml(policy.path(prefix + "playmode.xml"), PLAY_TESTS)
+        if score_telemetry(policy, prefix.rstrip("/"), current)["status"] != "PASS":
+            raise InputError("Platformer independent physical review failed")
+        if request["input"].get("standalone", False) and not delivery["standalone_requested"]:
+            raise InputError("Platformer delivery omitted requested standalone verification")
+        if delivery["standalone_requested"]:
+            standalone_prefix = prefix + "standalone/"
+            required_player = {
+                standalone_prefix + name for name in ("smoke.json", "process/process.json")
+            }
+            required_player.update(
+                standalone_prefix + "telemetry/" + name + ".json" for name in CORE_SCENARIOS
+            )
+            if not required_player <= inventory:
+                raise InputError("Platformer review lacks sealed standalone gameplay evidence")
+            process = load_json(policy.path(standalone_prefix + "process/process.json"))
+            smoke = load_json(policy.path(standalone_prefix + "smoke.json"))
+            if (
+                not isinstance(process, dict)
+                or process.get("reason") != "exit"
+                or type(process.get("returncode")) is not int
+                or process["returncode"] != 0
+                or not isinstance(smoke, dict)
+                or smoke.get("scene") != "SpritePlatformer"
+                or smoke.get("input_digest") != current["input_digest"]
+                or type(smoke.get("frames")) is not int
+                or smoke["frames"] < 100
+                or score_telemetry(policy, standalone_prefix.rstrip("/"), current, standalone=True)[
+                    "status"
+                ]
+                != "PASS"
+            ):
+                raise InputError("Platformer standalone process or physical review failed")
     else:
         from polyforge.unity.evidence import verify_test_xml
         from polyforge.unity.game import GAME_EDIT_TESTS, PLAY_TESTS

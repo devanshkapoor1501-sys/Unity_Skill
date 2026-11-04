@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\qualify-platformer-workforce.py", line 21, in <module>
+    result = run_task(workspace, request, mode='sequential')
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\workforce\orchestrator.py", line 259, in run_task
+    inspected = execute_leased(
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\workforce\orchestrator.py", line 123, in execute_leased
+    result = execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\capabilities\dispatch.py", line 26, in execute
+    result = _execute(identifier, inputs, context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\capabilities\dispatch.py", line 79, in _execute
+    "board": review_candidate(policy, candidate, plan["original_request"]),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\review\board.py", line 197, in review_candidate
+    acceptance_spec = public_acceptance_spec(policy)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\review\acceptance.py", line 29, in public_acceptance_spec
+    with policy.path(".polyforge/original_prompt.txt").open("rb") as stream:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase11\\platformer-demo\\.polyforge\\original_prompt.txt'

@@ -1,0 +1,968 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "plan": {
+      "schema_version": "1.0.0",
+      "task_id": "task_116bfe26ba15a251_e29d15d4",
+      "engine_digest": "e29d15d4476f6ed1c0386f85a096cac754760590f9f0f3e8461e8debb5178a44",
+      "workspace_inputs": {
+        "polyforge.toml": "e22a0a056102835142f07fad9e2d7826cff957d8a4040bdca35297e7bd5a11d4",
+        "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+      },
+      "input_digest": "116bfe26ba15a251f092b0b7c486f1feb4d22348231e9fe609cada63e53bbb6f",
+      "original_request": {
+        "schema_version": "1.0.0",
+        "brief": "Make a blue industrial crate; preserve editable source.",
+        "task_class": "CREATE_ASSET",
+        "domain_tags": [
+          "blender"
+        ],
+        "feature_ids": [
+          "editable_source"
+        ],
+        "capability_id": "mesh.props.crate.v1",
+        "seed": 42,
+        "input": {
+          "schema_version": "1.0.0",
+          "asset_id": "industrial_box",
+          "parameters": {
+            "size_m": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      },
+      "stages": [
+        "S0",
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "jobs": [
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_0",
+          "role_id": "intent_analyst",
+          "capability_id": "intent.freeze.v1",
+          "depends_on": [],
+          "stage": "S1",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ],
+          "context": {
+            "schema_version": "1.0.0",
+            "task_digest": "116bfe26ba15a251f092b0b7c486f1feb4d22348231e9fe609cada63e53bbb6f",
+            "brief_digest": "29489f3bbd86c8e11ab01460d75a9ac73bf01d37aedaeb76bbc4fc443a03d150",
+            "task_class": "CREATE_ASSET",
+            "required_concepts": [
+              "blender"
+            ],
+            "selected_knowledge_cards": [
+              {
+                "knowledge_id": "blender.modeling",
+                "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.uv-pbr",
+                "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.animation",
+                "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              }
+            ],
+            "toolchain_probes": [
+              {
+                "tool": "blender",
+                "status": "UNKNOWN",
+                "evidence_digest": null
+              }
+            ],
+            "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+            "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+            "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+            "observed_inputs": {
+              "polyforge.toml": "e22a0a056102835142f07fad9e2d7826cff957d8a4040bdca35297e7bd5a11d4",
+              "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+            },
+            "capability_gap": "Free-text brief coverage requires separate requirement review",
+            "proposed_experiment_id": null,
+            "risk_level": "TRUSTED_REGISTERED_LOCAL",
+            "approval_owner": "EXISTING_REVIEW_GATES",
+            "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+            "evaluator_access": "DENIED",
+            "tool_allowlist": [],
+            "read_roots": [
+              "runs/",
+              "workforce/",
+              "recipes/"
+            ],
+            "authorized_write_roots": [
+              "workforce/"
+            ],
+            "permissions_from_references": false,
+            "seed": 42,
+            "original_task_input_digest": "8f9ccd0c25da2345ce43193a61b6aa7e172177b4df4db9355e2d7e304eccba1b",
+            "expected_evidence": [
+              "registered capability result",
+              "candidate/review artifacts"
+            ],
+            "review_policy": "EXISTING_L1_L2_L3_GATES",
+            "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+            "lease_ref": "RUNTIME_LEDGER",
+            "resources": {}
+          },
+          "context_digest": "3b626fc187ec6c5fc26dcbd5b7eef6a75f41e14ef36063892aabfcad884d60f8"
+        },
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_1",
+          "role_id": "asset_producer",
+          "capability_id": "mesh.props.crate.v1",
+          "depends_on": [
+            "job_0"
+          ],
+          "stage": "S2",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ],
+          "context": {
+            "schema_version": "1.0.0",
+            "task_digest": "116bfe26ba15a251f092b0b7c486f1feb4d22348231e9fe609cada63e53bbb6f",
+            "brief_digest": "29489f3bbd86c8e11ab01460d75a9ac73bf01d37aedaeb76bbc4fc443a03d150",
+            "task_class": "CREATE_ASSET",
+            "required_concepts": [
+              "blender"
+            ],
+            "selected_knowledge_cards": [
+              {
+                "knowledge_id": "blender.modeling",
+                "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.uv-pbr",
+                "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.animation",
+                "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              }
+            ],
+            "toolchain_probes": [
+              {
+                "tool": "blender",
+                "status": "UNKNOWN",
+                "evidence_digest": null
+              }
+            ],
+            "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+            "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+            "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+            "observed_inputs": {
+              "polyforge.toml": "e22a0a056102835142f07fad9e2d7826cff957d8a4040bdca35297e7bd5a11d4",
+              "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+            },
+            "capability_gap": "Free-text brief coverage requires separate requirement review",
+            "proposed_experiment_id": null,
+            "risk_level": "TRUSTED_REGISTERED_LOCAL",
+            "approval_owner": "EXISTING_REVIEW_GATES",
+            "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+            "evaluator_access": "DENIED",
+            "tool_allowlist": [
+              "asset.package.build.v1",
+              "sprite.robot.bake.v1",
+              "mesh.props.crate.v1",
+              "mesh.robot.modular.v1",
+              "mesh.architecture.wall.v1",
+              "mesh.architecture.doorway.v1",
+              "mesh.environment.tile.v1"
+            ],
+            "read_roots": [
+              "runs/",
+              "workforce/",
+              "recipes/"
+            ],
+            "authorized_write_roots": [
+              "runs/"
+            ],
+            "permissions_from_references": false,
+            "seed": 42,
+            "original_task_input_digest": "8f9ccd0c25da2345ce43193a61b6aa7e172177b4df4db9355e2d7e304eccba1b",
+            "expected_evidence": [
+              "registered capability result",
+              "candidate/review artifacts"
+            ],
+            "review_policy": "EXISTING_L1_L2_L3_GATES",
+            "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+            "lease_ref": "RUNTIME_LEDGER",
+            "resources": {}
+          },
+          "context_digest": "f04f67c7382518cff435ea884ed04147420cffc6458deb98909d29090c806df7"
+        },
+        {
+          "schema_version": "1.0.0",
+          "job_id": "job_2",
+          "role_id": "asset_inspector",
+          "capability_id": "artifact.candidate.inspect.v1",
+          "depends_on": [
+            "job_1"
+          ],
+          "stage": "S3",
+          "budget_seconds": 3600,
+          "write_root": "runs/",
+          "feature_ids": [
+            "editable_source"
+          ],
+          "context": {
+            "schema_version": "1.0.0",
+            "task_digest": "116bfe26ba15a251f092b0b7c486f1feb4d22348231e9fe609cada63e53bbb6f",
+            "brief_digest": "29489f3bbd86c8e11ab01460d75a9ac73bf01d37aedaeb76bbc4fc443a03d150",
+            "task_class": "CREATE_ASSET",
+            "required_concepts": [
+              "blender"
+            ],
+            "selected_knowledge_cards": [
+              {
+                "knowledge_id": "blender.modeling",
+                "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.uv-pbr",
+                "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              },
+              {
+                "knowledge_id": "blender.animation",
+                "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+                "knowledge_state": "REFERENCE_ONLY",
+                "versions": {
+                  "blender": [
+                    "5.2.2"
+                  ]
+                }
+              }
+            ],
+            "toolchain_probes": [
+              {
+                "tool": "blender",
+                "status": "UNKNOWN",
+                "evidence_digest": null
+              }
+            ],
+            "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+            "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+            "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+            "observed_inputs": {
+              "polyforge.toml": "e22a0a056102835142f07fad9e2d7826cff957d8a4040bdca35297e7bd5a11d4",
+              "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+            },
+            "capability_gap": "Free-text brief coverage requires separate requirement review",
+            "proposed_experiment_id": null,
+            "risk_level": "TRUSTED_REGISTERED_LOCAL",
+            "approval_owner": "EXISTING_REVIEW_GATES",
+            "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+            "evaluator_access": "DENIED",
+            "tool_allowlist": [
+              "artifact.candidate.inspect.v1"
+            ],
+            "read_roots": [
+              "runs/",
+              "workforce/",
+              "recipes/"
+            ],
+            "authorized_write_roots": [],
+            "permissions_from_references": false,
+            "seed": 42,
+            "original_task_input_digest": "8f9ccd0c25da2345ce43193a61b6aa7e172177b4df4db9355e2d7e304eccba1b",
+            "expected_evidence": [
+              "registered capability result",
+              "candidate/review artifacts"
+            ],
+            "review_policy": "EXISTING_L1_L2_L3_GATES",
+            "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+            "lease_ref": "RUNTIME_LEDGER",
+            "resources": {}
+          },
+          "context_digest": "21b0cb0ffb299f76b8077b9f82a4beed3f0b3bf88a0a24d22b07148ccdffddc0"
+        }
+      ],
+      "execution_status": "NOT_RUN",
+      "support_state": "SUPPORTED",
+      "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+      "requirements_preserved": true
+    },
+    "candidate": {
+      "schema_version": "1.0.0",
+      "artifact_id": "mesh_op_6da0f7e215784a3105314eb44ae8fdef",
+      "production_run_id": "mesh-op_6da0f7e215784a3105314eb44ae8fdef",
+      "producer_id": "producer",
+      "brief_digest": "29489f3bbd86c8e11ab01460d75a9ac73bf01d37aedaeb76bbc4fc443a03d150",
+      "revision": 1,
+      "files": [
+        {
+          "path": "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/logical-geometry.json",
+          "sha256": "a137d961e1556edcda46dc69f8029ccfc9a7db7644034e8d34d4690dc99872b7"
+        },
+        {
+          "path": "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/metrics.json",
+          "sha256": "7dba7af15d84a284381b902e756b994b443f941a74b32e4d536f7b81cd660436"
+        },
+        {
+          "path": "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/source.blend",
+          "sha256": "a448471624ab2321bbff56ad55005eeae2f9729fecec5fe442ffdebe80d74748"
+        }
+      ],
+      "candidate_digest": "d0c6a749dce5d4614d9d7d41c86284eca7f331b9b84bd5b4fe2a292c452aaf0d"
+    },
+    "review": {
+      "schema_version": "1.0.0",
+      "artifact_id": "mesh_op_6da0f7e215784a3105314eb44ae8fdef",
+      "candidate_digest": "d0c6a749dce5d4614d9d7d41c86284eca7f331b9b84bd5b4fe2a292c452aaf0d",
+      "producer_id": "producer",
+      "reviewer_id": "inspector",
+      "verdict": "APPROVED",
+      "independence": "DIFFERENT_ROLE_SAME_HOST",
+      "evidence": [
+        "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/logical-geometry.json",
+        "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/metrics.json",
+        "runs/mesh-op_6da0f7e215784a3105314eb44ae8fdef/asset/source.blend"
+      ],
+      "request": {
+        "schema_version": "1.0.0",
+        "brief": "Make a blue industrial crate; preserve editable source.",
+        "task_class": "CREATE_ASSET",
+        "domain_tags": [
+          "blender"
+        ],
+        "feature_ids": [
+          "editable_source"
+        ],
+        "capability_id": "mesh.props.crate.v1",
+        "seed": 42,
+        "input": {
+          "schema_version": "1.0.0",
+          "asset_id": "industrial_box",
+          "parameters": {
+            "size_m": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "lineage": [
+      {
+        "job_id": "job_0",
+        "role_id": "intent_analyst",
+        "stage": "S1",
+        "state": "PRODUCED",
+        "result_digest": "b47e04d0a1b17fdd9994c06b757b864488f44cc51b73bdfa974bd104ffc81f07",
+        "execution_mode": "LOCAL_SINGLE_ROLE",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",
+        "resource_admission": {
+          "cpu_count": 16,
+          "disk_free_bytes": 520963899392,
+          "available_ram_bytes": 10540158976,
+          "hardware": {
+            "os": "Windows-11-10.0.26300-SP0",
+            "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+            "logical_cpus": 16,
+            "physical_memory_bytes": 24841998336,
+            "gpu": {
+              "status": "OBSERVED",
+              "devices": [
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY1",
+                  "state_flags": 5
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY2",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY3",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY4",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY5",
+                  "state_flags": 0
+                },
+                {
+                  "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                  "device": "\\\\.\\DISPLAY6",
+                  "state_flags": 0
+                }
+              ],
+              "source": "EnumDisplayDevicesW"
+            },
+            "graphics": {
+              "display": {
+                "status": "OBSERVED",
+                "count": 1,
+                "source": "GetSystemMetrics(SM_CMONITORS)"
+              },
+              "gpu": {
+                "status": "OBSERVED",
+                "devices": [
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY1",
+                    "state_flags": 5
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY2",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY3",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY4",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY5",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                    "device": "\\\\.\\DISPLAY6",
+                    "state_flags": 0
+                  }
+                ],
+                "source": "EnumDisplayDevicesW"
+              },
+              "render": {
+                "status": "NOT_RUN"
+              },
+              "headless_render": {
+                "status": "UNKNOWN"
+              },
+              "qualification": "Metadata does not establish driver, render or headless support"
+            },
+            "graphics_render_probe": "NOT_RUN",
+            "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+          },
+          "gpu_observation": "METADATA_ONLY",
+          "gpu_execution": "UNVERIFIED",
+          "vram_bytes": 8546942976,
+          "adapters": [
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "vram_bytes": 8546942976,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "vram_bytes": 536870912,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            }
+          ],
+          "mode": "LOCAL_SEQUENTIAL",
+          "admitted_parallel_workers": 1,
+          "worker_limits": {
+            "blender": 1,
+            "unity": 1,
+            "model": 0,
+            "blender_cpu_threads": 1
+          },
+          "render_policy": "REGISTERED_FIXED_CPU",
+          "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+        }
+      },
+      {
+        "job_id": "job_1",
+        "role_id": "asset_producer",
+        "stage": "S2",
+        "state": "PRODUCED",
+        "result_digest": "20a574d69a9979aa9c89edec42b2bbfc56f5e2c0097cdefca5d4ac736b03b37d",
+        "execution_mode": "LOCAL_SINGLE_ROLE",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",
+        "resource_admission": {
+          "cpu_count": 16,
+          "disk_free_bytes": 520963899392,
+          "available_ram_bytes": 10540158976,
+          "hardware": {
+            "os": "Windows-11-10.0.26300-SP0",
+            "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+            "logical_cpus": 16,
+            "physical_memory_bytes": 24841998336,
+            "gpu": {
+              "status": "OBSERVED",
+              "devices": [
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY1",
+                  "state_flags": 5
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY2",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY3",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY4",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY5",
+                  "state_flags": 0
+                },
+                {
+                  "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                  "device": "\\\\.\\DISPLAY6",
+                  "state_flags": 0
+                }
+              ],
+              "source": "EnumDisplayDevicesW"
+            },
+            "graphics": {
+              "display": {
+                "status": "OBSERVED",
+                "count": 1,
+                "source": "GetSystemMetrics(SM_CMONITORS)"
+              },
+              "gpu": {
+                "status": "OBSERVED",
+                "devices": [
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY1",
+                    "state_flags": 5
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY2",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY3",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY4",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY5",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                    "device": "\\\\.\\DISPLAY6",
+                    "state_flags": 0
+                  }
+                ],
+                "source": "EnumDisplayDevicesW"
+              },
+              "render": {
+                "status": "NOT_RUN"
+              },
+              "headless_render": {
+                "status": "UNKNOWN"
+              },
+              "qualification": "Metadata does not establish driver, render or headless support"
+            },
+            "graphics_render_probe": "NOT_RUN",
+            "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+          },
+          "gpu_observation": "METADATA_ONLY",
+          "gpu_execution": "UNVERIFIED",
+          "vram_bytes": 8546942976,
+          "adapters": [
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "vram_bytes": 8546942976,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "vram_bytes": 536870912,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            }
+          ],
+          "mode": "LOCAL_SEQUENTIAL",
+          "admitted_parallel_workers": 1,
+          "worker_limits": {
+            "blender": 1,
+            "unity": 1,
+            "model": 0,
+            "blender_cpu_threads": 1
+          },
+          "render_policy": "REGISTERED_FIXED_CPU",
+          "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+        }
+      },
+      {
+        "job_id": "job_2",
+        "role_id": "asset_inspector",
+        "stage": "S3",
+        "state": "APPROVED",
+        "result_digest": "435078e8b86cc2e17fa5b45a25a6bf08a37383635ddaed146814f906ff37d7c3",
+        "execution_mode": "LOCAL_SINGLE_ROLE",
+        "native_subagents": "UNAVAILABLE",
+        "host_delegation_probe": "NOT_IMPLEMENTED",
+        "independence": "DIFFERENT_ROLE_SAME_HOST",
+        "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",
+        "resource_admission": {
+          "cpu_count": 16,
+          "disk_free_bytes": 520963899392,
+          "available_ram_bytes": 10540158976,
+          "hardware": {
+            "os": "Windows-11-10.0.26300-SP0",
+            "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+            "logical_cpus": 16,
+            "physical_memory_bytes": 24841998336,
+            "gpu": {
+              "status": "OBSERVED",
+              "devices": [
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY1",
+                  "state_flags": 5
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY2",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY3",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY4",
+                  "state_flags": 0
+                },
+                {
+                  "name": "AMD Radeon 780M Graphics",
+                  "device": "\\\\.\\DISPLAY5",
+                  "state_flags": 0
+                },
+                {
+                  "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                  "device": "\\\\.\\DISPLAY6",
+                  "state_flags": 0
+                }
+              ],
+              "source": "EnumDisplayDevicesW"
+            },
+            "graphics": {
+              "display": {
+                "status": "OBSERVED",
+                "count": 1,
+                "source": "GetSystemMetrics(SM_CMONITORS)"
+              },
+              "gpu": {
+                "status": "OBSERVED",
+                "devices": [
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY1",
+                    "state_flags": 5
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY2",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY3",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY4",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "AMD Radeon 780M Graphics",
+                    "device": "\\\\.\\DISPLAY5",
+                    "state_flags": 0
+                  },
+                  {
+                    "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                    "device": "\\\\.\\DISPLAY6",
+                    "state_flags": 0
+                  }
+                ],
+                "source": "EnumDisplayDevicesW"
+              },
+              "render": {
+                "status": "NOT_RUN"
+              },
+              "headless_render": {
+                "status": "UNKNOWN"
+              },
+              "qualification": "Metadata does not establish driver, render or headless support"
+            },
+            "graphics_render_probe": "NOT_RUN",
+            "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+          },
+          "gpu_observation": "METADATA_ONLY",
+          "gpu_execution": "UNVERIFIED",
+          "vram_bytes": 8546942976,
+          "adapters": [
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "vram_bytes": 8546942976,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "vram_bytes": 536870912,
+              "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+            }
+          ],
+          "mode": "LOCAL_SEQUENTIAL",
+          "admitted_parallel_workers": 1,
+          "worker_limits": {
+            "blender": 1,
+            "unity": 1,
+            "model": 0,
+            "blender_cpu_threads": 1
+          },
+          "render_policy": "REGISTERED_FIXED_CPU",
+          "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+        }
+      }
+    ],
+    "execution_mode": "LOCAL_SINGLE_ROLE",
+    "native_subagents": "UNAVAILABLE",
+    "host_delegation_probe": "NOT_IMPLEMENTED",
+    "independence": "DIFFERENT_ROLE_SAME_HOST",
+    "evaluator_owner": "EXTERNAL_NOT_SUPPLIED",
+    "resource_admission": {
+      "cpu_count": 16,
+      "disk_free_bytes": 520963899392,
+      "available_ram_bytes": 10540158976,
+      "hardware": {
+        "os": "Windows-11-10.0.26300-SP0",
+        "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+        "logical_cpus": 16,
+        "physical_memory_bytes": 24841998336,
+        "gpu": {
+          "status": "OBSERVED",
+          "devices": [
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY1",
+              "state_flags": 5
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY2",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY3",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY4",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY5",
+              "state_flags": 0
+            },
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "device": "\\\\.\\DISPLAY6",
+              "state_flags": 0
+            }
+          ],
+          "source": "EnumDisplayDevicesW"
+        },
+        "graphics": {
+          "display": {
+            "status": "OBSERVED",
+            "count": 1,
+            "source": "GetSystemMetrics(SM_CMONITORS)"
+          },
+          "gpu": {
+            "status": "OBSERVED",
+            "devices": [
+              {
+                "name": "AMD Radeon 780M Graphics",
+                "device": "\\\\.\\DISPLAY1",
+                "state_flags": 5
+              },
+              {
+                "name": "AMD Radeon 780M Graphics",
+                "device": "\\\\.\\DISPLAY2",
+                "state_flags": 0
+              },
+              {
+                "name": "AMD Radeon 780M Graphics",
+                "device": "\\\\.\\DISPLAY3",
+                "state_flags": 0
+              },
+              {
+                "name": "AMD Radeon 780M Graphics",
+                "device": "\\\\.\\DISPLAY4",
+                "state_flags": 0
+              },
+              {
+                "name": "AMD Radeon 780M Graphics",
+                "device": "\\\\.\\DISPLAY5",
+                "state_flags": 0
+              },
+              {
+                "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+                "device": "\\\\.\\DISPLAY6",
+                "state_flags": 0
+              }
+            ],
+            "source": "EnumDisplayDevicesW"
+          },
+          "render": {
+            "status": "NOT_RUN"
+          },
+          "headless_render": {
+            "status": "UNKNOWN"
+          },
+          "qualification": "Metadata does not establish driver, render or headless support"
+        },
+        "graphics_render_probe": "NOT_RUN",
+        "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+      },
+      "gpu_observation": "METADATA_ONLY",
+      "gpu_execution": "UNVERIFIED",
+      "vram_bytes": 8546942976,
+      "adapters": [
+        {
+          "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+          "vram_bytes": 8546942976,
+          "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+        },
+        {
+          "name": "AMD Radeon 780M Graphics",
+          "vram_bytes": 536870912,
+          "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+        }
+      ],
+      "mode": "LOCAL_SEQUENTIAL",
+      "admitted_parallel_workers": 1,
+      "worker_limits": {
+        "blender": 1,
+        "unity": 1,
+        "model": 0,
+        "blender_cpu_threads": 1
+      },
+      "render_policy": "REGISTERED_FIXED_CPU",
+      "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+    }
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "task_116bfe26ba15a251_e29d15d4_single",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "116bfe26ba15a251f092b0b7c486f1feb4d22348231e9fe609cada63e53bbb6f",
+  "artifact_ids": [],
+  "evidence_paths": [
+    "workforce/task_116bfe26ba15a251_e29d15d4_single/lineage.json",
+    "workforce/task_116bfe26ba15a251_e29d15d4_single/handoff.json",
+    "workforce/task_116bfe26ba15a251_e29d15d4_single/review.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

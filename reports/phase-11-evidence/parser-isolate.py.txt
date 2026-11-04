@@ -1,0 +1,30 @@
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+root = Path('.tmp/phase11/demo/UnityProject').resolve()
+stages = [json.loads(line) for line in Path('.tmp/phase11/parser-stages.jsonl').read_text().splitlines()]
+paths = [row['path'] for row in stages if 'path' in row]
+script = '''
+import faulthandler, gc, sys
+from pathlib import Path
+from polyforge.inspection import _csharp_source
+faulthandler.enable()
+raw=Path(sys.argv[1]).read_bytes().decode('utf-8-sig').encode('utf-8')
+for i in range(50):
+ value=_csharp_source(raw)
+ assert value[-1]=='PARSED',value[-1]
+ gc.collect()
+print('OK',flush=True)
+'''
+output = Path('.tmp/phase11/parser-isolated-results.jsonl').open('x', encoding='utf-8')
+for name in paths:
+    try:
+        result = subprocess.run([sys.executable, '-X', 'faulthandler', '-c', script, str(root / name)],
+                                timeout=30, capture_output=True, text=True)
+        row = {'path': name, 'code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr}
+    except subprocess.TimeoutExpired:
+        row = {'path': name, 'timeout': True}
+    output.write(json.dumps(row)+'\n'); output.flush()
+    print(json.dumps(row), flush=True)

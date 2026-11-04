@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\native-platformer.py", line 18, in <module>
+    result = import_strip(inputs, RunContext(workspace=workspace))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\sprites\integration.py", line 169, in import_strip
+    launch(
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\unity\bridge.py", line 190, in launch
+    raise InputError(
+polyforge.contracts.validation.InputError: Unity sprites failed: exit, exit 198; see runs/sprite-unity-dc9c0473d5f3436d/build/stdout.txt

@@ -1,0 +1,67 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using NUnit.Framework;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+using PolyForge.Platformer.Editor;
+
+namespace PolyForge.Platformer.Editor.Tests
+{
+    public class PlatformerTests
+    {
+        sealed class DisposableInput : IPlatformerInput, IDisposable
+        {
+            public bool disposed;
+            public Vector2 Movement => Vector2.zero;
+            public bool ConsumeJump() => false;
+            public bool ConsumeRestart() => false;
+            public void Dispose() { disposed = true; }
+        }
+        [Test] public void ReplacingInputDisposesSubscription()
+        {
+            var go = new GameObject("Subscription");
+            try
+            {
+                var player = go.AddComponent<PlatformerPlayer>(); var old = new DisposableInput();
+                player.Input = old; player.Input = new DisposableInput(); Assert.That(old.disposed, Is.True);
+            }
+            finally { UnityEngine.Object.DestroyImmediate(go); }
+        }
+        static string Hash(string path) { using (var sha = SHA256.Create()) return Convert.ToBase64String(sha.ComputeHash(File.ReadAllBytes(path))); }
+        [Test] public void SceneHasSpriteAnimationGroundsAndExplicitBindings()
+        {
+            var paths = Directory.GetFiles("Assets/PolyForgeGenerated", "*", SearchOption.AllDirectories)
+                .Where(p => !p.Replace('\\', '/').Contains("/Platformer/")).ToArray();
+            var hashes = paths.ToDictionary(p => p, Hash);
+            var job = JsonUtility.FromJson<PlatformerInput>(File.ReadAllText(PolyForge.Editor.PolyForgeBuilder.Argument("-polyforgeGameInput")));
+            string sceneHash = Hash(PlatformerBuilder.ScenePath);
+            string guid = AssetDatabase.AssetPathToGUID(PlatformerBuilder.ScenePath);
+            Assert.That(AssetDatabase.AssetPathToGUID(PlatformerBuilder.ScenePath), Is.EqualTo(guid));
+            foreach (var pair in hashes) Assert.That(Hash(pair.Key), Is.EqualTo(pair.Value), pair.Key);
+            EditorSceneManager.OpenScene(PlatformerBuilder.ScenePath);
+            var session = UnityEngine.Object.FindFirstObjectByType<PlatformerSession>();
+            Assert.That(session, Is.Not.Null); Assert.That(session.player.session, Is.SameAs(session));
+            Assert.That(session.inputDigest, Is.EqualTo(job.input_digest));
+            Assert.That(session.sceneId, Is.EqualTo(job.scene_id));
+            Assert.That(session.player.GetComponent<SpritePlayer>(), Is.Null);
+            Assert.That(session.player.GetComponent<SpriteRenderer>().sprite, Is.Not.Null);
+            Assert.That(session.player.GetComponent<Animator>().runtimeAnimatorController, Is.Not.Null);
+            Assert.That(session.player.GetComponent<Animator>().runtimeAnimatorController.animationClips.Single().length, Is.EqualTo(1).Within(.001));
+            Assert.That(session.player.Body.gravityScale, Is.EqualTo(2));
+            Assert.That(session.player.Health.Maximum, Is.EqualTo(3));
+            var grounds = UnityEngine.Object.FindObjectsByType<BoxCollider2D>(FindObjectsSortMode.None).Where(c => c.gameObject.layer == 8).ToArray();
+            Assert.That(grounds.Length, Is.EqualTo(4)); Assert.That(grounds.All(c => c.enabled && !c.isTrigger), Is.True);
+            var triggers = UnityEngine.Object.FindObjectsByType<PlatformerTrigger>(FindObjectsSortMode.None);
+            Assert.That(triggers.Length, Is.EqualTo(4));
+            Assert.That(triggers.All(t => t.session == session && t.actor == session.player && t.GetComponent<BoxCollider2D>().isTrigger), Is.True);
+            foreach (var root in session.gameObject.scene.GetRootGameObjects())
+                foreach (var child in root.GetComponentsInChildren<Transform>(true))
+                    Assert.That(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(child.gameObject), Is.Zero, child.name);
+            Assert.That(EditorBuildSettings.scenes.Any(s => s.path == PlatformerBuilder.ScenePath && s.enabled), Is.True);
+            Assert.That(Hash(PlatformerBuilder.ScenePath), Is.EqualTo(sceneHash), "Inspection must not rewrite the delivered scene");
+        }
+    }
+}

@@ -1,0 +1,1167 @@
+{
+  "schema_version": "2.0.0",
+  "scope": "V5_1_SECTION18_8_MINIMUM_BUNDLED_INVENTORY",
+  "generated_at": "2026-11-01",
+  "taxonomy_version": "18.8-minimum-v1",
+  "taxonomy_digest": "dbee3a7cfced9bc6e1a5cd50dbf136f995385d126c874f3336bd82da1b69c7a8",
+  "denominator": {
+    "domain_count": 2,
+    "subfeature_count": 20,
+    "inventory_weight": 51,
+    "frozen_at": "2026-10-30"
+  },
+  "priority_policy": "Frozen before broad competency evaluation; T1 common fundamental, T2 common advanced, T3 specialist/platform-dependent. Weights are inventory weights, not evaluated task scores.",
+  "coverage_percentage": null,
+  "counts": {
+    "documented": {
+      "NONE": 3,
+      "PARTIAL": 17,
+      "COMPLETE": 0
+    },
+    "version_probed": {
+      "NONE": 11,
+      "PARTIAL": 9,
+      "COMPLETE": 0
+    },
+    "workflow_verified": {
+      "NONE": 13,
+      "PARTIAL": 7,
+      "COMPLETE": 0
+    },
+    "executable": {
+      "NONE": 13,
+      "PARTIAL": 7,
+      "COMPLETE": 0
+    },
+    "independent_validation": {
+      "NONE": 20,
+      "PARTIAL": 0,
+      "COMPLETE": 0
+    }
+  },
+  "entries": [
+    {
+      "id": "blender.scene-transforms",
+      "domain": "blender",
+      "name": "Scene/object transforms, coordinates, collections",
+      "concepts": [
+        "scene transforms",
+        "coordinates",
+        "collections"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental scene placement and handoff",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.modeling",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/manual/en/5.0/modeling/index.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-8-evidence/native/assets/mesh-a9e8f9820ae64dae/asset/metrics.json",
+          "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd",
+          "scope": "recipe transforms only",
+          "tool_version": "5.2.2",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.mesh-modeling",
+      "domain": "blender",
+      "name": "Mesh edit/topology, modifiers, curves/text",
+      "concepts": [
+        "mesh edit",
+        "topology",
+        "modifiers",
+        "curves",
+        "text"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common asset authoring",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.modeling",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/manual/en/5.0/modeling/index.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-8-evidence/native/assets/mesh-a9e8f9820ae64dae/asset/metrics.json",
+          "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd",
+          "scope": "parameterized hard-surface recipe only",
+          "tool_version": "5.2.2",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.geometry-nodes",
+      "domain": "blender",
+      "name": "Geometry Nodes/procedural modeling",
+      "concepts": [
+        "geometry nodes",
+        "procedural modeling"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common reusable advanced modeling",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.modeling",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/manual/en/5.0/modeling/index.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.sculpt-retopo",
+      "domain": "blender",
+      "name": "Sculpt and retopology",
+      "concepts": [
+        "sculpt",
+        "retopology"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common specialist asset workflow",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.modeling",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/manual/en/5.0/modeling/index.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.uv-pbr",
+      "domain": "blender",
+      "name": "UV/images/texture painting, baking and PBR nodes",
+      "concepts": [
+        "uv",
+        "images",
+        "texture painting",
+        "baking",
+        "pbr nodes"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common interoperable asset channels",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.uv-pbr",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/manual/en/5.0/modeling/meshes/uv/index.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-8-evidence/native/assets/mesh-a9e8f9820ae64dae/asset/metrics.json",
+          "sha256": "541520feaf98db6b74912625ee8773d20a35d46e3666efff9613bae365b610bd",
+          "scope": "recipe UV/material metrics only; no texture painting mastery",
+          "tool_version": "5.2.2",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.rig-animation",
+      "domain": "blender",
+      "name": "Rigging, constraints, drivers, shape keys, NLA/actions",
+      "concepts": [
+        "rigging",
+        "constraints",
+        "drivers",
+        "shape keys",
+        "nla",
+        "actions"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common animated asset workflows",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.animation",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/api/5.0/bpy.types.Action.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-7-evidence/native/four_roles/rig-op_f7e2be21a41c5639150d0dc8b74ee106/asset/motion.json",
+          "sha256": "fcc557a488b3978424a9ab048b00fb1b394ebb631971e1fecdb6bdf3a55d6a81",
+          "scope": "mechanical robot ActionSlots and sampled motion only",
+          "tool_version": "5.2.2",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.simulation",
+      "domain": "blender",
+      "name": "Physical and simulation systems",
+      "concepts": [
+        "rigid body",
+        "soft body",
+        "cloth",
+        "fluids",
+        "particles"
+      ],
+      "priority": "T3",
+      "weight": 1,
+      "priority_rationale": "Resource intensive specialist simulations",
+      "states": {
+        "documented": "NONE",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [],
+      "support_state": "UNSUPPORTED",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.rendering",
+      "domain": "blender",
+      "name": "Camera, lighting, render engines, compositing/color management",
+      "concepts": [
+        "camera",
+        "lighting",
+        "render engines",
+        "compositing",
+        "color management"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common review and presentation workflow",
+      "states": {
+        "documented": "NONE",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [],
+      "support_state": "UNSUPPORTED",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.grease-pencil",
+      "domain": "blender",
+      "name": "Grease Pencil and 2D",
+      "concepts": [
+        "grease pencil",
+        "2d drawing"
+      ],
+      "priority": "T3",
+      "weight": 1,
+      "priority_rationale": "Specialist drawing workflow",
+      "states": {
+        "documented": "NONE",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [],
+      "support_state": "UNSUPPORTED",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "blender.automation-export",
+      "domain": "blender",
+      "name": "Optimization, exporters, automation/bpy context, add-ons and file management",
+      "concepts": [
+        "optimization",
+        "exporters",
+        "bpy context",
+        "addons",
+        "file management"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental repeatable asset handoff",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "blender.context",
+          "sources": [
+            {
+              "uri": "https://docs.blender.org/api/5.0/bpy.types.Mesh.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "4fc17ca2f418fe4526984801cb5e1a49696ad18372f2c0717f404fa19aefd2bd",
+          "reference_versions": {
+            "blender": [
+              "5.2.2"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "version_probed",
+          "path": "reports/phase-10-completion-evidence/blender-receipt-reverified.json",
+          "sha256": "42875c48c0269bb774eb03e59753df7b51f542e9bfa80cc239e674ece8bb9cf7",
+          "scope": "fixed mesh repair/operator context probe only",
+          "tool_version": "5.2.2",
+          "verified_at": "2026-10-29",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.scene-editor",
+      "domain": "unity",
+      "name": "GameObjects/scenes/prefabs/serialization and Editor scripting",
+      "concepts": [
+        "gameobjects",
+        "scenes",
+        "prefabs",
+        "serialization",
+        "editor scripting"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental managed scene workflow",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.editor",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/ScriptReference/TypeCache.GetTypesDerivedFrom.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "e593c2b9c689bfb2538db4b82dabc607d0041ab66db28759c0ff6fd0ee9d5381",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-7-evidence/baseline-native/game-check-c9766313637d42af/editmode.xml",
+          "sha256": "4d174e204880f2712380c5798366c9b1ce39acde40358a8454157427770639f6",
+          "scope": "managed arena scene/prefab bindings only",
+          "tool_version": "6000.6.3f1",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.csharp-architecture",
+      "domain": "unity",
+      "name": "C# architecture/ScriptableObjects/assembly definitions",
+      "concepts": [
+        "csharp architecture",
+        "scriptableobjects",
+        "assembly definitions"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental reusable Unity code",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.architecture",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/class-ScriptableObject.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            },
+            {
+              "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/assembly-definition-files.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "c1208cf90803737cd540609b4d6f504888659a873deef98bac7272d74cf1fb38",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "version_probed",
+          "path": "reports/phase-10-completion-evidence/headless-receipt-reverified.json",
+          "sha256": "19e7c50763d387d4ac08c12bdee8c0d70f35876a52065d9e76b5deffea72e90f",
+          "scope": "fixed TypeCache/editor assembly probe only",
+          "tool_version": "6000.6.3f1",
+          "verified_at": "2026-10-29",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.input-cameras",
+      "domain": "unity",
+      "name": "Input, cameras/Cinemachine, Timeline/cutscenes",
+      "concepts": [
+        "input",
+        "cameras",
+        "cinemachine",
+        "timeline",
+        "cutscenes"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common player interaction",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "game.mechanics",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/GameObjects.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "e889a061361b6726111872da500ffdeff1f9b0976a67269126aee1f221c238ee",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.physics",
+      "domain": "unity",
+      "name": "2D/3D physics, joints and triggers",
+      "concepts": [
+        "2d physics",
+        "3d physics",
+        "joints",
+        "triggers"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common gameplay and collision",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.physics",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/PhysicsSection.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "029152314242883e272ff9a26817453ad223c7a33cd8892ad8bbaad8058bd159",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-7-evidence/baseline-native/game-check-c9766313637d42af/editmode.xml",
+          "sha256": "4d174e204880f2712380c5798366c9b1ce39acde40358a8454157427770639f6",
+          "scope": "managed static collider fixture only",
+          "tool_version": "6000.6.3f1",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.animation",
+      "domain": "unity",
+      "name": "Animation, Animator and IK",
+      "concepts": [
+        "animation",
+        "animator",
+        "ik"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common animated gameplay",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "PARTIAL",
+        "workflow_verified": "PARTIAL",
+        "executable": "PARTIAL",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.animation",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/AnimationSection.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "29da1f016d9ff22d3dc96be25ed3437988396eabf8ab90d2d10b25495ecbc9c8",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "workflow_verified",
+          "path": "reports/phase-7-evidence/native/four_roles/animation-646c4cbdd8db44b97701acdbab0ae96c/editmode.xml",
+          "sha256": "656566d7b2c7b927b847e7ce40114225e8dfad264add01157515d336f66a28d6",
+          "scope": "two-state mechanical Animator fixture only; no IK",
+          "tool_version": "6000.6.3f1",
+          "verified_at": "2026-10-28",
+          "qualification": "Historical evidence; no new native run or whole-row validation"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NARROW_FIXTURE_ONLY",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.navigation-ai",
+      "domain": "unity",
+      "name": "Navigation, AI and behavior",
+      "concepts": [
+        "navigation",
+        "ai",
+        "behavior"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common advanced gameplay",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.ai",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/nav-NavigationSystem.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "7b2e947992c60167f23495e49c8c3ae296288e22c25b843070f176b212dbe0d3",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.rendering",
+      "domain": "unity",
+      "name": "URP, lighting, Shader Graph and VFX Graph",
+      "concepts": [
+        "urp",
+        "lighting",
+        "shader graph",
+        "vfx graph"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Common advanced rendering",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.shaders",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.0/manual/lit-shader.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "2e79b1151fbdbbdfb637cf99e8daf8f04012c4f08566346058a362756e67aa3b",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        },
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.packages",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.6/manual/index.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            },
+            {
+              "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/Packages.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "81cbbe1c4f4422604176d31c3d56386743dcc8f653bd32b5c18f3c7b1068ded6",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.ui-audio",
+      "domain": "unity",
+      "name": "UI Toolkit/uGUI, audio and mixer",
+      "concepts": [
+        "ui toolkit",
+        "ugui",
+        "audio",
+        "mixer"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Common game feedback",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.ui",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/UIElements.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "dcee4acc4e73849d68737d6a5c246a6631d3358437259732c10096e4b05b64b8",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.assets-loading",
+      "domain": "unity",
+      "name": "Packages, Addressables, assets, saving, scene loading/streaming",
+      "concepts": [
+        "packages",
+        "addressables",
+        "assets",
+        "saving",
+        "scene loading",
+        "streaming"
+      ],
+      "priority": "T1",
+      "weight": 3,
+      "priority_rationale": "Fundamental content lifecycle",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "unity.packages",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@17.6/manual/index.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            },
+            {
+              "uri": "https://docs.unity3d.com/6000.6/Documentation/Manual/Packages.html",
+              "license_or_attribution": "Official versioned documentation; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "81cbbe1c4f4422604176d31c3d56386743dcc8f653bd32b5c18f3c7b1068ded6",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    },
+    {
+      "id": "unity.world-platform",
+      "domain": "unity",
+      "name": "Terrain/level tools, networking/multiplayer, profiling, tests, build/deployment/platform differences",
+      "concepts": [
+        "terrain",
+        "level tools",
+        "networking",
+        "multiplayer",
+        "profiling",
+        "tests",
+        "build",
+        "deployment",
+        "platform differences"
+      ],
+      "priority": "T2",
+      "weight": 2,
+      "priority_rationale": "Advanced world and platform qualification",
+      "states": {
+        "documented": "PARTIAL",
+        "version_probed": "NONE",
+        "workflow_verified": "NONE",
+        "executable": "NONE",
+        "independent_validation": "NONE"
+      },
+      "evidence": [
+        {
+          "kind": "documented",
+          "knowledge_id": "game.worlds",
+          "sources": [
+            {
+              "uri": "https://docs.unity3d.com/6000.0/Documentation/Manual/CreatingScenes.html",
+              "license_or_attribution": "Authoritative documentation link; locally authored summary, no vendor article copied"
+            }
+          ],
+          "doc_digest": "3473eb8f4a4e6fd4c978417ed3600b4e0ba2725d18a437ad50cdf5fb83cf0cb8",
+          "reference_versions": {
+            "unity": [
+              "6000.6.3f1"
+            ]
+          },
+          "verified_at": "2026-10-29",
+          "scope": "Curated concept summary only; not all concepts in the inventory row"
+        }
+      ],
+      "support_state": "REFERENCE_ONLY",
+      "gap": "Whole subfeature unqualified; absent concepts stay in the denominator",
+      "concept_selection_test": "NOT_EVALUATED_FOR_WHOLE_ROW",
+      "good_bad_fixtures": "NOT_RUN",
+      "unseen_transfer": "NOT_RUN",
+      "required_manual_approvals": "SCOPE_AND_AESTHETIC_REVIEW",
+      "test_count": null,
+      "confidence": null,
+      "cost": "NOT_MEASURED",
+      "independence": "EXTERNAL_EVALUATOR_NOT_SUPPLIED"
+    }
+  ],
+  "records": [
+    {
+      "knowledge_id": "blender.actions.slots.v1",
+      "domain": "animation",
+      "knowledge_state": "VERIFIED_IN_WORKFLOW",
+      "installed_version": "5.2.2",
+      "source": "C:\\Program Files\\Blender Foundation\\Blender 5.2\\5.2\\scripts\\modules\\bpy_extras\\anim_utils.py",
+      "source_sha256": "ec7b23c5ab0c4d0b5e58cd02909c1a533e0ffdbda679dfeeaf3871f7b27a1995",
+      "verified_at": "2026-10-28T10:59:39.098502+00:00",
+      "probe": "rig-ecbc1e2fee8a4b18 motion.json api_probe",
+      "scope": "One mechanical robot family; explicit ActionSlot + channelbag. No arbitrary rig or retargeting claim."
+    },
+    {
+      "knowledge_id": "unity.animator.controller.v1",
+      "domain": "animation",
+      "knowledge_state": "VERIFIED_IN_WORKFLOW",
+      "installed_version": "6000.6.3f1",
+      "source": "https://docs.unity3d.com/6000.6/Documentation/ScriptReference/Animations.AnimatorController.html",
+      "verified_at": "2026-10-28T10:59:39.098502+00:00",
+      "probe": "animation-c75a7a5cef034add actual Editor/PlayMode XML",
+      "scope": "Generic mechanical skeleton, native two-state controller and in-place root only."
+    },
+    {
+      "knowledge_id": "unity.sprite.data_provider.v1",
+      "domain": "2d",
+      "knowledge_state": "VERIFIED_IN_WORKFLOW",
+      "installed_version": "6000.6.3f1 / 2D Sprite 1.0.0",
+      "source": "C:\\Program Files\\Unity\\Hub\\Editor\\6000.6.3f1\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\com.unity.2d.sprite\\Documentation~\\DataProvider.md",
+      "source_sha256": "d86af9e6ecd904e267fc23c96a7f3d4b2b41b8217f0b29ff25034380b894cd89",
+      "verified_at": "2026-10-28T14:15:36.815512+00:00",
+      "probe": "sprite-unity-16aa676ff41a4e4e and sprite-unity-op_db071558788500db67320ebe8553659a: actual 5 EditMode + 4 PlayMode each",
+      "scope": "Six 128px frames; native slicing, imported m_Sprite references, measured 1s loop, keyboard/physics/lifecycle. No universal sprite-format or standalone claim."
+    }
+  ],
+  "limitations": [
+    "The minimum inventory is not a denominator for all production knowledge.",
+    "No broad task evaluation, complete subfeature or production percentage is claimed.",
+    "Partial evidence covers named fixtures only. All five evidence states stay separate.",
+    "Historical records preserved verbatim; external evaluator evidence absent.",
+    "Absent concepts, fixtures, transfer cases, cost and approvals remain explicit gaps."
+  ],
+  "unfamiliar_code_execution": "BLOCKED",
+  "host_native_delegation": "UNAVAILABLE_NO_VERIFIED_ADAPTER"
+}

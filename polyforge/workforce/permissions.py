@@ -24,7 +24,12 @@ ROLES: dict[str, dict[str, list[str]]] = {
     "animation_inspector": {"tools": ["artifact.candidate.inspect.v1"], "writes": []},
     "asset_inspector": {"tools": ["artifact.candidate.inspect.v1"], "writes": []},
     "unity_integration": {
-        "tools": ["animation.robot.unity.v1", "unity.game.arena.v1", "sprite.unity.strip.v1"],
+        "tools": [
+            "animation.robot.unity.v1",
+            "unity.game.arena.v1",
+            "unity.game.platformer.v1",
+            "sprite.unity.strip.v1",
+        ],
         "writes": ["UnityProject/"],
     },
 }

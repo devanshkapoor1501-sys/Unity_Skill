@@ -1,0 +1,44 @@
+*** Begin Patch
+*** Update File: polyforge/unity/platformer.py
+@@
+         "KeyboardMove",
++        "KeyboardLeftMovesPlayer",
+         "KeyboardJump",
+*** Update File: unity_package/Tests/PlatformerEditor/PlatformerTests.cs
+@@
+-            Assert.That(UnityEngine.Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).All(m => m != null), Is.True);
++            foreach (var root in session.gameObject.scene.GetRootGameObjects())
++                foreach (var child in root.GetComponentsInChildren<Transform>(true))
++                    Assert.That(GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(child.gameObject), Is.Zero, child.name);
+*** Update File: unity_package/Tests/PlatformerPlayMode/PlatformerTests.cs
+@@
+         [UnityTest] public IEnumerator KeyboardMove() => Run("player_moves", keyboard: true);
++        [UnityTest] public IEnumerator KeyboardLeftMovesPlayer()
++        {
++            Time.timeScale = 1; Time.fixedDeltaTime = .02f;
++            yield return SceneManager.LoadSceneAsync("SpritePlatformer", LoadSceneMode.Single); yield return null;
++            var session = UnityEngine.Object.FindFirstObjectByType<PlatformerSession>(); Assert.That(session, Is.Not.Null);
++            yield return new WaitForFixedUpdate(); yield return new WaitForFixedUpdate();
++            var oldEditor = InputSystem.settings.editorInputBehaviorInPlayMode;
++            var oldBackground = InputSystem.settings.backgroundBehavior;
++            Keyboard device = null;
++            try
++            {
++                InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
++                InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
++                device = InputSystem.AddDevice<Keyboard>(); session.player.Input = new KeyboardPlatformerInput();
++                float initial = session.player.transform.position.x;
++                InputSystem.QueueStateEvent(device, new KeyboardState(Key.A)); InputSystem.Update();
++                int target = session.Frame + 10;
++                while (session.Frame < target) yield return new WaitForFixedUpdate();
++                Assert.That(session.player.transform.position.x, Is.LessThan(initial - .5f), "A must move the actual Rigidbody2D left");
++            }
++            finally
++            {
++                if (device != null) InputSystem.RemoveDevice(device);
++                InputSystem.settings.editorInputBehaviorInPlayMode = oldEditor;
++                InputSystem.settings.backgroundBehavior = oldBackground;
++            }
++        }
+         [UnityTest] public IEnumerator KeyboardJump() => Run("grounded_jump", keyboard: true);
+*** End Patch

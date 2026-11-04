@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "PUBLIC_DEVELOPMENT",
+  "scenarios": [
+    {
+      "id": "player_moves",
+      "setup": {
+        "position": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 50
+        }
+      ],
+      "schedule_digest": "1420b6a02acf0dfbdf8f12865c6e4e1ba4f39ea488b483edb3beb2e103be0eaa"
+    },
+    {
+      "id": "ground_collision",
+      "setup": {
+        "position": [
+          -8,
+          2,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "ticks": 100
+        }
+      ],
+      "schedule_digest": "7ee6c0cf3e1d9b0b3f47146878715c13d3c238c6aef915748eb336085df274bf"
+    },
+    {
+      "id": "grounded_jump",
+      "setup": {
+        "position": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "jump": true,
+          "ticks": 1
+        },
+        {
+          "ticks": 64
+        }
+      ],
+      "schedule_digest": "8ace8f9c2251c86daf84ee585ef3b85b0d899c5dbeff4674ce3c298959551e56"
+    },
+    {
+      "id": "airborne_jump",
+      "setup": {
+        "position": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "jump": true,
+          "ticks": 1
+        },
+        {
+          "ticks": 9
+        },
+        {
+          "jump": true,
+          "ticks": 1
+        },
+        {
+          "ticks": 54
+        }
+      ],
+      "schedule_digest": "17a0e6d5b02f300c6da47e963b29dc3ebe4f00d9b3b18cb043e138927e44f591"
+    },
+    {
+      "id": "checkpoint_respawn",
+      "setup": {
+        "position": [
+          -4,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 70
+        }
+      ],
+      "schedule_digest": "93569b876ef0ee9423854b3f867d3fef8e1707892977a8ea695ac0f51115e306"
+    },
+    {
+      "id": "hazard_damage",
+      "setup": {
+        "position": [
+          -1,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 40
+        }
+      ],
+      "schedule_digest": "5c11070b7c95b161a845c00d7fc5b9cb0e579e3de5a97741002cd01e971cd5b4"
+    },
+    {
+      "id": "health_failure",
+      "setup": {
+        "position": [
+          -1,
+          0,
+          0
+        ],
+        "health": 1
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 40
+        }
+      ],
+      "schedule_digest": "6f304d21598827c0eaa7601d8254c9d50cb8cc6b8d95907aac08bd8e8dfebdc1"
+    },
+    {
+      "id": "goal_contact",
+      "setup": {
+        "position": [
+          6.5,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 40
+        }
+      ],
+      "schedule_digest": "93a8f968d3e0f1c9dea122755b56e31912e2f109588b373433deb4c74098d93d"
+    },
+    {
+      "id": "restart_resets",
+      "setup": {
+        "position": [
+          6.5,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 40
+        },
+        {
+          "restart": true,
+          "ticks": 1
+        }
+      ],
+      "schedule_digest": "c2c0b698800cc358c445a693c724d1609248327abe29ed23f25a595981151515"
+    },
+    {
+      "id": "restart_failure",
+      "setup": {
+        "position": [
+          -1,
+          0,
+          0
+        ],
+        "health": 1
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 40
+        },
+        {
+          "restart": true,
+          "ticks": 1
+        }
+      ],
+      "schedule_digest": "5f4d06cf1e01a8a7c1b52ef6ad0110db20720a8f08d0666c237c70787e1280c4"
+    },
+    {
+      "id": "journey",
+      "setup": {
+        "position": [
+          -8,
+          0,
+          0
+        ]
+      },
+      "steps": [
+        {
+          "move": 1,
+          "ticks": 85
+        },
+        {
+          "move": 1,
+          "jump": true,
+          "ticks": 40
+        },
+        {
+          "move": 1,
+          "ticks": 2
+        },
+        {
+          "move": 1,
+          "jump": true,
+          "ticks": 40
+        },
+        {
+          "move": 1,
+          "ticks": 2
+        },
+        {
+          "move": 1,
+          "jump": true,
+          "ticks": 40
+        },
+        {
+          "move": 1,
+          "ticks": 50
+        }
+      ],
+      "schedule_digest": "9c9e8f836f4ac490c2728a2689de609ad26cc015f8a06b39ecd088527912de6d"
+    }
+  ]
+}

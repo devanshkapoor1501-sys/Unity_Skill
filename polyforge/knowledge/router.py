@@ -125,6 +125,13 @@ def route_reference(
                 capabilities.append(identifier)
     elif output == "ANIMATE" and "robot" in query:
         capabilities = ["animation.robot.rig.v1"]
+    elif (
+        output == "GAME"
+        and re.search(r"\b2d\b", query)
+        and "checkpoint" in query
+        and "platformer" in query
+    ):
+        capabilities = ["unity.game.platformer.v1"]
     elif output == "GAME" and "arena" in query and "survival" in query:
         capabilities = ["unity.game.arena.v1"]
     permitted = {cap for card in selected for cap in card["capability_ids"]}

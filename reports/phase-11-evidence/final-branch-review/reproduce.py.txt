@@ -1,0 +1,21 @@
+import json
+from pathlib import Path
+from polyforge.inspection import inspect_project
+from polyforge.benchmark.runner import run_suite
+from polyforge.benchmark.tasks import load_suite
+
+root = Path('.tmp/phase11/final-branch-review/lock-project').absolute()
+(root / 'Assets').mkdir(parents=True, exist_ok=True)
+(root / 'ProjectSettings').mkdir(exist_ok=True)
+(root / 'Packages').mkdir(exist_ok=True)
+(root / 'ProjectSettings/ProjectVersion.txt').write_text('m_EditorVersion: 6000.6.3f1\n')
+(root / 'Packages/manifest.json').write_text(json.dumps({'dependencies': {'com.example.direct': '1.0.0'}}))
+(root / 'Packages/packages-lock.json').write_text(json.dumps({'dependencies': {'com.example.direct': {'version': '1.1.0', 'depth': 0, 'source': 'registry', 'dependencies': {'com.example.transitive': '2.0.0'}}, 'com.example.transitive': {'version': '2.0.0', 'depth': 1, 'source': 'registry', 'dependencies': {}}}}))
+result = inspect_project(root)
+print('LOCK_VALID', json.dumps({'status': result.status, 'packages': result.data['packages'], 'resolved_packages': result.data.get('resolved_packages'), 'keys': sorted(result.data)}))
+(root / 'Packages/packages-lock.json').write_text('{broken')
+result = inspect_project(root)
+print('LOCK_BROKEN', json.dumps({'status': result.status, 'packages': result.data['packages'], 'guid_issues': result.data['guid_issues']}))
+suite = load_suite(Path('polyforge/data/benchmark-core/suite.json'))
+result = run_suite(suite, 'A', Path('.tmp/phase11/final-branch-review/unused-output'), dry_run=True)
+print('REPEAT_COUNT', json.dumps({'declared_repetitions': suite['runs_per_task_arm'], 'tasks': len(suite['tasks']), 'planned_cases': result.data['planned_cases'], 'expected_cases': len(suite['tasks']) * suite['runs_per_task_arm']}))

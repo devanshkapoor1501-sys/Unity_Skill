@@ -1,0 +1,24 @@
+"""Fresh final native arena qualification, followed by three continuous profiles."""
+import json
+from pathlib import Path
+
+from polyforge.blender.build import build_assets
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.performance import profile_player
+from polyforge.workspace import init_workspace
+
+base = Path('.tmp/phase11').resolve()
+workspace = base / 'arena-final'
+assert not workspace.exists(), 'Preserve every previous qualification attempt'
+assert init_workspace(workspace, 'simple_arena').status == 'PASS'
+print('Fresh final arena initialized', flush=True)
+result = build_assets(workspace, through='S5', allow_package_downloads=True, standalone=True)
+(base / 'arena-final-result.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print('BUILD', json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()
+player = WorkspacePolicy(workspace).path(f'runs/{result.run_id}/player/PolyForgeArena.exe')
+print('Final profile ready to start; numerical and full-duration gates unchanged', flush=True)
+result = profile_player(workspace, player)
+(base / 'arena-final-profile.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print('PROFILE', json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()

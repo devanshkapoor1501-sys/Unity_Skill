@@ -1,0 +1,21 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_________ test_all_four_unexecuted_arms_have_no_measurable_game_rate __________
+
+    def test_all_four_unexecuted_arms_have_no_measurable_game_rate() -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+        rows = [trial("COMPLETE_GAME_2D", arm=arm, executed=False, status="BLOCKED")
+                for arm in "ABCD"]
+        summary = summarize(rows)
+        assert len(summary["by_configuration"]) == 4
+>       assert summary["accepted_game_rate"]["status"] == "NOT_MEASURABLE"
+E       AssertionError: assert 'NON_ATTRIBUTABLE' == 'NOT_MEASURABLE'
+E         
+E         - NOT_MEASURABLE
+E         + NON_ATTRIBUTABLE
+
+tests\test_phase11_benchmark.py:669: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_all_four_unexecuted_arms_have_no_measurable_game_rate
+1 failed, 77 deselected in 0.62s

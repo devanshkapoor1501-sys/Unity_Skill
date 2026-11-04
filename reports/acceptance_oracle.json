@@ -1,29 +1,76 @@
 {
   "schema_version": "1.0.0",
-  "scope": "PHASE8_PUBLIC_DEVELOPMENT",
+  "scope": "PHASE11_PUBLIC_DEVELOPMENT_RECONCILIATION",
+  "reconciled_on": "2026-11-02",
   "oracle_owner": "PUBLIC_DEVELOPMENT",
   "independence": "DIFFERENT_ROLE_SAME_HOST",
   "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
-  "phase_acceptance": "PASS",
+  "phase_acceptance": "BLOCKED",
   "game_status": "PARTIAL",
-  "baseline_commit": "ba70092d860055c8b9f67cd157e4e3fcf9777bfa",
-  "asset_gate": "Two distinct primitive model/refine/review handoffs; immutable original briefs, declared rubric, source/license bindings",
-  "required_native_evidence": {
-    "sprite_editor_per_project": 5,
-    "sprite_playmode_per_project": 4,
-    "animation_editor": 5,
-    "animation_playmode": 2,
-    "static_editor": 17,
-    "arena_editor": 1,
-    "arena_playmode": 12
-  },
-  "visual_review": "SOURCE_PREVIEW_AGENT_REVIEW; aesthetic approval REVIEW",
-  "previous_oracle": "phase-7-evidence/summary.json",
-  "limits": [
-    "six-frame bounded importer and one robot bake family",
-    "basic URP Lit only",
-    "same-host roles; no protected evaluator",
-    "full rollback Phase9; host qualification Phase10; advanced texturing Phase13",
-    "no Phase8 standalone/performance/sandbox claim"
-  ]
+  "engine_digest": "a7b4b8e0392db9d97a9124a96ec7cd79765aeecf8133e7f2f68c57d511f09c8a",
+  "required_current_manual_review": "REVIEW",
+  "protected_holdout": "NOT_RUN",
+  "evidence": [
+    {
+      "path": "reports/phase-11-evidence/arena-final-public-acceptance.json",
+      "sha256": "3ce08df0e5ec1a4619eb20332b838d0b769a9c824bb6b9bcec285146d5b5a708"
+    },
+    {
+      "path": "reports/phase-11-evidence/platformer-attempt-3.json",
+      "sha256": "f6ab6f8482055477bfee3a495609470b5a93cd9981551db3752a116bbcc1cfbd"
+    },
+    {
+      "path": "reports/phase-11-evidence/platformer-workforce-final-result.json",
+      "sha256": "612936390f6ca7d3d41783bae67e6152f2a0376c57d3317cae893735c56b0f1e"
+    },
+    {
+      "path": "reports/phase-11-evidence/release-suite-availability.json",
+      "sha256": "bfe768009f6658cb468560d80f9775fcc8e29e556af36e9f07419dd9b41739e8"
+    },
+    {
+      "path": "reports/phase-6-evidence/manual-review.json",
+      "sha256": "48b1e516dedbe0ce56ee2efa894777f32cd116820d1d1abfb2c4fdc5bead6ddf"
+    }
+  ],
+  "historical_receipts": [
+    {
+      "schema_version": "1.0.0",
+      "scope": "PHASE8_PUBLIC_DEVELOPMENT",
+      "oracle_owner": "PUBLIC_DEVELOPMENT",
+      "independence": "DIFFERENT_ROLE_SAME_HOST",
+      "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
+      "phase_acceptance": "PASS",
+      "game_status": "PARTIAL",
+      "baseline_commit": "ba70092d860055c8b9f67cd157e4e3fcf9777bfa",
+      "asset_gate": "Two distinct primitive model/refine/review handoffs; immutable original briefs, declared rubric, source/license bindings",
+      "required_native_evidence": {
+        "sprite_editor_per_project": 5,
+        "sprite_playmode_per_project": 4,
+        "animation_editor": 5,
+        "animation_playmode": 2,
+        "static_editor": 17,
+        "arena_editor": 1,
+        "arena_playmode": 12
+      },
+      "visual_review": "SOURCE_PREVIEW_AGENT_REVIEW; aesthetic approval REVIEW",
+      "previous_oracle": "phase-7-evidence/summary.json",
+      "limits": [
+        "six-frame bounded importer and one robot bake family",
+        "basic URP Lit only",
+        "same-host roles; no protected evaluator",
+        "full rollback Phase9; host qualification Phase10; advanced texturing Phase13",
+        "no Phase8 standalone/performance/sandbox claim"
+      ]
+    }
+  ],
+  "qualification": "Historical Phase6 USER approval does not approve rebuilt Phase11 artifacts; public checks never establish external evaluator ownership.",
+  "final_development_technical": {
+    "status": "PASS",
+    "game_status": "PARTIAL",
+    "manual_review": "REVIEW",
+    "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
+    "engine_digest": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+    "run_id": "game-check-4f95281f9e214a8e",
+    "evidence": "reports/phase-11-evidence/closure/final-installed-native-summary.json"
+  }
 }

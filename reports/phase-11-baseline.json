@@ -1,0 +1,2241 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "PHASE_0_THROUGH_11_REGRESSION_BASELINE",
+  "frozen_at": "2026-11-04",
+  "phases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "base_commit": "31827d134102650604aaa0998c0d06d6f4a579c3",
+  "engine_digest": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+  "authority_sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
+  "native_versions": {
+    "blender": "5.2.2",
+    "unity": "6000.6.3f1",
+    "urp": "17.6.0"
+  },
+  "prior_baselines": [
+    {
+      "path": "reports/v5_1_baseline.json",
+      "sha256": "6e310cb1082b29d9e314fdcbf0ffc18a04cccd9ecc15785232bd81beecd4fd47"
+    },
+    {
+      "path": "reports/phases-0-10-audit-evidence/index.json",
+      "sha256": "bd8e73e2ddc8ad90445ec7c7f20037995d3f6e56a0f1d58d27530d7627fd758d"
+    }
+  ],
+  "files": [
+    {
+      "path": ".agents/skills/polyforge/SKILL.md",
+      "bytes": 5681,
+      "sha256": "024f0198d9a49b77819940f01b181a3d89d3d6c5add3d571de0f06a83eb7d763"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/assets-and-sprites.md",
+      "bytes": 2659,
+      "sha256": "2e76f65983b62b45f5ae325f5cac9ac0b9545ed2c72855bbc7f9b8fc1d81d978"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/blender/overview.md",
+      "bytes": 3803,
+      "sha256": "c583398e7dc971f72d5fec19634a1f4ade5e5552aab2f8e05603659a6ab1c776"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/game_design/overview.md",
+      "bytes": 2087,
+      "sha256": "ac5b5322bf980d3c9fe4723c7046da611edb107a6a6ec206624eb5a43996a87f"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/quality/overview.md",
+      "bytes": 2206,
+      "sha256": "424bcf680620ce5e9371e4d8e584f2a7b087094868b6e68956f5a584656da86a"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/review-and-recovery.md",
+      "bytes": 3804,
+      "sha256": "0f035b0b69f88bd2497d5310e871e48590e7852d53fbf7a591ee2bf51c67c4ee"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/security/discovery.md",
+      "bytes": 1878,
+      "sha256": "82523f110426c924d23d4a394e63477d1b08f0afffc82cdfa77ad4bb9e841dc8"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/security/overview.md",
+      "bytes": 1338,
+      "sha256": "64662c7a676aa45ca1c8f0abda25df6fa07c63f4ac7715d493e13bb0bcb8761a"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/unity/architecture-packages.md",
+      "bytes": 2464,
+      "sha256": "4235ba7a2d163f76f7e2daa4bbe2c3faba5b3d9277912b92c21ff1f633d6c4e9"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/unity/overview.md",
+      "bytes": 7110,
+      "sha256": "96e12bf145ea13897d330f3286b8ee00be8b4de4700d5663a297d9467aa70666"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/workflow.md",
+      "bytes": 6129,
+      "sha256": "ae0df26cbd8e7b1fdef251cc5fe0022a970a156411daf5341befa55cae09a283"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/workforce/contributing.md",
+      "bytes": 1155,
+      "sha256": "b961e821f45c6562dd9fb4e2d093112a04ce4a00fe1e027fa37b2b3ea6126516"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/workforce/hosts.md",
+      "bytes": 2463,
+      "sha256": "1c679cdcbffcc90567fff2cccd0555c11b167b1f623e7b5f20e8707d7be34dae"
+    },
+    {
+      "path": ".agents/skills/polyforge/references/workforce/overview.md",
+      "bytes": 1234,
+      "sha256": "3b9e1eb7ad9135d82362824baf98e75488c1f0d9c4431b5e80561feae6c01957"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 2481,
+      "sha256": "c59bdd041c2bb5bcb801b4afb2ba670e6b2ce7a6e74f672a3e7960bf78145469"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "bytes": 1469,
+      "sha256": "37a569cbceb338932acf3df648ba0810698e6518cc4bcb1ca4ee06fe16801280"
+    },
+    {
+      "path": "MANIFEST.in",
+      "bytes": 527,
+      "sha256": "add2c0aac3b4f11797aa41c7591b0f040fc79ce0d8a8ac953fe99817721f362d"
+    },
+    {
+      "path": "benchmarks/README.md",
+      "bytes": 1914,
+      "sha256": "e4500b4db0577f14a5798c0686d99f1c4dd3c371400281d6931ee33348655d4d"
+    },
+    {
+      "path": "benchmarks/development-v1/README.md",
+      "bytes": 891,
+      "sha256": "c6cee2e7404af21bd35551e75af217044e3b405285e327dab4c2f7f6efcfcbdd"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/contact_damage.md",
+      "bytes": 64,
+      "sha256": "f9eeb4d0795e107502c1088c6977ea02acc03e60b1e83a79b786deac13d4eb93"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/crate_mesh.md",
+      "bytes": 69,
+      "sha256": "af642f07346ce7a8ef96f911a1676900ece796cdd7e75523680a65f996d9cb36"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/doorway_mesh.md",
+      "bytes": 73,
+      "sha256": "f7d12e35a8dcb2b094893d775bc76c01764145ee19ca1b148ac8d6c0c412d7f1"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/player_movement.md",
+      "bytes": 69,
+      "sha256": "8784e9f698a0a99f18944c5e81ea0b81a88ef946cbd3980692402d58e19a2f61"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/repair_material.md",
+      "bytes": 73,
+      "sha256": "4046718a196729b447f18a410d300a534f6c8aa27d7ee2ae5e39b772fb7b3277"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/repair_scale.md",
+      "bytes": 72,
+      "sha256": "d246e2e96c97676aba367dda85c0ebf58988046e7872ce8dede017508ab68973"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/robot_idle_import.md",
+      "bytes": 127,
+      "sha256": "467f2eec49261f5b5087c90acf5c08808b7ff5bfb50d4eca98ab248906793edf"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/robot_mesh.md",
+      "bytes": 74,
+      "sha256": "c55d75921d17b51d44e69200aa7769ef34262189694aff67d6a458dad9c61658"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/robot_walk_import.md",
+      "bytes": 64,
+      "sha256": "8f2d8d47dd0ff51c9d7aca8a23a2f31511bf8ca790c4e60f8eaf30b51e9b0b87"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/sprite_survival_game.md",
+      "bytes": 195,
+      "sha256": "ea0aa38ec28873e3a8e8de3b334c0265c34817741e19c0726dcdf986acbc0464"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/wall_collision.md",
+      "bytes": 76,
+      "sha256": "d262d540849f0284a029bc69250c7270360141023c8ac32947869f39a9c65b0a"
+    },
+    {
+      "path": "benchmarks/development-v1/briefs/wall_mesh.md",
+      "bytes": 66,
+      "sha256": "e7c14dc6f806c48d4718b3895ca8b997c608f58f3e3e59d9fbbc97bc561b0c5c"
+    },
+    {
+      "path": "benchmarks/development-v1/suite.json",
+      "bytes": 6442,
+      "sha256": "8519cfa23c2df29d97b8c6821f451a177d731a1388f1f82f27a7972d83b90fad"
+    },
+    {
+      "path": "benchmarks/release-development-v1/README.md",
+      "bytes": 1206,
+      "sha256": "98dc9710e9808a045b0336b173e21019f85544ef78a2c0a174b0e3a9abc823a5"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/arena_survival_3d.md",
+      "bytes": 1055,
+      "sha256": "6735c3c2a4bde4311498f265560fac3bad6665b35ba9fdaa5e2bad02b4605f70"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/contact_damage.md",
+      "bytes": 64,
+      "sha256": "f9eeb4d0795e107502c1088c6977ea02acc03e60b1e83a79b786deac13d4eb93"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/crate_mesh.md",
+      "bytes": 69,
+      "sha256": "af642f07346ce7a8ef96f911a1676900ece796cdd7e75523680a65f996d9cb36"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/doorway_mesh.md",
+      "bytes": 73,
+      "sha256": "f7d12e35a8dcb2b094893d775bc76c01764145ee19ca1b148ac8d6c0c412d7f1"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/player_movement.md",
+      "bytes": 69,
+      "sha256": "8784e9f698a0a99f18944c5e81ea0b81a88ef946cbd3980692402d58e19a2f61"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/relay_gate_garden_3d.md",
+      "bytes": 1201,
+      "sha256": "0c14a7c6da782d66f31d05273b7a81f5f29e946437a10daa3faaa1ba2b9a2823"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/repair_material.md",
+      "bytes": 73,
+      "sha256": "4046718a196729b447f18a410d300a534f6c8aa27d7ee2ae5e39b772fb7b3277"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/repair_scale.md",
+      "bytes": 72,
+      "sha256": "d246e2e96c97676aba367dda85c0ebf58988046e7872ce8dede017508ab68973"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/robot_idle_import.md",
+      "bytes": 127,
+      "sha256": "467f2eec49261f5b5087c90acf5c08808b7ff5bfb50d4eca98ab248906793edf"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/robot_mesh.md",
+      "bytes": 74,
+      "sha256": "c55d75921d17b51d44e69200aa7769ef34262189694aff67d6a458dad9c61658"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/robot_walk_import.md",
+      "bytes": 64,
+      "sha256": "8f2d8d47dd0ff51c9d7aca8a23a2f31511bf8ca790c4e60f8eaf30b51e9b0b87"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/sprite_survival_game.md",
+      "bytes": 195,
+      "sha256": "ea0aa38ec28873e3a8e8de3b334c0265c34817741e19c0726dcdf986acbc0464"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/wall_collision.md",
+      "bytes": 76,
+      "sha256": "d262d540849f0284a029bc69250c7270360141023c8ac32947869f39a9c65b0a"
+    },
+    {
+      "path": "benchmarks/release-development-v1/briefs/wall_mesh.md",
+      "bytes": 66,
+      "sha256": "e7c14dc6f806c48d4718b3895ca8b997c608f58f3e3e59d9fbbc97bc561b0c5c"
+    },
+    {
+      "path": "benchmarks/release-development-v1/suite.json",
+      "bytes": 7807,
+      "sha256": "fd7a81146c4ef364cef40922a186592b9408fbeb315445d512ee351f9d650869"
+    },
+    {
+      "path": "benchmarks/tasks/arena_development.json",
+      "bytes": 401,
+      "sha256": "a9b0b84707561e7f2dd2735d5785c34af47b0aeee79eb746fbfab582fd8a3d57"
+    },
+    {
+      "path": "capabilities/README.md",
+      "bytes": 487,
+      "sha256": "3dd39d1392c96dd7a2cfdf11d24445434ee441c0d8f83150d850150bc8f9b569"
+    },
+    {
+      "path": "examples/phase7/animation-brief.md",
+      "bytes": 114,
+      "sha256": "cdce8debedc639829942838d2f4ee10aa20cfe76d3e3b68d2c5576816d27d752"
+    },
+    {
+      "path": "examples/phase7/animation-task.json",
+      "bytes": 507,
+      "sha256": "1c9fada8dcb5cddc96dd6453bb0118c7ec3f8e6e86900a3d2e2026ad83ec89e8"
+    },
+    {
+      "path": "examples/phase7/crate-brief.md",
+      "bytes": 48,
+      "sha256": "27fccd6d34fd9ccf0d89753b0a68f8fb65963f99cbc9e5afb662c9b24c18dd0a"
+    },
+    {
+      "path": "examples/phase7/crate-task.json",
+      "bytes": 426,
+      "sha256": "cdefd6323c16c1e69226d7148c4c6a8259ad2c770de081f979ae2eaeccf84b6b"
+    },
+    {
+      "path": "examples/phase8/crate-asset.json",
+      "bytes": 944,
+      "sha256": "46c34e232927af0bb1c6b8c5f6b8639dd57c6fb1bd6f54c51164e673411ba195"
+    },
+    {
+      "path": "examples/phase8/crate-brief.md",
+      "bytes": 64,
+      "sha256": "76aaa206e16febbc0c6a8f8c48df050597510c5abfe2c2c08e9ce40b04bb47d2"
+    },
+    {
+      "path": "examples/phase8/crate-task.json",
+      "bytes": 1367,
+      "sha256": "00ebc8cc6d7fbf64a10cd594f69f5f85a84e78ec4dc93fed397ad01a5ba832dd"
+    },
+    {
+      "path": "examples/phase8/wall-asset.json",
+      "bytes": 934,
+      "sha256": "4386e05e70ee34a493d56615f4b596846d0a5fe39c4a7edc0f83e36b08e08e29"
+    },
+    {
+      "path": "examples/phase8/wall-brief.md",
+      "bytes": 63,
+      "sha256": "5a46bcae91a4fa83d7c260878465a3833a0993558c33ad1668672cc4a591c13e"
+    },
+    {
+      "path": "examples/phase8/wall-task.json",
+      "bytes": 1356,
+      "sha256": "bab410f393c3453806eb31e6247f9f54092c18146a300112010dc2f9a7739fb5"
+    },
+    {
+      "path": "examples/simple_arena/README.md",
+      "bytes": 332,
+      "sha256": "e85af17cda2b8634178465bbdd9d0fba9c28143764df10e71acfdecbee286bfe"
+    },
+    {
+      "path": "examples/simple_arena/brief.md",
+      "bytes": 953,
+      "sha256": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+    },
+    {
+      "path": "examples/simple_arena/game_manifest.json",
+      "bytes": 5935,
+      "sha256": "3b1edcd791b15ad50e80af951af27cd00b1b0fe4b995d90ab07986b9f6a2cb48"
+    },
+    {
+      "path": "examples/simple_arena/recipes/crate_a.json",
+      "bytes": 1743,
+      "sha256": "69739b2e3a122cbff16d4513af142470546826dbcc5758adda068ce9c3a87c92"
+    },
+    {
+      "path": "examples/simple_arena/recipes/ground_a.json",
+      "bytes": 1417,
+      "sha256": "125a791308d507a820f605ee48fe7ed5a497d02d6b39e5538d6545ed8336a35f"
+    },
+    {
+      "path": "examples/simple_arena/recipes/robot_a.json",
+      "bytes": 8368,
+      "sha256": "dd957dbb2ed916d80efc4457140c542a8ea6130f6d30e8e5288bb56488f809aa"
+    },
+    {
+      "path": "examples/static_recipes/audit.json",
+      "bytes": 57,
+      "sha256": "0d2105673c0575cf0de40eb5c85101e279ac6fcc1b444d95822b4fb17da65d98"
+    },
+    {
+      "path": "examples/static_recipes/crate.json",
+      "bytes": 126,
+      "sha256": "36f26ed254910c53e5d7885f71d4e8b57c8d9d0394a6a289235adfd552d52523"
+    },
+    {
+      "path": "examples/static_recipes/doorway.json",
+      "bytes": 132,
+      "sha256": "d37c9002a9c904b11c8b4c1576da1c124cd7cc4686c7835d3f083151e61b65c2"
+    },
+    {
+      "path": "examples/static_recipes/ground.json",
+      "bytes": 129,
+      "sha256": "9da43006ca7624b0b052fc5a9470efa164b58044654c3379c7faba48ba6d6cdc"
+    },
+    {
+      "path": "examples/static_recipes/robot.json",
+      "bytes": 130,
+      "sha256": "0fe8a40fda003c54b9fdce60f8114bbdd2b0a3a1f8a6ca17f731b39a82bbce28"
+    },
+    {
+      "path": "examples/static_recipes/wall.json",
+      "bytes": 129,
+      "sha256": "6c88ec02255874aadaade5bb9561f3bf3898de531439a0d91645f8b9eccce43f"
+    },
+    {
+      "path": "polyforge/__init__.py",
+      "bytes": 78,
+      "sha256": "7b921766cd14af8c6cd655e43bbe9600bb679da282f7ac919f98a1180f858d73"
+    },
+    {
+      "path": "polyforge/__main__.py",
+      "bytes": 97,
+      "sha256": "a161be454b9fae0043fd3e74a1b472e5414c94360acc00767686d0b994bb3966"
+    },
+    {
+      "path": "polyforge/animation/__init__.py",
+      "bytes": 60,
+      "sha256": "6088814c17f5c7920d759966c9fd0a57da110b6aff826df837cfd7159182f8c5"
+    },
+    {
+      "path": "polyforge/animation/adapter.py",
+      "bytes": 5520,
+      "sha256": "5e44f8bc5f976662ff0a17dd186d3ee2b4fd744bbf83f4fdbb18613f69cf5d20"
+    },
+    {
+      "path": "polyforge/animation/contract.py",
+      "bytes": 3476,
+      "sha256": "5973c8273144e6b167abe3aef4d2a1f5e5a4e63206bfccd4a031881227b4dac7"
+    },
+    {
+      "path": "polyforge/animation/integration.py",
+      "bytes": 8226,
+      "sha256": "25f2b16815188427c448556cbba7342d21800b1f4f88dc5c5dd2496421a5a2ca"
+    },
+    {
+      "path": "polyforge/animation/worker.py",
+      "bytes": 10405,
+      "sha256": "e17f5fa2a80b07e6e39d62e65142fb824a0369694958b3f7c8a355a10990d015"
+    },
+    {
+      "path": "polyforge/assets/__init__.py",
+      "bytes": 69,
+      "sha256": "c4266c208b3c3de8e8d2e81d587310599116a4304c0b9028f2882805f4a406e0"
+    },
+    {
+      "path": "polyforge/assets/contracts.py",
+      "bytes": 8340,
+      "sha256": "68dd04d8dddfb505ab3610c2212c0839ee06b830340af43f631318168902a212"
+    },
+    {
+      "path": "polyforge/assets/pipeline.py",
+      "bytes": 8614,
+      "sha256": "61297d4cc00dffcc20b2db226bdff53b2c846dde93052d34744e6e9922db107c"
+    },
+    {
+      "path": "polyforge/benchmark/__init__.py",
+      "bytes": 83,
+      "sha256": "1c28ea0448ab318bd818b43b71b4f77b37c6681b194f04f9c8891b3618bfb8ae"
+    },
+    {
+      "path": "polyforge/benchmark/analysis.py",
+      "bytes": 10521,
+      "sha256": "e711a5811f6e18ad5471a11a6d15878df4b2a151ad36fbe33bb9e68d9c053ffc"
+    },
+    {
+      "path": "polyforge/benchmark/metrics.py",
+      "bytes": 10038,
+      "sha256": "b442dbfbcb3a83de723910a16b2d4b5649b48064fd34a6eb47aac8ac37edcff7"
+    },
+    {
+      "path": "polyforge/benchmark/protocol.py",
+      "bytes": 1215,
+      "sha256": "a77ad8444a0e732ab4a3dc688f78b9c593fc36cdb28bb1a682f1debbbf4c3c5f"
+    },
+    {
+      "path": "polyforge/benchmark/runner.py",
+      "bytes": 15558,
+      "sha256": "6674e88dfff0e8861b15ba5553a1e6c80c6fe571addad4d25c6a892b4a5fb6f9"
+    },
+    {
+      "path": "polyforge/benchmark/tasks.py",
+      "bytes": 10009,
+      "sha256": "2f464b181c92b82cf2a8b00ea9436d691c8cb17045b025ff22d4c359f6b45ae0"
+    },
+    {
+      "path": "polyforge/blender/__init__.py",
+      "bytes": 76,
+      "sha256": "d83406f7507296a9a82d172d43feb873d766a90741feb612c49b141143d10289"
+    },
+    {
+      "path": "polyforge/blender/adapter.py",
+      "bytes": 20650,
+      "sha256": "670173ce04acc8bc2e577516e7b5ee1c93fcb45d33749937306572ace67c61e8"
+    },
+    {
+      "path": "polyforge/blender/audit.py",
+      "bytes": 8151,
+      "sha256": "7b3fc4493a84a00a7d33866b2b95a39f79c0fdf55e638aa32d677ba7511240e3"
+    },
+    {
+      "path": "polyforge/blender/audit_worker.py",
+      "bytes": 13081,
+      "sha256": "af90b6b2b23fd0c9e1e6caacaf79ea2e8613f4a8a948d73d26269767f4484115"
+    },
+    {
+      "path": "polyforge/blender/build.py",
+      "bytes": 9391,
+      "sha256": "a5743c2549c7066dad8f593148445ad854ace052b345cfdf8235356423c46c41"
+    },
+    {
+      "path": "polyforge/blender/interchange.py",
+      "bytes": 1014,
+      "sha256": "d63c771a4bae3d39aba1c52c5cf249acdbc642beac2b7bd62aacdafb975030bb"
+    },
+    {
+      "path": "polyforge/blender/recipes.py",
+      "bytes": 12790,
+      "sha256": "3aba2c7a3bfccf427b140e2e9ece01976f129b6127436d2750cf4ddb89b0e457"
+    },
+    {
+      "path": "polyforge/blender/worker.py",
+      "bytes": 14033,
+      "sha256": "ac4898a212cd03983fcb53010191c3b750256a92fabd9c96b2905a40f3e7f5f1"
+    },
+    {
+      "path": "polyforge/capabilities/__init__.py",
+      "bytes": 77,
+      "sha256": "2f94c86b90fe10a0779e811549fd6fe46461a6d195e3f0d8d3814ccc11507630"
+    },
+    {
+      "path": "polyforge/capabilities/dispatch.py",
+      "bytes": 6297,
+      "sha256": "5762f0f3ed491c5679f859e08d10a2e4a1b75572f0ccc737a4323e005ae3585f"
+    },
+    {
+      "path": "polyforge/capabilities/protocol.py",
+      "bytes": 2496,
+      "sha256": "c3bb4f7239a55428fc9d1c5e349c42323e72d250d1cb0ab187eb9e73e838696c"
+    },
+    {
+      "path": "polyforge/capabilities/registry.py",
+      "bytes": 3686,
+      "sha256": "aee17b5f17be681386b09ccced83628b6f7de9e5bbe877ab658448932516a5b1"
+    },
+    {
+      "path": "polyforge/cleanup.py",
+      "bytes": 17172,
+      "sha256": "b737692891608bb379814c3be3e7fb9c49d8676992f029e55740a15d18c2e295"
+    },
+    {
+      "path": "polyforge/cli.py",
+      "bytes": 14158,
+      "sha256": "0e90502f71a27a65365ca20ca140fcbcfa65f299c98685565da3ddbe72886b48"
+    },
+    {
+      "path": "polyforge/commands.py",
+      "bytes": 18980,
+      "sha256": "5b424f3ede329dceae538ae5770feba0350dc726c8c75f4f9f4a13c9b5ce9710"
+    },
+    {
+      "path": "polyforge/compiler/__init__.py",
+      "bytes": 56,
+      "sha256": "64902f412327c721120db8ccf7851842801e080f9cae95b969eb3fbc1758a7b4"
+    },
+    {
+      "path": "polyforge/compiler/commands.py",
+      "bytes": 9535,
+      "sha256": "2cd5567252bb9f82aa726112da7e307ac5e1c01019b1b6719c7ef3344f45ba73"
+    },
+    {
+      "path": "polyforge/compiler/contract_compiler.py",
+      "bytes": 8098,
+      "sha256": "5fc03bdff4b8702d5faf22e1dca479547f32f05e55df018419f436d03b6b5159"
+    },
+    {
+      "path": "polyforge/composition/__init__.py",
+      "bytes": 83,
+      "sha256": "e328580bbd7ebd7f4ba3209582d9c3e57d44bb5cad452a644f954c1bcd4b0b38"
+    },
+    {
+      "path": "polyforge/composition/grammar.py",
+      "bytes": 4116,
+      "sha256": "881bd55e4b7f8a172e240bcdf120a5e281efc2936a885a977a64696fbb8bf822"
+    },
+    {
+      "path": "polyforge/config.py",
+      "bytes": 3870,
+      "sha256": "501b0226c4674b184b06411b84594f98f9e374dccae09520737aa37b76365b6c"
+    },
+    {
+      "path": "polyforge/contracts/__init__.py",
+      "bytes": 67,
+      "sha256": "7d94c4c98b41f7a707886aa83d192a6202da54b2384a0dec6b36da547863fe11"
+    },
+    {
+      "path": "polyforge/contracts/animation_import.schema.json",
+      "bytes": 597,
+      "sha256": "b5aef07b87cb8a7c0ad0094101de3283823c2563e10d09e7be4404eae7b8d8c6"
+    },
+    {
+      "path": "polyforge/contracts/asset_build.schema.json",
+      "bytes": 5095,
+      "sha256": "f78111f5113a9f61200b9eb4b316dd7aff75f784a3f1b26189fc6c0c99b7b9f7"
+    },
+    {
+      "path": "polyforge/contracts/asset_bundle.schema.json",
+      "bytes": 5009,
+      "sha256": "eb82b2678d27d31ab26171ee9c3f2a24ba1722a9ebf8cfa8a87743edbafaa979"
+    },
+    {
+      "path": "polyforge/contracts/asset_spec.schema.json",
+      "bytes": 4080,
+      "sha256": "0305e02667fb4b3a60e24f02304329904f99e8cabf6368b94b022cb168dedc41"
+    },
+    {
+      "path": "polyforge/contracts/audit_request.schema.json",
+      "bytes": 431,
+      "sha256": "b60160464219e6621ef991357522fbc85dc4cf8b698d44ee2dbc9f8e9041aa8f"
+    },
+    {
+      "path": "polyforge/contracts/benchmark_task.schema.json",
+      "bytes": 1792,
+      "sha256": "4710def058527b0ac86c85c59ac4b3475a64025d0f0955ae71c3e573fb5fdfd5"
+    },
+    {
+      "path": "polyforge/contracts/candidate_review.schema.json",
+      "bytes": 469,
+      "sha256": "4d407cb5c65313f3cc4d2e604e946d14c92b2d691116474b86a4e472e59889fb"
+    },
+    {
+      "path": "polyforge/contracts/capability.schema.json",
+      "bytes": 1622,
+      "sha256": "9c19eef7440f2b46e2f690f952d64f628be5e3a12710058ea178f4d09e5e538f"
+    },
+    {
+      "path": "polyforge/contracts/game_build.schema.json",
+      "bytes": 261,
+      "sha256": "b0c2bb870c85b66ef7563f70a84036a6b54591b8936f27233ab61ed75c98c1e9"
+    },
+    {
+      "path": "polyforge/contracts/game_manifest.schema.json",
+      "bytes": 17503,
+      "sha256": "dda22f73c3ef9c67e0c409146bb7d28c38f45fa918faf0dfd967c99fc27f5060"
+    },
+    {
+      "path": "polyforge/contracts/handoff.schema.json",
+      "bytes": 1425,
+      "sha256": "414a4c9d9d90beec9aaa5213a84919d5d6f3f5877f78341d84c6c4a93cc9e498"
+    },
+    {
+      "path": "polyforge/contracts/images.py",
+      "bytes": 4958,
+      "sha256": "93fb4b173c10e51a46c822f0430fb606adcdef3d51984939040c19970bc405db"
+    },
+    {
+      "path": "polyforge/contracts/job_ticket.schema.json",
+      "bytes": 8535,
+      "sha256": "ee29398f0c44996e4e003eb6501376dfd8a958a3cb613367f605fb4a618225c0"
+    },
+    {
+      "path": "polyforge/contracts/knowledge_card.schema.json",
+      "bytes": 5328,
+      "sha256": "8e71a00449ca4b567d7a9434b2797a8256164e1f2560fb67c07c530e3805ae3f"
+    },
+    {
+      "path": "polyforge/contracts/manifest.py",
+      "bytes": 9227,
+      "sha256": "44dd38f509fd03cb7c49d9fd076e8bba14a42c2b4895ff25f6736cc824ae5f39"
+    },
+    {
+      "path": "polyforge/contracts/platformer.schema.json",
+      "bytes": 866,
+      "sha256": "e1749fc7b8f21cf71441470c0d922170fb96be8970bd509765c42361b2683c67"
+    },
+    {
+      "path": "polyforge/contracts/recipe.schema.json",
+      "bytes": 4348,
+      "sha256": "33171b2c4ac353ad01fc79a3d8f39dc3e0761cb3e4c08be1522507ff8a5d59d1"
+    },
+    {
+      "path": "polyforge/contracts/recipe_request.schema.json",
+      "bytes": 1334,
+      "sha256": "57d79622d5f4b1f0e88ac89cfba77d963fbcb01ea32e0f9be4ee43a96a0e2d42"
+    },
+    {
+      "path": "polyforge/contracts/result.schema.json",
+      "bytes": 4193,
+      "sha256": "9d0745a4dc3f7a0b643e4504012f367134f9fd8c8a0d8e61b09f64395b8d6749"
+    },
+    {
+      "path": "polyforge/contracts/results.py",
+      "bytes": 2977,
+      "sha256": "a134a4dd35ccbcf404373f0903cf23afc63a1cdc57beac5d62a0e63265df6a63"
+    },
+    {
+      "path": "polyforge/contracts/review_board.schema.json",
+      "bytes": 4094,
+      "sha256": "12f2e50ab795dde22cbde1dc37dd62ba6de8db52d59fc46265a56351c70187b5"
+    },
+    {
+      "path": "polyforge/contracts/review_verdict.schema.json",
+      "bytes": 1196,
+      "sha256": "c8913b7174712fc344ce304c7b80686f197f4a001d2856a4906030ac0b165350"
+    },
+    {
+      "path": "polyforge/contracts/scenario.schema.json",
+      "bytes": 3523,
+      "sha256": "b91ee7893cd2f925e15bc4831dde0ae9ccfa6e93c4733cb230d4f2c2fe612ac6"
+    },
+    {
+      "path": "polyforge/contracts/sprite_bake.schema.json",
+      "bytes": 577,
+      "sha256": "8655e8e22974d3dc1a32d68db2e645d2c0ffab6e8d9e3a0e902a37d58f6da2ae"
+    },
+    {
+      "path": "polyforge/contracts/sprite_import.schema.json",
+      "bytes": 996,
+      "sha256": "ad823be211c35694d4df849231e1a1ff15c9f3bad32a0d8aca3632651990565b"
+    },
+    {
+      "path": "polyforge/contracts/unity_build.schema.json",
+      "bytes": 229,
+      "sha256": "09b302ba325a88e03b51cdb0f01c7171fd40e9cff39dbef5718b54702ab092e0"
+    },
+    {
+      "path": "polyforge/contracts/validation.py",
+      "bytes": 4269,
+      "sha256": "3fd7291791da6d8e1a9fee0a1eaf7054fbb5b812bbbf91009061baec59f8bbdd"
+    },
+    {
+      "path": "polyforge/contracts/workforce_task.schema.json",
+      "bytes": 2055,
+      "sha256": "e75ca6fce6961839d49e0e61cf2467c7cbe7758e536e315b3cfa7c0a62a03c66"
+    },
+    {
+      "path": "polyforge/data/arena_acceptance.json",
+      "bytes": 2864,
+      "sha256": "8b9aa8a6c6efd7b4c1794cca49c404b64ff9f365a1a8ba8196b50443ea443696"
+    },
+    {
+      "path": "polyforge/data/arena_brief.md",
+      "bytes": 953,
+      "sha256": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+    },
+    {
+      "path": "polyforge/data/arena_manifest.json",
+      "bytes": 5935,
+      "sha256": "3b1edcd791b15ad50e80af951af27cd00b1b0fe4b995d90ab07986b9f6a2cb48"
+    },
+    {
+      "path": "polyforge/data/arena_recipes.json",
+      "bytes": 12956,
+      "sha256": "9396ce1543d899745f9121c669a4c6111889f2387d2767b54bc5816db8f0a523"
+    },
+    {
+      "path": "polyforge/data/arena_scenarios.json",
+      "bytes": 5390,
+      "sha256": "3eefa040b223bdbbeb4bc66cc01be75488164009918d661a51d6207c49331e58"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/contact_damage.md",
+      "bytes": 64,
+      "sha256": "f9eeb4d0795e107502c1088c6977ea02acc03e60b1e83a79b786deac13d4eb93"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/crate_mesh.md",
+      "bytes": 69,
+      "sha256": "af642f07346ce7a8ef96f911a1676900ece796cdd7e75523680a65f996d9cb36"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/doorway_mesh.md",
+      "bytes": 73,
+      "sha256": "f7d12e35a8dcb2b094893d775bc76c01764145ee19ca1b148ac8d6c0c412d7f1"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/player_movement.md",
+      "bytes": 69,
+      "sha256": "8784e9f698a0a99f18944c5e81ea0b81a88ef946cbd3980692402d58e19a2f61"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/repair_material.md",
+      "bytes": 73,
+      "sha256": "4046718a196729b447f18a410d300a534f6c8aa27d7ee2ae5e39b772fb7b3277"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/repair_scale.md",
+      "bytes": 72,
+      "sha256": "d246e2e96c97676aba367dda85c0ebf58988046e7872ce8dede017508ab68973"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/robot_idle_import.md",
+      "bytes": 127,
+      "sha256": "467f2eec49261f5b5087c90acf5c08808b7ff5bfb50d4eca98ab248906793edf"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/robot_mesh.md",
+      "bytes": 74,
+      "sha256": "c55d75921d17b51d44e69200aa7769ef34262189694aff67d6a458dad9c61658"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/robot_walk_import.md",
+      "bytes": 64,
+      "sha256": "8f2d8d47dd0ff51c9d7aca8a23a2f31511bf8ca790c4e60f8eaf30b51e9b0b87"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/sprite_survival_game.md",
+      "bytes": 195,
+      "sha256": "ea0aa38ec28873e3a8e8de3b334c0265c34817741e19c0726dcdf986acbc0464"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/wall_collision.md",
+      "bytes": 76,
+      "sha256": "d262d540849f0284a029bc69250c7270360141023c8ac32947869f39a9c65b0a"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/briefs/wall_mesh.md",
+      "bytes": 66,
+      "sha256": "e7c14dc6f806c48d4718b3895ca8b997c608f58f3e3e59d9fbbc97bc561b0c5c"
+    },
+    {
+      "path": "polyforge/data/benchmark-core/suite.json",
+      "bytes": 6442,
+      "sha256": "8519cfa23c2df29d97b8c6821f451a177d731a1388f1f82f27a7972d83b90fad"
+    },
+    {
+      "path": "polyforge/data/blender-bvh-probe.py.txt",
+      "bytes": 1191,
+      "sha256": "5eea8e4e48b6132c3d22cd32988ac1af1befd4576cb83b9ea726df5e26cdf9b9"
+    },
+    {
+      "path": "polyforge/data/blender-knowledge-probe.py.txt",
+      "bytes": 1259,
+      "sha256": "03fe96feeba8ddc9f8e0e2f495f180b6928139f9cb2e5c7304f03622ce862bce"
+    },
+    {
+      "path": "polyforge/data/catalog.json",
+      "bytes": 9814,
+      "sha256": "b1c4e45724f2d268ff5c1440c762b9e1619b1ad548ef03997c04f88c2546deca"
+    },
+    {
+      "path": "polyforge/data/knowledge-history.json",
+      "bytes": 1933,
+      "sha256": "a39adcc2c539f78cfe26f54669c586a9ffc8e6ca022bb6af48b9eb12d252c943"
+    },
+    {
+      "path": "polyforge/data/knowledge-taxonomy.json",
+      "bytes": 7668,
+      "sha256": "11bfb257141c81a3947b5cea2d7d9757717ced6766dde80b198a18efca7be5ed"
+    },
+    {
+      "path": "polyforge/data/knowledge.json",
+      "bytes": 45438,
+      "sha256": "e6bf011cbd1751e1cfc505da2f87de82490b642babc25269a429ca3d305f6926"
+    },
+    {
+      "path": "polyforge/data/platformer_scenarios.json",
+      "bytes": 1378,
+      "sha256": "e248b52a14170ee1fd079f4f555b7c0bd22e6ebeb55fd1bcf95950db90bba602"
+    },
+    {
+      "path": "polyforge/data/unity-knowledge-probe.cs.txt",
+      "bytes": 1886,
+      "sha256": "3bd2254a381b3e7b61b1c6d64227ba3ba5519c9817aeeeee11627f7bd0e4b66a"
+    },
+    {
+      "path": "polyforge/data/unity-pool-probe.cs.txt",
+      "bytes": 2190,
+      "sha256": "643a8416d66440d0e16b877b6d1aeaac53961296bc55822730ec48861d776ce5"
+    },
+    {
+      "path": "polyforge/data/unity-ui-probe.cs.txt",
+      "bytes": 2187,
+      "sha256": "7d388d9c202059b2524ebf0e5c5122eb090cd099c46ebf830b5ec58f000f936e"
+    },
+    {
+      "path": "polyforge/doctor.py",
+      "bytes": 20540,
+      "sha256": "2b03058d89d242d932098f8fbb4a2fd63328c4df8e5e3f658afdcfe6749bbbdb"
+    },
+    {
+      "path": "polyforge/host/__init__.py",
+      "bytes": 84,
+      "sha256": "2f0f6f8605ec0a8c1085f8823ce473710e265e9e9db15000b33c6e9170b29ef0"
+    },
+    {
+      "path": "polyforge/host/stdio.py",
+      "bytes": 10439,
+      "sha256": "4b46da06ce9c76825439651ee88b0c120073ae6c03fa341f0819886ff8788a28"
+    },
+    {
+      "path": "polyforge/inspection.py",
+      "bytes": 19101,
+      "sha256": "0e0ef21f0da2a3b21f5e58465b4b7ae3857e22371f3f611c5005514a99668acd"
+    },
+    {
+      "path": "polyforge/invariants/__init__.py",
+      "bytes": 83,
+      "sha256": "5254612b0a159a7b3e1c9952f0af5badaaee7362c449e5977a69fdddc30cc373"
+    },
+    {
+      "path": "polyforge/invariants/handoff.py",
+      "bytes": 6344,
+      "sha256": "a6e02fbba5b3b5716afe59974448f222d11102e291cb8d613c06510abd989ca3"
+    },
+    {
+      "path": "polyforge/knowledge/__init__.py",
+      "bytes": 83,
+      "sha256": "545414ad59e1818f34f89350122ea8328f2698ffcc833aa9db677934105d4391"
+    },
+    {
+      "path": "polyforge/knowledge/availability.py",
+      "bytes": 8088,
+      "sha256": "53bfbc487d15805ccee6790cb60e0a83d47d90669f88fbbeb14d1d7ccb279377"
+    },
+    {
+      "path": "polyforge/knowledge/catalog.py",
+      "bytes": 2728,
+      "sha256": "ea9b1e790c5c3bf1b123489f1df11a66f9fbee9166e0d4dbea2536e9f3d70e3b"
+    },
+    {
+      "path": "polyforge/knowledge/probes.py",
+      "bytes": 11419,
+      "sha256": "38985181b716bce01b81875f8b82c1d330f8135185590b6ef06f045ff3847304"
+    },
+    {
+      "path": "polyforge/knowledge/router.py",
+      "bytes": 9311,
+      "sha256": "56be3bb5d27d8a25f04c46c4b6a54d85e18d4b6af041c863ec96351474584bfa"
+    },
+    {
+      "path": "polyforge/planner/__init__.py",
+      "bytes": 63,
+      "sha256": "bbb7d9e93fadf1a8a7fd7c2dfb48cb56ec252df40228219744a37c54012a10fc"
+    },
+    {
+      "path": "polyforge/planner/cache.py",
+      "bytes": 1772,
+      "sha256": "9a21a288fdd3d643d677a9bfc81479e8e500c44c08aaec73952420311e61e3d6"
+    },
+    {
+      "path": "polyforge/planner/dag.py",
+      "bytes": 1239,
+      "sha256": "1fab29090e2d5b9b4ffc158a456120d9c3e9b3151748d7d33d6626117e2d5014"
+    },
+    {
+      "path": "polyforge/planner/plans.py",
+      "bytes": 8150,
+      "sha256": "7a6765bd15b2075f5bfbecca39b9d5c9cc672bbab8a8a081d91396573e7b92b5"
+    },
+    {
+      "path": "polyforge/py.typed",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "polyforge/repairs/__init__.py",
+      "bytes": 73,
+      "sha256": "158960c81782704ee96abf9d9327c38f8de84bdf2d10f2a1064bcaeb1cc5923c"
+    },
+    {
+      "path": "polyforge/repairs/diagnostics.py",
+      "bytes": 15822,
+      "sha256": "177e4d19b3a9d12890b065e48f0e2c99918128e02f6a8a6eaae8c6180a432f6e"
+    },
+    {
+      "path": "polyforge/repairs/execution.py",
+      "bytes": 6044,
+      "sha256": "6927cee19111973b23f71bb5df55948241cc4c84cb3763f70012dc164132211c"
+    },
+    {
+      "path": "polyforge/review/__init__.py",
+      "bytes": 82,
+      "sha256": "98188f2ff79ceb5cfe09c1369be7c8fd06cf276eec9cafe63f8bf77a83c85f20"
+    },
+    {
+      "path": "polyforge/review/acceptance.py",
+      "bytes": 4361,
+      "sha256": "c06a657bea20452b21f4bd37e4cdeeed92401a610d4e9001e18cb45ba804b7ce"
+    },
+    {
+      "path": "polyforge/review/amendments.py",
+      "bytes": 6022,
+      "sha256": "a92b046d50d8ab3b344eb2efd9688c83df1a01c42ade3000813d7ab0ff4a2f2e"
+    },
+    {
+      "path": "polyforge/review/board.py",
+      "bytes": 12862,
+      "sha256": "818d14d1d5bd32dc5a2467f98e402d6368856e6d3882ddd6e4d2358951361eb1"
+    },
+    {
+      "path": "polyforge/review/sprite_source.py",
+      "bytes": 4855,
+      "sha256": "0ee9dbdb42ee349f1267fc1f38c1d52cad76090c86495066f3177070625155b2"
+    },
+    {
+      "path": "polyforge/runner/__init__.py",
+      "bytes": 68,
+      "sha256": "036be8d69fcfccbd052190950937c4126dbe17c9133a51ec00a51af224b93c06"
+    },
+    {
+      "path": "polyforge/runner/artifacts.py",
+      "bytes": 3541,
+      "sha256": "70796f417a61d5b9f15e0ad37cc90c7a415d83929468da82e449bfeb0f7b9c9d"
+    },
+    {
+      "path": "polyforge/runner/locks.py",
+      "bytes": 6301,
+      "sha256": "0c9dcbb413d4ef1637a75727fcf7a23e89d16bc668b541bcaa4d6603a9cc628a"
+    },
+    {
+      "path": "polyforge/runner/metrics.py",
+      "bytes": 8165,
+      "sha256": "9d82e4b4aae1797fb5c88bce9b29196ae0ef1b4cc6b5d3b8e6a9ae97a33580ff"
+    },
+    {
+      "path": "polyforge/runner/ownership.py",
+      "bytes": 6646,
+      "sha256": "e37cda687a86a56a050f4d5836c810f536282b35a9904d1598d99dfd7f2532c9"
+    },
+    {
+      "path": "polyforge/runner/processes.py",
+      "bytes": 7744,
+      "sha256": "916207955024cb812953357242e57f1516e950888323f48995b619ff9a4b5a04"
+    },
+    {
+      "path": "polyforge/runner/state.py",
+      "bytes": 9263,
+      "sha256": "071a7ded6ad7c33a89ce668324c745d5154763da6e5b40ee5e8eb025fa4201eb"
+    },
+    {
+      "path": "polyforge/runner/workspace_lock.py",
+      "bytes": 4676,
+      "sha256": "e1f69515c458ec3130e8f1ac9edb11bae856672643cace4dbdd4961baac2dc89"
+    },
+    {
+      "path": "polyforge/scenarios/__init__.py",
+      "bytes": 77,
+      "sha256": "c92506210b3498db37fd00c59205fa2c487dc86809e33987ca26ba0ec8b5024b"
+    },
+    {
+      "path": "polyforge/scenarios/arena_oracle.py",
+      "bytes": 11065,
+      "sha256": "c8629e1b4d58b9c85a96cc59aee2a5dc6cf4a355c16abb34f343cc7f7a6c8d22"
+    },
+    {
+      "path": "polyforge/scenarios/platformer_oracle.py",
+      "bytes": 13222,
+      "sha256": "16097b6178961dc72b9309dc099f1a34baf1a6524cf43b0aa009c6f931f972e2"
+    },
+    {
+      "path": "polyforge/scenarios/schema.py",
+      "bytes": 1278,
+      "sha256": "9e45056e64a4e100e6b0bfcc317bbe742383772f8e55476d15a4d1f05c3e5189"
+    },
+    {
+      "path": "polyforge/security/__init__.py",
+      "bytes": 78,
+      "sha256": "512f8850e60866c5f53844f7194718ac4725794a089fd5d0c6bf786187360177"
+    },
+    {
+      "path": "polyforge/security/paths.py",
+      "bytes": 4369,
+      "sha256": "63036ef1a11469baae01abddd89663be09183710df540ddf0cba3a2cffb2cf6c"
+    },
+    {
+      "path": "polyforge/security/policy.py",
+      "bytes": 4432,
+      "sha256": "3ef8b2ab3fa032906bd9d42b7f7dc752328793c1da95025a2f5b7671f9e945f4"
+    },
+    {
+      "path": "polyforge/sprites/__init__.py",
+      "bytes": 68,
+      "sha256": "a0cd93268f3729cfeee1c6d4295a5c51e81bdc0485d59a3315be3e9f47ca7cac"
+    },
+    {
+      "path": "polyforge/sprites/bake.py",
+      "bytes": 6431,
+      "sha256": "f4c9ff1ec9f0c29666c42cae28ecad1ec0bc2f8ec2f24047647c65b7ee9c4e65"
+    },
+    {
+      "path": "polyforge/sprites/contracts.py",
+      "bytes": 580,
+      "sha256": "a14b5ffc31f9c2f4618fe82c5b0aabdb76d4c90a9c5a550158e0fe3b83203613"
+    },
+    {
+      "path": "polyforge/sprites/images.py",
+      "bytes": 3358,
+      "sha256": "6729cdc3e4cd98ec90018dfce071cc7bcc3f640cfef826982b79d6e999dec21c"
+    },
+    {
+      "path": "polyforge/sprites/integration.py",
+      "bytes": 11187,
+      "sha256": "2af1a11c0a0be681638165ad053e5f520ba0e99f67e4003dd0bfae4a02ab876a"
+    },
+    {
+      "path": "polyforge/sprites/worker.py",
+      "bytes": 5099,
+      "sha256": "a2a69a0216246df96b0e9345edca7fd0aa05a642a76e502d5bd80765e4e1bf16"
+    },
+    {
+      "path": "polyforge/unity/__init__.py",
+      "bytes": 71,
+      "sha256": "e6e57e826205d19bc02a1128a0fdabd803b64dfba7c4231c3e6e893b021b1275"
+    },
+    {
+      "path": "polyforge/unity/bootstrap.py",
+      "bytes": 5698,
+      "sha256": "594399345223be33d4a268ec56e8a263a631eb827588ed9e7181988043ecede3"
+    },
+    {
+      "path": "polyforge/unity/bridge.py",
+      "bytes": 23499,
+      "sha256": "1a6fc22d0be87c6fa7ffaeb534b7c703b6e504296bdeabcdc50c457a00e9deb3"
+    },
+    {
+      "path": "polyforge/unity/evidence.py",
+      "bytes": 17057,
+      "sha256": "ac43629290484aec3ed4cba237c13093647f65928a7abcbcd45b24b7f23e53f0"
+    },
+    {
+      "path": "polyforge/unity/game.py",
+      "bytes": 26811,
+      "sha256": "353d3a8d38d3e2ade416c7712c15d47ab2bc289d586546a9b774ca7112e346b7"
+    },
+    {
+      "path": "polyforge/unity/performance.py",
+      "bytes": 25810,
+      "sha256": "dc7c1b38b2fcad2608f5db0e684ccec10d434c6c6eb1a63aaed3ccf3c00188f9"
+    },
+    {
+      "path": "polyforge/unity/platformer.py",
+      "bytes": 19951,
+      "sha256": "c94e809b429f903e33ba7862f670b784b54082dd956789d5f41d6e69b92ef953"
+    },
+    {
+      "path": "polyforge/unity/recovery.py",
+      "bytes": 19353,
+      "sha256": "2457b7ade1a85b8e60d2c2363fc373ddcd892ffd3e01d9fe2976f7d85cef3233"
+    },
+    {
+      "path": "polyforge/unity/repairs.py",
+      "bytes": 16420,
+      "sha256": "b0099910b4ffd007ec51a4564c838eb27446cb4be95b232628f752181cbfaf6b"
+    },
+    {
+      "path": "polyforge/unity/transactions.py",
+      "bytes": 14668,
+      "sha256": "6ef7a556e070955e76b5a3125baeaeaa22ad9a1ea3c77064e929b6a3aec487ef"
+    },
+    {
+      "path": "polyforge/unity/upgrade.py",
+      "bytes": 4212,
+      "sha256": "e158e475323a60fbdf842f1d0fad71190e0d4318ccbaadfd2d8201089ab388d3"
+    },
+    {
+      "path": "polyforge/workforce/__init__.py",
+      "bytes": 72,
+      "sha256": "9271237b430f052a601e267322ca9c5d340f6cc107549c8b9962874ed943b333"
+    },
+    {
+      "path": "polyforge/workforce/cli.py",
+      "bytes": 2946,
+      "sha256": "6d129d100c0f5c5cae911d9f0667e7ad3c6f940a75014b0d5a610d0cf5888187"
+    },
+    {
+      "path": "polyforge/workforce/discovery.py",
+      "bytes": 9094,
+      "sha256": "538e1635b7740d3d0228404c3918ee901dfe010c142d80ea295b0d7bc6cef7ae"
+    },
+    {
+      "path": "polyforge/workforce/ledger.py",
+      "bytes": 7041,
+      "sha256": "d0904548d26226686c68c4cf18e8395a8aadb08c84ebac8a60a82805d738c424"
+    },
+    {
+      "path": "polyforge/workforce/models.py",
+      "bytes": 5613,
+      "sha256": "7a8f0895b992c3499e10905175572af1f2f2d6a45b07080e13e8905af9d7aef4"
+    },
+    {
+      "path": "polyforge/workforce/operations.py",
+      "bytes": 4905,
+      "sha256": "3d343f66a2c182764b67532b320029fa2a9220e4f8e0d7f72eba0a302e914c8e"
+    },
+    {
+      "path": "polyforge/workforce/orchestrator.py",
+      "bytes": 14283,
+      "sha256": "ecfd3875192dc47a290a4c49eb655202863c2329f8333e0f2c408924f9f7922d"
+    },
+    {
+      "path": "polyforge/workforce/permissions.py",
+      "bytes": 3723,
+      "sha256": "0a6617dfe75c9cc7c31d71aada4bae8250c9560b7fb2c3526f9f9a12d1ad0735"
+    },
+    {
+      "path": "polyforge/workforce/router.py",
+      "bytes": 8893,
+      "sha256": "00f3e5f06d4fc74e11919bdbe2a39bb9e06bd36e0614e910c9341456ccdf1515"
+    },
+    {
+      "path": "polyforge/workforce/workers.py",
+      "bytes": 17882,
+      "sha256": "284f7ca2cda9f338f2615243e56e2e6464dc66b0d944b9cff07563a1e393bb82"
+    },
+    {
+      "path": "polyforge/workspace.py",
+      "bytes": 4289,
+      "sha256": "4e139ae88b543c37527ef893f5e43f3b39d841c064dab0ba87e764fa0c583da1"
+    },
+    {
+      "path": "profiles/windows-arena.json",
+      "bytes": 962,
+      "sha256": "88f61b9591825dabab3febdf277f16e3e76424db0870bba2e14c0196892a9d02"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 2777,
+      "sha256": "74e2f538c70a8e74c7383b4d6a5234e8a05cf98b454ebdc7380068c3c18075b9"
+    },
+    {
+      "path": "requirements-dev.lock",
+      "bytes": 571,
+      "sha256": "449991135d58a9e1406dfe0026196c99c5da941c19edb07257726c25ec6355f2"
+    },
+    {
+      "path": "roles/animation_inspector.md",
+      "bytes": 335,
+      "sha256": "780ebce2908ee8b7b9a041d48c5ffce0c94df494795a3edb21d35302993bcee4"
+    },
+    {
+      "path": "roles/asset_architect.md",
+      "bytes": 559,
+      "sha256": "9ef66ef3be9e79215e011ecbddce39202d3fe031d3c9e9ca20eb5ba20fabe071"
+    },
+    {
+      "path": "roles/asset_quality_inspector.md",
+      "bytes": 566,
+      "sha256": "1cc2e1704dfb9791c9c765ed67a6463b470ca7dda3f0ffbaaa7235ad083d7a09"
+    },
+    {
+      "path": "roles/asset_refiner.md",
+      "bytes": 526,
+      "sha256": "934bc7a7c35219c00d5303cb8528fa531d53573ae4ab538ed4fabfc9a4736013"
+    },
+    {
+      "path": "roles/intent_analyst.md",
+      "bytes": 197,
+      "sha256": "4e344ff503b1a3e5611aec181efbe3dc807231225d588d2e53dd5399511fd796"
+    },
+    {
+      "path": "roles/modeler.md",
+      "bytes": 501,
+      "sha256": "e90a8b752b5ba8e258c223812f91f338cb0f205d77a034dc04688268d9870fee"
+    },
+    {
+      "path": "roles/rig_animation_artist.md",
+      "bytes": 281,
+      "sha256": "5e5d8b13db331befff7fc8415909518c46a041b22e30c7b1c88f374c7d8567fa"
+    },
+    {
+      "path": "roles/unity_integration.md",
+      "bytes": 305,
+      "sha256": "980e7441cafd00d4216dc885676f1a9a9eb4de317b5c1331e3b64862330da993"
+    },
+    {
+      "path": "roles/uv_material_artist.md",
+      "bytes": 520,
+      "sha256": "998cf856e37a4d5789fd8142edd6aa835605bacfe796ee73587488c2ef553577"
+    },
+    {
+      "path": "tests/blender_audit_fault_probe.py",
+      "bytes": 1727,
+      "sha256": "28f35d294481cd8c88984df8519b2a9960bf264edd2280cc905b0823e146ac38"
+    },
+    {
+      "path": "tests/blender_fault_probe.py",
+      "bytes": 2100,
+      "sha256": "116e0dab4328a0a4e9d94f5c3b976db115c7594bf08e57999a9403b757f2a399"
+    },
+    {
+      "path": "tests/fixtures/capability_invalid.json",
+      "bytes": 46,
+      "sha256": "f6b9b29b36f3fb8fd05229f8c1983af1ce06ca3d84a20d472cdf85b9c78b8f12"
+    },
+    {
+      "path": "tests/fixtures/capability_valid.json",
+      "bytes": 346,
+      "sha256": "951364dc7d178ce2a861f78900bb5e77f8a483dd76422acd681cf2c77cfb8870"
+    },
+    {
+      "path": "tests/fixtures/cli_commands.json",
+      "bytes": 9811,
+      "sha256": "3a070529818e99f3338402e748626f7a5e7381d16061cd85d7512957d171b681"
+    },
+    {
+      "path": "tests/fixtures/intent/dungeon.json",
+      "bytes": 443,
+      "sha256": "8f6a0fd1c0406fb7d0e3c7b75a781dd43502b3c85b9fa83fe0f72b8717819231"
+    },
+    {
+      "path": "tests/fixtures/intent/stealth.json",
+      "bytes": 446,
+      "sha256": "2d449f341fdd8cdc2700edcd5faa112be350cfc291a987e3dcdfddebf3bb6318"
+    },
+    {
+      "path": "tests/fixtures/manifests/cases.json",
+      "bytes": 930,
+      "sha256": "ec914c90752e997c8ba9d9cdf0bccf69d2c548f5ac26fc03fea1ef818f9b094c"
+    },
+    {
+      "path": "tests/fixtures/phase8/logical-geometry.json",
+      "bytes": 38748,
+      "sha256": "6a9f89811bd941cdf58b97f337cc1d1b4c0d237cce8831154c0bb7bff28f1890"
+    },
+    {
+      "path": "tests/fixtures/phase8/material.json",
+      "bytes": 1020,
+      "sha256": "0c1a5aba47313a47057b3d0fc0d3433d6d9f501c146c972ccbe28a2754ecbfb4"
+    },
+    {
+      "path": "tests/fixtures/phase8/metrics.json",
+      "bytes": 1761,
+      "sha256": "52c17bd95a92612be462247e47ba44764196829358caa87f0876b18b03257f7b"
+    },
+    {
+      "path": "tests/fixtures/phase9/native-fault.json",
+      "bytes": 31337,
+      "sha256": "8ff8febc5cd7f9f9217388f669b9748cbc36f054b49e863f979da0bcfd0f603d"
+    },
+    {
+      "path": "tests/fixtures/phase9/native-request.json",
+      "bytes": 9116,
+      "sha256": "4823460cab371c66f6584ee136effb1fc3569d385519700db533308f1674fdf1"
+    },
+    {
+      "path": "tests/fixtures/recipes/asymmetric.json",
+      "bytes": 1676,
+      "sha256": "35cedf4030c02438a9e216f1c243e88ba662b110d557e6c20f318cc6f7a7fe51"
+    },
+    {
+      "path": "tests/test_animation.py",
+      "bytes": 4116,
+      "sha256": "ccf4d209fcb4ddbf92f07b958ea0a0f79fd74d14982c31dee85171a16f0a07c1"
+    },
+    {
+      "path": "tests/test_assets.py",
+      "bytes": 12144,
+      "sha256": "1790d4c6f074ba7213fab3eadc64c280e91f234d6f81660d8f99f252219b546b"
+    },
+    {
+      "path": "tests/test_audit_artifact_records.py",
+      "bytes": 7148,
+      "sha256": "e0b6c70be96d2afb30b6419cd43429473f911d480508efb269ce5262f632fd8a"
+    },
+    {
+      "path": "tests/test_audit_binding_variants.py",
+      "bytes": 9694,
+      "sha256": "c886c260cdda145e11df1a42f7f44ee1f9833ca00d3c4a481df5406bb8f07c5c"
+    },
+    {
+      "path": "tests/test_audit_context_boundaries.py",
+      "bytes": 9793,
+      "sha256": "fff578ceeed883278ac11e275cc4c3487a42469fe7b004f64d0825ebc1d7aca8"
+    },
+    {
+      "path": "tests/test_audit_probe_lock.py",
+      "bytes": 9885,
+      "sha256": "883adae5b86b9da959c6972454cc5ed385ac5283d369537e3b58a35b1ab4c77f"
+    },
+    {
+      "path": "tests/test_audit_resource_policy.py",
+      "bytes": 12757,
+      "sha256": "d25e135fcba2fd24ce670ea8e65cbf19a0633ba82a02a76f136cd2d5c5b6e1fa"
+    },
+    {
+      "path": "tests/test_audit_unity_gaps.py",
+      "bytes": 15930,
+      "sha256": "5bbca7a0539878b136663f2a19dc58ab9f014fe4266e17d3e3c5e5ccce018033"
+    },
+    {
+      "path": "tests/test_audit_workforce_gaps.py",
+      "bytes": 12783,
+      "sha256": "496d8b6ee1d2f48d6c6346faa94d34ca6f6a362ff5654a301fcef51502b84cc7"
+    },
+    {
+      "path": "tests/test_cleanup.py",
+      "bytes": 25758,
+      "sha256": "f6966c931253d70f6c7b596a5180a0d57c18c28e0dac34a45d08110146e9ca74"
+    },
+    {
+      "path": "tests/test_contract_boundaries.py",
+      "bytes": 13118,
+      "sha256": "e0a3a4b47a1b4d1b88f47874742e1bb4a84da150ce1164efa4d8a08fec2873a9"
+    },
+    {
+      "path": "tests/test_foundation.py",
+      "bytes": 12589,
+      "sha256": "1aa2ac52cfd68f48bc10e95da5212c40596b75445a1a54d9149ee8939420f904"
+    },
+    {
+      "path": "tests/test_phase10_completion.py",
+      "bytes": 8161,
+      "sha256": "29be70d725b61423898b05413470613a8193e1f0f84669cb6a3435641a501187"
+    },
+    {
+      "path": "tests/test_phase10_knowledge.py",
+      "bytes": 8922,
+      "sha256": "1b3fdd6d9ccbc1adc5fb5b86c73c3899ef8d0aeea5def57e6a2ef10cb1713da5"
+    },
+    {
+      "path": "tests/test_phase10_mcp.py",
+      "bytes": 7767,
+      "sha256": "e6559ad74cec9db2b18263192990b842c1a89bc011a024b2f5b4206ca4257471"
+    },
+    {
+      "path": "tests/test_phase10_probes.py",
+      "bytes": 8344,
+      "sha256": "4d08ff1dc05f43bbb9794860731b4a24ecfc10b327ba677fb402de83dd90426e"
+    },
+    {
+      "path": "tests/test_phase10_skill.py",
+      "bytes": 4753,
+      "sha256": "b041d398a40778fc34768df0f8da44cda6dc40a8149e79669c2f3ed20a980334"
+    },
+    {
+      "path": "tests/test_phase11_benchmark.py",
+      "bytes": 41026,
+      "sha256": "0a7df308ee0851e9a856347b854795a71927f2260e065aa7870802ac346bc943"
+    },
+    {
+      "path": "tests/test_phase11_cli.py",
+      "bytes": 2656,
+      "sha256": "38df76a1dd1cbdd16872daad469a3a9ef03f14642ef9599565bf1cb89f217003"
+    },
+    {
+      "path": "tests/test_phase11_inspection.py",
+      "bytes": 23347,
+      "sha256": "d65476b2d32ea46157b652ab4a27adc141d3eb54c5774c28b11a58c7760dcd4e"
+    },
+    {
+      "path": "tests/test_phase11_performance.py",
+      "bytes": 34206,
+      "sha256": "951947d21afd71e57c37518a6bd1925761a01ada009a990cb0274141b59e4be1"
+    },
+    {
+      "path": "tests/test_phase11_platformer.py",
+      "bytes": 31440,
+      "sha256": "3b3b8a6e093e78282a6b7cbc70afc2b3bb4316f73b462989182c29630e83cb5f"
+    },
+    {
+      "path": "tests/test_phase11_probes.py",
+      "bytes": 3329,
+      "sha256": "648f2d8306f42e2b6700329ae0351e5b717aeea2345e7e3fe0469cfd34cebab1"
+    },
+    {
+      "path": "tests/test_phase11_recovery.py",
+      "bytes": 2610,
+      "sha256": "63cd321e3ad0271c5244b6557bdc2a3f2cec05c7fbd93b4259ba1e3e02259b56"
+    },
+    {
+      "path": "tests/test_phase11_registration.py",
+      "bytes": 12519,
+      "sha256": "48922bac770260acc6e1c4582fc0fc676e04c9c4695a0962a7b0b5557123df96"
+    },
+    {
+      "path": "tests/test_phase1_cli.py",
+      "bytes": 5552,
+      "sha256": "d842b1fd98855fae99abe99c1c6b3bad00612fca106cee02c96bdb0fff41e61a"
+    },
+    {
+      "path": "tests/test_phase1_failures.py",
+      "bytes": 8958,
+      "sha256": "8a7c45756a5f601ec0ef206e296e5da5df8ef5ac43b9e643e9a945f88a4b70b7"
+    },
+    {
+      "path": "tests/test_phase1_policy.py",
+      "bytes": 6924,
+      "sha256": "bcd5b20e9b5cdea71fadf10243efb5ae005f30b5d0f306857316d0ebaa75e3ee"
+    },
+    {
+      "path": "tests/test_phase1_review.py",
+      "bytes": 4365,
+      "sha256": "05b5a3e344c829e56aca02dd4518d5272ad235394fa234bb13052df9a90e08c2"
+    },
+    {
+      "path": "tests/test_phase1_runner.py",
+      "bytes": 7847,
+      "sha256": "e8283fe61b960200bc800ace1750a4b72b04e9069da326257dcda92ccbcb5d5c"
+    },
+    {
+      "path": "tests/test_phase2_boundaries.py",
+      "bytes": 19253,
+      "sha256": "78c1a126f074ebbcd0efabfb9432d44e501455fb7cb91f50578278f84f1e1831"
+    },
+    {
+      "path": "tests/test_phase2_contracts.py",
+      "bytes": 16945,
+      "sha256": "96025130cbf5e1ca54080b48e0bccd4adc2a5642719e0d4c5388c321e21c2606"
+    },
+    {
+      "path": "tests/test_phase3_blender.py",
+      "bytes": 7022,
+      "sha256": "7b39690dcf2c0b64bf9fec68c6196fa08fc5197c73fbf0de14aaf27f3a1b310f"
+    },
+    {
+      "path": "tests/test_phase3_cli.py",
+      "bytes": 5274,
+      "sha256": "887b99920c1dfd9322a9ec18c3ee178d7b899b713e2d8e6380ea2e11f6c9a302"
+    },
+    {
+      "path": "tests/test_phase3_recipes.py",
+      "bytes": 7842,
+      "sha256": "3bd1de6c82adf5f55498b8b79c7f13f38fdfa9c68bc01d8a2eb3c000a2943c6d"
+    },
+    {
+      "path": "tests/test_phase4_blender.py",
+      "bytes": 7258,
+      "sha256": "4516d2c0ae76e34c3c9d5f415cdb12b21e47edad96b2cb262e8ce88a73fbb6d1"
+    },
+    {
+      "path": "tests/test_phase4_contracts.py",
+      "bytes": 17828,
+      "sha256": "4dd87d69ac7d51c88e1bf6acb41d40d26afb7361a5704398a05d7d2612218952"
+    },
+    {
+      "path": "tests/test_phase5_contracts.py",
+      "bytes": 25154,
+      "sha256": "0e12df26799c766637a3566177fc4b31741392bb73948e93279b665f72f9db2c"
+    },
+    {
+      "path": "tests/test_phase5_unity.py",
+      "bytes": 8259,
+      "sha256": "bed7edd89db7a9e9a53160eb787cb86384d0464b04a40faccba735d0df974e3e"
+    },
+    {
+      "path": "tests/test_phase6_contracts.py",
+      "bytes": 19491,
+      "sha256": "7109ed3a85b4fbc24303afd699ee9752c8e42cd5c87a3b994b591f986fc76ab1"
+    },
+    {
+      "path": "tests/test_phase7_review.py",
+      "bytes": 9177,
+      "sha256": "54dbb3ad96b61eab7f3a188be45dd2c515ceec7d33753536a6730a9b9c3fc0a7"
+    },
+    {
+      "path": "tests/test_phase8_review.py",
+      "bytes": 10812,
+      "sha256": "9104843ce8ea1042b6c8f6d80529a7518822ed30615a1bff0570410fac09da3c"
+    },
+    {
+      "path": "tests/test_phase9_amendments.py",
+      "bytes": 5026,
+      "sha256": "8999f42f23013e02105fdec27ea19c6c728b7642fa674d407ba90b2ecfbf2d33"
+    },
+    {
+      "path": "tests/test_phase9_diagnostics.py",
+      "bytes": 7855,
+      "sha256": "f67902534f9b9e5016e692905d23e7fb13ca8c068e33dfa3c4e42563b49e38e8"
+    },
+    {
+      "path": "tests/test_phase9_forensic_execution.py",
+      "bytes": 3665,
+      "sha256": "dfa95ffe7036660e2ccac002312e75ea1b51b82cb47eabffc38d35f6d2b5ae3c"
+    },
+    {
+      "path": "tests/test_phase9_mutations.py",
+      "bytes": 6392,
+      "sha256": "a7c752461a98656ceec00e0e22ed5d7250296d69dfd802367604304a26bf2d28"
+    },
+    {
+      "path": "tests/test_phase9_recovery.py",
+      "bytes": 20947,
+      "sha256": "5c80c8cf34e95b34ce0c1a4fafbd9b170742578348070c21e13e82bf89cdeeff"
+    },
+    {
+      "path": "tests/test_phase9_review.py",
+      "bytes": 21400,
+      "sha256": "43cb1096f40d9c6ed75091c6c09db7de77f4520e5ec98ce4b72ae77d39162bef"
+    },
+    {
+      "path": "tests/test_phase9_routing.py",
+      "bytes": 3669,
+      "sha256": "67398ef18a70b365797fbdd1cc363a485673c26ffc49db23e20bfcb63f2d7b68"
+    },
+    {
+      "path": "tests/test_phase9_sprite_gate.py",
+      "bytes": 7650,
+      "sha256": "08b33ee2aecf8be6e4143945dbf8d71e9a3738af3910e29c8c68f58d98068ab0"
+    },
+    {
+      "path": "tests/test_reproducible_build.py",
+      "bytes": 9296,
+      "sha256": "7b1dc80c888d60762544e81f5e04f6a0f2e721fdab03536cae660045f293bc77"
+    },
+    {
+      "path": "tests/test_sprites.py",
+      "bytes": 7076,
+      "sha256": "6d322d7c20d905f7fd9506cbd7447226746e1ad8b2c5ebc63b031754b02c49aa"
+    },
+    {
+      "path": "tests/test_windows_alias_paths.py",
+      "bytes": 2593,
+      "sha256": "e4f977c95e0ceda63c397f5041c3ca8343b57b8ec120ad587df0d8f2ca9138cb"
+    },
+    {
+      "path": "tests/test_workforce.py",
+      "bytes": 14886,
+      "sha256": "93ce22f39fc9c7aee078929d5b929c6cf2457e8802311b97184d7ed1e5ea85fb"
+    },
+    {
+      "path": "tests/test_workforce_crash.py",
+      "bytes": 1519,
+      "sha256": "8352b4bb789889f5d048e61e78f5d6c45e2a63e02073c30814c87d9d2cab0620"
+    },
+    {
+      "path": "tests/unity_fault_probe.cs",
+      "bytes": 1303,
+      "sha256": "45a9067f9031dcc0bb1c9dd9be53096da646ee460700baffc2b20714b1bc89e6"
+    },
+    {
+      "path": "tests/unity_recovery_fault.cs",
+      "bytes": 1438,
+      "sha256": "bdde6a06ea52a1b14eb90e8c3cc8645fcc22b255e2126e4492d68782e9ca512e"
+    },
+    {
+      "path": "tools/__init__.py",
+      "bytes": 80,
+      "sha256": "d50fafd5b5b0952ec1f06cbd6e7935ee0167768875c4ae6684a72069b353f3dc"
+    },
+    {
+      "path": "tools/check_coverage.py",
+      "bytes": 549,
+      "sha256": "6c4f39590e5e4bb8ced607560045a0c566ed6dd5e098c239023df54b4705e093"
+    },
+    {
+      "path": "tools/generate_cli_docs.py",
+      "bytes": 3694,
+      "sha256": "09ac6ebc850c11faf960474456b881852752566da8940955b6569dcb69df12f3"
+    },
+    {
+      "path": "tools/generate_knowledge_coverage.py",
+      "bytes": 8622,
+      "sha256": "6a263c12740dfcaeda67ba676ccb63b6de9ad4a27c5067e7f3217640099126b7"
+    },
+    {
+      "path": "tools/reproducible_build.py",
+      "bytes": 8384,
+      "sha256": "151d11781eea84e2bfa1345a9240c336a5492d0b91af869a767f190c1106d6ef"
+    },
+    {
+      "path": "tools/validate_skill.py",
+      "bytes": 4254,
+      "sha256": "4d02ac96c38fc7ea58e0fd2c5a8a976c69bfb04f9b13d6ed6fad9eb19134031e"
+    },
+    {
+      "path": "unity_package/Editor.meta",
+      "bytes": 172,
+      "sha256": "9321c451159bcb2394b23beb85c11638762b4588bce1f170e09baaf42b5ebf2f"
+    },
+    {
+      "path": "unity_package/Editor/AnimationBuilder.cs",
+      "bytes": 7038,
+      "sha256": "67a1f54052437d7729024974a90406f7687fd1f8329fef673738d275d4905251"
+    },
+    {
+      "path": "unity_package/Editor/AnimationBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "60739e6933fb821821da4ecaa0bbbdc647b2cbf545173d0e7057d3406f6d805c"
+    },
+    {
+      "path": "unity_package/Editor/AnimationInspector.cs",
+      "bytes": 1974,
+      "sha256": "76a277a07718ce81a3bada597f6249dde5a50d0077395281876a32ac717483db"
+    },
+    {
+      "path": "unity_package/Editor/AnimationInspector.cs.meta",
+      "bytes": 59,
+      "sha256": "ebd2141520314dd57cb8c41de004714676955ef4de3580b993717ab3901d2fdb"
+    },
+    {
+      "path": "unity_package/Editor/GameBuilder.cs",
+      "bytes": 9575,
+      "sha256": "aec0ef2ab50bfdab9ddd2cc953a0860e066171415bf15b3e91de1216dc271155"
+    },
+    {
+      "path": "unity_package/Editor/GameBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "738edc8161f0a3e50c19b875f36bc1f3073eb79dfa748d1e8694e69bbf1c7523"
+    },
+    {
+      "path": "unity_package/Editor/PlatformerBuilder.cs",
+      "bytes": 8922,
+      "sha256": "8f37f01ade5d568e89942e0208e02bf3ef4a49f9b91ce8178433177da8a8d3f2"
+    },
+    {
+      "path": "unity_package/Editor/PlatformerBuilder.cs.meta",
+      "bytes": 60,
+      "sha256": "7e71195cc7c98b16e8ea0569f419624216360fe8a90c0e376aeaf79a0bf5d70f"
+    },
+    {
+      "path": "unity_package/Editor/PolyForge.Editor.asmdef",
+      "bytes": 128,
+      "sha256": "75d4f74dad88710835ed1990eb3f3feb3739209c126bc92c1fa4b92a925c3466"
+    },
+    {
+      "path": "unity_package/Editor/PolyForge.Editor.asmdef.meta",
+      "bytes": 166,
+      "sha256": "2dba8a4689b71af762a68bd16cd34b3e5e0bbe58794691f22bff6369dc8d1d70"
+    },
+    {
+      "path": "unity_package/Editor/PolyForgeBuilder.cs",
+      "bytes": 33348,
+      "sha256": "f4d98c4b182f9d210666bd8f1b635df88fe28f1471b7a9c2ced2ba26751d45ad"
+    },
+    {
+      "path": "unity_package/Editor/PolyForgeBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "321f5789d3fd5a484539cf1ecd4997ddf00e30d6f80bf463642be8e3b8e69186"
+    },
+    {
+      "path": "unity_package/Editor/RecoveryProbe.cs",
+      "bytes": 4308,
+      "sha256": "de9b4007fad45c1748276442d5eec67104d54a2f0cbe43d76cae693fc7892b3f"
+    },
+    {
+      "path": "unity_package/Editor/RecoveryProbe.cs.meta",
+      "bytes": 59,
+      "sha256": "1c9f5dc291b59f97dcc5314e18b5007bf60bbfae73908d7aeb32405fd2208b28"
+    },
+    {
+      "path": "unity_package/LICENSE.md",
+      "bytes": 10273,
+      "sha256": "73ba74dfaa520b49a401b5d21459a8523a146f3b7518a833eea5efa85130bf68"
+    },
+    {
+      "path": "unity_package/LICENSE.md.meta",
+      "bytes": 158,
+      "sha256": "28bb247ffa2cda8447eab9e36e0e7382c0770d3841e77c1f63c35aba73e4ec92"
+    },
+    {
+      "path": "unity_package/README.md",
+      "bytes": 802,
+      "sha256": "f2d5b71cb665ff6e5aa76f92f2d67be26477977250fe7b7c8dfe73795f4e02b2"
+    },
+    {
+      "path": "unity_package/README.md.meta",
+      "bytes": 158,
+      "sha256": "cec34667e69e064f45cb949f581d4d160dbc9e0921b76da467d14d39107fcb9b"
+    },
+    {
+      "path": "unity_package/Runtime.meta",
+      "bytes": 172,
+      "sha256": "002529ab49b5effa268eeee1692a8c9d21847e17c078920ab8796edb11aad7be"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaHud.cs",
+      "bytes": 1177,
+      "sha256": "502213ec8b86d20488e1c280697f597a426e52c5f405130bc8d33dec9e205ff9"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaHud.cs.meta",
+      "bytes": 59,
+      "sha256": "831693f09e6d04670d835802e5a9868f9c97a54c8194b1eef3e4a30a76cb60f4"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaPerformance.cs",
+      "bytes": 3285,
+      "sha256": "dc997fbf2c31d1c6818df4d09a0c037d48fe9d2393e421c7e4ad3748c12ae8d9"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaPerformance.cs.meta",
+      "bytes": 59,
+      "sha256": "be21155c41ab632bcf8e67bcc03f92503799da473d92771fe209e62c86517505"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaSession.cs",
+      "bytes": 2152,
+      "sha256": "51297d196225a0a59b99d3b8d15ce030c8e054facc79e5606f9847b856c17a85"
+    },
+    {
+      "path": "unity_package/Runtime/ArenaSession.cs.meta",
+      "bytes": 59,
+      "sha256": "68a0342e7b3f9ff2c93eb50f9a756886b0eefa0aa2203aab66da0b21935f9d0d"
+    },
+    {
+      "path": "unity_package/Runtime/ContactDamage.cs",
+      "bytes": 806,
+      "sha256": "44152118d8e2fcfa8d931fb0e7488040605375ae376d7da9c576d0a8f7aada4e"
+    },
+    {
+      "path": "unity_package/Runtime/ContactDamage.cs.meta",
+      "bytes": 59,
+      "sha256": "15ef11e910adfa703e50eb1855d367e419291c4074908f5b10e396cf15f5ffb3"
+    },
+    {
+      "path": "unity_package/Runtime/Health.cs",
+      "bytes": 897,
+      "sha256": "bdbeacb56797f7a39b533e456274a98023deda610eb33c7d860b21dc114f607f"
+    },
+    {
+      "path": "unity_package/Runtime/Health.cs.meta",
+      "bytes": 59,
+      "sha256": "3682758c67924f2688d7fa91476d12e94ef56b45d24dca772f3e145837f5ac59"
+    },
+    {
+      "path": "unity_package/Runtime/PatrolEnemy.cs",
+      "bytes": 1051,
+      "sha256": "4a7a2b093748dcbb88c38498ca807057536bc75c81d116259f624efe54c23d55"
+    },
+    {
+      "path": "unity_package/Runtime/PatrolEnemy.cs.meta",
+      "bytes": 59,
+      "sha256": "e92d28a006f1da62f18241dc330c2ab2da54d15d35954a9da1711c34048de4a1"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerHud.cs",
+      "bytes": 583,
+      "sha256": "2fe1b8a0d604748c72299b53fe07f7772dbec5fdcb86c15582e1bc746f9c96c2"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerHud.cs.meta",
+      "bytes": 60,
+      "sha256": "0e4b38b1a1fdce8a6cd6ad8ffe29f5788f50318d28b20e62f85d68da5e226ce5"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerInput.cs",
+      "bytes": 984,
+      "sha256": "bfd62e767e6143d04aa9fe85c7a054b8f512508291bf5a226a9d4295f8f9c492"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerInput.cs.meta",
+      "bytes": 60,
+      "sha256": "e9fa9b9a37414c1b8b01508ad3954d1daeba6bd6f9ea36948f954d8cb15fac23"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerPlayer.cs",
+      "bytes": 1990,
+      "sha256": "4a90168a77b7557303d86b77b48099f7a75c407037053b20dedda8ff016b1e94"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerPlayer.cs.meta",
+      "bytes": 60,
+      "sha256": "15f4407ca5088c237c6ca466d83250b76b2dd2b107d307c464123d597a65a60a"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerRecording.cs",
+      "bytes": 3019,
+      "sha256": "d792cd0d840b1fa08f9c791063152dfe2eeab85793bd8b60a6d58c41a22cfc54"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerRecording.cs.meta",
+      "bytes": 60,
+      "sha256": "22a2b6c66f83cec889df651b99746de5c46022e1a927c7e00975db39a0ebed7e"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerSession.cs",
+      "bytes": 2108,
+      "sha256": "534b1418d1e1495f1ab866b17b0622bd0be492027264181ac9f6005498e22712"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerSession.cs.meta",
+      "bytes": 60,
+      "sha256": "be3052be5a445d6dea0341efb4fb416f0367cf6a0431b555796c6c5be6dbb971"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerSmoke.cs",
+      "bytes": 3184,
+      "sha256": "b3fd6bfa2f923838d42f59366d6e8fa3256135e1494aed8b6ca785d2a5dc5038"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerSmoke.cs.meta",
+      "bytes": 60,
+      "sha256": "614d809c215486c5f0afecfdf27038e7e8cc4295c5c2ae39eb9618229e9a9231"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerTrigger.cs",
+      "bytes": 566,
+      "sha256": "7284365129e932a5fdce0aae954ce1c43d05f5537eecb0888088e92a8706431c"
+    },
+    {
+      "path": "unity_package/Runtime/PlatformerTrigger.cs.meta",
+      "bytes": 60,
+      "sha256": "f1a21b1d178464c6983f5780ea83e984d0f7bb45ed9d31b2c7dc34519f662ae5"
+    },
+    {
+      "path": "unity_package/Runtime/PlayerController.cs",
+      "bytes": 1517,
+      "sha256": "abe5ceeeb40299e3ce4791f9785eea98d31544946d9a878344aeb6f5792d8289"
+    },
+    {
+      "path": "unity_package/Runtime/PlayerController.cs.meta",
+      "bytes": 59,
+      "sha256": "5bd5bf386fb321a57473fe5df7458330dae3f8f903a1d0e3a5debc6c0b1ff3f4"
+    },
+    {
+      "path": "unity_package/Runtime/PlayerInput.cs",
+      "bytes": 1183,
+      "sha256": "db27e8c7233fab1b178dd7176556b579554df36b42b771e145ee0f058970a1b5"
+    },
+    {
+      "path": "unity_package/Runtime/PlayerInput.cs.meta",
+      "bytes": 59,
+      "sha256": "ab320080f7a89ab11451508717abdb2174af0d7aad95f35f932810682a48bda1"
+    },
+    {
+      "path": "unity_package/Runtime/PolyForge.Runtime.asmdef",
+      "bytes": 92,
+      "sha256": "30f7946a705e37f2529dc32130f17075ca35b00f388c9712e48fe888464b8311"
+    },
+    {
+      "path": "unity_package/Runtime/PolyForge.Runtime.asmdef.meta",
+      "bytes": 166,
+      "sha256": "d11a4d61f3ad2e4b5590736f63293c55c55bfac059c6082c888aa47c53902995"
+    },
+    {
+      "path": "unity_package/Runtime/PrefabBinding.cs",
+      "bytes": 264,
+      "sha256": "29b58da34b6349b3caa1c54bc830f362c07cafee31113b19224845e25846361d"
+    },
+    {
+      "path": "unity_package/Runtime/PrefabBinding.cs.meta",
+      "bytes": 59,
+      "sha256": "51b82987a152e9238dcab42315803d2667055ecd5fdc8f423b7dd979a0a52801"
+    },
+    {
+      "path": "unity_package/Runtime/RobotAnimationDriver.cs",
+      "bytes": 510,
+      "sha256": "1c896f1459130903a0de0555f5277c6612bb0671b96403e510917e8e9c0c641a"
+    },
+    {
+      "path": "unity_package/Runtime/RobotAnimationDriver.cs.meta",
+      "bytes": 59,
+      "sha256": "7ccdc4375f693d74a94d51f3704605b46cb79895530e42b3721d70fbc17b3179"
+    },
+    {
+      "path": "unity_package/Runtime/SpritePlayer.cs",
+      "bytes": 682,
+      "sha256": "52fe5ec7101ee5219441a2190fbe30394894ce662819eecfe1ef478a5442a469"
+    },
+    {
+      "path": "unity_package/Runtime/SpritePlayer.cs.meta",
+      "bytes": 59,
+      "sha256": "f989d73fcbaebca30e083314c332d77ee07a64315bafbd809017964f3905cac0"
+    },
+    {
+      "path": "unity_package/Runtime/StandaloneProfile.cs",
+      "bytes": 13135,
+      "sha256": "eb2dffac2aaa5a36e372171f0b230972719a00676ef106ab1693338ea3096b28"
+    },
+    {
+      "path": "unity_package/Runtime/StandaloneProfile.cs.meta",
+      "bytes": 60,
+      "sha256": "881daf3b0e0a605c794b9ad442826b68e56d0414c305dedfbdeba93d83049fe9"
+    },
+    {
+      "path": "unity_package/SpriteEditor.meta",
+      "bytes": 172,
+      "sha256": "3d1515ada8ca73bf866a1d17b3c415995cf6dffd6e296d526c67c13a2b0a2dc7"
+    },
+    {
+      "path": "unity_package/SpriteEditor/PolyForge.Sprite.Editor.asmdef",
+      "bytes": 144,
+      "sha256": "2ea1b4ce753e55ad8139c5bb7d9d9909a3c1eb47668d35b82595e7c03e60311d"
+    },
+    {
+      "path": "unity_package/SpriteEditor/PolyForge.Sprite.Editor.asmdef.meta",
+      "bytes": 166,
+      "sha256": "b6d8f199723a1ca5bb067a971bad725dca128aee991e30ac9c42a0f6daa26657"
+    },
+    {
+      "path": "unity_package/SpriteEditor/SpriteBuilder.cs",
+      "bytes": 8381,
+      "sha256": "071bafdce8a5ef1ee34f6c6d54dba22bc93654e9b2e8c35b2a71bd3ea481b4cb"
+    },
+    {
+      "path": "unity_package/SpriteEditor/SpriteBuilder.cs.meta",
+      "bytes": 59,
+      "sha256": "59498d76d2978e5bea8cb15c460876cafb8f33da1388425dafbcac51338ff08d"
+    },
+    {
+      "path": "unity_package/Tests.meta",
+      "bytes": 172,
+      "sha256": "e5b316f05a1c6879b18d9ce03d866fa4aea2f199262876782585a24ae3370ae1"
+    },
+    {
+      "path": "unity_package/Tests/AnimationEditor.meta",
+      "bytes": 172,
+      "sha256": "5e33e522b3553d2f795c388b2720f2a9a87fbffe8da6c36992b8cf3fc1079a37"
+    },
+    {
+      "path": "unity_package/Tests/AnimationEditor/AnimationTests.cs",
+      "bytes": 4495,
+      "sha256": "fbc643d0fae704c55223506230f21b7b9b1806e62b3937cb6447ab724e6a42b5"
+    },
+    {
+      "path": "unity_package/Tests/AnimationEditor/AnimationTests.cs.meta",
+      "bytes": 59,
+      "sha256": "f41d34d4f4a19450190b7fb7a77639bc6e1c480f5c52e4cf2196ad94737b27cc"
+    },
+    {
+      "path": "unity_package/Tests/AnimationEditor/PolyForge.Animation.Editor.Tests.asmdef",
+      "bytes": 173,
+      "sha256": "8f534079130fda1267cd4d593c0a609f5ec6fecb262638ace3caa62478177b1b"
+    },
+    {
+      "path": "unity_package/Tests/AnimationEditor/PolyForge.Animation.Editor.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "71d54de0b7a09f2009ba3ea3755f859c7339fafb59eacca7a6b447099d10f419"
+    },
+    {
+      "path": "unity_package/Tests/AnimationPlayMode.meta",
+      "bytes": 172,
+      "sha256": "9b423374fd1022f27cf982304b8fb0a3de4a58986e715bab2c41aa84ab3cf0cc"
+    },
+    {
+      "path": "unity_package/Tests/AnimationPlayMode/MotionTests.cs",
+      "bytes": 2458,
+      "sha256": "4044416ca26c73dc2d23696fd7038fa129f6849dd1edd0b772b17022e160130e"
+    },
+    {
+      "path": "unity_package/Tests/AnimationPlayMode/MotionTests.cs.meta",
+      "bytes": 59,
+      "sha256": "c0d63f18a54a34210072fc3b27a2c3f4027a55018ad74b2269dbcb9ec7634ec9"
+    },
+    {
+      "path": "unity_package/Tests/AnimationPlayMode/PolyForge.Animation.PlayMode.Tests.asmdef",
+      "bytes": 126,
+      "sha256": "5e5596568c5c4c32bbd93992b55129cd2ea27afc9cbbc9fd9d46045bcf299dae"
+    },
+    {
+      "path": "unity_package/Tests/AnimationPlayMode/PolyForge.Animation.PlayMode.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "799555d2beddc26bad9fa80fba68e54b11d2746aa9b13fbbcdb7568c2e67b093"
+    },
+    {
+      "path": "unity_package/Tests/Editor.meta",
+      "bytes": 172,
+      "sha256": "6ec4ca2da38fa8b96a959d61a404ad07bf850581158a50cbf19d24830934a74c"
+    },
+    {
+      "path": "unity_package/Tests/Editor/ForensicsTests.cs",
+      "bytes": 8703,
+      "sha256": "88df861a0a46e77b03abf553b88aa719dd9c776bea6932729d952bc217ba62fc"
+    },
+    {
+      "path": "unity_package/Tests/Editor/ForensicsTests.cs.meta",
+      "bytes": 59,
+      "sha256": "14677e061aadecd83bd1e5dc2fc28f465c54415554e6682cd3a17fbeb86aeff9"
+    },
+    {
+      "path": "unity_package/Tests/Editor/ImportTests.cs",
+      "bytes": 6518,
+      "sha256": "1ba6f1bae60e377f4a2488fd1eaf87653aa305b8b79f230a88d4c5de16b04b82"
+    },
+    {
+      "path": "unity_package/Tests/Editor/ImportTests.cs.meta",
+      "bytes": 59,
+      "sha256": "49987ff5e8e2b1048d5c4c44682cc966bfa99d5b682593dea0d3f2c40cd27f33"
+    },
+    {
+      "path": "unity_package/Tests/Editor/PolyForge.Editor.Tests.asmdef",
+      "bytes": 163,
+      "sha256": "0bfb62e0da387be5ac52d50c16d5f55b29895ecc282a53c7bff55dac02bc2607"
+    },
+    {
+      "path": "unity_package/Tests/Editor/PolyForge.Editor.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "b1586ecbcb2094ce29b2074df575a00c0c26b115932956d03a72c8c78ac7b40f"
+    },
+    {
+      "path": "unity_package/Tests/GameEditor.meta",
+      "bytes": 172,
+      "sha256": "ab0c33706777b5df329a4a2a719e93c1f86a27b8fe06eaca6210f493970ed8c3"
+    },
+    {
+      "path": "unity_package/Tests/GameEditor/GameTests.cs",
+      "bytes": 3063,
+      "sha256": "8622ee04d9b513dffff57b6cf28129fa68f642966227c0512226108cdc90051b"
+    },
+    {
+      "path": "unity_package/Tests/GameEditor/GameTests.cs.meta",
+      "bytes": 59,
+      "sha256": "3765afa54821aa9a90cc6e1169bca5e957d6bf53190578945d6f86f9a9b4f2cc"
+    },
+    {
+      "path": "unity_package/Tests/GameEditor/PolyForge.Game.Editor.Tests.asmdef",
+      "bytes": 168,
+      "sha256": "6915743b2b8098ff03e969d629258310ebb7c3fd7da0e8c6abc2a88739899283"
+    },
+    {
+      "path": "unity_package/Tests/GameEditor/PolyForge.Game.Editor.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "6a7317e90aedfb4905f3bc0b36da93464a135773ab98d50b32638dc4ed9ad5e5"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerEditor.meta",
+      "bytes": 172,
+      "sha256": "7f24a9bef2136f7eb132a0cf15901ace2c032e2abba904fc2795468fcde3b130"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerEditor/PlatformerTests.cs",
+      "bytes": 4226,
+      "sha256": "42f8ade3b9449ebf992beb711021d1819f44fa683b89cf4955da21a7d32c6da2"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerEditor/PlatformerTests.cs.meta",
+      "bytes": 60,
+      "sha256": "1b010e295f134287c8d8b7cbef6682efb6cca970e48d652397ac7e73acd27de0"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerEditor/PolyForge.Platformer.Editor.Tests.asmdef",
+      "bytes": 174,
+      "sha256": "b4656a2953d921170dc51fa790dbb64be9e3990da211f6d389fa3191f0d77cf9"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerEditor/PolyForge.Platformer.Editor.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "8a420fbbcfb5953fd061c52c4d9ea374a24eafa8b10653c3684ca3714a7161ba"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerPlayMode.meta",
+      "bytes": 172,
+      "sha256": "6f4c860c2d82edf6d4e6a17cd4b9fc7567307da01758a5a1ac0de78d0172a1bb"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerPlayMode/PlatformerTests.cs",
+      "bytes": 9726,
+      "sha256": "ed151c4db22a447044905478132c4a229abb8d0cea0e37dc2f251efb32a4bdf5"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerPlayMode/PlatformerTests.cs.meta",
+      "bytes": 60,
+      "sha256": "af8cff5be1bcc0c4cabc08c2b36641c2a2ab9d27035d29fb0801359652a05449"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerPlayMode/PolyForge.Platformer.PlayMode.Tests.asmdef",
+      "bytes": 147,
+      "sha256": "a1af8697f69aa81ab77bf624ac3f1cd91558300a4dba9004744823034a0e3b31"
+    },
+    {
+      "path": "unity_package/Tests/PlatformerPlayMode/PolyForge.Platformer.PlayMode.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "2fefaeda6d884c5c28c3e95f128d010c59686baf74e1a0d4e3e28f16291232b2"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode.meta",
+      "bytes": 172,
+      "sha256": "140a965482ee847bffedb4a3234d552d5a830cb7925e839946f4b27ec33f9a33"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/PolyForge.PlayMode.Tests.asmdef",
+      "bytes": 136,
+      "sha256": "ea54a8bf79c0f7ed9a7890fb94724a891ccf49d613a3e258532fa7221c71eb1c"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/PolyForge.PlayMode.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "a726b91ecf95af20553bc97810737a69fe888bfaad5ce2f33c5644bd0e452283"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/RuntimeTests.cs",
+      "bytes": 721,
+      "sha256": "eb91f989f129d683318455f183ccac15371372ca233fb453c7b30a413b32b5fb"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/RuntimeTests.cs.meta",
+      "bytes": 59,
+      "sha256": "68171b71e17c3122db9d9b97e6fb6c6518c35b1a67950eb4ff39e9717f3cb8a5"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/ScenarioTests.cs",
+      "bytes": 10829,
+      "sha256": "cf3e765445be5d36953033716bab363c371629e8ee840cee88e6ed0bedce1ee0"
+    },
+    {
+      "path": "unity_package/Tests/PlayMode/ScenarioTests.cs.meta",
+      "bytes": 59,
+      "sha256": "2051946d32102ba5ee78663d8b995e02c4f33a38d1f4182bc6c2bff45e754053"
+    },
+    {
+      "path": "unity_package/Tests/SpriteEditor.meta",
+      "bytes": 172,
+      "sha256": "d13677be16bfd931d33357f8b583155b3423947cede842ce917cb822d803ca15"
+    },
+    {
+      "path": "unity_package/Tests/SpriteEditor/PolyForge.Sprite.Editor.Tests.asmdef",
+      "bytes": 202,
+      "sha256": "c6a13553fb35422c12eabc3de7eb6594b0d3872471c871e49a9f45199a7b1908"
+    },
+    {
+      "path": "unity_package/Tests/SpriteEditor/PolyForge.Sprite.Editor.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "05f24084e6cf1e78130c4a0f679a0ff8c26878b421a2ed7a9fe7a97b3038d80b"
+    },
+    {
+      "path": "unity_package/Tests/SpriteEditor/SpriteTests.cs",
+      "bytes": 3404,
+      "sha256": "985ba8c84cf9cbc7909746cc577271481d83896e8dae2627179bd036f06191dc"
+    },
+    {
+      "path": "unity_package/Tests/SpriteEditor/SpriteTests.cs.meta",
+      "bytes": 59,
+      "sha256": "afba2f66f1305e5b8f314b02142f9fe0d917dda906a2b7a5d4e3045760905697"
+    },
+    {
+      "path": "unity_package/Tests/SpritePlayMode.meta",
+      "bytes": 172,
+      "sha256": "d5bc8ec6a340b760173e815dbdf76c4544d2b4a6a04578ebbf627bed3ac3a64a"
+    },
+    {
+      "path": "unity_package/Tests/SpritePlayMode/PolyForge.Sprite.PlayMode.Tests.asmdef",
+      "bytes": 143,
+      "sha256": "a91ca9f037f98eaa28a276095159c95703cc57ee49d9dfafe112771c41be74d9"
+    },
+    {
+      "path": "unity_package/Tests/SpritePlayMode/PolyForge.Sprite.PlayMode.Tests.asmdef.meta",
+      "bytes": 166,
+      "sha256": "5d057d6c235cc101029f859a185224f67377bd13cd21f381702b07bca0e05b06"
+    },
+    {
+      "path": "unity_package/Tests/SpritePlayMode/SpriteMotionTests.cs",
+      "bytes": 4144,
+      "sha256": "6978f2a1af991f3b840bce26ed28b8f4d8686f8e4f7898e74681f616448fe533"
+    },
+    {
+      "path": "unity_package/Tests/SpritePlayMode/SpriteMotionTests.cs.meta",
+      "bytes": 59,
+      "sha256": "bc468b37514d3cbd9ab9e87646bfb9b6430257303a721f1d27bf189afb853967"
+    },
+    {
+      "path": "unity_package/__init__.py",
+      "bytes": 72,
+      "sha256": "0f18631d611dbd88d563042c2fc03a8f90d7168df3ea4d52a0f1ae53a5f026ec"
+    },
+    {
+      "path": "unity_package/package.json",
+      "bytes": 381,
+      "sha256": "f091ffdbac6ce0b2c9fea5ee18e172d5761cb2f418e8f46f12c91afaed503e6f"
+    },
+    {
+      "path": "unity_package/package.json.meta",
+      "bytes": 163,
+      "sha256": "6972496de889de8c76d4814619f1bb7cfc1d1c61d3731e8377fc59918b600d1e"
+    }
+  ],
+  "fixture_digest": "a9147bc9e8206ad32d133d2f5ec1e4c0ce88fb63de88ee23719d53fb3ea45887",
+  "qualification": "Byte identity only; see phase-11.md for executed and unmet gates."
+}

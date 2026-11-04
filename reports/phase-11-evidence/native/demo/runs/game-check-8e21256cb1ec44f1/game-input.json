@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "seed": 42,
+  "scene_id": "main",
+  "player": {
+    "id": "player_01",
+    "asset_id": "robot_a",
+    "spawn_xyz": [
+      -3.0,
+      0,
+      -3.0
+    ]
+  },
+  "enemies": [
+    {
+      "id": "enemy_01",
+      "asset_id": "robot_a",
+      "controller": "PatrolEnemy",
+      "spawn_xyz": [
+        3,
+        0,
+        3
+      ]
+    }
+  ],
+  "static_actors": [],
+  "project_name": "Isometric Robot Arena",
+  "ground_id": "ground_a",
+  "obstacle_ids": [
+    "crate_a"
+  ],
+  "half_extents": [
+    10.0,
+    10.0
+  ],
+  "survival_seconds": 30,
+  "health": 100,
+  "player_speed": 4,
+  "enemy_speed": 1.3,
+  "damage": 25,
+  "fixed_delta_seconds": 0.02,
+  "wall_thickness": 0.5,
+  "player_origin": "DERIVED_FROM_ROBOT_FAMILY",
+  "obstacles": [
+    {
+      "id": "Obstacle_0",
+      "asset_id": "crate_a",
+      "size_m": [
+        1,
+        1,
+        1
+      ],
+      "center_m": [
+        0,
+        0.5,
+        0
+      ]
+    }
+  ],
+  "game_contract_digest": "91e7c023d293a58046a0f57bd6cdf07eaf00fb058fd1e146a6b1633b71383b13",
+  "wall_fbx": "Assets/PolyForgeGenerated/Game/Models/arena_boundary.fbx",
+  "wall_material": "Assets/PolyForgeGenerated/Materials/ground_a/metal_blue.mat",
+  "wall_source": "runs/mesh-641cf2def3c149d9/asset",
+  "wall_sha256": "1affbb025d712c994a2ef31d61ca3f0beec5730a99ccc4b6fd91d291f68155c1"
+}

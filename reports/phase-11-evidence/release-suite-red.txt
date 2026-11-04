@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\qualify-release-suite.py", line 11, in <module>
+    suite = load_suite(extension / 'suite.json')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\benchmark\tasks.py", line 206, in load_suite
+    policy = WorkspacePolicy(path.absolute().parent)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\polyforge\security\paths.py", line 32, in __init__
+    raise InputError("Workspace must be an existing directory")
+polyforge.contracts.validation.InputError: Workspace must be an existing directory

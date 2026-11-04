@@ -1,0 +1,49 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_____ test_empty_execution_evidence_never_counts_as_matched_configuration _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{7679c35f-ec6a-482f-90ec-11c362b82db7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_empty_execution_evidence_0')
+
+    def test_empty_execution_evidence_never_counts_as_matched_configuration(tmp_path: Path) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["execution_metadata"]["C"]["hardware"] = {}
+        value["execution_metadata"]["D"]["hardware"] = {}
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=PublicRunner())
+        assert result.status == "BLOCKED"
+>       assert result.data["comparison_status"] == "NON_ATTRIBUTABLE"
+E       AssertionError: assert 'DECLARED_MATCH_ONLY' == 'NON_ATTRIBUTABLE'
+E         
+E         - NON_ATTRIBUTABLE
+E         + DECLARED_MATCH_ONLY
+
+tests\test_phase11_benchmark.py:610: AssertionError
+_________ test_explicit_evaluator_failure_is_not_a_missing_dependency _________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{7679c35f-ec6a-482f-90ec-11c362b82db7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_explicit_evaluator_failur0')
+
+    def test_explicit_evaluator_failure_is_not_a_missing_dependency(tmp_path: Path) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class Rejected:
+            def grade(self, request: EvaluationRequest) -> Result:
+                return failure(ErrorKind.TEST_FAILURE, "PF-PUBLIC-GRADE-FAILED", "Behavior failed")
+    
+        suite = load_suite(configured_suite(tmp_path))
+        result = run_suite(suite, "D", tmp_path / "out", runner=PublicRunner(), evaluator=Rejected())
+>       assert result.status == "FAIL"
+E       AssertionError: assert 'BLOCKED' == 'FAIL'
+E         
+E         - FAIL
+E         + BLOCKED
+
+tests\test_phase11_benchmark.py:624: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_empty_execution_evidence_never_counts_as_matched_configuration
+FAILED tests/test_phase11_benchmark.py::test_explicit_evaluator_failure_is_not_a_missing_dependency
+2 failed, 68 deselected in 15.99s

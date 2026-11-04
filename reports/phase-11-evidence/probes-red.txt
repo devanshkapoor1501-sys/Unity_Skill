@@ -1,0 +1,342 @@
+FFFF.                                                                    [100%]
+================================== FAILURES ===================================
+_ test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify[blender-bvh-blender.bvh-ray.v1-5.2.2] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unfamiliar_probe_is_fixed0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000221C93BEED0>
+tool = 'blender-bvh', identifier = 'blender.bvh-ray.v1', version = '5.2.2'
+
+    @pytest.mark.parametrize("tool,identifier,version", [
+        ("blender-bvh", "blender.bvh-ray.v1", "5.2.2"),
+        ("unity-pool", "unity.object-pool.v1", "6000.6.3f1"),
+    ])
+    def test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, tool: str, identifier: str, version: str,
+    ) -> None:
+        monkeypatch.setattr(probes, "discover_tool", lambda *a: Path("fixed-tool.exe"))
+>       dry = probes.probe_tool(tmp_path, tool, dry_run=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_probes.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\knowledge\probes.py:120: in probe_tool
+    version, identifier, _ = _pin(tool)
+                             ^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tool = 'blender-bvh'
+
+    def _pin(tool: str) -> tuple[str, str, str]:
+        if not isinstance(tool, str) or tool not in PINS:
+>           raise InputError("Only registered Blender/Unity probes are available")
+E           polyforge.contracts.validation.InputError: Only registered Blender/Unity probes are available
+
+polyforge\knowledge\probes.py:40: InputError
+_ test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify[unity-pool-unity.object-pool.v1-6000.6.3f1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unfamiliar_probe_is_fixed1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000221C87847A0>
+tool = 'unity-pool', identifier = 'unity.object-pool.v1', version = '6000.6.3f1'
+
+    @pytest.mark.parametrize("tool,identifier,version", [
+        ("blender-bvh", "blender.bvh-ray.v1", "5.2.2"),
+        ("unity-pool", "unity.object-pool.v1", "6000.6.3f1"),
+    ])
+    def test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, tool: str, identifier: str, version: str,
+    ) -> None:
+        monkeypatch.setattr(probes, "discover_tool", lambda *a: Path("fixed-tool.exe"))
+>       dry = probes.probe_tool(tmp_path, tool, dry_run=True)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_probes.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\knowledge\probes.py:120: in probe_tool
+    version, identifier, _ = _pin(tool)
+                             ^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+tool = 'unity-pool'
+
+    def _pin(tool: str) -> tuple[str, str, str]:
+        if not isinstance(tool, str) or tool not in PINS:
+>           raise InputError("Only registered Blender/Unity probes are available")
+E           polyforge.contracts.validation.InputError: Only registered Blender/Unity probes are available
+
+polyforge\knowledge\probes.py:40: InputError
+___ test_unfamiliar_probe_uses_correct_registered_application[blender-bvh] ____
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+args = ['--tool', 'blender-bvh', '--workspace', 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}\\AC\\Temp\\pytest-of-Divansh Kapoor\\pytest-0\\test_unfamiliar_probe_uses_cor0', '--dry-run']
+namespace = Namespace(workspace=None, tool=None, dry_run=False, json=False, format='human', spec=CommandSpec(path=('knowledge', 'p...10, example=('knowledge', 'probe', '--workspace', 'workspace/arena_demo', '--tool', 'blender', '--dry-run', '--json')))
+intermixed = False
+
+    def _parse_known_args2(self, args, namespace, intermixed):
+        if args is None:
+            # args default to the system args
+            args = _sys.argv[1:]
+        else:
+            # make sure that args are mutable
+            args = list(args)
+    
+        # default Namespace built from parser defaults
+        if namespace is None:
+            namespace = Namespace()
+    
+        # add any action defaults that aren't present
+        for action in self._actions:
+            if action.dest is not SUPPRESS:
+                if not hasattr(namespace, action.dest):
+                    if action.default is not SUPPRESS:
+                        setattr(namespace, action.dest, action.default)
+    
+        # add any parser defaults that aren't present
+        for dest in self._defaults:
+            if not hasattr(namespace, dest):
+                setattr(namespace, dest, self._defaults[dest])
+    
+        # parse the arguments and exit if there are any errors
+        if self.exit_on_error:
+            try:
+>               namespace, args = self._parse_known_args(args, namespace, intermixed)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2184: in _parse_known_args
+    start_index = consume_optional(start_index)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2113: in consume_optional
+    take_action(action, args, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2003: in take_action
+    argument_values = self._get_values(action, argument_strings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2514: in _get_values
+    self._check_value(action, value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+action = _StoreAction(option_strings=['--tool'], dest='tool', nargs=None, const=None, default=None, type=None, choices=['blender', 'unity', 'unity-ui'], required=True, help=None, metavar=None)
+value = 'blender-bvh'
+
+    def _check_value(self, action, value):
+        # converted value must be one of the choices (if specified)
+        choices = action.choices
+        if choices is not None:
+            if isinstance(choices, str):
+                choices = iter(choices)
+            if value not in choices:
+                args = {'value': str(value),
+                        'choices': ', '.join(map(str, action.choices))}
+                msg = _('invalid choice: %(value)r (choose from %(choices)s)')
+>               raise ArgumentError(action, msg % args)
+E               argparse.ArgumentError: argument --tool: invalid choice: 'blender-bvh' (choose from blender, unity, unity-ui)
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2573: ArgumentError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unfamiliar_probe_uses_cor0')
+tool = 'blender-bvh'
+
+    @pytest.mark.parametrize("tool", ["blender-bvh", "unity-pool"])
+    def test_unfamiliar_probe_uses_correct_registered_application(tmp_path: Path, tool: str) -> None:
+        from polyforge.cli import build_parser
+    
+>       arguments = build_parser().parse_args([
+            "knowledge", "probe", "--tool", tool, "--workspace", str(tmp_path), "--dry-run",
+        ])
+
+tests\test_phase11_probes.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1904: in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: in _parse_known_args2
+    namespace, args = self._parse_known_args(args, namespace, intermixed)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2165: in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2141: in consume_positionals
+    take_action(action, args)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2018: in take_action
+    action(self, namespace, argument_values, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1272: in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: in _parse_known_args2
+    namespace, args = self._parse_known_args(args, namespace, intermixed)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2165: in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2141: in consume_positionals
+    take_action(action, args)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2018: in take_action
+    action(self, namespace, argument_values, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1272: in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1945: in _parse_known_args2
+    self.error(str(err))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+message = "argument --tool: invalid choice: 'blender-bvh' (choose from blender, unity, unity-ui)"
+
+    def error(self, message: str) -> Never:
+>       raise InputError(message, code="PF-INPUT-CLI")
+E       polyforge.contracts.validation.InputError: argument --tool: invalid choice: 'blender-bvh' (choose from blender, unity, unity-ui)
+
+polyforge\cli.py:32: InputError
+____ test_unfamiliar_probe_uses_correct_registered_application[unity-pool] ____
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+args = ['--tool', 'unity-pool', '--workspace', 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}\\AC\\Temp\\pytest-of-Divansh Kapoor\\pytest-0\\test_unfamiliar_probe_uses_cor1', '--dry-run']
+namespace = Namespace(workspace=None, tool=None, dry_run=False, json=False, format='human', spec=CommandSpec(path=('knowledge', 'p...10, example=('knowledge', 'probe', '--workspace', 'workspace/arena_demo', '--tool', 'blender', '--dry-run', '--json')))
+intermixed = False
+
+    def _parse_known_args2(self, args, namespace, intermixed):
+        if args is None:
+            # args default to the system args
+            args = _sys.argv[1:]
+        else:
+            # make sure that args are mutable
+            args = list(args)
+    
+        # default Namespace built from parser defaults
+        if namespace is None:
+            namespace = Namespace()
+    
+        # add any action defaults that aren't present
+        for action in self._actions:
+            if action.dest is not SUPPRESS:
+                if not hasattr(namespace, action.dest):
+                    if action.default is not SUPPRESS:
+                        setattr(namespace, action.dest, action.default)
+    
+        # add any parser defaults that aren't present
+        for dest in self._defaults:
+            if not hasattr(namespace, dest):
+                setattr(namespace, dest, self._defaults[dest])
+    
+        # parse the arguments and exit if there are any errors
+        if self.exit_on_error:
+            try:
+>               namespace, args = self._parse_known_args(args, namespace, intermixed)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2184: in _parse_known_args
+    start_index = consume_optional(start_index)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2113: in consume_optional
+    take_action(action, args, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2003: in take_action
+    argument_values = self._get_values(action, argument_strings)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2514: in _get_values
+    self._check_value(action, value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+action = _StoreAction(option_strings=['--tool'], dest='tool', nargs=None, const=None, default=None, type=None, choices=['blender', 'unity', 'unity-ui'], required=True, help=None, metavar=None)
+value = 'unity-pool'
+
+    def _check_value(self, action, value):
+        # converted value must be one of the choices (if specified)
+        choices = action.choices
+        if choices is not None:
+            if isinstance(choices, str):
+                choices = iter(choices)
+            if value not in choices:
+                args = {'value': str(value),
+                        'choices': ', '.join(map(str, action.choices))}
+                msg = _('invalid choice: %(value)r (choose from %(choices)s)')
+>               raise ArgumentError(action, msg % args)
+E               argparse.ArgumentError: argument --tool: invalid choice: 'unity-pool' (choose from blender, unity, unity-ui)
+
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2573: ArgumentError
+
+During handling of the above exception, another exception occurred:
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{b8a11c1f-ce77-4f87-a71f-91e8f6ad3c4f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_unfamiliar_probe_uses_cor1')
+tool = 'unity-pool'
+
+    @pytest.mark.parametrize("tool", ["blender-bvh", "unity-pool"])
+    def test_unfamiliar_probe_uses_correct_registered_application(tmp_path: Path, tool: str) -> None:
+        from polyforge.cli import build_parser
+    
+>       arguments = build_parser().parse_args([
+            "knowledge", "probe", "--tool", tool, "--workspace", str(tmp_path), "--dry-run",
+        ])
+
+tests\test_phase11_probes.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1904: in parse_args
+    args, argv = self.parse_known_args(args, namespace)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: in _parse_known_args2
+    namespace, args = self._parse_known_args(args, namespace, intermixed)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2165: in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2141: in consume_positionals
+    take_action(action, args)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2018: in take_action
+    action(self, namespace, argument_values, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1272: in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1943: in _parse_known_args2
+    namespace, args = self._parse_known_args(args, namespace, intermixed)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2165: in _parse_known_args
+    positionals_end_index = consume_positionals(start_index)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2141: in consume_positionals
+    take_action(action, args)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:2018: in take_action
+    action(self, namespace, argument_values, option_string)
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1272: in __call__
+    subnamespace, arg_strings = parser.parse_known_args(arg_strings, None)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1914: in parse_known_args
+    return self._parse_known_args2(args, namespace, intermixed=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\argparse.py:1945: in _parse_known_args2
+    self.error(str(err))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = Parser(prog='polyforge knowledge probe', usage=None, description='Run a fixed registered installed-tool API probe', formatter_class=<class 'argparse.HelpFormatter'>, conflict_handler='error', add_help=True)
+message = "argument --tool: invalid choice: 'unity-pool' (choose from blender, unity, unity-ui)"
+
+    def error(self, message: str) -> Never:
+>       raise InputError(message, code="PF-INPUT-CLI")
+E       polyforge.contracts.validation.InputError: argument --tool: invalid choice: 'unity-pool' (choose from blender, unity, unity-ui)
+
+polyforge\cli.py:32: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_probes.py::test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify[blender-bvh-blender.bvh-ray.v1-5.2.2]
+FAILED tests/test_phase11_probes.py::test_unfamiliar_probe_is_fixed_and_changed_version_cannot_qualify[unity-pool-unity.object-pool.v1-6000.6.3f1]
+FAILED tests/test_phase11_probes.py::test_unfamiliar_probe_uses_correct_registered_application[blender-bvh]
+FAILED tests/test_phase11_probes.py::test_unfamiliar_probe_uses_correct_registered_application[unity-pool]
+4 failed, 1 passed in 2.65s

@@ -1,0 +1,45 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": [REDACTED],
+    "job_id": "job_0",
+    "task_id": "task_05b5c0d62bc519f7_a4d0fc34",
+    "asset_id": "game_project",
+    "pid": 12788,
+    "identity": "134380003383100862",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793530340.6647384,
+    "released": false,
+    "path": ".polyforge/leases/fcc89801df7c3530a98fed1bf4c9b6688b8bb3a666b99bb1e288392c05976555.json"
+  },
+  "result": {
+    "original_request": {
+      "schema_version": "1.0.0",
+      "brief": "Build a 2D checkpoint platformer with grounded jumping and a hazard.",
+      "task_class": "BUILD_GAME",
+      "domain_tags": [
+        "unity",
+        "2d",
+        "gameplay"
+      ],
+      "feature_ids": [
+        "grounded_jump",
+        "checkpoint_respawn",
+        "hazard_damage",
+        "goal_contact"
+      ],
+      "capability_id": "unity.game.platformer.v1",
+      "input": {
+        "schema_version": "1.0.0",
+        "scene_id": "checkpoint_course",
+        "seed": 42,
+        "sprite_receipt": "runs/sprite-unity-a4223c5db47f4f99/bindings.json",
+        "layout": "checkpoint_course_v1",
+        "standalone": true
+      },
+      "seed": 42
+    },
+    "brief_digest": "7ae43ba57bfb5aed110772ceff1e1794a0f254048f425b60b17a080f5a5f8587"
+  },
+  "result_digest": "a6f038ee551c752b4297706c9df22de3a7059ae7679d5a435511eea0c7aab2f4"
+}

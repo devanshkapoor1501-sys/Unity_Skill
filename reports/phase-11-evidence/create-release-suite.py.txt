@@ -1,0 +1,25 @@
+import hashlib
+import json
+import shutil
+from pathlib import Path
+
+base = Path('benchmarks/development-v1')
+out = Path('benchmarks/release-development-v1')
+assert not (out / 'suite.json').exists()
+suite = json.loads((base / 'suite.json').read_text('utf-8'))
+for path in (base / 'briefs').iterdir():
+    shutil.copyfile(path, out / 'briefs' / path.name)
+for identifier, genre in [('arena_survival_3d', 'survival_arena'),
+                          ('relay_gate_garden_3d', 'relay_puzzle')]:
+    brief = out / 'briefs' / (identifier + '.md')
+    suite['tasks'].append({
+        'schema_version': '1.0.0', 'task_id': identifier, 'task_type': 'COMPLETE_GAME_3D',
+        'original_brief_sha256': hashlib.sha256(brief.read_bytes()).hexdigest(),
+        'task_success_schema': 'PUBLIC_DEVELOPMENT_ONLY; freeze independent scoring before execution',
+        'ownership': 'DEV_FIXTURE', 'rubric_sha256': None,
+        'budgets': {'wall_seconds': 3600, 'tool_calls': 400, 'tokens': None, 'retries': 2},
+        'genre': genre, 'platform': 'windows_standalone_64', 'complexity': 'bounded_complete_game'
+    })
+suite['note'] = 'Twelve base development tasks unchanged plus two PUBLIC complete 3D game briefs. '
+suite['note'] += 'No protected withheld variant, real model trials, external scorer or release qualification is supplied.'
+(out / 'suite.json').write_text(json.dumps(suite, indent=2) + '\n', encoding='utf-8')

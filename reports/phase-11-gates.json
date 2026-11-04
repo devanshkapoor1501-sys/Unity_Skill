@@ -1,0 +1,175 @@
+{
+  "schema_version": "1.0.0",
+  "phase": 11,
+  "reconciled_on": "2026-11-04",
+  "authority_sha256": "8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6",
+  "engine_digest": "4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b",
+  "phase_status": "BLOCKED",
+  "game_status": "PARTIAL",
+  "stable_release_eligible": false,
+  "phase12_entry": "BLOCKED",
+  "protected_evaluator": "EXTERNAL_NOT_SUPPLIED",
+  "requirements": [
+    {
+      "id": "11.1",
+      "status": "REVIEW",
+      "scope": "Trusted Windows/security/nonmutation observed; final CI pending; no untrusted isolation or native non-Windows claim"
+    },
+    {
+      "id": "11.2",
+      "status": "BLOCKED",
+      "scope": "A-D zero executed trials; no independent scoring/adapters"
+    },
+    {
+      "id": "11.3",
+      "status": "NOT_RUN",
+      "scope": "Required concurrent/inspector/specialist model ablations not executed; historical local graph timing is separate"
+    },
+    {
+      "id": "11.4",
+      "status": "BLOCKED",
+      "scope": "Two public styles technically pass; separately controlled holdout absent"
+    },
+    {
+      "id": "11.5",
+      "status": "REVIEW",
+      "scope": "Public M1-M6/native rollback/profile pass; protected independent qualification absent"
+    },
+    {
+      "id": "11.6",
+      "status": "PASS",
+      "scope": "Documentation and accurate support maps present; frozen denominator retained"
+    },
+    {
+      "id": "11.7",
+      "status": "BLOCKED",
+      "scope": "Development package builds/install pass; stable release/manual acceptance missing"
+    },
+    {
+      "id": "11.8",
+      "status": "PASS",
+      "scope": "Source/fixture inventory frozen; byte proof separate from acceptance"
+    },
+    {
+      "id": "11.9",
+      "status": "BLOCKED",
+      "scope": "Verified CORE v1 publication awaits required release evidence. Experimental checkpoint labeling verified."
+    },
+    {
+      "id": "11.10",
+      "status": "NOT_RUN",
+      "scope": "Product host concurrency/model ablations/GPU measurements unavailable"
+    },
+    {
+      "id": "11.11",
+      "status": "PASS",
+      "scope": "Fixed BVH/pool probes observed with version-negative regressions"
+    },
+    {
+      "id": "11.12",
+      "status": "PASS",
+      "scope": "Canonical CLI/help/docs and fixtures, with implemented bounded clean and installed preview evidence"
+    },
+    {
+      "id": "G1",
+      "status": "PASS",
+      "scope": "Installed CLI/schema/skill smoke"
+    },
+    {
+      "id": "G2",
+      "status": "PASS",
+      "scope": "Bounded native geometry/export/four-view evidence"
+    },
+    {
+      "id": "G3",
+      "status": "PASS",
+      "scope": "Pinned Windows native scene/import tests"
+    },
+    {
+      "id": "G4",
+      "status": "REVIEW",
+      "scope": "Current gameplay/visual approval pending; Phase6 historical user receipt retained"
+    },
+    {
+      "id": "G5",
+      "status": "PASS",
+      "scope": "Covered fault/race/crash tests and retained negative cases"
+    },
+    {
+      "id": "G6",
+      "status": "PASS",
+      "scope": "Experimental packaging/docs/licensing"
+    },
+    {
+      "id": "G7",
+      "status": "REVIEW",
+      "scope": "Bounded executable core evidenced; missing comparison trials recorded"
+    },
+    {
+      "id": "G8",
+      "status": "BLOCKED",
+      "scope": "Protected independent feature acceptance absent; game PARTIAL"
+    },
+    {
+      "id": "G9",
+      "status": "BLOCKED",
+      "scope": "Public M1-M6 detected; external qualification absent"
+    },
+    {
+      "id": "G10",
+      "status": "REVIEW",
+      "scope": "TRUSTED_LOCAL development; untrusted execution remains BLOCKED, no sandbox assurance"
+    },
+    {
+      "id": "G11",
+      "status": "PASS",
+      "scope": "Bounded public Windows numerical profile; GPU presentation NOT_MEASURED"
+    },
+    {
+      "id": "G12",
+      "status": "PASS",
+      "scope": "Original inventory/hash nonmutation; semantic analysis remains REVIEW"
+    },
+    {
+      "id": "G13",
+      "status": "BLOCKED",
+      "scope": "Three external evaluator-owned unseen combinations absent"
+    },
+    {
+      "id": "G14",
+      "status": "PASS",
+      "scope": "Canonical CLI/help/docs and fixtures, with implemented bounded clean and installed preview evidence"
+    },
+    {
+      "id": "G15",
+      "status": "PASS",
+      "scope": "Native reimport/regression rollback proof"
+    },
+    {
+      "id": "G16",
+      "status": "PASS",
+      "scope": "Pinned Windows event/tolerance checks; no cross-platform bit identity"
+    },
+    {
+      "id": "G17",
+      "status": "BLOCKED",
+      "scope": "Task/parity validators pass but actual comparable C-D trials absent"
+    }
+  ],
+  "checkpoint_verification": {
+    "local": "PASS",
+    "push": "NOT_RUN",
+    "ci": "NOT_RUN",
+    "local_evidence": "reports/phase-11-evidence/closure/release-final-summary.json",
+    "packaging": "PASS",
+    "native_final": "PASS",
+    "offline_tests": {
+      "passed": 1218,
+      "deselected": 12,
+      "combined_coverage_percent": 93.81036593660727,
+      "branch_coverage_percent": 90.63324538258576
+    },
+    "native_evidence": "reports/phase-11-evidence/closure/final-installed-native-summary.json"
+  },
+  "qualification": "Reconciled current and historical observations. PASS applies only to the exact bounded scope, never inherited independence or whole-product acceptance."
+}

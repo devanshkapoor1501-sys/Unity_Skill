@@ -1,0 +1,106 @@
+"""Isolated clean-wheel CLI/schema/parser/availability verification; no native launch."""
+import contextlib
+import hashlib
+import io
+import json
+import os
+import subprocess
+import sys
+from importlib.resources import files
+from pathlib import Path
+
+import jsonschema
+import polyforge
+from polyforge.cli import main
+from polyforge.commands import COMMANDS
+from polyforge.contracts.validation import load_json
+from polyforge.inspection import inspect_project, _csharp_source
+from polyforge.workforce.router import engine_digest
+
+root = Path.cwd()
+evidence = Path(__file__).resolve().parent
+base = evidence / 'final-smoke-fixtures'
+base.mkdir()
+assert 'phase11-closure' in str(polyforge.__file__) and 'final-clean-install' in str(polyforge.__file__), polyforge.__file__
+assert engine_digest() == '4711a8c26098c4c19b0a0bbdbecaaa8399610286ce76d32e45f90cb598a9ca4b'
+schemas = []
+for source in files('polyforge').joinpath('contracts').iterdir():
+    if source.name.endswith('.schema.json'):
+        jsonschema.Draft202012Validator.check_schema(json.loads(source.read_text('utf-8')))
+        schemas.append(source.name)
+help_rows = []
+for spec in COMMANDS:
+    stream = io.StringIO()
+    with contextlib.redirect_stdout(stream):
+        try:
+            code = main([*spec.path, '--help'])
+        except SystemExit as exc:
+            code = exc.code
+    assert code == 0, (spec.path, code)
+    help_rows.append({'command': list(spec.path), 'sha256': hashlib.sha256(stream.getvalue().encode()).hexdigest()})
+(base / 'installed-help-final.json').write_text(json.dumps(help_rows, indent=2))
+for i in range(100):
+    assert _csharp_source(b'\n' * 300 + b'namespace Installed { class Actual {} }')[2] == 'PARSED'
+fixture = base / 'clean-static-fixture'
+(fixture / 'ProjectSettings').mkdir(parents=True)
+(fixture / 'Packages').mkdir()
+(fixture / 'ProjectSettings/ProjectVersion.txt').write_text('m_EditorVersion: 6000.6.3f1\n')
+(fixture / 'Packages/manifest.json').write_text('{"dependencies":{"com.example.direct":"1.0.0"}}')
+(fixture / 'Packages/packages-lock.json').write_text('{"dependencies":{"com.example.direct":{"version":"1.1.0"},"com.example.transitive":{"version":"2.0.0"}}}')
+inspection = inspect_project(fixture)
+assert inspection.status == 'PASS' and inspection.data['original_unchanged']
+assert inspection.data['resolved_packages']['com.example.transitive'] == '2.0.0'
+arm_rows = []
+for arm in 'ABCD':
+    output = base / 'installed-benchmarks-final' / arm
+    stream = io.StringIO()
+    with contextlib.redirect_stdout(stream):
+        code = main(['benchmark', 'run', '--suite', 'benchmark_core', '--arm', arm,
+                     '--output', str(output), '--json'])
+    value = json.loads(stream.getvalue())
+    (base / ('installed-final-benchmark-' + arm + '.json')).write_text(stream.getvalue())
+    assert code == 3 and value['status'] == 'BLOCKED'
+    assert len(value['data']['records']) == 60
+    assert not any(row['executed'] for row in value['data']['records'])
+    for fmt in ('json', 'html'):
+        stream = io.StringIO()
+        with contextlib.redirect_stdout(stream):
+            code = main(['benchmark', 'report', '--run', str(output), '--format', fmt])
+        assert code == 0
+        (base / ('installed-final-report-' + arm + '.' + fmt)).write_text(stream.getvalue(), encoding='utf-8')
+    arm_rows.append({'arm': arm, 'planned_cases': 60, 'executed_cases': 0, 'status': 'BLOCKED'})
+clean_root = base / 'owned-clean-fixture'
+with contextlib.redirect_stdout(io.StringIO()):
+    assert main(['init', str(clean_root), '--template', 'simple_arena', '--json']) == 0
+from polyforge.runner.state import RunJournal
+from polyforge.security.paths import WorkspacePolicy
+journal = RunJournal.create(WorkspacePolicy(clean_root), 'final-smoke')
+journal.transition('S0', 'running')
+(clean_root / 'proof.txt').write_text('terminal fixture evidence', encoding='utf-8')
+journal.transition('S0', 'passed', evidence=['proof.txt'])
+process = clean_root / 'runs/final-smoke/worker'
+(process / 'tmp').mkdir(parents=True)
+(process / 'tmp' / 'discard.tmp').write_bytes(b'disposable installed smoke fixture')
+with subprocess.Popen([sys.executable, '-I', '-c', 'pass']) as worker:
+    assert worker.wait(timeout=10) == 0
+    (process / 'process.json').write_text(json.dumps({'pid': worker.pid, 'returncode': 0,
+        'reason': 'exit', 'ownership': 'WINDOWS_JOB' if os.name == 'nt' else 'POSIX_PROCESS_GROUP',
+        'duration_seconds': 1}), encoding='utf-8')
+def snapshot():
+    return {p.relative_to(clean_root).as_posix(): p.read_bytes() for p in clean_root.rglob('*') if p.is_file()}
+before = snapshot()
+entry = Path(sys.executable).with_name('polyforge.exe' if os.name == 'nt' else 'polyforge')
+preview_run = subprocess.run([str(entry), 'clean', '--workspace', str(clean_root), '--dry-run', '--json'],
+    cwd=base, capture_output=True, check=True, text=True, timeout=30)
+preview = json.loads(preview_run.stdout)
+assert preview['status'] == 'PASS' and preview['data']['dry_run'] is True
+assert [r['relative_path'] for r in preview['data']['candidates']] == ['runs/final-smoke/worker/tmp/discard.tmp']
+assert preview['data']['deleted'] == [] and snapshot() == before
+(evidence / 'final-clean-preview.json').write_text(preview_run.stdout, encoding='utf-8')
+report = {'status': 'PASS' , 'python': sys.version, 'installed_package': str(polyforge.__file__),
+          'engine_digest': engine_digest(), 'schema_count': len(schemas),
+          'help_commands': len(help_rows), 'parser_repetitions': 100,
+          'static_original_unchanged': inspection.data['original_unchanged'], 'arms': arm_rows,
+          'installed_clean_preview': 'PASS_NO_WRITES', 'native_demo': 'PRE_CLEANUP_WHEEL_SEPARATE_RECEIPT'}
+(evidence / 'final-installed-summary.json').write_text(json.dumps(report, indent=2) + '\n')
+print(json.dumps(report, indent=2))

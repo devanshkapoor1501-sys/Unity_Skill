@@ -1,0 +1,48 @@
+from pathlib import Path
+import hashlib,json,subprocess,sys
+ROOT=Path.cwd()
+CLOSURE=Path('.tmp/phase11-closure')
+EVIDENCE=Path('reports/phase-11-evidence')
+PREFIXES=('polyforge/','unity_package/','tests/','tools/','docs/','benchmarks/','profiles/','reports/phase-11-')
+EXACT={'.gitattributes','.github/workflows/ci.yml','pyproject.toml','requirements-dev.lock','README.md','CHANGELOG.md','CONTRIBUTING.md','SECURITY.md','reports/phase-11.md','reports/acceptance_oracle.json','reports/experimental_actions.jsonl','reports/knowledge_coverage.json','reports/workforce_evidence.jsonl'}
+def git(*args,**kwargs):
+ return subprocess.check_output(['git','-c','core.longpaths=true','-c','core.safecrlf=false',*args],**kwargs)
+def paths(raw):
+ return {v for v in raw.decode('utf-8').split('\0') if v}
+rows=json.loads((EVIDENCE/'index.json').read_text(encoding='utf-8'))['files']
+indexed={str((EVIDENCE/row['path']).as_posix()):row for row in rows}
+assert len(indexed)==len(rows)
+indexed_actual={(p.as_posix()) for p in EVIDENCE.rglob('*') if p.is_file()}
+assert indexed_actual==set(indexed)|{(EVIDENCE/'index.json').as_posix()},'Unexpected evidence tree'
+changes=paths(git('diff','--name-only','-z'))|paths(git('diff','--cached','--name-only','-z'))|paths(git('ls-files','--others','--exclude-standard','-z'))
+allowed={p for p in changes if p in EXACT or p.startswith(PREFIXES)}
+excluded=changes-allowed
+assert all(p.startswith(('video-','polyforge-0.0.1/')) for p in excluded),sorted(excluded)[:20]
+allowed.update(indexed)
+for p in allowed:
+ f=Path(p)
+ assert f.is_file() and not f.is_symlink() and f.resolve().is_relative_to(ROOT),p
+for p,r in indexed.items():
+ data=Path(p).read_bytes()
+ assert len(data)==r['bytes'] and hashlib.sha256(data).hexdigest()==r['sha256'],p
+f=CLOSURE/'stage-paths.nul';f.write_bytes(('\0'.join(sorted(allowed))+'\0').encode())
+if '--stage' in sys.argv:
+ already=paths(git('diff','--cached','--name-only','-z'))
+ assert already<=allowed, sorted(already-allowed)
+ subprocess.run(['git','--literal-pathspecs','-c','core.longpaths=true','-c','core.safecrlf=false','add','-f',f'--pathspec-from-file={f.as_posix()}','--pathspec-file-nul'],check=True)
+ staged=paths(git('diff','--cached','--name-only','-z'))
+ assert staged==allowed,(sorted(staged-allowed)[:15],sorted(allowed-staged)[:15])
+ git('diff','--cached','--check')
+ baseline=json.loads(Path('reports/phase-11-baseline.json').read_text(encoding='utf-8'))['files']
+ checked={p:(r['sha256'],r['bytes']) for p,r in indexed.items()}
+ checked.update({r['path']:(r['sha256'],r['bytes']) for r in baseline})
+ with subprocess.Popen(['git','-c','core.longpaths=true','cat-file','--batch'],stdin=subprocess.PIPE,stdout=subprocess.PIPE) as proc:
+  for p,(sha,size) in checked.items():
+   proc.stdin.write((':'+p+'\n').encode());proc.stdin.flush()
+   head=proc.stdout.readline().split()
+   assert len(head)==3 and head[1]==b'blob',(p,head)
+   data=proc.stdout.read(int(head[2]));assert proc.stdout.read(1)==b'\n'
+   assert len(data)==size and hashlib.sha256(data).hexdigest()==sha,p
+  proc.stdin.close();assert proc.wait()==0
+ print('Verified staged evidence and source blobs',len(checked))
+print(json.dumps({'phase11_paths':len(allowed),'excluded_video_files':sum(p.startswith('video-') for p in excluded),'indexed_evidence':len(indexed)}))

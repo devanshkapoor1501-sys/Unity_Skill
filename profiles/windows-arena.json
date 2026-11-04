@@ -2,11 +2,23 @@
   "schema_version": "1.0.0",
   "scope": "WINDOWS_STANDALONE_QUALIFICATION",
   "status": "NOT_RUN",
-  "resolution": [1280, 720],
-  "quality_setting": "PC template preset; record actual runtime name",
+  "resolution": [
+    1280,
+    720
+  ],
+  "quality_setting": "PC",
   "warmup_seconds": 10,
   "samples": 3,
   "sample_seconds": 60,
-  "targets": {"median_fps_min": 30, "p95_frame_ms_max": 50, "peak_rss_bytes_max": 2147483648, "load_seconds_max": 30},
-  "note": "Development telemetry and nographics smoke are not performance qualification. Execute the complete rendered profile in Phase 11."
+  "targets": {
+    "median_fps_min": 30,
+    "p95_frame_ms_max": 50,
+    "peak_rss_bytes_max": 2147483648,
+    "load_seconds_max": 30
+  },
+  "note": "Fresh continuous instrumented standalone measurements allow focus changes with background execution enabled. Focus describes measurement interval closing states. End-of-frame CPU wall-clock intervals do not independently measure GPU execution or physical display presentation. Existing failed attempts remain FAIL; development telemetry and nographics smoke do not establish performance qualification.",
+  "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+  "renderer_observation": "UNITY_END_OF_FRAME",
+  "run_in_background": true,
+  "gpu_presentation": "NOT_MEASURED"
 }

@@ -1,0 +1,995 @@
+{
+    "schema_version": "1.0.0",
+    "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+    "unity_version": "6000.6.3f1",
+    "status": "PASS",
+    "verification_scope": "UNITY_EDITOR_STATIC",
+    "gameplay_status": "NOT_RUN",
+    "objects": [
+        {
+            "id": "crate_a",
+            "guid": "690f258cfc94def4f994d80e866c9905",
+            "prefab_guid": "553a03c35a831d141b0444e60660c780",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/crate_a.prefab",
+            "bounds_m": [
+                1.0,
+                1.0,
+                1.0000001192092896
+            ],
+            "socket_ids": [
+                "top",
+                "front"
+            ],
+            "sockets": [
+                {
+                    "id": "top",
+                    "position_m": [
+                        0.0,
+                        0.9999999403953552,
+                        -0.014563202857971191
+                    ]
+                },
+                {
+                    "id": "front",
+                    "position_m": [
+                        0.0,
+                        0.5,
+                        0.47087371349334717
+                    ]
+                }
+            ],
+            "material_ids": [
+                "metal_blue"
+            ],
+            "transform_count": 7,
+            "collider": "box",
+            "nodes": [
+                {
+                    "id": "top",
+                    "kind": "socket",
+                    "path": "crate_a/crate_a:module:body/crate_a:socket:top",
+                    "guid": "553a03c35a831d141b0444e60660c780",
+                    "local_id": 5658838550032298980,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "front",
+                    "kind": "socket",
+                    "path": "crate_a/crate_a:module:body/crate_a:socket:front",
+                    "guid": "553a03c35a831d141b0444e60660c780",
+                    "local_id": 5549532334537785540,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "body",
+                    "kind": "module",
+                    "path": "crate_a/crate_a:module:body",
+                    "guid": "553a03c35a831d141b0444e60660c780",
+                    "local_id": 1219487329898077512,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "690f258cfc94def4f994d80e866c9905",
+                    "mesh_local_id": 2500109151313247000
+                },
+                {
+                    "id": "brace_left",
+                    "kind": "module",
+                    "path": "crate_a/crate_a:module:body/crate_a:module:brace_left",
+                    "guid": "553a03c35a831d141b0444e60660c780",
+                    "local_id": 5978628638005035214,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "690f258cfc94def4f994d80e866c9905",
+                    "mesh_local_id": 9211410912460583981
+                },
+                {
+                    "id": "brace_right",
+                    "kind": "module",
+                    "path": "crate_a/crate_a:module:body/crate_a:module:brace_right",
+                    "guid": "553a03c35a831d141b0444e60660c780",
+                    "local_id": 2335914872107744330,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "690f258cfc94def4f994d80e866c9905",
+                    "mesh_local_id": -5311213960361355315
+                }
+            ],
+            "colliders": [
+                {
+                    "kind": "BoxCollider",
+                    "path": "",
+                    "enabled": true,
+                    "is_trigger": false,
+                    "center_m": [
+                        0.0,
+                        0.4999999701976776,
+                        -5.960464477539063e-8
+                    ],
+                    "size_m": [
+                        1.0,
+                        1.0,
+                        1.0000001192092896
+                    ],
+                    "mesh_guid": "",
+                    "mesh_local_id": 0,
+                    "direction": 0,
+                    "convex": false
+                }
+            ],
+            "textures": [
+                {
+                    "material_id": "metal_blue",
+                    "kind": "base_color",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                },
+                {
+                    "material_id": "metal_blue",
+                    "kind": "normal",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                }
+            ]
+        },
+        {
+            "id": "ground_a",
+            "guid": "57136ff9682145b41b6b4cf370c64c2d",
+            "prefab_guid": "abd127a2b9362494d8920f4399505386",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/ground_a.prefab",
+            "bounds_m": [
+                20.0,
+                0.20000237226486206,
+                19.999998092651367
+            ],
+            "socket_ids": [
+                "top",
+                "front",
+                "join_left",
+                "join_right"
+            ],
+            "sockets": [
+                {
+                    "id": "top",
+                    "position_m": [
+                        0.0,
+                        0.19999998807907104,
+                        -2.9802322387695313e-8
+                    ]
+                },
+                {
+                    "id": "front",
+                    "position_m": [
+                        0.0,
+                        0.10000133514404297,
+                        9.999999046325684
+                    ]
+                },
+                {
+                    "id": "join_left",
+                    "position_m": [
+                        -10.0,
+                        0.09999999403953552,
+                        -1.4901161193847656e-8
+                    ]
+                },
+                {
+                    "id": "join_right",
+                    "position_m": [
+                        10.0,
+                        0.09999999403953552,
+                        -1.4901161193847656e-8
+                    ]
+                }
+            ],
+            "material_ids": [
+                "metal_blue"
+            ],
+            "transform_count": 7,
+            "collider": "box",
+            "nodes": [
+                {
+                    "id": "top",
+                    "kind": "socket",
+                    "path": "ground_a/ground_a:module:body/ground_a:socket:top",
+                    "guid": "abd127a2b9362494d8920f4399505386",
+                    "local_id": 5445850126631447050,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "front",
+                    "kind": "socket",
+                    "path": "ground_a/ground_a:module:body/ground_a:socket:front",
+                    "guid": "abd127a2b9362494d8920f4399505386",
+                    "local_id": 773432105835895709,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "join_left",
+                    "kind": "socket",
+                    "path": "ground_a/ground_a:module:body/ground_a:socket:join_left",
+                    "guid": "abd127a2b9362494d8920f4399505386",
+                    "local_id": 7920283480344880465,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "join_right",
+                    "kind": "socket",
+                    "path": "ground_a/ground_a:module:body/ground_a:socket:join_right",
+                    "guid": "abd127a2b9362494d8920f4399505386",
+                    "local_id": 3704918038921829525,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "body",
+                    "kind": "module",
+                    "path": "ground_a/ground_a:module:body",
+                    "guid": "abd127a2b9362494d8920f4399505386",
+                    "local_id": 4583816926479872238,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "57136ff9682145b41b6b4cf370c64c2d",
+                    "mesh_local_id": 6076440468044626477
+                }
+            ],
+            "colliders": [
+                {
+                    "kind": "BoxCollider",
+                    "path": "",
+                    "enabled": true,
+                    "is_trigger": false,
+                    "center_m": [
+                        0.0,
+                        0.09999999403953552,
+                        -1.1920929132713809e-8
+                    ],
+                    "size_m": [
+                        20.0,
+                        0.20000237226486206,
+                        19.999998092651367
+                    ],
+                    "mesh_guid": "",
+                    "mesh_local_id": 0,
+                    "direction": 0,
+                    "convex": false
+                }
+            ],
+            "textures": [
+                {
+                    "material_id": "metal_blue",
+                    "kind": "base_color",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                },
+                {
+                    "material_id": "metal_blue",
+                    "kind": "normal",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                }
+            ]
+        },
+        {
+            "id": "robot_a",
+            "guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+            "prefab_guid": "a77eee980c58ba2499392894ffc6c85a",
+            "prefab_id": "Assets/PolyForgeGenerated/Prefabs/robot_a.prefab",
+            "bounds_m": [
+                1.0,
+                1.7999999523162842,
+                0.8000000715255737
+            ],
+            "socket_ids": [
+                "neck",
+                "shoulder_l",
+                "elbow_l",
+                "wrist_l",
+                "hand_l",
+                "hip_l",
+                "knee_l",
+                "shoulder_r",
+                "elbow_r",
+                "wrist_r",
+                "hand_r",
+                "hip_r",
+                "knee_r"
+            ],
+            "sockets": [
+                {
+                    "id": "neck",
+                    "position_m": [
+                        0.0,
+                        1.3697210550308228,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "shoulder_l",
+                    "position_m": [
+                        -0.2586206793785095,
+                        1.2621513605117798,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "elbow_l",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.9896414279937744,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "wrist_l",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.7027888298034668,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hand_l",
+                    "position_m": [
+                        -0.3735632002353668,
+                        0.5880477428436279,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hip_l",
+                    "position_m": [
+                        -0.12643678486347198,
+                        0.731473982334137,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "knee_l",
+                    "position_m": [
+                        -0.12643678486347198,
+                        0.38725095987319946,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "shoulder_r",
+                    "position_m": [
+                        0.2586206793785095,
+                        1.2621513605117798,
+                        -0.12000012397766113
+                    ]
+                },
+                {
+                    "id": "elbow_r",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.9896414279937744,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "wrist_r",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.7027888298034668,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hand_r",
+                    "position_m": [
+                        0.3735632002353668,
+                        0.5880477428436279,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "hip_r",
+                    "position_m": [
+                        0.12643678486347198,
+                        0.731473982334137,
+                        -0.12000006437301636
+                    ]
+                },
+                {
+                    "id": "knee_r",
+                    "position_m": [
+                        0.12643678486347198,
+                        0.38725095987319946,
+                        -0.12000006437301636
+                    ]
+                }
+            ],
+            "material_ids": [
+                "metal_blue"
+            ],
+            "transform_count": 33,
+            "collider": "capsule",
+            "nodes": [
+                {
+                    "id": "neck",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:socket:neck",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 5443460108080448206,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "shoulder_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:socket:shoulder_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 9158602594528713157,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "elbow_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l/robot_a:socket:elbow_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 7020886204616786159,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "wrist_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l/robot_a:module:forearm_l/robot_a:socket:wrist_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2228100485703123388,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "hand_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l/robot_a:module:forearm_l/robot_a:module:hand_l/robot_a:socket:hand_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 3829654012195695300,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "hip_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:socket:hip_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 8191210974398473255,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "knee_l",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_l/robot_a:socket:knee_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 1248510812410032148,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "shoulder_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:socket:shoulder_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 441352306657191844,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "elbow_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r/robot_a:socket:elbow_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2019727925218962470,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "wrist_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r/robot_a:module:forearm_r/robot_a:socket:wrist_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 606935761920237439,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "hand_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r/robot_a:module:forearm_r/robot_a:module:hand_r/robot_a:socket:hand_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2382726296024895816,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "hip_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:socket:hip_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2839013305162044348,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "knee_r",
+                    "kind": "socket",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_r/robot_a:socket:knee_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2179431898706394628,
+                    "component": "Transform",
+                    "mesh_guid": "",
+                    "mesh_local_id": 0
+                },
+                {
+                    "id": "body",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 5873241493387496147,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 6373729261968993481
+                },
+                {
+                    "id": "head",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:head",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 6912343353757116025,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 7887448709930239778
+                },
+                {
+                    "id": "hips",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 1857402051595513426,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -7612228341179146685
+                },
+                {
+                    "id": "core",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:core",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 4140006417513349389,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -2761031115581876046
+                },
+                {
+                    "id": "upper_arm_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 2177593498922849466,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 6638956274453643007
+                },
+                {
+                    "id": "forearm_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l/robot_a:module:forearm_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 588925584158499538,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -3005045488547335518
+                },
+                {
+                    "id": "hand_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_l/robot_a:module:forearm_l/robot_a:module:hand_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 384089894056168615,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -1151461863919513566
+                },
+                {
+                    "id": "thigh_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 1542782135376223936,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 5905036573452948142
+                },
+                {
+                    "id": "shin_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_l/robot_a:module:shin_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 7345771945237586635,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 21688626761295638
+                },
+                {
+                    "id": "foot_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_l/robot_a:module:shin_l/robot_a:module:foot_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 8240424690849135239,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -1812017482621330706
+                },
+                {
+                    "id": "eye_l",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:head/robot_a:module:eye_l",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 7102916041374260247,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -2305506336948947635
+                },
+                {
+                    "id": "upper_arm_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 691940692897124671,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -2623287849375397541
+                },
+                {
+                    "id": "forearm_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r/robot_a:module:forearm_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 7816910112728426765,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -4155934347185969142
+                },
+                {
+                    "id": "hand_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:upper_arm_r/robot_a:module:forearm_r/robot_a:module:hand_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 403011105612405329,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -3867064149940568891
+                },
+                {
+                    "id": "thigh_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 6509035537844494611,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -6022718474825097916
+                },
+                {
+                    "id": "shin_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_r/robot_a:module:shin_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 8887645463947587822,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 8269450196415435461
+                },
+                {
+                    "id": "foot_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:hips/robot_a:module:thigh_r/robot_a:module:shin_r/robot_a:module:foot_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 8206659029167543926,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": 7663429449255242671
+                },
+                {
+                    "id": "eye_r",
+                    "kind": "module",
+                    "path": "robot_a/robot_a:module:body/robot_a:module:head/robot_a:module:eye_r",
+                    "guid": "a77eee980c58ba2499392894ffc6c85a",
+                    "local_id": 4759046782686140934,
+                    "component": "MeshRenderer",
+                    "mesh_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+                    "mesh_local_id": -6930192726642549759
+                }
+            ],
+            "colliders": [
+                {
+                    "kind": "CapsuleCollider",
+                    "path": "",
+                    "enabled": true,
+                    "is_trigger": false,
+                    "center_m": [
+                        0.0,
+                        0.8999999761581421,
+                        0.0
+                    ],
+                    "size_m": [
+                        1.0,
+                        1.7999999523162842,
+                        1.0
+                    ],
+                    "mesh_guid": "",
+                    "mesh_local_id": 0,
+                    "direction": 1,
+                    "convex": false
+                }
+            ],
+            "textures": [
+                {
+                    "material_id": "metal_blue",
+                    "kind": "base_color",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                },
+                {
+                    "material_id": "metal_blue",
+                    "kind": "normal",
+                    "path": "",
+                    "sha256": "",
+                    "srgb": false,
+                    "texture_type": "missing",
+                    "material_texture_path": "",
+                    "normal_keyword": false,
+                    "convert_to_normal": false,
+                    "has_texture": false
+                }
+            ]
+        }
+    ],
+    "issues": [],
+    "scene_object_count": 166,
+    "scene_guids": [
+        "d86b5b9bbc5ccde45a806c54892dc828",
+        "7f28e0ddf42e3984bb2a16702db20d49"
+    ],
+    "scene_instances": [
+        {
+            "scene": "Arena",
+            "id": "asset:crate_a",
+            "asset_id": "crate_a",
+            "prefab_guid": "553a03c35a831d141b0444e60660c780",
+            "source_guid": "690f258cfc94def4f994d80e866c9905",
+            "position_m": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Arena",
+            "id": "asset:ground_a",
+            "asset_id": "ground_a",
+            "prefab_guid": "abd127a2b9362494d8920f4399505386",
+            "source_guid": "57136ff9682145b41b6b4cf370c64c2d",
+            "position_m": [
+                0.0,
+                -0.20000000298023224,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Arena",
+            "id": "asset:robot_a",
+            "asset_id": "robot_a",
+            "prefab_guid": "a77eee980c58ba2499392894ffc6c85a",
+            "source_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+            "position_m": [
+                4.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Arena",
+            "id": "actor:enemy_01",
+            "asset_id": "robot_a",
+            "prefab_guid": "a77eee980c58ba2499392894ffc6c85a",
+            "source_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+            "position_m": [
+                3.0,
+                0.0,
+                3.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Training",
+            "id": "asset:crate_a",
+            "asset_id": "crate_a",
+            "prefab_guid": "553a03c35a831d141b0444e60660c780",
+            "source_guid": "690f258cfc94def4f994d80e866c9905",
+            "position_m": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Training",
+            "id": "asset:ground_a",
+            "asset_id": "ground_a",
+            "prefab_guid": "abd127a2b9362494d8920f4399505386",
+            "source_guid": "57136ff9682145b41b6b4cf370c64c2d",
+            "position_m": [
+                0.0,
+                -0.20000000298023224,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Training",
+            "id": "asset:robot_a",
+            "asset_id": "robot_a",
+            "prefab_guid": "a77eee980c58ba2499392894ffc6c85a",
+            "source_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+            "position_m": [
+                -4.0,
+                0.0,
+                0.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        },
+        {
+            "scene": "Training",
+            "id": "actor:enemy_01",
+            "asset_id": "robot_a",
+            "prefab_guid": "a77eee980c58ba2499392894ffc6c85a",
+            "source_guid": "8b3a9aaf560db2e4b96070cb5259fa3d",
+            "position_m": [
+                3.0,
+                0.0,
+                3.0
+            ],
+            "scale": [
+                1.0,
+                1.0,
+                1.0
+            ],
+            "rotation_xyzw": [
+                0.0,
+                0.0,
+                0.0,
+                1.0
+            ]
+        }
+    ],
+    "camera_count": 2,
+    "light_count": 2
+}

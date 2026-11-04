@@ -1,0 +1,216 @@
+FF..FF.                                                                  [100%]
+================================== FAILURES ===================================
+___________ test_malformed_ledger_event_is_a_typed_failure[event0] ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{11884e4c-6ef3-4bfa-a0ad-17cd21a7eed6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_ledger_event_is0')
+event = []
+
+    @pytest.mark.parametrize("event", [[], {}, 1, "ABORTED"])
+    def test_malformed_ledger_event_is_a_typed_failure(tmp_path: Path, event: object) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "ledger.jsonl"
+        path.write_text(json.dumps(trial("ASSET", event=event)) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:771: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:128: in report_run
+    records, manifest, recovered = _read(path)
+                                   ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{11884e4c-6ef3-4bfa-a0ad-17cd21a7eed6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_ledger_event_is0/ledger.jsonl')
+
+    def _read(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any] | None, bool]:
+        root = path if path.is_dir() else path.absolute().parent
+        policy = WorkspacePolicy(root)
+        ledger = policy.path("ledger.jsonl" if path.is_dir() or path.name == "run.json" else path.name)
+        with ledger.open("rb") as stream:
+            raw = stream.read(33554433)
+        if len(raw) > 33554432:
+            raise InputError("Benchmark ledger exceeds its 32 MiB report limit")
+        manifest_path = policy.path("run.json")
+        manifest = load_json(manifest_path) if manifest_path.is_file() else None
+        committed_bytes = len(raw)
+        recovered = False
+        if manifest is not None:
+            if not isinstance(manifest, dict):
+                raise InputError("Invalid benchmark manifest")
+            digest = canonical_digest(
+                {key: value for key, value in manifest.items() if key != "manifest_digest"}
+            )
+            if manifest.get("manifest_digest") != digest:
+                raise InputError("Benchmark manifest metadata digest mismatch")
+            if hashlib.sha256(raw).hexdigest() != manifest.get("ledger_sha256"):
+                committed_bytes = manifest.get("ledger_bytes")
+                if (
+                    type(committed_bytes) is not int
+                    or not 0 <= committed_bytes < len(raw)
+                    or (committed_bytes and raw[committed_bytes - 1:committed_bytes] != b"\n")
+                    or hashlib.sha256(raw[:committed_bytes]).hexdigest()
+                    != manifest.get("ledger_sha256")
+                    or len(raw[committed_bytes:].splitlines()) != 1
+                    or not raw.endswith(b"\n")
+                ):
+                    raise InputError("Benchmark ledger hash mismatch")
+                # A suffix is unauthenticated and cannot be distinguished from an append attack.
+                # Retain only censored execution evidence and force a non-passing report.
+                recovered = True
+        rows: dict[str, dict[str, Any]] = {}
+        lines = raw.splitlines()
+        if len(lines) > 51200:
+            raise InputError("Benchmark ledger exceeds its bounded event count")
+        offset = 0
+        for index, line in enumerate(lines):
+            committed = offset < committed_bytes
+            offset += len(line) + 1
+            if not line or len(line) > 1048576:
+                raise InputError("Empty or oversized benchmark ledger event")
+            value = json.loads(line.decode("utf-8"), object_pairs_hook=_pairs, parse_constant=_constant)
+            validate_record(value)
+            payload = {key: child for key, child in value.items() if key != "row_digest"}
+            if "row_digest" in value and value["row_digest"] != canonical_digest(payload):
+                raise InputError("Benchmark event metadata digest mismatch")
+            if manifest is not None:
+                if "row_digest" not in value:
+                    raise InputError("Recorded benchmark event lacks its metadata digest")
+                if (
+                    value.get("configuration_digest") != manifest.get("configuration_digest")
+                    or value.get("run_id") != manifest.get("run_id")
+                    or value.get("arm") != manifest.get("arm")
+                ):
+                    raise InputError("Benchmark event and manifest identity mismatch")
+            key = value.get("attempt_id", "import_" + str(index))
+            if not isinstance(key, str) or not key or len(key) > 256:
+                raise InputError("Invalid benchmark attempt identity")
+            event = value.get("event")
+>           if event not in {None, "STARTED", "FINISHED"} or (manifest and event is None):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: unhashable type: 'list'
+
+polyforge\benchmark\analysis.py:101: TypeError
+___________ test_malformed_ledger_event_is_a_typed_failure[event1] ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{11884e4c-6ef3-4bfa-a0ad-17cd21a7eed6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_ledger_event_is1')
+event = {}
+
+    @pytest.mark.parametrize("event", [[], {}, 1, "ABORTED"])
+    def test_malformed_ledger_event_is_a_typed_failure(tmp_path: Path, event: object) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "ledger.jsonl"
+        path.write_text(json.dumps(trial("ASSET", event=event)) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:771: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:128: in report_run
+    records, manifest, recovered = _read(path)
+                                   ^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{11884e4c-6ef3-4bfa-a0ad-17cd21a7eed6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_ledger_event_is1/ledger.jsonl')
+
+    def _read(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any] | None, bool]:
+        root = path if path.is_dir() else path.absolute().parent
+        policy = WorkspacePolicy(root)
+        ledger = policy.path("ledger.jsonl" if path.is_dir() or path.name == "run.json" else path.name)
+        with ledger.open("rb") as stream:
+            raw = stream.read(33554433)
+        if len(raw) > 33554432:
+            raise InputError("Benchmark ledger exceeds its 32 MiB report limit")
+        manifest_path = policy.path("run.json")
+        manifest = load_json(manifest_path) if manifest_path.is_file() else None
+        committed_bytes = len(raw)
+        recovered = False
+        if manifest is not None:
+            if not isinstance(manifest, dict):
+                raise InputError("Invalid benchmark manifest")
+            digest = canonical_digest(
+                {key: value for key, value in manifest.items() if key != "manifest_digest"}
+            )
+            if manifest.get("manifest_digest") != digest:
+                raise InputError("Benchmark manifest metadata digest mismatch")
+            if hashlib.sha256(raw).hexdigest() != manifest.get("ledger_sha256"):
+                committed_bytes = manifest.get("ledger_bytes")
+                if (
+                    type(committed_bytes) is not int
+                    or not 0 <= committed_bytes < len(raw)
+                    or (committed_bytes and raw[committed_bytes - 1:committed_bytes] != b"\n")
+                    or hashlib.sha256(raw[:committed_bytes]).hexdigest()
+                    != manifest.get("ledger_sha256")
+                    or len(raw[committed_bytes:].splitlines()) != 1
+                    or not raw.endswith(b"\n")
+                ):
+                    raise InputError("Benchmark ledger hash mismatch")
+                # A suffix is unauthenticated and cannot be distinguished from an append attack.
+                # Retain only censored execution evidence and force a non-passing report.
+                recovered = True
+        rows: dict[str, dict[str, Any]] = {}
+        lines = raw.splitlines()
+        if len(lines) > 51200:
+            raise InputError("Benchmark ledger exceeds its bounded event count")
+        offset = 0
+        for index, line in enumerate(lines):
+            committed = offset < committed_bytes
+            offset += len(line) + 1
+            if not line or len(line) > 1048576:
+                raise InputError("Empty or oversized benchmark ledger event")
+            value = json.loads(line.decode("utf-8"), object_pairs_hook=_pairs, parse_constant=_constant)
+            validate_record(value)
+            payload = {key: child for key, child in value.items() if key != "row_digest"}
+            if "row_digest" in value and value["row_digest"] != canonical_digest(payload):
+                raise InputError("Benchmark event metadata digest mismatch")
+            if manifest is not None:
+                if "row_digest" not in value:
+                    raise InputError("Recorded benchmark event lacks its metadata digest")
+                if (
+                    value.get("configuration_digest") != manifest.get("configuration_digest")
+                    or value.get("run_id") != manifest.get("run_id")
+                    or value.get("arm") != manifest.get("arm")
+                ):
+                    raise InputError("Benchmark event and manifest identity mismatch")
+            key = value.get("attempt_id", "import_" + str(index))
+            if not isinstance(key, str) or not key or len(key) > 256:
+                raise InputError("Invalid benchmark attempt identity")
+            event = value.get("event")
+>           if event not in {None, "STARTED", "FINISHED"} or (manifest and event is None):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: unhashable type: 'dict'
+
+polyforge\benchmark\analysis.py:101: TypeError
+___________ test_censored_execution_cannot_count_as_success[flags0] ___________
+
+flags = {'censored': True, 'timed_out': True}
+
+    @pytest.mark.parametrize("flags", [{"timed_out": True, "censored": True}, {"censored": True}])
+    def test_censored_execution_cannot_count_as_success(flags: dict) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:778: Failed
+___________ test_censored_execution_cannot_count_as_success[flags1] ___________
+
+flags = {'censored': True}
+
+    @pytest.mark.parametrize("flags", [{"timed_out": True, "censored": True}, {"censored": True}])
+    def test_censored_execution_cannot_count_as_success(flags: dict) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:778: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_malformed_ledger_event_is_a_typed_failure[event0]
+FAILED tests/test_phase11_benchmark.py::test_malformed_ledger_event_is_a_typed_failure[event1]
+FAILED tests/test_phase11_benchmark.py::test_censored_execution_cannot_count_as_success[flags0]
+FAILED tests/test_phase11_benchmark.py::test_censored_execution_cannot_count_as_success[flags1]
+4 failed, 3 passed, 87 deselected in 2.23s

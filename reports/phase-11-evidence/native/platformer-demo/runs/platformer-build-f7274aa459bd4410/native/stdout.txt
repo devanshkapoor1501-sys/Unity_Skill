@@ -1,0 +1,517 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 30232)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 25992)
+VBCSCompiler prewarm took 27.31 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 30232)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 25992)
+VBCSCompiler prewarm took 27.31 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T08:16:31Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-11-01T08:16:31.3625857Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 3464, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              127611bcc252415490ac60963133b458
+  Correlation Id:          b6228fe23682b58c1a212a32d4665e25
+  External correlation Id: 6787465760401677867
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.00s, validation: 0.00s, handshake: 0.06s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-11-01T08:16:31.4290043Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.08s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject
+-logFile
+-
+-upmLogFile
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\runs\platformer-build-f7274aa459bd4410\native\upm.log
+-polyforgeGameInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\runs\platformer-build-f7274aa459bd4410\game-input.json
+-executeMethod
+PolyForge.Platformer.Editor.PlatformerBuilder.BuildBatch
+-polyforgeOutput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\runs\platformer-build-f7274aa459bd4410\bindings.json
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/platformer-demo/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [30712]  Target information:
+
+Player connection [30712]  * "[IP] 192.168.1.12 [Port] 55504 [Flags] 2 [Guid] 209171254 [EditorId] 209171254 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [30712] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [30712] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-17364" after 0.4 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: 1fbb207b1a23e0f1956df11f605c6ca7
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/platformer-demo/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/platformer-demo/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56364
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003356 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.090 seconds
+Domain Reload Profiling: 2063ms
+	BeginReloadAssembly (243ms)
+		CreateAndSetChildDomain (9ms)
+	RebuildCommonClasses (10ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (126ms)
+	LoadAllAssembliesAndSetupDomain (564ms)
+		LoadAssemblies (224ms)
+		TypeCache.Refresh (377ms)
+			TypeCache.ScanAssembly (359ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (1092ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			BeforeProcessingInitializeOnLoad (163ms)
+			ProcessInitializeOnLoadAttributes (198ms)
+			ProcessInitializeOnLoadMethodAttributes (390ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\platformer-demo\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/platformer-demo/UnityProject
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s608ms
+[ 554/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.55 seconds), 1 items updated, 1078 evaluated
+AssetDatabase: script compilation time: 1.447916s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 3.57 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.606 seconds
+Domain Reload Profiling: 3408ms
+	BeginReloadAssembly (550ms)
+		DisableScriptedObjects (82ms)
+		CreateAndSetChildDomain (180ms)
+	RebuildCommonClasses (18ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (106ms)
+	LoadAllAssembliesAndSetupDomain (1101ms)
+		LoadAssemblies (621ms)
+		TypeCache.Refresh (238ms)
+			TypeCache.ScanAssembly (222ms)
+		AnalyzeDomain (129ms)
+			BuildScriptInfoCaches (111ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1607ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			BeforeProcessingInitializeOnLoad (190ms)
+			ProcessInitializeOnLoadAttributes (519ms)
+			ProcessInitializeOnLoadMethodAttributes (164ms)
+			AfterProcessingInitializeOnLoad (18ms)
+		AwakeInstancesAfterBackupRestoration (52ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/platformer-demo/UnityProject/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=dc6eb0f0ef02d8247911bf2abc609337): Total: 6.059 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2461 ms
+		Asset DB Callback time: managed=90 ms, native=25 ms
+		Scripting: domain reloads=1, domain reload time=1916 ms, compile time=1451 ms, other=114 ms
+		Project Asset Count: scripts=1317, non-scripts=2294
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 31.035ms
+	ApplyChangesToAssetFolders: 1.186ms
+	Scan: 175.680ms
+	Collect global state as custom dependencies: 33.691ms
+	CategorizeScriptCompilationAssets: 73.010ms
+	ProcessAssetsWithTransientArtifactChanges: 113.536ms
+	CategorizeAssets: 78.156ms
+	CompileScripts: 1451.204ms
+	ImportOutOfDateAssets: 1644.723ms (1621.769ms without children)
+		ReloadNativeAssets: 0.059ms
+		UnloadImportedAssets: 1.414ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.761ms
+		ImportSchedulerStart: 20.715ms
+	PostProcessAllAssets: 90.227ms
+		MonoPostProcessAllAssets: 90.111ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 34.704ms
+			SyncVS.PostprocessSyncProject 23.793ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 3.999ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.630ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.851ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.412ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.999ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.733ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.582ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.527ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.423ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.395ms
+	UnloadStreamsBegin: 2.159ms
+	PersistCurrentRevisions: 0.120ms
+	GenerateScriptTypeHashes: 1.874ms
+	GenerateScriptTypeSerializationHashes: 3.369ms
+	Untracked: 2295.676ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 1.201ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-com.unity.template.urp-blank
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6523 unused Assets / (7.8 MB). Loaded Objects now: 7439.
+Memory consumption went from 388.7 MB to 380.8 MB.
+Total: 19.055100 ms (FindLiveObjects: 0.881500 ms CreateObjectMapping: 0.470200 ms MarkObjects: 12.495900 ms  DeleteObjects: 4.849700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 1 unused Assets / (16.6 KB). Loaded Objects now: 7441.
+Memory consumption went from 376.4 MB to 376.4 MB.
+Total: 11.686500 ms (FindLiveObjects: 0.583500 ms CreateObjectMapping: 0.203600 ms MarkObjects: 10.611000 ms  DeleteObjects: 0.037900 ms)
+
+Importing 'GUID: 73098da8a3c8d394d9cbd8ba806ba2ec - Path: Assets/PolyForgeGenerated/Platformer' with importer (DefaultImporter)
+Imported 'GUID: 73098da8a3c8d394d9cbd8ba806ba2ec' -> (Import Result ID: '007af5222a861db997296a70b28f14dd') in 0.022 seconds [static dependencies only]. Details - ImportResultOutputID=ccc91732c7acb77ff0c860b7ea1e5ba9 DependenciesID=286733aaa481ea1331c18e2cc5b14839 StaticDependenciesID=c000bea6650d67ebd0a4b1eb9fde2d27 
+Importing 'GUID: 279dfb464d5520344b30abbfb0c0ef94 - Path: Assets/PolyForgeGenerated/Platformer/Tile.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 279dfb464d5520344b30abbfb0c0ef94' -> (Import Result ID: '6840c90d97b477312df6d89dd7cdcfbc') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=dc81de058ed3ae5840b364db82023366 DependenciesID=72d122d03078fb340a9ccc93349d1a6d StaticDependenciesID=04f975ac03c21231e1873548e43d2798 
+Refreshing native plugins compatible for Editor in 3.71 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=156686c12d0370247bf047a2afe49e1c): Total: 0.406 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=2 (actual=2, local cache=0, cache server=0)
+		Asset DB Process Time: managed=3 ms, native=190 ms
+		Asset DB Callback time: managed=201 ms, native=9 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1318, non-scripts=2295
+		Asset File Changes: new=2, changed=2, moved=0, deleted=0
+		Scan Filter Count: 4
+	ApplyChangesToAssetFolders: 0.155ms
+	Scan: 48.243ms
+	Collect global state as custom dependencies: 1.464ms
+	OnSourceAssetsModified: 1.222ms
+	ProcessAssetsWithTransientArtifactChanges: 0.123ms
+	CategorizeAssets: 59.908ms
+	ImportOutOfDateAssets: 29.585ms (0.504ms without children)
+		ImportManagerImport: 27.870ms (2.582ms without children)
+			UpdateCategorizedAssets: 0.072ms
+		ReloadNativeAssets: 0.067ms
+		UnloadImportedAssets: 0.215ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.608ms
+		ImportSchedulerStart: 0.310ms
+	PostProcessAllAssets: 204.185ms
+		XRBuildSystem.XRAssetImported 4.588ms
+		VersionControlSettings.HiddenFilePostprocess 0.108ms
+		MonoPostProcessAllAssets: 198.581ms
+			AssetPostprocessor.OnPostprocessAllAssets 132.396ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 29.138ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 10.307ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 4.148ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 2.832ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 2.485ms
+			SyncVS.PostprocessSyncProject 2.179ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 2.033ms
+			AssetChangedListener.OnPostprocessAllAssets 1.794ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.615ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.850ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.817ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.814ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 0.803ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.509ms
+			AssetEvents.OnPostprocessAllAssets 0.488ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.469ms
+			PostProcessor.OnPostprocessAllAssets 0.433ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.368ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.312ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.310ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.295ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.270ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.189ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.182ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.102ms
+	PostAssetChangesProfiler: 5.646ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.262ms
+	UnloadStreamsBegin: 0.056ms
+	PersistCurrentRevisions: 0.226ms
+	Untracked: 8.656ms
+
+Importing 'GUID: 9b2a6956140b8ee4cbf79b0930d7facd - Path: Assets/PolyForgeGenerated/Platformer/TileSprite.asset' with importer (NativeFormatImporter)
+Imported 'GUID: 9b2a6956140b8ee4cbf79b0930d7facd' -> (Import Result ID: 'e137552ebefe8750e5ff21bcd20391e2') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=cc1dda793556e62b1c893c99fddc914f DependenciesID=6576692bb21b004399cb2a87148efd83 StaticDependenciesID=bc939683ef551e53bf78ce6f9e8b2d1d 
+Refreshing native plugins compatible for Editor in 2.36 ms, found 4 plugins.
+Asset Pipeline Refresh (id=4865135a07859664fbff055b72504353): Total: 0.070 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:86)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 86]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:86)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 86]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:86)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 86]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:86)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 86]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder/<>c__DisplayClass7_0:<Build>b__0 (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,PolyForge.PlatformerTrigger/Kind) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:88)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:91)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 91]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder/<>c__DisplayClass7_0:<Build>b__0 (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,PolyForge.PlatformerTrigger/Kind) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:88)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:92)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 92]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder/<>c__DisplayClass7_0:<Build>b__0 (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,PolyForge.PlatformerTrigger/Kind) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:88)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:93)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 93]
+
+Sprite Tiling might not appear correctly because the Sprite used is not generated with Full Rect. To fix this, change the Mesh Type in the Sprite's import setting to Full Rect
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.SpriteRenderer:set_drawMode (UnityEngine.SpriteDrawMode)
+PolyForge.Platformer.Editor.PlatformerBuilder:Block (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,UnityEngine.Sprite) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:60)
+PolyForge.Platformer.Editor.PlatformerBuilder/<>c__DisplayClass7_0:<Build>b__0 (string,UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Color,PolyForge.PlatformerTrigger/Kind) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:88)
+PolyForge.Platformer.Editor.PlatformerBuilder:Build (PolyForge.Platformer.Editor.PlatformerInput) (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:94)
+PolyForge.Platformer.Editor.PlatformerBuilder:BuildBatch () (at ./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs:38)
+
+[./Packages/com.polyforge.engine/Editor/PlatformerBuilder.cs line 94]
+
+Importing 'GUID: c2d8487a1898f944d84d22e2fe079676 - Path: Assets/PolyForgeGenerated/Platformer/PlatformerPlayer.prefab' with importer (PrefabImporter)
+Imported 'GUID: c2d8487a1898f944d84d22e2fe079676' -> (Import Result ID: '9caf3c7e777f3a7ba2835b4d6799527e') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0d07432cbbfb6bbb2ace77f8ef1b3e42 DependenciesID=e04826e53d547220626554b97ba24ea6 StaticDependenciesID=76dade1d3af565b9ff1f6c72f346bec2 
+Refreshing native plugins compatible for Editor in 3.42 ms, found 4 plugins.
+Asset Pipeline Refresh (id=9cffb1b35007dcb45ad4292eacc6f58a): Total: 0.082 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3a1297ae592e2e84798e48a373ffa198 - Path: Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity' with importer (DefaultImporter)
+Imported 'GUID: 3a1297ae592e2e84798e48a373ffa198' -> (Import Result ID: 'db3905b9221069d59f3209e3d1fc34ab') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=a9f27f9bd58105c8f94188fe2ad36d2c DependenciesID=72f16252ee014971c6e5432552826044 StaticDependenciesID=6de58fc2c5d4e6f44197b7224c1bbe76 
+Refreshing native plugins compatible for Editor in 4.07 ms, found 4 plugins.
+Asset Pipeline Refresh (id=5b428c888e3d4f443bfb4fe07c759860): Total: 0.069 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+AcceleratorClientConnectionCallback - disconnected - :0
+Importing 'GUID: 0000000000000000b000000000000000 - Path: ProjectSettings/EditorBuildSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 0000000000000000b000000000000000' -> (Import Result ID: '7c86d19d8b6eb7d8fa4cbce10e93f59b') in 0.001 seconds [static dependencies only]. Details - ImportResultOutputID=0a89a5c5f492143e0fa186859e17ba6f DependenciesID=2aa0ef8981b24b482df8e40bf6c9b798 StaticDependenciesID=095ef92d507008cdd015fdee7f0ec9e8 
+Refreshing native plugins compatible for Editor in 3.33 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c338d843c100aca42b3ee559e416312a): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+MonoPathRemapper: Attempts to remap: 13060; Successful remaps: 170
+Serialized file version minimum: 22, current 23
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 00000000000064B4, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000012C, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000005A64, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 00000000000064B4, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000012C, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000005A64, mono_thread_manage will ignore it
+
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793521003983,"processId":17364,"allocatedMemory":14672357,"memoryLabels":[{"Default":196657},{"Permanent":15516},{"NewDelete":68943},{"Thread":4197176},{"Manager":22205},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":842226},{"Material":68},{"GfxDevice":55968},{"Animation":1200},{"Audio":1272},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":16768},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1259880},{"BaseObject":49648},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":13323},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":17196},{"StaticString":3808},{"Utility":2674806},{"Curl":2559},{"PoolAlloc":2264},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":8048},{"CloudService":7296},{"WebRequest":709},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":768},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":115803},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4490804},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40441},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":278},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3804},{"Windowing":456},{"Licensing":12766},{"AssetReference":32},{"IPCStream":32}]}
+~StackAllocator(ALLOC_TEMP_MAIN) m_LastAlloc not NULL. Did you forget to call FreeAllStackAllocations()? To get more information, run app with -diag-temp-memory-leak-validation cmd line argument

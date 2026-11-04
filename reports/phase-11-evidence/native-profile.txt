@@ -1,0 +1,155 @@
+{
+  "status": "FAIL",
+  "exit_code": 7,
+  "error_code": "PF-PLAYER-PROFILE",
+  "data": {
+    "status": "FAIL",
+    "scope": "PUBLIC_DEVELOPMENT",
+    "qualification": false,
+    "samples": [
+      {
+        "sample_index": 0,
+        "median_fps": 614.2506142518849,
+        "p95_frame_ms": 2.526000000003137,
+        "cpu_seconds": 193.40625,
+        "elapsed_fps": 586.5607521790822,
+        "load_seconds": 6.9220000000000255,
+        "peak_rss_bytes": 412884992,
+        "status": "PASS",
+        "issues": []
+      },
+      {
+        "sample_index": 1,
+        "median_fps": null,
+        "p95_frame_ms": null,
+        "cpu_seconds": 73.140625,
+        "load_seconds": null,
+        "peak_rss_bytes": 400982016,
+        "status": "FAIL",
+        "issues": [
+          "Unknown evidence version",
+          "Not rendered player evidence",
+          "Missing/duplicate/out-of-order sample index",
+          "Incomplete or truncated frame sample",
+          "Editor/headless samples cannot qualify",
+          "Missing/Null/unknown graphics device",
+          "Resolution mismatch",
+          "Declared PC quality mismatch",
+          "Frame pacing differs from declared profile",
+          "Player focus lost",
+          "Warmup incomplete/outside declared window",
+          "Measurement window incomplete/overlong",
+          "Invalid input_digest",
+          "Invalid profile_digest",
+          "Invalid executable_sha256",
+          "Missing scene_id",
+          "Missing scene",
+          "Missing unity_version",
+          "Missing build_type",
+          "Unsupported Unity version",
+          "Unknown build type",
+          "Unsupported profile workload",
+          "Missing hardware identity",
+          "Missing/nonfinite/zero/overflowed frame intervals",
+          "Active game workload missing/frozen",
+          "Player process failed/timed out",
+          "No externally observed rendered readiness",
+          "Load exceeds 30s or is unknown"
+        ]
+      }
+    ],
+    "issues": [
+      "Exactly three samples required",
+      "Sample 1: Unknown evidence version",
+      "Sample 1: Not rendered player evidence",
+      "Sample 1: Missing/duplicate/out-of-order sample index",
+      "Sample 1: Incomplete or truncated frame sample",
+      "Sample 1: Editor/headless samples cannot qualify",
+      "Sample 1: Missing/Null/unknown graphics device",
+      "Sample 1: Resolution mismatch",
+      "Sample 1: Declared PC quality mismatch",
+      "Sample 1: Frame pacing differs from declared profile",
+      "Sample 1: Player focus lost",
+      "Sample 1: Warmup incomplete/outside declared window",
+      "Sample 1: Measurement window incomplete/overlong",
+      "Sample 1: Invalid input_digest",
+      "Sample 1: Invalid profile_digest",
+      "Sample 1: Invalid executable_sha256",
+      "Sample 1: Missing scene_id",
+      "Sample 1: Missing scene",
+      "Sample 1: Missing unity_version",
+      "Sample 1: Missing build_type",
+      "Sample 1: Unsupported Unity version",
+      "Sample 1: Unknown build type",
+      "Sample 1: Unsupported profile workload",
+      "Sample 1: Missing hardware identity",
+      "Sample 1: Missing/nonfinite/zero/overflowed frame intervals",
+      "Sample 1: Active game workload missing/frozen",
+      "Sample 1: Player process failed/timed out",
+      "Sample 1: No externally observed rendered readiness",
+      "Sample 1: Load exceeds 30s or is unknown",
+      "Hardware/build/scene/profile identity changed between samples"
+    ],
+    "median_fps_across_samples": 614.2506142518849,
+    "fps_spread_percent": 0.0,
+    "gpu_utilization": "UNKNOWN",
+    "profile": {
+      "schema_version": "1.0.0",
+      "resolution": [
+        1280,
+        720
+      ],
+      "quality_setting": "PC",
+      "warmup_seconds": 10,
+      "samples": 3,
+      "sample_seconds": 60,
+      "targets": {
+        "median_fps_min": 30,
+        "p95_frame_ms_max": 50,
+        "peak_rss_bytes_max": 2147483648,
+        "load_seconds_max": 30
+      }
+    },
+    "executable_sha256": "4c93a4bb060a12b9044ab2103835dd1565aec9aa8381372fa84fbbc14a19b989",
+    "build_digest": "2f752df7b336eb2a92c0c9967ce68d22c5bb3e777e657e20fc0a5b016c55b421"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "profile-ed21d6ab90f64ba8",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "artifact_ids": [
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/profile.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/evidence.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/input.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observations.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observed.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/process.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/ready.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/stderr.txt",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/stdout.txt",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/input.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observations.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observed.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/process.json",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/stderr.txt",
+    "profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/stdout.txt"
+  ],
+  "evidence_paths": [
+    "runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observed.json",
+    "runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observed.json",
+    "runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/profile.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "FAIL",
+  "game_status": "PARTIAL",
+  "operation_status": "FAIL"
+}
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\native-profile.py", line 24, in <module>
+    assert result.status == 'PASS', result.to_dict()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'status': 'FAIL', 'exit_code': 7, 'error_code': 'PF-PLAYER-PROFILE', 'data': {'status': 'FAIL', 'scope': 'PUBLIC_DEVELOPMENT', 'qualification': False, 'samples': [{'sample_index': 0, 'median_fps': 614.2506142518849, 'p95_frame_ms': 2.526000000003137, 'cpu_seconds': 193.40625, 'elapsed_fps': 586.5607521790822, 'load_seconds': 6.9220000000000255, 'peak_rss_bytes': 412884992, 'status': 'PASS', 'issues': []}, {'sample_index': 1, 'median_fps': None, 'p95_frame_ms': None, 'cpu_seconds': 73.140625, 'load_seconds': None, 'peak_rss_bytes': 400982016, 'status': 'FAIL', 'issues': ['Unknown evidence version', 'Not rendered player evidence', 'Missing/duplicate/out-of-order sample index', 'Incomplete or truncated frame sample', 'Editor/headless samples cannot qualify', 'Missing/Null/unknown graphics device', 'Resolution mismatch', 'Declared PC quality mismatch', 'Frame pacing differs from declared profile', 'Player focus lost', 'Warmup incomplete/outside declared window', 'Measurement window incomplete/overlong', 'Invalid input_digest', 'Invalid profile_digest', 'Invalid executable_sha256', 'Missing scene_id', 'Missing scene', 'Missing unity_version', 'Missing build_type', 'Unsupported Unity version', 'Unknown build type', 'Unsupported profile workload', 'Missing hardware identity', 'Missing/nonfinite/zero/overflowed frame intervals', 'Active game workload missing/frozen', 'Player process failed/timed out', 'No externally observed rendered readiness', 'Load exceeds 30s or is unknown']}], 'issues': ['Exactly three samples required', 'Sample 1: Unknown evidence version', 'Sample 1: Not rendered player evidence', 'Sample 1: Missing/duplicate/out-of-order sample index', 'Sample 1: Incomplete or truncated frame sample', 'Sample 1: Editor/headless samples cannot qualify', 'Sample 1: Missing/Null/unknown graphics device', 'Sample 1: Resolution mismatch', 'Sample 1: Declared PC quality mismatch', 'Sample 1: Frame pacing differs from declared profile', 'Sample 1: Player focus lost', 'Sample 1: Warmup incomplete/outside declared window', 'Sample 1: Measurement window incomplete/overlong', 'Sample 1: Invalid input_digest', 'Sample 1: Invalid profile_digest', 'Sample 1: Invalid executable_sha256', 'Sample 1: Missing scene_id', 'Sample 1: Missing scene', 'Sample 1: Missing unity_version', 'Sample 1: Missing build_type', 'Sample 1: Unsupported Unity version', 'Sample 1: Unknown build type', 'Sample 1: Unsupported profile workload', 'Sample 1: Missing hardware identity', 'Sample 1: Missing/nonfinite/zero/overflowed frame intervals', 'Sample 1: Active game workload missing/frozen', 'Sample 1: Player process failed/timed out', 'Sample 1: No externally observed rendered readiness', 'Sample 1: Load exceeds 30s or is unknown', 'Hardware/build/scene/profile identity changed between samples'], 'median_fps_across_samples': 614.2506142518849, 'fps_spread_percent': 0.0, 'gpu_utilization': 'UNKNOWN', 'profile': {'schema_version': '1.0.0', 'resolution': [1280, 720], 'quality_setting': 'PC', 'warmup_seconds': 10, 'samples': 3, 'sample_seconds': 60, 'targets': {'median_fps_min': 30, 'p95_frame_ms_max': 50, 'peak_rss_bytes_max': 2147483648, 'load_seconds_max': 30}}, 'executable_sha256': '4c93a4bb060a12b9044ab2103835dd1565aec9aa8381372fa84fbbc14a19b989', 'build_digest': '2f752df7b336eb2a92c0c9967ce68d22c5bb3e777e657e20fc0a5b016c55b421'}, 'diagnostics': [], 'operation_id': None, 'run_id': 'profile-ed21d6ab90f64ba8', 'version': '0.0.1', 'contract_version': '1.0.0', 'input_digest': 'a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a', 'artifact_ids': ['profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/profile.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/evidence.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/input.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observations.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observed.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/process.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/ready.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/stderr.txt', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/stdout.txt', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/input.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observations.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observed.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/process.json', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/stderr.txt', 'profile-ed21d6ab90f64ba8:runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/stdout.txt'], 'evidence_paths': ['runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-0/observed.json', 'runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/sample-1/observed.json', 'runs/game-check-f43094d808504d08/player/profiles/profile-ed21d6ab90f64ba8/profile.json'], 'metrics': {}, 'duration_ms': 0, 'rollback_id': None, 'evaluated_test_status': 'FAIL', 'game_status': 'PARTIAL', 'operation_status': 'FAIL'}

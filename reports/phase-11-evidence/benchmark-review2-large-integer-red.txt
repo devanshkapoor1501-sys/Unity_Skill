@@ -1,0 +1,51 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+____________ test_huge_retry_integer_is_a_typed_observation_error _____________
+
+    def test_huge_retry_integer_is_a_typed_observation_error() -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+        with pytest.raises(InputError):
+>           summarize([trial("COMPLETE_GAME_2D", success=True, retries=10**400)])
+
+tests\test_phase11_benchmark.py:870: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\metrics.py:176: in summarize
+    validate_record(row)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'arm': 'D', 'censored': False, 'complexity': 'small', 'configuration_digest': 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', ...}
+
+    def validate_record(row: Any) -> None:
+        """Reject malformed observations instead of silently dropping failures."""
+        if not isinstance(row, dict):
+            raise InputError("A benchmark observation must be an object")
+        canonical_digest(row)
+        if row.get("arm") not in ARMS or row.get("task_type") not in TASK_TYPES:
+            raise InputError("Unknown benchmark arm or task type")
+        if not isinstance(row.get("task_id"), str) or not 1 <= len(row["task_id"]) <= 4096:
+            raise InputError("Missing bounded task identity")
+        for key in ("executed", "eligible", "task_success", "timed_out", "censored"):
+            if type(row.get(key)) is not bool:
+                raise InputError(f"Observation {key} must be boolean")
+        for field in ("status", "evaluation_status"):
+            if not isinstance(row.get(field), str) or row[field] not in STATUSES:
+                raise InputError("Unknown observation status")
+        if not isinstance(row.get("game_status"), str) or row["game_status"] not in GAME_STATUSES:
+            raise InputError("Unknown observed game acceptance status")
+        if row.get("seed") is not None and (
+            type(row["seed"]) is not int or not 0 <= row["seed"] <= 2147483647
+        ):
+            raise InputError("Observation seed must be a bounded integer or undeclared")
+        for key in ("duration_seconds", "cost_usd", "tokens", "tool_calls", "interventions", "retries"):
+            value = row.get(key)
+            if value is None:
+                continue
+>           numeric = type(value) in {int, float} and math.isfinite(value)
+                                                      ^^^^^^^^^^^^^^^^^^^^
+E           OverflowError: int too large to convert to float
+
+polyforge\benchmark\metrics.py:42: OverflowError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_huge_retry_integer_is_a_typed_observation_error
+1 failed, 119 deselected in 0.58s

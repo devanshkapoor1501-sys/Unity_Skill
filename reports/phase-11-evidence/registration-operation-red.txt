@@ -1,0 +1,31 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+________ test_operation_receipt_fingerprints_editable_platformer_build ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{ea2a7963-bd25-42b0-949f-7533e6961e1c}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_operation_receipt_fingerp0')
+
+    def test_operation_receipt_fingerprints_editable_platformer_build(tmp_path):
+        from polyforge.contracts.results import Result
+        from polyforge.workforce.operations import complete, operation_context, recover
+    
+        inputs = source_fixture(tmp_path)
+        build = "platformer-build-" + "a" * 16
+        folder = tmp_path / "runs" / build
+        folder.mkdir()
+        archive = folder / "native-output.zip"
+        archive.write_bytes(b"editable native build")
+        check = "platformer-check-" + "b" * 16
+        (tmp_path / "runs" / check).mkdir()
+        result = Result(run_id=check, data={"build_run_id": build})
+        context = operation_context(tmp_path, "task", "build", 42, None)
+        complete("unity.game.platformer.v1", inputs, context, result)
+        assert recover("unity.game.platformer.v1", inputs, context) == result
+        archive.write_bytes(b"changed source delivery")
+>       with pytest.raises(InputError, match="output changed"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_registration.py:172: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_operation_receipt_fingerprints_editable_platformer_build
+1 failed, 12 deselected in 1.05s

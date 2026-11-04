@@ -1,0 +1,554 @@
+FFFF..FFF.F..FFFF..FFF.F                                                 [100%]
+================================== FAILURES ===================================
+______ test_retry_observations_require_bounded_nonnegative_integers[-1] _______
+
+retries = -1
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_retry_observations_require_bounded_nonnegative_integers(retries: object) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:862: Failed
+_____ test_retry_observations_require_bounded_nonnegative_integers[True] ______
+
+retries = True
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_retry_observations_require_bounded_nonnegative_integers(retries: object) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:862: Failed
+___ test_retry_observations_require_bounded_nonnegative_integers[retries2] ____
+
+retries = []
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_retry_observations_require_bounded_nonnegative_integers(retries: object) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:862: Failed
+______ test_retry_observations_require_bounded_nonnegative_integers[0.5] ______
+
+retries = 0.5
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_retry_observations_require_bounded_nonnegative_integers(retries: object) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:862: Failed
+_ test_retry_observations_require_bounded_nonnegative_integers[1000000000001] _
+
+retries = 1000000000001
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_retry_observations_require_bounded_nonnegative_integers(retries: object) -> None:
+        from polyforge.benchmark.metrics import summarize
+    
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_benchmark.py:862: Failed
+___________ test_malformed_adapter_retries_are_failed_attempts[-1] ____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_adapter_retries0')
+retries = -1
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_malformed_adapter_retries_are_failed_attempts(tmp_path: Path, retries: object) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class MalformedUsage:
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                return Result(data={"tokens": 1, "tool_calls": 1, "retries": retries})
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["retries"] = 2
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=MalformedUsage(),
+                           evaluator=PublicEvaluator())
+        row = result.data["records"][0]
+>       assert result.status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:883: AssertionError
+__________ test_malformed_adapter_retries_are_failed_attempts[True] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_adapter_retries1')
+retries = True
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_malformed_adapter_retries_are_failed_attempts(tmp_path: Path, retries: object) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class MalformedUsage:
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                return Result(data={"tokens": 1, "tool_calls": 1, "retries": retries})
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["retries"] = 2
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=MalformedUsage(),
+                           evaluator=PublicEvaluator())
+        row = result.data["records"][0]
+>       assert result.status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:883: AssertionError
+___________ test_malformed_adapter_retries_are_failed_attempts[0.5] ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_adapter_retries3')
+retries = 0.5
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_malformed_adapter_retries_are_failed_attempts(tmp_path: Path, retries: object) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class MalformedUsage:
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                return Result(data={"tokens": 1, "tool_calls": 1, "retries": retries})
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["retries"] = 2
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=MalformedUsage(),
+                           evaluator=PublicEvaluator())
+        row = result.data["records"][0]
+>       assert result.status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:883: AssertionError
+______ test_malformed_adapter_retries_are_failed_attempts[1000000000001] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_adapter_retries6')
+retries = 1000000000001
+
+    @pytest.mark.parametrize("retries", [-1, True, [], 0.5, float("nan"), float("inf"), 10**12 + 1])
+    def test_malformed_adapter_retries_are_failed_attempts(tmp_path: Path, retries: object) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class MalformedUsage:
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                return Result(data={"tokens": 1, "tool_calls": 1, "retries": retries})
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["retries"] = 2
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=MalformedUsage(),
+                           evaluator=PublicEvaluator())
+        row = result.data["records"][0]
+        assert result.status == "FAIL"
+>       assert row["status"] == "FAIL" and row["error_code"] == "PF-BENCHMARK-ADAPTER"
+E       AssertionError: assert ('FAIL' == 'FAIL'
+E         
+E           FAIL and 'PF-BENCHMARK-BUDGET' == 'PF-BENCHMARK-ADAPTER'
+E         
+E         - PF-BENCHMARK-ADAPTER
+E         ?              ^ ^^ --
+E         + PF-BENCHMARK-BUDGET
+E         ?              ^^ ^^)
+
+tests\test_phase11_benchmark.py:884: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-accepted] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F356260F0>
+outcome = 'accepted', elapsed = 0.75
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 0.75
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-rejected] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F363CACC0>
+outcome = 'rejected', elapsed = 0.75
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 0.75
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-blocked] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F363DF0B0>
+outcome = 'blocked', elapsed = 0.75
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 0.75
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-accepted] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F363DD130>
+outcome = 'accepted', elapsed = 10.0
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 10.0
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-rejected] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F36374230>
+outcome = 'rejected', elapsed = 10.0
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 10.0
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-blocked] __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F36374470>
+outcome = 'blocked', elapsed = 10.0
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+>       assert row["duration_seconds"] == elapsed
+E       assert 0.1 == 10.0
+
+tests\test_phase11_benchmark.py:929: AssertionError
+_ test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-exception] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{aee0358f-4a66-45cc-b58f-ca4a39d6d2a6}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_attempt_elapsed_time_and_9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000013F363C3EC0>
+outcome = 'exception', elapsed = 10.0
+
+    @pytest.mark.parametrize("outcome", ["accepted", "rejected", "blocked", "timeout", "exception"])
+    @pytest.mark.parametrize("elapsed", [0.75, 10.0])
+    def test_attempt_elapsed_time_and_wall_budget_include_evaluation(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, outcome: str, elapsed: float,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        now = 0.0
+    
+        class TimedRunner(PublicRunner):
+            def run(self, request: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                nonlocal now
+                now = 0.1
+                return super().run(request, arm=arm, seed=seed)
+    
+        class TimedEvaluator(PublicEvaluator):
+            def grade(self, request: EvaluationRequest) -> Result:
+                nonlocal now
+                now = elapsed
+                if outcome == "timeout":
+                    raise TimeoutError("grading timeout")
+                if outcome == "exception":
+                    raise RuntimeError("grading exception")
+                if outcome == "rejected":
+                    return failure(ErrorKind.TEST_FAILURE, "PF-GRADE-FAIL", "Rejected")
+                if outcome == "blocked":
+                    return failure(ErrorKind.MISSING_DEPENDENCY, "PF-GRADE-BLOCKED", "Unavailable")
+                return super().grade(request)
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        value["tasks"][0]["budgets"]["wall_seconds"] = 1
+        path.write_text(json.dumps(value), encoding="utf-8")
+        monkeypatch.setattr(module.time, "monotonic", lambda: now)
+        result = module.run_suite(load_suite(path), "D", tmp_path / "out", runner=TimedRunner(),
+                                  evaluator=TimedEvaluator())
+        row = result.data["records"][0]
+        assert row["duration_seconds"] == elapsed
+        games = result.data["summary"]["accepted_game_rate"]
+        assert games["median_attempt_seconds"] == elapsed
+        if elapsed > 1:
+            assert result.status == row["status"] == "FAIL"
+>           assert row["timed_out"] and row["censored"] and not row["task_success"]
+E           assert (False)
+
+tests\test_phase11_benchmark.py:934: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_retry_observations_require_bounded_nonnegative_integers[-1]
+FAILED tests/test_phase11_benchmark.py::test_retry_observations_require_bounded_nonnegative_integers[True]
+FAILED tests/test_phase11_benchmark.py::test_retry_observations_require_bounded_nonnegative_integers[retries2]
+FAILED tests/test_phase11_benchmark.py::test_retry_observations_require_bounded_nonnegative_integers[0.5]
+FAILED tests/test_phase11_benchmark.py::test_retry_observations_require_bounded_nonnegative_integers[1000000000001]
+FAILED tests/test_phase11_benchmark.py::test_malformed_adapter_retries_are_failed_attempts[-1]
+FAILED tests/test_phase11_benchmark.py::test_malformed_adapter_retries_are_failed_attempts[True]
+FAILED tests/test_phase11_benchmark.py::test_malformed_adapter_retries_are_failed_attempts[0.5]
+FAILED tests/test_phase11_benchmark.py::test_malformed_adapter_retries_are_failed_attempts[1000000000001]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-accepted]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-rejected]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[0.75-blocked]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-accepted]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-rejected]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-blocked]
+FAILED tests/test_phase11_benchmark.py::test_attempt_elapsed_time_and_wall_budget_include_evaluation[10.0-exception]
+16 failed, 8 passed, 95 deselected in 6.50s

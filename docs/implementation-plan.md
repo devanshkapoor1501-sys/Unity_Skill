@@ -9,6 +9,11 @@ archived byte-for-byte in docs/source and available in Git history. The original
 
 ## Global decisions
 
+- Final product clarification (2026-11-01): build a portable Blender/Unity skill
+  and specialized-worker workflow for varied game requests. Examples teach and
+  test reuse; they do not define a closed menu of games. Phases 12–17 must add
+  tool knowledge, composition and transfer evidence, preserving the original
+  requested game and surfacing unsupported requirements explicitly.
 - One repository in the requested folder; native Python CLI and separate Unity package.
 - Python 3.11+; local Python 3.12.14, Blender 5.2.2 LTS, Unity 6000.6.3f1.
 - Installed URP template declares URP 17.6.0, Input System 1.19.0, Test Framework 1.8.0.

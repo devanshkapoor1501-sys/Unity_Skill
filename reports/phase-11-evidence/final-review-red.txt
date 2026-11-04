@@ -1,0 +1,211 @@
+FFFFFFFFFF                                                               [100%]
+================================== FAILURES ===================================
+_ test_requested_and_resolved_package_versions_include_transitive_dependencies _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_requested_and_resolved_pa0')
+
+    def test_requested_and_resolved_package_versions_include_transitive_dependencies(tmp_path):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps({"dependencies": {
+            "com.example.local": {"version": "1.2.4", "depth": 0, "source": "registry"},
+            "com.example.transitive": {"version": "2.0.0", "depth": 1, "source": "registry"},
+        }}))
+        before = snapshot(root)
+        result = inspect_project(root)
+        assert result.status == "PASS"
+        assert result.data["packages"] == {"com.example.local": "1.2.3"}
+>       assert result.data["resolved_packages"] == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "com.example.local": "1.2.4", "com.example.transitive": "2.0.0"
+        }
+E       KeyError: 'resolved_packages'
+
+tests\test_phase11_inspection.py:46: KeyError
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value0] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag0')
+value = []
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag1')
+value = {}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value2] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag2')
+value = {'dependencies': []}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value3] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag3')
+value = {'dependencies': {'a': '1.0'}}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value4] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag4')
+value = {'dependencies': {'a': {}}}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value5] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag5')
+value = {'dependencies': {'a': {'version': 1}}}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_ test_malformed_resolved_package_metadata_is_rejected_without_writes[value6] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_resolved_packag6')
+value = {'dependencies': {'a': {'version': ' '}}}
+
+    @pytest.mark.parametrize("value", [
+        [], {}, {"dependencies": []}, {"dependencies": {"a": "1.0"}},
+        {"dependencies": {"a": {}}}, {"dependencies": {"a": {"version": 1}}},
+        {"dependencies": {"a": {"version": " "}}},
+    ])
+    def test_malformed_resolved_package_metadata_is_rejected_without_writes(tmp_path, value):
+        from polyforge.inspection import inspect_project
+    
+        root = project(tmp_path)
+        (root / "Packages/packages-lock.json").write_text(json.dumps(value))
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_inspection.py:64: Failed
+_____________ test_missing_package_lock_is_explicitly_unobserved ______________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_missing_package_lock_is_e0')
+
+    def test_missing_package_lock_is_explicitly_unobserved(tmp_path):
+        from polyforge.inspection import inspect_project
+    
+        result = inspect_project(project(tmp_path))
+>       assert result.data["resolved_packages"] == {}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'resolved_packages'
+
+tests\test_phase11_inspection.py:73: KeyError
+____________ test_default_run_schedules_every_declared_repetition _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{f67adb22-a7cc-410c-b9c9-10f33ff55a5f}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_default_run_schedules_eve0')
+
+    def test_default_run_schedules_every_declared_repetition(tmp_path: Path) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        suite = load_suite(PUBLIC / "suite.json")
+        preview = run_suite(suite, "A", tmp_path / "preview", dry_run=True)
+>       assert preview.data["planned_cases"] == 12 * suite["runs_per_task_arm"] == 60
+E       assert 12 == (12 * 5)
+
+tests\test_phase11_benchmark.py:89: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_inspection.py::test_requested_and_resolved_package_versions_include_transitive_dependencies
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value0]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value1]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value2]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value3]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value4]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value5]
+FAILED tests/test_phase11_inspection.py::test_malformed_resolved_package_metadata_is_rejected_without_writes[value6]
+FAILED tests/test_phase11_inspection.py::test_missing_package_lock_is_explicitly_unobserved
+FAILED tests/test_phase11_benchmark.py::test_default_run_schedules_every_declared_repetition
+10 failed, 197 deselected in 4.62s

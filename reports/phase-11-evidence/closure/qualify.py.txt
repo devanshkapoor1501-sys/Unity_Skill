@@ -1,0 +1,49 @@
+"""Run final offline gates with immutable engine identity and explicit exit results."""
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+from polyforge.workforce.router import engine_digest
+
+root = Path.cwd()
+base = root / '.tmp/phase11-closure'
+before = engine_digest()
+(base / 'release-complete-engine-before.txt').write_text(before)
+env = dict(os.environ, TEMP=str(root / '.tmp'), TMP=str(root / '.tmp'),
+           COVERAGE_FILE=str(base / 'release-complete.coverage'))
+gates = [
+    ('lint', ['-m', 'ruff', 'check', '.']),
+    ('types-windows', ['-m', 'mypy']),
+    ('types-linux', ['-m', 'mypy', '--platform', 'linux']),
+    ('cli-docs', ['-m', 'tools.generate_cli_docs', '--check']),
+    ('unit', ['-m', 'pytest', '--cov', '--cov-report=term-missing',
+              '--cov-report=json:.tmp/phase11-closure/release-complete-coverage.json',
+              '--junitxml=.tmp/phase11-closure/release-complete-unit.xml',
+              '--basetemp=.tmp/phase11-closure/release-complete-unit-temp']),
+]
+results = []
+for name, args in gates:
+    started = datetime.now(timezone.utc).isoformat()
+    print('Running ' + name, flush=True)
+    with (base / ('release-complete-' + name + '.txt')).open('wb') as stream:
+        completed = subprocess.run([sys.executable, *args], cwd=root, env=env,
+                                   stdout=stream, stderr=subprocess.STDOUT)
+    results.append({'gate': name, 'argv': [sys.executable, *args],
+                    'started_at': started, 'finished_at': datetime.now(timezone.utc).isoformat(),
+                    'returncode': completed.returncode})
+after = engine_digest()
+(base / 'release-complete-engine-after.txt').write_text(after)
+coverage = json.loads((base / 'release-complete-coverage.json').read_text())['totals']
+combined = coverage['percent_covered']
+branches = 100 * coverage['covered_branches'] / coverage['num_branches']
+report = {'checks': results, 'engine_before': before, 'engine_after': after,
+          'engine_unchanged': before == after,
+          'combined_coverage': combined, 'branch_coverage': branches,
+          'status': 'PASS' if (all(r['returncode'] == 0 for r in results)
+                              and before == after and combined >= 90 and branches >= 90) else 'FAIL'}
+(base / 'release-complete-summary.json').write_text(json.dumps(report, indent=2) + '\n')
+print(json.dumps(report, indent=2), flush=True)
+raise SystemExit(0 if report['status'] == 'PASS' else 1)

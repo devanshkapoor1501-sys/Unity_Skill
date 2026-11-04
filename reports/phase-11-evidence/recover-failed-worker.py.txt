@@ -1,0 +1,31 @@
+"""Cancel only verified dead same-host jobs through the normal ledger API."""
+import hashlib
+import json
+import socket
+from pathlib import Path
+
+from polyforge.runner.ownership import process_identity
+from polyforge.workforce.ledger import JobLedger
+
+workspace = Path('.tmp/phase11/platformer-demo').resolve()
+records = []
+for path in workspace.glob('.polyforge/leases/*.json'):
+    raw = path.read_bytes()
+    lease = json.loads(raw)
+    if lease['released']:
+        continue
+    assert lease['host'] == socket.gethostname(), 'Cannot recover another host owner'
+    assert process_identity(lease['pid']) != lease['identity'], 'Owner is still alive'
+    ledger = JobLedger(workspace, lease['task_id'])
+    state = json.loads((workspace / ledger._state(lease['job_id'])).read_text('utf-8'))
+    assert state['state'] == 'RUNNING'
+    assert state['lease']['token'] == lease['token']
+    ledger.cancel(lease['job_id'])
+    after = json.loads(path.read_text('utf-8'))
+    assert after['released'] is True
+    records.append({'task_id': lease['task_id'], 'job_id': lease['job_id'],
+                    'pid': lease['pid'], 'verified_owner_dead': True,
+                    'before_sha256': hashlib.sha256(raw).hexdigest(),
+                    'transition': 'RUNNING_TO_CANCELLED', 'lease_released': True})
+Path('.tmp/phase11/failed-worker-recovery.json').write_text(json.dumps(records, indent=2), encoding='utf-8')
+print(json.dumps(records, indent=2))

@@ -1,0 +1,41 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+________ test_csharp_large_line_numbers_survive_repeated_native_parses ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{318b893c-08d5-4665-bf4f-0dd8e36938a8}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_csharp_large_line_numbers0')
+
+    def test_csharp_large_line_numbers_survive_repeated_native_parses(tmp_path):
+        import subprocess
+        import sys
+    
+        # Isolate a native binding failure so it cannot kill the pytest process.
+        # Rows above CPython's cached small integers exercise Point.row ownership.
+        script = """
+    import gc
+    from polyforge.inspection import _csharp_source
+    raw = b'\\n' * 300 + b'namespace Large { public class Example {} }'
+    for index in range(100):
+        namespaces, declarations, status = _csharp_source(raw)
+        assert status == 'PARSED'
+        assert namespaces == ['Large']
+        assert declarations[0]['line'] == 301
+        gc.collect()
+    print('SAFE_NATIVE_PARSE')
+    """
+        outcome = subprocess.run(
+            [sys.executable, "-X", "faulthandler", "-c", script],
+            capture_output=True, text=True, timeout=30,
+        )
+>       assert outcome.returncode == 0, outcome.stderr
+E       AssertionError: Windows fatal exception: access violation
+E         
+E         Current thread 0x00006470 (most recent call first):
+E           File "<string>", line 9 in <module>
+E         
+E       assert 3221225477 == 0
+E        +  where 3221225477 = CompletedProcess(args=['C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe', '-X', 'fault...ion: access violation\n\nCurrent thread 0x00006470 (most recent call first):\n  File "<string>", line 9 in <module>\n').returncode
+
+tests\test_phase11_inspection.py:503: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_inspection.py::test_csharp_large_line_numbers_survive_repeated_native_parses
+1 failed, 44 deselected in 5.93s

@@ -1,0 +1,45 @@
+"""Append exact closure observations and native sources to the Phase11 evidence index."""
+import hashlib,json,os,re
+from pathlib import Path
+from polyforge.security.policy import redact
+root=Path.cwd();base=root/'.tmp/phase11-closure';dest=root/'reports/phase-11-evidence'
+index=json.loads((dest/'index.json').read_text(encoding='utf-8'))
+records={r['path']:r for r in index['files']}
+texts={'.txt','.err','.json','.jsonl','.xml','.md','.py','.cs','.patch','.log','.html'}
+binaries={'.png','.blend','.fbx','.zip','.whl','.gz'}
+def retain(source,relative):
+ if not source.is_file() or source.stat().st_size>16777216:return
+ raw=source.read_bytes();original=raw
+ if source.suffix in texts:
+  safe=redact(raw.decode('utf-8-sig',errors='replace'))
+  safe=re.sub(r'''(?i)(-cbmEditorLicense\s+)(?:"[^"]*"|'[^']*'|[^\s]+)''',r'\1[REDACTED]',safe)
+  raw=safe.encode('utf-8')
+ target=dest/relative
+ if source.suffix in {'.py','.cs','.patch'}:target=target.with_name(target.name+'.txt')
+ key=target.relative_to(dest).as_posix();assert not target.is_symlink()
+ if not target.is_file() or target.read_bytes()!=raw:
+  target.parent.mkdir(parents=True,exist_ok=True)
+  target.write_bytes(raw)
+ records[key]={'path':key,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'source':source.relative_to(root).as_posix(),'source_bytes':len(original),'source_sha256':hashlib.sha256(original).hexdigest(),'export_transformed':original!=raw}
+for p in base.iterdir():
+ if p.is_file() and p.name not in {'blueprint.txt','final-native.txt','release-final-unit.txt'} and p.suffix in texts:retain(p,Path('closure')/p.name)
+for prefix,ready in [('final-native.txt','final-installed-native-summary.json'),('release-final-unit.txt','release-final-summary.json')]:
+ if (base/ready).is_file() and (base/prefix).is_file():retain(base/prefix,Path('closure')/prefix)
+for name in ('build-a','build-b','final-build-a','final-build-b'):
+ folder=base/name
+ if folder.is_dir():
+  for p in folder.iterdir():
+   if p.suffix in texts|binaries:retain(p,Path('closure')/name/p.name)
+for name in ('clean-native-demo','final-native-demo'):
+ start=base/name
+ if name=='final-native-demo' and not (base/'final-installed-native-summary.json').is_file():continue
+ for current,dirs,names in os.walk(start):
+  p=Path(current)
+  if p.name=='player':dirs[:]=[v for v in dirs if v=='profiles']
+  else:dirs[:]=[v for v in dirs if v not in {'UnityProject','Library','Temp','tmp','__pycache__','unity-profile','upm-cache','snapshots','snapshot'}]
+  for n in names:
+   source=p/n
+   if source.suffix in texts|binaries:retain(source,Path('closure/native')/name/source.relative_to(start))
+index['files']=sorted(records.values(),key=lambda r:r['path'])
+(dest/'index.json').write_text(json.dumps(index,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'files':len(records),'bytes':sum(r['bytes'] for r in records.values()),'transformed':sum(r['export_transformed'] for r in records.values())}))

@@ -1,0 +1,288 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "development_acceptance": "PASS",
+    "oracles": {
+      "status": "PASS",
+      "scenarios": {
+        "player_moves": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "wall_collision": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "obstacle_collision": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "enemy_patrols": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "contact_damage": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "health_failure": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "survival_win": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "restart_resets": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "keyboard_input": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "keyboard_restart": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "mutation_id": null,
+          "gate_status": "PASS"
+        },
+        "collision_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Wall did not stop actual player movement at its inner boundary"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M1",
+          "gate_status": "PASS"
+        },
+        "restart_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Restart did not restore position, health, time and running state"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M2",
+          "gate_status": "PASS"
+        },
+        "win_reversed": {
+          "status": "FAIL",
+          "issues": [
+            "Surviving thirty seconds did not win"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M3",
+          "gate_status": "PASS"
+        },
+        "damage_no_health": {
+          "status": "FAIL",
+          "issues": [
+            "Contact produced no observed health loss and damage evidence"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M4",
+          "gate_status": "PASS"
+        },
+        "navigation_stuck": {
+          "status": "FAIL",
+          "issues": [
+            "One or more declared enemies did not patrol"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M5",
+          "gate_status": "PASS"
+        },
+        "input_disconnected": {
+          "status": "FAIL",
+          "issues": [
+            "Player did not move at least 0.5m"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M6",
+          "gate_status": "PASS"
+        },
+        "obstacle_collision_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Obstacle did not stop actual player movement at its near face"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "mutation_id": "M7",
+          "gate_status": "PASS"
+        }
+      },
+      "hidden_evaluation": "NOT_RUN"
+    },
+    "manual_review": "REVIEW",
+    "standalone_build": "PASS",
+    "player_smoke": "PASS",
+    "profiling": "NOT_RUN",
+    "through": "S5",
+    "build_run_id": "game-build-4794618346264ccd",
+    "scene": "UnityProject/Assets/PolyForgeGenerated/Game/PlayableArena.unity"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "game-check-a135ce2bfc8b4df5",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "a7c3c004b9b609816b5db6aa126f7c305fe245016550417f5cd2c1ea82242d8a",
+  "artifact_ids": [
+    "runs/game-check-a135ce2bfc8b4df5/editmode/process.json",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/stderr.txt",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/stdout.txt",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/894700b3874b47f9953f14e7dd0f4704/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/game-check-a135ce2bfc8b4df5/editmode/upm.log",
+    "runs/game-check-a135ce2bfc8b4df5/editmode.xml",
+    "runs/game-check-a135ce2bfc8b4df5/game-input.json",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/process.json",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/stderr.txt",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/stdout.txt",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/tmp52dfedfa.tmp",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/UnityCBMCrashes/.header",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/1fe7157f47df48afa6f1de2477deea76/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/game-check-a135ce2bfc8b4df5/player-build/upm.log",
+    "runs/game-check-a135ce2bfc8b4df5/player-build-artifacts.json",
+    "runs/game-check-a135ce2bfc8b4df5/player-input.json",
+    "runs/game-check-a135ce2bfc8b4df5/player-smoke/process.json",
+    "runs/game-check-a135ce2bfc8b4df5/player-smoke/stderr.txt",
+    "runs/game-check-a135ce2bfc8b4df5/player-smoke/stdout.txt",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/process.json",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/stderr.txt",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/stdout.txt",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/24723ac272c5472aa138c77546fb0683/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/game-check-a135ce2bfc8b4df5/playmode/upm.log",
+    "runs/game-check-a135ce2bfc8b4df5/playmode.xml",
+    "runs/game-check-a135ce2bfc8b4df5/public-oracles.json",
+    "runs/game-check-a135ce2bfc8b4df5/scenarios.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/collision_disabled.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/contact_damage.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/damage_no_health.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/enemy_patrols.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/health_failure.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/input_disconnected.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/keyboard_input.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/keyboard_restart.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/navigation_stuck.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/obstacle_collision.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/obstacle_collision_disabled.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/player_moves.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/restart_disabled.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/restart_resets.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/survival_win.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/wall_collision.json",
+    "runs/game-check-a135ce2bfc8b4df5/telemetry/win_reversed.json",
+    "runs/game-build-4794618346264ccd/bindings.json",
+    "runs/game-build-4794618346264ccd/events.jsonl",
+    "runs/game-build-4794618346264ccd/feature-trace.json",
+    "runs/game-build-4794618346264ccd/game-input.json",
+    "runs/game-build-4794618346264ccd/inputs.json",
+    "runs/game-build-4794618346264ccd/native/process.json",
+    "runs/game-build-4794618346264ccd/native/stderr.txt",
+    "runs/game-build-4794618346264ccd/native/stdout.txt",
+    "runs/game-build-4794618346264ccd/native/tmp/UnityCBMCrashes/.header",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/game-build-4794618346264ccd/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/d1bea54e55fe44188f8e54a2ff284530/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/game-build-4794618346264ccd/native/upm.log",
+    "runs/game-build-4794618346264ccd/native-output.zip",
+    "runs/game-build-4794618346264ccd/state.json"
+  ],
+  "evidence_paths": [
+    "runs/game-check-a135ce2bfc8b4df5/editmode.xml",
+    "runs/game-check-a135ce2bfc8b4df5/playmode.xml",
+    "runs/game-check-a135ce2bfc8b4df5/public-oracles.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

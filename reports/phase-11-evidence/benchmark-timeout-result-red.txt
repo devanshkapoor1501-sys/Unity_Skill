@@ -1,0 +1,28 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+________________ test_adapter_reported_timeout_stays_censored _________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{2ac8890e-5204-4962-98a6-b8a3294006a2}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_adapter_reported_timeout_0')
+
+    def test_adapter_reported_timeout_stays_censored(tmp_path: Path) -> None:
+        from polyforge.benchmark.runner import run_suite
+        from polyforge.benchmark.tasks import load_suite
+    
+        class ReportedTimeout:
+            def run(self, task: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                return Result(status="FAIL", exit_code=int(ErrorKind.PRODUCER_FAILURE),
+                              error_code="PF-ADAPTER-TIMEOUT", data={"timed_out": True})
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["tasks"] = value["tasks"][-1:]
+        path.write_text(json.dumps(value), encoding="utf-8")
+        result = run_suite(load_suite(path), "D", tmp_path / "out", runner=ReportedTimeout())
+        row = result.data["records"][0]
+>       assert row["timed_out"] and row["censored"]
+E       assert (False)
+
+tests\test_phase11_benchmark.py:688: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_adapter_reported_timeout_stays_censored
+1 failed, 78 deselected in 0.98s

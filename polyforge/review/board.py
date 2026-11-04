@@ -194,6 +194,12 @@ def review_candidate(
         from polyforge.review.acceptance import check_acceptance, public_acceptance_spec
 
         try:
+            if task.get("capability_id") == "unity.game.platformer.v1":
+                raise InputError(
+                    "No independent original-brief acceptance specification "
+                    "was supplied for this platformer",
+                    code="PF-ACCEPTANCE-REVIEW",
+                )
             acceptance_spec = public_acceptance_spec(policy)
             if acceptance_spec["original_brief_digest"] != candidate["brief_digest"]:
                 raise InputError(
@@ -213,7 +219,11 @@ def review_candidate(
                 if acceptance["status"] == "REVIEW" and promotion != "REJECTED"
                 else "REJECTED"
             )
-    integrated = task.get("capability_id") in {"unity.game.arena.v1", "sprite.unity.strip.v1"}
+    integrated = task.get("capability_id") in {
+        "unity.game.arena.v1",
+        "unity.game.platformer.v1",
+        "sprite.unity.strip.v1",
+    }
     records = []
     for role in INSPECTORS:
         applies = role in {"brief_compliance_inspector", "release_supervisor"}

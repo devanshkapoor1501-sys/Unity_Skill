@@ -1,0 +1,58 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_ test_profile_rejects_unsupported_runtime_or_illtyped_identity[unity_version-6000.0.1] _
+
+field = 'unity_version', value = '6000.0.1'
+
+    @pytest.mark.parametrize("field,value", [("unity_version", "6000.0.1"),
+                                           ("build_type", "invented"), ("sample_index", False)])
+    def test_profile_rejects_unsupported_runtime_or_illtyped_identity(field, value):
+        samples = group()
+        for item in samples if field != "sample_index" else samples[:1]:
+            item[field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:387: AssertionError
+_ test_profile_rejects_unsupported_runtime_or_illtyped_identity[build_type-invented] _
+
+field = 'build_type', value = 'invented'
+
+    @pytest.mark.parametrize("field,value", [("unity_version", "6000.0.1"),
+                                           ("build_type", "invented"), ("sample_index", False)])
+    def test_profile_rejects_unsupported_runtime_or_illtyped_identity(field, value):
+        samples = group()
+        for item in samples if field != "sample_index" else samples[:1]:
+            item[field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:387: AssertionError
+_ test_profile_rejects_unsupported_runtime_or_illtyped_identity[sample_index-False] _
+
+field = 'sample_index', value = False
+
+    @pytest.mark.parametrize("field,value", [("unity_version", "6000.0.1"),
+                                           ("build_type", "invented"), ("sample_index", False)])
+    def test_profile_rejects_unsupported_runtime_or_illtyped_identity(field, value):
+        samples = group()
+        for item in samples if field != "sample_index" else samples[:1]:
+            item[field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:387: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_profile_rejects_unsupported_runtime_or_illtyped_identity[unity_version-6000.0.1]
+FAILED tests/test_phase11_performance.py::test_profile_rejects_unsupported_runtime_or_illtyped_identity[build_type-invented]
+FAILED tests/test_phase11_performance.py::test_profile_rejects_unsupported_runtime_or_illtyped_identity[sample_index-False]
+3 failed, 63 deselected in 0.64s

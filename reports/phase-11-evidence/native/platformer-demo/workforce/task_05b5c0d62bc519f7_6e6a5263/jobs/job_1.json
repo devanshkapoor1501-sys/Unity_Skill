@@ -1,0 +1,732 @@
+{
+  "state": "COMMITTED",
+  "lease": {
+    "token": [REDACTED],
+    "job_id": "job_1",
+    "task_id": "task_05b5c0d62bc519f7_6e6a5263",
+    "asset_id": "game_project",
+    "pid": 17776,
+    "identity": "134379997354581819",
+    "host": "LAPTOP-P7ISERHS",
+    "until": 1793529898.6808765,
+    "released": false,
+    "path": ".polyforge/leases/fcc89801df7c3530a98fed1bf4c9b6688b8bb3a666b99bb1e288392c05976555.json"
+  },
+  "result": {
+    "result": {
+      "status": "PASS",
+      "exit_code": 0,
+      "error_code": null,
+      "data": {
+        "development_acceptance": "PASS",
+        "oracles": {
+          "status": "PASS",
+          "scenarios": {
+            "player_moves": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "ground_collision": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "grounded_jump": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "airborne_jump": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "checkpoint_respawn": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "hazard_damage": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "health_failure": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "goal_contact": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "restart_resets": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "restart_failure": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "journey": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "keyboard_move": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "keyboard_jump": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "keyboard_restart": {
+              "status": "PASS",
+              "issues": [],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": false,
+              "gate_status": "PASS"
+            },
+            "input_disconnected": {
+              "status": "FAIL",
+              "issues": [
+                "Horizontal input produced no physical movement"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "jump_disabled": {
+              "status": "FAIL",
+              "issues": [
+                "Grounded jump did not physically rise and land"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "platform_disabled": {
+              "status": "FAIL",
+              "issues": [
+                "Falling actor did not land on the declared platform"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "checkpoint_disabled": {
+              "status": "FAIL",
+              "issues": [
+                "Hazard did not cause observed health loss and physical respawn"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "damage_no_health": {
+              "status": "FAIL",
+              "issues": [
+                "Hazard did not cause observed health loss and physical respawn"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "goal_disabled": {
+              "status": "FAIL",
+              "issues": [
+                "Goal victory requires actual spatial contact and a live actor"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "win_premature": {
+              "status": "FAIL",
+              "issues": [
+                "Goal victory requires actual spatial contact and a live actor"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            },
+            "restart_disabled": {
+              "status": "FAIL",
+              "issues": [
+                "Restart did not restore full initial state after a terminal state"
+              ],
+              "oracle_owner": "PUBLIC_DEVELOPMENT",
+              "hidden_evaluation": "NOT_RUN",
+              "mutant": true,
+              "gate_status": "PASS"
+            }
+          },
+          "scope": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN"
+        },
+        "standalone_build": "PASS",
+        "player_smoke": "PASS",
+        "standalone_gameplay": "PASS",
+        "player_path": "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\phase11\\platformer-demo\\runs\\platformer-check-3f859bbd2e5d4edc\\player\\PolyForgePlatformer.exe",
+        "profiling": "NOT_RUN",
+        "manual_review": "REVIEW",
+        "game_status": "PARTIAL",
+        "build_run_id": "platformer-build-b91bd65cc5f34efe",
+        "scene": "UnityProject/Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+      },
+      "diagnostics": [],
+      "operation_id": null,
+      "run_id": "platformer-check-3f859bbd2e5d4edc",
+      "version": "0.0.1",
+      "contract_version": "1.0.0",
+      "input_digest": "c8c1b4c135ac0c5033e0c5fd929313793a56b745aa43e7d42b9d53cceb53a8bf",
+      "artifact_ids": [
+        "runs/platformer-build-b91bd65cc5f34efe/bindings.json",
+        "runs/platformer-build-b91bd65cc5f34efe/game-input.json",
+        "runs/platformer-build-b91bd65cc5f34efe/inputs.json",
+        "runs/platformer-build-b91bd65cc5f34efe/native/process.json",
+        "runs/platformer-build-b91bd65cc5f34efe/native/stderr.txt",
+        "runs/platformer-build-b91bd65cc5f34efe/native/stdout.txt",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+        "runs/platformer-build-b91bd65cc5f34efe/native/upm.log",
+        "runs/platformer-build-b91bd65cc5f34efe/native-output.zip",
+        "runs/platformer-build-b91bd65cc5f34efe/preservation.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/delivery.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/process.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/stderr.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/stdout.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode/upm.log",
+        "runs/platformer-check-3f859bbd2e5d4edc/editmode.xml",
+        "runs/platformer-check-3f859bbd2e5d4edc/game-input.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/process.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/stderr.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/stdout.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-build/upm.log",
+        "runs/platformer-check-3f859bbd2e5d4edc/player-input.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/process.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/stderr.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/stdout.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode/upm.log",
+        "runs/platformer-check-3f859bbd2e5d4edc/playmode.xml",
+        "runs/platformer-check-3f859bbd2e5d4edc/public-oracles.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/scenarios.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/process.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/stderr.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/stdout.txt",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/public-oracles.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/smoke.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/airborne_jump.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/checkpoint_respawn.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/goal_contact.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/ground_collision.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/grounded_jump.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/hazard_damage.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/health_failure.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/journey.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/player_moves.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/restart_failure.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/restart_resets.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/airborne_jump.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/checkpoint_disabled.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/checkpoint_respawn.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/damage_no_health.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/goal_contact.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/goal_disabled.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/ground_collision.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/grounded_jump.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/hazard_damage.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/health_failure.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/input_disconnected.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/journey.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/jump_disabled.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_jump.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_move.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_restart.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/platform_disabled.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/player_moves.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_disabled.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_failure.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_resets.json",
+        "runs/platformer-check-3f859bbd2e5d4edc/telemetry/win_premature.json"
+      ],
+      "evidence_paths": [
+        "runs/platformer-check-3f859bbd2e5d4edc/public-oracles.json"
+      ],
+      "metrics": {},
+      "duration_ms": 0,
+      "rollback_id": null,
+      "evaluated_test_status": "PASS",
+      "game_status": "PARTIAL",
+      "operation_status": "PASS"
+    },
+    "candidate": {
+      "schema_version": "1.0.0",
+      "artifact_id": "platformer_check_3f859bbd2e5d4edc",
+      "production_run_id": "platformer-check-3f859bbd2e5d4edc",
+      "producer_id": "producer",
+      "brief_digest": "7ae43ba57bfb5aed110772ceff1e1794a0f254048f425b60b17a080f5a5f8587",
+      "revision": 1,
+      "files": [
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/bindings.json",
+          "sha256": "08af309b30cf7974e4077311e4c38b413983229e96e157ee26553cb7503059c9"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/game-input.json",
+          "sha256": "7db3eb2b97984ee580759d7e7276bd698e13509eb2ae8f05e591848289840536"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/inputs.json",
+          "sha256": "18c6e6126b2a25f850c0c73bacb6501e3741036e898d72a0eefd55e18710fa8f"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native-output.zip",
+          "sha256": "7d253051971eb91e395f4f2266b4f696ac55b4e8889b57ab649f712e385d0370"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/process.json",
+          "sha256": "cb8cc2aaf0c30b472873725980a426e4087c1fd6fc00e4a37f7753e0a60652e3"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/stderr.txt",
+          "sha256": "0ec47653c4f552710cd30c1f6f8ec7c4a29a85a67c58e7386f5b4b7c7bfe8617"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/stdout.txt",
+          "sha256": "6d87e944b6150959611b731d24b9c7e97a50ce9742549ca536716035cd29b24a"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+          "sha256": "224e70f6548b3a5a9d9b2da66a566683c9fd4a79136a92d38467dbdd6100da69"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+          "sha256": "515ac3dd9618bc24a7b885a483bbc1f6a550d6d081851e59ec1890466aefc66f"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+          "sha256": "5fd34a2e33197b9e1ddf6807b370f3d573e2aeff0b4d92e3644394f66c5cfeea"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+          "sha256": "b04a32880fc2e360d96be480a336ce9aeee1fc23a4731392016fe8cb92cea898"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+          "sha256": "ac4680341915fcdbc1ab47a40cde367e72328849587939a0999a228225153010"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+          "sha256": "0c783bee17fb9abfd071a78fe36d51bc2ab75054c168bca78f3c909694020e12"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/tmp/VBCSCompiler/AnalyzerAssemblyLoader/0ec7a6032593476ba25af6969d214834/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+          "sha256": "89423fd31e045aa20834b620a19972d464d651cd2c9bc6f32b5033d8ab60f32c"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/native/upm.log",
+          "sha256": "48cc3876e3c873814e5e9fbd1326e688a1b08c20d79fcf98b4b23e29e87a8554"
+        },
+        {
+          "path": "runs/platformer-build-b91bd65cc5f34efe/preservation.json",
+          "sha256": "1f5331072b5e7616cfcf782b12592c680e758da08487d32a6ebc119187714356"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/delivery.json",
+          "sha256": "b6728b2015dd5e20862b5084d1de02123ccee8dd13051d4755efcfbf18013b43"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode.xml",
+          "sha256": "ea08df9869315d76f540ba91920ed2d58ef7a182e3a0f7120eb3597471b0a4ce"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/process.json",
+          "sha256": "9a56845477ab5a0fd83ca8ff25a84cc33f1b9331d3acf9b254c9bc8af80c0c32"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/stderr.txt",
+          "sha256": "d417e73954620d584962edc63de20f9638ef28369f7b06613c7fd929028b2ad2"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/stdout.txt",
+          "sha256": "0290e96e79083fe374f6ec12561edf46bd627a12a923f53d9ef3e705017f3af9"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+          "sha256": "224e70f6548b3a5a9d9b2da66a566683c9fd4a79136a92d38467dbdd6100da69"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+          "sha256": "515ac3dd9618bc24a7b885a483bbc1f6a550d6d081851e59ec1890466aefc66f"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+          "sha256": "5fd34a2e33197b9e1ddf6807b370f3d573e2aeff0b4d92e3644394f66c5cfeea"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+          "sha256": "b04a32880fc2e360d96be480a336ce9aeee1fc23a4731392016fe8cb92cea898"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+          "sha256": "ac4680341915fcdbc1ab47a40cde367e72328849587939a0999a228225153010"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+          "sha256": "0c783bee17fb9abfd071a78fe36d51bc2ab75054c168bca78f3c909694020e12"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/2266548b150540a4a7f14bb78ba20be0/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+          "sha256": "89423fd31e045aa20834b620a19972d464d651cd2c9bc6f32b5033d8ab60f32c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/editmode/upm.log",
+          "sha256": "3b1dd9e1f72c1a91fdeac87480130f9ca0ee2747fcaddf939ef7241dcb733535"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/game-input.json",
+          "sha256": "7db3eb2b97984ee580759d7e7276bd698e13509eb2ae8f05e591848289840536"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/process.json",
+          "sha256": "b86cb64589218919cf9c1c10e58aca1a806b9db861a811384711fabf55706e4d"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/stderr.txt",
+          "sha256": "7b107ee20a9ce8c4288ee4a03db92f1fea5c2a11dad407eeb8f8b806a48e494d"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/stdout.txt",
+          "sha256": "df2c62bf2b6271cf98dc1aa853d38640720c6b23c104b16d9b5aa609863abc6e"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+          "sha256": "224e70f6548b3a5a9d9b2da66a566683c9fd4a79136a92d38467dbdd6100da69"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+          "sha256": "515ac3dd9618bc24a7b885a483bbc1f6a550d6d081851e59ec1890466aefc66f"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+          "sha256": "5fd34a2e33197b9e1ddf6807b370f3d573e2aeff0b4d92e3644394f66c5cfeea"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+          "sha256": "b04a32880fc2e360d96be480a336ce9aeee1fc23a4731392016fe8cb92cea898"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+          "sha256": "ac4680341915fcdbc1ab47a40cde367e72328849587939a0999a228225153010"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+          "sha256": "0c783bee17fb9abfd071a78fe36d51bc2ab75054c168bca78f3c909694020e12"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/tmp/VBCSCompiler/AnalyzerAssemblyLoader/56266b5d1d784bd09a51feb05f567ae6/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+          "sha256": "89423fd31e045aa20834b620a19972d464d651cd2c9bc6f32b5033d8ab60f32c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-build/upm.log",
+          "sha256": "fdd9a901bf0990be26da92720af72d25b78d3e83ab733533b4c585cbe9da374c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/player-input.json",
+          "sha256": "e2c1bcfb998ae253d94a089ff52355c7440e3ceb370851dd06863db305a69e9e"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode.xml",
+          "sha256": "057df21eba5a44910590f945196ac1a14932501c73fcf73c3b6fb3eb43e80891"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/process.json",
+          "sha256": "5199a803cd44db031fec71c5e73ec6f284679305addabdb29c07638980736cff"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/stderr.txt",
+          "sha256": "d417e73954620d584962edc63de20f9638ef28369f7b06613c7fd929028b2ad2"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/stdout.txt",
+          "sha256": "ac40ddbad1b980805b7c6e7675aa0e065efd92bc2a0427b56b79509390c89610"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+          "sha256": "224e70f6548b3a5a9d9b2da66a566683c9fd4a79136a92d38467dbdd6100da69"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+          "sha256": "515ac3dd9618bc24a7b885a483bbc1f6a550d6d081851e59ec1890466aefc66f"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+          "sha256": "5fd34a2e33197b9e1ddf6807b370f3d573e2aeff0b4d92e3644394f66c5cfeea"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+          "sha256": "b04a32880fc2e360d96be480a336ce9aeee1fc23a4731392016fe8cb92cea898"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+          "sha256": "ac4680341915fcdbc1ab47a40cde367e72328849587939a0999a228225153010"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+          "sha256": "0c783bee17fb9abfd071a78fe36d51bc2ab75054c168bca78f3c909694020e12"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/c929080316494394be2fa0b40792511f/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+          "sha256": "89423fd31e045aa20834b620a19972d464d651cd2c9bc6f32b5033d8ab60f32c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/playmode/upm.log",
+          "sha256": "71fd2a8f9c68131cabc5177451c5361650a54e5f7f18b09dcedadc6a01f57678"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/public-oracles.json",
+          "sha256": "2cf83428da78844583c430cd7e3efdbc17423282f3f0ed06c7ee82ae3eadf46a"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/scenarios.json",
+          "sha256": "cc8741900ad7f29b1293fd2aa910e7fdaee102c4b37e2f56a54d4294b9249aed"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/process.json",
+          "sha256": "21405b2182e6bc953d7633d08153202774c33f5faa7493313b3b0baa3e5619bc"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/process/stdout.txt",
+          "sha256": "54e45aa6756396905885d9665762ca39749305db6683d1d940c2ff06fcb8b5d2"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/public-oracles.json",
+          "sha256": "978612f53adea53449f88508df1cc4b0e2017bbb356c9d028344cb70a1948c3b"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/smoke.json",
+          "sha256": "e4fed7373cb170bbea627c285412581ab7853bb348be19852f055ae6ed754f4f"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/airborne_jump.json",
+          "sha256": "d2319f0d246bdfc2e4c9572438ff59fc787a19bd9ab41aea8440fd9dcd86fa1c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/checkpoint_respawn.json",
+          "sha256": "ecefa2374603fc0aaa49e4b2ae75484e214df315801692a37e85518c9a344e95"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/goal_contact.json",
+          "sha256": "bdb80da74b727567bb813ca688fb8f90dd658a7283cd5c3b8b012dcfc36d97e8"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/ground_collision.json",
+          "sha256": "ebb37aeb2598942c7437c4089b653a999e85867579594e6b7b2de38c939da88d"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/grounded_jump.json",
+          "sha256": "171243c77c6b24d2ed547c269739954f55ca5a871043f375e4d0ce80567121bf"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/hazard_damage.json",
+          "sha256": "4551eec1499e2cb5b1118ff858f9b60dca84333b4318fad5393cc9021bc5deaf"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/health_failure.json",
+          "sha256": "9513a4512efbf7a33277139b9d74e75ec585b19b02de18f6f7de9daa99596ddc"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/journey.json",
+          "sha256": "713e4024b8eebdd7c875694f6928c743d5703f4dde8a7973b24f0f1ad95674e9"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/player_moves.json",
+          "sha256": "ad02af8a18e9eb39676402433257827ce894806b24b413d46c8a7b02ba7aab52"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/restart_failure.json",
+          "sha256": "b233e1ffd3c88f1ce5aeab820456755d941843b417a52f2b0a5d9613a44a7594"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/standalone/telemetry/restart_resets.json",
+          "sha256": "18dc2755354ff3a4ebd347d3c96570f7c67bdfcc746bf626306f5669e80113a1"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/airborne_jump.json",
+          "sha256": "d2319f0d246bdfc2e4c9572438ff59fc787a19bd9ab41aea8440fd9dcd86fa1c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/checkpoint_disabled.json",
+          "sha256": "bb95eea451f9ab05739d9d8cafed48dc71801691a74de421a1fcd18f7bf26bee"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/checkpoint_respawn.json",
+          "sha256": "ecefa2374603fc0aaa49e4b2ae75484e214df315801692a37e85518c9a344e95"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/damage_no_health.json",
+          "sha256": "7c4e0a7c7ccdd7128ae99b6ca64db93ba0b8f563f252920a19f45bbd4afb144f"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/goal_contact.json",
+          "sha256": "bdb80da74b727567bb813ca688fb8f90dd658a7283cd5c3b8b012dcfc36d97e8"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/goal_disabled.json",
+          "sha256": "9b3e40b3f856d7f91e968631cb8cdab9eb8b26a8fd122defb3e824f75a64e80a"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/ground_collision.json",
+          "sha256": "ebb37aeb2598942c7437c4089b653a999e85867579594e6b7b2de38c939da88d"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/grounded_jump.json",
+          "sha256": "171243c77c6b24d2ed547c269739954f55ca5a871043f375e4d0ce80567121bf"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/hazard_damage.json",
+          "sha256": "4551eec1499e2cb5b1118ff858f9b60dca84333b4318fad5393cc9021bc5deaf"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/health_failure.json",
+          "sha256": "9513a4512efbf7a33277139b9d74e75ec585b19b02de18f6f7de9daa99596ddc"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/input_disconnected.json",
+          "sha256": "87e1b15e1b08b36e6e443b9515eec4f76f81a6a0a6548dcb985243d74a2617a5"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/journey.json",
+          "sha256": "713e4024b8eebdd7c875694f6928c743d5703f4dde8a7973b24f0f1ad95674e9"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/jump_disabled.json",
+          "sha256": "892019dc980e400d5902d31755c73325549faded34528b5ca0b36a4a1a4c33ff"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_jump.json",
+          "sha256": "158d54ad126fbec95904c27e0700367051fe90090e768892e877f9939702acde"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_move.json",
+          "sha256": "1ab077fa3fecf8d35ce635fbb213a5c0c1de6460d437ef354cfb897c8685faf6"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/keyboard_restart.json",
+          "sha256": "15d61405891099bd240ed5c165ee2d8b2dd7611c43af295a6381fe432fefc27c"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/platform_disabled.json",
+          "sha256": "c44ffb6b6ee896f05d3f9e9556a4716f1adb4d1361a2a1fc0b369267fd759972"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/player_moves.json",
+          "sha256": "ad02af8a18e9eb39676402433257827ce894806b24b413d46c8a7b02ba7aab52"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_disabled.json",
+          "sha256": "1570d3d151c7aa8017f2eab391294b752327ebfcd07d69e5e36bfaf92bc991e9"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_failure.json",
+          "sha256": "b233e1ffd3c88f1ce5aeab820456755d941843b417a52f2b0a5d9613a44a7594"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/restart_resets.json",
+          "sha256": "18dc2755354ff3a4ebd347d3c96570f7c67bdfcc746bf626306f5669e80113a1"
+        },
+        {
+          "path": "runs/platformer-check-3f859bbd2e5d4edc/telemetry/win_premature.json",
+          "sha256": "919f2b028907d899b6f654dec08be8ad65fc3dd176ad2f3db1c6f76435d08d1d"
+        }
+      ],
+      "candidate_digest": "35828728b9841ca8657416c9dbd2ce46ee3113fd85e4399e3b8b12f509c5bac7"
+    }
+  },
+  "result_digest": "b2edea3885b4987e40fa96ffde2f390ede1fd4afb080deec6708369f7a60988f"
+}

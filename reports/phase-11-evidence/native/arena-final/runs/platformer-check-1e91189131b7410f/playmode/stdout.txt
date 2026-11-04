@@ -1,0 +1,748 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 2468)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 30464)
+VBCSCompiler prewarm took 23.85 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 2468)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 30464)
+VBCSCompiler prewarm took 23.85 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-01T10:03:33Z
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-11-01T10:03:33.0626705Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 3464, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              4feb43f14d9e492e92c129673685f2e4
+  Correlation Id:          b6228fe23682b58c1a212a32d4665e25
+  External correlation Id: 1553134131891576586
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.00s, validation: 0.00s, handshake: 0.06s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-11-01T10:03:33.1293311Z"
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.00
+[Licensing::Module] Licensing Background thread has ended after 0.07s
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject
+-logFile
+-
+-upmLogFile
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\playmode\upm.log
+-polyforgeGameInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\game-input.json
+-polyforgeScenarioInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\scenarios.json
+-polyforgeTelemetry
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\telemetry
+-runTests
+-testPlatform
+PlayMode
+-testFilter
+PolyForge.Platformer.Tests
+-testResults
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\playmode.xml
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [432]  Target information:
+
+Player connection [432]  * "[IP] 192.168.1.12 [Port] 55504 [Flags] 2 [Guid] 2976458144 [EditorId] 2976458144 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [432] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [432] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-32416" after 0.3 seconds.
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: 6e258e68d09cdbf5bb83b931693b9c1a
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56416
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003859 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.949 seconds
+Domain Reload Profiling: 1667ms
+	BeginReloadAssembly (180ms)
+		CreateAndSetChildDomain (8ms)
+	RebuildCommonClasses (7ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (91ms)
+	LoadAllAssembliesAndSetupDomain (415ms)
+		LoadAssemblies (168ms)
+		TypeCache.Refresh (269ms)
+			TypeCache.ScanAssembly (248ms)
+		AnalyzeDomain (1ms)
+	FinalizeReload (951ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (144ms)
+			ProcessInitializeOnLoadAttributes (168ms)
+			ProcessInitializeOnLoadMethodAttributes (321ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s700ms
+[ 494/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.65 seconds), 1 items updated, 1078 evaluated
+AssetDatabase: script compilation time: 1.371899s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 2.95 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.334 seconds
+Domain Reload Profiling: 2877ms
+	BeginReloadAssembly (451ms)
+		DisableScriptedObjects (39ms)
+		CreateAndSetChildDomain (170ms)
+	RebuildCommonClasses (16ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (99ms)
+	LoadAllAssembliesAndSetupDomain (949ms)
+		LoadAssemblies (540ms)
+		TypeCache.Refresh (209ms)
+			TypeCache.ScanAssembly (196ms)
+		AnalyzeDomain (103ms)
+			BuildScriptInfoCaches (90ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (1336ms)
+		SetupLoadedEditorAssemblies (0ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (421ms)
+			ProcessInitializeOnLoadMethodAttributes (145ms)
+			AfterProcessingInitializeOnLoad (13ms)
+		AwakeInstancesAfterBackupRestoration (48ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase11/arena-final/UnityProject/Logs/AssetImportWorkerHW0.log
+
+Asset Pipeline Refresh (id=eef5c5d039eaf1d48a1f1085767c8988): Total: 5.305 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=2050 ms
+		Asset DB Callback time: managed=72 ms, native=22 ms
+		Scripting: domain reloads=1, domain reload time=1661 ms, compile time=1376 ms, other=121 ms
+		Project Asset Count: scripts=1330, non-scripts=2311
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 27.782ms
+	ApplyChangesToAssetFolders: 0.991ms
+	Scan: 138.090ms
+	Collect global state as custom dependencies: 36.099ms
+	CategorizeScriptCompilationAssets: 66.878ms
+	ProcessAssetsWithTransientArtifactChanges: 107.052ms
+	CategorizeAssets: 73.586ms
+	CompileScripts: 1376.268ms
+	ImportOutOfDateAssets: 1374.465ms (1351.707ms without children)
+		ReloadNativeAssets: 0.066ms
+		UnloadImportedAssets: 1.388ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.015ms
+		ImportSchedulerStart: 20.284ms
+	PostProcessAllAssets: 72.595ms
+		MonoPostProcessAllAssets: 72.480ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 23.939ms
+			SyncVS.PostprocessSyncProject 18.913ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 3.717ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.949ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.566ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 1.445ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.928ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.659ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.438ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.422ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.360ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.291ms
+	UnloadStreamsBegin: 1.587ms
+	PersistCurrentRevisions: 0.119ms
+	GenerateScriptTypeHashes: 2.059ms
+	GenerateScriptTypeSerializationHashes: 3.675ms
+	Untracked: 1982.152ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 1.144ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Isometric Robot Arena
+Unloading 66 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6524 unused Assets / (7.0 MB). Loaded Objects now: 7440.
+Memory consumption went from 382.8 MB to 375.8 MB.
+Total: 13.377100 ms (FindLiveObjects: 1.168900 ms CreateObjectMapping: 0.295300 ms MarkObjects: 8.153700 ms  DeleteObjects: 3.512900 ms)
+
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Project] Loading completed in 10.273 seconds
+	Project init time: 				9.736 seconds
+		Template init time: 		0.000 seconds
+		Package Manager init time: 		0.303 seconds
+		Asset Database init time: 		1.425 seconds
+		Global illumination init time: 	0.003 seconds
+		Assemblies load time: 			1.748 seconds
+		Unity extensions init time: 	0.052 seconds
+		Asset Database refresh time: 	5.305 seconds
+	Scene opening time: 			0.249 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1793527423299,"processId":32416,"projectLoad":10.273390699999998,"projectInit":9.735778,"templateInit":0.0,"packageManagerInit":0.30279,"assetDatabaseInit":1.4247883,"globalIlluminationInit":0.0031532,"assembliesLoad":1.7476962,"unityExtensionsInit":0.0515988,"assetDatabaseRefresh":5.3050862,"sceneOpening":0.2489643}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1793527423299,"processId":32416,"editorVersion":"6000.6.3f1 (45d8eee7de74)","branch":"6000.6/staging","buildType":"Release","platform":"Windows"}
+[Licensing::Client] Successfully resolved entitlement details
+Running tests for ExecutionSettings with details:
+targetPlatform = 
+playerHeartbeatTimeout = 600
+filters[0] = 
+   Filter with settings:
+   testMode = PlayMode
+   targetPlatform = 
+   testNames = null
+   groupNames = PolyForge.Platformer.Tests
+   categoryNames = null
+   assemblyNames = null
+ignoreTests = {}
+featureFlags = null
+
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:InitializeAndExecuteRun (string[]) (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:53)
+UnityEditor.TestTools.TestRunner.CommandLineTest.TestStarter:InitializeAndExecuteRun () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/TestStarter.cs:64)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
+
+[UnityConnectServicesConfig] config is NOT valid, switching to default
+Created GICache directory at C:/Users/Divansh Kapoor/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.018s, timestamps: [10.277 - 10.295]
+[Licensing::Client] Successfully resolved entitlement details
+Unloading 9 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7 unused Assets / (22.3 KB). Loaded Objects now: 7594.
+Memory consumption went from 387.5 MB to 387.5 MB.
+Total: 13.703900 ms (FindLiveObjects: 0.413500 ms CreateObjectMapping: 0.111500 ms MarkObjects: 12.747600 ms  DeleteObjects: 0.216700 ms)
+
+Importing 'GUID: 5df82d088ccfe6740bbf1cd576f4590d - Path: Assets/InitTestScene28d39bdc-cf73-4494-8f8f-5f0a85346f11.unity' with importer (DefaultImporter)
+Imported 'GUID: 5df82d088ccfe6740bbf1cd576f4590d' -> (Import Result ID: '6a89841d3367ed7dd7ab26f01c4c9d3a') in 0.005 seconds [static dependencies only]. Details - ImportResultOutputID=fa9b37d3df0c10b48a64a29ccbd9a0ed DependenciesID=18268d96d1ffb3019eca237defb61d3e StaticDependenciesID=b26cac45dd8bc1619503dc91cca00045 
+Refreshing native plugins compatible for Editor in 3.29 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8c1022f76e0a1c343bc6159c67753d05): Total: 0.255 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPrebuildSetup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Entering Playmode with Reload Domain disabled.
+If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+Entering Playmode with Reload Scene disabled. If you experience any issues, please disable "Enter Play Mode Options" in Editor Settings
+Unloading 32 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.780000 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            8.600 ms
+	Integration:            24.465 ms
+	Integration of assets:  7.270 ms
+	Thread Wait Time:       1.628 ms
+	Total Operation Time:   41.963 ms
+Unloading 180 unused Assets / (237.6 KB). Loaded Objects now: 7670.
+Memory consumption went from 402.1 MB to 401.8 MB.
+Total: 15.984400 ms (FindLiveObjects: 0.580400 ms CreateObjectMapping: 0.146500 ms MarkObjects: 13.653600 ms  DeleteObjects: 1.306000 ms)
+
+Worker ready: AssetImportWorkerHW0 0
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.759500 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.807 ms
+	Integration:            21.528 ms
+	Integration of assets:  0.078 ms
+	Thread Wait Time:       0.728 ms
+	Total Operation Time:   24.141 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 15.113200 ms (FindLiveObjects: 0.461900 ms CreateObjectMapping: 0.128700 ms MarkObjects: 14.206600 ms  DeleteObjects: 0.084100 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.277200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.204 ms
+	Integration:            13.483 ms
+	Integration of assets:  0.071 ms
+	Thread Wait Time:       0.723 ms
+	Total Operation Time:   16.481 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.740900 ms (FindLiveObjects: 0.427300 ms CreateObjectMapping: 0.156700 ms MarkObjects: 11.854400 ms  DeleteObjects: 0.065700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.424200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.909 ms
+	Integration:            13.266 ms
+	Integration of assets:  0.069 ms
+	Thread Wait Time:       0.838 ms
+	Total Operation Time:   16.083 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.734200 ms (FindLiveObjects: 0.400200 ms CreateObjectMapping: 0.105900 ms MarkObjects: 11.942100 ms  DeleteObjects: 0.067700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.307800 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.940 ms
+	Integration:            12.503 ms
+	Integration of assets:  0.074 ms
+	Thread Wait Time:       0.854 ms
+	Total Operation Time:   15.370 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 13.433500 ms (FindLiveObjects: 0.414000 ms CreateObjectMapping: 0.132500 ms MarkObjects: 12.346200 ms  DeleteObjects: 0.085500 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.266300 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.154 ms
+	Integration:            12.017 ms
+	Integration of assets:  0.080 ms
+	Thread Wait Time:       0.685 ms
+	Total Operation Time:   14.935 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.987500 ms (FindLiveObjects: 0.439100 ms CreateObjectMapping: 0.227300 ms MarkObjects: 11.856900 ms  DeleteObjects: 0.074100 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.321200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.656 ms
+	Integration:            17.887 ms
+	Integration of assets:  0.078 ms
+	Thread Wait Time:       0.652 ms
+	Total Operation Time:   20.273 ms
+Unloading 10 unused Assets / (15.6 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 15.120900 ms (FindLiveObjects: 0.409000 ms CreateObjectMapping: 0.123400 ms MarkObjects: 14.300100 ms  DeleteObjects: 0.065700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.278200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.963 ms
+	Integration:            11.636 ms
+	Integration of assets:  0.168 ms
+	Thread Wait Time:       0.637 ms
+	Total Operation Time:   14.404 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.005600 ms (FindLiveObjects: 0.402000 ms CreateObjectMapping: 0.151100 ms MarkObjects: 11.162200 ms  DeleteObjects: 0.072700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.432800 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.635 ms
+	Integration:            15.455 ms
+	Integration of assets:  0.107 ms
+	Thread Wait Time:       0.886 ms
+	Total Operation Time:   18.082 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 16.261300 ms (FindLiveObjects: 0.424200 ms CreateObjectMapping: 0.119900 ms MarkObjects: 15.403800 ms  DeleteObjects: 0.068800 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.349800 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.658 ms
+	Integration:            13.656 ms
+	Integration of assets:  0.075 ms
+	Thread Wait Time:       0.821 ms
+	Total Operation Time:   17.210 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 13.323600 ms (FindLiveObjects: 0.430200 ms CreateObjectMapping: 0.131300 ms MarkObjects: 12.470100 ms  DeleteObjects: 0.076100 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.470300 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.171 ms
+	Integration:            15.175 ms
+	Integration of assets:  0.117 ms
+	Thread Wait Time:       1.428 ms
+	Total Operation Time:   18.891 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.776700 ms (FindLiveObjects: 0.432100 ms CreateObjectMapping: 0.134800 ms MarkObjects: 11.906300 ms  DeleteObjects: 0.068700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.321900 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.491 ms
+	Integration:            16.686 ms
+	Integration of assets:  0.083 ms
+	Thread Wait Time:       0.696 ms
+	Total Operation Time:   18.956 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.3 MB to 397.3 MB.
+Total: 12.452600 ms (FindLiveObjects: 0.408600 ms CreateObjectMapping: 0.128400 ms MarkObjects: 11.634600 ms  DeleteObjects: 0.064500 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.306200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.878 ms
+	Integration:            12.233 ms
+	Integration of assets:  0.083 ms
+	Thread Wait Time:       0.824 ms
+	Total Operation Time:   15.018 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.8 MB to 397.8 MB.
+Total: 11.701200 ms (FindLiveObjects: 0.425000 ms CreateObjectMapping: 0.127200 ms MarkObjects: 10.869600 ms  DeleteObjects: 0.061300 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.322900 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.400 ms
+	Integration:            16.581 ms
+	Integration of assets:  0.081 ms
+	Thread Wait Time:       0.754 ms
+	Total Operation Time:   19.816 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 397.8 MB to 397.8 MB.
+Total: 13.217800 ms (FindLiveObjects: 0.438600 ms CreateObjectMapping: 0.178400 ms MarkObjects: 12.258400 ms  DeleteObjects: 0.072400 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.426800 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.162 ms
+	Integration:            15.422 ms
+	Integration of assets:  0.110 ms
+	Thread Wait Time:       0.972 ms
+	Total Operation Time:   18.667 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 11.312600 ms (FindLiveObjects: 0.493400 ms CreateObjectMapping: 0.126800 ms MarkObjects: 10.408400 ms  DeleteObjects: 0.066600 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.307500 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.533 ms
+	Integration:            15.650 ms
+	Integration of assets:  0.080 ms
+	Thread Wait Time:       0.611 ms
+	Total Operation Time:   17.874 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 12.218100 ms (FindLiveObjects: 0.448400 ms CreateObjectMapping: 0.147900 ms MarkObjects: 11.337800 ms  DeleteObjects: 0.066400 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.300300 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.620 ms
+	Integration:            14.138 ms
+	Integration of assets:  0.084 ms
+	Thread Wait Time:       0.862 ms
+	Total Operation Time:   16.704 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 14.194900 ms (FindLiveObjects: 0.409900 ms CreateObjectMapping: 0.153200 ms MarkObjects: 13.345000 ms  DeleteObjects: 0.067100 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.364400 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.522 ms
+	Integration:            13.811 ms
+	Integration of assets:  0.067 ms
+	Thread Wait Time:       0.628 ms
+	Total Operation Time:   16.028 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 12.829300 ms (FindLiveObjects: 0.400600 ms CreateObjectMapping: 0.113900 ms MarkObjects: 11.694300 ms  DeleteObjects: 0.146700 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.306200 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            2.040 ms
+	Integration:            13.897 ms
+	Integration of assets:  0.103 ms
+	Thread Wait Time:       0.662 ms
+	Total Operation Time:   16.702 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 12.515800 ms (FindLiveObjects: 0.553200 ms CreateObjectMapping: 0.132400 ms MarkObjects: 11.398300 ms  DeleteObjects: 0.068900 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.257700 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.499 ms
+	Integration:            12.130 ms
+	Integration of assets:  0.067 ms
+	Thread Wait Time:       0.540 ms
+	Total Operation Time:   14.237 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 11.392600 ms (FindLiveObjects: 0.413800 ms CreateObjectMapping: 0.122000 ms MarkObjects: 10.575600 ms  DeleteObjects: 0.064200 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.384100 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.874 ms
+	Integration:            12.710 ms
+	Integration of assets:  0.095 ms
+	Thread Wait Time:       0.891 ms
+	Total Operation Time:   15.571 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 12.637600 ms (FindLiveObjects: 0.407300 ms CreateObjectMapping: 0.147900 ms MarkObjects: 11.793500 ms  DeleteObjects: 0.064300 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.379500 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.659 ms
+	Integration:            13.125 ms
+	Integration of assets:  0.078 ms
+	Thread Wait Time:       0.733 ms
+	Total Operation Time:   15.594 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 11.184800 ms (FindLiveObjects: 0.414600 ms CreateObjectMapping: 0.124400 ms MarkObjects: 10.364500 ms  DeleteObjects: 0.064600 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.289700 ms
+Loaded scene 'Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity'
+	Deserialize:            1.506 ms
+	Integration:            13.465 ms
+	Integration of assets:  0.081 ms
+	Thread Wait Time:       0.689 ms
+	Total Operation Time:   15.741 ms
+Unloading 10 unused Assets / (14.0 KB). Loaded Objects now: 7670.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 11.926000 ms (FindLiveObjects: 0.416700 ms CreateObjectMapping: 0.144000 ms MarkObjects: 11.062900 ms  DeleteObjects: 0.081800 ms)
+
+TrimDiskCacheJob: Current cache size 0mb
+Saving results to: C:/Users/Divansh Kapoor/AppData/LocalLow/PolyForge/Isometric Robot Arena\TestResults.xml
+Saving results to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\arena-final\runs\platformer-check-1e91189131b7410f\playmode.xml
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            1.427 ms
+	Integration:            10.295 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.016 ms
+	Total Operation Time:   11.739 ms
+Unloading 13 unused Assets / (418.9 KB). Loaded Objects now: 7599.
+Memory consumption went from 399.1 MB to 398.7 MB.
+Total: 13.507100 ms (FindLiveObjects: 0.452600 ms CreateObjectMapping: 0.157000 ms MarkObjects: 12.533000 ms  DeleteObjects: 0.144300 ms)
+
+Executing IPostBuildCleanup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<ExecuteMethods>d__8<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.BuildActionTaskBase`1/<Execute>d__7<UnityEngine.TestTools.IPostBuildCleanup>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs:34)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:194)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:129)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 7601.
+Memory consumption went from 398.8 MB to 398.8 MB.
+Total: 12.960900 ms (FindLiveObjects: 0.365700 ms CreateObjectMapping: 0.102000 ms MarkObjects: 12.261200 ms  DeleteObjects: 0.016600 ms)
+
+Refreshing native plugins compatible for Editor in 2.32 ms, found 4 plugins.
+Asset Pipeline Refresh (id=fe1c5edd13686aa44adabd159800d167): Total: 0.090 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+DisplayProgressbar: Undo
+Test run completed. Exiting with code 0 (Ok). Run completed.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitApplication (UnityEditor.TestTools.TestRunner.CommandLineTest.Executer/ReturnCodes,string) (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:81)
+UnityEditor.TestTools.TestRunner.CommandLineTest.Executer:ExitIfRunIsCompleted () (at ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs:74)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@80f691d4262b/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 81)
+
+MonoPathRemapper: Attempts to remap: 14409; Successful remaps: 1610
+Serialized file version minimum: 22, current 23
+Importing 'GUID: 00000000000000004000000000000000 - Path: ProjectSettings/ProjectSettings.asset' with importer (LibraryAssetImporter)
+Imported 'GUID: 00000000000000004000000000000000' -> (Import Result ID: '9878915b988ece9572b1a2458fc13992') in 0.002 seconds [static dependencies only]. Details - ImportResultOutputID=054c890a8f4b6dddbea933bc5e4b7df4 DependenciesID=04d1a67dbb2a8ab135fc1984185cd812 StaticDependenciesID=8fed71944c122c53b203acf2bd46b82d 
+Refreshing native plugins compatible for Editor in 2.18 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f0f3ab1f4509e5549850269a3eaa4a86): Total: 0.024 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 00000000000066DC, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000766C, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 00000000000066DC, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 000000000000766C, mono_thread_manage will ignore it
+
+VBCSCompilerPreWarmer: requested VBCSCompiler shutdown
+Checking for leaked weakptr:
+  Found no leaked weakptrs.
+[Package Manager] Server process was shutdown
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1793527457156,"processId":32416,"allocatedMemory":14658916,"memoryLabels":[{"Default":178922},{"Permanent":15516},{"NewDelete":70687},{"Thread":4197944},{"Manager":33981},{"VertexData":8},{"Geometry":816},{"Texture":24},{"Shader":842082},{"Material":68},{"GfxDevice":55968},{"Animation":6656},{"Audio":984},{"FreeType":8},{"FontEngine":736},{"Physics":1970},{"Physics2D":16},{"Serialization":16768},{"Input":42840},{"JobScheduler":256},{"TextLib":336},{"Mono":48},{"MonoCode":64},{"ScriptingNativeRuntime":1259880},{"BaseObject":49008},{"Resource":1252},{"Renderer":2376},{"Transform":4685},{"File":16300},{"WebCam":616},{"Culling":32},{"Terrain":11442},{"Wind":24},{"STL":40},{"String":15831},{"StaticString":3808},{"Utility":2674806},{"Curl":2559},{"PoolAlloc":2264},{"AI":80},{"TypeTree":14869},{"ScriptManager":12656},{"CodeReload":448},{"RuntimeInitializeOnLoadManager":64},{"Sprites":102},{"SpriteAtlas":120},{"GI":7816},{"Director":2592},{"CloudService":288},{"WebRequest":552},{"VR":49650},{"SceneManager":608},{"Video":64},{"LazyScriptCache":32},{"Camera":729},{"Secure":2377},{"SerializationCache":9256},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":464},{"Hierarchy":1188},{"UIElements":40},{"CoreStats":14456},{"Identifiers":7152},{"Gui":128},{"EditorUtility":119113},{"VersionControl":8},{"Undo":931},{"AssetDatabase":4484988},{"AssetImporter":40},{"EditorGi":328},{"UnityConnect":40465},{"Upm":1912},{"UpmDiagnostics":8},{"AssetCompliance":96},{"DrivenProperties":72},{"LocalIPC":278},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3406},{"Windowing":456},{"Licensing":12581},{"AssetReference":32},{"IPCStream":32}]}

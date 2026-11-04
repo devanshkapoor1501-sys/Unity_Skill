@@ -1,0 +1,22 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+__ test_arbitrary_workspace_executable_with_forged_game_input_cannot_launch ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{7f4b6137-7747-434c-b8e6-e05a3f66c104}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_arbitrary_workspace_execu0')
+
+    def test_arbitrary_workspace_executable_with_forged_game_input_cannot_launch(tmp_path):
+        from polyforge.contracts.validation import InputError
+    
+        player = tmp_path / "unrelated.exe"
+        player.write_bytes(b"unrelated executable")
+        (tmp_path / "game-input.json").write_text(json.dumps({
+            "input_digest": "a" * 64, "scene_id": "main"}))
+        before = sorted(str(p.relative_to(tmp_path)) for p in tmp_path.rglob("*"))
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_performance.py:420: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_arbitrary_workspace_executable_with_forged_game_input_cannot_launch
+1 failed, 74 deselected in 0.62s

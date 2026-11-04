@@ -1,0 +1,280 @@
+{
+  "status": "PASS",
+  "exit_code": 0,
+  "error_code": null,
+  "data": {
+    "development_acceptance": "PASS",
+    "oracles": {
+      "status": "PASS",
+      "scenarios": {
+        "player_moves": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "ground_collision": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "grounded_jump": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "airborne_jump": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "checkpoint_respawn": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "hazard_damage": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "health_failure": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "goal_contact": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "restart_resets": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "restart_failure": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "journey": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "keyboard_move": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "keyboard_jump": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "keyboard_restart": {
+          "status": "PASS",
+          "issues": [],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": false,
+          "gate_status": "PASS"
+        },
+        "input_disconnected": {
+          "status": "FAIL",
+          "issues": [
+            "Horizontal input produced no physical movement"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "jump_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Grounded jump did not physically rise and land"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "platform_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Falling actor did not land on the declared platform"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "checkpoint_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Hazard did not cause observed health loss and physical respawn"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "damage_no_health": {
+          "status": "FAIL",
+          "issues": [
+            "Hazard did not cause observed health loss and physical respawn"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "goal_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Goal victory requires actual spatial contact and a live actor"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "win_premature": {
+          "status": "FAIL",
+          "issues": [
+            "Goal victory requires actual spatial contact and a live actor"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        },
+        "restart_disabled": {
+          "status": "FAIL",
+          "issues": [
+            "Restart did not restore full initial state after a terminal state"
+          ],
+          "oracle_owner": "PUBLIC_DEVELOPMENT",
+          "hidden_evaluation": "NOT_RUN",
+          "mutant": true,
+          "gate_status": "PASS"
+        }
+      },
+      "scope": "PUBLIC_DEVELOPMENT",
+      "hidden_evaluation": "NOT_RUN"
+    },
+    "standalone_build": "NOT_RUN",
+    "player_smoke": "NOT_RUN",
+    "standalone_gameplay": "NOT_RUN",
+    "player_path": null,
+    "profiling": "NOT_RUN",
+    "manual_review": "REVIEW",
+    "game_status": "PARTIAL"
+  },
+  "diagnostics": [],
+  "operation_id": null,
+  "run_id": "platformer-check-1e91189131b7410f",
+  "version": "0.0.1",
+  "contract_version": "1.0.0",
+  "input_digest": "87106e432b377f81f4c4db716deef466f31041894e3279895afe85f1c2b892b9",
+  "artifact_ids": [
+    "runs/platformer-check-1e91189131b7410f/editmode/process.json",
+    "runs/platformer-check-1e91189131b7410f/editmode/stderr.txt",
+    "runs/platformer-check-1e91189131b7410f/editmode/stdout.txt",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/4bb708149946484480ad8ee9c7f6864e/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/platformer-check-1e91189131b7410f/editmode/upm.log",
+    "runs/platformer-check-1e91189131b7410f/editmode.xml",
+    "runs/platformer-check-1e91189131b7410f/game-input.json",
+    "runs/platformer-check-1e91189131b7410f/playmode/process.json",
+    "runs/platformer-check-1e91189131b7410f/playmode/stderr.txt",
+    "runs/platformer-check-1e91189131b7410f/playmode/stdout.txt",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/06fa1f1c-e995-41f1-b298-d0566cb09dae/Unity.UIToolkit.SourceGenerator.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/25aaff79-0540-40b5-8728-20b47effcc4e/Unity.Analyzers.LongLiving.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/45b6b970-253b-4cfe-a048-31d69df80986/Unity.Properties.SourceGenerator.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/61407efc-b453-4f34-8e23-3c34b5032063/Unity.SourceGenerators.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/b409bdaa-5b11-47ec-bd23-6efd46fa6dac/Microsoft.Extensions.Logging.Generators.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/c939448c-3c8c-4ae7-8b1f-322f9b32b339/Unity.Analyzers.Common.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/tmp/VBCSCompiler/AnalyzerAssemblyLoader/a792495b38d6467ca79836543d84d933/d55e69ae-e7a3-4072-9a7f-311aa6216c66/System.Text.Json.SourceGeneration.dll",
+    "runs/platformer-check-1e91189131b7410f/playmode/upm.log",
+    "runs/platformer-check-1e91189131b7410f/playmode.xml",
+    "runs/platformer-check-1e91189131b7410f/public-oracles.json",
+    "runs/platformer-check-1e91189131b7410f/scenarios.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/airborne_jump.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/checkpoint_disabled.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/checkpoint_respawn.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/damage_no_health.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/goal_contact.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/goal_disabled.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/ground_collision.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/grounded_jump.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/hazard_damage.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/health_failure.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/input_disconnected.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/journey.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/jump_disabled.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/keyboard_jump.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/keyboard_move.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/keyboard_restart.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/platform_disabled.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/player_moves.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/restart_disabled.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/restart_failure.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/restart_resets.json",
+    "runs/platformer-check-1e91189131b7410f/telemetry/win_premature.json"
+  ],
+  "evidence_paths": [
+    "runs/platformer-check-1e91189131b7410f/public-oracles.json"
+  ],
+  "metrics": {},
+  "duration_ms": 0,
+  "rollback_id": null,
+  "evaluated_test_status": "PASS",
+  "game_status": "PARTIAL",
+  "operation_status": "PASS"
+}

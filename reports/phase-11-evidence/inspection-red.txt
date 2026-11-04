@@ -1,0 +1,92 @@
+FFFFFFFF                                                                 [100%]
+================================== FAILURES ===================================
+__ test_complete_static_inventory_includes_cache_and_meta_and_never_launches __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_complete_static_inventory0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000026D28732BA0>
+
+    def test_complete_static_inventory_includes_cache_and_meta_and_never_launches(tmp_path, monkeypatch):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:33: ModuleNotFoundError
+___ test_guid_faults_are_diagnostics_not_an_import_success[duplicate_guid] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_guid_faults_are_diagnosti0')
+fault = 'duplicate_guid'
+
+    @pytest.mark.parametrize("fault", ["duplicate_guid", "missing_guid", "dangling_guid"])
+    def test_guid_faults_are_diagnostics_not_an_import_success(tmp_path, fault):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:57: ModuleNotFoundError
+____ test_guid_faults_are_diagnostics_not_an_import_success[missing_guid] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_guid_faults_are_diagnosti1')
+fault = 'missing_guid'
+
+    @pytest.mark.parametrize("fault", ["duplicate_guid", "missing_guid", "dangling_guid"])
+    def test_guid_faults_are_diagnostics_not_an_import_success(tmp_path, fault):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:57: ModuleNotFoundError
+____ test_guid_faults_are_diagnostics_not_an_import_success[dangling_guid] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_guid_faults_are_diagnosti2')
+fault = 'dangling_guid'
+
+    @pytest.mark.parametrize("fault", ["duplicate_guid", "missing_guid", "dangling_guid"])
+    def test_guid_faults_are_diagnostics_not_an_import_success(tmp_path, fault):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:57: ModuleNotFoundError
+_____ test_required_project_metadata_and_read_budgets_fail_without_writes _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_required_project_metadata0')
+
+    def test_required_project_metadata_and_read_budgets_fail_without_writes(tmp_path):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:75: ModuleNotFoundError
+______ test_changed_original_tree_fails_instead_of_claiming_nonmutation _______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_changed_original_tree_fai0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000026D2A274D10>
+
+    def test_changed_original_tree_fails_instead_of_claiming_nonmutation(tmp_path, monkeypatch):
+>       import polyforge.inspection as module
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:92: ModuleNotFoundError
+_________________ test_symbolic_original_inputs_are_rejected __________________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_symbolic_original_inputs_0')
+
+    def test_symbolic_original_inputs_are_rejected(tmp_path):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:113: ModuleNotFoundError
+____ test_static_metadata_does_not_execute_package_install_or_editor_code _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{c4382cdc-f479-4701-8e49-3392121028aa}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_static_metadata_does_not_0')
+
+    def test_static_metadata_does_not_execute_package_install_or_editor_code(tmp_path):
+>       from polyforge.inspection import inspect_project
+E       ModuleNotFoundError: No module named 'polyforge.inspection'
+
+tests\test_phase11_inspection.py:128: ModuleNotFoundError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_inspection.py::test_complete_static_inventory_includes_cache_and_meta_and_never_launches
+FAILED tests/test_phase11_inspection.py::test_guid_faults_are_diagnostics_not_an_import_success[duplicate_guid]
+FAILED tests/test_phase11_inspection.py::test_guid_faults_are_diagnostics_not_an_import_success[missing_guid]
+FAILED tests/test_phase11_inspection.py::test_guid_faults_are_diagnostics_not_an_import_success[dangling_guid]
+FAILED tests/test_phase11_inspection.py::test_required_project_metadata_and_read_budgets_fail_without_writes
+FAILED tests/test_phase11_inspection.py::test_changed_original_tree_fails_instead_of_claiming_nonmutation
+FAILED tests/test_phase11_inspection.py::test_symbolic_original_inputs_are_rejected
+FAILED tests/test_phase11_inspection.py::test_static_metadata_does_not_execute_package_install_or_editor_code
+8 failed in 0.59s

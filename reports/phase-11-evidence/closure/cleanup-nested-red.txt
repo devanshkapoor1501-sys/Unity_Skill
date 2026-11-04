@@ -1,0 +1,68 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+_ test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility[live] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-nested-red/test_live_or_uncertain_nested_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A749B4A300>
+liveness = 'live'
+
+    @pytest.mark.parametrize("liveness", ["live", "uncertain"])
+    def test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility(tmp_path, monkeypatch, liveness):
+        import polyforge.cleanup as cleanup
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        nested = candidate.parent / "nested"
+        (nested / "tmp").mkdir(parents=True)
+        record = json.loads((candidate.parent.parent / "process.json").read_text())
+        record["pid"] = os.getpid()
+        (nested / "process.json").write_text(json.dumps(record))
+        child = nested / "tmp/active.tmp"
+        child.write_bytes(b"live child bytes")
+        if liveness == "uncertain":
+            identity = cleanup.process_identity
+            def uncertain(pid):
+                if pid == os.getpid():
+                    raise OSError("unknown nested owner")
+                return identity(pid)
+            monkeypatch.setattr(cleanup, "process_identity", uncertain)
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:506: Failed
+_ test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility[uncertain] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-nested-red/test_live_or_uncertain_nested_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001A749C95A90>
+liveness = 'uncertain'
+
+    @pytest.mark.parametrize("liveness", ["live", "uncertain"])
+    def test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility(tmp_path, monkeypatch, liveness):
+        import polyforge.cleanup as cleanup
+        root, candidate = workspace(tmp_path / "owned")
+        candidate.unlink()
+        nested = candidate.parent / "nested"
+        (nested / "tmp").mkdir(parents=True)
+        record = json.loads((candidate.parent.parent / "process.json").read_text())
+        record["pid"] = os.getpid()
+        (nested / "process.json").write_text(json.dumps(record))
+        child = nested / "tmp/active.tmp"
+        child.write_bytes(b"live child bytes")
+        if liveness == "uncertain":
+            identity = cleanup.process_identity
+            def uncertain(pid):
+                if pid == os.getpid():
+                    raise OSError("unknown nested owner")
+                return identity(pid)
+            monkeypatch.setattr(cleanup, "process_identity", uncertain)
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:506: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_cleanup.py::test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility[live]
+FAILED tests/test_cleanup.py::test_live_or_uncertain_nested_process_temp_cannot_inherit_dead_parent_eligibility[uncertain]
+2 failed, 53 deselected in 1.12s

@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "scope": "PUBLIC_DEVELOPMENT",
+  "qualification": false,
+  "samples": [
+    {
+      "sample_index": 0,
+      "median_fps": 582.3094392374671,
+      "p95_frame_ms": 2.8015999999979613,
+      "cpu_seconds": 196.03125,
+      "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+      "renderer_observation": "UNITY_END_OF_FRAME",
+      "run_in_background": true,
+      "focused": false,
+      "focused_frames": 0,
+      "unfocused_frames": 32981,
+      "focus_changes": 0,
+      "gpu_presentation": "NOT_MEASURED",
+      "elapsed_fps": 549.6672830486683,
+      "load_seconds": 5.296999999998661,
+      "peak_rss_bytes": 402706432,
+      "status": "PASS",
+      "issues": []
+    },
+    {
+      "sample_index": 1,
+      "median_fps": 619.2333890643906,
+      "p95_frame_ms": 2.607400000002258,
+      "cpu_seconds": 194.390625,
+      "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+      "renderer_observation": "UNITY_END_OF_FRAME",
+      "run_in_background": true,
+      "focused": true,
+      "focused_frames": 34761,
+      "unfocused_frames": 0,
+      "focus_changes": 0,
+      "gpu_presentation": "NOT_MEASURED",
+      "elapsed_fps": 579.3343386617115,
+      "load_seconds": 4.859999999998763,
+      "peak_rss_bytes": 408891392,
+      "status": "PASS",
+      "issues": []
+    },
+    {
+      "sample_index": 2,
+      "median_fps": 657.2029442675548,
+      "p95_frame_ms": 2.3532999999957838,
+      "cpu_seconds": 197.390625,
+      "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+      "renderer_observation": "UNITY_END_OF_FRAME",
+      "run_in_background": true,
+      "focused": true,
+      "focused_frames": 37177,
+      "unfocused_frames": 0,
+      "focus_changes": 0,
+      "gpu_presentation": "NOT_MEASURED",
+      "elapsed_fps": 619.5991650555844,
+      "load_seconds": 4.860000000000582,
+      "peak_rss_bytes": 410411008,
+      "status": "PASS",
+      "issues": []
+    }
+  ],
+  "issues": [],
+  "median_fps_across_samples": 619.2333890643906,
+  "fps_spread_percent": 12.094552127307837,
+  "gpu_utilization": "UNKNOWN",
+  "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+  "renderer_observation": "UNITY_END_OF_FRAME",
+  "gpu_presentation": "NOT_MEASURED",
+  "measurement_limitations": [
+    "CPU wall-clock end-of-frame intervals do not independently measure GPU execution or physical display presentation.",
+    "Focus counts classify each interval at its closing observation, not its entire duration or intervening focus events."
+  ],
+  "profile": {
+    "schema_version": "1.0.0",
+    "resolution": [
+      1280,
+      720
+    ],
+    "quality_setting": "PC",
+    "focus_policy": "OBSERVE_CONTINUOUS_BACKGROUND_ENABLED",
+    "renderer_observation": "UNITY_END_OF_FRAME",
+    "run_in_background": true,
+    "warmup_seconds": 10,
+    "samples": 3,
+    "sample_seconds": 60,
+    "targets": {
+      "median_fps_min": 30,
+      "p95_frame_ms_max": 50,
+      "peak_rss_bytes_max": 2147483648,
+      "load_seconds_max": 30
+    }
+  },
+  "executable_sha256": "4c93a4bb060a12b9044ab2103835dd1565aec9aa8381372fa84fbbc14a19b989",
+  "build_digest": "53af01bd5df72a58a9ccfd375f6f51ab1a9b629b26e91d05a52720cb88b5b898"
+}

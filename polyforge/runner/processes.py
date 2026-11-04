@@ -15,6 +15,7 @@ from typing import BinaryIO
 
 from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError
+from polyforge.runner.metrics import ProcessObservation
 from polyforge.runner.ownership import WindowsJob
 from polyforge.security.paths import WorkspacePolicy
 from polyforge.security.policy import redact, worker_environment
@@ -47,6 +48,7 @@ def run_process(
     policy: ProcessPolicy,
     *,
     cancel: threading.Event | None = None,
+    observation: ProcessObservation | None = None,
 ) -> ProcessOutcome:
     """Launch only an explicitly allowed binary; cleanup targets only its owned tree."""
     if not argv or any(not isinstance(arg, str) or "\x00" in arg for arg in argv):
@@ -74,6 +76,12 @@ def run_process(
     ):
         raise InputError("Invalid worker resource budget")
     destination = workspace.path(relative)
+    if observation is not None and (
+        type(observation) is not ProcessObservation
+        or observation.policy.root != workspace.root
+        or observation.relative != destination.relative_to(workspace.root).as_posix()
+    ):
+        raise InputError("Observation must be a concrete observer for this owned workspace run")
     ownership = "WINDOWS_JOB" if os.name == "nt" else "POSIX_PROCESS_GROUP"
     if cancel is not None and cancel.is_set():
         return ProcessOutcome(None, "cancelled", None, ownership, 0, "", "", False)
@@ -136,6 +144,8 @@ def run_process(
                 process.kill()
                 process.wait()
                 raise
+        if observation is not None:
+            observation.start(process.pid, started)
         assert process.stdout is not None and process.stderr is not None
         readers = [
             threading.Thread(target=collect, args=(stream, index), daemon=True)
@@ -144,6 +154,11 @@ def run_process(
         for reader in readers:
             reader.start()
         while process.poll() is None:
+            if observation is not None:
+                observation.poll()
+                if observation.fatal:
+                    reason = "observation_failure"
+                    break
             if cancel is not None and cancel.is_set():
                 reason = "cancelled"
                 break
@@ -172,8 +187,15 @@ def run_process(
             code="PF-RUN-LAUNCH",
         ) from exc
     finally:
-        if job is not None:
-            job.close()
+        terminate()
+        try:
+            if observation is not None:
+                observation.finish()
+        finally:
+            if job is not None:
+                job.close()
+    if observation is not None and observation.fatal and reason == "exit":
+        reason = "observation_failure"
     stdout, stderr = destination / "stdout.txt", destination / "stderr.txt"
     remaining = policy.max_output_bytes
     for path, content in zip((stdout, stderr), buffers, strict=True):

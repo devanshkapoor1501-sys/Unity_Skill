@@ -1,0 +1,19 @@
+........................................................................ [ 47%]
+........................................................................ [ 94%]
+........                                                                 [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                              Stmts   Miss Branch BrPart  Cover   Missing
+-----------------------------------------------------------------------------
+polyforge\benchmark\__init__.py       0      0      0      0   100%
+polyforge\benchmark\analysis.py     109      9     56      9    89%   61, 68, 93, 100, 108, 114, 117, 141, 144
+polyforge\benchmark\metrics.py       96      3     56      3    96%   20, 59, 173
+polyforge\benchmark\protocol.py      15      1      0      0    93%   36
+polyforge\benchmark\runner.py       163      3     54      2    98%   52, 69-70
+polyforge\benchmark\tasks.py        148      5     90      4    96%   64, 73, 89-90, 169->168, 213
+-----------------------------------------------------------------------------
+TOTAL                               531     21    256     18    95%
+Coverage JSON written to file .tmp/phase11/benchmark-finish-coverage.json
+Required test coverage of 90.0% reached. Total coverage: 95.04%
+152 passed in 125.59s (0:02:05)

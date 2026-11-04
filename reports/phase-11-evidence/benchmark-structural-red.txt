@@ -1,0 +1,269 @@
+FFFFFFFF                                                                 [100%]
+================================== FAILURES ===================================
+___ test_ledger_attempt_transitions_cannot_replace_execution_identity[task] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_ledger_attempt_transition0')
+change = 'task'
+
+    @pytest.mark.parametrize("change", ["task", "seed", "repeated-start", "orphan-finish"])
+    def test_ledger_attempt_transitions_cannot_replace_execution_identity(
+        tmp_path: Path, change: str,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        started = trial("COMPLETE_GAME_2D", attempt_id="one", event="STARTED", status="NOT_RUN",
+                        evaluation_status="NOT_RUN", censored=True)
+        finished = {**started, "event": "FINISHED", "status": "FAIL", "censored": False}
+        if change == "task":
+            finished["task_id"] = "another_game"
+        elif change == "seed":
+            finished["seed"] = 43
+        elif change == "repeated-start":
+            finished = dict(started)
+        rows = [finished] if change == "orphan-finish" else [started, finished]
+        path = tmp_path / "ledger.jsonl"
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:710: AssertionError
+___ test_ledger_attempt_transitions_cannot_replace_execution_identity[seed] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_ledger_attempt_transition1')
+change = 'seed'
+
+    @pytest.mark.parametrize("change", ["task", "seed", "repeated-start", "orphan-finish"])
+    def test_ledger_attempt_transitions_cannot_replace_execution_identity(
+        tmp_path: Path, change: str,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        started = trial("COMPLETE_GAME_2D", attempt_id="one", event="STARTED", status="NOT_RUN",
+                        evaluation_status="NOT_RUN", censored=True)
+        finished = {**started, "event": "FINISHED", "status": "FAIL", "censored": False}
+        if change == "task":
+            finished["task_id"] = "another_game"
+        elif change == "seed":
+            finished["seed"] = 43
+        elif change == "repeated-start":
+            finished = dict(started)
+        rows = [finished] if change == "orphan-finish" else [started, finished]
+        path = tmp_path / "ledger.jsonl"
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:710: AssertionError
+_ test_ledger_attempt_transitions_cannot_replace_execution_identity[repeated-start] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_ledger_attempt_transition2')
+change = 'repeated-start'
+
+    @pytest.mark.parametrize("change", ["task", "seed", "repeated-start", "orphan-finish"])
+    def test_ledger_attempt_transitions_cannot_replace_execution_identity(
+        tmp_path: Path, change: str,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        started = trial("COMPLETE_GAME_2D", attempt_id="one", event="STARTED", status="NOT_RUN",
+                        evaluation_status="NOT_RUN", censored=True)
+        finished = {**started, "event": "FINISHED", "status": "FAIL", "censored": False}
+        if change == "task":
+            finished["task_id"] = "another_game"
+        elif change == "seed":
+            finished["seed"] = 43
+        elif change == "repeated-start":
+            finished = dict(started)
+        rows = [finished] if change == "orphan-finish" else [started, finished]
+        path = tmp_path / "ledger.jsonl"
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:710: AssertionError
+_ test_ledger_attempt_transitions_cannot_replace_execution_identity[orphan-finish] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_ledger_attempt_transition3')
+change = 'orphan-finish'
+
+    @pytest.mark.parametrize("change", ["task", "seed", "repeated-start", "orphan-finish"])
+    def test_ledger_attempt_transitions_cannot_replace_execution_identity(
+        tmp_path: Path, change: str,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        started = trial("COMPLETE_GAME_2D", attempt_id="one", event="STARTED", status="NOT_RUN",
+                        evaluation_status="NOT_RUN", censored=True)
+        finished = {**started, "event": "FINISHED", "status": "FAIL", "censored": False}
+        if change == "task":
+            finished["task_id"] = "another_game"
+        elif change == "seed":
+            finished["seed"] = 43
+        elif change == "repeated-start":
+            finished = dict(started)
+        rows = [finished] if change == "orphan-finish" else [started, finished]
+        path = tmp_path / "ledger.jsonl"
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_benchmark.py:710: AssertionError
+____________ test_imported_acceptance_is_descriptive_not_verified _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_imported_acceptance_is_de0')
+
+    def test_imported_acceptance_is_descriptive_not_verified(tmp_path: Path) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "ledger.jsonl"
+        path.write_text(json.dumps(trial("COMPLETE_GAME_2D", success=True)) + "\n", encoding="utf-8")
+        result = report_run(path)
+        assert result.status == "PASS"
+        assert result.data["summary"]["accepted_game_rate"]["numerator"] == 1
+>       assert result.data["acceptance_assurance"] == "DECLARED_NOT_AUTHENTICATED"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'acceptance_assurance'
+
+tests\test_phase11_benchmark.py:721: KeyError
+_ test_durable_event_before_manifest_update_is_review_with_censored_evidence[first-start] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_durable_event_before_mani0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000017D9FA6B950>
+checkpoint = 'first-start'
+
+    @pytest.mark.parametrize("checkpoint", ["first-start", "first-finish", "second-start"])
+    def test_durable_event_before_manifest_update_is_review_with_censored_evidence(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, checkpoint: str,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.analysis import report_run
+        from polyforge.benchmark.tasks import load_suite
+    
+        original = module.atomic_json
+        fail_at = {"first-start": 2, "first-finish": 3, "second-start": 4}[checkpoint]
+        writes = 0
+    
+        def interrupted(policy, path, value):
+            nonlocal writes
+            if str(path) == "run.json":
+                writes += 1
+                if writes == fail_at:
+                    raise OSError("simulated interruption after durable event")
+            return original(policy, path, value)
+    
+        output = tmp_path / "out"
+        monkeypatch.setattr(module, "atomic_json", interrupted)
+        result = module.run_suite(load_suite(configured_suite(tmp_path)), "D", output,
+                                  runner=PublicRunner(), evaluator=PublicEvaluator())
+        assert result.status == "FAIL"
+        before = {path.name: path.read_bytes() for path in output.iterdir() if path.is_file()}
+        report = report_run(output)
+>       assert report.status == "REVIEW"
+E       AssertionError: assert 'FAIL' == 'REVIEW'
+E         
+E         - REVIEW
+E         + FAIL
+
+tests\test_phase11_benchmark.py:752: AssertionError
+_ test_durable_event_before_manifest_update_is_review_with_censored_evidence[first-finish] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_durable_event_before_mani1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000017D9FBB9070>
+checkpoint = 'first-finish'
+
+    @pytest.mark.parametrize("checkpoint", ["first-start", "first-finish", "second-start"])
+    def test_durable_event_before_manifest_update_is_review_with_censored_evidence(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, checkpoint: str,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.analysis import report_run
+        from polyforge.benchmark.tasks import load_suite
+    
+        original = module.atomic_json
+        fail_at = {"first-start": 2, "first-finish": 3, "second-start": 4}[checkpoint]
+        writes = 0
+    
+        def interrupted(policy, path, value):
+            nonlocal writes
+            if str(path) == "run.json":
+                writes += 1
+                if writes == fail_at:
+                    raise OSError("simulated interruption after durable event")
+            return original(policy, path, value)
+    
+        output = tmp_path / "out"
+        monkeypatch.setattr(module, "atomic_json", interrupted)
+        result = module.run_suite(load_suite(configured_suite(tmp_path)), "D", output,
+                                  runner=PublicRunner(), evaluator=PublicEvaluator())
+        assert result.status == "FAIL"
+        before = {path.name: path.read_bytes() for path in output.iterdir() if path.is_file()}
+        report = report_run(output)
+>       assert report.status == "REVIEW"
+E       AssertionError: assert 'FAIL' == 'REVIEW'
+E         
+E         - REVIEW
+E         + FAIL
+
+tests\test_phase11_benchmark.py:752: AssertionError
+_ test_durable_event_before_manifest_update_is_review_with_censored_evidence[second-start] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{d0d6c2fc-7e6b-42d9-b67c-c32d0a69394b}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_durable_event_before_mani2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000017D9FA68560>
+checkpoint = 'second-start'
+
+    @pytest.mark.parametrize("checkpoint", ["first-start", "first-finish", "second-start"])
+    def test_durable_event_before_manifest_update_is_review_with_censored_evidence(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch, checkpoint: str,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.analysis import report_run
+        from polyforge.benchmark.tasks import load_suite
+    
+        original = module.atomic_json
+        fail_at = {"first-start": 2, "first-finish": 3, "second-start": 4}[checkpoint]
+        writes = 0
+    
+        def interrupted(policy, path, value):
+            nonlocal writes
+            if str(path) == "run.json":
+                writes += 1
+                if writes == fail_at:
+                    raise OSError("simulated interruption after durable event")
+            return original(policy, path, value)
+    
+        output = tmp_path / "out"
+        monkeypatch.setattr(module, "atomic_json", interrupted)
+        result = module.run_suite(load_suite(configured_suite(tmp_path)), "D", output,
+                                  runner=PublicRunner(), evaluator=PublicEvaluator())
+        assert result.status == "FAIL"
+        before = {path.name: path.read_bytes() for path in output.iterdir() if path.is_file()}
+        report = report_run(output)
+>       assert report.status == "REVIEW"
+E       AssertionError: assert 'FAIL' == 'REVIEW'
+E         
+E         - REVIEW
+E         + FAIL
+
+tests\test_phase11_benchmark.py:752: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_ledger_attempt_transitions_cannot_replace_execution_identity[task]
+FAILED tests/test_phase11_benchmark.py::test_ledger_attempt_transitions_cannot_replace_execution_identity[seed]
+FAILED tests/test_phase11_benchmark.py::test_ledger_attempt_transitions_cannot_replace_execution_identity[repeated-start]
+FAILED tests/test_phase11_benchmark.py::test_ledger_attempt_transitions_cannot_replace_execution_identity[orphan-finish]
+FAILED tests/test_phase11_benchmark.py::test_imported_acceptance_is_descriptive_not_verified
+FAILED tests/test_phase11_benchmark.py::test_durable_event_before_manifest_update_is_review_with_censored_evidence[first-start]
+FAILED tests/test_phase11_benchmark.py::test_durable_event_before_manifest_update_is_review_with_censored_evidence[first-finish]
+FAILED tests/test_phase11_benchmark.py::test_durable_event_before_manifest_update_is_review_with_censored_evidence[second-start]
+8 failed, 79 deselected in 3.96s

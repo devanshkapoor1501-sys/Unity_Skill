@@ -1,0 +1,73 @@
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+__________ test_historical_builtin_benchmark_dry_run_does_not_write ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a3020260-f386-4dfe-96ad-a9edab88a6ec}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_historical_builtin_benchm0')
+capsys = <_pytest.capture.CaptureFixture object at 0x0000027BE343B590>
+
+    def test_historical_builtin_benchmark_dry_run_does_not_write(tmp_path, capsys):
+        output = tmp_path / "results"
+        code = main(["benchmark", "run", "--suite", "benchmark_core", "--arm", "D",
+                     "--output", str(output), "--dry-run", "--json"])
+>       assert code == 0
+E       assert 5 == 0
+
+tests\test_phase11_cli.py:13: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"status": "NOT_RUN", "exit_code": 5, "error_code": "PF-CAPABILITY-NOT-IMPLEMENTED", "data": {}, "diagnostics": [{"code": "PF-CAPABILITY-NOT-IMPLEMENTED", "message": "benchmark run is planned for Phase 6; no work was run"}], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 15.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "NOT_RUN"}
+__________ test_platformer_cli_only_dispatches_typed_workspace_input __________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a3020260-f386-4dfe-96ad-a9edab88a6ec}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_cli_only_dispa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000027BE345BB60>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000027BE345B3B0>
+
+    def test_platformer_cli_only_dispatches_typed_workspace_input(tmp_path, monkeypatch, capsys):
+        from polyforge.unity import platformer
+    
+        inputs = {"schema_version": "1.0.0", "scene_id": "course", "seed": 42,
+                  "layout": "checkpoint_course_v1", "sprite_receipt": "runs/sprite/bindings.json"}
+        (tmp_path / "request.json").write_text(json.dumps(inputs))
+        calls = []
+    
+        def build(workspace, value, **options):
+            calls.append((workspace, value, options))
+            return Result(data={"dry_run": True})
+    
+        monkeypatch.setattr(platformer, "build_platformer", build)
+>       assert main(["platformer", "build", "--workspace", str(tmp_path), "--input", "request.json",
+                     "--dry-run", "--json"]) == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = main(['platformer', 'build', '--workspace', 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{a3020260-f386-4d...8a6ec}\\AC\\Temp\\pytest-of-Divansh Kapoor\\pytest-0\\test_platformer_cli_only_dispa0', '--input', 'request.json', ...])
+
+tests\test_phase11_cli.py:32: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"status": "FAIL", "exit_code": 2, "error_code": "PF-INPUT-CLI", "data": {}, "diagnostics": [{"code": "PF-INPUT-CLI", "message": "argument {knowledge,review,repair,workforce,doctor,init,validate,plan,build,audit,verify,status,resume,report,clean,capability,compile-contract,reconcile,scenario,diagnose,benchmark,inspect-project,mcp}: invalid choice: 'platformer' (choose from knowledge, review, repair, workforce, doctor, init, validate, plan, build, audit, verify, status, resume, report, clean, capability, compile-contract, reconcile, scenario, diagnose, benchmark, inspect-project, mcp)"}], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 15.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "FAIL"}
+__________ test_profile_cli_dry_run_is_explicit_and_does_not_launch ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{a3020260-f386-4dfe-96ad-a9edab88a6ec}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_profile_cli_dry_run_is_ex0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000027BE3EE6630>
+capsys = <_pytest.capture.CaptureFixture object at 0x0000027BE3F0DEB0>
+
+    def test_profile_cli_dry_run_is_explicit_and_does_not_launch(tmp_path, monkeypatch, capsys):
+        from polyforge.unity import performance
+    
+        calls = []
+    
+        def profile(workspace, player, *, dry_run=False):
+            calls.append((workspace, player, dry_run))
+            return Result(data={"dry_run": dry_run, "execution_status": "NOT_RUN"})
+    
+        monkeypatch.setattr(performance, "profile_player", profile)
+>       assert main(["profile-player", "--workspace", str(tmp_path), "--player", "player/arena.exe",
+                     "--dry-run", "--json"]) == 0
+E       AssertionError: assert 2 == 0
+E        +  where 2 = main(['profile-player', '--workspace', 'C:\\Users\\Divansh Kapoor\\AppData\\Local\\Packages\\sandbox.{a3020260-f386-4dfe-96...pytest-of-Divansh Kapoor\\pytest-0\\test_profile_cli_dry_run_is_ex0', '--player', 'player/arena.exe', '--dry-run', ...])
+
+tests\test_phase11_cli.py:49: AssertionError
+---------------------------- Captured stdout call -----------------------------
+{"status": "FAIL", "exit_code": 2, "error_code": "PF-INPUT-CLI", "data": {}, "diagnostics": [{"code": "PF-INPUT-CLI", "message": "argument {knowledge,review,repair,workforce,doctor,init,validate,plan,build,audit,verify,status,resume,report,clean,capability,compile-contract,reconcile,scenario,diagnose,benchmark,inspect-project,mcp}: invalid choice: 'profile-player' (choose from knowledge, review, repair, workforce, doctor, init, validate, plan, build, audit, verify, status, resume, report, clean, capability, compile-contract, reconcile, scenario, diagnose, benchmark, inspect-project, mcp)"}], "operation_id": null, "run_id": null, "version": "0.0.1", "contract_version": "1.0.0", "input_digest": null, "artifact_ids": [], "evidence_paths": [], "metrics": {}, "duration_ms": 15.0, "rollback_id": null, "evaluated_test_status": "NOT_RUN", "game_status": "PARTIAL", "operation_status": "FAIL"}
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_cli.py::test_historical_builtin_benchmark_dry_run_does_not_write
+FAILED tests/test_phase11_cli.py::test_platformer_cli_only_dispatches_typed_workspace_input
+FAILED tests/test_phase11_cli.py::test_profile_cli_dry_run_is_explicit_and_does_not_launch
+3 failed in 0.69s

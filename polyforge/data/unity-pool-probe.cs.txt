@@ -1,0 +1,48 @@
+// Fixed empty-project ObjectPool probe; no user assemblies or assets loaded.
+// Source: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Pool.ObjectPool_1.html
+using System;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Pool;
+
+public static class PolyForgeKnowledgeProbe
+{
+    sealed class Item { }
+    [Serializable] sealed class Checks
+    {
+        public bool released_instance_reused, duplicate_release_rejected, clear_destroys_inactive;
+    }
+    [Serializable] sealed class Observation
+    {
+        public string schema_version = "1.0.0", probe_id = "unity.object-pool.v1";
+        public string tool_version = Application.unityVersion;
+        public Checks checks = new Checks();
+        public string[] artifacts = new string[0];
+    }
+    public static void Run()
+    {
+        try
+        {
+            int created = 0, destroyed = 0;
+            var pool = new ObjectPool<Item>(
+                () => { created++; return new Item(); },
+                actionOnDestroy: item => destroyed++, collectionCheck: true, defaultCapacity: 2, maxSize: 2);
+            var first = pool.Get(); pool.Release(first);
+            var second = pool.Get();
+            var observation = new Observation();
+            observation.checks.released_instance_reused = ReferenceEquals(first, second) && created == 1 && pool.CountActive == 1;
+            pool.Release(second);
+            try { pool.Release(second); }
+            catch (InvalidOperationException) { observation.checks.duplicate_release_rejected = true; }
+            pool.Clear();
+            observation.checks.clear_destroys_inactive = destroyed == 1 && pool.CountAll == 0 && pool.CountInactive == 0;
+            string[] args = Environment.GetCommandLineArgs();
+            int index = Array.IndexOf(args, "-polyforgeProbeOutput");
+            if (index < 0 || index + 1 >= args.Length) throw new ArgumentException("Missing fixed probe output");
+            File.WriteAllText(args[index + 1], JsonUtility.ToJson(observation, true) + "\n");
+            EditorApplication.Exit(0);
+        }
+        catch (Exception error) { Debug.LogException(error); EditorApplication.Exit(6); }
+    }
+}

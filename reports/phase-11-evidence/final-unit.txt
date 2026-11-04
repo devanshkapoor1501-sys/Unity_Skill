@@ -1,0 +1,124 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-6.3.0
+collected 1001 items / 12 deselected / 989 selected
+
+tests\test_animation.py .........                                        [  0%]
+tests\test_assets.py ......                                              [  1%]
+tests\test_audit_artifact_records.py .............                       [  2%]
+tests\test_audit_binding_variants.py ................................... [  6%]
+...........                                                              [  7%]
+tests\test_audit_context_boundaries.py ........................          [  9%]
+tests\test_audit_probe_lock.py ............                              [ 11%]
+tests\test_audit_resource_policy.py ............................         [ 13%]
+tests\test_audit_unity_gaps.py .......................................   [ 17%]
+tests\test_audit_workforce_gaps.py ...............                       [ 19%]
+tests\test_contract_boundaries.py .................                      [ 21%]
+tests\test_foundation.py .................                               [ 22%]
+tests\test_phase10_completion.py ................                        [ 24%]
+tests\test_phase10_knowledge.py ...............................          [ 27%]
+tests\test_phase10_mcp.py ................                               [ 29%]
+tests\test_phase10_probes.py ................                            [ 30%]
+tests\test_phase10_skill.py .........                                    [ 31%]
+tests\test_phase11_benchmark.py ........................................ [ 35%]
+........................................................................ [ 43%]
+........                                                                 [ 43%]
+tests\test_phase11_cli.py ...                                            [ 44%]
+tests\test_phase11_inspection.py ....................................... [ 48%]
+.....                                                                    [ 48%]
+tests\test_phase11_performance.py ...................................... [ 52%]
+.....................................................................    [ 59%]
+tests\test_phase11_platformer.py ....................................... [ 63%]
+........                                                                 [ 64%]
+tests\test_phase11_probes.py .....                                       [ 64%]
+tests\test_phase11_recovery.py ...                                       [ 65%]
+tests\test_phase1_cli.py .....                                           [ 65%]
+tests\test_phase1_failures.py ...........                                [ 66%]
+tests\test_phase1_policy.py ......                                       [ 67%]
+tests\test_phase1_review.py ....                                         [ 67%]
+tests\test_phase1_runner.py .......                                      [ 68%]
+tests\test_phase2_boundaries.py ..............                           [ 69%]
+tests\test_phase2_contracts.py ..............                            [ 71%]
+tests\test_phase3_cli.py ......                                          [ 71%]
+tests\test_phase3_recipes.py .......                                     [ 72%]
+tests\test_phase4_contracts.py ...........                               [ 73%]
+tests\test_phase5_contracts.py ......................................... [ 77%]
+.                                                                        [ 77%]
+tests\test_phase6_contracts.py .....................................     [ 81%]
+tests\test_phase7_review.py .........                                    [ 82%]
+tests\test_phase8_review.py ...............                              [ 84%]
+tests\test_phase9_amendments.py ........                                 [ 84%]
+tests\test_phase9_diagnostics.py ............................            [ 87%]
+tests\test_phase9_forensic_execution.py ...                              [ 87%]
+tests\test_phase9_mutations.py .....                                     [ 88%]
+tests\test_phase9_recovery.py .......................................... [ 92%]
+                                                                         [ 92%]
+tests\test_phase9_review.py .........................                    [ 95%]
+tests\test_phase9_routing.py ......                                      [ 95%]
+tests\test_phase9_sprite_gate.py .........                               [ 96%]
+tests\test_sprites.py .....                                              [ 97%]
+tests\test_windows_alias_paths.py ..                                     [ 97%]
+tests\test_workforce.py ........................                         [ 99%]
+tests\test_workforce_crash.py .                                          [100%]
+
+- generated xml file: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\phase11\final-unit.xml -
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                       Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------------------------------
+polyforge\animation\contract.py               41      0     30      0   100%
+polyforge\assets\contracts.py                 82      3     40      3    95%   131, 153, 166
+polyforge\benchmark\__init__.py                0      0      0      0   100%
+polyforge\benchmark\analysis.py              109      9     56      9    89%   61, 68, 93, 100, 108, 114, 117, 141, 144
+polyforge\benchmark\metrics.py                96      3     56      3    96%   20, 59, 173
+polyforge\benchmark\protocol.py               15      0      0      0   100%
+polyforge\benchmark\runner.py                163      3     54      2    98%   52, 69-70
+polyforge\benchmark\tasks.py                 148      5     90      4    96%   64, 73, 89-90, 169->168, 213
+polyforge\blender\interchange.py               9      0      4      0   100%
+polyforge\blender\recipes.py                 146      8     78      8    93%   33, 43, 53, 61, 64, 239, 251, 314
+polyforge\contracts\__init__.py                0      0      0      0   100%
+polyforge\contracts\images.py                 87      0     42      0   100%
+polyforge\contracts\manifest.py              152      7     72      6    94%   66-67, 75->78, 123, 159, 166, 169, 171
+polyforge\contracts\results.py                54      0     14      0   100%
+polyforge\contracts\validation.py             55      1     12      1    97%   45
+polyforge\host\stdio.py                      128      3     46      3    97%   55, 117, 168
+polyforge\inspection.py                      251      5    130      6    97%   43, 51, 65, 163, 195, 238->247
+polyforge\knowledge\availability.py           97      7     40      8    89%   52, 58, 61, 63->50, 79, 115, 118, 128
+polyforge\knowledge\catalog.py                42      2     20      2    94%   32, 71
+polyforge\knowledge\probes.py                 97      2     32      2    97%   63, 295
+polyforge\knowledge\router.py                 68      0     36      0   100%
+polyforge\repairs\diagnostics.py             136      9     58      9    91%   81, 114, 128, 137, 147, 150, 379, 382, 392
+polyforge\review\acceptance.py                49      2     10      0    97%   35-36
+polyforge\review\amendments.py                52      1     24      1    97%   127
+polyforge\review\board.py                    129      5     56      7    94%   71, 125, 153, 171, 178->180, 208, 210->216
+polyforge\review\sprite_source.py             59      3     24      3    93%   43, 46, 94
+polyforge\runner\artifacts.py                 45      0     22      0   100%
+polyforge\runner\locks.py                    110      7     32      6    91%   35, 71, 105-107, 113, 159-161, 169->exit
+polyforge\runner\metrics.py                  125      1     42      3    98%   78->exit, 137->146, 156
+polyforge\runner\workspace_lock.py            58      6     14      4    86%   24, 31, 35, 37-38, 57
+polyforge\scenarios\arena_oracle.py          115      7     84      7    93%   66, 85, 90, 98, 101, 192, 246
+polyforge\scenarios\platformer_oracle.py     100      0     74      1    99%   222->273
+polyforge\security\__init__.py                 0      0      0      0   100%
+polyforge\security\paths.py                   69      2     28      2    96%   36, 81
+polyforge\security\policy.py                  40      0     14      0   100%
+polyforge\sprites\contracts.py                 9      0      6      0   100%
+polyforge\sprites\images.py                   35      0     12      0   100%
+polyforge\unity\bootstrap.py                  89      9     36      7    86%   26->exit, 28->26, 38-43, 58, 61, 67, 73, 100
+polyforge\unity\evidence.py                  150      0     92      1    99%   254->273
+polyforge\unity\performance.py               228     12     68     13    92%   159, 255, 279->274, 289, 306, 316, 368, 371, 378, 381, 395, 442, 486
+polyforge\unity\transactions.py              184     13    102     13    91%   43, 71, 82, 100, 104, 109, 118, 241, 270, 273, 295, 298, 313
+polyforge\unity\upgrade.py                    63      1     28      2    97%   50->48, 60
+polyforge\workforce\discovery.py             117      0     36      1    99%   79->137
+polyforge\workforce\ledger.py                 98      1     34      2    98%   69->81, 76
+polyforge\workforce\models.py                 45      0     22      0   100%
+polyforge\workforce\permissions.py            31      0     14      0   100%
+polyforge\workforce\router.py                 94      6     48      3    92%   55, 57, 105-109
+--------------------------------------------------------------------------------------
+TOTAL                                       4070    143   1832    142    95%
+Coverage JSON written to file .tmp/phase11/final-coverage.json
+Required test coverage of 90.0% reached. Total coverage: 95.10%
+=============== 989 passed, 12 deselected in 513.23s (0:08:33) ================

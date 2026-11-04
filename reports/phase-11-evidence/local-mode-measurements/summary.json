@@ -1,0 +1,139 @@
+{
+  "schema_version": "1.0.0",
+  "scope": "LOCAL_DEVELOPMENT_MODE_MEASUREMENTS",
+  "engine_digest": "4998fcac88c11a6fc41b331aa1278f633c01f402fc07504ee6230e724a0af2d3",
+  "os": "Windows-11-10.0.26300-SP0",
+  "hardware": {
+    "cpu_count": 16,
+    "disk_free_bytes": 520939560960,
+    "available_ram_bytes": 10639876096,
+    "hardware": {
+      "os": "Windows-11-10.0.26300-SP0",
+      "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+      "logical_cpus": 16,
+      "physical_memory_bytes": 24841998336,
+      "gpu": {
+        "status": "OBSERVED",
+        "devices": [
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY1",
+            "state_flags": 5
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY2",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY3",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY4",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY5",
+            "state_flags": 0
+          },
+          {
+            "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+            "device": "\\\\.\\DISPLAY6",
+            "state_flags": 0
+          }
+        ],
+        "source": "EnumDisplayDevicesW"
+      },
+      "graphics": {
+        "display": {
+          "status": "OBSERVED",
+          "count": 1,
+          "source": "GetSystemMetrics(SM_CMONITORS)"
+        },
+        "gpu": {
+          "status": "OBSERVED",
+          "devices": [
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY1",
+              "state_flags": 5
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY2",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY3",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY4",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY5",
+              "state_flags": 0
+            },
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "device": "\\\\.\\DISPLAY6",
+              "state_flags": 0
+            }
+          ],
+          "source": "EnumDisplayDevicesW"
+        },
+        "render": {
+          "status": "NOT_RUN"
+        },
+        "headless_render": {
+          "status": "UNKNOWN"
+        },
+        "qualification": "Metadata does not establish driver, render or headless support"
+      },
+      "graphics_render_probe": "NOT_RUN",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+    },
+    "gpu_observation": "METADATA_ONLY",
+    "gpu_execution": "UNVERIFIED",
+    "vram_bytes": 8546942976,
+    "adapters": [
+      {
+        "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+        "vram_bytes": 8546942976,
+        "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+      },
+      {
+        "name": "AMD Radeon 780M Graphics",
+        "vram_bytes": 536870912,
+        "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+      }
+    ]
+  },
+  "modes": {
+    "single": {
+      "runs": 5,
+      "median_seconds": 8.109999999999673,
+      "variance_seconds_squared": 10.394969600000444,
+      "all_pass": true
+    },
+    "sequential": {
+      "runs": 5,
+      "median_seconds": 8.030999999999949,
+      "variance_seconds_squared": 0.1242674399999935,
+      "all_pass": true
+    }
+  },
+  "interpretation": "Both local modes execute the same role graph. These timings do not measure separate model workers or causal specialization gains.",
+  "concurrent_roles": "NOT_RUN: no registered host adapter",
+  "inspector_off": "NOT_RUN: production approval is mandatory",
+  "specialist_vs_general_model": "NOT_RUN: no model adapters or measured usage",
+  "superiority_claim": "UNSUPPORTED"
+}

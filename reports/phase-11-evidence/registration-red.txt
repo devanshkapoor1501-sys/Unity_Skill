@@ -1,0 +1,152 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+_____ test_platformer_capability_is_registered_after_native_qualification _____
+
+    def test_platformer_capability_is_registered_after_native_qualification():
+        from polyforge.capabilities.registry import lookup
+    
+>       descriptor = lookup("unity.game.platformer.v1")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'unity.game.platformer.v1'
+
+    def lookup(identifier: str) -> dict[str, Any]:
+        """Look up an implemented, versioned capability or reject the unknown ID."""
+        for entry in catalog():
+            if entry["id"] == identifier:
+                return entry
+>       raise InputError(f"Unknown or unavailable capability: {identifier}")
+E       polyforge.contracts.validation.InputError: Unknown or unavailable capability: unity.game.platformer.v1
+
+polyforge\capabilities\registry.py:39: InputError
+_______ test_capability_dry_run_uses_same_compiler_and_preserves_files ________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4d614a2b-b570-483f-ab01-b37db5d451c7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_capability_dry_run_uses_s0')
+
+    def test_capability_dry_run_uses_same_compiler_and_preserves_files(tmp_path):
+        from polyforge.capabilities.dispatch import execute
+    
+        inputs = source_fixture(tmp_path)
+        before = {p.relative_to(tmp_path).as_posix(): p.read_bytes()
+                  for p in tmp_path.rglob("*") if p.is_file()}
+>       result = execute("unity.game.platformer.v1", inputs, RunContext(tmp_path, dry_run=True))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:38: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\capabilities\dispatch.py:11: in execute
+    lookup(identifier)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'unity.game.platformer.v1'
+
+    def lookup(identifier: str) -> dict[str, Any]:
+        """Look up an implemented, versioned capability or reject the unknown ID."""
+        for entry in catalog():
+            if entry["id"] == identifier:
+                return entry
+>       raise InputError(f"Unknown or unavailable capability: {identifier}")
+E       polyforge.contracts.validation.InputError: Unknown or unavailable capability: unity.game.platformer.v1
+
+polyforge\capabilities\registry.py:39: InputError
+_ test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4d614a2b-b570-483f-ab01-b37db5d451c7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_worker_plan_freezes_impor0')
+
+    def test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution(tmp_path):
+        from polyforge.workforce.router import plan_task
+    
+        inputs = source_fixture(tmp_path)
+        request = task(inputs)
+>       plan = plan_task(request, workspace=tmp_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\workforce\router.py:100: in plan_task
+    descriptor = lookup(capability)
+                 ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+identifier = 'unity.game.platformer.v1'
+
+    def lookup(identifier: str) -> dict[str, Any]:
+        """Look up an implemented, versioned capability or reject the unknown ID."""
+        for entry in catalog():
+            if entry["id"] == identifier:
+                return entry
+>       raise InputError(f"Unknown or unavailable capability: {identifier}")
+E       polyforge.contracts.validation.InputError: Unknown or unavailable capability: unity.game.platformer.v1
+
+polyforge\capabilities\registry.py:39: InputError
+____ test_platformer_worker_tools_keep_production_and_inspection_separate _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4d614a2b-b570-483f-ab01-b37db5d451c7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_worker_tools_k0')
+
+    def test_platformer_worker_tools_keep_production_and_inspection_separate(tmp_path):
+        from polyforge.workforce.permissions import authorize
+    
+        policy = WorkspacePolicy(tmp_path)
+>       assert authorize(policy, "unity_integration", "tool", "unity.game.platformer.v1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_registration.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x0000021B7C00B350>
+role = 'unity_integration', action = 'tool', target = 'unity.game.platformer.v1'
+
+    def authorize(policy: WorkspacePolicy, role: str, action: str, target: str) -> bool:
+        rule = ROLES.get(role)
+        if rule is None:
+            raise InputError("Unknown worker role")
+        if action == "tool":
+            allowed = target in rule["tools"]
+        else:
+            assert_public_path(policy, target)
+            path = policy.path(target)
+            relative = path.relative_to(policy.root).as_posix()
+            allowed = action == "read" and relative.startswith(("runs/", "workforce/", "recipes/"))
+            if action == "write":
+                allowed = any(relative.startswith(prefix) for prefix in rule["writes"])
+        if not allowed:
+>           raise InputError(
+                "Role lacks authorization for " + action + ": " + target, kind=ErrorKind.POLICY_DENIED
+            )
+E           polyforge.contracts.validation.InputError: Role lacks authorization for tool: unity.game.platformer.v1
+
+polyforge\workforce\permissions.py:94: InputError
+___________ test_platformer_transaction_snapshots_its_latest_marker ___________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4d614a2b-b570-483f-ab01-b37db5d451c7}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_platformer_transaction_sn0')
+
+    def test_platformer_transaction_snapshots_its_latest_marker(tmp_path):
+        from polyforge.unity.transactions import ManagedTransaction
+    
+        marker = tmp_path / ".polyforge/platformer-latest.json"
+        marker.parent.mkdir()
+        original = {"input_digest": "a" * 64, "request": "runs/old/game-input.json"}
+        marker.write_text(json.dumps(original))
+        tx = ManagedTransaction.create(WorkspacePolicy(tmp_path), "platformer-marker")
+        marker.write_text(json.dumps({"request": "runs/new/game-input.json"}))
+        tx.restore()
+>       assert json.loads(marker.read_text()) == original
+E       AssertionError: assert {'request': '...e-input.json'} == {'input_diges...e-input.json'}
+E         
+E         Differing items:
+E         {'request': 'runs/new/game-input.json'} != {'request': 'runs/old/game-input.json'}
+E         Right contains 1 more item:
+E         {'input_digest': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'}
+E         Use -v to get more diff
+
+tests\test_phase11_registration.py:84: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_platformer_capability_is_registered_after_native_qualification
+FAILED tests/test_phase11_registration.py::test_capability_dry_run_uses_same_compiler_and_preserves_files
+FAILED tests/test_phase11_registration.py::test_worker_plan_freezes_imported_sprite_inputs_without_arena_substitution
+FAILED tests/test_phase11_registration.py::test_platformer_worker_tools_keep_production_and_inspection_separate
+FAILED tests/test_phase11_registration.py::test_platformer_transaction_snapshots_its_latest_marker
+5 failed in 2.14s

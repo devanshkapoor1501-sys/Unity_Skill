@@ -1,0 +1,41 @@
+{
+  "invalid_inputs": [
+    {
+      "input": "[]",
+      "error": "AttributeError",
+      "message": "'list' object has no attribute 'get'",
+      "files": 0
+    },
+    {
+      "input": "None",
+      "error": "AttributeError",
+      "message": "'NoneType' object has no attribute 'get'",
+      "files": 0
+    },
+    {
+      "input": "True",
+      "error": "AttributeError",
+      "message": "'bool' object has no attribute 'get'",
+      "files": 0
+    },
+    {
+      "input": "42",
+      "error": "AttributeError",
+      "message": "'int' object has no attribute 'get'",
+      "files": 0
+    },
+    {
+      "input": "'invalid'",
+      "error": "AttributeError",
+      "message": "'str' object has no attribute 'get'",
+      "files": 0
+    }
+  ],
+  "minimal_candidate": {
+    "verdict": "APPROVED",
+    "sealed_files": 25,
+    "native_archives": 0,
+    "scenes": 0,
+    "standalone_files": 0
+  }
+}

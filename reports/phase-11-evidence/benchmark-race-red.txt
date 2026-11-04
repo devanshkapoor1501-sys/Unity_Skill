@@ -1,0 +1,45 @@
+F                                                                        [100%]
+================================== FAILURES ===================================
+_____ test_changed_brief_is_never_delivered_to_runner_after_freeze_check ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{30b79fe9-456b-4f6b-a2e7-e8dc876fd1d8}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_changed_brief_is_never_de0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000253599FDA60>
+
+    def test_changed_brief_is_never_delivered_to_runner_after_freeze_check(
+        tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        from polyforge.benchmark import runner as module
+        from polyforge.benchmark.tasks import load_suite
+    
+        path = configured_suite(tmp_path)
+        suite = load_suite(path)
+        original = module.verify_frozen
+        checks = 0
+        calls = []
+    
+        def raced(value: dict) -> dict:
+            nonlocal checks
+            result = original(value)
+            checks += 1
+            if checks == 2:
+                (path.parent / "briefs/robot_mesh.md").write_text("REPLACED", encoding="utf-8")
+            return result
+    
+        class Observer(PublicRunner):
+            def run(self, task: EvaluationRequest, *, arm: str, seed: int) -> Result:
+                calls.append(task.task_id)
+                return super().run(task, arm=arm, seed=seed)
+    
+        monkeypatch.setattr(module, "verify_frozen", raced)
+        result = module.run_suite(suite, "A", tmp_path / "out", runner=Observer())
+        assert result.status == "FAIL"
+>       assert calls == []
+E       AssertionError: assert ['robot_mesh'] == []
+E         
+E         Left contains one more item: 'robot_mesh'
+E         Use -v to get more diff
+
+tests\test_phase11_benchmark.py:560: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_changed_brief_is_never_delivered_to_runner_after_freeze_check
+1 failed, 67 deselected in 1.13s

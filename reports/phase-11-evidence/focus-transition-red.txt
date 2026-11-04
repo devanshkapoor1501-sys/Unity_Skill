@@ -1,0 +1,148 @@
+FFFF....                                                                 [100%]
+================================== FAILURES ===================================
+_________ test_focus_transition_counts_are_feasible[3000-0-3000-FAIL] _________
+
+focused_frames = 3000, unfocused_frames = 0, changes = 3000, expected = 'FAIL'
+
+    @pytest.mark.parametrize(
+        "focused_frames,unfocused_frames,changes,expected",
+        [
+            (3000, 0, 3000, "FAIL"),
+            (0, 3000, 2, "FAIL"),
+            (1500, 1500, 0, "FAIL"),
+            (2999, 1, 4, "FAIL"),
+            (3000, 0, 1, "PASS"),
+            (0, 3000, 1, "PASS"),
+            (1500, 1500, 1, "PASS"),
+            (2999, 1, 3, "PASS"),
+        ],
+    )
+    def test_focus_transition_counts_are_feasible(
+        focused_frames, unfocused_frames, changes, expected
+    ):
+        records = group()
+        for record in records:
+            record.update(
+                focused_frames=focused_frames,
+                unfocused_frames=unfocused_frames,
+                focused=unfocused_frames == 0,
+                focus_changes=changes,
+            )
+>       assert performance().score_profile(records)["status"] == expected
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:973: AssertionError
+__________ test_focus_transition_counts_are_feasible[0-3000-2-FAIL] ___________
+
+focused_frames = 0, unfocused_frames = 3000, changes = 2, expected = 'FAIL'
+
+    @pytest.mark.parametrize(
+        "focused_frames,unfocused_frames,changes,expected",
+        [
+            (3000, 0, 3000, "FAIL"),
+            (0, 3000, 2, "FAIL"),
+            (1500, 1500, 0, "FAIL"),
+            (2999, 1, 4, "FAIL"),
+            (3000, 0, 1, "PASS"),
+            (0, 3000, 1, "PASS"),
+            (1500, 1500, 1, "PASS"),
+            (2999, 1, 3, "PASS"),
+        ],
+    )
+    def test_focus_transition_counts_are_feasible(
+        focused_frames, unfocused_frames, changes, expected
+    ):
+        records = group()
+        for record in records:
+            record.update(
+                focused_frames=focused_frames,
+                unfocused_frames=unfocused_frames,
+                focused=unfocused_frames == 0,
+                focus_changes=changes,
+            )
+>       assert performance().score_profile(records)["status"] == expected
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:973: AssertionError
+_________ test_focus_transition_counts_are_feasible[1500-1500-0-FAIL] _________
+
+focused_frames = 1500, unfocused_frames = 1500, changes = 0, expected = 'FAIL'
+
+    @pytest.mark.parametrize(
+        "focused_frames,unfocused_frames,changes,expected",
+        [
+            (3000, 0, 3000, "FAIL"),
+            (0, 3000, 2, "FAIL"),
+            (1500, 1500, 0, "FAIL"),
+            (2999, 1, 4, "FAIL"),
+            (3000, 0, 1, "PASS"),
+            (0, 3000, 1, "PASS"),
+            (1500, 1500, 1, "PASS"),
+            (2999, 1, 3, "PASS"),
+        ],
+    )
+    def test_focus_transition_counts_are_feasible(
+        focused_frames, unfocused_frames, changes, expected
+    ):
+        records = group()
+        for record in records:
+            record.update(
+                focused_frames=focused_frames,
+                unfocused_frames=unfocused_frames,
+                focused=unfocused_frames == 0,
+                focus_changes=changes,
+            )
+>       assert performance().score_profile(records)["status"] == expected
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:973: AssertionError
+__________ test_focus_transition_counts_are_feasible[2999-1-4-FAIL] ___________
+
+focused_frames = 2999, unfocused_frames = 1, changes = 4, expected = 'FAIL'
+
+    @pytest.mark.parametrize(
+        "focused_frames,unfocused_frames,changes,expected",
+        [
+            (3000, 0, 3000, "FAIL"),
+            (0, 3000, 2, "FAIL"),
+            (1500, 1500, 0, "FAIL"),
+            (2999, 1, 4, "FAIL"),
+            (3000, 0, 1, "PASS"),
+            (0, 3000, 1, "PASS"),
+            (1500, 1500, 1, "PASS"),
+            (2999, 1, 3, "PASS"),
+        ],
+    )
+    def test_focus_transition_counts_are_feasible(
+        focused_frames, unfocused_frames, changes, expected
+    ):
+        records = group()
+        for record in records:
+            record.update(
+                focused_frames=focused_frames,
+                unfocused_frames=unfocused_frames,
+                focused=unfocused_frames == 0,
+                focus_changes=changes,
+            )
+>       assert performance().score_profile(records)["status"] == expected
+E       AssertionError: assert 'PASS' == 'FAIL'
+E         
+E         - FAIL
+E         + PASS
+
+tests\test_phase11_performance.py:973: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_focus_transition_counts_are_feasible[3000-0-3000-FAIL]
+FAILED tests/test_phase11_performance.py::test_focus_transition_counts_are_feasible[0-3000-2-FAIL]
+FAILED tests/test_phase11_performance.py::test_focus_transition_counts_are_feasible[1500-1500-0-FAIL]
+FAILED tests/test_phase11_performance.py::test_focus_transition_counts_are_feasible[2999-1-4-FAIL]
+4 failed, 4 passed, 135 deselected in 0.97s

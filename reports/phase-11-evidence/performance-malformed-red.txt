@@ -1,0 +1,204 @@
+..F............F                                                         [100%]
+================================== FAILURES ===================================
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-value2] _
+
+field = 'graphics_type', value = []
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("graphics_type", []),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+            ("frame_times_ms", [5e-324]),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\performance.py:176: in score_profile
+    result = _sample(item, index)
+             ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+item = {'activity': {'enemy_distance': 12.0, 'player_distance': 10.0, 'restarts': 3, 'ticks': 3500}, 'batchmode': False, 'build_type': 'Development', 'complete': True, ...}
+index = 1
+
+    def _sample(item: dict[str, Any], index: int) -> dict[str, Any]:
+        issues: list[str] = []
+        metrics: dict[str, Any] = {
+            "sample_index": index,
+            "median_fps": None,
+            "p95_frame_ms": None,
+            "cpu_seconds": None,
+        }
+    
+        def require(condition: bool, message: str) -> None:
+            if not condition:
+                issues.append(message)
+    
+        require(item.get("schema_version") == "1.0.0", "Unknown evidence version")
+        require(item.get("scope") == "WINDOWS_STANDALONE_RENDERED", "Not rendered player evidence")
+        require(type(item.get("sample_index")) is int and item["sample_index"] == index,
+                "Missing/duplicate/out-of-order sample index")
+        require(
+            item.get("complete") is True and item.get("sample_overflow") is False,
+            "Incomplete or truncated frame sample",
+        )
+        require(
+            item.get("is_editor") is False and item.get("batchmode") is False,
+            "Editor/headless samples cannot qualify",
+        )
+        require(
+>           item.get("graphics_type") in {"Direct3D11", "Direct3D12", "Vulkan", "OpenGLCore"},
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "Missing/Null/unknown graphics device",
+        )
+E       TypeError: unhashable type: 'list'
+
+polyforge\unity\performance.py:76: TypeError
+_ test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value15] _
+
+field = 'frame_times_ms', value = [5e-324]
+
+    @pytest.mark.parametrize(
+        "field,value",
+        [
+            ("graphics_type", "Null"),
+            ("graphics_type", ""),
+            ("graphics_type", []),
+            ("is_editor", True),
+            ("batchmode", True),
+            ("width", 640),
+            ("height", 480),
+            ("complete", False),
+            ("sample_overflow", True),
+            ("focused", False),
+            ("warmup_seconds", 9.0),
+            ("measurement_seconds", 59.0),
+            ("frames_recorded", 100),
+            ("frame_times_ms", [float("nan")]),
+            ("frame_times_ms", [0.0] * 3000),
+            ("frame_times_ms", [5e-324]),
+        ],
+    )
+    def test_unrendered_incomplete_or_invalid_sample_cannot_qualify(field, value):
+        samples = group()
+        samples[1][field] = value
+>       assert performance().score_profile(samples)["status"] == "FAIL"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_phase11_performance.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\unity\performance.py:176: in score_profile
+    result = _sample(item, index)
+             ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+item = {'activity': {'enemy_distance': 12.0, 'player_distance': 10.0, 'restarts': 3, 'ticks': 3500}, 'batchmode': False, 'build_type': 'Development', 'complete': True, ...}
+index = 1
+
+    def _sample(item: dict[str, Any], index: int) -> dict[str, Any]:
+        issues: list[str] = []
+        metrics: dict[str, Any] = {
+            "sample_index": index,
+            "median_fps": None,
+            "p95_frame_ms": None,
+            "cpu_seconds": None,
+        }
+    
+        def require(condition: bool, message: str) -> None:
+            if not condition:
+                issues.append(message)
+    
+        require(item.get("schema_version") == "1.0.0", "Unknown evidence version")
+        require(item.get("scope") == "WINDOWS_STANDALONE_RENDERED", "Not rendered player evidence")
+        require(type(item.get("sample_index")) is int and item["sample_index"] == index,
+                "Missing/duplicate/out-of-order sample index")
+        require(
+            item.get("complete") is True and item.get("sample_overflow") is False,
+            "Incomplete or truncated frame sample",
+        )
+        require(
+            item.get("is_editor") is False and item.get("batchmode") is False,
+            "Editor/headless samples cannot qualify",
+        )
+        require(
+            item.get("graphics_type") in {"Direct3D11", "Direct3D12", "Vulkan", "OpenGLCore"},
+            "Missing/Null/unknown graphics device",
+        )
+        require([item.get("width"), item.get("height")] == [1280, 720], "Resolution mismatch")
+        require(item.get("quality") == "PC", "Declared PC quality mismatch")
+        require(
+            item.get("v_sync") == 0 and item.get("target_frame_rate") == -1,
+            "Frame pacing differs from declared profile",
+        )
+        require(item.get("focused") is True, "Player focus lost")
+        warmup, duration = item.get("warmup_seconds"), item.get("measurement_seconds")
+        require(_finite(warmup) and 10 <= warmup <= 11, "Warmup incomplete/outside declared window")
+        require(_finite(duration) and 60 <= duration <= 61, "Measurement window incomplete/overlong")
+        for key in ("input_digest", "profile_digest", "executable_sha256"):
+            value = item.get(key)
+            require(
+                isinstance(value, str)
+                and len(value) == 64
+                and all(c in "0123456789abcdef" for c in value),
+                "Invalid " + key,
+            )
+        for key in ("scene_id", "scene", "unity_version", "build_type"):
+            require(isinstance(item.get(key), str) and bool(item[key]), "Missing " + key)
+        require(item.get("unity_version") == "6000.6.3f1", "Unsupported Unity version")
+        require(item.get("build_type") in {"Development", "Release"}, "Unknown build type")
+        require(item.get("game_kind") == "arena", "Unsupported profile workload")
+        hardware = item.get("hardware", {})
+        require(
+            isinstance(hardware, dict)
+            and all(
+                hardware.get(key) for key in ("cpu", "logical_cpus", "ram_bytes", "gpu", "gpu_driver")
+            ),
+            "Missing hardware identity",
+        )
+        times = item.get("frame_times_ms")
+        if (
+            isinstance(times, list)
+            and 0 < len(times) <= 1_000_000
+            and all(_finite(value, positive=True) for value in times)
+        ):
+            require(item.get("frames_recorded") == len(times), "Frame count mismatch/truncation")
+            require(
+                _finite(duration) and abs(sum(times) / 1000 - duration) <= 0.1,
+                "Recorded intervals do not cover the measurement window",
+            )
+            median = statistics.median(1000 / value for value in times)
+            p95 = sorted(times)[math.ceil(0.95 * len(times)) - 1]
+            require(math.isfinite(median), "Computed FPS is nonfinite")
+            metrics.update(
+                median_fps=median if math.isfinite(median) else None,
+                p95_frame_ms=p95,
+>               elapsed_fps=len(times) / (sum(times) / 1000),
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            )
+E           ZeroDivisionError: float division by zero
+
+polyforge\unity\performance.py:127: ZeroDivisionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[graphics_type-value2]
+FAILED tests/test_phase11_performance.py::test_unrendered_incomplete_or_invalid_sample_cannot_qualify[frame_times_ms-value15]
+2 failed, 14 passed, 52 deselected in 0.92s

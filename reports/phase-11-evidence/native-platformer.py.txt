@@ -1,0 +1,30 @@
+"""Import existing public owned sprites, then qualify the distinct checkpoint game."""
+import json
+import shutil
+from pathlib import Path
+
+from polyforge.capabilities.protocol import RunContext
+from polyforge.sprites.integration import import_strip
+from polyforge.unity.platformer import build_platformer
+
+base = Path('.tmp/phase11').resolve()
+workspace = base / 'demo'
+source = Path('.tmp/phase8/direct-final').resolve()
+plan = json.loads((source / 'workforce/task_27bd6f684c81a83a_b15bbf5c/plan.json').read_text('utf-8'))
+inputs = plan['original_request']['input']
+target = workspace / 'input'
+assert not target.exists(), 'Preserve any prior input set'
+shutil.copytree(source / 'input', target)
+result = import_strip(inputs, RunContext(workspace=workspace))
+(base / 'sprites-result.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print('SPRITES', json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()
+request = {
+    'schema_version': '1.0.0', 'scene_id': 'checkpoint_course', 'seed': 42,
+    'sprite_receipt': f'runs/{result.run_id}/bindings.json', 'layout': 'checkpoint_course_v1',
+}
+(workspace / 'platformer-input.json').write_text(json.dumps(request, indent=2), encoding='utf-8')
+result = build_platformer(workspace, request, standalone=True)
+(base / 'platformer-result.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print('PLATFORMER', json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'PASS', result.to_dict()

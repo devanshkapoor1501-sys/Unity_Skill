@@ -1,0 +1,380 @@
+FF.FFFF                                                                  [100%]
+================================== FAILURES ===================================
+____________ test_arm_container_types_fail_as_input_errors[arms0] _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_arm_container_types_fail_0')
+arms = [['A']]
+
+    @pytest.mark.parametrize("arms", [[["A"]], [{"arm": "A"}], [None]])
+    def test_arm_container_types_fail_as_input_errors(tmp_path: Path, arms: list) -> None:
+        from polyforge.benchmark.tasks import load_suite
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["arms"] = arms
+        path.write_text(json.dumps(value), encoding="utf-8")
+        with pytest.raises(InputError):
+>           load_suite(path)
+
+tests\test_phase11_benchmark.py:638: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\tasks.py:203: in load_suite
+    value = _validate_suite(load_json(source))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'arms': [['A']], 'c_d_general_mcp_parity': 'NOT_RUN', 'execution_metadata': {'A': {'default_tool_inventory': ['blende...git_commit': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', ...}}, 'hidden_evaluator_tasks': 'EXTERNAL_NOT_SUPPLIED', ...}
+
+    def _validate_suite(value: Any) -> dict[str, Any]:
+        if not isinstance(value, dict) or set(value) - _SUITE_FIELDS:
+            raise InputError("Unknown public benchmark suite fields")
+        if value.get("schema_version") != "1.0.0":
+            raise InputError("Unsupported benchmark suite version")
+        tasks = value.get("tasks")
+        if not isinstance(tasks, list) or not 1 <= len(tasks) <= 128:
+            raise InputError("Suite must declare 1..128 public tasks")
+        seen = set()
+        for task in tasks:
+            if not isinstance(task, dict):
+                raise InputError("Each benchmark task must be an object")
+            dimensions = {key: task[key] for key in ("genre", "platform", "complexity") if key in task}
+            validate_schema(
+                {key: child for key, child in task.items() if key not in dimensions},
+                "benchmark_task.schema.json",
+            )
+            if task["task_id"] in seen or task["ownership"] != "DEV_FIXTURE":
+                raise InputError(
+                    "Task IDs must be unique; only public development fixtures are allowed"
+                )
+            seen.add(task["task_id"])
+            if len(task["task_success_schema"]) > 4096:
+                raise InputError("Acceptance metadata exceeds its text limit")
+            for dimension in dimensions.values():
+                if not isinstance(dimension, str) or not 1 <= len(dimension) <= 128:
+                    raise InputError("Task strata require bounded nonempty text")
+            for key, maximum in (
+                ("wall_seconds", 86400),
+                ("tool_calls", 100000),
+                ("tokens", 10000000),
+                ("retries", 2),
+            ):
+                budget = task["budgets"][key]
+                if key == "tokens" and budget is None:
+                    continue  # An unconfigured token limit blocks execution, never implies infinity.
+                if type(budget) is not int or not (0 if key == "retries" else 1) <= budget <= maximum:
+                    raise InputError(f"Task {key} budget is outside its finite bounds")
+        arms = value.get("arms", list(ARMS))
+>       if not isinstance(arms, list) or not arms or len(set(arms)) != len(arms):
+                                                         ^^^^^^^^^
+E       TypeError: unhashable type: 'list'
+
+polyforge\benchmark\tasks.py:183: TypeError
+____________ test_arm_container_types_fail_as_input_errors[arms1] _____________
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_arm_container_types_fail_1')
+arms = [{'arm': 'A'}]
+
+    @pytest.mark.parametrize("arms", [[["A"]], [{"arm": "A"}], [None]])
+    def test_arm_container_types_fail_as_input_errors(tmp_path: Path, arms: list) -> None:
+        from polyforge.benchmark.tasks import load_suite
+    
+        path = configured_suite(tmp_path)
+        value = json.loads(path.read_text("utf-8"))
+        value["arms"] = arms
+        path.write_text(json.dumps(value), encoding="utf-8")
+        with pytest.raises(InputError):
+>           load_suite(path)
+
+tests\test_phase11_benchmark.py:638: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\tasks.py:203: in load_suite
+    value = _validate_suite(load_json(source))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'arms': [{'arm': 'A'}], 'c_d_general_mcp_parity': 'NOT_RUN', 'execution_metadata': {'A': {'default_tool_inventory': [...git_commit': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', ...}}, 'hidden_evaluator_tasks': 'EXTERNAL_NOT_SUPPLIED', ...}
+
+    def _validate_suite(value: Any) -> dict[str, Any]:
+        if not isinstance(value, dict) or set(value) - _SUITE_FIELDS:
+            raise InputError("Unknown public benchmark suite fields")
+        if value.get("schema_version") != "1.0.0":
+            raise InputError("Unsupported benchmark suite version")
+        tasks = value.get("tasks")
+        if not isinstance(tasks, list) or not 1 <= len(tasks) <= 128:
+            raise InputError("Suite must declare 1..128 public tasks")
+        seen = set()
+        for task in tasks:
+            if not isinstance(task, dict):
+                raise InputError("Each benchmark task must be an object")
+            dimensions = {key: task[key] for key in ("genre", "platform", "complexity") if key in task}
+            validate_schema(
+                {key: child for key, child in task.items() if key not in dimensions},
+                "benchmark_task.schema.json",
+            )
+            if task["task_id"] in seen or task["ownership"] != "DEV_FIXTURE":
+                raise InputError(
+                    "Task IDs must be unique; only public development fixtures are allowed"
+                )
+            seen.add(task["task_id"])
+            if len(task["task_success_schema"]) > 4096:
+                raise InputError("Acceptance metadata exceeds its text limit")
+            for dimension in dimensions.values():
+                if not isinstance(dimension, str) or not 1 <= len(dimension) <= 128:
+                    raise InputError("Task strata require bounded nonempty text")
+            for key, maximum in (
+                ("wall_seconds", 86400),
+                ("tool_calls", 100000),
+                ("tokens", 10000000),
+                ("retries", 2),
+            ):
+                budget = task["budgets"][key]
+                if key == "tokens" and budget is None:
+                    continue  # An unconfigured token limit blocks execution, never implies infinity.
+                if type(budget) is not int or not (0 if key == "retries" else 1) <= budget <= maximum:
+                    raise InputError(f"Task {key} budget is outside its finite bounds")
+        arms = value.get("arms", list(ARMS))
+>       if not isinstance(arms, list) or not arms or len(set(arms)) != len(arms):
+                                                         ^^^^^^^^^
+E       TypeError: unhashable type: 'dict'
+
+polyforge\benchmark\tasks.py:183: TypeError
+___ test_malformed_observation_types_are_typed_report_errors[status-value0] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_observation_typ0')
+field = 'status', value = []
+
+    @pytest.mark.parametrize("field,value", [
+        ("status", []), ("evaluation_status", {}), ("game_status", []), ("seed", {}),
+    ])
+    def test_malformed_observation_types_are_typed_report_errors(
+        tmp_path: Path, field: str, value: object,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "import.jsonl"
+        path.write_text(json.dumps(trial("ASSET", **{field: value})) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:651: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:84: in report_run
+    records, manifest = _read(path)
+                        ^^^^^^^^^^^
+polyforge\benchmark\analysis.py:59: in _read
+    validate_record(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'arm': 'D', 'censored': False, 'complexity': 'small', 'configuration_digest': 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', ...}
+
+    def validate_record(row: Any) -> None:
+        """Reject malformed observations instead of silently dropping failures."""
+        if not isinstance(row, dict):
+            raise InputError("A benchmark observation must be an object")
+        canonical_digest(row)
+        if row.get("arm") not in ARMS or row.get("task_type") not in TASK_TYPES:
+            raise InputError("Unknown benchmark arm or task type")
+        if not isinstance(row.get("task_id"), str) or not 1 <= len(row["task_id"]) <= 4096:
+            raise InputError("Missing bounded task identity")
+        for key in ("executed", "eligible", "task_success", "timed_out", "censored"):
+            if type(row.get(key)) is not bool:
+                raise InputError(f"Observation {key} must be boolean")
+>       if row.get("status") not in STATUSES or row.get("evaluation_status") not in STATUSES:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: unhashable type: 'list'
+
+polyforge\benchmark\metrics.py:29: TypeError
+_ test_malformed_observation_types_are_typed_report_errors[evaluation_status-value1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_observation_typ1')
+field = 'evaluation_status', value = {}
+
+    @pytest.mark.parametrize("field,value", [
+        ("status", []), ("evaluation_status", {}), ("game_status", []), ("seed", {}),
+    ])
+    def test_malformed_observation_types_are_typed_report_errors(
+        tmp_path: Path, field: str, value: object,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "import.jsonl"
+        path.write_text(json.dumps(trial("ASSET", **{field: value})) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:651: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:84: in report_run
+    records, manifest = _read(path)
+                        ^^^^^^^^^^^
+polyforge\benchmark\analysis.py:59: in _read
+    validate_record(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'arm': 'D', 'censored': False, 'complexity': 'small', 'configuration_digest': 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', ...}
+
+    def validate_record(row: Any) -> None:
+        """Reject malformed observations instead of silently dropping failures."""
+        if not isinstance(row, dict):
+            raise InputError("A benchmark observation must be an object")
+        canonical_digest(row)
+        if row.get("arm") not in ARMS or row.get("task_type") not in TASK_TYPES:
+            raise InputError("Unknown benchmark arm or task type")
+        if not isinstance(row.get("task_id"), str) or not 1 <= len(row["task_id"]) <= 4096:
+            raise InputError("Missing bounded task identity")
+        for key in ("executed", "eligible", "task_success", "timed_out", "censored"):
+            if type(row.get(key)) is not bool:
+                raise InputError(f"Observation {key} must be boolean")
+>       if row.get("status") not in STATUSES or row.get("evaluation_status") not in STATUSES:
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: unhashable type: 'dict'
+
+polyforge\benchmark\metrics.py:29: TypeError
+_ test_malformed_observation_types_are_typed_report_errors[game_status-value2] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_observation_typ2')
+field = 'game_status', value = []
+
+    @pytest.mark.parametrize("field,value", [
+        ("status", []), ("evaluation_status", {}), ("game_status", []), ("seed", {}),
+    ])
+    def test_malformed_observation_types_are_typed_report_errors(
+        tmp_path: Path, field: str, value: object,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "import.jsonl"
+        path.write_text(json.dumps(trial("ASSET", **{field: value})) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:651: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:84: in report_run
+    records, manifest = _read(path)
+                        ^^^^^^^^^^^
+polyforge\benchmark\analysis.py:59: in _read
+    validate_record(value)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+row = {'arm': 'D', 'censored': False, 'complexity': 'small', 'configuration_digest': 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', ...}
+
+    def validate_record(row: Any) -> None:
+        """Reject malformed observations instead of silently dropping failures."""
+        if not isinstance(row, dict):
+            raise InputError("A benchmark observation must be an object")
+        canonical_digest(row)
+        if row.get("arm") not in ARMS or row.get("task_type") not in TASK_TYPES:
+            raise InputError("Unknown benchmark arm or task type")
+        if not isinstance(row.get("task_id"), str) or not 1 <= len(row["task_id"]) <= 4096:
+            raise InputError("Missing bounded task identity")
+        for key in ("executed", "eligible", "task_success", "timed_out", "censored"):
+            if type(row.get(key)) is not bool:
+                raise InputError(f"Observation {key} must be boolean")
+        if row.get("status") not in STATUSES or row.get("evaluation_status") not in STATUSES:
+            raise InputError("Unknown observation status")
+>       if row.get("game_status") not in GAME_STATUSES:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: unhashable type: 'list'
+
+polyforge\benchmark\metrics.py:31: TypeError
+____ test_malformed_observation_types_are_typed_report_errors[seed-value3] ____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{4303b014-9b76-40c0-96d2-ebb84debc5ef}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_malformed_observation_typ3')
+field = 'seed', value = {}
+
+    @pytest.mark.parametrize("field,value", [
+        ("status", []), ("evaluation_status", {}), ("game_status", []), ("seed", {}),
+    ])
+    def test_malformed_observation_types_are_typed_report_errors(
+        tmp_path: Path, field: str, value: object,
+    ) -> None:
+        from polyforge.benchmark.analysis import report_run
+    
+        path = tmp_path / "import.jsonl"
+        path.write_text(json.dumps(trial("ASSET", **{field: value})) + "\n", encoding="utf-8")
+>       assert report_run(path).status == "FAIL"
+               ^^^^^^^^^^^^^^^^
+
+tests\test_phase11_benchmark.py:651: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\benchmark\analysis.py:85: in report_run
+    summary = summarize(records)
+              ^^^^^^^^^^^^^^^^^^
+polyforge\benchmark\metrics.py:176: in summarize
+    {"arm": arm, "configuration_digest": digest, **_metrics(rows)}
+                                                   ^^^^^^^^^^^^^^
+polyforge\benchmark\metrics.py:145: in _metrics
+    task_type: _distribution(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+rows = [{'arm': 'D', 'censored': False, 'complexity': 'small', 'configuration_digest': 'cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc', ...}]
+
+    def _distribution(rows: list[dict[str, Any]], *, game: bool = False) -> dict[str, Any]:
+        attempted = [row for row in rows if row["executed"] and row["eligible"]]
+        accepted = [row for row in attempted if _accepted(row, game=game)]
+        times = [
+            row["duration_seconds"] for row in attempted if row.get("duration_seconds") is not None
+        ]
+        accepted_times = [
+            row["duration_seconds"] for row in accepted if row.get("duration_seconds") is not None
+        ]
+        known_costs = [row["cost_usd"] for row in attempted if row.get("cost_usd") is not None]
+        accepted_costs = [row["cost_usd"] for row in accepted if row.get("cost_usd") is not None]
+        resources = {}
+        for field in RESOURCE_FIELDS:
+            values = [
+                row["resources"][field]
+                for row in attempted
+                if row.get("resources", {}).get(field) is not None
+            ]
+            resources[field] = {
+                "observed_count": len(values),
+                "unknown_count": len(attempted) - len(values),
+                "median": median(values) if values else None,
+                "variance": pvariance(values) if values else None,
+                "minimum": min(values) if values else None,
+                "maximum": max(values) if values else None,
+            }
+        count, success = len(attempted), len(accepted)
+        return {
+            "status": "MEASURED" if count else "NOT_MEASURABLE",
+            "numerator": success,
+            "denominator": count,
+            "rate": success / count if count else None,
+            "confidence_interval_95": _interval(success, count),
+            "median_attempt_seconds": median(times) if times else None,
+            "median_accepted_seconds": median(accepted_times) if accepted_times else None,
+            "unknown_duration_count": count - len(times),
+            "known_cost_total_usd": sum(known_costs) if known_costs else None,
+            "unknown_cost_count": count - len(known_costs),
+            "median_attempt_cost_usd": median(known_costs) if known_costs else None,
+            "median_accepted_cost_usd": median(accepted_costs) if accepted_costs else None,
+            "unknown_accepted_cost_count": len(accepted) - len(accepted_costs),
+            "resources": resources,
+            "known_tokens_total": sum(row.get("tokens") or 0 for row in attempted),
+            "unknown_tokens_count": sum(row.get("tokens") is None for row in attempted),
+            "known_interventions_total": sum(row.get("interventions") or 0 for row in attempted),
+            "unknown_interventions_count": sum(row.get("interventions") is None for row in attempted),
+            "timed_out_count": sum(row["timed_out"] for row in attempted),
+            "censored_count": sum(row["censored"] for row in attempted),
+            "planned_not_executed_count": sum(not row["executed"] for row in rows),
+            "ineligible_executed_count": sum(row["executed"] and not row["eligible"] for row in rows),
+            "status_counts": {
+                status: sum(row["status"] == status for row in rows) for status in sorted(STATUSES)
+            },
+            "task_count": len({row["task_id"] for row in attempted}),
+>           "seed_count": len({row.get("seed") for row in attempted}),
+                               ^^^^^^^^^^^^^^^
+        }
+E       TypeError: unhashable type: 'dict'
+
+polyforge\benchmark\metrics.py:130: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_benchmark.py::test_arm_container_types_fail_as_input_errors[arms0]
+FAILED tests/test_phase11_benchmark.py::test_arm_container_types_fail_as_input_errors[arms1]
+FAILED tests/test_phase11_benchmark.py::test_malformed_observation_types_are_typed_report_errors[status-value0]
+FAILED tests/test_phase11_benchmark.py::test_malformed_observation_types_are_typed_report_errors[evaluation_status-value1]
+FAILED tests/test_phase11_benchmark.py::test_malformed_observation_types_are_typed_report_errors[game_status-value2]
+FAILED tests/test_phase11_benchmark.py::test_malformed_observation_types_are_typed_report_errors[seed-value3]
+6 failed, 1 passed, 70 deselected in 1.89s

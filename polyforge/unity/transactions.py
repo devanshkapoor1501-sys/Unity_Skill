@@ -21,6 +21,7 @@ SCOPES = (
     ".polyforge/unity-request.json",
     ".polyforge/owned-package.json",
     ".polyforge/game-latest.json",
+    ".polyforge/platformer-latest.json",
     ".polyforge/unity-latest.json",
     ".polyforge/native-inputs",
     "UnityProject/Assets/PolyForgeGenerated",

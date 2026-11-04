@@ -1,0 +1,88 @@
+"""Actual local-mode timings; no model, concurrency or hidden-evaluation claims."""
+import json
+import os
+import platform
+import statistics
+import time
+from pathlib import Path
+
+from polyforge.runner.metrics import ProcessCounters
+from polyforge.runner.ownership import process_identity
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.workforce.discovery import resource_snapshot
+from polyforge.workforce.orchestrator import run_task
+from polyforge.workforce.router import engine_digest
+from polyforge.workspace import init_workspace
+
+base = Path('.tmp/phase11/local-mode-measurements').resolve()
+assert not base.exists()
+base.mkdir()
+identity = engine_digest()
+request = {
+    'schema_version': '1.0.0',
+    'brief': 'Make a blue industrial crate; preserve editable source.',
+    'task_class': 'CREATE_ASSET', 'domain_tags': ['blender'],
+    'feature_ids': ['editable_source'], 'capability_id': 'mesh.props.crate.v1', 'seed': 42,
+    'input': {'schema_version': '1.0.0', 'asset_id': 'industrial_box',
+              'parameters': {'size_m': [1, 1, 1]}},
+}
+(base / 'request.json').write_text(json.dumps(request, indent=2), encoding='utf-8')
+rows = []
+with (base / 'measurements.jsonl').open('x', encoding='utf-8') as ledger:
+    # Alternate order to expose cold/warm order; each case has a new workspace.
+    for repetition in range(5):
+        for mode in (('single', 'sequential') if repetition % 2 == 0 else ('sequential', 'single')):
+            workspace = base / f'{mode}-{repetition}'
+            assert init_workspace(workspace, 'simple_arena').status == 'PASS'
+            counter = ProcessCounters(os.getpid(), process_identity(os.getpid()))
+            before = counter.read()
+            started = time.monotonic()
+            try:
+                result = run_task(workspace, request, mode=mode)
+                elapsed = time.monotonic() - started
+                after = counter.read()
+            finally:
+                counter.close()
+            (base / f'{mode}-{repetition}.json').write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+            native = []
+            for path in workspace.glob('runs/**/process.json'):
+                observed = json.loads(path.read_text('utf-8'))
+                if 'duration_seconds' in observed:
+                    native.append({'path': path.relative_to(workspace).as_posix(),
+                                   'seconds': observed['duration_seconds'],
+                                   'reason': observed.get('reason'), 'returncode': observed.get('returncode')})
+            row = {
+                'repetition': repetition, 'mode': mode, 'status': result.status,
+                'elapsed_seconds': elapsed,
+                'coordinator_cpu_seconds': after['cpu_seconds'] - before['cpu_seconds'],
+                'coordinator_lifetime_peak_rss_bytes': after['peak_rss_bytes'],
+                'native_processes': native,
+                'execution_mode': result.data.get('execution_mode'),
+                'jobs': len(result.data.get('lineage', [])),
+                'tokens': None, 'cost_usd': None, 'gpu_utilization': None,
+                'worker_peak_rss_bytes': None, 'load_seconds': None,
+                'model_execution': 'NOT_RUN', 'hidden_evaluation': 'NOT_RUN',
+            }
+            ledger.write(json.dumps(row)+'\n'); ledger.flush()
+            rows.append(row)
+            print(json.dumps(row), flush=True)
+            assert result.status == 'PASS', result.to_dict()
+            assert engine_digest() == identity, 'Source changed during mode measurements'
+summary = {
+    'schema_version': '1.0.0', 'scope': 'LOCAL_DEVELOPMENT_MODE_MEASUREMENTS',
+    'engine_digest': identity, 'os': platform.platform(),
+    'hardware': resource_snapshot(WorkspacePolicy(base)),
+    'modes': {mode: {
+        'runs': len(values := [r for r in rows if r['mode'] == mode]),
+        'median_seconds': statistics.median(r['elapsed_seconds'] for r in values),
+        'variance_seconds_squared': statistics.pvariance(r['elapsed_seconds'] for r in values),
+        'all_pass': all(r['status'] == 'PASS' for r in values),
+    } for mode in ('single', 'sequential')},
+    'interpretation': 'Both local modes execute the same role graph. These timings do not measure separate model workers or causal specialization gains.',
+    'concurrent_roles': 'NOT_RUN: no registered host adapter',
+    'inspector_off': 'NOT_RUN: production approval is mandatory',
+    'specialist_vs_general_model': 'NOT_RUN: no model adapters or measured usage',
+    'superiority_claim': 'UNSUPPORTED',
+}
+(base / 'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+print(json.dumps(summary, indent=2), flush=True)

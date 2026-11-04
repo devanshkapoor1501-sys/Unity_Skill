@@ -16,6 +16,15 @@ probe and Blender context polling. Only exact native receipts populate observed
 availability; vision and other methods remain UNKNOWN. Use `--dry-run` to inspect
 the plan without launching native tools.
 
+Phase 11 adds two fixed unfamiliar-API probes: `--tool blender-bvh` checks a
+triangle ray hit, miss and distance bound; `--tool unity-pool` checks instance
+reuse, duplicate-release rejection and cleanup in an empty Editor project.
+Their source references are [Blender BVHTree](https://docs.blender.org/api/current/mathutils.bvhtree.html)
+and [Unity ObjectPool](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Pool.ObjectPool_1.html).
+Receipts qualify only the observed pinned API checks. A changed version is
+rejected, and a successful probe does not create a general modeling or gameplay
+capability. Both commands accept `--dry-run` without native execution.
+
 `knowledge list --json` reads 20 source-attributed KnowledgeCards. Their curated
 summaries cover modeling/topology, UV/PBR, rigs/motion, Blender operator context,
 sprites, Unity Editor/runtime/C#, animation, mechanics, physics, AI, UI, shaders,

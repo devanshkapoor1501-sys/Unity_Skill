@@ -1,0 +1,42 @@
+import json
+from copy import deepcopy
+from pathlib import Path
+
+from polyforge.contracts.validation import load_json
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.repairs import equivalent_bindings
+from polyforge.unity.transactions import ManagedTransaction
+
+policy = WorkspacePolicy(Path('.tmp/phase11/arena-final'))
+tx = ManagedTransaction(policy, 'phase11_shared_cross_tool')
+journal = tx.read()
+before = journal['prestate']
+attempt = journal['recovery_attempt']
+after = deepcopy(before)
+after['bindings'] = load_json(policy.path(attempt + '/bindings.json'))
+after['native_assets'] = load_json(policy.path(attempt + '/asset-identities.json'))
+for name in ('arena', 'platformer'):
+    result = load_json(policy.path(attempt + '/' + name + '-result.json'))
+    oracles = result['data']['oracles']
+    after['regressions'][name] = {
+        'status': oracles['status'],
+        'scenarios': {key: value['gate_status'] for key, value in oracles['scenarios'].items()}}
+diffs = []
+def compare(a, b, path):
+    if equivalent_bindings(a, b):
+        return
+    if isinstance(a, dict) and isinstance(b, dict):
+        for key in a.keys() | b.keys():
+            compare(a.get(key, '<MISSING>'), b.get(key, '<MISSING>'), path + '/' + key)
+    elif isinstance(a, list) and isinstance(b, list) and len(a) == len(b):
+        for i, (left, right) in enumerate(zip(a, b)):
+            compare(left, right, path + '/' + str(i))
+    else:
+        diffs.append({'path': path, 'before': a, 'after': b})
+compare(before, after, '')
+changed = [name for name, digest in journal['original'].items()
+           if not policy.path(name).is_file() or __import__('hashlib').sha256(policy.path(name).read_bytes()).hexdigest() != digest]
+value = {'native_diffs': diffs, 'changed_snapshot_paths': changed,
+         'verify_restored': tx.verify_restored(), 'note': 'Sprite XML checked separately; no native execution.'}
+Path('.tmp/phase11/shared-native-rollback-diagnosis.json').write_text(json.dumps(value, indent=2) + '\n')
+print(json.dumps(value, indent=2))

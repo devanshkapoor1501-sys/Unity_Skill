@@ -1,0 +1,75 @@
+{
+  "checks": [
+    {
+      "gate": "lint",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "started_at": "2026-11-02T15:46:12.992769+00:00",
+      "finished_at": "2026-11-02T15:46:14.799524+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "types-windows",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy"
+      ],
+      "started_at": "2026-11-02T15:46:14.799524+00:00",
+      "finished_at": "2026-11-02T15:46:30.876404+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "types-linux",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--platform",
+        "linux"
+      ],
+      "started_at": "2026-11-02T15:46:30.876404+00:00",
+      "finished_at": "2026-11-02T15:46:44.238399+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "cli-docs",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "tools.generate_cli_docs",
+        "--check"
+      ],
+      "started_at": "2026-11-02T15:46:44.238399+00:00",
+      "finished_at": "2026-11-02T15:46:44.561052+00:00",
+      "returncode": 0
+    },
+    {
+      "gate": "unit",
+      "argv": [
+        "C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "--cov",
+        "--cov-report=term-missing",
+        "--cov-report=json:.tmp/phase11-closure/release-complete-coverage.json",
+        "--junitxml=.tmp/phase11-closure/release-complete-unit.xml",
+        "--basetemp=.tmp/phase11-closure/release-complete-unit-temp"
+      ],
+      "started_at": "2026-11-02T15:46:44.561052+00:00",
+      "finished_at": "2026-11-02T15:59:27.288081+00:00",
+      "returncode": 1
+    }
+  ],
+  "engine_before": "a7b4b8e0392db9d97a9124a96ec7cd79765aeecf8133e7f2f68c57d511f09c8a",
+  "engine_after": "a7b4b8e0392db9d97a9124a96ec7cd79765aeecf8133e7f2f68c57d511f09c8a",
+  "engine_unchanged": true,
+  "combined_coverage": 93.30838969635919,
+  "branch_coverage": 89.87873134328358,
+  "status": "FAIL"
+}

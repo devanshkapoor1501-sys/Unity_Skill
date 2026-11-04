@@ -1,0 +1,133 @@
+......................FFFF..............                                 [100%]
+================================== FAILURES ===================================
+_ test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[reason] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_nonstring_process_enums_a0')
+field = 'reason'
+
+    @pytest.mark.parametrize("field", ["reason", "ownership"])
+    def test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors(tmp_path, field):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        process = candidate.parent.parent / "process.json"
+        value = json.loads(process.read_text())
+        value[field] = []
+        process.write_text(json.dumps(value))
+        with pytest.raises(InputError):
+>           clean_workspace(root, confirm=True)
+
+tests\test_cleanup.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:276: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:224: in _inventory
+    if not _process_ready(policy, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x0000019EC64BC050>
+process = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_nonstring_process_enums_a0/owned/runs/native-1/compile')
+
+    def _process_ready(policy: WorkspacePolicy, process: Path) -> bool:
+        record = _json(policy, policy.path(process / "process.json"))
+        if (
+            not isinstance(record, dict)
+            or type(record.get("returncode")) is not int
+>           or record.get("reason") not in TERMINAL_REASONS
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            or type(record.get("pid")) is not int
+            or not 0 < record["pid"] < 2**31
+            or record.get("ownership") not in {"WINDOWS_JOB", "POSIX_PROCESS_GROUP"}
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\cleanup.py:86: TypeError
+_ test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[ownership] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_nonstring_process_enums_a1')
+field = 'ownership'
+
+    @pytest.mark.parametrize("field", ["reason", "ownership"])
+    def test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors(tmp_path, field):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        process = candidate.parent.parent / "process.json"
+        value = json.loads(process.read_text())
+        value[field] = []
+        process.write_text(json.dumps(value))
+        with pytest.raises(InputError):
+>           clean_workspace(root, confirm=True)
+
+tests\test_cleanup.py:226: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\cleanup.py:276: in clean_workspace
+    candidates, skipped = _inventory(policy)
+                          ^^^^^^^^^^^^^^^^^^
+polyforge\cleanup.py:224: in _inventory
+    if not _process_ready(policy, process):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+policy = <polyforge.security.paths.WorkspacePolicy object at 0x0000019EC64BC7D0>
+process = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_nonstring_process_enums_a1/owned/runs/native-1/compile')
+
+    def _process_ready(policy: WorkspacePolicy, process: Path) -> bool:
+        record = _json(policy, policy.path(process / "process.json"))
+        if (
+            not isinstance(record, dict)
+            or type(record.get("returncode")) is not int
+            or record.get("reason") not in TERMINAL_REASONS
+            or type(record.get("pid")) is not int
+            or not 0 < record["pid"] < 2**31
+>           or record.get("ownership") not in {"WINDOWS_JOB", "POSIX_PROCESS_GROUP"}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        ):
+E       TypeError: unhashable type: 'list'
+
+polyforge\cleanup.py:89: TypeError
+______ test_incomplete_journal_tail_does_not_establish_cleanup_readiness ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_incomplete_journal_tail_d0')
+
+    def test_incomplete_journal_tail_does_not_establish_cleanup_readiness(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        with (root / "runs/native-1/events.jsonl").open("ab") as stream:
+            stream.write(b'{"incomplete":')
+        before = snapshot(root)
+        result = clean_workspace(root, confirm=True)
+>       assert result.data["candidates"] == [] and result.data["skipped"]
+E       AssertionError: assert ([{'bytes': 15...da3a41bef16'}] == []
+E         
+E         Left contains one more item: {'bytes': 15, 'relative_path': 'runs/native-1/compile/tmp/discard.tmp', 'sha256': 'fabf83bdb74299bca36aa6aa733905de715b271aba61623d97423da3a41bef16'}
+E         Use -v to get more diff)
+
+tests\test_cleanup.py:238: AssertionError
+______ test_nested_process_temp_scopes_cannot_duplicate_deletion_targets ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/cleanup-repair-red3/test_nested_process_temp_scope0')
+
+    def test_nested_process_temp_scopes_cannot_duplicate_deletion_targets(tmp_path):
+        from polyforge.cleanup import clean_workspace
+    
+        root, candidate = workspace(tmp_path / "owned")
+        nested = candidate.parent / "nested"
+        (nested / "tmp").mkdir(parents=True)
+        (nested / "process.json").write_bytes((candidate.parent.parent / "process.json").read_bytes())
+        (nested / "tmp/discard.tmp").write_bytes(b"nested")
+        before = snapshot(root)
+>       with pytest.raises(InputError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_cleanup.py:251: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_cleanup.py::test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[reason]
+FAILED tests/test_cleanup.py::test_nonstring_process_enums_are_invalid_input_not_uncaught_type_errors[ownership]
+FAILED tests/test_cleanup.py::test_incomplete_journal_tail_does_not_establish_cleanup_readiness
+FAILED tests/test_cleanup.py::test_nested_process_temp_scopes_cannot_duplicate_deletion_targets
+4 failed, 36 passed in 8.97s

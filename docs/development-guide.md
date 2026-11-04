@@ -3,10 +3,15 @@
 For contributors and assistants preparing the local build tools. For the user overview and skill installation, see [PolyForge](../README.md).
 
 A portable agent skill backed by a local, model-independent Blender-to-Unity
-capability engine. Apache-2.0. Final Codex/Claude installation and optional MCP
-host qualification are scheduled for Phase 10.
+capability engine. Apache-2.0. The portable skill, Codex/Claude host guides and
+bounded stdio MCP bridge are implemented; actual host delegation and installation
+qualification remain separately evidenced in the phase reports.
 
-**Current implementation: Phase 6 playable arena; manual play review passed.** Discovery, descriptor and
+**Current baseline: Phases 0–10 audited; Phase 11 under qualification.** The
+baseline includes workforce role/ownership contracts, specialist asset handoffs,
+review and recovery, knowledge routing and the original playable arena. See the
+[Phase 0–10 audit](../reports/phases-0-10-audit.md) for exact results and gaps.
+Discovery, descriptor and
 manifest validation, scene/feature compilation, and dependency planning work
 without a model, Blender, or Unity. Workspace init, doctor, status and report
 are implemented. Five headless Blender recipes and managed S0–S2 builds generate
@@ -64,10 +69,20 @@ tested. `evaluated_test_status=NOT_RUN` and `game_status=PARTIAL` remain explici
 .\.venv\Scripts\python.exe -m build --no-isolation
 ```
 
+Release qualification also compares two independent canonical distribution
+builds. See [reproducible builds](reproducible-builds.md) for the fixed epoch,
+artifact receipts and scope of the guarantee. CI performs the same comparison
+on Windows Python 3.11/3.12 and Ubuntu Python 3.12.
+
 Security/contracts branch coverage must remain at least 90%. Integration tests
 will be separate from offline tests. Missing tooling is not a passing result.
 The Windows junction test creates a disposable local junction. A restricted host
 may require additional test execution access; do not skip it to pass the gate.
+
+Static C# inspection uses pinned `tree-sitter` and `tree-sitter-c-sharp` packages
+(MIT). Both are in the runtime dependencies and development lock. They parse
+source syntax without executing project code; assembly, preprocessor and type
+binding remain unverified. A namespace clash candidate requires review.
 
 ## Runtime setup and precheck
 
@@ -168,6 +183,11 @@ Phase 9 adds [review, amendments, diagnosis and verified recovery](review-and-re
 Phase 10 adds [local knowledge routing and fixed API probes](knowledge.md),
 portable [Codex](hosts/codex.md)/[Claude](hosts/claude.md) guides and a read-only
 optional MCP bridge. Reference coverage never implies executable support.
+Phase 11 adds [checkpoint gameplay](checkpoint-platformer.md),
+[public benchmark contracts](benchmark.md), static project inspection,
+rendered standalone measurement and [reproducible packaging](reproducible-builds.md).
+The [support map](core-support.md) and [qualification report](../reports/phase-11.md)
+retain external acceptance and unexecuted release gaps.
 The reviewed v5.1 roadmap keeps broader asset, texture, 2D and host integration
 work in later phases; see [the implementation sequence](implementation-plan.md).
 Phases stop at their acceptance

@@ -1,0 +1,28 @@
+.......................F                                                 [100%]
+================================== FAILURES ===================================
+_ test_preservation_excludes_only_new_platformer_scope_including_folder_meta __
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{83d3a68d-366e-402e-a42a-66d2976b59ed}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_preservation_excludes_onl0')
+
+    def test_preservation_excludes_only_new_platformer_scope_including_folder_meta(tmp_path):
+        from polyforge.unity.platformer import _preserved
+    
+        source_fixture(tmp_path)
+        policy = WorkspacePolicy(tmp_path)
+        before = _preserved(policy)
+        generated = tmp_path / "UnityProject/Assets/PolyForgeGenerated"
+        (generated / "Platformer").mkdir()
+        (generated / "Platformer.meta").write_text("guid: new-owned-folder")
+        (generated / "Platformer/new.unity").write_text("new-scene")
+>       assert _preserved(policy) == before
+E       AssertionError: assert {'UnityProjec...6f80ed8', ...} == {'UnityProjec...c7ae609', ...}
+E         
+E         Omitting 8 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'UnityProject/Assets/PolyForgeGenerated/Platformer.meta': '38256a4b1d282121522cf0ab36061bbb0cfab529c71a95ea27d4bb50e96f988d'}
+E         Use -v to get more diff
+
+tests\test_phase11_platformer.py:305: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_platformer.py::test_preservation_excludes_only_new_platformer_scope_including_folder_meta
+1 failed, 23 passed in 1.56s

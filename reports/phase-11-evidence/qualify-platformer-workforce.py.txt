@@ -1,0 +1,43 @@
+"""Actual reusable platformer workforce path; missing acceptance remains REVIEW."""
+import json
+import sys
+from pathlib import Path
+
+from polyforge.workforce.orchestrator import run_task
+from polyforge.workforce.router import engine_digest
+from polyforge.contracts.results import ErrorKind, failure
+from polyforge.contracts.validation import InputError
+from polyforge.workforce.router import plan_task
+
+base = Path('.tmp/phase11').resolve()
+workspace = base / 'platformer-demo'
+inputs = json.loads((workspace / 'platformer-input.json').read_text('utf-8'))
+inputs['standalone'] = True
+request = {
+    'schema_version': '1.0.0',
+    'brief': 'Build a 2D checkpoint platformer with grounded jumping and a hazard.',
+    'task_class': 'BUILD_GAME', 'domain_tags': ['unity', '2d', 'gameplay'],
+    'feature_ids': ['grounded_jump', 'checkpoint_respawn', 'hazard_damage', 'goal_contact'],
+    'capability_id': 'unity.game.platformer.v1', 'input': inputs, 'seed': 42,
+}
+identity = engine_digest()
+label = 'platformer-workforce-final' if '--final' in sys.argv else 'platformer-workforce'
+assert not (base / (label + '-result.json')).exists(), 'Preserve prior outcomes'
+(base / (label + '-request.json')).write_text(json.dumps(request, indent=2), encoding='utf-8')
+plan = plan_task(request, workspace=workspace)
+try:
+    result = run_task(workspace, request, mode='sequential')
+except InputError as exc:
+    assert exc.kind == ErrorKind.POLICY_DENIED, (exc.kind, str(exc))
+    folder = workspace / 'workforce' / plan['task_id']
+    board = json.loads((folder / 'board.json').read_text('utf-8'))
+    production = json.loads((folder / 'production.json').read_text('utf-8'))
+    assert board['technical'] == 'APPROVED' and board['acceptance']['status'] == 'REVIEW'
+    assert production['result']['status'] == 'PASS'
+    assert production['result']['data']['standalone_gameplay'] == 'PASS'
+    result = failure(exc.kind, exc.code, str(exc))
+    (base / (label + '-review.json')).write_text(json.dumps(board, indent=2), encoding='utf-8')
+(base / (label + '-result.json')).write_text(json.dumps(result.to_dict(), indent=2), encoding='utf-8')
+print(json.dumps(result.to_dict(), indent=2), flush=True)
+assert result.status == 'BLOCKED', 'No independent platformer original-brief acceptance was supplied'
+assert identity == engine_digest(), 'Source changed during workforce qualification'

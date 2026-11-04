@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0.0", "scope": "PUBLIC_DEVELOPMENT", "scenarios": [
+    {"id":"player_moves","setup":{"position":[-8,0,0]},"steps":[{"move":1,"ticks":50}]},
+    {"id":"ground_collision","setup":{"position":[-8,2,0]},"steps":[{"ticks":100}]},
+    {"id":"grounded_jump","setup":{"position":[-8,0,0]},"steps":[{"jump":true,"ticks":1},{"ticks":64}]},
+    {"id":"airborne_jump","setup":{"position":[-8,0,0]},"steps":[{"jump":true,"ticks":1},{"ticks":9},{"jump":true,"ticks":1},{"ticks":54}]},
+    {"id":"checkpoint_respawn","setup":{"position":[-4,0,0]},"steps":[{"move":1,"ticks":70}]},
+    {"id":"hazard_damage","setup":{"position":[-1,0,0]},"steps":[{"move":1,"ticks":40}]},
+    {"id":"health_failure","setup":{"position":[-1,0,0],"health":1},"steps":[{"move":1,"ticks":40}]},
+    {"id":"goal_contact","setup":{"position":[6.5,0,0]},"steps":[{"move":1,"ticks":40}]},
+    {"id":"restart_resets","setup":{"position":[6.5,0,0]},"steps":[{"move":1,"ticks":40},{"restart":true,"ticks":1}]},
+    {"id":"restart_failure","setup":{"position":[-1,0,0],"health":1},"steps":[{"move":1,"ticks":40},{"restart":true,"ticks":1}]},
+    {"id":"journey","setup":{"position":[-8,0,0]},"steps":[{"move":1,"ticks":85},{"move":1,"jump":true,"ticks":40},{"move":1,"ticks":2},{"move":1,"jump":true,"ticks":40},{"move":1,"ticks":2},{"move":1,"jump":true,"ticks":40},{"move":1,"ticks":50}]}
+  ]
+}

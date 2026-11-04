@@ -1,0 +1,181 @@
+.....FFF                                                                 [100%]
+================================== FAILURES ===================================
+_____ test_editable_archive_is_bound_to_scene_and_imported_sprite[prefab] _____
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{2b6a01b4-8ea6-44f6-ade6-56f213332239}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound5')
+fault = 'prefab'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate", "prefab", "controller", "clip"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {
+            scene: b"editable scene",
+            scene + ".meta": b"guid: " + b"1" * 32,
+            prefab: b"prefab",
+            prefab + ".meta": b"guid: " + b"2" * 32,
+            "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas",
+            "Assets/PolyForgeGenerated/Sprites/Sprite.controller": b"approved controller",
+            "Assets/PolyForgeGenerated/Sprites/Walk.anim": b"approved clip",
+        }
+        game = {
+            "scene_path": scene,
+            "sprite_prefab": prefab,
+            "sprite_prefab_guid": "2" * 32,
+            "atlas_sha256": hashlib.sha256(b"atlas").hexdigest(),
+            "source_hashes": {"UnityProject/" + name: hashlib.sha256(value).hexdigest()
+                              for name, value in files.items() if name != scene and name != scene + ".meta"},
+        }
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        elif fault in {"prefab", "controller", "clip"}:
+            name = {"prefab": prefab, "controller": "Assets/PolyForgeGenerated/Sprites/Sprite.controller",
+                    "clip": "Assets/PolyForgeGenerated/Sprites/Walk.anim"}[fault]
+            files[name] = b""
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                with pytest.warns(UserWarning, match="Duplicate name"):
+                    output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+        assert callable(verify), "Editable archive verification is missing"
+        if fault is None:
+            verify(archive, game, "1" * 32)
+        else:
+>           with pytest.raises(InputError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_registration.py:301: Failed
+___ test_editable_archive_is_bound_to_scene_and_imported_sprite[controller] ___
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{2b6a01b4-8ea6-44f6-ade6-56f213332239}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound6')
+fault = 'controller'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate", "prefab", "controller", "clip"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {
+            scene: b"editable scene",
+            scene + ".meta": b"guid: " + b"1" * 32,
+            prefab: b"prefab",
+            prefab + ".meta": b"guid: " + b"2" * 32,
+            "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas",
+            "Assets/PolyForgeGenerated/Sprites/Sprite.controller": b"approved controller",
+            "Assets/PolyForgeGenerated/Sprites/Walk.anim": b"approved clip",
+        }
+        game = {
+            "scene_path": scene,
+            "sprite_prefab": prefab,
+            "sprite_prefab_guid": "2" * 32,
+            "atlas_sha256": hashlib.sha256(b"atlas").hexdigest(),
+            "source_hashes": {"UnityProject/" + name: hashlib.sha256(value).hexdigest()
+                              for name, value in files.items() if name != scene and name != scene + ".meta"},
+        }
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        elif fault in {"prefab", "controller", "clip"}:
+            name = {"prefab": prefab, "controller": "Assets/PolyForgeGenerated/Sprites/Sprite.controller",
+                    "clip": "Assets/PolyForgeGenerated/Sprites/Walk.anim"}[fault]
+            files[name] = b""
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                with pytest.warns(UserWarning, match="Duplicate name"):
+                    output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+        assert callable(verify), "Editable archive verification is missing"
+        if fault is None:
+            verify(archive, game, "1" * 32)
+        else:
+>           with pytest.raises(InputError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_registration.py:301: Failed
+______ test_editable_archive_is_bound_to_scene_and_imported_sprite[clip] ______
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/AppData/Local/Packages/sandbox.{2b6a01b4-8ea6-44f6-ade6-56f213332239}/AC/Temp/pytest-of-Divansh Kapoor/pytest-0/test_editable_archive_is_bound7')
+fault = 'clip'
+
+    @pytest.mark.parametrize("fault", [None, "scene", "guid", "atlas", "duplicate", "prefab", "controller", "clip"])
+    def test_editable_archive_is_bound_to_scene_and_imported_sprite(tmp_path, fault):
+        import hashlib
+        import zipfile
+    
+        from polyforge.workforce import workers
+    
+        archive = tmp_path / "native-output.zip"
+        scene = "Assets/PolyForgeGenerated/Platformer/SpritePlatformer.unity"
+        prefab = "Assets/PolyForgeGenerated/Sprites/Robot2D.prefab"
+        files = {
+            scene: b"editable scene",
+            scene + ".meta": b"guid: " + b"1" * 32,
+            prefab: b"prefab",
+            prefab + ".meta": b"guid: " + b"2" * 32,
+            "Assets/PolyForgeGenerated/Sprites/atlas.png": b"atlas",
+            "Assets/PolyForgeGenerated/Sprites/Sprite.controller": b"approved controller",
+            "Assets/PolyForgeGenerated/Sprites/Walk.anim": b"approved clip",
+        }
+        game = {
+            "scene_path": scene,
+            "sprite_prefab": prefab,
+            "sprite_prefab_guid": "2" * 32,
+            "atlas_sha256": hashlib.sha256(b"atlas").hexdigest(),
+            "source_hashes": {"UnityProject/" + name: hashlib.sha256(value).hexdigest()
+                              for name, value in files.items() if name != scene and name != scene + ".meta"},
+        }
+        if fault == "scene":
+            del files[scene]
+        elif fault == "guid":
+            files[prefab + ".meta"] = b"guid: " + b"3" * 32
+        elif fault == "atlas":
+            files["Assets/PolyForgeGenerated/Sprites/atlas.png"] = b"wrong sprite source"
+        elif fault in {"prefab", "controller", "clip"}:
+            name = {"prefab": prefab, "controller": "Assets/PolyForgeGenerated/Sprites/Sprite.controller",
+                    "clip": "Assets/PolyForgeGenerated/Sprites/Walk.anim"}[fault]
+            files[name] = b""
+        with zipfile.ZipFile(archive, "w") as output:
+            for name, data in files.items():
+                output.writestr(name, data)
+            if fault == "duplicate":
+                with pytest.warns(UserWarning, match="Duplicate name"):
+                    output.writestr(scene, b"second ambiguous scene")
+        verify = getattr(workers, "verify_platformer_archive", None)
+        assert callable(verify), "Editable archive verification is missing"
+        if fault is None:
+            verify(archive, game, "1" * 32)
+        else:
+>           with pytest.raises(InputError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE <class 'polyforge.contracts.validation.InputError'>
+
+tests\test_phase11_registration.py:301: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[prefab]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[controller]
+FAILED tests/test_phase11_registration.py::test_editable_archive_is_bound_to_scene_and_imported_sprite[clip]
+3 failed, 5 passed, 18 deselected in 0.73s

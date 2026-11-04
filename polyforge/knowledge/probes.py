@@ -22,6 +22,8 @@ PINS = {
     "blender": ("5.2.2", "blender.mesh-context.v1", "blender-knowledge-probe.py.txt"),
     "unity": ("6000.6.3f1", "unity.typecache.v1", "unity-knowledge-probe.cs.txt"),
     "unity-ui": ("6000.6.3f1", "unity.editor-window.v1", "unity-ui-probe.cs.txt"),
+    "blender-bvh": ("5.2.2", "blender.bvh-ray.v1", "blender-bvh-probe.py.txt"),
+    "unity-pool": ("6000.6.3f1", "unity.object-pool.v1", "unity-pool-probe.cs.txt"),
 }
 CHECKS = {
     "blender": {
@@ -32,6 +34,16 @@ CHECKS = {
     },
     "unity": {"known_record_found": True, "unrelated_type_excluded": True, "editor_assembly": True},
     "unity-ui": {"interactive_mode": True, "window_painted": True},
+    "blender-bvh": {
+        "ray_hits_triangle": True,
+        "ray_misses_triangle": True,
+        "distance_limit_enforced": True,
+    },
+    "unity-pool": {
+        "released_instance_reused": True,
+        "duplicate_release_rejected": True,
+        "clear_destroys_inactive": True,
+    },
 }
 
 
@@ -86,7 +98,7 @@ def validate_observation(tool: str, value: Any) -> dict[str, Any]:
 
 def _args(policy: WorkspacePolicy, executable: Path, tool: str, relative: str) -> list[str]:
     output = str(policy.path(relative + "/observation.json"))
-    if tool == "blender":
+    if tool.startswith("blender"):
         return [
             str(executable),
             "--background",
@@ -100,7 +112,7 @@ def _args(policy: WorkspacePolicy, executable: Path, tool: str, relative: str) -
         ]
     return [
         str(executable),
-        *(["-batchmode", "-nographics"] if tool == "unity" else []),
+        *(["-batchmode", "-nographics"] if tool != "unity-ui" else []),
         "-job-worker-count",
         "2",
         "-projectPath",
@@ -121,8 +133,8 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
     policy = WorkspacePolicy(workspace)
     config = configuration(policy)
     executable = discover_tool(
-        "blender" if tool == "blender" else "unity",
-        config.blender_executable if tool == "blender" else config.unity_executable,
+        "blender" if tool.startswith("blender") else "unity",
+        config.blender_executable if tool.startswith("blender") else config.unity_executable,
     )
     if dry_run:
         return Result(
@@ -151,13 +163,13 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
         relative
         + (
             "/probe.py"
-            if tool == "blender"
+            if tool.startswith("blender")
             else "/scratch/UnityProject/Assets/Editor/PolyForgeKnowledgeProbe.cs"
         )
     )
     policy.mkdir(path.parent)
     path.write_bytes(source)
-    if tool != "blender":
+    if not tool.startswith("blender"):
         atomic_json(
             policy, relative + "/scratch/UnityProject/Packages/manifest.json", {"dependencies": {}}
         )
@@ -174,7 +186,7 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
             min(
                 180,
                 config.blender_timeout_seconds
-                if tool == "blender"
+                if tool.startswith("blender")
                 else config.unity_timeout_seconds,
             ),
             config.max_output_bytes,
@@ -261,8 +273,8 @@ def read_probe(policy: WorkspacePolicy, tool: str) -> dict[str, Any] | None:
         raise InputError("Invalid registered knowledge probe receipt")
     config = configuration(policy)
     executable = discover_tool(
-        "blender" if tool == "blender" else "unity",
-        config.blender_executable if tool == "blender" else config.unity_executable,
+        "blender" if tool.startswith("blender") else "unity",
+        config.blender_executable if tool.startswith("blender") else config.unity_executable,
     )
     if (
         executable is None
@@ -273,7 +285,7 @@ def read_probe(policy: WorkspacePolicy, tool: str) -> dict[str, Any] | None:
     relative = "runs/" + receipt["run_id"]
     expected_source = relative + (
         "/probe.py"
-        if tool == "blender"
+        if tool.startswith("blender")
         else "/scratch/UnityProject/Assets/Editor/PolyForgeKnowledgeProbe.cs"
     )
     if (

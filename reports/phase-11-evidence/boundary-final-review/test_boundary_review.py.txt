@@ -1,0 +1,122 @@
+"""Read-only review reproductions; all generated fixtures stay below this directory."""
+import importlib.util
+from pathlib import Path
+
+import pytest
+
+import polyforge.inspection as inspection
+from polyforge.benchmark import runner as benchmark_runner
+from polyforge.benchmark.tasks import load_suite
+from polyforge.contracts.results import Result
+from polyforge.contracts.validation import InputError
+
+ROOT = Path(__file__).resolve().parents[3]
+spec = importlib.util.spec_from_file_location("review_test_helpers", ROOT / "tests/test_phase11_benchmark.py")
+helpers = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(helpers)
+
+
+def project(root):
+    for name, text in {
+        "ProjectSettings/ProjectVersion.txt": "m_EditorVersion: 6000.6.3f1\n",
+        "Packages/manifest.json": '{"dependencies": {}}',
+        "Assets/Thing.mat": "%YAML 1.1\n",
+    }.items():
+        p = root / name
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text)
+
+
+def single_task(tmp_path):
+    import json
+    path = helpers.configured_suite(tmp_path)
+    value = json.loads(path.read_text("utf-8"))
+    value["tasks"] = value["tasks"][-1:]
+    value["tasks"][0]["budgets"]["wall_seconds"] = 1
+    value["tasks"][0]["budgets"]["retries"] = 0
+    path.write_text(json.dumps(value), encoding="utf-8")
+    return load_suite(path)
+
+
+def test_metadata_read_stays_bounded_after_inventory_race(tmp_path, monkeypatch):
+    project(tmp_path)
+    native = inspection.inventory_project
+    read_bytes = Path.read_bytes
+    calls = 0
+    observed = []
+
+    def inventory(*args, **kwargs):
+        nonlocal calls
+        rows = native(*args, **kwargs)
+        calls += 1
+        if calls == 1:
+            (tmp_path / "Assets/Thing.mat").write_bytes(b"x" * 2_097_152)
+        return rows
+
+    def read(path):
+        raw = read_bytes(path)
+        if path.name == "Thing.mat":
+            observed.append(len(raw))
+        return raw
+
+    monkeypatch.setattr(inspection, "inventory_project", inventory)
+    monkeypatch.setattr(Path, "read_bytes", read)
+    with pytest.raises(InputError, match="changed before static metadata"):
+        inspection.inspect_project(tmp_path, max_file_bytes=1_048_576)
+    assert max(observed) <= 1_048_577, f"Metadata read bypassed 1 MiB limit: {observed}"
+
+
+def test_wide_directory_inventory_stops_at_declared_budget(tmp_path, monkeypatch):
+    for index in range(20):
+        (tmp_path / str(index)).mkdir()
+    native = inspection.os.scandir
+    observed = []
+
+    class Scan:
+        def __init__(self, path):
+            self.stream = native(path)
+            self.path = path
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            self.stream.close()
+        def __iter__(self):
+            for entry in self.stream:
+                if self.path == tmp_path:
+                    observed.append(entry.name)
+                yield entry
+
+    monkeypatch.setattr(inspection.os, "scandir", Scan)
+    with pytest.raises(InputError, match="directory inventory"):
+        inspection.inspect_project(tmp_path, max_files=2)
+    assert len(observed) <= 2, f"Queued {len(observed)} child dirs under max_files=2"
+
+
+@pytest.mark.parametrize("retries", [-1, 0.5, True])
+def test_invalid_retry_observation_cannot_be_accepted(tmp_path, retries):
+    class Runner(helpers.PublicRunner):
+        def run(self, task, *, arm, seed):
+            return Result(data={"tokens": 1, "tool_calls": 1, "retries": retries})
+
+    result = benchmark_runner.run_suite(single_task(tmp_path), "D", tmp_path / "run", runner=Runner(), evaluator=helpers.PublicEvaluator())
+    row = result.data["records"][0]
+    assert not row["task_success"], f"Invalid retries={retries!r} accepted: {row['status']}"
+
+
+def test_duration_includes_time_until_acceptance(tmp_path, monkeypatch):
+    clock = [0.0]
+    monkeypatch.setattr(benchmark_runner.time, "monotonic", lambda: clock[0])
+
+    class Runner(helpers.PublicRunner):
+        def run(self, task, *, arm, seed):
+            clock[0] = 0.1
+            return super().run(task, arm=arm, seed=seed)
+
+    class Evaluator(helpers.PublicEvaluator):
+        def grade(self, request):
+            clock[0] = 10.0
+            return super().grade(request)
+
+    result = benchmark_runner.run_suite(single_task(tmp_path), "D", tmp_path / "run", runner=Runner(), evaluator=Evaluator())
+    row = result.data["records"][0]
+    assert row["duration_seconds"] == 10.0, f"Accepted at t=10 but reports t={row['duration_seconds']}"

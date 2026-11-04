@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "scene_id", "seed", "sprite_receipt", "layout"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "scene_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "seed": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+    "sprite_receipt": {"type": "string", "pattern": "^runs/[A-Za-z0-9_-]{1,128}/bindings\\.json$"},
+    "layout": {"const": "checkpoint_course_v1"},
+    "standalone": {"type": "boolean"},
+    "required_features": {"type": "array", "maxItems": 8, "uniqueItems": true,
+      "items": {"enum": ["movement.platformer.v1", "physics.2d.v1", "sprite.animation.v1", "checkpoint.v1", "combat.health.v1", "objective.goal.v1", "objective.failure.v1", "game.restart.v1"]}}
+  }
+}

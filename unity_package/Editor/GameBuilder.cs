@@ -101,6 +101,8 @@ namespace PolyForge.Game.Editor
             camera.transform.position=new Vector3(12,14,-12);camera.transform.LookAt(Vector3.zero);camera.farClipPlane=300;
             new GameObject("HUD").AddComponent<ArenaHud>().session=session;
             session.gameObject.AddComponent<ArenaPerformance>().session=session;
+            var profile=session.gameObject.AddComponent<StandaloneProfile>();
+            profile.gameKind="arena";profile.inputDigest=job.input_digest;profile.sceneId=job.scene_id;
             Time.fixedDeltaTime=job.fixed_delta_seconds;
             Directory.CreateDirectory(Path.GetDirectoryName(ScenePath));EditorSceneManager.SaveScene(scene,ScenePath);
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene(ScenePath,true)};

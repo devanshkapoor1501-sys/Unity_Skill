@@ -1,0 +1,33 @@
+import json
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+from polyforge.runner.locks import unity_project_lock
+from polyforge.security.paths import WorkspacePolicy
+from polyforge.unity.bridge import configuration, unity_tool, launch
+from polyforge.unity.upgrade import sync_package
+from polyforge.workforce.router import engine_digest
+from polyforge.contracts.validation import InputError
+
+label = 'red' if '--red' in sys.argv else 'green'
+policy = WorkspacePolicy(Path('.tmp/phase11/platformer-demo'))
+identity = engine_digest()
+game = sorted(policy.path('runs').glob('platformer-check-*/game-input.json'),
+              key=lambda p: p.stat().st_mtime_ns)[-1]
+relative = 'runs/phase11-inspection-' + label
+with unity_project_lock(policy, policy.path('UnityProject')):
+    sync_package(policy)
+    try:
+        launch(policy, unity_tool(configuration(policy)), configuration(policy), relative,
+               'tests', output=policy.path(relative + '/EditMode.xml'), test_platform='EditMode',
+               test_filter='PolyForge.Platformer.Editor.Tests', game_input=game)
+    except InputError:
+        assert label == 'red'
+xml = ET.parse(policy.path(relative + '/EditMode.xml')).getroot()
+value = {'phase': label, 'result': xml.attrib, 'engine_digest': identity,
+         'engine_unchanged': identity == engine_digest()}
+Path('.tmp/phase11/platformer-inspection-' + label + '.json').write_text(json.dumps(value, indent=2))
+print(json.dumps(value, indent=2))
+assert value['engine_unchanged']
+assert int(xml.get('failed', '-1')) == (1 if label == 'red' else 0)
