@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "organic",
+  "input_digest": "6f0e022539a54d45c8c5a08e47a08c209a51835f1e0d187611ca08720d047952",
+  "technical_status": "PASS",
+  "artistic_status": "REVIEW",
+  "source_unchanged": true,
+  "source_sha256_before": "4d76a8b97d675f5329c65f0597bebd7a988fb872267d4bdac7a4ddcdc0f0c171",
+  "source_sha256_after": "4d76a8b97d675f5329c65f0597bebd7a988fb872267d4bdac7a4ddcdc0f0c171",
+  "coordinate_basis": {
+    "up": "Z",
+    "forward": "-Y",
+    "meters_per_unit": 1.0
+  },
+  "root": {
+    "semantic_id": "organic",
+    "location_unity": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "rotation_deg": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "materials": [
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.8999999761581421,
+        0.41999998688697815,
+        0.07999999821186066,
+        1.0
+      ]
+    },
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18000000715255737,
+        0.3199999928474426,
+        0.47999998927116394,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.07999999821186066,
+        0.10000000149011612,
+        0.12999999523162842,
+        1.0
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "body",
+      "primitive": "sphere",
+      "parent_id": "organic",
+      "export": true,
+      "location_unity": [
+        0.0,
+        1.5,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          1.9999987483024597,
+          3.0,
+          0.9999996721744537
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 482,
+      "polygons": 512,
+      "triangles": 960,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 3.091453974399808,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.9999990463256836,
+        0.0,
+        -0.5
+      ],
+      "bounds_max_unity": [
+        0.9999997019767761,
+        3.0,
+        0.49999967217445374
+      ]
+    },
+    {
+      "id": "crown",
+      "primitive": "sphere",
+      "parent_id": "organic",
+      "export": true,
+      "location_unity": [
+        0.0,
+        1.9500000476837158,
+        0.10000000149011612
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "subdivision",
+          "levels": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.6999995708465576,
+          0.8999999761581421,
+          0.34999987483024597
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 7938,
+      "polygons": 7936,
+      "triangles": 15872,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.1117026586703589,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.34553062915802,
+        1.5010908842086792,
+        -0.07276540249586105
+      ],
+      "bounds_max_unity": [
+        0.34553083777427673,
+        2.398909091949463,
+        0.2727653682231903
+      ]
+    },
+    {
+      "id": "ridge_0",
+      "primitive": "curve",
+      "parent_id": "organic",
+      "export": true,
+      "location_unity": [
+        -0.20000000298023224,
+        1.5,
+        0.30000001192092896
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "trim"
+      ],
+      "modifiers": [
+        {
+          "type": "weld",
+          "merge_threshold_m": 9.999999974752427e-07
+        }
+      ],
+      "source_geometry": {
+        "points": [
+          [
+            -0.20000000298023224,
+            -0.44999998807907104,
+            -0.029999999329447746
+          ],
+          [
+            0.0,
+            0.0,
+            0.05999999865889549
+          ],
+          [
+            0.20000000298023224,
+            0.44999998807907104,
+            -0.029999999329447746
+          ]
+        ],
+        "bevel_m": 0.012000000104308128,
+        "closed_caps": true,
+        "spline_type": "POLY"
+      },
+      "modifiers_enabled": true,
+      "vertices": 18,
+      "polygons": 20,
+      "triangles": 32,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.00037151992547897384,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.4109812378883362,
+        1.0454471111297607,
+        0.259056955575943
+      ],
+      "bounds_max_unity": [
+        0.010738074779510498,
+        1.9551000595092773,
+        0.3711243271827698
+      ]
+    },
+    {
+      "id": "ridge_1",
+      "primitive": "curve",
+      "parent_id": "organic",
+      "export": true,
+      "location_unity": [
+        0.0,
+        1.5,
+        0.30000001192092896
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "trim"
+      ],
+      "modifiers": [
+        {
+          "type": "weld",
+          "merge_threshold_m": 9.999999974752427e-07
+        }
+      ],
+      "source_geometry": {
+        "points": [
+          [
+            -0.20000000298023224,
+            -0.44999998807907104,
+            -0.029999999329447746
+          ],
+          [
+            0.0,
+            0.0,
+            0.05999999865889549
+          ],
+          [
+            0.20000000298023224,
+            0.44999998807907104,
+            -0.029999999329447746
+          ]
+        ],
+        "bevel_m": 0.012000000104308128,
+        "closed_caps": true,
+        "spline_type": "POLY"
+      },
+      "modifiers_enabled": true,
+      "vertices": 18,
+      "polygons": 20,
+      "triangles": 32,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.00037151992547897384,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.21098124980926514,
+        1.0454471111297607,
+        0.259056955575943
+      ],
+      "bounds_max_unity": [
+        0.21073807775974274,
+        1.9551000595092773,
+        0.3711243271827698
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "base",
+      "parent_id": "organic",
+      "position_unity": [
+        0.0,
+        0.0,
+        -0.0
+      ]
+    },
+    {
+      "id": "top",
+      "parent_id": "organic",
+      "position_unity": [
+        0.0,
+        3.0,
+        -0.0
+      ]
+    }
+  ],
+  "aggregate": {
+    "vertices": 8456,
+    "polygons": 8488,
+    "triangles": 16896,
+    "bounds_min_unity": [
+      -0.9999990463256836,
+      0.0,
+      -0.5
+    ],
+    "bounds_max_unity": [
+      0.9999997019767761,
+      3.0,
+      0.49999967217445374
+    ]
+  },
+  "lod": {
+    "vertices": 620,
+    "polygons": 632,
+    "triangles": 1224,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0,
+    "nonfinite_values": 0,
+    "normal_inconsistencies": 0,
+    "signed_volume": 3.045592347644234,
+    "uv_layers": 1,
+    "uv_nonfinite_values": 0,
+    "invalid_material_faces": 0,
+    "bounds_min_unity": [
+      -0.9999999403953552,
+      0.0,
+      -0.5
+    ],
+    "bounds_max_unity": [
+      1.0,
+      3.0,
+      0.5
+    ],
+    "source_polygons": 8488,
+    "ratio": 0.07445805843543826
+  },
+  "issues": []
+}

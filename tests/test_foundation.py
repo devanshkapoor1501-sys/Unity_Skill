@@ -84,6 +84,11 @@ class CLIAcceptanceTests(unittest.TestCase):
                 "asset.package.build.v1",
                 "sprite.robot.bake.v1",
                 "sprite.unity.strip.v1",
+                "mesh.modeling.room_kit.v1",
+                "mesh.modeling.vehicle.v1",
+                "mesh.modeling.mechanical_prop.v1",
+                "mesh.modeling.organic.v1",
+                "mesh.modeling.compose.v1",
             ],
         )
 

@@ -6,6 +6,7 @@ import copy
 import re
 from typing import Any
 
+from polyforge.blender.modeling import MODELING_CAPABILITIES
 from polyforge.contracts.validation import InputError, canonical_digest
 from polyforge.knowledge.catalog import catalog_cards, validate_cards
 from polyforge.security.paths import WorkspacePolicy
@@ -105,6 +106,7 @@ def route_reference(
             ranked.append((score, card["knowledge_id"], card))
     selected = [copy.deepcopy(row[2]) for row in sorted(ranked, key=lambda r: (-r[0], r[1]))[:3]]
     capabilities = []
+    modeling_kind = None
     # These are engine-owned typed routes, never instructions or aliases from a document.
     sprite_bake = output == "SPRITE" and "robot" in query and "bake" in query
     if output == "SPRITE" and sprite_bake:
@@ -114,6 +116,23 @@ def route_reference(
     ):
         capabilities = ["sprite.unity.strip.v1"]
     elif output == "ASSET":
+        advanced = [
+            kind
+            for phrase, kind in (
+                ("room kit", "room_kit"),
+                ("vehicle", "vehicle"),
+                ("mechanical prop", "mechanical_prop"),
+                ("organic practice", "organic"),
+                ("modeling composition", "compose"),
+            )
+            if re.search(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", query)
+        ]
+        assisted = re.search(
+            r"\b(?:sculpt(?:ing|ed)?|retopology|retopo|text|grease pencil|simulation)\b", query
+        )
+        if len(advanced) == 1 and assisted is None:
+            modeling_kind = advanced[0]
+            capabilities.append(MODELING_CAPABILITIES[modeling_kind])
         for word, identifier in {
             "crate": "mesh.props.crate.v1",
             "robot": "mesh.robot.modular.v1",
@@ -121,7 +140,7 @@ def route_reference(
             "doorway": "mesh.architecture.doorway.v1",
             "tile": "mesh.environment.tile.v1",
         }.items():
-            if re.search(r"\b" + word + r"\b", query):
+            if not advanced and re.search(r"\b" + word + r"\b", query):
                 capabilities.append(identifier)
     elif output == "ANIMATE" and "robot" in query:
         capabilities = ["animation.robot.rig.v1"]
@@ -178,6 +197,10 @@ def route_reference(
         if output == "GAME"
         else ["release_supervisor"]
     )
+    if modeling_kind is not None and capabilities:
+        from polyforge.workforce.permissions import MODELING_ROLES
+
+        roles = ["asset_architect", MODELING_ROLES[modeling_kind], "asset_inspector"]
     return {
         "schema_version": "1.0.0",
         "query": request["query"],

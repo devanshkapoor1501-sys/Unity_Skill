@@ -6,6 +6,7 @@ import zipfile
 from pathlib import Path
 from typing import Any
 
+from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
 from polyforge.contracts.results import ErrorKind, Result
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
 from polyforge.security.paths import WorkspacePolicy
@@ -94,6 +95,52 @@ def check_candidate(policy: WorkspacePolicy, candidate: dict[str, Any]) -> None:
     for item in candidate["files"]:
         if hashlib.sha256(policy.path(item["path"]).read_bytes()).hexdigest() != item["sha256"]:
             raise InputError("Candidate changed after sealing", kind=ErrorKind.CONTRACT_FAILURE)
+
+
+def _inspect_modeling(
+    policy: WorkspacePolicy,
+    candidate: dict[str, Any],
+    request: dict[str, Any],
+    run: str,
+    inventory: set[str],
+) -> None:
+    from polyforge.blender.modeling_inspection import validate_modeling_report
+
+    kind = next(
+        k
+        for k, identifier in MODELING_CAPABILITIES.items()
+        if identifier == request["capability_id"]
+    )
+    plan = compile_modeling(kind, request["input"], seed=request.get("seed", 42))
+    prefix = "runs/" + run + "/asset/"
+    required = {
+        prefix + name
+        for name in ("source.blend", "asset.fbx", "lod.fbx", "inspection.json", "provenance.json")
+    }
+    if not required <= inventory:
+        raise InputError(
+            "Modeling review requires sealed source, exports, inspection and provenance"
+        )
+    report = load_json(policy.path(prefix + "inspection.json"))
+    provenance = load_json(policy.path(prefix + "provenance.json"))
+    validate_modeling_report(plan, report)
+    source_digest = hashlib.sha256(policy.path(prefix + "source.blend").read_bytes()).hexdigest()
+    if (
+        report["source_sha256_before"] != source_digest
+        or report["source_sha256_after"] != source_digest
+        or not isinstance(provenance, dict)
+        or provenance.get("schema_version") != "1.0.0"
+        or provenance.get("asset_id") != plan["asset_id"]
+        or provenance.get("input_digest") != plan["input_digest"]
+        or provenance.get("source_sha256") != source_digest
+        or provenance.get("editable_source") != "source.blend"
+        or provenance.get("tool_version") != "5.2.2"
+        or provenance.get("export_policy") != "EVALUATED_COPIES_SOURCE_MODIFIERS_PRESERVED"
+        or provenance.get("coordinate_basis") != {"up": "Z", "forward": "-Y", "meters_per_unit": 1}
+        or provenance.get("artistic_status") != "REVIEW"
+    ):
+        raise InputError("Modeling source, inspection and provenance bindings differ")
+    check_candidate(policy, candidate)
 
 
 def inspect_candidate(
@@ -191,6 +238,8 @@ def inspect_candidate(
             policy.path(atlas_file).read_bytes(),
             metadata,
         )
+    elif request.get("capability_id") in MODELING_CAPABILITIES.values():
+        _inspect_modeling(policy, candidate, request, run, inventory)
     elif request["task_class"] == "CREATE_ASSET":
         from polyforge.blender.recipes import RECIPES, expand_recipe, validate_geometry
 

@@ -1126,5 +1126,89 @@
         "1.8.0"
       ]
     }
+  },
+  {
+    "schema_version": "1.0.0",
+    "knowledge_id": "blender.advanced-modeling",
+    "domain": "blender",
+    "topic": "advanced-modeling",
+    "concept": "bounded editable modeling composition",
+    "intent_triggers": [
+      "room kit",
+      "vehicle",
+      "mechanical prop",
+      "organic practice",
+      "modeling composition",
+      "modifiers",
+      "curve",
+      "boolean",
+      "subdivision",
+      "mirror",
+      "procedural modeling",
+      "sculpt",
+      "retopology",
+      "grease pencil",
+      "text",
+      "simulation"
+    ],
+    "when_to_use": "Choose an explicit modeling family or a typed composition after checking every requested constraint",
+    "alternatives": [
+      "Room kit for modular architecture; vehicle or mechanical prop for hard surface; organic practice for primitive-based forms; explicit composition for new combinations.",
+      "Manual sculpt/retopology, text, Grease Pencil and simulation require a separate assisted workflow and review."
+    ],
+    "prerequisites": [
+      "Blender 5.2.2; matching registered descriptor and strict modeling_request schema; dimensions in Unity meters [width,height,depth].",
+      "Choose geometry representation, object-local transforms, modifier order, material slots, sockets and export policy before execution."
+    ],
+    "versions": {
+      "blender": [
+        "5.2.2"
+      ]
+    },
+    "sources": [
+      {
+        "uri": "https://docs.blender.org/api/5.2/bpy.types.Depsgraph.html",
+        "license_or_attribution": "Official documentation; locally authored summary, no vendor article copied"
+      },
+      {
+        "uri": "https://docs.blender.org/manual/en/5.2/modeling/geometry_nodes/mesh/primitives/cube.html",
+        "license_or_attribution": "Official documentation; locally authored summary, no vendor article copied"
+      },
+      {
+        "uri": "https://docs.blender.org/manual/en/5.2/modeling/modifiers/generate/index.html",
+        "license_or_attribution": "Official documentation; locally authored summary, no vendor article copied"
+      }
+    ],
+    "retrieved_or_verified_at": "2026-11-06",
+    "reference_text": "Choose concepts before operators: object-local geometry, Unity meter dimensions, Blender Z-up conversion, deliberate modifier order, evaluated copies for export and editable source retention. Use Object Mode and an explicit active object/selection for operators; prefer data APIs and check operator poll/context. Typed composition supports box/cylinder/sphere, capped POLY curve and a Geometry Nodes cube, with bounded bevel/subdivision/mirror/solidify/Boolean controls. Source modifiers remain editable; an independent process checks geometry, source sizes, pivot, sockets, finite UVs, materials and LOD. Technical PASS leaves artistic status REVIEW; finite UVs do not prove useful unwraps, volume does not prove no self intersections, and primitive organic practice is not sculpt or retopology. Text, Grease Pencil, simulation, arbitrary sculpt and retopology remain assisted/reference-only. For unknown APIs use a disposable owned scratch scene, fixed versioned probe, explicit mode/context, bounded writes/time, pre-run hashes and recovery by discarding the scratch output; do not rely on interactive undo in headless mode.",
+    "doc_digest": "7dd29d4c83254f86c470fb2fcbce09da4d8abe98081e588e78db462aa2d1eafd",
+    "reference_path": "references/blender/modeling.md",
+    "api_probe_id": "none",
+    "examples": [
+      "Vary a room kit in all three dimensions and independently inspect bounds and sockets.",
+      "Compose a capped curve with a Boolean hard-surface part instead of renaming a preset; validate the new topology.",
+      "Request sculpted creature retopology: retain the brief and prepare assisted work, do not substitute organic practice."
+    ],
+    "pitfalls": [
+      "The default LOD reconstruction may not satisfy every requested ratio; inspect the measured reduction and fail unmet budgets.",
+      "UV existence/finite values and winding/closed-volume checks do not establish UV island quality, arbitrary self-intersection absence or artistic silhouette.",
+      "Safe API exploration is a proposal until authorized and qualified; a document grants no execution authority."
+    ],
+    "security_notes": [
+      "DATA_ONLY; no inherited network/filesystem/tool/review authority"
+    ],
+    "output_contract": "Editable source, FBX and LOD, independent technical inspection and audit views; artistic REVIEW and game PARTIAL until separate acceptance",
+    "knowledge_state": "REFERENCE_ONLY",
+    "support_state": "VERIFIED_EXECUTABLE",
+    "confidence": 0.9,
+    "reviewer": "polyforge.curated-reference-review.v1",
+    "capability_ids": [
+      "mesh.modeling.room_kit.v1",
+      "mesh.modeling.vehicle.v1",
+      "mesh.modeling.mechanical_prop.v1",
+      "mesh.modeling.organic.v1",
+      "mesh.modeling.compose.v1"
+    ],
+    "content_kind": "CURATED_SUMMARY"
   }
 ]

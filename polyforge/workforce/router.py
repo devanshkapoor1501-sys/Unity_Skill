@@ -4,9 +4,11 @@ from importlib.resources import files
 from pathlib import Path
 from typing import Any
 
+from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
 from polyforge.capabilities.registry import lookup
 from polyforge.contracts.validation import InputError, canonical_digest, validate_schema
 from polyforge.workforce.models import job_context, validate_task
+from polyforge.workforce.permissions import MODELING_ROLES
 
 
 def engine_digest() -> str:
@@ -106,6 +108,14 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
     elif capability is not None:
         descriptor = lookup(capability)
         validate_schema(value["input"], descriptor["input_schema"].split("/")[-1])
+    modeling_kind = next(
+        (kind for kind, identifier in MODELING_CAPABILITIES.items() if identifier == capability),
+        None,
+    )
+    if modeling_kind is not None:
+        if "blender" not in value["domain_tags"]:
+            raise InputError("Advanced modeling requires the Blender domain")
+        compile_modeling(modeling_kind, value["input"], seed=value.get("seed", 42))
     if task == "ANIMATE" and capability != "animation.robot.rig.v1":
         raise InputError("ANIMATE requires a supported animation capability")
     if capability == "asset.package.build.v1":
@@ -136,6 +146,9 @@ def plan_task(value: dict[str, Any], *, workspace: Path | None = None) -> dict[s
             else "asset_producer",
             "animation_inspector" if task == "ANIMATE" else "asset_inspector",
         ]
+        if modeling_kind is not None:
+            roles[0] = "asset_architect"
+            roles[1] = MODELING_ROLES[modeling_kind]
         if task == "ANIMATE" and "unity" in value["domain_tags"]:
             roles.append("unity_integration")
             stages += ["S4", "S5"]

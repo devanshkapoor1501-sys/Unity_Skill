@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "coolant_valve",
+  "input_digest": "0ae91a900e91129ddb82628911bd68935b7fff0d8c98e4ec83cfa88e035ab892",
+  "technical_status": "PASS",
+  "artistic_status": "REVIEW",
+  "source_unchanged": true,
+  "source_sha256_before": "b8cc7d9b93bcef185ad78c155e3c23f1e8158e7322c28b929b276231b5d1af8c",
+  "source_sha256_after": "b8cc7d9b93bcef185ad78c155e3c23f1e8158e7322c28b929b276231b5d1af8c",
+  "coordinate_basis": {
+    "up": "Z",
+    "forward": "-Y",
+    "meters_per_unit": 1.0
+  },
+  "root": {
+    "semantic_id": "coolant_valve",
+    "location_unity": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "rotation_deg": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "materials": [
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.8999999761581421,
+        0.41999998688697815,
+        0.07999999821186066,
+        1.0
+      ]
+    },
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18000000715255737,
+        0.3199999928474426,
+        0.47999998927116394,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.07999999821186066,
+        0.10000000149011612,
+        0.12999999523162842,
+        1.0
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "foot",
+      "primitive": "grid",
+      "parent_id": "coolant_valve",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.10000000149011612,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "trim"
+      ],
+      "modifiers": [
+        {
+          "type": "geometry_nodes",
+          "detail": 3
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          3.0,
+          0.20000000298023224,
+          2.0
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 1.2000001072883606,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.5,
+        0.0,
+        -1.0
+      ],
+      "bounds_max_unity": [
+        1.5,
+        0.20000001788139343,
+        1.0
+      ]
+    },
+    {
+      "id": "housing",
+      "primitive": "cylinder",
+      "parent_id": "coolant_valve",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.6000000238418579,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [
+        {
+          "type": "boolean",
+          "target": "bore",
+          "operation": "DIFFERENCE"
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          1.2000000476837158,
+          0.800000011920929,
+          1.0
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 130,
+      "polygons": 68,
+      "triangles": 260,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.6617463952356316,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.6000000238418579,
+        0.20000001788139343,
+        -0.5
+      ],
+      "bounds_max_unity": [
+        0.6000000238418579,
+        1.0,
+        0.5
+      ]
+    },
+    {
+      "id": "bore",
+      "primitive": "cylinder",
+      "parent_id": "coolant_valve",
+      "export": false,
+      "location_unity": [
+        0.0,
+        0.6000000238418579,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          0.4000000059604645,
+          1.0,
+          0.3499999940395355
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 64,
+      "polygons": 34,
+      "triangles": 124,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.10925057653859958,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.20000000298023224,
+        0.10000002384185791,
+        -0.17499999701976776
+      ],
+      "bounds_max_unity": [
+        0.20000000298023224,
+        1.100000023841858,
+        0.17499999701976776
+      ]
+    },
+    {
+      "id": "pipe",
+      "primitive": "curve",
+      "parent_id": "coolant_valve",
+      "export": true,
+      "location_unity": [
+        0.699999988079071,
+        0.550000011920929,
+        0.15000000596046448
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "weld",
+          "merge_threshold_m": 9.999999974752427e-07
+        }
+      ],
+      "source_geometry": {
+        "points": [
+          [
+            -0.2199999988079071,
+            -0.15000000596046448,
+            -0.0
+          ],
+          [
+            0.0,
+            0.10000000149011612,
+            0.10000000149011612
+          ],
+          [
+            0.20000000298023224,
+            0.2199999988079071,
+            0.20000000298023224
+          ]
+        ],
+        "bevel_m": 0.03999999910593033,
+        "closed_caps": true,
+        "spline_type": "POLY"
+      },
+      "modifiers_enabled": true,
+      "vertices": 18,
+      "polygons": 20,
+      "triangles": 32,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.0024851960308203414,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        0.4490496516227722,
+        0.3759240210056305,
+        0.11358534544706345
+      ],
+      "bounds_max_unity": [
+        0.9237483739852905,
+        0.8009138703346252,
+        0.38595911860466003
+      ]
+    },
+    {
+      "id": "handle",
+      "primitive": "sphere",
+      "parent_id": "coolant_valve",
+      "export": true,
+      "location_unity": [
+        0.0,
+        1.2000000476837158,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "subdivision",
+          "levels": 1
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.649999588727951,
+          0.5,
+          0.49999983608722687
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 1986,
+      "polygons": 1984,
+      "triangles": 3968,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.08207449063704236,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.3208498954772949,
+        0.9506058692932129,
+        -0.2468077540397644
+      ],
+      "bounds_max_unity": [
+        0.32085007429122925,
+        1.4493942260742188,
+        0.24680767953395844
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "outlet",
+      "parent_id": "coolant_valve",
+      "position_unity": [
+        0.8999999761581421,
+        0.7699999809265137,
+        0.3499999940395355
+      ]
+    }
+  ],
+  "aggregate": {
+    "vertices": 2190,
+    "polygons": 2126,
+    "triangles": 4368,
+    "bounds_min_unity": [
+      -1.5,
+      0.0,
+      -1.0
+    ],
+    "bounds_max_unity": [
+      1.5,
+      1.4493942260742188,
+      1.0
+    ]
+  },
+  "lod": {
+    "vertices": 234,
+    "polygons": 198,
+    "triangles": 456,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0,
+    "nonfinite_values": 0,
+    "normal_inconsistencies": 0,
+    "signed_volume": 1.9290238096524002,
+    "uv_layers": 1,
+    "uv_nonfinite_values": 0,
+    "invalid_material_faces": 0,
+    "bounds_min_unity": [
+      -1.5,
+      0.0,
+      -1.0
+    ],
+    "bounds_max_unity": [
+      1.5,
+      1.4500000476837158,
+      1.0
+    ],
+    "source_polygons": 2126,
+    "ratio": 0.09313264346190028
+  },
+  "issues": []
+}

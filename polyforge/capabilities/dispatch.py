@@ -133,6 +133,13 @@ def _execute(identifier: str, inputs: dict[str, Any], context: RunContext) -> Re
         return audit_asset(context.workspace, inputs["asset_id"], dry_run=context.dry_run)
     if identifier == "contract.capability.validate.v1":
         return RegistryValidator().execute(inputs, context)
+    from polyforge.blender.modeling import MODELING_CAPABILITIES
+
+    if identifier in MODELING_CAPABILITIES.values():
+        from polyforge.blender.modeling_adapter import execute_modeling
+
+        kind = next(k for k, v in MODELING_CAPABILITIES.items() if v == identifier)
+        return execute_modeling(kind, inputs, context)
     from polyforge.blender.adapter import BlenderCapability
     from polyforge.blender.recipes import RECIPES
 

@@ -46,6 +46,8 @@ For example:
 
 You can also ask for just a supported 3D object, such as a crate, without building a game.
 
+For editable room kits, vehicles, mechanical props, organic practice meshes, or custom compositions, see the [advanced modeling guide](docs/modeling.md).
+
 For a 2D starting point, ask for the walking robot demo or the [checkpoint course](docs/checkpoint-platformer.md). Supply six 128×128 transparent sprite frames that you have permission to use. Your assistant checks whether they fit the current format before building.
 
 Required human approval is checked before supported imports. Managed repairs keep

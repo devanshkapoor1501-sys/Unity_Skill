@@ -11,7 +11,7 @@ and roles; it does not prove that every requirement in a prompt is supported.
 
 | Area | Current bounded support | Remaining work |
 | --- | --- | --- |
-| Asset modeling | Five parameterized semantic recipe families and editable Blender sources | Advanced topology, modifier composition, curves, Geometry Nodes, sculpt/retopo and unfamiliar transfer in Phase 12 |
+| Asset modeling | Static recipes plus [room kits, vehicles, mechanical props, organic practice and typed composition](modeling.md) with editable sources and separate topology checks | Freeform extrusion, decals, sculpt/retopo, broader Geometry Nodes and evaluator-owned transfer |
 | Materials | Declared simple material/texture handoffs and native import checks | Broader UV/PBR, baking, channel packing and visual consistency in Phase 13 |
 | Animation | Original modular robot rig, Idle/Walk, Unity bindings and six-frame sprite workflow | Character/creature rig families, deformation, motion and retargeting in Phase 14 |
 | Gameplay | Original 3D survival arena and approved-sprite 2D checkpoint course, with explicit physical oracles and faults | Broader mechanics, AI, UI, architecture and composition in Phase 15 |

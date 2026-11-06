@@ -5,9 +5,24 @@
     "input_schema": "contracts/platformer.schema.json",
     "runner": "unity.game.platformer",
     "deterministic": false,
-    "requires": ["python>=3.11", "unity==6000.6.3f1"],
-    "tests": ["native_editmode_bindings", "native_playmode_physics", "eight_physical_mutants", "standalone_gameplay", "source_preservation"],
-    "output_types": ["prefab", "scene", "test_xml", "telemetry", "editable_project"],
+    "requires": [
+      "python>=3.11",
+      "unity==6000.6.3f1"
+    ],
+    "tests": [
+      "native_editmode_bindings",
+      "native_playmode_physics",
+      "eight_physical_mutants",
+      "standalone_gameplay",
+      "source_preservation"
+    ],
+    "output_types": [
+      "prefab",
+      "scene",
+      "test_xml",
+      "telemetry",
+      "editable_project"
+    ],
     "trust_requirement": "TRUSTED_LOCAL"
   },
   {
@@ -418,6 +433,136 @@
       "scene",
       "animation_clip",
       "test_xml"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.modeling.room_kit.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/modeling_request.schema.json",
+    "runner": "blender.modeling.room_kit",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "source_editability",
+      "independent_topology",
+      "lod_budget",
+      "multiview_audit"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "mesh_metrics",
+      "audit_images"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.modeling.vehicle.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/modeling_request.schema.json",
+    "runner": "blender.modeling.vehicle",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "source_editability",
+      "independent_topology",
+      "lod_budget",
+      "multiview_audit"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "mesh_metrics",
+      "audit_images"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.modeling.mechanical_prop.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/modeling_request.schema.json",
+    "runner": "blender.modeling.mechanical_prop",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "source_editability",
+      "independent_topology",
+      "lod_budget",
+      "multiview_audit"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "mesh_metrics",
+      "audit_images"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.modeling.organic.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/modeling_request.schema.json",
+    "runner": "blender.modeling.organic",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "source_editability",
+      "independent_topology",
+      "lod_budget",
+      "multiview_audit"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "mesh_metrics",
+      "audit_images"
+    ],
+    "trust_requirement": "TRUSTED_LOCAL"
+  },
+  {
+    "id": "mesh.modeling.compose.v1",
+    "version": "1.0.0",
+    "input_schema": "contracts/modeling_request.schema.json",
+    "runner": "blender.modeling.compose",
+    "deterministic": true,
+    "requires": [
+      "python>=3.11",
+      "blender==5.2.2"
+    ],
+    "tests": [
+      "finite_geometry",
+      "semantic_bindings",
+      "source_editability",
+      "independent_topology",
+      "lod_budget",
+      "multiview_audit"
+    ],
+    "output_types": [
+      "blend",
+      "fbx",
+      "mesh_metrics",
+      "audit_images"
     ],
     "trust_requirement": "TRUSTED_LOCAL"
   }

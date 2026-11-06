@@ -1,6 +1,11 @@
 # Phase 11 evidence reconciliation and release checkpoint
 
 **Disposition: BLOCKED for stable CORE v1.0 release. Phase 12 entry is BLOCKED.**
+
+The original entry rule below records the Phase 11 qualification decision. The
+user later authorized Phase 12 development while stable qualification remains
+blocked. Main commit `941717b` passed [workflow 41877839001](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions/runs/41877839001).
+See the [Phase 12 checkpoint](phase-12.md) for the separate development status.
 This checkpoint preserves the implemented Phase 11 work and reconciles actual
 results. It does not declare Phase 11 closed, create a release tag, or implement
 Phases 12–17. Reconciled on 2026-11-04, branch `codex/polyforge-phase-11`, base

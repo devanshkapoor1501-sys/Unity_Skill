@@ -2,6 +2,7 @@
 
 from typing import Any
 
+from polyforge.blender.modeling import MODELING_CAPABILITIES
 from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError
 from polyforge.security.paths import WorkspacePolicy
@@ -43,6 +44,18 @@ ROLES.update(
         "asset_quality_inspector": {"tools": [], "writes": []},
     }
 )
+
+MODELING_ROLES = {
+    "room_kit": "modeler_architecture",
+    "vehicle": "modeler_hard_surface",
+    "mechanical_prop": "modeler_hard_surface",
+    "organic": "modeler_organic_retopo",
+    "compose": "modeler_procedural",
+}
+for _kind, _role in MODELING_ROLES.items():
+    ROLES.setdefault(_role, {"tools": [], "writes": ["runs/"]})["tools"].append(
+        MODELING_CAPABILITIES[_kind]
+    )
 
 
 def assert_public_path(policy: WorkspacePolicy, target: str) -> None:

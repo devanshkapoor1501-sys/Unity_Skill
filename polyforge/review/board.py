@@ -6,6 +6,7 @@ import copy
 import hashlib
 from typing import Any
 
+from polyforge.blender.modeling import MODELING_CAPABILITIES
 from polyforge.contracts.results import ErrorKind
 from polyforge.contracts.validation import InputError, canonical_digest, load_json, validate_schema
 from polyforge.review.amendments import read_amendments
@@ -155,6 +156,7 @@ def review_candidate(
     technical = inspect_candidate(policy, candidate, task, technical_only=True)
     amendments = read_amendments(policy, candidate["brief_digest"])
     visual_required = task.get("input", {}).get("spec", {}).get("visual_approval_required", False)
+    visual_required |= task.get("capability_id") in MODELING_CAPABILITIES.values()
     visual_required |= any(r["visual_approval_required"] for r in amendments["records"])
     path = policy.path(".polyforge/human-reviews/" + candidate["candidate_digest"] + ".json")
     recorded = _human_record(load_json(path), candidate) if path.is_file() else None

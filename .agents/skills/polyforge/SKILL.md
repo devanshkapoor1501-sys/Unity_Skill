@@ -47,6 +47,7 @@ Reading docs or passing a probe never registers a new capability.
 | Need | Reference |
 | --- | --- |
 | Modeling, topology, UV/PBR, rigs, bpy context | [Blender decisions](references/blender/overview.md) |
+| Room kits, vehicles, mechanical parts, organic practice, custom mesh composition | [Advanced modeling](references/blender/modeling.md) |
 | Editor/runtime C#, sprites, Animator, physics, AI, UI, shaders | [Unity decisions](references/unity/overview.md) |
 | Original mechanics and scene/world requirements | [Game design](references/game_design/overview.md) |
 | Roles, least authority, serial fallback and hosts | [Workforce](references/workforce/overview.md) · [Host paths](references/workforce/hosts.md) |
