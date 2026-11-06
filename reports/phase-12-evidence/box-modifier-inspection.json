@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "single_material",
+  "input_digest": "c7b1fe60408dc110e79e063e1354d49d8522a8e87185f6aef01487fe7d5f7ddf",
+  "technical_status": "PASS",
+  "artistic_status": "REVIEW",
+  "source_unchanged": true,
+  "source_sha256_before": "88373feb202d7183496bab178323faa7b4a3c8f4bdc319cebcbb358bf81eade8",
+  "source_sha256_after": "88373feb202d7183496bab178323faa7b4a3c8f4bdc319cebcbb358bf81eade8",
+  "coordinate_basis": {
+    "up": "Z",
+    "forward": "-Y",
+    "meters_per_unit": 1.0
+  },
+  "root": {
+    "semantic_id": "single_material",
+    "location_unity": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "rotation_deg": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "materials": [
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.8999999761581421,
+        0.41999998688697815,
+        0.07999999821186066,
+        1.0
+      ]
+    },
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18000000715255737,
+        0.3199999928474426,
+        0.47999998927116394,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.07999999821186066,
+        0.10000000149011612,
+        0.12999999523162842,
+        1.0
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "part",
+      "primitive": "box",
+      "parent_id": "single_material",
+      "export": true,
+      "location_unity": [
+        0.0,
+        2.0,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.07999999821186066,
+          "segments": 2
+        },
+        {
+          "type": "solidify",
+          "thickness_m": 0.03999999910593033
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          2.0,
+          2.0,
+          2.0
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 112,
+      "polygons": 108,
+      "triangles": 216,
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.8631537460028644,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.0,
+        1.0,
+        -1.0
+      ],
+      "bounds_max_unity": [
+        1.0,
+        3.0,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [],
+  "aggregate": {
+    "vertices": 112,
+    "polygons": 108,
+    "triangles": 216,
+    "bounds_min_unity": [
+      -1.0,
+      1.0,
+      -1.0
+    ],
+    "bounds_max_unity": [
+      1.0,
+      3.0,
+      1.0
+    ]
+  },
+  "lod": {
+    "vertices": 16,
+    "polygons": 12,
+    "triangles": 24,
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0,
+    "nonfinite_values": 0,
+    "normal_inconsistencies": 0,
+    "signed_volume": 0.5415540552665266,
+    "uv_layers": 1,
+    "uv_nonfinite_values": 0,
+    "invalid_material_faces": 0,
+    "bounds_min_unity": [
+      -1.0,
+      1.0,
+      -1.0
+    ],
+    "bounds_max_unity": [
+      1.0,
+      3.0,
+      1.0
+    ],
+    "source_polygons": 108,
+    "ratio": 0.1111111111111111
+  },
+  "issues": []
+}

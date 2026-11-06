@@ -15,7 +15,7 @@ inspector = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(inspector)
 job = json.loads(job_file.read_text(encoding="utf-8"))
 
-for fault in ("pivot", "socket", "open_mesh"):
+for fault in ("pivot", "socket", "open_mesh", "reversed_mesh"):
     bpy.ops.wm.open_mainfile(filepath=str(source), use_scripts=False)
     objects = bpy.context.scene.objects
     if fault == "pivot":
@@ -30,7 +30,10 @@ for fault in ("pivot", "socket", "open_mesh"):
         mesh = bmesh.new()
         try:
             mesh.from_mesh(floor.data)
-            bmesh.ops.delete(mesh, geom=[next(iter(mesh.faces))], context="FACES_ONLY")
+            if fault == "open_mesh":
+                bmesh.ops.delete(mesh, geom=[next(iter(mesh.faces))], context="FACES_ONLY")
+            else:
+                bmesh.ops.reverse_faces(mesh, faces=list(mesh.faces))
             mesh.to_mesh(floor.data)
         finally:
             mesh.free()

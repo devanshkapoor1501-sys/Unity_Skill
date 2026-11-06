@@ -284,6 +284,7 @@ def run(job: dict[str, Any]) -> None:
         material = bpy.data.materials.new(spec["id"])
         material.diffuse_color = spec["color_rgba"]
         material["semantic_id"] = spec["id"]
+        material.use_fake_user = True
         materials[spec["id"]] = material
     basis = mathutils.Matrix(((1, 0, 0), (0, 0, -1), (0, 1, 0)))
     objects = {}

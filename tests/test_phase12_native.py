@@ -158,12 +158,54 @@ def test_native_inspection_detects_pivot_socket_and_topology_faults(native_model
         ProcessPolicy((blender,), 180),
     )
     assert process.returncode == 0 and process.reason == "exit", process
-    for name in ("pivot", "socket", "open_mesh"):
+    for name in ("pivot", "socket", "open_mesh", "reversed_mesh"):
         report = json.loads((tmp_path / (name + ".json")).read_text(encoding="utf-8"))
+        if name == "reversed_mesh":
+            assert "floor: normal_inconsistencies=1" in report["issues"]
         with pytest.raises(InputError):
             validate_modeling_report(data["plan"], report)
     with source.open("rb") as stream:
         assert file_digest(stream, "sha256").hexdigest() == original
+
+
+@pytest.mark.blender
+@pytest.mark.parametrize(
+    "primitive,modifiers",
+    [
+        ("sphere", [{"type": "mirror", "axis": 0}]),
+        (
+            "box",
+            [
+                {"type": "bevel", "width_m": 0.08, "segments": 2},
+                {"type": "solidify", "thickness_m": 0.04},
+            ],
+        ),
+    ],
+)
+def test_editable_mirror_and_hollow_shell_with_one_material(tmp_path, primitive, modifiers):
+    value = {
+        "schema_version": "1.0.0",
+        "asset_id": "single_material",
+        "parameters": {"size_m": [4, 4, 4]},
+        "objects": [
+            {
+                "id": "part",
+                "primitive": primitive,
+                "size_m": [2, 2, 2],
+                "location": [0, 2, 0],
+                "rotation_deg": [0, 0, 0],
+                "material_id": "base",
+                "export": True,
+                "modifiers": modifiers,
+            },
+        ],
+    }
+    result = execute(MODELING_CAPABILITIES["compose"], value, RunContext(tmp_path))
+    assert result.status == "PASS", result.to_dict()
+    inspected = result.data["inspection"]
+    assert len(inspected["materials"]) == 3
+    assert inspected["objects"][0]["normal_inconsistencies"] == 0
+    assert inspected["lod"]["normal_inconsistencies"] == 0
 
 
 @pytest.mark.blender

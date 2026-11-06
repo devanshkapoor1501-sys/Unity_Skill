@@ -7,7 +7,7 @@ from importlib.resources import files
 from typing import Any
 from urllib.parse import urlsplit
 
-from polyforge.capabilities.registry import lookup
+from polyforge.capabilities.registry import catalog
 from polyforge.contracts.validation import InputError, canonical_digest, validate_schema
 
 SOURCE_HOSTS = frozenset(
@@ -30,6 +30,7 @@ def validate_cards(cards: Any) -> list[dict[str, Any]]:
     canonical_digest(cards)
     if len(json.dumps(cards, ensure_ascii=True).encode()) > 1_048_576:
         raise InputError("Knowledge catalog exceeds bounded context budget")
+    registered = {entry["id"] for entry in catalog()}
     seen = set()
     for card in cards:
         validate_schema(card, "knowledge_card.schema.json")
@@ -55,7 +56,8 @@ def validate_cards(cards: Any) -> list[dict[str, Any]]:
             ):
                 raise InputError("Reference source is outside the curated official HTTPS allowlist")
         for identifier in card["capability_ids"]:
-            lookup(identifier)
+            if identifier not in registered:
+                raise InputError(f"Unknown or unavailable capability: {identifier}")
         if (card["support_state"] == "VERIFIED_EXECUTABLE") != bool(card["capability_ids"]):
             raise InputError(
                 "Executable support needs a registered capability, not a documentation claim"

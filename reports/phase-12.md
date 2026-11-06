@@ -33,8 +33,8 @@ The separate native inspector reopened source files with script execution
 disabled. It checked object identities, source sizes and controls, modifiers,
 material slots, pivot and sockets, polygon counts, finite UVs, degenerate faces,
 edge manifoldness and coherent winding. Scratch copies with a displaced pivot,
-a moved socket and an open mesh were rejected. The open mesh reported four
-nonmanifold edges. Source hashes matched before and after inspection. Recovery
+a moved socket, an open mesh and a fully reversed mesh were rejected. The open
+mesh reported four nonmanifold edges. Source hashes matched before and after inspection. Recovery
 revalidated all nine required files and rejected a modified FBX. A fixed scratch
 API probe verified a data-only mesh validation case and operator polling with
 and without an active object. [Scratch probe](phase-12-evidence/scratch-probe.json)
@@ -47,6 +47,18 @@ checks on the result. A review also found that recovery could accept an empty
 inventory. Recovery now requires a complete journal, the fixed artifact list,
 byte hashes and report/source/provenance bindings. A second process checks the
 assets, and the review board discloses that the two roles share a host.
+
+Follow-up native probes found that Blender purged unused palette slots and that
+the winding audit rejected Solidify's inner cavity. The saved palette now keeps
+all declared slots. The inspector only accepts an inward shell when it is
+contained in one outward solid with no detected surface intersections or
+nested cavities. Mirror and Solidify passed through the capability entry point
+with one bound material, while a reversed mesh still failed the audit.
+
+The added registry entries increased reference validation cost. Loading the
+validated registry once per call reduced a local 20-iteration warm measurement
+from 424 ms to 41 ms per catalog validation. The curated cards still reject any
+capability ID outside the registered set.
 
 | Requirement | Checkpoint evidence |
 | --- | --- |
@@ -82,13 +94,18 @@ python -m tools.generate_cli_docs --check
 python -m tools.reproducible_build --outdir dist/release-a --epoch 1793318400
 ```
 
-Local Windows Python 3.12.14 regression passed 1,425 tests with 16 native
-tests deselected, 94.03% combined coverage and 90.95% branch coverage. The final
-Phase 12 Blender suite passed all three tests. The eight final FBXs passed the
+Local Windows Python 3.12.14 regression passed 1,425 tests with 18 native
+tests deselected, 94.08% combined coverage and 91.15% branch coverage. The final
+Phase 12 Blender suite passed all five tests. The eight final FBXs passed the
 Unity import probe in the disposable project. Nine earlier Blender tests passed
-alongside the initial workforce run. Ruff, formatting, mypy, CLI documentation
-and two identical package builds passed. Full v1 native gameplay regression is
-tracked separately from those results.
+alongside the initial workforce run. Ruff, formatting, Windows/Linux mypy, CLI
+documentation and two identical package builds passed.
+
+The two v1 games passed their native regressions on Unity 6000.6.3f1. The arena
+passed 1 Edit Mode test, 18 Play Mode tests, the standalone build and player
+smoke. The checkpoint course passed 2 Edit Mode tests, 24 Play Mode tests,
+standalone build, player smoke and standalone gameplay. Both remain `PARTIAL`
+pending separate acceptance. [v1 native regression](phase-12-evidence/v1-native-regression.json)
 
 The commit and its Actions run identify this development checkpoint on the
 authorized main branch. Local tests and the remote CI matrix are separate.

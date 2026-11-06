@@ -109,6 +109,57 @@ def _modifiers(obj: Any) -> list[dict[str, Any]]:
     return observed
 
 
+def _inverted_components(components: list[tuple[float, list[Any]]]) -> int:
+    inward = [index for index, (volume, _) in enumerate(components) if volume <= 0]
+    if not inward or len(components) > 32:
+        return len(inward)
+    vector = importlib.import_module("mathutils").Vector
+    tree = importlib.import_module("mathutils.bvhtree").BVHTree
+    surfaces = []
+    for _, faces in components:
+        indices = dict.fromkeys(vertex for face in faces for vertex in face.verts)
+        for index, vertex in enumerate(indices):
+            indices[vertex] = index
+        vertices = [vertex.co for vertex in indices]
+        polygons = [[indices[vertex] for vertex in face.verts] for face in faces]
+        surfaces.append((tree.FromPolygons(vertices, polygons), vertices[0]))
+
+    directions = [vector(direction) for direction in ((1, 0.37, 0.19), (0.23, 1, 0.41))]
+
+    def contains(surface: Any, point: Any, *, outward: bool) -> bool:
+        for direction in directions:
+            _, normal, _, distance = surface.ray_cast(point, direction)
+            if normal is None or distance <= 1e-6:
+                return False
+            dot = normal.dot(direction)
+            if (outward and dot <= 1e-6) or (not outward and dot >= -1e-6):
+                return False
+        return True
+
+    invalid = 0
+    for inner_index in inward:
+        cavity, point = surfaces[inner_index]
+        containers = 0
+        for outer_index, (surface, sample) in enumerate(surfaces):
+            if inner_index == outer_index:
+                continue
+            if cavity.overlap(surface):
+                break
+            volume = components[outer_index][0]
+            if volume < 0 and (
+                contains(surface, point, outward=False) or contains(cavity, sample, outward=False)
+            ):
+                break
+            if volume > 0 and contains(surface, point, outward=True):
+                containers += 1
+        else:
+            # A negative component is valid only as a separate cavity in one solid.
+            if components[inner_index][0] < 0 and containers == 1:
+                continue
+        invalid += 1
+    return invalid
+
+
 def _geometry(obj: Any, depsgraph: Any) -> dict[str, Any]:
     bmesh: Any = importlib.import_module("bmesh")
     evaluated = obj.evaluated_get(depsgraph)
@@ -127,13 +178,15 @@ def _geometry(obj: Any, depsgraph: Any) -> dict[str, Any]:
         finite = sum(not math.isfinite(value) for point in points for value in point)
         # Inspect each closed component so a reversed island cannot hide in positive total volume.
         remaining = set(bm.faces)
-        inverted = 0
+        components = []
         while remaining:
             first = remaining.pop()
             pending = [first]
+            faces = []
             volume = 0.0
             while pending:
                 face = pending.pop()
+                faces.append(face)
                 vertices = [v.co for v in face.verts]
                 for index in range(1, len(vertices) - 1):
                     volume += vertices[0].dot(vertices[index].cross(vertices[index + 1])) / 6
@@ -142,8 +195,8 @@ def _geometry(obj: Any, depsgraph: Any) -> dict[str, Any]:
                         if other in remaining:
                             remaining.remove(other)
                             pending.append(other)
-            if volume <= 0:
-                inverted += 1
+            components.append((volume, faces))
+        inverted = _inverted_components(components)
         uv_nonfinite = sum(
             not math.isfinite(value)
             for layer in mesh.uv_layers

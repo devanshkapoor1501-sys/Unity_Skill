@@ -1,0 +1,71 @@
+{
+  "unity": "6000.6.3f1",
+  "scope": "PUBLIC_DEVELOPMENT_WINDOWS_NATIVE",
+  "games": {
+    "arena": {
+      "run_id": "game-check-b9d73f9bb94b4469",
+      "status": "PASS",
+      "game_status": "PARTIAL",
+      "public_scope": {
+        "development_acceptance": "PASS",
+        "standalone_build": "PASS",
+        "player_smoke": "PASS",
+        "manual_review": "REVIEW"
+      },
+      "reports": {
+        "editmode.xml": {
+          "sha256": "289de35bc9adb46a2d48d5efc30e41456033d5678c743fd7fa412aeccc403180",
+          "result": "Passed",
+          "total": "1",
+          "passed": "1",
+          "failed": "0"
+        },
+        "playmode.xml": {
+          "sha256": "46590122439846cbf38befcef70eca379c4bfb90ac0c344abc36dec69d314dae",
+          "result": "Passed",
+          "total": "18",
+          "passed": "18",
+          "failed": "0"
+        },
+        "public-oracles.json": {
+          "sha256": "c7e1c1bb911b2dba09d75dc8e9d68936acc7f6a39bf7c4b606fa5f370ff7e328",
+          "status": "PASS",
+          "scenario_count": 17
+        }
+      }
+    },
+    "platformer": {
+      "run_id": "platformer-check-336d6d5a8f334e3a",
+      "status": "PASS",
+      "game_status": "PARTIAL",
+      "public_scope": {
+        "development_acceptance": "PASS",
+        "standalone_build": "PASS",
+        "player_smoke": "PASS",
+        "standalone_gameplay": "PASS",
+        "manual_review": "REVIEW"
+      },
+      "reports": {
+        "editmode.xml": {
+          "sha256": "9ec8e0b78173690fba16fb064dcb4e05440ab228e941310e6ec780e770018f6b",
+          "result": "Passed",
+          "total": "2",
+          "passed": "2",
+          "failed": "0"
+        },
+        "playmode.xml": {
+          "sha256": "1dea6d9a5a50cbe61b277686e65363accc8f0a87d9b9c571aece250fa7565d41",
+          "result": "Passed",
+          "total": "24",
+          "passed": "24",
+          "failed": "0"
+        },
+        "public-oracles.json": {
+          "sha256": "2cf83428da78844583c430cd7e3efdbc17423282f3f0ed06c7ee82ae3eadf46a",
+          "status": "PASS",
+          "scenario_count": 22
+        }
+      }
+    }
+  }
+}
