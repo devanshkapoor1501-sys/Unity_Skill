@@ -72,7 +72,14 @@ COMMANDS = (
                 ("--tool",),
                 {
                     "required": True,
-                    "choices": ["blender", "unity", "unity-ui", "blender-bvh", "unity-pool"],
+                    "choices": [
+                        "blender",
+                        "unity",
+                        "unity-ui",
+                        "blender-bvh",
+                        "blender-modeling",
+                        "unity-pool",
+                    ],
                 },
             ),
             DRY_RUN,

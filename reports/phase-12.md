@@ -36,8 +36,15 @@ edge manifoldness and coherent winding. Scratch copies with a displaced pivot,
 a moved socket, an open mesh and a fully reversed mesh were rejected. The open
 mesh reported four nonmanifold edges. Source hashes matched before and after inspection. Recovery
 revalidated all nine required files and rejected a modified FBX. A fixed scratch
-API probe verified a data-only mesh validation case and operator polling with
-and without an active object. [Scratch probe](phase-12-evidence/scratch-probe.json)
+API probe verified mesh validation and operator polling with and without an
+active object. A separate registered `blender-modeling` probe saved a scratch
+`.blend`, observed the expected `mesh.select_all` rejection in Object Mode,
+ran the operation and edited the mesh in Edit Mode, and reopened its own
+baseline with scripts disabled. The original geometry and baseline SHA-256
+matched after recovery. Receipt replay rejects a missing or changed baseline.
+The fixed path qualifies file reload in Blender 5.2.2. Interactive Undo remains
+unverified. [Original probe](phase-12-evidence/scratch-probe.json) ·
+[Saved scratch probe](phase-12-evidence/modeling-scratch/observation.json)
 
 An early Blender run found that Decimate's ratio counted triangles while the
 contract measured polygons. A second run exposed nonmanifold edges on a vehicle
@@ -94,12 +101,14 @@ python -m tools.generate_cli_docs --check
 python -m tools.reproducible_build --outdir dist/release-a --epoch 1793318400
 ```
 
-Local Windows Python 3.12.14 regression passed 1,425 tests with 18 native
+The advanced modeling checkpoint passed 1,425 tests with 18 native
 tests deselected, 94.08% combined coverage and 91.15% branch coverage. The final
 Phase 12 Blender suite passed all five tests. The eight final FBXs passed the
 Unity import probe in the disposable project. Nine earlier Blender tests passed
 alongside the initial workforce run. Ruff, formatting, Windows/Linux mypy, CLI
-documentation and two identical package builds passed.
+documentation and two identical package builds passed. The scratch recovery
+follow-up passed 62 focused Python checks, the native Blender test, and a CLI
+run. Its preview left the workspace empty.
 
 The two v1 games passed their native regressions on Unity 6000.6.3f1. The arena
 passed 1 Edit Mode test, 18 Play Mode tests, the standalone build and player

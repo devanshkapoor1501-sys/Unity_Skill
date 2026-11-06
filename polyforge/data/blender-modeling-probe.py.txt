@@ -1,0 +1,77 @@
+"""Verify one fixed context-sensitive edit and recover from a saved scratch baseline."""
+
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+import bmesh
+import bpy
+
+output, = map(Path, sys.argv[sys.argv.index("--") + 1 :])
+checkpoint = output.parent / "scratch" / "baseline.blend"
+if tuple(bpy.app.version) != (5, 2, 2) or checkpoint.exists():
+    raise RuntimeError("Probe requires Blender 5.2.2 and a fresh owned scratch checkpoint")
+
+bpy.ops.wm.read_factory_settings(use_empty=True)
+mesh = bpy.data.meshes.new("ProbeMesh")
+mesh.from_pydata([(0, 0, 0), (1, 0, 0), (0, 1, 0)], [], [(0, 1, 2)])
+valid = not mesh.validate(clean_customdata=False) and len(mesh.polygons) == 1
+obj = bpy.data.objects.new("ScratchProbe", mesh)
+bpy.context.collection.objects.link(obj)
+bpy.context.view_layer.objects.active = obj
+obj.select_set(True)
+bpy.ops.wm.save_as_mainfile(filepath=str(checkpoint), check_existing=False)
+before = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+
+if bpy.context.mode != "OBJECT" or bpy.context.view_layer.objects.active != obj:
+    raise RuntimeError("Scratch baseline requires its mesh active in Object Mode")
+poll_object = bpy.ops.mesh.select_all.poll()
+rejected = False
+try:
+    bpy.ops.mesh.select_all(action="SELECT")
+except RuntimeError as error:
+    rejected = "context" in str(error).lower()
+    print(f"Expected Object Mode operator rejection: {error}", flush=True)
+
+bpy.ops.object.mode_set(mode="EDIT")
+if bpy.context.mode != "EDIT_MESH" or bpy.context.edit_object != obj:
+    raise RuntimeError("Scratch edit requires its mesh active in Edit Mode")
+poll_edit = bpy.ops.mesh.select_all.poll()
+editable = bmesh.from_edit_mesh(mesh)
+deselected = bpy.ops.mesh.select_all(action="DESELECT") == {"FINISHED"}
+started_clear = len(editable.verts) == 3 and not any(v.select for v in editable.verts)
+selected = bpy.ops.mesh.select_all(action="SELECT") == {"FINISHED"}
+selection = deselected and started_clear and selected and all(v.select for v in editable.verts)
+for vertex in editable.verts:
+    vertex.co.z = 0.25
+bmesh.update_edit_mesh(mesh)
+bpy.ops.object.mode_set(mode="OBJECT")
+changed = obj.mode == "OBJECT" and len(mesh.vertices) == 3 and all(
+    vertex.co.z == 0.25 for vertex in mesh.vertices
+)
+
+bpy.ops.wm.open_mainfile(filepath=str(checkpoint), load_ui=False, use_scripts=False)
+restored = bpy.context.scene.objects.get("ScratchProbe")
+recovered = (
+    restored is not None and restored.mode == "OBJECT" and len(restored.data.vertices) == 3
+    and len(restored.data.polygons) == 1 and all(v.co.z == 0 for v in restored.data.vertices)
+)
+after = hashlib.sha256(checkpoint.read_bytes()).hexdigest()
+observation = {
+    "schema_version": "1.0.0",
+    "probe_id": "blender.modeling-scratch.v1",
+    "tool_version": bpy.app.version_string.split()[0],
+    "checks": {
+        "data_mesh_valid": valid,
+        "edit_operator_polls_in_object_mode": poll_object,
+        "context_rejection_observed": rejected,
+        "edit_operator_polls_in_edit_mode": poll_edit,
+        "edit_selection_observed": selection,
+        "mesh_edit_observed": changed,
+        "checkpoint_restored": recovered,
+        "checkpoint_bytes_unchanged": before == after,
+    },
+    "artifacts": [{"path": "scratch/baseline.blend", "sha256": after}],
+}
+output.write_text(json.dumps(observation, indent=2) + "\n", encoding="utf-8")

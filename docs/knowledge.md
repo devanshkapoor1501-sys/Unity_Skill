@@ -25,6 +25,13 @@ Receipts qualify only the observed pinned API checks. A changed version is
 rejected, and a successful probe does not create a general modeling or gameplay
 capability. Both commands accept `--dry-run` without native execution.
 
+`knowledge probe --workspace ROOT --tool blender-modeling --json` checks a
+saved scratch mesh. It verifies that `bpy.ops.mesh.select_all` rejects Object
+Mode and works in Edit Mode, observes a mesh change, then reopens the scratch
+baseline to recover. The receipt binds the baseline's bytes and checks them
+again when read. Recovery uses file reload. The probe reports `VERSION_PROBED`
+for Blender 5.2.2 and does not qualify interactive Undo.
+
 `knowledge list --json` reads 20 source-attributed KnowledgeCards. Their curated
 summaries cover modeling/topology, UV/PBR, rigs/motion, Blender operator context,
 sprites, Unity Editor/runtime/C#, animation, mechanics, physics, AI, UI, shaders,

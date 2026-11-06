@@ -40,3 +40,12 @@ for field names, ranges, and modifier parameters. IDs are stable within the
 asset. Position and rotation are in Unity axes. Declare `DISALLOW` for
 compositions that must have disjoint object bounds. Use `ASSEMBLY_CONTACTS` for
 designed contacts such as walls on a floor or a shaft inside its housing.
+
+For API exploration, run the fixed scratch probe before trying a context-sensitive
+mesh operation. Preview it with `--dry-run`. The probe records the expected
+Object Mode rejection, a successful Edit Mode selection and edit, and recovery
+from the same saved baseline. It opens only its own scratch file.
+
+```console
+polyforge knowledge probe --workspace ROOT --tool blender-modeling --json
+```

@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "probe_id": "blender.modeling-scratch.v1",
+  "tool_version": "5.2.2",
+  "checks": {
+    "data_mesh_valid": true,
+    "edit_operator_polls_in_object_mode": false,
+    "context_rejection_observed": true,
+    "edit_operator_polls_in_edit_mode": true,
+    "edit_selection_observed": true,
+    "mesh_edit_observed": true,
+    "checkpoint_restored": true,
+    "checkpoint_bytes_unchanged": true
+  },
+  "artifacts": [
+    {
+      "path": "scratch/baseline.blend",
+      "sha256": "b2c9d7080b234081e94c5206679bad4a974ec485fdd64f325351f2649f1ce378"
+    }
+  ]
+}

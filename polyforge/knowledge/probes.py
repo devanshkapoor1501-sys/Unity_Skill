@@ -23,6 +23,7 @@ PINS = {
     "unity": ("6000.6.3f1", "unity.typecache.v1", "unity-knowledge-probe.cs.txt"),
     "unity-ui": ("6000.6.3f1", "unity.editor-window.v1", "unity-ui-probe.cs.txt"),
     "blender-bvh": ("5.2.2", "blender.bvh-ray.v1", "blender-bvh-probe.py.txt"),
+    "blender-modeling": ("5.2.2", "blender.modeling-scratch.v1", "blender-modeling-probe.py.txt"),
     "unity-pool": ("6000.6.3f1", "unity.object-pool.v1", "unity-pool-probe.cs.txt"),
 }
 CHECKS = {
@@ -38,6 +39,16 @@ CHECKS = {
         "ray_hits_triangle": True,
         "ray_misses_triangle": True,
         "distance_limit_enforced": True,
+    },
+    "blender-modeling": {
+        "data_mesh_valid": True,
+        "edit_operator_polls_in_object_mode": False,
+        "context_rejection_observed": True,
+        "edit_operator_polls_in_edit_mode": True,
+        "edit_selection_observed": True,
+        "mesh_edit_observed": True,
+        "checkpoint_restored": True,
+        "checkpoint_bytes_unchanged": True,
     },
     "unity-pool": {
         "released_instance_reused": True,
@@ -75,7 +86,6 @@ def validate_observation(tool: str, value: Any) -> dict[str, Any]:
         or value["schema_version"] != "1.0.0"
         or value["probe_id"] != identifier
         or value["tool_version"] != version
-        or value["artifacts"] != []
         or not isinstance(value["checks"], dict)
         or set(value["checks"]) != set(CHECKS[tool])
         or any(
@@ -84,6 +94,7 @@ def validate_observation(tool: str, value: Any) -> dict[str, Any]:
         )
     ):
         raise InputError("Fixed native probe did not establish the pinned API checks")
+    _validate_artifact_declaration(tool, value["artifacts"])
     return {
         "knowledge_state": "VERSION_PROBED",
         "tool_version": version,
@@ -96,6 +107,38 @@ def validate_observation(tool: str, value: Any) -> dict[str, Any]:
     }
 
 
+def _validate_artifact_declaration(tool: str, rows: Any) -> None:
+    if tool != "blender-modeling":
+        if rows != []:
+            raise InputError("This probe does not declare native artifacts")
+        return
+    if not isinstance(rows, list) or len(rows) != 1 or not isinstance(rows[0], dict):
+        raise InputError("Modeling probe needs one scratch checkpoint")
+    row = rows[0]
+    if (
+        set(row) != {"path", "sha256"}
+        or row["path"] != "scratch/baseline.blend"
+        or not isinstance(row["sha256"], str)
+        or re.fullmatch(r"[a-f0-9]{64}", row["sha256"]) is None
+    ):
+        raise InputError("Modeling scratch artifact does not match its fixed identity")
+
+
+def _verify_probe_artifacts(
+    policy: WorkspacePolicy, relative: str, observation: dict[str, Any]
+) -> list[str]:
+    observed = []
+    for row in observation["artifacts"]:
+        relative_path = relative + "/" + row["path"]
+        path = policy.path(relative_path)
+        if not path.is_file() or not 0 < path.stat().st_size <= 16_777_216:
+            raise InputError("Missing or oversized modeling scratch checkpoint")
+        if _sha(path) != row["sha256"]:
+            raise InputError("Modeling scratch checkpoint bytes changed")
+        observed.append(relative_path)
+    return observed
+
+
 def _args(policy: WorkspacePolicy, executable: Path, tool: str, relative: str) -> list[str]:
     output = str(policy.path(relative + "/observation.json"))
     if tool.startswith("blender"):
@@ -103,6 +146,11 @@ def _args(policy: WorkspacePolicy, executable: Path, tool: str, relative: str) -
             str(executable),
             "--background",
             "--factory-startup",
+            *(
+                ["--disable-autoexec", "--python-exit-code", "5"]
+                if tool == "blender-modeling"
+                else []
+            ),
             "--threads",
             "1",
             "--python",
@@ -169,6 +217,8 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
     )
     policy.mkdir(path.parent)
     path.write_bytes(source)
+    if tool == "blender-modeling":
+        policy.mkdir(relative + "/scratch")
     if not tool.startswith("blender"):
         atomic_json(
             policy, relative + "/scratch/UnityProject/Packages/manifest.json", {"dependencies": {}}
@@ -210,6 +260,7 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
         )
     observation = load_json(policy.path(relative + "/observation.json"))
     validated = validate_observation(tool, observation)
+    artifacts = _verify_probe_artifacts(policy, relative, observation)
     receipt = {
         "schema_version": "1.0.0",
         "tool": tool,
@@ -237,7 +288,7 @@ def probe_tool(workspace: Path, tool: str, *, dry_run: bool = False) -> Result:
             "network": "DISABLED",
             "receipt": receipt,
         },
-        evidence_paths=[receipt["observation_path"], process_path],
+        evidence_paths=[receipt["observation_path"], process_path, *artifacts],
     )
 
 
@@ -308,7 +359,10 @@ def read_probe(policy: WorkspacePolicy, tool: str) -> dict[str, Any] | None:
         or process.get("argv") != _args(policy, executable, tool, relative)
     ):
         raise InputError("Probe receipt lacks a matching successful native invocation")
+    observation = load_json(policy.path(receipt["observation_path"]))
+    validated = validate_observation(tool, observation)
+    _verify_probe_artifacts(policy, relative, observation)
     return {
         "receipt": receipt,
-        **validate_observation(tool, load_json(policy.path(receipt["observation_path"]))),
+        **validated,
     }
