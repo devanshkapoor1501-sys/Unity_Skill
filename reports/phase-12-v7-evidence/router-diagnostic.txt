@@ -1,0 +1,45 @@
+F
+================================== FAILURES ===================================
+_ test_natural_language_candidate_never_proves_complete_requirements[Make a crate and sculpt a detailed organic dragon-ASSET-mesh.props.crate.v1] _
+
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7-router-diagnostic/test_natural_language_candidat0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000019B11FA6F90>
+query = 'Make a crate and sculpt a detailed organic dragon', output = 'ASSET'
+candidate = 'mesh.props.crate.v1'
+
+    @pytest.mark.parametrize(
+        "query,output,candidate",
+        [
+            ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+            (
+                "Build a multiplayer survival arena with inventory and save/load",
+                "GAME",
+                "unity.game.arena.v1",
+            ),
+            (
+                "Animate a robot with facial expressions and humanoid retargeting",
+                "ANIMATE",
+                "animation.robot.rig.v1",
+            ),
+            ("Make a crate", "ASSET", "mesh.props.crate.v1"),
+        ],
+    )
+    def test_natural_language_candidate_never_proves_complete_requirements(
+        tmp_path, monkeypatch, query, output, candidate
+    ):
+        from polyforge.knowledge.router import route_reference
+        from polyforge.workforce import discovery
+    
+        monkeypatch.setattr(discovery, "discover_tool", lambda *args: Path(sys.executable))
+        result = route_reference(
+            WorkspacePolicy(tmp_path), {"schema_version": "1.0.0", "query": query, "output": output}
+        )
+        assert result["status"] == "REVIEW"
+>       assert candidate in result["capability_ids"]
+E       AssertionError: assert 'mesh.props.crate.v1' in []
+
+tests\test_audit_workforce_gaps.py:60: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_audit_workforce_gaps.py::test_natural_language_candidate_never_proves_complete_requirements[Make a crate and sculpt a detailed organic dragon-ASSET-mesh.props.crate.v1]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 1.88s

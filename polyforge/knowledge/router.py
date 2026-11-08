@@ -13,6 +13,10 @@ from polyforge.security.paths import WorkspacePolicy
 
 DOMAINS = {"blender", "unity", "game_design", "workforce", "quality", "security"}
 OUTPUTS = {"EXPLAIN", "INSPECT", "ASSET", "ANIMATE", "SPRITE", "MECHANIC", "REPAIR", "GAME"}
+ASSISTED_MODELING = re.compile(
+    r"\b(?:sculpt(?:ing|ed)?|retopology|retopo|text|grease pencil|simulations?"
+    r"|particles?(?:\s+(?:systems?|emitters?))?|decals?|extrusion)\b"
+)
 
 
 def _validate(request: Any) -> None:
@@ -87,6 +91,9 @@ def route_reference(
     available = validate_cards(cards) if cards is not None else catalog_cards()
     query = request["query"].casefold()
     output = request["output"]
+    assisted_modeling = (
+        list(dict.fromkeys(ASSISTED_MODELING.findall(query))) if output == "ASSET" else []
+    )
     forced = {
         "SPRITE": "unity.sprites",
         "ANIMATE": "blender.animation",
@@ -102,6 +109,8 @@ def route_reference(
         )
         if forced:
             score = 100 if card["knowledge_id"] == forced else 0
+        if assisted_modeling and card["knowledge_id"] == "blender.advanced-modeling":
+            score += 16
         if score:
             ranked.append((score, card["knowledge_id"], card))
     selected = [copy.deepcopy(row[2]) for row in sorted(ranked, key=lambda r: (-r[0], r[1]))[:3]]
@@ -116,7 +125,7 @@ def route_reference(
     ):
         capabilities = ["sprite.unity.strip.v1"]
     elif output == "ASSET":
-        advanced = [
+        advanced = {
             kind
             for phrase, kind in (
                 ("room kit", "room_kit"),
@@ -124,14 +133,13 @@ def route_reference(
                 ("mechanical prop", "mechanical_prop"),
                 ("organic practice", "organic"),
                 ("modeling composition", "compose"),
+                ("capped polyline", "compose"),
+                ("beveled polyline", "compose"),
             )
             if re.search(r"(?<!\w)" + re.escape(phrase) + r"(?!\w)", query)
-        ]
-        assisted = re.search(
-            r"\b(?:sculpt(?:ing|ed)?|retopology|retopo|text|grease pencil|simulation)\b", query
-        )
-        if len(advanced) == 1 and assisted is None:
-            modeling_kind = advanced[0]
+        }
+        if len(advanced) == 1 and not assisted_modeling:
+            modeling_kind = next(iter(advanced))
             capabilities.append(MODELING_CAPABILITIES[modeling_kind])
         for word, identifier in {
             "crate": "mesh.props.crate.v1",
@@ -140,7 +148,7 @@ def route_reference(
             "doorway": "mesh.architecture.doorway.v1",
             "tile": "mesh.environment.tile.v1",
         }.items():
-            if not advanced and re.search(r"\b" + word + r"\b", query):
+            if not advanced and not assisted_modeling and re.search(r"\b" + word + r"\b", query):
                 capabilities.append(identifier)
     elif output == "ANIMATE" and "robot" in query:
         capabilities = ["animation.robot.rig.v1"]
@@ -201,6 +209,12 @@ def route_reference(
         from polyforge.workforce.permissions import MODELING_ROLES
 
         roles = ["asset_architect", MODELING_ROLES[modeling_kind], "asset_inspector"]
+    gap = None
+    if status != "PASS":
+        gap = "Typed requirement coverage review required; candidate matches do not cover the brief"
+    if assisted_modeling:
+        roles = ["asset_architect"]
+        gap = "Assisted modeling review required for " + ", ".join(assisted_modeling)
     return {
         "schema_version": "1.0.0",
         "query": request["query"],
@@ -225,9 +239,7 @@ def route_reference(
         ],
         "missing_tools": missing,
         "tool_observations": observations,
-        "gap": None
-        if status == "PASS"
-        else "Typed requirement coverage review required; candidate matches do not cover the brief",
+        "gap": gap,
         "operation_plan": [
             "preserve exact user constraints",
             "read selected DATA_ONLY references",
@@ -237,6 +249,8 @@ def route_reference(
             "inspect actual artifacts and independent acceptance",
         ]
         if capabilities
+        else ["preserve the whole brief and plan the assisted modeling requirements"]
+        if assisted_modeling
         else ["explain selected concepts without tool execution"]
         if output == "EXPLAIN"
         else ["review gaps and prepare bounded SAFE_DISCOVERY proposal"],

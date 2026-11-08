@@ -1,0 +1,853 @@
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 30236)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 28200)
+VBCSCompiler prewarm took 24.19 ms
+VBCSCompilerPreWarmer: watching VBCSCompiler (PID 30236)
+VBCSCompilerPreWarmer: pre-warm launched (dotnet PID 28200)
+VBCSCompiler prewarm took 24.19 ms
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.6/staging' branch; Version is '6000.6.3f1 (45d8eee7de74) revision 4577518'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) CoreSingleLanguage' Language: 'en' Physical Memory: 23691 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-11-08T09:57:58Z
+[Licensing::IpcConnector] Channel LicenseClient-Divansh Kapoor doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 20044)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-job-worker-count
+2
+-projectPath
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject
+-logFile
+-
+-executeMethod
+ModelingImportProbe.Run
+-modelingInput
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\unity-input.json
+-modelingResult
+C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\unity-result.json
+Successfully changed project path to: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject
+C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7u/UnityProject
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-remapper-allocator-initial-capacity=32768"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-main-allocator-mimalloc-enabled=1"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Logging is directed to a specific file, skipping project log.
+Player connection [4264]  Target information:
+
+Player connection [4264]  * "[IP] 192.168.1.14 [Port] 55504 [Flags] 2 [Guid] 1608632738 [EditorId] 1608632738 [Version] 1048832 [Id] WindowsEditor(7,LAPTOP-P7ISERHS) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [4264] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [4264] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 2
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Starting IPC server.
+Waiting for clients to connect on \\.\pipe\Unity-LicenseClient-Divansh Kapoor, press Ctrl-C to exit.
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor" at "2026-11-08T09:57:59.1052606Z"
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 20044, path: "C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
+[Package Manager] Connected to IPC stream "Upm-5504" after 0.4 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.3+d7ffd15
+  Session Id:              2ea40add9ad74ce284276b3500140aa9
+  Correlation Id:          1287e1e8c5a4cb8c5bc2959c259bf518
+  External correlation Id: 3000315054224213689
+  Machine Id:              XKO8J44UweKajEFKlCSAbGfiUHQ=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Divansh Kapoor" (connect: 0.37s, validation: 0.28s, handshake: 0.04s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Divansh Kapoor-notifications" at "2026-11-08T09:57:59.4289637Z"
+[Licensing::Module] Connected to LicensingClient (PId: 20044, launch time: 0.01, total connection time: 0.70s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: 13469879375145-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] Licensing Background thread has ended after 0.77s
+[Licensing::Module] Licensing is initialized (took 0.11s).
+[Licensing::Client] Successfully resolved entitlement details
+Library Redirect Path: Library/
+Initialising UDS system complete:
+  - System type: Client
+  - Resource namespace: 3a19c3e65e87e8481aae823ad8495638
+  - Shared memory size: 1073741824
+  - Command buffer id: 1052576
+  - Command buffer size: 8192
+  - Hashmap size: 4194304
+  - Service connected: false
+Launching Unity Data Store - C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Tools/Unity.DataStore.exe 
+Unity Data Store artifact dir = Library/DataStore, working dir = C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7u/UnityProjectUnity Data Store running and initialised
+[Physics::Module] Selected backend (deferred post-plugins).
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.6.3f1 (45d8eee7de74)
+[EntityIdStore] init: VM path (explicit commit), pageSize=4096, blockCount=1048576, entitiesPerBlock=256, slots reserved=4294967296 bytes
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7u/UnityProject/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/BCLExtensions/runtime/netstandard2.1'
+Mono path[2] = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56504
+CodeReloadManager initialized
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.6.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.003688 seconds.
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:False
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  0.985 seconds
+Domain Reload Profiling: 1834ms
+	BeginReloadAssembly (199ms)
+		CreateAndSetChildDomain (17ms)
+	RebuildCommonClasses (6ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (134ms)
+	LoadAllAssembliesAndSetupDomain (483ms)
+		LoadAssemblies (179ms)
+		TypeCache.Refresh (318ms)
+			TypeCache.ScanAssembly (298ms)
+		AnalyzeDomain (3ms)
+	FinalizeReload (990ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (3ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			BeforeProcessingInitializeOnLoad (146ms)
+			ProcessInitializeOnLoadAttributes (176ms)
+			ProcessInitializeOnLoadMethodAttributes (357ms)
+[Licensing::Client] Successfully resolved entitlement details
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 36 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.38 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.ide.rider@1f60b3138684)
+    com.unity.ide.visualstudio@2.0.26 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.ide.visualstudio@a99d56dec63f)
+    com.unity.inputsystem@1.19.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.visualscripting@1.9.11 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.5 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.searcher@a463122f2c00)
+    com.unity.profiling.core@1.0.3 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.profiling.core@8a49f7027d06)
+    com.unity.nuget.mono-cecil@1.11.6 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+  Built-in packages:
+    com.unity.render-pipelines.universal@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal@327d93d1cbc8)
+    com.unity.test-framework@1.8.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.test-framework@80f691d4262b)
+    com.unity.timeline@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.timeline@c56d56b0070b)
+    com.unity.ugui@2.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.ugui@0727b404f3a0)
+    com.unity.2d.sprite@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.2d.sprite@26bcb5e737a2)
+    com.unity.modules.jsonserialize@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.ui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.imgui@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.audio@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.physics2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.physics@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.director@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.animation@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.particlesystem@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.ext.nunit@2.1.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.ext.nunit@0198eae3b53e)
+    com.unity.render-pipelines.core@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.render-pipelines.core@02d75770e4b3)
+    com.unity.shadergraph@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.shadergraph@1dd0fd24b57e)
+    com.unity.render-pipelines.universal-config@17.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.render-pipelines.universal-config@561422b74439)
+    com.unity.modules.uielements@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.ai@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.physicscore2d@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.physicscore2d)
+    com.unity.graph-authoring@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.graph-authoring@cfd2588851ee)
+    com.unity.burst@2.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.burst@626e66ab421b)
+    com.unity.collections@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.collections@10fff0607388)
+    com.unity.modules.hierarchycore@1.0.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.test-framework.performance@6.6.0 (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Library\PackageCache\com.unity.test-framework.performance@b6023decb532)
+  Embedded packages:
+    com.polyforge.engine@file:C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Packages\com.polyforge.engine (location: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7u\UnityProject\Packages\com.polyforge.engine)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.02 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7u/UnityProject
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.runtime.interopservices.windowsruntime has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Runtime.InteropServices.WindowsRuntime.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\Extensions\2.0.0\System.Runtime.InteropServices.WindowsRuntime.dll"
+warn: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Assembly system.componentmodel.composition has duplicate hint path. Ignoring "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\System.ComponentModel.Composition.dll" in favor of "C:\Program Files\Unity\Hub\Editor\6000.6.3f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.ComponentModel.Composition.dll"
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 1s561ms
+[ 609/1078  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[1074/1078  0s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[1075/1078  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 146 defines and 375 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+1 processor(s) skipped this assembly
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+[1076/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[1077/1078  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (1.50 seconds), 5 items updated, 1078 evaluated
+AssetDatabase: script compilation time: 2.323862s
+Begin MonoManager ReloadAssembly
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+'Packages/com.unity.render-pipelines.core/Editor/Deprecated.cs' contains partial class of Unity.Object, exactly 1 of the partial classes needs to be in a file with the same filename. This is to know the one that can be referenced from ie. GameObjects
+Refreshing native plugins compatible for Editor in 3.11 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Scripting: successfully reloaded assembly
+- Finished resetting the current domain, in  1.451 seconds
+Domain Reload Profiling: 3075ms
+	BeginReloadAssembly (479ms)
+		DisableScriptedObjects (46ms)
+		CreateAndSetChildDomain (177ms)
+	RebuildCommonClasses (11ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (102ms)
+	LoadAllAssembliesAndSetupDomain (1001ms)
+		LoadAssemblies (591ms)
+		TypeCache.Refresh (246ms)
+			TypeCache.ScanAssembly (230ms)
+		AnalyzeDomain (117ms)
+			BuildScriptInfoCaches (97ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1453ms)
+		SetupLoadedEditorAssemblies (0ms)
+			LogAssemblyErrors (4ms)
+			BeforeProcessingInitializeOnLoad (182ms)
+			ProcessInitializeOnLoadAttributes (433ms)
+			ProcessInitializeOnLoadMethodAttributes (163ms)
+			AfterProcessingInitializeOnLoad (13ms)
+		AwakeInstancesAfterBackupRestoration (40ms)
+Starting new worker id: 0 with log in C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7u/UnityProject/Logs/AssetImportWorkerHW0.log
+Importing 'GUID: e07b89e126259ba458a100a9b8befc93 - Path: Assets/Phase12Models/organic_lod.fbx' with importer (FBXImporter)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
+File 'organic_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: e07b89e126259ba458a100a9b8befc93' -> (Import Result ID: '71ddd168bfbf87353a102f353e96b336') in 0.116 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e0ac7974b9f07f7f5d5b2cebc88823a DependenciesID=f98208c7c941d8416abe7c68b65fb455 StaticDependenciesID=f435664d3e01bccaea78e164a1f2fa2d 
+Importing 'GUID: c179cfbd6547e4c4b9348edd6ee4e027 - Path: Assets/Phase12Models/inspection_gantry_lod.fbx' with importer (FBXImporter)
+File 'inspection_gantry_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: c179cfbd6547e4c4b9348edd6ee4e027' -> (Import Result ID: '0cfb8be5dff692ba725662f3974ecd89') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aa8e38dc246be3781309537f77367ec1 DependenciesID=509484c8a52f8cacff357a33a04abc76 StaticDependenciesID=52b9a7a80aab6a67e9fd39d3e966ea8c 
+Importing 'GUID: f21a9886bc831e94a810269b10d7c454 - Path: Assets/Phase12Models/mechanical_prop_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: f21a9886bc831e94a810269b10d7c454' -> (Import Result ID: '00cf06ecac033e834b1d47dd26776118') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=98436a2b21d4d9ddaa8aacab60955f27 DependenciesID=db68ab7328f46700f0cb5809ace930d7 StaticDependenciesID=45b475b1a4d7f15256439b32f09f1914 
+Importing 'GUID: 163450deeb7282d48ac7c9a98bebb7a6 - Path: Assets/Phase12Models/inspection_gantry_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 163450deeb7282d48ac7c9a98bebb7a6' -> (Import Result ID: 'b21770653bd94a210fdf1b0927ce9d10') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4ef89570ade1264944c977a47cd3d938 DependenciesID=ae465cda2659551fce350bc64b388687 StaticDependenciesID=cf1e9b746f9d1506a7a0598f0c91294a 
+Importing 'GUID: 890ec89c6e93a9546884d20f532ef4e5 - Path: Assets/Phase12Models/compose_lod.fbx' with importer (FBXImporter)
+File 'compose_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: 890ec89c6e93a9546884d20f532ef4e5' -> (Import Result ID: '698fd4be181b365e369b81defaf0dd19') in 0.025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2f790ead5cb6156ff894c5db844b7460 DependenciesID=b50c0b414925d6a6f5c5b01e44689503 StaticDependenciesID=c1c3ac23f30cf89fbdcfc0bf9c3d06b3 
+Importing 'GUID: 3bebdd9ca1849024a9b9718860053f18 - Path: Assets/Phase12Models/organic_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 3bebdd9ca1849024a9b9718860053f18' -> (Import Result ID: '362bccf5f711124fcda6cfdc9d46d68a') in 0.058 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd1f4a602423ae34588b1c4f11eda7f7 DependenciesID=19443ca6edf6ec444634eb483b730e91 StaticDependenciesID=51d0b0eeb272e2793496955957785d75 
+Importing 'GUID: 7cd778d1874b9bb438d1e3e29534a65b - Path: Assets/Phase12Models/compose_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 7cd778d1874b9bb438d1e3e29534a65b' -> (Import Result ID: '209647c958fba2e857bb0bb0fadc4999') in 0.027 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=218ad248ba2b30704256b72a032c8c5f DependenciesID=ee7a4474450c19cdc94a99ae17e96779 StaticDependenciesID=5894bbc57fb7629eaac3963c267fa6a4 
+Importing 'GUID: 9c4d66e25469e16458877f1c1a1f640f - Path: Assets/Phase12Models/vehicle_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 9c4d66e25469e16458877f1c1a1f640f' -> (Import Result ID: '6b8f6dfd0ca863b0c3c70ac92eba32d0') in 0.028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=13db35416ef00e151aac005cd398d571 DependenciesID=326ec7807ec0de05a4116b58b98d2f48 StaticDependenciesID=379865ef373955c611ecbe17f8112b5b 
+Importing 'GUID: 7d1124043678a944d87ca5de25a48ab3 - Path: Assets/Phase12Models/vehicle_lod.fbx' with importer (FBXImporter)
+File 'vehicle_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: 7d1124043678a944d87ca5de25a48ab3' -> (Import Result ID: '5e43c4c26ebab267761192577447be6c') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2c58e54b7642b75d19a82f1c9b7e6c7 DependenciesID=c8f04c66ffa7cd15440ec2a255125093 StaticDependenciesID=6545dda15ce7af51f3cf290b418422f9 
+Importing 'GUID: 8d6114e7ed6ac89419198788631efc98 - Path: Assets/Phase12Models/room_kit_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 8d6114e7ed6ac89419198788631efc98' -> (Import Result ID: '0ce4bc75ac1eeb2a80e85c91c513f856') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45b0ddb7b2f3619794dd8117a455d047 DependenciesID=7ceb03c8005eb7a5b0dbb8ecdc1ed6a6 StaticDependenciesID=c153be70021f125f85b53401c11f9716 
+Importing 'GUID: 1f512d99802360d4989bdcf872ac95d7 - Path: Assets/Phase12Models/room_kit_lod.fbx' with importer (FBXImporter)
+File 'room_kit_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: 1f512d99802360d4989bdcf872ac95d7' -> (Import Result ID: 'b1c4532d9596982c0754c63f1aed2586') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=57958169beb79ffe13f26a75c6f2c620 DependenciesID=91ce24ed964a1eba8d2fbbcbd184e47a StaticDependenciesID=50835157f9c75a5e926ab48cd6fd9bd4 
+Importing 'GUID: 3f186fbcd76b2bb43ac2e8366142a580 - Path: Assets/Phase12Models/mechanical_prop_lod.fbx' with importer (FBXImporter)
+File 'mechanical_prop_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+Imported 'GUID: 3f186fbcd76b2bb43ac2e8366142a580' -> (Import Result ID: '2feed7215e2e0d017b94482562a273e2') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fd8ec144fed32c13de017ff5073ec6c DependenciesID=346ae91e070ba8aeebd1bbef1f70a931 StaticDependenciesID=849494008ada1d3daf92b3238ee2c042 
+Refreshing native plugins compatible for Editor in 4.65 ms, found 4 plugins.
+
+Asset Pipeline Refresh (id=68e5e9d2435318d48b183e1fe65dc426): Total: 7.122 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	(Values over 0.05ms)
+	Summary:
+		Imports: total=12 (actual=12, local cache=0, cache server=0)
+		Asset DB Process Time: managed=55 ms, native=2609 ms
+		Asset DB Callback time: managed=276 ms, native=39 ms
+		Scripting: domain reloads=1, domain reload time=1722 ms, compile time=2327 ms, other=91 ms
+		Project Asset Count: scripts=1317, non-scripts=2302
+		Asset File Changes: new=0, changed=13, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 30.337ms
+	ApplyChangesToAssetFolders: 1.720ms
+	Scan: 198.311ms
+	Collect global state as custom dependencies: 32.081ms
+	OnSourceAssetsModified: 1.218ms
+	CategorizeScriptCompilationAssets: 58.697ms
+	ProcessAssetsWithTransientArtifactChanges: 123.095ms
+	CategorizeAssets: 82.569ms
+	CompileScripts: 2327.310ms
+	ImportOutOfDateAssets: 1887.515ms (1466.355ms without children)
+		ImportManagerImport: 402.537ms (2.223ms without children)
+			UpdateCategorizedAssets: 0.145ms
+		ReloadNativeAssets: 0.067ms
+		UnloadImportedAssets: 1.324ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.857ms
+		ImportSchedulerStart: 16.359ms
+	PostProcessAllAssets: 282.034ms
+		VCAutoAddAssetPostprocess 1.135ms
+		XRBuildSystem.XRAssetImported 0.704ms
+		PostProcessCallbackCreateDeferredMaterials 0.103ms
+		MonoPostProcessAllAssets: 275.972ms
+			AssetPostprocessor.OnPostprocessAllAssets 155.854ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 30.498ms
+			SyncVS.PostprocessSyncProject 19.400ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 17.870ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 7.664ms
+			SpriteSlicePostprocessor.OnPostprocessAllAssets 4.548ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 3.385ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 3.385ms
+			AssetChangedListener.OnPostprocessAllAssets 2.726ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.987ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.843ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 1.303ms
+			MaterialPostprocessor.OnPostprocessAllAssets 1.284ms
+			EditModeScopePostprocessor.OnPostprocessAllAssets 1.211ms
+			SpriteEditorTexturePostprocessor.OnPostprocessAllAssets 1.088ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.839ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.804ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.802ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.766ms
+			PostProcessor.OnPostprocessAllAssets 0.706ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.635ms
+			ShaderReflectionAssetPostProcessor.OnPostprocessAllAssets 0.614ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.515ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.507ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.487ms
+			AssetEvents.OnPostprocessAllAssets 0.436ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.370ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.359ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.330ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.320ms
+			ThemePostprocessor.OnPostprocessAllAssets 0.295ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.276ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.185ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.132ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.091ms
+	PostAssetChangesProfiler: 7.342ms
+	UnloadStreamsBegin: 3.514ms
+	PersistCurrentRevisions: 0.410ms
+	GenerateScriptTypeHashes: 1.867ms
+	GenerateScriptTypeSerializationHashes: 3.390ms
+	Untracked: 2045.653ms
+
+Application.AssetDatabase Initial Refresh End
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Scanning for USB devices : 3.108ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-com.unity.template.urp-blank
+Unloading 78 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6537 unused Assets / (7.2 MB). Loaded Objects now: 7442.
+Memory consumption went from 400.5 MB to 393.3 MB.
+Total: 16.973200 ms (FindLiveObjects: 0.696900 ms CreateObjectMapping: 0.313300 ms MarkObjects: 9.858000 ms  DeleteObjects: 5.739900 ms)
+
+Importing 'GUID: 8d6114e7ed6ac89419198788631efc98 - Path: Assets/Phase12Models/room_kit_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 8d6114e7ed6ac89419198788631efc98' -> (Import Result ID: '0ce4bc75ac1eeb2a80e85c91c513f856') in 0.026 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45b0ddb7b2f3619794dd8117a455d047 DependenciesID=7ceb03c8005eb7a5b0dbb8ecdc1ed6a6 StaticDependenciesID=c153be70021f125f85b53401c11f9716 
+Refreshing native plugins compatible for Editor in 2.34 ms, found 4 plugins.
+Asset Pipeline Refresh (id=3619a0c6ac8510e40b9d10e608315450): Total: 0.164 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 8d6114e7ed6ac89419198788631efc98 - Path: Assets/Phase12Models/room_kit_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 8d6114e7ed6ac89419198788631efc98' -> (Import Result ID: '0ce4bc75ac1eeb2a80e85c91c513f856') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45b0ddb7b2f3619794dd8117a455d047 DependenciesID=7ceb03c8005eb7a5b0dbb8ecdc1ed6a6 StaticDependenciesID=c153be70021f125f85b53401c11f9716 
+Refreshing native plugins compatible for Editor in 2.45 ms, found 4 plugins.
+Asset Pipeline Refresh (id=93e545e02bdacc840adef69aa10a21fa): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 8d6114e7ed6ac89419198788631efc98 - Path: Assets/Phase12Models/room_kit_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 8d6114e7ed6ac89419198788631efc98' -> (Import Result ID: '0ce4bc75ac1eeb2a80e85c91c513f856') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=45b0ddb7b2f3619794dd8117a455d047 DependenciesID=7ceb03c8005eb7a5b0dbb8ecdc1ed6a6 StaticDependenciesID=c153be70021f125f85b53401c11f9716 
+Refreshing native plugins compatible for Editor in 3.70 ms, found 4 plugins.
+Asset Pipeline Refresh (id=aee2bc1071d206f458c17d98ff5ec9b3): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/room_kit_asset.fbx 8d6114e7ed6ac89419198788631efc98
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 1f512d99802360d4989bdcf872ac95d7 - Path: Assets/Phase12Models/room_kit_lod.fbx' with importer (FBXImporter)
+File 'room_kit_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: 1f512d99802360d4989bdcf872ac95d7' -> (Import Result ID: 'b1c4532d9596982c0754c63f1aed2586') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=57958169beb79ffe13f26a75c6f2c620 DependenciesID=91ce24ed964a1eba8d2fbbcbd184e47a StaticDependenciesID=50835157f9c75a5e926ab48cd6fd9bd4 
+Refreshing native plugins compatible for Editor in 2.58 ms, found 4 plugins.
+Asset Pipeline Refresh (id=e4785ae7d58caf54281ae940bac97596): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1f512d99802360d4989bdcf872ac95d7 - Path: Assets/Phase12Models/room_kit_lod.fbx' with importer (FBXImporter)
+File 'room_kit_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: 1f512d99802360d4989bdcf872ac95d7' -> (Import Result ID: 'b1c4532d9596982c0754c63f1aed2586') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=57958169beb79ffe13f26a75c6f2c620 DependenciesID=91ce24ed964a1eba8d2fbbcbd184e47a StaticDependenciesID=50835157f9c75a5e926ab48cd6fd9bd4 
+Refreshing native plugins compatible for Editor in 4.60 ms, found 4 plugins.
+Asset Pipeline Refresh (id=36a481f1d3c78fd4e8bd955c9a60ebd8): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 1f512d99802360d4989bdcf872ac95d7 - Path: Assets/Phase12Models/room_kit_lod.fbx' with importer (FBXImporter)
+File 'room_kit_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: 1f512d99802360d4989bdcf872ac95d7' -> (Import Result ID: 'b1c4532d9596982c0754c63f1aed2586') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=57958169beb79ffe13f26a75c6f2c620 DependenciesID=91ce24ed964a1eba8d2fbbcbd184e47a StaticDependenciesID=50835157f9c75a5e926ab48cd6fd9bd4 
+Refreshing native plugins compatible for Editor in 3.99 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2e1c1e97d1ee3d64381cce3dc63567db): Total: 0.055 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/room_kit_lod.fbx 1f512d99802360d4989bdcf872ac95d7
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 9c4d66e25469e16458877f1c1a1f640f - Path: Assets/Phase12Models/vehicle_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 9c4d66e25469e16458877f1c1a1f640f' -> (Import Result ID: '6b8f6dfd0ca863b0c3c70ac92eba32d0') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=13db35416ef00e151aac005cd398d571 DependenciesID=326ec7807ec0de05a4116b58b98d2f48 StaticDependenciesID=379865ef373955c611ecbe17f8112b5b 
+Refreshing native plugins compatible for Editor in 2.52 ms, found 4 plugins.
+Asset Pipeline Refresh (id=eb0b1159aa98a6d4a925c841c1cef17f): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 9c4d66e25469e16458877f1c1a1f640f - Path: Assets/Phase12Models/vehicle_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 9c4d66e25469e16458877f1c1a1f640f' -> (Import Result ID: '6b8f6dfd0ca863b0c3c70ac92eba32d0') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=13db35416ef00e151aac005cd398d571 DependenciesID=326ec7807ec0de05a4116b58b98d2f48 StaticDependenciesID=379865ef373955c611ecbe17f8112b5b 
+Refreshing native plugins compatible for Editor in 2.54 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ac75697cc68707e4983ce1ceb7c7816a): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 9c4d66e25469e16458877f1c1a1f640f - Path: Assets/Phase12Models/vehicle_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 9c4d66e25469e16458877f1c1a1f640f' -> (Import Result ID: '6b8f6dfd0ca863b0c3c70ac92eba32d0') in 0.026 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=13db35416ef00e151aac005cd398d571 DependenciesID=326ec7807ec0de05a4116b58b98d2f48 StaticDependenciesID=379865ef373955c611ecbe17f8112b5b 
+Refreshing native plugins compatible for Editor in 3.11 ms, found 4 plugins.
+Asset Pipeline Refresh (id=acea76f84a2ff2c4bbf493983a7fad9b): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/vehicle_asset.fbx 9c4d66e25469e16458877f1c1a1f640f
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 7d1124043678a944d87ca5de25a48ab3 - Path: Assets/Phase12Models/vehicle_lod.fbx' with importer (FBXImporter)
+File 'vehicle_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: 7d1124043678a944d87ca5de25a48ab3' -> (Import Result ID: '5e43c4c26ebab267761192577447be6c') in 0.031 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2c58e54b7642b75d19a82f1c9b7e6c7 DependenciesID=c8f04c66ffa7cd15440ec2a255125093 StaticDependenciesID=6545dda15ce7af51f3cf290b418422f9 
+Refreshing native plugins compatible for Editor in 3.57 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d37a3ab742391ca4ca91a301cc880f3a): Total: 0.057 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7d1124043678a944d87ca5de25a48ab3 - Path: Assets/Phase12Models/vehicle_lod.fbx' with importer (FBXImporter)
+File 'vehicle_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: 7d1124043678a944d87ca5de25a48ab3' -> (Import Result ID: '5e43c4c26ebab267761192577447be6c') in 0.024 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2c58e54b7642b75d19a82f1c9b7e6c7 DependenciesID=c8f04c66ffa7cd15440ec2a255125093 StaticDependenciesID=6545dda15ce7af51f3cf290b418422f9 
+Refreshing native plugins compatible for Editor in 3.72 ms, found 4 plugins.
+Asset Pipeline Refresh (id=9a3046da0d4af0d49861d3df93e534b6): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7d1124043678a944d87ca5de25a48ab3 - Path: Assets/Phase12Models/vehicle_lod.fbx' with importer (FBXImporter)
+File 'vehicle_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: 7d1124043678a944d87ca5de25a48ab3' -> (Import Result ID: '5e43c4c26ebab267761192577447be6c') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d2c58e54b7642b75d19a82f1c9b7e6c7 DependenciesID=c8f04c66ffa7cd15440ec2a255125093 StaticDependenciesID=6545dda15ce7af51f3cf290b418422f9 
+Refreshing native plugins compatible for Editor in 3.48 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8046e7e5261410649b99b09c7d648d6e): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/vehicle_lod.fbx 7d1124043678a944d87ca5de25a48ab3
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: f21a9886bc831e94a810269b10d7c454 - Path: Assets/Phase12Models/mechanical_prop_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: f21a9886bc831e94a810269b10d7c454' -> (Import Result ID: '00cf06ecac033e834b1d47dd26776118') in 0.029 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=98436a2b21d4d9ddaa8aacab60955f27 DependenciesID=db68ab7328f46700f0cb5809ace930d7 StaticDependenciesID=45b475b1a4d7f15256439b32f09f1914 
+Refreshing native plugins compatible for Editor in 3.96 ms, found 4 plugins.
+Asset Pipeline Refresh (id=8a49f53afa94e0e4bad2163eb3e52afd): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: f21a9886bc831e94a810269b10d7c454 - Path: Assets/Phase12Models/mechanical_prop_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: f21a9886bc831e94a810269b10d7c454' -> (Import Result ID: '00cf06ecac033e834b1d47dd26776118') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=98436a2b21d4d9ddaa8aacab60955f27 DependenciesID=db68ab7328f46700f0cb5809ace930d7 StaticDependenciesID=45b475b1a4d7f15256439b32f09f1914 
+Refreshing native plugins compatible for Editor in 2.85 ms, found 4 plugins.
+Asset Pipeline Refresh (id=3f246a11002a58e4da95c4e8e36ec686): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: f21a9886bc831e94a810269b10d7c454 - Path: Assets/Phase12Models/mechanical_prop_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: f21a9886bc831e94a810269b10d7c454' -> (Import Result ID: '00cf06ecac033e834b1d47dd26776118') in 0.025 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=98436a2b21d4d9ddaa8aacab60955f27 DependenciesID=db68ab7328f46700f0cb5809ace930d7 StaticDependenciesID=45b475b1a4d7f15256439b32f09f1914 
+Refreshing native plugins compatible for Editor in 2.58 ms, found 4 plugins.
+Asset Pipeline Refresh (id=ce2ea3f06cbc9db428b678861ff05e17): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/mechanical_prop_asset.fbx f21a9886bc831e94a810269b10d7c454
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 3f186fbcd76b2bb43ac2e8366142a580 - Path: Assets/Phase12Models/mechanical_prop_lod.fbx' with importer (FBXImporter)
+File 'mechanical_prop_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: 3f186fbcd76b2bb43ac2e8366142a580' -> (Import Result ID: '2feed7215e2e0d017b94482562a273e2') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fd8ec144fed32c13de017ff5073ec6c DependenciesID=346ae91e070ba8aeebd1bbef1f70a931 StaticDependenciesID=849494008ada1d3daf92b3238ee2c042 
+Refreshing native plugins compatible for Editor in 3.20 ms, found 4 plugins.
+Asset Pipeline Refresh (id=4d718ce35f2913243a3ce2c01b78ee59): Total: 0.050 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3f186fbcd76b2bb43ac2e8366142a580 - Path: Assets/Phase12Models/mechanical_prop_lod.fbx' with importer (FBXImporter)
+File 'mechanical_prop_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: 3f186fbcd76b2bb43ac2e8366142a580' -> (Import Result ID: '2feed7215e2e0d017b94482562a273e2') in 0.021 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fd8ec144fed32c13de017ff5073ec6c DependenciesID=346ae91e070ba8aeebd1bbef1f70a931 StaticDependenciesID=849494008ada1d3daf92b3238ee2c042 
+Refreshing native plugins compatible for Editor in 3.22 ms, found 4 plugins.
+Asset Pipeline Refresh (id=067c73a64af9a5041b15d1e2b6eb2fdb): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3f186fbcd76b2bb43ac2e8366142a580 - Path: Assets/Phase12Models/mechanical_prop_lod.fbx' with importer (FBXImporter)
+File 'mechanical_prop_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: 3f186fbcd76b2bb43ac2e8366142a580' -> (Import Result ID: '2feed7215e2e0d017b94482562a273e2') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2fd8ec144fed32c13de017ff5073ec6c DependenciesID=346ae91e070ba8aeebd1bbef1f70a931 StaticDependenciesID=849494008ada1d3daf92b3238ee2c042 
+Refreshing native plugins compatible for Editor in 2.66 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c4e38d2ff8d6c9240a3d108ae805aeea): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/mechanical_prop_lod.fbx 3f186fbcd76b2bb43ac2e8366142a580
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 3bebdd9ca1849024a9b9718860053f18 - Path: Assets/Phase12Models/organic_asset.fbx' with importer (FBXImporter)
+Worker ready: AssetImportWorkerHW0 0
+Imported 'GUID: 3bebdd9ca1849024a9b9718860053f18' -> (Import Result ID: '362bccf5f711124fcda6cfdc9d46d68a') in 0.059 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd1f4a602423ae34588b1c4f11eda7f7 DependenciesID=19443ca6edf6ec444634eb483b730e91 StaticDependenciesID=51d0b0eeb272e2793496955957785d75 
+Refreshing native plugins compatible for Editor in 3.02 ms, found 4 plugins.
+Asset Pipeline Refresh (id=06150e74035ea4e45b8c928c1b1b35ba): Total: 0.085 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3bebdd9ca1849024a9b9718860053f18 - Path: Assets/Phase12Models/organic_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 3bebdd9ca1849024a9b9718860053f18' -> (Import Result ID: '362bccf5f711124fcda6cfdc9d46d68a') in 0.050 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd1f4a602423ae34588b1c4f11eda7f7 DependenciesID=19443ca6edf6ec444634eb483b730e91 StaticDependenciesID=51d0b0eeb272e2793496955957785d75 
+Refreshing native plugins compatible for Editor in 2.77 ms, found 4 plugins.
+Asset Pipeline Refresh (id=76747639d76fbfe42a846b259d459706): Total: 0.079 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 3bebdd9ca1849024a9b9718860053f18 - Path: Assets/Phase12Models/organic_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 3bebdd9ca1849024a9b9718860053f18' -> (Import Result ID: '362bccf5f711124fcda6cfdc9d46d68a') in 0.052 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=bd1f4a602423ae34588b1c4f11eda7f7 DependenciesID=19443ca6edf6ec444634eb483b730e91 StaticDependenciesID=51d0b0eeb272e2793496955957785d75 
+Refreshing native plugins compatible for Editor in 3.28 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d6aed03f4ff5d1243b99fe5173800598): Total: 0.077 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/organic_asset.fbx 3bebdd9ca1849024a9b9718860053f18
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: e07b89e126259ba458a100a9b8befc93 - Path: Assets/Phase12Models/organic_lod.fbx' with importer (FBXImporter)
+File 'organic_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: e07b89e126259ba458a100a9b8befc93' -> (Import Result ID: '71ddd168bfbf87353a102f353e96b336') in 0.029 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e0ac7974b9f07f7f5d5b2cebc88823a DependenciesID=f98208c7c941d8416abe7c68b65fb455 StaticDependenciesID=f435664d3e01bccaea78e164a1f2fa2d 
+Refreshing native plugins compatible for Editor in 2.69 ms, found 4 plugins.
+Asset Pipeline Refresh (id=3278a1f59f6e29e489e1bf8317d4d88d): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e07b89e126259ba458a100a9b8befc93 - Path: Assets/Phase12Models/organic_lod.fbx' with importer (FBXImporter)
+File 'organic_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: e07b89e126259ba458a100a9b8befc93' -> (Import Result ID: '71ddd168bfbf87353a102f353e96b336') in 0.026 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e0ac7974b9f07f7f5d5b2cebc88823a DependenciesID=f98208c7c941d8416abe7c68b65fb455 StaticDependenciesID=f435664d3e01bccaea78e164a1f2fa2d 
+Refreshing native plugins compatible for Editor in 3.63 ms, found 4 plugins.
+Asset Pipeline Refresh (id=2463fa3463b9630459a010e437ece74a): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: e07b89e126259ba458a100a9b8befc93 - Path: Assets/Phase12Models/organic_lod.fbx' with importer (FBXImporter)
+File 'organic_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: e07b89e126259ba458a100a9b8befc93' -> (Import Result ID: '71ddd168bfbf87353a102f353e96b336') in 0.022 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e0ac7974b9f07f7f5d5b2cebc88823a DependenciesID=f98208c7c941d8416abe7c68b65fb455 StaticDependenciesID=f435664d3e01bccaea78e164a1f2fa2d 
+Refreshing native plugins compatible for Editor in 3.00 ms, found 4 plugins.
+Asset Pipeline Refresh (id=0a9df6d802c402f43844e1bc5a7a3ad2): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/organic_lod.fbx e07b89e126259ba458a100a9b8befc93
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 7cd778d1874b9bb438d1e3e29534a65b - Path: Assets/Phase12Models/compose_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 7cd778d1874b9bb438d1e3e29534a65b' -> (Import Result ID: '209647c958fba2e857bb0bb0fadc4999') in 0.029 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=218ad248ba2b30704256b72a032c8c5f DependenciesID=ee7a4474450c19cdc94a99ae17e96779 StaticDependenciesID=5894bbc57fb7629eaac3963c267fa6a4 
+Refreshing native plugins compatible for Editor in 2.43 ms, found 4 plugins.
+Asset Pipeline Refresh (id=c1f692f63f9a1324283f6b6a5bff4ad7): Total: 0.053 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7cd778d1874b9bb438d1e3e29534a65b - Path: Assets/Phase12Models/compose_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 7cd778d1874b9bb438d1e3e29534a65b' -> (Import Result ID: '209647c958fba2e857bb0bb0fadc4999') in 0.028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=218ad248ba2b30704256b72a032c8c5f DependenciesID=ee7a4474450c19cdc94a99ae17e96779 StaticDependenciesID=5894bbc57fb7629eaac3963c267fa6a4 
+Refreshing native plugins compatible for Editor in 3.25 ms, found 4 plugins.
+Asset Pipeline Refresh (id=f103f47d2ee3fd04b80c600cb2e8690d): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 7cd778d1874b9bb438d1e3e29534a65b - Path: Assets/Phase12Models/compose_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 7cd778d1874b9bb438d1e3e29534a65b' -> (Import Result ID: '209647c958fba2e857bb0bb0fadc4999') in 0.029 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=218ad248ba2b30704256b72a032c8c5f DependenciesID=ee7a4474450c19cdc94a99ae17e96779 StaticDependenciesID=5894bbc57fb7629eaac3963c267fa6a4 
+Refreshing native plugins compatible for Editor in 3.31 ms, found 4 plugins.
+Asset Pipeline Refresh (id=731a4c51693353f46b1068b6fe8e7244): Total: 0.057 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/compose_asset.fbx 7cd778d1874b9bb438d1e3e29534a65b
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 890ec89c6e93a9546884d20f532ef4e5 - Path: Assets/Phase12Models/compose_lod.fbx' with importer (FBXImporter)
+File 'compose_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: 890ec89c6e93a9546884d20f532ef4e5' -> (Import Result ID: '698fd4be181b365e369b81defaf0dd19') in 0.020 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2f790ead5cb6156ff894c5db844b7460 DependenciesID=b50c0b414925d6a6f5c5b01e44689503 StaticDependenciesID=c1c3ac23f30cf89fbdcfc0bf9c3d06b3 
+Refreshing native plugins compatible for Editor in 2.49 ms, found 4 plugins.
+Asset Pipeline Refresh (id=11f85de0f4557bf46a32c09e8491c06c): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 890ec89c6e93a9546884d20f532ef4e5 - Path: Assets/Phase12Models/compose_lod.fbx' with importer (FBXImporter)
+File 'compose_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: 890ec89c6e93a9546884d20f532ef4e5' -> (Import Result ID: '698fd4be181b365e369b81defaf0dd19') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2f790ead5cb6156ff894c5db844b7460 DependenciesID=b50c0b414925d6a6f5c5b01e44689503 StaticDependenciesID=c1c3ac23f30cf89fbdcfc0bf9c3d06b3 
+Refreshing native plugins compatible for Editor in 2.31 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d10316cd0eb8cf94ba8ddb11e8a68acd): Total: 0.048 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 890ec89c6e93a9546884d20f532ef4e5 - Path: Assets/Phase12Models/compose_lod.fbx' with importer (FBXImporter)
+File 'compose_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: 890ec89c6e93a9546884d20f532ef4e5' -> (Import Result ID: '698fd4be181b365e369b81defaf0dd19') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2f790ead5cb6156ff894c5db844b7460 DependenciesID=b50c0b414925d6a6f5c5b01e44689503 StaticDependenciesID=c1c3ac23f30cf89fbdcfc0bf9c3d06b3 
+Refreshing native plugins compatible for Editor in 2.39 ms, found 4 plugins.
+Asset Pipeline Refresh (id=6f2ace8a5ea147d46a12dcc22291fe4e): Total: 0.039 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/compose_lod.fbx 890ec89c6e93a9546884d20f532ef4e5
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: 163450deeb7282d48ac7c9a98bebb7a6 - Path: Assets/Phase12Models/inspection_gantry_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 163450deeb7282d48ac7c9a98bebb7a6' -> (Import Result ID: 'b21770653bd94a210fdf1b0927ce9d10') in 0.028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4ef89570ade1264944c977a47cd3d938 DependenciesID=ae465cda2659551fce350bc64b388687 StaticDependenciesID=cf1e9b746f9d1506a7a0598f0c91294a 
+Refreshing native plugins compatible for Editor in 3.45 ms, found 4 plugins.
+Asset Pipeline Refresh (id=79439fc6e8d32fa4b9053ce3d515700c): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 163450deeb7282d48ac7c9a98bebb7a6 - Path: Assets/Phase12Models/inspection_gantry_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 163450deeb7282d48ac7c9a98bebb7a6' -> (Import Result ID: 'b21770653bd94a210fdf1b0927ce9d10') in 0.028 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4ef89570ade1264944c977a47cd3d938 DependenciesID=ae465cda2659551fce350bc64b388687 StaticDependenciesID=cf1e9b746f9d1506a7a0598f0c91294a 
+Refreshing native plugins compatible for Editor in 3.65 ms, found 4 plugins.
+Asset Pipeline Refresh (id=43bbca64ff90f114296d7a5de2652793): Total: 0.059 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: 163450deeb7282d48ac7c9a98bebb7a6 - Path: Assets/Phase12Models/inspection_gantry_asset.fbx' with importer (FBXImporter)
+Imported 'GUID: 163450deeb7282d48ac7c9a98bebb7a6' -> (Import Result ID: 'b21770653bd94a210fdf1b0927ce9d10') in 0.019 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4ef89570ade1264944c977a47cd3d938 DependenciesID=ae465cda2659551fce350bc64b388687 StaticDependenciesID=cf1e9b746f9d1506a7a0598f0c91294a 
+Refreshing native plugins compatible for Editor in 2.57 ms, found 4 plugins.
+Asset Pipeline Refresh (id=d10e41fa29d95094d9940792ae4744f7): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/inspection_gantry_asset.fbx 163450deeb7282d48ac7c9a98bebb7a6
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Importing 'GUID: c179cfbd6547e4c4b9348edd6ee4e027 - Path: Assets/Phase12Models/inspection_gantry_lod.fbx' with importer (FBXImporter)
+File 'inspection_gantry_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:354)
+
+[Assets/Editor/ModelingImportProbe.cs line 354]
+
+Imported 'GUID: c179cfbd6547e4c4b9348edd6ee4e027' -> (Import Result ID: '0cfb8be5dff692ba725662f3974ecd89') in 0.023 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aa8e38dc246be3781309537f77367ec1 DependenciesID=509484c8a52f8cacff357a33a04abc76 StaticDependenciesID=52b9a7a80aab6a67e9fd39d3e966ea8c 
+Refreshing native plugins compatible for Editor in 2.97 ms, found 4 plugins.
+Asset Pipeline Refresh (id=b24e098b2a67adc499da7d81339fc94d): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c179cfbd6547e4c4b9348edd6ee4e027 - Path: Assets/Phase12Models/inspection_gantry_lod.fbx' with importer (FBXImporter)
+File 'inspection_gantry_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+UnityEditor.AssetDatabase:ImportAsset (string)
+UnityEditor.AssetImporter:SaveAndReimport ()
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:357)
+
+[Assets/Editor/ModelingImportProbe.cs line 357]
+
+Imported 'GUID: c179cfbd6547e4c4b9348edd6ee4e027' -> (Import Result ID: '0cfb8be5dff692ba725662f3974ecd89') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aa8e38dc246be3781309537f77367ec1 DependenciesID=509484c8a52f8cacff357a33a04abc76 StaticDependenciesID=52b9a7a80aab6a67e9fd39d3e966ea8c 
+Refreshing native plugins compatible for Editor in 2.98 ms, found 4 plugins.
+Asset Pipeline Refresh (id=a123512549c4a974994c58aa1f76fcf3): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Importing 'GUID: c179cfbd6547e4c4b9348edd6ee4e027 - Path: Assets/Phase12Models/inspection_gantry_lod.fbx' with importer (FBXImporter)
+File 'inspection_gantry_lod' has inconsistent LOD naming (_LOD1 found but no _LOD0).
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.AssetDatabase:ImportAsset (string,UnityEditor.ImportAssetOptions)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:361)
+
+[Assets/Editor/ModelingImportProbe.cs line 361]
+
+Imported 'GUID: c179cfbd6547e4c4b9348edd6ee4e027' -> (Import Result ID: '0cfb8be5dff692ba725662f3974ecd89') in 0.018 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=aa8e38dc246be3781309537f77367ec1 DependenciesID=509484c8a52f8cacff357a33a04abc76 StaticDependenciesID=52b9a7a80aab6a67e9fd39d3e966ea8c 
+Refreshing native plugins compatible for Editor in 3.66 ms, found 4 plugins.
+Asset Pipeline Refresh (id=465525b453bd5c94b9c2a93220642abd): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+PolyForge modeling import passed Assets/Phase12Models/inspection_gantry_lod.fbx c179cfbd6547e4c4b9348edd6ee4e027
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+ModelingImportProbe:Run () (at Assets/Editor/ModelingImportProbe.cs:401)
+
+(Filename: Assets/Editor/ModelingImportProbe.cs Line: 401)
+
+Batchmode quit successfully invoked - shutting down!
+Curl error 42: Callback aborted
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Divansh Kapoor channel disconnected successfully.
+Shut down.
+Lingering sessions upon destruction of worker manager
+Unity Data Store service was successfully shut down
+UDS shutting down local client system
+Shut down UDS service system complete
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+abort_threads: Failed aborting id: 0000000000006320, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000002C74, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000006320, mono_thread_manage will ignore it
+
+abort_threads: Failed aborting id: 0000000000002C74, mono_thread_manage will ignore it
+
+Exiting batchmode successfully now!
+[ExitDontLaunchBugReporter] Exiting without the bug reporter. Application will exit with return code 0

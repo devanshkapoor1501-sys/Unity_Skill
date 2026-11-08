@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "room_kit",
+  "workflow": "room_kit",
+  "seed": 42,
+  "size_m": [
+    4.0,
+    3.0,
+    5.0
+  ],
+  "max_polygons": 50000,
+  "lod_ratio": 0.5,
+  "estimated_polygons": 918,
+  "objects": [
+    {
+      "id": "floor",
+      "primitive": "box",
+      "size_m": [
+        4.0,
+        0.18,
+        5.0
+      ],
+      "location": [
+        0.0,
+        0.09,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "wall_back",
+      "primitive": "box",
+      "size_m": [
+        4.0,
+        2.82,
+        0.18
+      ],
+      "location": [
+        0.0,
+        1.59,
+        -2.41
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "wall_left",
+      "primitive": "box",
+      "size_m": [
+        0.18,
+        2.82,
+        4.82
+      ],
+      "location": [
+        -1.91,
+        1.59,
+        0.09
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "door_left",
+      "primitive": "box",
+      "size_m": [
+        1.0,
+        2.82,
+        0.18
+      ],
+      "location": [
+        -1.5,
+        1.59,
+        2.41
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "wall_right",
+      "primitive": "box",
+      "size_m": [
+        0.18,
+        2.82,
+        4.82
+      ],
+      "location": [
+        1.91,
+        1.59,
+        0.09
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "door_right",
+      "primitive": "box",
+      "size_m": [
+        1.0,
+        2.82,
+        0.18
+      ],
+      "location": [
+        1.5,
+        1.59,
+        2.41
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "lintel",
+      "primitive": "box",
+      "size_m": [
+        2.0,
+        0.6000000000000001,
+        0.18
+      ],
+      "location": [
+        0.0,
+        2.7,
+        2.41
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.010799999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "ceiling_beam_0",
+      "primitive": "box",
+      "size_m": [
+        3.64,
+        0.09,
+        0.18
+      ],
+      "location": [
+        0.0,
+        2.955,
+        -1.5
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.005399999999999999,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "ceiling_beam_1",
+      "primitive": "box",
+      "size_m": [
+        3.64,
+        0.09,
+        0.18
+      ],
+      "location": [
+        0.0,
+        2.955,
+        -0.75
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.005399999999999999,
+          "segments": 2
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18,
+        0.32,
+        0.48,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.08,
+        0.1,
+        0.13,
+        1.0
+      ]
+    },
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.9,
+        0.42,
+        0.08,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "base",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "top",
+      "position": [
+        0.0,
+        3.0,
+        0.0
+      ]
+    },
+    {
+      "id": "doorway",
+      "position": [
+        0.0,
+        0.18,
+        2.5
+      ]
+    }
+  ],
+  "overlap_policy": "ASSEMBLY_CONTACTS",
+  "expected_bounds": true,
+  "input_digest": "c5816e83c5a739a8494972c52c1669e6956b43c65986bbcdc50cae3de03382c6"
+}

@@ -2,6 +2,10 @@
 
 ## 0.0.1 — foundation (unreleased)
 
+- Complete the v7 Phase 12 technical exit for the pinned Blender/Unity workflow: correct asymmetric socket exports, retain evaluated material palettes and LOD face assignments, and verify native reflection mutants, parent transforms and metadata stability.
+- Seat the vehicle cabin on its chassis and expose organic crown/ridge details in the public native fixtures while preserving their requested envelopes.
+- Preserve assisted requirements in mixed modeling requests and reconcile the task-first roadmap through conditional Phase 18. Artistic approval, Phase 13 trials and stable release qualification remain separate.
+
 - Add bounded static project inventory, syntax/GUID diagnostics and requested/resolved package observations without opening Unity.
 - Add public four-arm benchmark orchestration, full declared repetition schedules, immutable attempt ledgers and offline stratified reports; retain unavailable external evaluation.
 - Add an approved-sprite checkpoint platformer, physical keyboard/gameplay fault checks and sealed workforce delivery inspection.

@@ -1,0 +1,42 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collecting ... collected 7 items / 1 deselected / 6 selected
+
+tests/test_phase12_native.py::test_native_inspection_gantry_preserves_distinct_composed_features ERROR [ 16%]
+
+=================================== ERRORS ====================================
+_ ERROR at setup of test_native_inspection_gantry_preserves_distinct_composed_features _
+
+tmp_path_factory = TempPathFactory(_given_basetemp=WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7b'), _trace=<pluggy...mp=WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/v7b'), _retention_count=3, _retention_policy='all')
+
+    @pytest.fixture(scope="module")
+    def native_models(tmp_path_factory):
+        root = tmp_path_factory.mktemp("phase12-blender")
+        results = {}
+        requests = {kind: (kind, family_input(kind)) for kind in FAMILIES}
+        requests.update(
+            compose=("compose", transfer_input()), inspection_gantry=("compose", gantry_input())
+        )
+        for name, (kind, request) in requests.items():
+            context = RunContext(root, run_id=name)
+            result = execute(MODELING_CAPABILITIES[kind], request, context)
+>           assert result.status == "PASS", result.to_dict()
+E           AssertionError: {'artifact_ids': [], 'contract_version': '1.0.0', 'data': {}, 'diagnostics': [{'code': 'PF-MODELING-NATIVE', 'message': 'Advanced modeling worker failed; inspect its owned logs'}], ...}
+E           assert 'FAIL' == 'PASS'
+E             
+E             - PASS
+E             + FAIL
+
+tests\test_phase12_native.py:147: AssertionError
+=========================== short test summary info ===========================
+ERROR tests/test_phase12_native.py::test_native_inspection_gantry_preserves_distinct_composed_features - AssertionError: {'artifact_ids': [], 'contract_version': '1.0.0', 'data': {}, 'diagnostics': [{'code': 'PF-MODELING-NATIVE', 'message': 'Advanced modeling worker failed; inspect its owned logs'}], ...}
+assert 'FAIL' == 'PASS'
+  
+  - PASS
+  + FAIL
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+======================= 1 deselected, 1 error in 27.76s =======================

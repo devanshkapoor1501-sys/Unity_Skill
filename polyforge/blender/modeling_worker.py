@@ -112,6 +112,14 @@ def mesh_copy(bpy: Any, obj: Any, graph: Any) -> Any:
     mesh = bpy.data.meshes.new_from_object(
         obj.evaluated_get(graph), preserve_all_data_layers=True, depsgraph=graph
     )
+    # Geometry Nodes can evaluate with a placeholder material. Bind the export
+    # copy to the source object's declared palette, preserving face indices.
+    material_indices = [face.material_index for face in mesh.polygons]
+    mesh.materials.clear()
+    for material in obj.data.materials:
+        mesh.materials.append(material)
+    for face, index in zip(mesh.polygons, material_indices, strict=True):
+        face.material_index = index
     duplicate = bpy.data.objects.new(obj.name + "_evaluated", mesh)
     bpy.context.collection.objects.link(duplicate)
     duplicate.matrix_world = obj.matrix_world.copy()
@@ -195,6 +203,7 @@ def export_copies(bpy: Any, selected: list[Any], path: Path, root: Any) -> None:
     bpy.context.view_layer.update()
     graph = bpy.context.evaluated_depsgraph_get()
     duplicates = [mesh_copy(bpy, obj, graph) for obj in selected]
+    source_scale = root.scale.copy()
     try:
         bpy.ops.object.select_all(action="DESELECT")
         root.select_set(True)
@@ -205,6 +214,11 @@ def export_copies(bpy: Any, selected: list[Any], path: Path, root: Any) -> None:
             obj.parent = root
             obj.select_set(True)
         bpy.context.view_layer.objects.active = duplicates[0]
+        # Unity's FBX handedness conversion reverses semantic X. Compensate at
+        # this export-only hierarchy boundary for meshes AND socket empties.
+        # The canonical source root is unit/identity; restore it even on failure.
+        root.scale.x = -source_scale.x
+        bpy.context.view_layer.update()
         bpy.ops.export_scene.fbx(
             filepath=str(path),
             check_existing=False,
@@ -221,6 +235,8 @@ def export_copies(bpy: Any, selected: list[Any], path: Path, root: Any) -> None:
             bake_anim=False,
         )
     finally:
+        root.scale = source_scale
+        bpy.context.view_layer.update()
         for obj in duplicates:
             mesh = obj.data
             bpy.data.objects.remove(obj, do_unlink=True)

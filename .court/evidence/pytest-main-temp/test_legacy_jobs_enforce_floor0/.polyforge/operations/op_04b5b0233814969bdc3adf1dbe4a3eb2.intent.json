@@ -1,0 +1,28 @@
+{
+  "task_id": "legacy_resources",
+  "job_id": "job_1",
+  "capability_id": "mesh.props.crate.v1",
+  "input_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "seed": 42,
+  "context_digest": null,
+  "budget_seconds": 600,
+  "resources": {
+    "min_available_ram_bytes": 2000000
+  },
+  "resource_admission": {
+    "cpu_count": 4,
+    "available_ram_bytes": 4000000,
+    "disk_free_bytes": 4000000,
+    "gpu_execution": "UNVERIFIED",
+    "mode": "LOCAL_SEQUENTIAL",
+    "admitted_parallel_workers": 1,
+    "worker_limits": {
+      "blender": 1,
+      "unity": 1,
+      "model": 0,
+      "blender_cpu_threads": 1
+    },
+    "render_policy": "REGISTERED_FIXED_CPU",
+    "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+  }
+}

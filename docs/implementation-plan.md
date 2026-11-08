@@ -1,19 +1,29 @@
-# PolyForge approved implementation sequence
+# PolyForge implementation sequence and conditional v7 roadmap
 
-Authority: PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx,
+Historical Phase 0–11 authority: PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx,
 reviewed at the user's request on 2026-10-28. SHA256:
 8f186fa13ce3fc085cab96ee5991dce2e85dde36277f2c6c631f7e8d5a9331d6.
 Section 12 preserves the approved v4 Phase 0â€“6 work orders unchanged; their
 paragraph comparison is recorded in the Phase 6 evidence. The v4 source remains
 archived byte-for-byte in docs/source and available in Git history. The original research document was not supplied.
 
+Future-facing authority (2026-11-08): the supplied
+PolyForge_v7_0_Tool_Competency_Development_Blueprint_Phases_0-18.docx,
+read through `.tmp/v7-blueprint.txt` (source DOCX SHA256
+`2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`).
+v7 supersedes earlier future-facing mission, benchmarks, release proposals and
+Phase 12–18 instructions. Historical Phase 0–11 work orders, evidence and open
+gates remain preserved; older plans are archival rather than competing future
+instructions. Source and actual tests determine implementation status; this
+roadmap is not a test certificate or approval to execute every proposed phase.
+
 ## Global decisions
 
-- Final product clarification (2026-11-01): build a portable Blender/Unity skill
-  and specialized-worker workflow for varied game requests. Examples teach and
-  test reuse; they do not define a closed menu of games. Phases 12–17 must add
-  tool knowledge, composition and transfer evidence, preserving the original
-  requested game and surfacing unsupported requirements explicitly.
+- Current product mission (v7): a portable, model-neutral Blender/Unity
+  tool-competency Agent Skill backed by the existing local capability engine.
+  Preserve the original user task, choose appropriate tools and verify the
+  requested result. Games are explicit user workloads or regression fixtures;
+  complete-game generation is not the default deliverable or a universal gate.
 - One repository in the requested folder; native Python CLI and separate Unity package.
 - Python 3.11+; local Python 3.12.14, Blender 5.2.2 LTS, Unity 6000.6.3f1.
 - Installed URP template declares URP 17.6.0, Input System 1.19.0, Test Framework 1.8.0.
@@ -41,14 +51,66 @@ archived byte-for-byte in docs/source and available in Git history. The original
 | 9 | Supervision, human review, eight repairs, cross-app rollback, 12 defect fixtures | Twelve faults, six mutants, authority/misleading-test challenges, race/crash/cache recovery |
 | 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
 | 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
-| 12 | Advanced Blender modeling, topology, sculpt and procedural geometry | Section-12/v5.1 per-domain good/bad and transfer fixtures |
-| 13 | PBR materials, UV, texturing, rendering and visual consistency | Versioned source/channel provenance and separate technical/aesthetic review |
-| 14 | Characters, creatures and advanced rigging/animation | Rig-family limits, independent deformation/motion and transfer evidence |
-| 15 | Advanced Unity C#, gameplay, physics, AI, UI and architecture | Mechanic-specific runtime, negative and existing-project tests |
-| 16 | Worlds, levels, lighting, audio, performance and integration | Editable integration, measured hardware/profile and independent visual review |
-| 17 | Generalist production orchestra and expert v2 release | Separately controlled holdouts, frozen competency denominators and explicit domain gaps |
+| 12 | PARTIAL: repair and validate existing modeling/export/import foundations | Real Unity coolant-composite reproduction; expected outlet (0.90, 0.77, 0.35), reported faulty (-0.90, 0.77, 0.35); minimal repair, native asymmetric positive/negative and main/LOD evidence, rollback and regressions |
+| 13 | NOT RUN: separately approved independent equal-tool pilot | Frozen charter, budget/deadline and evaluator; ten attempts across five pairs, tool parity, independent rubric, negatives, reuse and CONTINUE/NARROW/STOP/INCONCLUSIVE decision |
+| 14 | CONDITIONAL: version-aware knowledge and task routing | Reuse existing catalog/router; additive competency records, task-first routes, exact version/source provenance, nonmutating read-only paths and honest coverage |
+| 15 | CONDITIONAL: Blender competencies in separately budgeted submodules | One selected domain/version at a time; native positive/negative, unseen transfer, source reopen, independent review and existing-route regressions |
+| 16 | CONDITIONAL: Unity competencies in separately budgeted submodules | One selected Editor/runtime domain; managed-project safety, correct assemblies/lifecycle, native EditMode/PlayMode as relevant, negatives and independent variations |
+| 17 | CONDITIONAL: cross-tool composition and workflow evaluation | Coordinate/asset invariants, independent transfer and fault injection; optional animation and gameplay lanes separately funded/tested; real host evidence for concurrency claims |
+| 18 | CONDITIONAL: scope-honest portable skill release and investment decision | Application/version/status coverage, scoped install/native/regression/security/license/provenance audits; SCOPED RELEASE/LABELED PREVIEW/KEEP PERSONAL TOOL/STOP INVESTING |
 
-## Non-negotiable qualification
+## Current status and future entry gates
+
+[The Phase 0–10 audit](../reports/phases-0-10-audit.md) records 264 implemented
+requirements and 17 permitted external/later blocks across 281 rows. These are
+historical audited results, not fresh tests. [Phase 11](../reports/phase-11.md)
+is a technical checkpoint with stable CORE v1.0 release **BLOCKED**; the later
+user sequencing amendment allowed Phase 12 development without closing those
+release gates. [The v7 reconciliation](../reports/phase-11-reconciliation-v7.md)
+records reported versus newly witnessed evidence.
+
+[Phase 12](../reports/phase-12.md) remains PARTIAL. The reported Unity PASS
+covers eight main/LOD FBXs from four families; its coolant composition Unity
+row is NOT_RUN. Today's real reproduction is in progress in the separate
+repair lane; no repair PASS is inferred here. Native import must pass the
+unaltered expected socket and reject injected reflection. Artistic review
+remains separate. Preserve editable source, modifiers, materials, UVs, GUIDs,
+source hashes and existing arena/platformer regressions. Do not change expected
+signs, relax tolerance or remove the socket to obtain a pass.
+
+Phase 13 requires a separate owner-approved charter, resource budget/deadline,
+independent evaluator and equal-tool arms. The v7 proposal is 16 focused hours
+over seven days (up to six for Phase 12 and ten for Phase 13), five unseen paired
+tasks, and a separately preapproved one-hour reuse check on days 8–14.
+Proposed thresholds are at least 4/5 assisted outputs accepted, zero undetected
+critical coordinate/socket defects, no worse acceptance than equal-tool Codex,
+and at least 20% lower median time or 30% fewer manual corrections without
+quality loss. **These caps and thresholds are proposals, not approved budgets
+or permission to begin Phase 13.** A small trial cannot certify broad mastery.
+Stop on expired authority, budget/deadline overrun, unsafe original-project
+mutation, missing evaluator, tool-parity failure or unrecovered critical
+regression. Failed/inconclusive evidence does not authorize expansion.
+
+Phases 14–18 are conditional proposals after a permitted Phase 13 decision and
+separate scoped approval. Proposed caps are 12 hours for Phase 14, 12 hours for
+the first Phase 15/16 submodule or Phase 17 lane, and eight hours for Phase 18
+excluding separately approved external evaluation. Additional modules need
+their own caps. Animation and gameplay remain knowledge domains together;
+their executable lanes are optional, independently funded and verified.
+No stable tag, universal expertise claim or automatic continuation follows
+from this documentation update.
+
+Support records must distinguish knowledge, native execution and independent
+transfer: REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL, VERIFIED_IN_WORKFLOW,
+INDEPENDENTLY_ACCEPTED, ASSISTED, UNSUPPORTED and BLOCKED. These planned support
+states are distinct from invocation PASS/FAIL/BLOCKED/NOT_RUN/REVIEW and do not
+relabel historical results or imply a newly implemented schema.
+
+## Preserved historical qualification and continuing safety
+
+The historical gameplay/performance gates below apply to their original
+fixtures and release scope. They do not impose a playable-game requirement on
+every new tool task or replace the conditional v7 gates above.
 
 Audit erratum (2026-10-30): the Phase 9 table originally said “12 recipes”. The
 preserved v4 work order 9.8 requires “Fault-inject 12 cross-application cases”,

@@ -1,0 +1,636 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "mechanical_prop",
+  "input_digest": "0937ada1375a7c889f7f20ab7f1d6168f555857c31a31a366ba2d3f9cd3e8193",
+  "technical_status": "PASS",
+  "artistic_status": "REVIEW",
+  "source_unchanged": true,
+  "source_sha256_before": "93a54c497947d29b0abd07c9c1053abd69ec48b8d237b3cfc84f25499470c2c3",
+  "source_sha256_after": "93a54c497947d29b0abd07c9c1053abd69ec48b8d237b3cfc84f25499470c2c3",
+  "coordinate_basis": {
+    "up": "Z",
+    "forward": "-Y",
+    "meters_per_unit": 1.0
+  },
+  "root": {
+    "semantic_id": "mechanical_prop",
+    "location_unity": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "rotation_deg": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "materials": [
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.8999999761581421,
+        0.41999998688697815,
+        0.07999999821186066,
+        1.0
+      ]
+    },
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18000000715255737,
+        0.3199999928474426,
+        0.47999998927116394,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.07999999821186066,
+        0.10000000149011612,
+        0.12999999523162842,
+        1.0
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "base_plate",
+      "primitive": "grid",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.05000000074505806,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "trim"
+      ],
+      "modifiers": [
+        {
+          "type": "geometry_nodes",
+          "detail": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          2.0,
+          0.10000000149011612,
+          3.0
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 26,
+      "polygons": 24,
+      "triangles": 48,
+      "material_triangle_counts": {
+        "trim": 48
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.6000000089406967,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.0,
+        0.0,
+        -1.5
+      ],
+      "bounds_max_unity": [
+        1.0,
+        0.10000000149011612,
+        1.5
+      ]
+    },
+    {
+      "id": "housing",
+      "primitive": "cylinder",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.44999998807907104,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [
+        {
+          "type": "boolean",
+          "target": "bore",
+          "operation": "DIFFERENCE"
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          1.2999999523162842,
+          0.699999988079071,
+          1.9500000476837158
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 130,
+      "polygons": 68,
+      "triangles": 260,
+      "material_triangle_counts": {
+        "base": 260
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 1.2261191942613183,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.6499999761581421,
+        0.09999999403953552,
+        -0.9750000238418579
+      ],
+      "bounds_max_unity": [
+        0.6499999761581421,
+        0.7999999523162842,
+        0.9750000238418579
+      ]
+    },
+    {
+      "id": "bore",
+      "primitive": "cylinder",
+      "parent_id": "mechanical_prop",
+      "export": false,
+      "location_unity": [
+        0.0,
+        0.44999998807907104,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          0.4399999976158142,
+          0.7400000095367432,
+          0.6600000262260437
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 64,
+      "polygons": 34,
+      "triangles": 124,
+      "material_triangle_counts": {
+        "base": 124
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.16769652499376683,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.2199999988079071,
+        0.07999998331069946,
+        -0.33000001311302185
+      ],
+      "bounds_max_unity": [
+        0.2199999988079071,
+        0.8199999928474426,
+        0.33000001311302185
+      ]
+    },
+    {
+      "id": "cap",
+      "primitive": "box",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.8999999761581421,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.012000000104308128,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          1.600000023841858,
+          0.20000000298023224,
+          2.4000000953674316
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "accent": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.7672952593064477,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.800000011920929,
+        0.7999999523162842,
+        -1.2000000476837158
+      ],
+      "bounds_max_unity": [
+        0.800000011920929,
+        1.0,
+        1.2000000476837158
+      ]
+    },
+    {
+      "id": "mount_left_0",
+      "primitive": "box",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        -0.7599999904632568,
+        0.12999999523162842,
+        -0.75
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.003599999938160181,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.1599999964237213,
+          0.05999999865889549,
+          0.23999999463558197
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "accent": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.0022971172948572176,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.8399999737739563,
+        0.09999999403953552,
+        -0.8700000047683716
+      ],
+      "bounds_max_unity": [
+        -0.6800000071525574,
+        0.1599999964237213,
+        -0.6299999952316284
+      ]
+    },
+    {
+      "id": "mount_right_0",
+      "primitive": "box",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        0.7599999904632568,
+        0.12999999523162842,
+        -0.75
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.003599999938160181,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.1599999964237213,
+          0.05999999865889549,
+          0.23999999463558197
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "accent": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.0022971172948572176,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        0.6800000071525574,
+        0.09999999403953552,
+        -0.8700000047683716
+      ],
+      "bounds_max_unity": [
+        0.8399999737739563,
+        0.1599999964237213,
+        -0.6299999952316284
+      ]
+    },
+    {
+      "id": "mount_left_1",
+      "primitive": "box",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        -0.7599999904632568,
+        0.12999999523162842,
+        -0.15000000596046448
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.003599999938160181,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.1599999964237213,
+          0.05999999865889549,
+          0.23999999463558197
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "accent": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.0022971172948572176,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -0.8399999737739563,
+        0.09999999403953552,
+        -0.27000001072883606
+      ],
+      "bounds_max_unity": [
+        -0.6800000071525574,
+        0.1599999964237213,
+        -0.030000008642673492
+      ]
+    },
+    {
+      "id": "mount_right_1",
+      "primitive": "box",
+      "parent_id": "mechanical_prop",
+      "export": true,
+      "location_unity": [
+        0.7599999904632568,
+        0.12999999523162842,
+        -0.15000000596046448
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.003599999938160181,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          0.1599999964237213,
+          0.05999999865889549,
+          0.23999999463558197
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "accent": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.0022971172948572176,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        0.6800000071525574,
+        0.09999999403953552,
+        -0.27000001072883606
+      ],
+      "bounds_max_unity": [
+        0.8399999737739563,
+        0.1599999964237213,
+        -0.030000008642673492
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "base",
+      "parent_id": "mechanical_prop",
+      "position_unity": [
+        0.0,
+        0.0,
+        -0.0
+      ]
+    },
+    {
+      "id": "top",
+      "parent_id": "mechanical_prop",
+      "position_unity": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    },
+    {
+      "id": "shaft",
+      "parent_id": "mechanical_prop",
+      "position_unity": [
+        0.0,
+        1.0,
+        -0.0
+      ]
+    }
+  ],
+  "aggregate": {
+    "vertices": 436,
+    "polygons": 362,
+    "triangles": 848,
+    "bounds_min_unity": [
+      -1.0,
+      0.0,
+      -1.5
+    ],
+    "bounds_max_unity": [
+      1.0,
+      1.0,
+      1.5
+    ]
+  },
+  "lod": {
+    "vertices": 144,
+    "polygons": 88,
+    "triangles": 264,
+    "material_triangle_counts": {
+      "trim": 12,
+      "base": 192,
+      "accent": 60
+    },
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0,
+    "nonfinite_values": 0,
+    "normal_inconsistencies": 0,
+    "signed_volume": 2.5767277680005787,
+    "uv_layers": 1,
+    "uv_nonfinite_values": 0,
+    "invalid_material_faces": 0,
+    "bounds_min_unity": [
+      -1.0,
+      0.0,
+      -1.5
+    ],
+    "bounds_max_unity": [
+      1.0,
+      1.0,
+      1.5
+    ],
+    "source_polygons": 362,
+    "ratio": 0.2430939226519337
+  },
+  "issues": []
+}

@@ -1,0 +1,2650 @@
+FFFFFFFFF........................................F....FFFFFFFFFFFFFFFFFF [ 71%]
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFF                                            [100%]
+================================== FAILURES ===================================
+_ test_family_plans_are_deterministic_parameterized_and_preserve_input[room_kit] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_plans_are_deterministic_parameterized_and_preserve_input(kind):
+        from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
+    
+        value = request(detail=2)
+        unchanged = copy.deepcopy(value)
+>       plan = compile_modeling(kind, value, seed=42)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_plans_are_deterministic_parameterized_and_preserve_input[vehicle] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_plans_are_deterministic_parameterized_and_preserve_input(kind):
+        from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
+    
+        value = request(detail=2)
+        unchanged = copy.deepcopy(value)
+>       plan = compile_modeling(kind, value, seed=42)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_plans_are_deterministic_parameterized_and_preserve_input[mechanical_prop] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_plans_are_deterministic_parameterized_and_preserve_input(kind):
+        from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
+    
+        value = request(detail=2)
+        unchanged = copy.deepcopy(value)
+>       plan = compile_modeling(kind, value, seed=42)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_plans_are_deterministic_parameterized_and_preserve_input[organic] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_plans_are_deterministic_parameterized_and_preserve_input(kind):
+        from polyforge.blender.modeling import MODELING_CAPABILITIES, compile_modeling
+    
+        value = request(detail=2)
+        unchanged = copy.deepcopy(value)
+>       plan = compile_modeling(kind, value, seed=42)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+______ test_family_size_envelopes_budget_and_parameter_effects[room_kit] ______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_size_envelopes_budget_and_parameter_effects(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       small = compile_modeling(kind, request(detail=1))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+______ test_family_size_envelopes_budget_and_parameter_effects[vehicle] _______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_size_envelopes_budget_and_parameter_effects(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       small = compile_modeling(kind, request(detail=1))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_family_size_envelopes_budget_and_parameter_effects[mechanical_prop] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_size_envelopes_budget_and_parameter_effects(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       small = compile_modeling(kind, request(detail=1))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+______ test_family_size_envelopes_budget_and_parameter_effects[organic] _______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_family_size_envelopes_budget_and_parameter_effects(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       small = compile_modeling(kind, request(detail=1))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:73: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+___ test_composition_combines_unfamiliar_operations_with_editable_modifiers ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id':...n': [1.5, 0.3, 0], ...}, {'id': 'wire', 'primitive': 'curve', 'size_m': [1, 1, 1], 'location': [0, 1.4, 0], ...}], ...}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    def test_composition_combines_unfamiliar_operations_with_editable_modifiers():
+        from polyforge.blender.modeling import compile_modeling
+    
+        objects = [
+            object_spec(
+                "shell",
+                modifiers=[
+                    {"type": "mirror", "axis": 0},
+                    {"type": "bevel", "width_m": 0.03, "segments": 2},
+                ],
+            ),
+            object_spec("procedural", "grid", size_m=[0.5, 0.5, 0.5], location=[1.5, 0.3, 0], detail=3),
+            object_spec(
+                "wire",
+                "curve",
+                size_m=[1, 1, 1],
+                location=[0, 1.4, 0],
+                points=[[-0.4, 0, 0], [0, 0.4, 0.2], [0.4, 0, 0]],
+                bevel_m=0.02,
+            ),
+        ]
+        value = composition(
+            *objects,
+            sockets=[{"id": "grip", "position": [0, 1.5, 0]}],
+            expected_bounds=False,
+            overlap_policy="DISALLOW",
+        )
+        before = copy.deepcopy(value)
+>       plan = compile_modeling("compose", value)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id':...n': [1.5, 0.3, 0], ...}, {'id': 'wire', 'primitive': 'curve', 'size_m': [1, 1, 1], 'location': [0, 1.4, 0], ...}], ...}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_boolean_dependencies_cannot_form_cycle_and_budget_includes_hidden_targets _
+
+    def test_boolean_dependencies_cannot_form_cycle_and_budget_includes_hidden_targets():
+        from polyforge.blender.modeling import compile_modeling
+    
+        first = object_spec(
+            "first", modifiers=[{"type": "boolean", "target": "second", "operation": "UNION"}]
+        )
+        second = object_spec(
+            "second",
+            location=[0, 1.5, 0],
+            modifiers=[{"type": "boolean", "target": "first", "operation": "UNION"}],
+        )
+        with pytest.raises(InputError):
+            compile_modeling("compose", composition(first, second))
+        huge = object_spec(
+            "sphere", "sphere", location=[0, 1, 0], modifiers=[{"type": "subdivision", "levels": 2}] * 4
+        )
+>       with pytest.raises(InputError, match="budget"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'budget'
+E         Actual message: "Install PolyForge's jsonschema dependency before validation"
+
+tests\test_modeling.py:219: AssertionError
+_ test_composition_declared_full_bounds_must_be_reached_by_exported_geometry __
+
+    def test_composition_declared_full_bounds_must_be_reached_by_exported_geometry():
+        from polyforge.blender.modeling import compile_modeling
+    
+>       with pytest.raises(InputError, match="bounds"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'bounds'
+E         Actual message: "Install PolyForge's jsonschema dependency before validation"
+
+tests\test_modeling.py:260: AssertionError
+___ test_curve_must_stay_within_envelope_after_evaluated_mirror_and_radius ____
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'curved', 'primitive': 'curve', 'size_m': [0.6, 0.6, 0.6], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    def test_curve_must_stay_within_envelope_after_evaluated_mirror_and_radius():
+        from polyforge.blender.modeling import compile_modeling
+    
+        curve = object_spec(
+            "curved",
+            "curve",
+            size_m=[0.6, 0.6, 0.6],
+            location=[0, 1, 0],
+            points=[[-0.2, 0, 0], [0.2, 0.2, 0]],
+            bevel_m=0.03,
+            modifiers=[{"type": "mirror", "axis": 0}],
+        )
+>       assert compile_modeling("compose", composition(curve))["objects"][0] == curve
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:281: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'curved', 'primitive': 'curve', 'size_m': [0.6, 0.6, 0.6], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+___ test_subdivision_solidify_and_boolean_composition_have_explicit_budget ____
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'shell', 'primitive': 'box', 'size_m': [0.5, 0.5, 0.5], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    def test_subdivision_solidify_and_boolean_composition_have_explicit_budget():
+        from polyforge.blender.modeling import compile_modeling
+    
+        shell = object_spec(
+            "shell",
+            size_m=[0.5, 0.5, 0.5],
+            location=[0, 1, 0],
+            modifiers=[{"type": "solidify", "thickness_m": 0.01}, {"type": "subdivision", "levels": 1}],
+        )
+>       assert compile_modeling("compose", composition(shell))["estimated_polygons"] == 144
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:296: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'shell', 'primitive': 'box', 'size_m': [0.5, 0.5, 0.5], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_____ test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[0] ______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+axis = 0
+
+    @pytest.mark.parametrize("axis", [0, 1, 2])
+    def test_rotation_envelope_uses_all_three_axes_and_rejects_overflow(axis):
+        from polyforge.blender.modeling import compile_modeling
+    
+        angles = [0, 0, 0]
+        angles[axis] = 45
+        obj = object_spec("rotated", size_m=[1, 1, 1], location=[0, 1, 0], rotation_deg=angles)
+>       assert compile_modeling("compose", composition(obj))["objects"][0]["rotation_deg"] == angles
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_____ test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[1] ______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+axis = 1
+
+    @pytest.mark.parametrize("axis", [0, 1, 2])
+    def test_rotation_envelope_uses_all_three_axes_and_rejects_overflow(axis):
+        from polyforge.blender.modeling import compile_modeling
+    
+        angles = [0, 0, 0]
+        angles[axis] = 45
+        obj = object_spec("rotated", size_m=[1, 1, 1], location=[0, 1, 0], rotation_deg=angles)
+>       assert compile_modeling("compose", composition(obj))["objects"][0]["rotation_deg"] == angles
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_____ test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[2] ______
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+axis = 2
+
+    @pytest.mark.parametrize("axis", [0, 1, 2])
+    def test_rotation_envelope_uses_all_three_axes_and_rejects_overflow(axis):
+        from polyforge.blender.modeling import compile_modeling
+    
+        angles = [0, 0, 0]
+        angles[axis] = 45
+        obj = object_spec("rotated", size_m=[1, 1, 1], location=[0, 1, 0], rotation_deg=angles)
+>       assert compile_modeling("compose", composition(obj))["objects"][0]["rotation_deg"] == angles
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0]}, 'objects': [{'id': 'rotated', 'primitive': 'box', 'size_m': [1, 1, 1], 'location': [0, 1, 0], ...}]}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_________ test_total_resource_budget_includes_all_unmodified_objects __________
+
+    def test_total_resource_budget_includes_all_unmodified_objects():
+        from polyforge.blender.modeling import compile_modeling
+    
+        spheres = [
+            object_spec(f"sphere_{i}", "sphere", size_m=[0.1, 0.1, 0.1], location=[0, 1, 0])
+            for i in range(2)
+        ]
+        value = composition(*spheres)
+        value["parameters"]["max_polygons"] = 1000
+>       with pytest.raises(InputError, match="including cutters"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'including cutters'
+E         Actual message: "Install PolyForge's jsonschema dependency before validation"
+
+tests\test_modeling.py:335: AssertionError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-room_kit] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit', size = [0.05, 0.05, 0.05]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-vehicle] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle', size = [0.05, 0.05, 0.05]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-mechanical_prop] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop', size = [0.05, 0.05, 0.05]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-organic] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic', size = [0.05, 0.05, 0.05]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 0.05, 0.05], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-room_kit] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit', size = [50, 50, 50]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-vehicle] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle', size = [50, 50, 50]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-mechanical_prop] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop', size = [50, 50, 50]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-organic] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic', size = [50, 50, 50]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [50, 50, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-room_kit] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit', size = [0.05, 10, 0.08]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-vehicle] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle', size = [0.05, 10, 0.08]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-mechanical_prop] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop', size = [0.05, 10, 0.08]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-organic] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic', size = [0.05, 10, 0.08]
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    @pytest.mark.parametrize("size", [[0.05, 0.05, 0.05], [50, 50, 50], [0.05, 10, 0.08]])
+    def test_family_dimension_boundaries_remain_finite_and_in_declared_envelope(kind, size):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling(kind, request(size, detail=3))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:344: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 0.08], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_seed_and_room_thickness_are_preserved_as_separate_geometry_controls ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'wall_thickness_m': 0.1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+    def test_seed_and_room_thickness_are_preserved_as_separate_geometry_controls():
+        from polyforge.blender.modeling import compile_modeling
+    
+>       thin = compile_modeling("room_kit", request(wall_thickness_m=0.1), seed=0)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:352: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'wall_thickness_m': 0.1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_____ test_curve_segments_that_collapse_at_native_precision_are_rejected ______
+
+    def test_curve_segments_that_collapse_at_native_precision_are_rejected():
+        from polyforge.blender.modeling import compile_modeling
+    
+        curve = object_spec(
+            "curve",
+            "curve",
+            size_m=[1, 1, 1],
+            location=[0, 1, 0],
+            points=[[0, 0, 0], [1e-12, 0, 0]],
+            bevel_m=0.02,
+        )
+>       with pytest.raises(InputError, match="segment"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'segment'
+E         Actual message: "Install PolyForge's jsonschema dependency before validation"
+
+tests\test_modeling.py:371: AssertionError
+_ test_generated_family_operations_can_be_reused_in_explicit_composition[room_kit] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'room_kit'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_generated_family_operations_can_be_reused_in_explicit_composition(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       family = compile_modeling(kind, request(detail=2))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_generated_family_operations_can_be_reused_in_explicit_composition[vehicle] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'vehicle'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_generated_family_operations_can_be_reused_in_explicit_composition(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       family = compile_modeling(kind, request(detail=2))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_generated_family_operations_can_be_reused_in_explicit_composition[mechanical_prop] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'mechanical_prop'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_generated_family_operations_can_be_reused_in_explicit_composition(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       family = compile_modeling(kind, request(detail=2))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+_ test_generated_family_operations_can_be_reused_in_explicit_composition[organic] _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+kind = 'organic'
+
+    @pytest.mark.parametrize("kind", ["room_kit", "vehicle", "mechanical_prop", "organic"])
+    def test_generated_family_operations_can_be_reused_in_explicit_composition(kind):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       family = compile_modeling(kind, request(detail=2))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:379: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [4.0, 3.0, 5.0], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+________ test_schema_itself_is_valid_and_accepts_declared_simple_input ________
+
+    def test_schema_itself_is_valid_and_accepts_declared_simple_input():
+>       from jsonschema import Draft202012Validator
+E       ModuleNotFoundError: No module named 'jsonschema'
+
+tests\test_modeling.py:388: ModuleNotFoundError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [3, 2, 6], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [3, 2, 6], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [3, 2, 6], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [3, 2, 6], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+>       plan = compile_modeling("vehicle", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:402: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [2, 3, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [2, 3, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [2, 3, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [2, 3, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.2, 8, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.2, 8, 1], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [8, 0.2, 4], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [8, 0.2, 4], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-1] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.05, 10, 50], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 1}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-2] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.05, 10, 50], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 2}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-3] ___
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+>           from jsonschema import Draft202012Validator
+E           ModuleNotFoundError: No module named 'jsonschema'
+
+polyforge\contracts\validation.py:111: ModuleNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+size = [0.05, 10, 50], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+>       plan = compile_modeling("organic", request(size, detail=detail))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_modeling.py:420: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+polyforge\blender\modeling.py:349: in compile_modeling
+    validate_schema(request, "modeling_request.schema.json")
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = {'schema_version': '1.0.0', 'asset_id': 'example_asset', 'parameters': {'size_m': [0.05, 10, 50], 'detail': 3}}
+name = 'modeling_request.schema.json'
+
+    def validate_schema(value: Any, name: str) -> None:
+        """Validate at the input boundary with actionable JSON field locations."""
+        try:
+            from jsonschema import Draft202012Validator
+        except ImportError as exc:
+>           raise InputError(
+                "Install PolyForge's jsonschema dependency before validation",
+                kind=ErrorKind.MISSING_DEPENDENCY,
+                code="PF-DEPENDENCY-VALIDATOR",
+            ) from exc
+E           polyforge.contracts.validation.InputError: Install PolyForge's jsonschema dependency before validation
+
+polyforge\contracts\validation.py:113: InputError
+=========================== short test summary info ===========================
+FAILED tests/test_modeling.py::test_family_plans_are_deterministic_parameterized_and_preserve_input[room_kit]
+FAILED tests/test_modeling.py::test_family_plans_are_deterministic_parameterized_and_preserve_input[vehicle]
+FAILED tests/test_modeling.py::test_family_plans_are_deterministic_parameterized_and_preserve_input[mechanical_prop]
+FAILED tests/test_modeling.py::test_family_plans_are_deterministic_parameterized_and_preserve_input[organic]
+FAILED tests/test_modeling.py::test_family_size_envelopes_budget_and_parameter_effects[room_kit]
+FAILED tests/test_modeling.py::test_family_size_envelopes_budget_and_parameter_effects[vehicle]
+FAILED tests/test_modeling.py::test_family_size_envelopes_budget_and_parameter_effects[mechanical_prop]
+FAILED tests/test_modeling.py::test_family_size_envelopes_budget_and_parameter_effects[organic]
+FAILED tests/test_modeling.py::test_composition_combines_unfamiliar_operations_with_editable_modifiers
+FAILED tests/test_modeling.py::test_boolean_dependencies_cannot_form_cycle_and_budget_includes_hidden_targets
+FAILED tests/test_modeling.py::test_composition_declared_full_bounds_must_be_reached_by_exported_geometry
+FAILED tests/test_modeling.py::test_curve_must_stay_within_envelope_after_evaluated_mirror_and_radius
+FAILED tests/test_modeling.py::test_subdivision_solidify_and_boolean_composition_have_explicit_budget
+FAILED tests/test_modeling.py::test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[0]
+FAILED tests/test_modeling.py::test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[1]
+FAILED tests/test_modeling.py::test_rotation_envelope_uses_all_three_axes_and_rejects_overflow[2]
+FAILED tests/test_modeling.py::test_total_resource_budget_includes_all_unmodified_objects
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-room_kit]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-vehicle]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-mechanical_prop]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size0-organic]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-room_kit]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-vehicle]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-mechanical_prop]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size1-organic]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-room_kit]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-vehicle]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-mechanical_prop]
+FAILED tests/test_modeling.py::test_family_dimension_boundaries_remain_finite_and_in_declared_envelope[size2-organic]
+FAILED tests/test_modeling.py::test_seed_and_room_thickness_are_preserved_as_separate_geometry_controls
+FAILED tests/test_modeling.py::test_curve_segments_that_collapse_at_native_precision_are_rejected
+FAILED tests/test_modeling.py::test_generated_family_operations_can_be_reused_in_explicit_composition[room_kit]
+FAILED tests/test_modeling.py::test_generated_family_operations_can_be_reused_in_explicit_composition[vehicle]
+FAILED tests/test_modeling.py::test_generated_family_operations_can_be_reused_in_explicit_composition[mechanical_prop]
+FAILED tests/test_modeling.py::test_generated_family_operations_can_be_reused_in_explicit_composition[organic]
+FAILED tests/test_modeling.py::test_schema_itself_is_valid_and_accepts_declared_simple_input
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-3]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-3]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-3]
+57 failed, 44 passed in 2.79s

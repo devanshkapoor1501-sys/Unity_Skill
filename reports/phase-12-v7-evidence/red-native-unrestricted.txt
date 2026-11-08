@@ -1,0 +1,94 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collecting ... collected 7 items / 6 deselected / 1 selected
+
+tests/test_phase12_native.py::test_unity_imports_modeling_families_and_lods FAILED [100%]
+
+================================== FAILURES ===================================
+________________ test_unity_imports_modeling_families_and_lods ________________
+
+native_models = (WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase12-v7-red-unrestricted/phase12-blender0'), {'co...digest': '6f0e022539a54d45c8c5a08e47a08c209a51835f1e0d187611ca08720d047952', ...}, ...}, 'diagnostics': [], ...}, ...})
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase12-v7-red-unrestricted/test_unity_imports_modeling_fa0')
+
+                    "modifiers": modifiers,
+                },
+            ],
+        }
+        result = execute(MODELING_CAPABILITIES["compose"], value, RunContext(tmp_path))
+        assert result.status == "PASS", result.to_dict()
+        inspected = result.data["inspection"]
+        assert len(inspected["materials"]) == 3
+        assert inspected["objects"][0]["normal_inconsistencies"] == 0
+        assert inspected["lod"]["normal_inconsistencies"] == 0
+    
+    
+    @pytest.mark.blender
+    def test_workforce_delivers_candidate_and_holds_artistic_promotion(tmp_path):
+        from polyforge.contracts.validation import load_json
+        from polyforge.workforce.orchestrator import run_task
+    
+        task = {
+            "schema_version": "1.0.0",
+            "task_class": "CREATE_ASSET",
+            "brief": "Model an editable 4 by 3 by 5 meter modular room kit with a doorway socket.",
+            "domain_tags": ["blender"],
+            "feature_ids": ["editable_source", "doorway_socket"],
+            "capability_id": MODELING_CAPABILITIES["room_kit"],
+            "input": family_input("room_kit"),
+        }
+        with pytest.raises(InputError, match="required approval"):
+            run_task(tmp_path, task)
+        (board_path,) = (tmp_path / "workforce").glob("*/board.json")
+        board = load_json(board_path)
+        assert board["technical"] == "APPROVED"
+        assert board["subjective"] == board["promotion"] == "REVIEW"
+        lineage = load_json(board_path.with_name("lineage.json"))
+        assert [step["role_id"] for step in lineage] == [
+            "asset_architect",
+            "modeler_architecture",
+            "asset_inspector",
+        ]
+    
+    
+    @pytest.mark.unity
+    def test_unity_imports_modeling_families_and_lods(native_models, tmp_path):
+        from polyforge.runner.locks import unity_project_lock
+        from polyforge.runner.processes import ProcessPolicy, run_process
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.unity.bootstrap import installed_template, prepare_project
+        from polyforge.unity.bridge import configuration, unity_tool
+    
+        root, results = native_models
+        policy = WorkspacePolicy(tmp_path)
+        editor = unity_tool(configuration(policy))
+        project = policy.path("UnityProject")
+        with unity_project_lock(policy, project):
+            prepare_project(policy, installed_template(editor))
+            files = policy.mkdir(project / "Assets/Phase12Models")
+            scripts = policy.mkdir(project / "Assets/Editor")
+            fixture = Path(__file__).parent / "fixtures/modeling/ModelingImportProbe.cs"
+            shutil.copyfile(fixture, scripts / fixture.name)
+            expected = []
+            source_hashes = {}
+            for kind, result in results.items():
+                data = result["data"]
+                folder = (root / data["source_blend"]).parent
+                with (folder / "source.blend").open("rb") as stream:
+                    source_hashes[folder / "source.blend"] = file_digest(stream, "sha256").hexdigest()
+                for name in ("asset", "lod"):
+>                   filename = f"{kind}_{name}.fbx"
+E                   AssertionError: ProcessOutcome(returncode=1, reason='exit', pid=30004, ownership='WINDOWS_JOB', duration_seconds=267.078, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True)
+E                   assert (1 == 0)
+E                    +  where 1 = ProcessOutcome(returncode=1, reason='exit', pid=30004, ownership='WINDOWS_JOB', duration_seconds=267.078, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True).returncode
+
+tests\test_phase12_native.py:376: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase12_native.py::test_unity_imports_modeling_families_and_lods - AssertionError: ProcessOutcome(returncode=1, reason='exit', pid=30004, ownership='WINDOWS_JOB', duration_seconds=267.078, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True)
+assert (1 == 0)
+ +  where 1 = ProcessOutcome(returncode=1, reason='exit', pid=30004, ownership='WINDOWS_JOB', duration_seconds=267.078, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True).returncode
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+================= 1 failed, 6 deselected in 342.11s (0:05:42) =================

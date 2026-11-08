@@ -1,9 +1,18 @@
 # Core support and remaining expertise
 
-This is a portable skill and local capability engine under Phase 11
-qualification. Example objects and games teach tool use, worker handoffs and
-verification. They are not a substitute for the user's requested game and do
-not demonstrate unrestricted game-production competence.
+PolyForge is a portable, model-neutral Blender/Unity tool-competency Agent Skill
+backed by the existing local capability engine. Preserve the user's requested
+task: explanation, inspection, asset creation/editing, animation, scene or
+component work, diagnostics, testing, or export/import. Build a game only when
+explicitly requested. Existing arena, robot and platformer fixtures remain
+regressions; they do not establish general tool mastery.
+
+Historical Phases 0–10 retain their audited implementation evidence. Phase 11
+is a technical checkpoint; stable CORE v1.0 release remains **BLOCKED**.
+Phase 12's v7 technical exit is **COMPLETE**, verified in its declared Blender/Unity
+workflow. Artistic qualification remains REVIEW; independent equal-tool trials
+belong to the separately gated Phase 13. Future Phase 12–18 planning follows v7; see
+[the implementation sequence](implementation-plan.md) for authority and gates.
 
 Use `polyforge capability list --json` and `capability show ID --json` to inspect
 the versioned executable contract. Knowledge routing proposes relevant tools
@@ -12,13 +21,35 @@ and roles; it does not prove that every requirement in a prompt is supported.
 | Area | Current bounded support | Remaining work |
 | --- | --- | --- |
 | Asset modeling | Static recipes plus [room kits, vehicles, mechanical props, organic practice and typed composition](modeling.md) with editable sources and separate topology checks | Freeform extrusion, decals, sculpt/retopo, broader Geometry Nodes and evaluator-owned transfer |
-| Materials | Declared simple material/texture handoffs and native import checks | Broader UV/PBR, baking, channel packing and visual consistency in Phase 13 |
-| Animation | Original modular robot rig, Idle/Walk, Unity bindings and six-frame sprite workflow | Character/creature rig families, deformation, motion and retargeting in Phase 14 |
-| Gameplay | Original 3D survival arena and approved-sprite 2D checkpoint course, with explicit physical oracles and faults | Broader mechanics, AI, UI, architecture and composition in Phase 15 |
-| Worlds | Managed prototype scene construction and native bindings | World/level design, lighting, audio and integrated device profiles in Phase 16 |
-| Generalist orchestration | Task-selected role graph, frozen handoffs, ownership, review, resource admission and sequential execution | Broader domain composition, actual host delegation qualification and evaluator-owned transfer in Phase 17 |
+| Materials | Declared simple material/texture handoffs and native import checks | Selected Blender UV/material work in conditional Phase 15; Unity material/rendering work in conditional Phase 16; independent visual review required |
+| Animation | Original modular robot rig, Idle/Walk, Unity bindings and six-frame sprite workflow | Selected Blender/Unity competencies in conditional Phases 15/16 and separately funded cross-tool animation lane in Phase 17 |
+| Gameplay | Original 3D survival arena and approved-sprite 2D checkpoint course, with explicit physical oracles and faults | Selected Unity component/physics/AI/UI work in conditional Phase 16; optional gameplay-systems lane in Phase 17 |
+| Worlds | Managed prototype scene construction and native bindings | Selected scene, lighting, audio and profiling competencies in conditional Phases 15/16; cross-tool integration in Phase 17 |
+| Generalist orchestration | Task-selected role graph, frozen handoffs, ownership, review, resource admission and sequential execution | Task-first versioned knowledge/routing in conditional Phase 14; cross-tool transfer and actual host delegation qualification in Phase 17 |
 | Existing projects | Bounded static inventory, hashes/mtimes, requested/resolved package versions, GUID diagnostics and source syntax analysis | Compilation/runtime compatibility and safe approved changes require separate native evidence |
-| Measurement | Declared rendered-loop standalone profile and local-mode measurements | No authenticated model comparison or causal specialization claim without actual comparable trials |
+| Measurement | Declared rendered-loop standalone profile and local-mode measurements | Separate owner-approved Phase 13 equal-tool pilot with charter, budget and independent evaluator; no causal specialization claim without actual comparable trials |
+
+The [Phase 12 checkpoint](../reports/phase-12.md) reports Unity PASS for eight
+main/LOD FBXs from four parameterized families; its coolant-valve composition
+was Unity NOT_RUN. The [v7 repair](../reports/phase-12-v7.md) reproduced the
+outlet reflection, then passed all twelve family/composition main/LOD imports,
+ten applicable reflection mutants and twenty-four transformed-parent cases.
+Material triangle assignments, source hashes, GUIDs and metadata were checked.
+This qualifies the tested handoff and versions, not arbitrary exports or
+independent unseen transfer.
+
+Knowledge/reference coverage, native execution and independent transfer are
+separate claims. v7 calls for REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL,
+VERIFIED_IN_WORKFLOW, INDEPENDENTLY_ACCEPTED, ASSISTED, UNSUPPORTED and BLOCKED
+support records; these are planning vocabulary, not a claim that the current
+schemas implement the full competency registry. Invocation results retain
+their separate PASS/FAIL/BLOCKED/NOT_RUN/REVIEW meanings.
+
+Phase 13 has not been authorized by this update. Its proposed time caps and
+acceptance thresholds require separate approval; Phases 14–18 remain conditional
+and individually scoped. Phase 18 is a scope-honest release audit, with stable
+claims restricted to accepted task classes. Animation and gameplay may both
+have reference coverage while executable modules are separately qualified.
 
 Networking, multiplayer, production save systems, arbitrary mechanics, broad
 character rigs, unrestricted sculpt artistry and universal package/API
@@ -29,7 +60,8 @@ and appropriate evidence.
 The engine does not own a model provider or an external evaluator. Different
 local role names are not independent model identities. Missing host delegation,
 hidden evaluation, required visual review or hardware measurements remain
-visible gaps. A successful operation is separate from an accepted game.
+visible gaps. A successful operation is separate from independently accepted
+completion of the user's task.
 
 For unknown work, preserve the original requirements, select versioned official
 references, propose a bounded disposable probe, test positive/negative and

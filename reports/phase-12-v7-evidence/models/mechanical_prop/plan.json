@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "mechanical_prop",
+  "workflow": "mechanical_prop",
+  "seed": 42,
+  "size_m": [
+    2.0,
+    1.0,
+    3.0
+  ],
+  "max_polygons": 50000,
+  "lod_ratio": 0.5,
+  "estimated_polygons": 9816,
+  "objects": [
+    {
+      "id": "base_plate",
+      "primitive": "grid",
+      "size_m": [
+        2.0,
+        0.1,
+        3.0
+      ],
+      "location": [
+        0.0,
+        0.05,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [],
+      "detail": 2
+    },
+    {
+      "id": "housing",
+      "primitive": "cylinder",
+      "size_m": [
+        1.3,
+        0.7,
+        1.9500000000000002
+      ],
+      "location": [
+        0.0,
+        0.45,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "boolean",
+          "target": "bore",
+          "operation": "DIFFERENCE"
+        }
+      ]
+    },
+    {
+      "id": "bore",
+      "primitive": "cylinder",
+      "size_m": [
+        0.44,
+        0.74,
+        0.66
+      ],
+      "location": [
+        0.0,
+        0.45,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": false,
+      "modifiers": []
+    },
+    {
+      "id": "cap",
+      "primitive": "box",
+      "size_m": [
+        1.6,
+        0.2,
+        2.4000000000000004
+      ],
+      "location": [
+        0.0,
+        0.9,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.012,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "mount_left_0",
+      "primitive": "box",
+      "size_m": [
+        0.16,
+        0.06,
+        0.24
+      ],
+      "location": [
+        -0.76,
+        0.13,
+        -0.75
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "mount_right_0",
+      "primitive": "box",
+      "size_m": [
+        0.16,
+        0.06,
+        0.24
+      ],
+      "location": [
+        0.76,
+        0.13,
+        -0.75
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "mount_left_1",
+      "primitive": "box",
+      "size_m": [
+        0.16,
+        0.06,
+        0.24
+      ],
+      "location": [
+        -0.76,
+        0.13,
+        -0.14999999999999997
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "mount_right_1",
+      "primitive": "box",
+      "size_m": [
+        0.16,
+        0.06,
+        0.24
+      ],
+      "location": [
+        0.76,
+        0.13,
+        -0.14999999999999997
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18,
+        0.32,
+        0.48,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.08,
+        0.1,
+        0.13,
+        1.0
+      ]
+    },
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.9,
+        0.42,
+        0.08,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "base",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "top",
+      "position": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "id": "shaft",
+      "position": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    }
+  ],
+  "overlap_policy": "ASSEMBLY_CONTACTS",
+  "expected_bounds": true,
+  "input_digest": "0937ada1375a7c889f7f20ab7f1d6168f555857c31a31a366ba2d3f9cd3e8193"
+}

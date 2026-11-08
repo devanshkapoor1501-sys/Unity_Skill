@@ -1,0 +1,595 @@
+FFFFFFFFFFFFFFFFFFFFF                                                    [100%]
+================================== FAILURES ===================================
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-1] ___
+
+size = [3, 2, 6], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 1.2000000000000002 == 1.0 � 1.0e-06
+E         
+E         comparison failed
+E         Obtained: 1.2000000000000002
+E         Expected: 1.0 � 1.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-2] ___
+
+size = [3, 2, 6], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 1.2000000000000002 == 1.0 � 1.0e-06
+E         
+E         comparison failed
+E         Obtained: 1.2000000000000002
+E         Expected: 1.0 � 1.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-3] ___
+
+size = [3, 2, 6], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 1.2000000000000002 == 1.0 � 1.0e-06
+E         
+E         comparison failed
+E         Obtained: 1.2000000000000002
+E         Expected: 1.0 � 1.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-1] ___
+
+size = [0.2, 8, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 4.800000000000001 == 4.0 � 4.0e-06
+E         
+E         comparison failed
+E         Obtained: 4.800000000000001
+E         Expected: 4.0 � 4.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-2] ___
+
+size = [0.2, 8, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 4.800000000000001 == 4.0 � 4.0e-06
+E         
+E         comparison failed
+E         Obtained: 4.800000000000001
+E         Expected: 4.0 � 4.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-3] ___
+
+size = [0.2, 8, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 4.800000000000001 == 4.0 � 4.0e-06
+E         
+E         comparison failed
+E         Obtained: 4.800000000000001
+E         Expected: 4.0 � 4.0e-06
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-1] ___
+
+size = [8, 0.2, 4], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 0.12000000000000002 == 0.1 � 1.0e-07
+E         
+E         comparison failed
+E         Obtained: 0.12000000000000002
+E         Expected: 0.1 � 1.0e-07
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-2] ___
+
+size = [8, 0.2, 4], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 0.12000000000000002 == 0.1 � 1.0e-07
+E         
+E         comparison failed
+E         Obtained: 0.12000000000000002
+E         Expected: 0.1 � 1.0e-07
+
+tests\test_modeling.py:405: AssertionError
+__ test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-3] ___
+
+size = [8, 0.2, 4], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+    def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+    
+        plan = compile_modeling("vehicle", request(size, detail=detail))
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        chassis, cabin = objects["chassis"], objects["cabin"]
+>       assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+            chassis["location"][1] + chassis["size_m"][1] / 2
+        )
+E       assert 0.12000000000000002 == 0.1 � 1.0e-07
+E         
+E         comparison failed
+E         Obtained: 0.12000000000000002
+E         Expected: 0.1 � 1.0e-07
+
+tests\test_modeling.py:405: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-1] ___
+
+size = [2, 3, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 1.9500000000000002 > (3 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-2] ___
+
+size = [2, 3, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 1.9500000000000002 > (3 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-3] ___
+
+size = [2, 3, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 1.9500000000000002 > (3 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-1] ___
+
+size = [0.2, 8, 1], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 5.2 > (8 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-2] ___
+
+size = [0.2, 8, 1], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 5.2 > (8 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-3] ___
+
+size = [0.2, 8, 1], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 5.2 > (8 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-1] ___
+
+size = [8, 0.2, 4], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 0.13 > (0.2 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-2] ___
+
+size = [8, 0.2, 4], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 0.13 > (0.2 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-3] ___
+
+size = [8, 0.2, 4], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 0.13 > (0.2 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-1] ___
+
+size = [0.05, 10, 50], detail = 1
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 6.5 > (10 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-2] ___
+
+size = [0.05, 10, 50], detail = 2
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 6.5 > (10 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+__ test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-3] ___
+
+size = [0.05, 10, 50], detail = 3
+
+    @pytest.mark.parametrize("detail", [1, 2, 3])
+    @pytest.mark.parametrize(
+        "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+    )
+    def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+        from polyforge.blender.modeling import compile_modeling
+        from polyforge.contracts.validation import validate_schema
+    
+        plan = compile_modeling("organic", request(size, detail=detail))
+        w, h, d = size
+        objects = {obj["id"]: obj for obj in plan["objects"]}
+        body, crown = objects["body"], objects["crown"]
+        assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+    
+        def ellipsoid(point):
+            return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+                2 * point[2] / d
+            ) ** 2
+    
+        # A crown must intersect the body and have a substantial exposed front tip.
+        assert ellipsoid(crown["location"]) < 1
+        crown_tip = crown["location"].copy()
+        crown_tip[2] += crown["size_m"][2] / 2
+>       assert crown["location"][1] > h * 0.65
+E       assert 6.5 > (10 * 0.65)
+
+tests\test_modeling.py:435: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size0-3]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size1-3]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-1]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-2]
+FAILED tests/test_modeling.py::test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope[size2-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size0-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size1-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size2-3]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-1]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-2]
+FAILED tests/test_modeling.py::test_organic_crown_emerges_and_ridge_tubes_follow_front_surface[size3-3]
+21 failed, 80 deselected in 1.47s

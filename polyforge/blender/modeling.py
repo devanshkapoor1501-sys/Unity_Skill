@@ -91,7 +91,7 @@ def _families(
         sockets.append({"id": "doorway", "position": [0.0, t, d / 2]})
     elif kind == "vehicle":
         box("chassis", [w, h * 0.24, d * 0.8], [0.0, h * 0.38, 0.0])
-        box("cabin", [w * 0.58, h * 0.4, d * 0.45], [0.0, h * 0.8, -d * 0.08], "accent")
+        box("cabin", [w * 0.58, h * 0.5, d * 0.45], [0.0, h * 0.75, -d * 0.08], "accent")
         radius = min(h * 0.18, d * 0.2)
         axle_width = w * 0.12
         for side, sign in (("left", -1), ("right", 1)):
@@ -150,7 +150,7 @@ def _families(
             _object(
                 "crown",
                 [w * 0.35, h * 0.3, d * 0.35],
-                [0.0, h * 0.65, d * 0.1],
+                [0.0, h * 0.75, d * 0.3],
                 primitive="sphere",
                 material="accent",
                 modifiers=[{"type": "subdivision", "levels": min(detail, 2)}],
@@ -158,19 +158,25 @@ def _families(
         )
         for index in range(detail):
             r = min(w, h, d) * 0.012
+            # POLY segments need a shorter sweep on very deep, thin bodies so
+            # their chords stay within the tube radius of the curved surface.
+            sweep = min(1.0, 25 * math.sqrt(r / d))
+            x_offset = w * (-0.1 + index * 0.1)
+            points = []
+            for sample in range(17):
+                along = (sample / 16 - 0.5) * 0.2 * sweep
+                x, y = x_offset + w * along, h * (0.7 + along)
+                front = d / 2 * math.sqrt(1 - (2 * x / w) ** 2 - (2 * y / h - 1) ** 2)
+                points.append([w * along, h * along, front - r * 0.25 - d * 0.4])
             curve = _object(
                 f"ridge_{index}",
                 [w * 0.4, h * 0.4, d * 0.2],
-                [w * (-0.1 + index * 0.1), h * 0.5, d * 0.3],
+                [x_offset, h * 0.7, d * 0.4],
                 primitive="curve",
                 material="trim",
             )
             curve.update(
-                points=[
-                    [-w * 0.1, -h * 0.15, -d * 0.03],
-                    [0.0, 0.0, d * 0.06],
-                    [w * 0.1, h * 0.15, -d * 0.03],
-                ],
+                points=points,
                 bevel_m=r,
             )
             objects.append(curve)

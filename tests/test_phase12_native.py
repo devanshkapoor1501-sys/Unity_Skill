@@ -2,6 +2,7 @@
 
 import json
 import shutil
+from collections import Counter
 from hashlib import file_digest
 from pathlib import Path
 
@@ -28,20 +29,21 @@ def family_input(kind):
     }
 
 
+def part(id_, primitive, size, location, material_id="base", **extra):
+    return {
+        "id": id_,
+        "primitive": primitive,
+        "size_m": size,
+        "location": location,
+        "rotation_deg": [0, 0, 0],
+        "material_id": material_id,
+        "export": True,
+        "modifiers": [],
+    } | extra
+
+
 def transfer_input():
     # A coolant valve with a bored housing, procedural mounting base and pipe.
-    def part(id_, primitive, size, location, material_id="base", **extra):
-        return {
-            "id": id_,
-            "primitive": primitive,
-            "size_m": size,
-            "location": location,
-            "rotation_deg": [0, 0, 0],
-            "material_id": material_id,
-            "export": True,
-            "modifiers": [],
-        } | extra
-
     return {
         "schema_version": "1.0.0",
         "asset_id": "coolant_valve",
@@ -82,22 +84,143 @@ def transfer_input():
     }
 
 
+def gantry_input():
+    # A walkway inspection station with an angled crossbeam and overhead conduit.
+    return {
+        "schema_version": "1.0.0",
+        "asset_id": "inspection_gantry",
+        "parameters": {"size_m": [5.5, 4, 4], "lod_ratio": 0.65},
+        "objects": [
+            part("deck", "grid", [4.8, 0.24, 3.2], [0, 0.12, 0], "trim", detail=2),
+            part("post_left", "box", [0.4, 2.64, 0.4], [-1.48, 1.56, 0.31]),
+            part("post_right", "box", [0.4, 2.64, 0.4], [1.48, 1.56, -0.31]),
+            part(
+                "crossbeam",
+                "box",
+                [3.72, 0.32, 0.46],
+                [0, 3.04, 0],
+                rotation_deg=[0, 12, 0],
+                modifiers=[{"type": "bevel", "width_m": 0.04, "segments": 2}],
+            ),
+            part(
+                "conduit",
+                "curve",
+                [2.6, 0.75, 0.5],
+                [0, 3.39, 0.12],
+                "accent",
+                points=[
+                    [-1.2, -0.22, 0.12],
+                    [-0.8, 0.2, 0.1],
+                    [0.8, 0.2, -0.1],
+                    [1.2, -0.22, -0.12],
+                ],
+                bevel_m=0.035,
+            ),
+            part(
+                "inspection_head",
+                "box",
+                [0.46, 0.38, 0.42],
+                [0.32, 2.71, 0.02],
+                "accent",
+                rotation_deg=[0, 0, -15],
+            ),
+        ],
+        "sockets": [
+            {"id": "sensor_mount", "position": [0.32, 2.52, 0.02]},
+            {"id": "walkway_entry", "position": [-1.9, 0.24, 1.25]},
+        ],
+        "overlap_policy": "ASSEMBLY_CONTACTS",
+        "expected_bounds": False,
+    }
+
+
 @pytest.fixture(scope="module")
 def native_models(tmp_path_factory):
     root = tmp_path_factory.mktemp("phase12-blender")
     results = {}
-    for kind in (*FAMILIES, "compose"):
-        request = family_input(kind) if kind != "compose" else transfer_input()
-        context = RunContext(root, run_id=kind)
+    requests = {kind: (kind, family_input(kind)) for kind in FAMILIES}
+    requests.update(
+        compose=("compose", transfer_input()), inspection_gantry=("compose", gantry_input())
+    )
+    for name, (kind, request) in requests.items():
+        context = RunContext(root, run_id=name)
         result = execute(MODELING_CAPABILITIES[kind], request, context)
         assert result.status == "PASS", result.to_dict()
         assert result.data["artistic_status"] == "REVIEW"
         assert result.data["inspection"]["source_unchanged"]
         assert len(result.artifact_ids) == 9
         assert execute(MODELING_CAPABILITIES[kind], request, context) == result
-        results[kind] = result.to_dict()
+        results[name] = result.to_dict()
     (root / "native-results.json").write_text(json.dumps(results, indent=2), encoding="utf-8")
+    trace_model_frames(root, results)
     return root, results
+
+
+def trace_model_frames(root, results):
+    from polyforge.doctor import discover_tool
+    from polyforge.runner.processes import ProcessPolicy, run_process
+    from polyforge.security.paths import WorkspacePolicy
+
+    blender = discover_tool("blender")
+    assert blender is not None
+    inputs = root / "frame-inputs.json"
+    inputs.write_text(
+        json.dumps(
+            [
+                {
+                    "source": str(root / r["data"]["source_blend"]),
+                    "worker": str(
+                        Path(__file__).resolve().parents[1] / "polyforge/blender/modeling_worker.py"
+                    ),
+                }
+                for r in results.values()
+            ]
+        ),
+        encoding="utf-8",
+    )
+    output = root / "frame-trace.json"
+    process = run_process(
+        [
+            str(blender),
+            "--background",
+            "--factory-startup",
+            "--disable-autoexec",
+            "--threads",
+            "1",
+            "--python-exit-code",
+            "5",
+            "--python",
+            str(Path(__file__).resolve().parent / "fixtures/modeling/export_trace.py"),
+            "--",
+            str(inputs),
+            str(output),
+        ],
+        WorkspacePolicy(root),
+        "frame-trace-process",
+        ProcessPolicy((blender,), 180),
+    )
+    assert process.returncode == 0 and process.reason == "exit", process
+    trace = json.loads(output.read_text(encoding="utf-8"))
+    assert len(trace["models"]) == len(results)
+    assert all(row["sha256_before"] == row["sha256_after"] for row in trace["models"])
+    assert all(row["export_failure_rolled_back"] for row in trace["models"])
+
+
+@pytest.mark.blender
+def test_native_inspection_gantry_preserves_distinct_composed_features(native_models):
+    _, results = native_models
+    inspected = results["inspection_gantry"]["data"]["inspection"]
+    objects = {row["id"]: row for row in inspected["objects"]}
+    assert objects["deck"]["modifiers"][0] == {"type": "geometry_nodes", "detail": 2}
+    assert objects["crossbeam"]["rotation_deg"] == pytest.approx([0, 12, 0], abs=0.001)
+    assert objects["inspection_head"]["rotation_deg"] == pytest.approx([0, 0, -15], abs=0.001)
+    assert objects["conduit"]["source_geometry"]["spline_type"] == "POLY"
+    assert objects["conduit"]["source_geometry"]["closed_caps"] is True
+    assert {row["id"]: row["position_unity"] for row in inspected["sockets"]} == {
+        "sensor_mount": pytest.approx([0.32, 2.52, 0.02], abs=0.0001),
+        "walkway_entry": pytest.approx([-1.9, 0.24, 1.25], abs=0.0001),
+    }
+    assert {obj["material_ids"][0] for obj in objects.values()} == {"base", "trim", "accent"}
 
 
 @pytest.mark.blender
@@ -255,13 +378,23 @@ def test_unity_imports_modeling_families_and_lods(native_models, tmp_path):
         fixture = Path(__file__).parent / "fixtures/modeling/ModelingImportProbe.cs"
         shutil.copyfile(fixture, scripts / fixture.name)
         expected = []
-        for kind in FAMILIES:
-            data = results[kind]["data"]
+        source_hashes = {}
+        for kind, result in results.items():
+            data = result["data"]
             folder = (root / data["source_blend"]).parent
+            with (folder / "source.blend").open("rb") as stream:
+                source_hashes[folder / "source.blend"] = file_digest(stream, "sha256").hexdigest()
             for name in ("asset", "lod"):
                 filename = f"{kind}_{name}.fbx"
                 shutil.copyfile(folder / (name + ".fbx"), files / filename)
                 inspected = data["inspection"]["aggregate" if name == "asset" else "lod"]
+                material_triangles = Counter()
+                if name == "asset":
+                    for obj in data["inspection"]["objects"]:
+                        if obj["export"]:
+                            material_triangles.update(obj["material_triangle_counts"])
+                else:
+                    material_triangles.update(inspected["material_triangle_counts"])
                 expected.append(
                     {
                         "path": f"Assets/Phase12Models/{filename}",
@@ -270,10 +403,34 @@ def test_unity_imports_modeling_families_and_lods(native_models, tmp_path):
                         "meshCount": sum(o["export"] for o in data["plan"]["objects"])
                         if name == "asset"
                         else 1,
+                        "materialIds": sorted(
+                            {
+                                material
+                                for obj in data["inspection"]["objects"]
+                                if obj["export"]
+                                for material in obj["material_ids"]
+                            }
+                        ),
+                        "materialTriangles": [
+                            {"id": material, "triangles": count}
+                            for material, count in sorted(material_triangles.items())
+                        ],
                         "sockets": [
                             {"id": s["id"], "position": s["position"]}
                             for s in data["plan"]["sockets"]
                         ],
+                        "modules": [
+                            {
+                                "id": obj["id"],
+                                "lo": obj["bounds_min_unity"],
+                                "hi": obj["bounds_max_unity"],
+                                "materialIds": obj["material_ids"],
+                            }
+                            for obj in data["inspection"]["objects"]
+                            if obj["export"]
+                        ]
+                        if name == "asset"
+                        else [],
                     }
                 )
         inputs = tmp_path / "unity-input.json"
@@ -303,4 +460,27 @@ def test_unity_imports_modeling_families_and_lods(native_models, tmp_path):
             ProcessPolicy((editor,), 900),
         )
     assert process.returncode == 0 and process.reason == "exit", process
-    assert json.loads(receipt.read_text(encoding="utf-8"))["models"] == 8
+    observed = json.loads(receipt.read_text(encoding="utf-8"))
+    assert observed["models"] == 12 and observed["passed"]
+    assert len(observed["observations"]) == 12
+    by_path = {row["path"]: row for row in observed["observations"]}
+    for kind in ("compose", "inspection_gantry"):
+        for export in ("asset", "lod"):
+            row = by_path[f"Assets/Phase12Models/{kind}_{export}.fbx"]
+            assert row["passed"]
+            mutants = {m["id"]: m for m in row["mutants"]}
+            assert mutants["whole_root_x_reflection"]["detected"]
+            if kind == "compose":
+                assert mutants["outlet_x_reflection"]["detected"]
+                (outlet,) = row["sockets"]
+                assert outlet["expected"] == pytest.approx([0.9, 0.77, 0.35], abs=0.000001)
+                assert outlet["observed"] == pytest.approx([0.9, 0.77, 0.35], abs=0.005)
+    for row in observed["observations"]:
+        assert row["guidBeforeReimport"] == row["guidAfterReimport"]
+        assert row["metaSha256Before"] == row["metaSha256After"]
+        assert all(m["cleanedUp"] for m in row["mutants"])
+        assert len(row["parentCases"]) == 2
+        assert all(p["restored"] and p["cleanedUp"] for p in row["parentCases"])
+    for source, before in source_hashes.items():
+        with source.open("rb") as stream:
+            assert file_digest(stream, "sha256").hexdigest() == before

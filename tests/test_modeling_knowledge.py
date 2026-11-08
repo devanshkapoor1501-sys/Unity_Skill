@@ -20,6 +20,7 @@ from polyforge.workforce.permissions import MODELING_ROLES
         ("Create a detailed mechanical prop", "mechanical_prop"),
         ("Create an organic practice asset", "organic"),
         ("Create a modeling composition using a curve and Boolean", "compose"),
+        ("Create a capped polyline with a bevel", "compose"),
     ],
 )
 def test_modeling_candidate_preserves_review_and_zero_writes(tmp_path, query, kind):
@@ -51,6 +52,29 @@ def test_assisted_domain_is_not_silently_substituted_with_vehicle(tmp_path, need
     assert not result["capability_ids"]
     assert result["status"] == "REVIEW"
     assert result["discovery"]["execution_status"] == "BLOCKED"
+
+
+@pytest.mark.parametrize(
+    "query,need",
+    [
+        ("Create a vehicle with particle emitters", "particle emitters"),
+        ("Create a particle system on a robot", "particle system"),
+        ("Create a wall with a decal", "decal"),
+        ("Create a crate with fabric simulation", "simulation"),
+    ],
+)
+def test_mixed_asset_requests_keep_the_assisted_requirement(tmp_path, query, need):
+    result = route_reference(
+        WorkspacePolicy(tmp_path),
+        {"schema_version": "1.0.0", "query": query, "output": "ASSET", "domain": "blender"},
+    )
+    assert result["query"] == query
+    assert not result["capability_ids"]
+    assert result["status"] == "REVIEW"
+    assert need in result["gap"] and "Assisted modeling" in result["gap"]
+    assert result["roles"] == ["asset_architect"]
+    assert result["discovery"]["execution_status"] == "BLOCKED"
+    assert not list(tmp_path.iterdir())
 
 
 def test_explanation_loads_concept_guidance_without_execution(tmp_path):

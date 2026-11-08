@@ -1,0 +1,342 @@
+{
+  "schema_version": "1.0.0",
+  "task_id": "task_6f4a8ced926949b5_1c9b8a35",
+  "engine_digest": "1c9b8a35137f83f6426f84d12ebf8accb56dcf42e8a543b860db712dacf80bc0",
+  "workspace_inputs": {
+    "polyforge.toml": "MISSING",
+    "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+  },
+  "input_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+  "original_request": {
+    "schema_version": "1.0.0",
+    "brief": "Make a crate with editable source",
+    "task_class": "CREATE_ASSET",
+    "domain_tags": [
+      "blender"
+    ],
+    "feature_ids": [
+      "editable"
+    ],
+    "capability_id": "mesh.props.crate.v1",
+    "input": {
+      "schema_version": "1.0.0",
+      "asset_id": "crate",
+      "parameters": {
+        "size_m": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "stages": [
+    "S0",
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "jobs": [
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_0",
+      "role_id": "intent_analyst",
+      "capability_id": "intent.freeze.v1",
+      "depends_on": [],
+      "stage": "S1",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable"
+      ],
+      "context": {
+        "schema_version": "1.0.0",
+        "task_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+        "brief_digest": "2366a25581b758f3b35d08cb724ecc47ddf744db974a4e2ca5919496f686ac75",
+        "task_class": "CREATE_ASSET",
+        "required_concepts": [
+          "blender"
+        ],
+        "selected_knowledge_cards": [
+          {
+            "knowledge_id": "blender.modeling",
+            "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.uv-pbr",
+            "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.animation",
+            "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          }
+        ],
+        "toolchain_probes": [
+          {
+            "tool": "blender",
+            "status": "VERSION_PROBED",
+            "evidence_digest": "16d015e4cea3a1ba3c18ba0a96faf712db45d4f48727387e9f7ff2b90b7f8d9e"
+          }
+        ],
+        "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+        "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+        "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+        "observed_inputs": {
+          "polyforge.toml": "MISSING",
+          "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+        },
+        "capability_gap": "Free-text brief coverage requires separate requirement review",
+        "proposed_experiment_id": null,
+        "risk_level": "TRUSTED_REGISTERED_LOCAL",
+        "approval_owner": "EXISTING_REVIEW_GATES",
+        "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+        "evaluator_access": "DENIED",
+        "tool_allowlist": [],
+        "read_roots": [
+          "runs/",
+          "workforce/",
+          "recipes/"
+        ],
+        "authorized_write_roots": [
+          "workforce/"
+        ],
+        "permissions_from_references": false,
+        "seed": 42,
+        "original_task_input_digest": "e812f00bfacd89c5818cb7cecc285f5bdedd4dfe8e800a079cb294eabb712673",
+        "expected_evidence": [
+          "registered capability result",
+          "candidate/review artifacts"
+        ],
+        "review_policy": "EXISTING_L1_L2_L3_GATES",
+        "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+        "lease_ref": "RUNTIME_LEDGER",
+        "resources": {}
+      },
+      "context_digest": "418e2d24cd7b02a11c53fa069c0aebf8b2aba8330e5d06080c69ad2769ebd0fd"
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_1",
+      "role_id": "asset_producer",
+      "capability_id": "mesh.props.crate.v1",
+      "depends_on": [
+        "job_0"
+      ],
+      "stage": "S2",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable"
+      ],
+      "context": {
+        "schema_version": "1.0.0",
+        "task_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+        "brief_digest": "2366a25581b758f3b35d08cb724ecc47ddf744db974a4e2ca5919496f686ac75",
+        "task_class": "CREATE_ASSET",
+        "required_concepts": [
+          "blender"
+        ],
+        "selected_knowledge_cards": [
+          {
+            "knowledge_id": "blender.modeling",
+            "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.uv-pbr",
+            "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.animation",
+            "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          }
+        ],
+        "toolchain_probes": [
+          {
+            "tool": "blender",
+            "status": "VERSION_PROBED",
+            "evidence_digest": "16d015e4cea3a1ba3c18ba0a96faf712db45d4f48727387e9f7ff2b90b7f8d9e"
+          }
+        ],
+        "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+        "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+        "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+        "observed_inputs": {
+          "polyforge.toml": "MISSING",
+          "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+        },
+        "capability_gap": "Free-text brief coverage requires separate requirement review",
+        "proposed_experiment_id": null,
+        "risk_level": "TRUSTED_REGISTERED_LOCAL",
+        "approval_owner": "EXISTING_REVIEW_GATES",
+        "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+        "evaluator_access": "DENIED",
+        "tool_allowlist": [
+          "asset.package.build.v1",
+          "sprite.robot.bake.v1",
+          "mesh.props.crate.v1",
+          "mesh.robot.modular.v1",
+          "mesh.architecture.wall.v1",
+          "mesh.architecture.doorway.v1",
+          "mesh.environment.tile.v1"
+        ],
+        "read_roots": [
+          "runs/",
+          "workforce/",
+          "recipes/"
+        ],
+        "authorized_write_roots": [
+          "runs/"
+        ],
+        "permissions_from_references": false,
+        "seed": 42,
+        "original_task_input_digest": "e812f00bfacd89c5818cb7cecc285f5bdedd4dfe8e800a079cb294eabb712673",
+        "expected_evidence": [
+          "registered capability result",
+          "candidate/review artifacts"
+        ],
+        "review_policy": "EXISTING_L1_L2_L3_GATES",
+        "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+        "lease_ref": "RUNTIME_LEDGER",
+        "resources": {}
+      },
+      "context_digest": "0da7844c080f1470170894e0a8c9d8b2fdce4296308658c37d3cef5fe3ff0d41"
+    },
+    {
+      "schema_version": "1.0.0",
+      "job_id": "job_2",
+      "role_id": "asset_inspector",
+      "capability_id": "artifact.candidate.inspect.v1",
+      "depends_on": [
+        "job_1"
+      ],
+      "stage": "S3",
+      "budget_seconds": 3600,
+      "write_root": "runs/",
+      "feature_ids": [
+        "editable"
+      ],
+      "context": {
+        "schema_version": "1.0.0",
+        "task_digest": "6f4a8ced926949b5f5ff88e0b857755876165ba869c24dbc77ec85b9f0eabed0",
+        "brief_digest": "2366a25581b758f3b35d08cb724ecc47ddf744db974a4e2ca5919496f686ac75",
+        "task_class": "CREATE_ASSET",
+        "required_concepts": [
+          "blender"
+        ],
+        "selected_knowledge_cards": [
+          {
+            "knowledge_id": "blender.modeling",
+            "doc_digest": "4be7ddbe2f93db1cc03ab9b236b79982fabf82de62e36b456278d483c99d3d7e",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.uv-pbr",
+            "doc_digest": "d657deb10baa831b52ce4b126960d0c9fb370c800b659362a8ce2128e02f99d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          },
+          {
+            "knowledge_id": "blender.animation",
+            "doc_digest": "734b8e5a6ad0040f13211c998160465261bde6333516ca9cdb83da5dbfb046d4",
+            "knowledge_state": "REFERENCE_ONLY",
+            "versions": {
+              "blender": [
+                "5.2.2"
+              ]
+            }
+          }
+        ],
+        "toolchain_probes": [
+          {
+            "tool": "blender",
+            "status": "VERSION_PROBED",
+            "evidence_digest": "16d015e4cea3a1ba3c18ba0a96faf712db45d4f48727387e9f7ff2b90b7f8d9e"
+          }
+        ],
+        "reference_digest": "c3027c76e5fe2cfd3d59c82082067b5fa9a0603998ca2472589cae5732cb0398",
+        "support_state": "REGISTERED_TYPED_INPUT_REQUIREMENTS_UNVERIFIED",
+        "originality_or_license": "REQUEST_METADATA_ONLY_NOT_INFERRED",
+        "observed_inputs": {
+          "polyforge.toml": "MISSING",
+          "blender_binary": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0"
+        },
+        "capability_gap": "Free-text brief coverage requires separate requirement review",
+        "proposed_experiment_id": null,
+        "risk_level": "TRUSTED_REGISTERED_LOCAL",
+        "approval_owner": "EXISTING_REVIEW_GATES",
+        "evaluator_ref": "EXTERNAL_NOT_SUPPLIED",
+        "evaluator_access": "DENIED",
+        "tool_allowlist": [
+          "artifact.candidate.inspect.v1"
+        ],
+        "read_roots": [
+          "runs/",
+          "workforce/",
+          "recipes/"
+        ],
+        "authorized_write_roots": [],
+        "permissions_from_references": false,
+        "seed": 42,
+        "original_task_input_digest": "e812f00bfacd89c5818cb7cecc285f5bdedd4dfe8e800a079cb294eabb712673",
+        "expected_evidence": [
+          "registered capability result",
+          "candidate/review artifacts"
+        ],
+        "review_policy": "EXISTING_L1_L2_L3_GATES",
+        "deadline_policy": "START_PLUS_BUDGET_SECONDS",
+        "lease_ref": "RUNTIME_LEDGER",
+        "resources": {}
+      },
+      "context_digest": "03bf65628947ac2548802ce6b72f6ea06ca6a3336875fc76318e172635e6d8ab"
+    }
+  ],
+  "execution_status": "NOT_RUN",
+  "support_state": "SUPPORTED",
+  "semantic_interpretation": "USER_OR_HOST_CLASSIFIED",
+  "requirements_preserved": true
+}

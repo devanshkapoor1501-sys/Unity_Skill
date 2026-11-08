@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "scenario_id": "player_moves",
+  "purpose": "INPUT_ADAPTER",
+  "mutant": null,
+  "seed": 42,
+  "input_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "scene_id": "main",
+  "frames_executed": 1500,
+  "fixed_delta_seconds": 0.02,
+  "samples": [
+    {
+      "frame": 0,
+      "round": 1,
+      "state": "RUNNING",
+      "health": 100,
+      "elapsed_seconds": 0,
+      "player_position": [
+        0,
+        0,
+        0
+      ],
+      "enemy_positions": [
+        {
+          "id": "enemy",
+          "position": [
+            3,
+            0,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "frame": 1500,
+      "round": 1,
+      "state": "RUNNING",
+      "health": 100,
+      "elapsed_seconds": 30,
+      "player_position": [
+        0,
+        0,
+        2
+      ],
+      "enemy_positions": [
+        {
+          "id": "enemy",
+          "position": [
+            3,
+            0,
+            3
+          ]
+        }
+      ]
+    }
+  ],
+  "events": [],
+  "arena_half_extents": [
+    10,
+    10
+  ],
+  "wall_thickness": 0.5,
+  "player_radius": 0.35,
+  "baseline_player_position": [
+    -3,
+    0,
+    -3
+  ],
+  "baseline_enemy_positions": [
+    {
+      "id": "enemy",
+      "position": [
+        3,
+        0,
+        3
+      ]
+    }
+  ]
+}

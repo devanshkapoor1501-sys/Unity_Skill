@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "inspection_gantry",
+  "workflow": "compose",
+  "seed": 42,
+  "size_m": [
+    5.5,
+    4.0,
+    4.0
+  ],
+  "max_polygons": 50000,
+  "lod_ratio": 0.65,
+  "estimated_polygons": 170,
+  "objects": [
+    {
+      "id": "deck",
+      "primitive": "grid",
+      "size_m": [
+        4.8,
+        0.24,
+        3.2
+      ],
+      "location": [
+        0,
+        0.12,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [],
+      "detail": 2
+    },
+    {
+      "id": "post_left",
+      "primitive": "box",
+      "size_m": [
+        0.4,
+        2.64,
+        0.4
+      ],
+      "location": [
+        -1.48,
+        1.56,
+        0.31
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "post_right",
+      "primitive": "box",
+      "size_m": [
+        0.4,
+        2.64,
+        0.4
+      ],
+      "location": [
+        1.48,
+        1.56,
+        -0.31
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "crossbeam",
+      "primitive": "box",
+      "size_m": [
+        3.72,
+        0.32,
+        0.46
+      ],
+      "location": [
+        0,
+        3.04,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        12,
+        0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.04,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "conduit",
+      "primitive": "curve",
+      "size_m": [
+        2.6,
+        0.75,
+        0.5
+      ],
+      "location": [
+        0,
+        3.39,
+        0.12
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [],
+      "points": [
+        [
+          -1.2,
+          -0.22,
+          0.12
+        ],
+        [
+          -0.8,
+          0.2,
+          0.1
+        ],
+        [
+          0.8,
+          0.2,
+          -0.1
+        ],
+        [
+          1.2,
+          -0.22,
+          -0.12
+        ]
+      ],
+      "bevel_m": 0.035
+    },
+    {
+      "id": "inspection_head",
+      "primitive": "box",
+      "size_m": [
+        0.46,
+        0.38,
+        0.42
+      ],
+      "location": [
+        0.32,
+        2.71,
+        0.02
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        -15
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": []
+    }
+  ],
+  "materials": [
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18,
+        0.32,
+        0.48,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.08,
+        0.1,
+        0.13,
+        1.0
+      ]
+    },
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.9,
+        0.42,
+        0.08,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "sensor_mount",
+      "position": [
+        0.32,
+        2.52,
+        0.02
+      ]
+    },
+    {
+      "id": "walkway_entry",
+      "position": [
+        -1.9,
+        0.24,
+        1.25
+      ]
+    }
+  ],
+  "overlap_policy": "ASSEMBLY_CONTACTS",
+  "expected_bounds": false,
+  "input_digest": "492f2a5ff197be10535057ee9849aa246b93e8acc74fa4c1a1126d70906f0e2d"
+}

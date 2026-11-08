@@ -204,10 +204,19 @@ def _geometry(obj: Any, depsgraph: Any) -> dict[str, Any]:
             for value in loop.uv
         )
         mesh.calc_loop_triangles()
+        material_triangles: dict[str, int] = {}
+        for triangle in mesh.loop_triangles:
+            index = triangle.material_index
+            material = obj.data.materials[index] if index < len(obj.data.materials) else None
+            identifier = (
+                str(material.get("semantic_id", material.name)) if material else "<unbound>"
+            )
+            material_triangles[identifier] = material_triangles.get(identifier, 0) + 1
         return {
             "vertices": len(mesh.vertices),
             "polygons": len(mesh.polygons),
             "triangles": len(mesh.loop_triangles),
+            "material_triangle_counts": material_triangles,
             "nonmanifold_edges": sum(not edge.is_manifold for edge in bm.edges),
             "degenerate_faces": sum(face.calc_area() <= 1e-12 for face in bm.faces),
             "nonfinite_values": finite,

@@ -1,0 +1,15 @@
+/* Per-app theme layer — derive from the app's brand (see references/create.md).
+   REQUIRED tokens consumed by frame.css: */
+:root{
+  --paper:#f5f5f2;      /* panel background */
+  --paper-hi:#ffffff;   /* card / chip surface (also sticker borders) */
+  --ink:#111111;        /* primary text */
+  --mid:#555555;        /* secondary text */
+  --rule:rgba(0,0,0,.15);
+  --accent:#333333;     /* brand accent (eyebrow, highlights) */
+  --badge-bg:#eeeeee;   /* gradeBadge surface */
+  --badge-ink:#333333;  /* gradeBadge glyph */
+  --font-sans:'Inter Tight',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  /* optional, set-wide: --device-top-ratio: 0.33;  sanctioned 0.28–0.36 — see gotchas.md */
+}
