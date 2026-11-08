@@ -410,9 +410,7 @@ def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail
 
 
 @pytest.mark.parametrize("detail", [1, 2, 3])
-@pytest.mark.parametrize(
-    "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
-)
+@pytest.mark.parametrize("size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]])
 def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
     from polyforge.blender.modeling import compile_modeling
     from polyforge.contracts.validation import validate_schema
@@ -424,9 +422,7 @@ def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail
     assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
 
     def ellipsoid(point):
-        return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
-            2 * point[2] / d
-        ) ** 2
+        return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (2 * point[2] / d) ** 2
 
     # A crown must intersect the body and have a substantial exposed front tip.
     assert ellipsoid(crown["location"]) < 1
@@ -448,9 +444,7 @@ def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail
             for first, second in zip(world, world[1:], strict=False)
         ]
         for point in samples:
-            surface_z = d / 2 * math.sqrt(
-                1 - (2 * point[0] / w) ** 2 - (2 * point[1] / h - 1) ** 2
-            )
+            surface_z = d / 2 * math.sqrt(1 - (2 * point[0] / w) ** 2 - (2 * point[1] / h - 1) ** 2)
             assert 0 < surface_z - point[2] < radius * 0.75
             normal = [
                 point[0] / (w / 2) ** 2,
