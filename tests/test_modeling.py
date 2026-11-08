@@ -1,6 +1,7 @@
 """Typed modeling plans preserve geometry intent before native execution."""
 
 import copy
+import math
 
 import pytest
 
@@ -391,3 +392,84 @@ def test_schema_itself_is_valid_and_accepts_declared_simple_input():
     schema = schema_document("modeling_request.schema.json")
     Draft202012Validator.check_schema(schema)
     Draft202012Validator(schema).validate(request())
+
+
+@pytest.mark.parametrize("detail", [1, 2, 3])
+@pytest.mark.parametrize("size", [[3, 2, 6], [0.2, 8, 1], [8, 0.2, 4]])
+def test_vehicle_cabin_contacts_chassis_and_preserves_full_envelope(size, detail):
+    from polyforge.blender.modeling import compile_modeling
+
+    plan = compile_modeling("vehicle", request(size, detail=detail))
+    objects = {obj["id"]: obj for obj in plan["objects"]}
+    chassis, cabin = objects["chassis"], objects["cabin"]
+    assert cabin["location"][1] - cabin["size_m"][1] / 2 == pytest.approx(
+        chassis["location"][1] + chassis["size_m"][1] / 2
+    )
+    assert cabin["location"][1] + cabin["size_m"][1] / 2 == pytest.approx(size[1])
+    assert plan["expected_bounds"] is True
+
+
+@pytest.mark.parametrize("detail", [1, 2, 3])
+@pytest.mark.parametrize(
+    "size", [[2, 3, 1], [0.2, 8, 1], [8, 0.2, 4], [0.05, 10, 50]]
+)
+def test_organic_crown_emerges_and_ridge_tubes_follow_front_surface(size, detail):
+    from polyforge.blender.modeling import compile_modeling
+    from polyforge.contracts.validation import validate_schema
+
+    plan = compile_modeling("organic", request(size, detail=detail))
+    w, h, d = size
+    objects = {obj["id"]: obj for obj in plan["objects"]}
+    body, crown = objects["body"], objects["crown"]
+    assert body["size_m"] == size and body["location"] == [0, h / 2, 0]
+
+    def ellipsoid(point):
+        return (2 * point[0] / w) ** 2 + (2 * point[1] / h - 1) ** 2 + (
+            2 * point[2] / d
+        ) ** 2
+
+    # A crown must intersect the body and have a substantial exposed front tip.
+    assert ellipsoid(crown["location"]) < 1
+    crown_tip = crown["location"].copy()
+    crown_tip[2] += crown["size_m"][2] / 2
+    assert crown["location"][1] > h * 0.65
+    assert ellipsoid(crown_tip) > 1.1
+
+    for index in range(detail):
+        ridge = objects[f"ridge_{index}"]
+        radius = ridge["bevel_m"]
+        world = [
+            [local + origin for local, origin in zip(point, ridge["location"], strict=True)]
+            for point in ridge["points"]
+        ]
+        # Native curves are POLY: check between vertices as well as at vertices.
+        samples = world + [
+            [(a + b) / 2 for a, b in zip(first, second, strict=True)]
+            for first, second in zip(world, world[1:], strict=False)
+        ]
+        for point in samples:
+            surface_z = d / 2 * math.sqrt(
+                1 - (2 * point[0] / w) ** 2 - (2 * point[1] / h - 1) ** 2
+            )
+            assert 0 < surface_z - point[2] < radius * 0.75
+            normal = [
+                point[0] / (w / 2) ** 2,
+                (point[1] - h / 2) / (h / 2) ** 2,
+                surface_z / (d / 2) ** 2,
+            ]
+            length = math.sqrt(sum(component**2 for component in normal))
+            outward = [a + radius * n / length for a, n in zip(point, normal, strict=True)]
+            assert ellipsoid(outward) > 1 and ellipsoid(point) < 1
+            for axis, (low, high) in enumerate([(-w / 2, w / 2), (0, h), (-d / 2, d / 2)]):
+                assert low <= point[axis] - radius <= point[axis] + radius <= high
+
+    # Retain reusable editable specs and exact envelope admission, including curve bounds.
+    value = {
+        **request(size),
+        "objects": plan["objects"],
+        "sockets": plan["sockets"],
+        "expected_bounds": True,
+    }
+    validate_schema(value, "modeling_request.schema.json")
+    assert compile_modeling("compose", value)["objects"] == plan["objects"]
+    assert plan["estimated_polygons"] <= plan["max_polygons"]

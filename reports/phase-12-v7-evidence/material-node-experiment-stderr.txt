@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7b\phase12-blender0\runs\model-mechanical_prop\modeling_worker.py", line 350, in <module>
+    run(json.loads(Path(supplied[0]).read_text(encoding="utf-8")))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7b\phase12-blender0\runs\model-mechanical_prop\modeling_worker.py", line 326, in run
+    lod = create_lod(bpy, objects, root, plan)
+  File "C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7b\phase12-blender0\runs\model-mechanical_prop\modeling_worker.py", line 164, in create_lod
+    material = obj.data.materials[face.material_index]
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+IndexError: bpy_prop_collection[index]: index 1 out of range, size 1
+
+Error: script failed, file: 'C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.tmp\v7b\phase12-blender0\runs\model-mechanical_prop\modeling_worker.py', exiting.

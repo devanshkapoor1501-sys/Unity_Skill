@@ -1,0 +1,14 @@
+[telemetry] effective run sink { kind: 'none', host: null, protocol: null }
+[telemetry] effective task observation rollout {
+  requestedMode: 'auto',
+  mode: 'send',
+  effectiveMode: 'off',
+  environment: 'production',
+  tag: 'od-next-task-v1',
+  effectiveSink: { kind: 'none', host: null, protocol: null },
+  taskProtocol: 'none',
+  readyToSend: false,
+  schemaReady: true,
+  blockedReason: 'missing_sink'
+}
+[od] listening on http://127.0.0.1:7456

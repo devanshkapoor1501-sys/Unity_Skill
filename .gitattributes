@@ -50,3 +50,7 @@ reports/phase-11-evidence/index.json text eol=lf
 # Preserve indexed Phase 12 modeling artifacts and native observations.
 reports/phase-12-evidence/** binary
 reports/phase-12-evidence/index.json text eol=lf
+# Preserve indexed v7 native evidence bytes across Windows/Linux checkouts.
+reports/phase-12-v7-evidence/** binary
+reports/phase-12-v7-evidence/index.json text eol=lf diff merge
+reports/phase-12-v7-evidence/*.py text eol=lf diff merge

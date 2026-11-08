@@ -1,0 +1,720 @@
+0001: POLYFORGE
+0002: v7.0  |  TOOL-COMPETENCY DEVELOPMENT BLUEPRINT
+0003: Court-responsive • Detailed engineering roadmap • Phases 0–18
+0004: A portable Agent Skill to help Codex use Blender and Unity toolscorrectly, safely and across unfamiliar tasks.
+0005: 7 November 2026  •  Replaces future-facing instructions in v6.0
+0006: Repository evidence: main 150b8dde  |  Source code unchanged
+0007: STATUS: IMPLEMENTATION PLAN, NOT A TEST CERTIFICATE
+0008: 
+0009: Reading guide
+0010: Read Sections 1–3 for mission and Court gates, Sections 4–6 for the architecture and competency model, Section 7 for phase-by-phase instructions, Sections 8–10 for evaluation and safety, and Section 11 for the authoritative Codex prompts. The historical v6.0 Word file remains an archival source, not a second set of active instructions.
+0011:  1   Executive decision
+0012:  2   Repository baseline
+0013:  3   Court response and limits
+0014:  4   Canonical competency model
+0015:  5   Blender / Unity / cross-tool coverage
+0016:  6   Architecture and worker policy
+0017:  7   Phases 0–18
+0018:  8   Verification and benchmarks
+0019:  9   Engineering procedure and safety
+0020: 10   Correction and preservation ledger
+0021: 11   Authoritative Codex prompts
+0022: 12   Schemas and source evidence
+0023: 13   Final completion criteria
+0024: Product definition: A portable, model-neutral Agent Skill backed by an existing local Python capability engine, Blender and Unity adapters, a version-aware knowledge system, specialist task routing, safe execution and independent verification. It is NOT a game generator. Game scenes, robots and prototypes are optional test fixtures, never the default deliverable or a requirement for demonstrating tool mastery.
+0025: Source and provenance: Revises the user-provided PolyForge v6.0 Court-Responsive Roadmap (Phases 0–18) and uses the public repository devanshkapoor1501-sys/Unity_Skill, main at 150b8dde4859f1f264f6af4243017406f6c2039c (checked 7 November 2026), particularly reports/phase-11.md, reports/phase-12.md, docs/core-support.md, SKILL.md, polyforge/knowledge/router.py, polyforge/workforce/router.py, polyforge/invariants/handoff.py and tests/test_phase12_native.py. No code was changed or executed to produce this document; repository test counts below are reported evidence, not newly witnessed tests.
+0026: Authority: This v7 document supersedes the future-facing product mission, release gates, benchmarks and Phase 12–18 instructions in v6.0. It does not retroactively alter historical code, results, ownership, documentation or completed Phases 0–11. Older v4/v5/v6 development plans remain archival references only, not competing Codex execution instructions. For any discrepancy, verified source code and actual test evidence determine implementation status; v7 governs proposed future work.
+0027: 
+0028: 1. Executive decision
+0029: 1.1 The corrected mission
+0030: PolyForge should help Codex and compatible agents choose, understand, apply, combine, inspect and troubleshoot Blender and Unity tools for a user-specified task. It should supply just-in-time, version-aware technical instructions, tested capability implementations where useful, safe discovery for unfamiliar operations, and reliable evidence of what actually worked. The user may request a model, an animation, a scene modification, a shader, a controller, a diagnostic report or a game. PolyForge must not silently reinterpret those requests as a robot/arena/game-generation pipeline.
+0031: The product consists of three existing layers: (1) a portable Agent Skill (.agents/skills/polyforge/SKILL.md and targeted references); (2) a local, largely model-independent Python CLI/capability engine with schemas, orchestration, security, inspection, benchmarks and provenance; (3) Blender Python and Unity C# Editor/runtime adapters. Existing Blender/Unity MCP integrations can complement it. A website, SaaS platform, new universal MCP server or retrained model is not required.
+0032: Success means Codex handles varied, unfamiliar, appropriate Blender and Unity tool tasks correctly with lower friction or fewer errors than an equally equipped general agent, and truthfully reports unverified or unsupported operations. Success does not mean generating a complete game, mastering every API entry point, producing AAA art, permanently training Codex, or spawning genuine independent AI agents merely because roles have separate names.
+0033: 1.2 Product boundaries
+0034: Required
+0035: Optional only when task demands it
+0036: Explicitly NOT required
+0037: Tool selection, versioned knowledge, correct execution, verification and diagnostics
+0038: Asset creation/export; animation; scene editing; C# gameplay components; small integration scenes
+0039: A playable robot game in every phase
+0040: Inspectable editable artifacts and task-appropriate evidence
+0041: Multi-tool workflows across Blender and Unity
+0042: Complete-game generation as a release gate
+0043: Safe scratch exploration, permission control, recovery and truthful statuses
+0044: True parallel host agents if available and measured
+0045: Retraining Codex or memorizing every Blender/Unity API
+0046: Capability- and task-specific independent evaluation
+0047: Optional MCP wrapper, GUI automation or advanced domains after validation
+0048: New web platform, hosted service or proprietary model SDK
+0049: 
+0050: 1.3 Why the old plan needed revision
+0051: The previous roadmap correctly preserved useful code, but it mixed tool competency with game production. Its game_manifest, GAME ACCEPTED, playable-game release gate and genre-wide benchmarks could all direct Codex toward building full demo games. Its five-task asset pilot could not measure broad tool knowledge, and old Phase 17 forced a choice of animation or gameplay even though neither should be excluded from knowledge coverage. The legacy appendices carried obsolete commands and expansive game requirements beside the new restricted mission. This document makes tasks and tool domains, not genres or game count, the unit of progress.
+0052: 1.4 Non-negotiable preservation
+0053: •  Do not delete or reimplement existing code simply because a former phase has been renamed. Preserve Python CLI, schemas, registry, Blender modeling/animation, Unity C# integration, 2D workflow, artifacts, tests, journals, recovery, Git history and benchmarks.
+0054: •  Keep the robot arena, platformer and known scenes as frozen regression/integration fixtures, not templates every user request must use. A failing old fixture is a regression; passing an old fixture is not proof of generality.
+0055: •  Existing project inspection must remain non-mutating. Native actions require an approved managed/disposable copy. Keep the Unity project-writer lock, path restrictions, subprocess ownership/timeouts, approvals and rollback checks.
+0056: •  Distinguish an instruction in SKILL.md, a reference to an API, a successful probe, a registered tested operation and independent acceptance. None implies the others.
+0057: •  Existing local sequential roles are not claimed to be independent concurrent AI agents. Actual host delegation needs observed evidence and permission isolation.
+0058: 2. Repository baseline and implementation boundary
+0059: 2.1 Evidence snapshot at the cited commit
+0060: Work
+0061: Evidence from repository
+0062: Status for v7 planning
+0063: Phases 0–10
+0064: Local CLI, manifest/contracts, workspaces, Blender/Unity workers, asset tests, animation/sprite demos, workflow routing, security, repair and reporting have source and development evidence
+0065: PRESERVE / retest, not recertified here
+0066: Phase 11
+0067: reports/phase-11.md: final offline regression reported 1,218 passed + 12 deselected; native arena and platformer checks and reproducible packages; independent acceptance and release evidence outstanding
+0068: STABLE CORE v1.0 BLOCKED
+0069: Phase 12
+0070: reports/phase-12.md: four parameterized modeling families, typed composition, editable .blend, LOD FBX, four renders, native inspector; 1,425 reported Python passes with 18 native deselected; eight family FBXs imported in Unity
+0071: DEVELOPMENT PARTIAL; native generalization and visual acceptance open
+0072: Known defect
+0073: Court record: coolant outlet expected (0.90, 0.77, 0.35), Unity observed (-0.90, 0.77, 0.35); public valve composition not in family-import test loop
+0074: MUST REPRODUCE AND FIX before advertising socket-safe cross-tool exports
+0075: Skill interface
+0076: Current SKILL.md, capability list/show/run, knowledge router, safe discovery and role router exist
+0077: REUSE; revise task-first triggers and broaden coverage explicitly
+0078: Benchmark
+0079: Runner/harness and public suites exist; reported runner/evaluator adapter unavailable for causal live model comparison
+0080: NOT PROVEN that PolyForge improves Codex
+0081: Phases 13–18
+0082: Proposed future work under this document; old v6 future wording superseded
+0083: NOT RUN / CONDITIONAL, never automatically approved
+0084: 
+0085: Important nuance: the native Unity import tests in Phase 12 cover the four parameterized families and LOD exports, not the coolant valve composite handoff. The reflected socket is an exposed failure of cross-application correctness, not proof the entire project fails. No new tests were run by this document authoring process.
+0086: 2.2 Existing modules to reuse, not rebuild
+0087: Existing path / area
+0088: Current useful purpose
+0089: v7 usage
+0090: .agents/skills/polyforge/SKILL.md + references/
+0091: Portable skill entry and progressive instructions
+0092: Task-first routing; reference retrieval by version and tool domain
+0093: polyforge/cli.py, commands.py, capabilities/registry.py, dispatch.py
+0094: Stable command and typed capability interface
+0095: Preserve and extend discoverability; no parallel CLI
+0096: polyforge/knowledge/catalog.py, router.py, probes.py, availability.py
+0097: Curated knowledge and bounded safe discovery
+0098: Competency registry, explicit unsupported states, API-version evidence
+0099: polyforge/blender/modeling*.py, recipes.py, animation/
+0100: Editable modeling, export and selected motion
+0101: Generic tool-operation practice plus reusable proven recipes
+0102: polyforge/unity/, unity_package/, tests/fixtures/modeling/
+0103: Native import, managed scene/prefab handling, game test fixtures
+0104: Unity tool competencies and cross-engine checks
+0105: polyforge/workforce/, roles/, review/
+0106: Specialist routing, ownership, review and sequential execution
+0107: Route only required specialists by user task; do not fabricate agents
+0108: polyforge/invariants/, repairs/, runner/, inspection.py
+0109: Handoff checks, diagnostics, evidence, crash safety, project inventory
+0110: Make inspectors task-agnostic and prove reversible changes
+0111: polyforge/benchmark/, benchmarks/, reports/
+0112: Harness and recorded evidence
+0113: Equal-tool comparisons, new unseen tasks and honest metrics
+0114: 
+0115: Repository-adaptation rule: file paths listed below are integration targets, not instructions to manufacture duplicate modules. Before adding a file, Codex must search for equivalent behavior and extend it in place when safe.
+0116: 2.3 Backward compatibility decision
+0117: Existing CLI commands, current valid request schemas, supported old assets, Unity packages and their tests remain intact until a versioned migration is implemented and verified. New knowledge/competency records may be additive. Existing GAME paths may remain available for old fixtures or explicit user game requests; they must not be called implicitly for EXPLAIN, INSPECT, CREATE_ASSET, ANIMATE, ADD_MECHANIC, EDIT_SCENE or tool-experiment tasks. New TaskContract is orthogonal to the old game manifest.
+0118: 3. Court assessment: defects, remedies and stopping rules
+0119: 3.1 Translate the recorded Court objections into engineering gates
+0120: Court concern
+0121: Root risk
+0122: Binding v7 response
+0123: Proof required
+0124: Undefined benefit, deadline and investment cap
+0125: Endless building justified by sunk cost
+0126: One bounded trial charter, named user task, approved hours and deadline, predeclared stop/continue
+0127: Signed charter and ledger before Phase 13 execution
+0128: No advantage over equally equipped Codex
+0129: PolyForge duplicates general tools
+0130: Same Codex/model, hardware, versions, permissions, MCP tools and budgets; only difference is PolyForge
+0131: Actual paired task results, interventions, elapsed time, token/cost if known
+0132: Public fixtures insufficient
+0133: Overfitting to robot/arena
+0134: Evaluator-owned unfamiliar task variants, tool-family coverage, negative/mutation probes, clean reuse check
+0135: Independent acceptance per attempted case; no missing-case deletion
+0136: Mirrored outlet on native handoff
+0137: Wrong coordinate frame/parent transforms
+0138: Reproduce and repair asymmetry, inspect source/FBX/Unity frame, test sign-flip mutants
+0139: Native Unity import must reject injected reflection and pass original target
+0140: Large future scope and incomplete qualification
+0141: Unbounded cost, false release claim
+0142: Gate future competency modules on demand and evidence; release only scoped and audited capabilities
+0143: Per-domain support matrix, security/license audit and truthful preview/stable labels
+0144: AI jury judgment misread as proof
+0145: Mistaking deliberative vote for technical certainty
+0146: Treat the vote as a resource-allocation warning, not a full code audit or market study
+0147: Direct code evidence and measurements govern outcome
+0148: 
+0149: 3.2 Bounded pilot charter (proposed numbers, not preapproved)
+0150: Initial pilot workflow: A task from specification to editable Blender source → technical preview → FBX/LOD where applicable → managed Unity import → exact geometry, axis, socket and reference evidence. The benchmark measures whether PolyForge makes Codex better at that tool workflow; it does not claim competence across all other Blender/Unity domains.
+0151: •  Proposed cap: 16 focused hours over 7 calendar days once the owner approves: up to 6 hours for Phase 12 defect/qualification and up to 10 hours for Phase 13 paired evaluation. Include debugging, trial setup and review in tracked time.
+0152: •  Proposed trial: Five independently selected unseen paired tasks (10 attempts, two arms), varied in object geometry and coordinate transforms, with an independent technical acceptance rubric. Pre-register pass/fail, elapsed time, interventions and cost.
+0153: •  Proposed positive gate: At least 4/5 PolyForge-assisted outputs accepted, zero undetected critical coordinate/socket defects, no lower accepted count than equal-tool Codex, plus ≥20% lower median end-to-end time OR ≥30% fewer manual corrections, provided quality is not reduced. These thresholds are provisional management choices, not statistical proof of universal superiority.
+0154: •  Independent reuse: On calendar days 8–14, a fresh/reset operator repeats one approved task in a clean workspace. Proposed up to 1 additional preapproved hour; record install/setup, output, manual fixes and elapsed time. Missing repeat evidence = provisional result.
+0155: •  Stop immediately on authorization expiry, cap/deadline overrun, unsafe original-project mutation, tool-parity failure, missing independent evaluator or critical unrecovered regression. Mark STOP / NARROW / CONTINUE / INCONCLUSIVE with written rationale. A successful pilot permits considering the next small workstream, not starting every remaining phase.
+0156: 3.3 Important scope correction to the pilot
+0157: One strong cross-engine asset trial is necessary but insufficient to establish the broader tool-competency mission. After a successful pilot, each prioritized Blender/Unity domain must run its own small independent positive, negative and transfer tasks. Report coverage per tool family and application version; do not manufacture an “overall mastery percentage” by counting knowledge cards or easy examples.
+0158: 4. Canonical tool-competency model
+0159: 4.1 Three separate questions for every tool family
+0160: 1.  Knowledge: Can the skill identify appropriate tools/APIs, when to use them, prerequisites, the correct Blender/Unity version, expected context and common mistakes?
+0161: 2.  Execution: Has Codex actually completed an operation using that tool in the declared environment, within safety limits, with useful output and reproducible evidence?
+0162: 3.  Independent transfer: Can a separate evaluator verify a new/unseen variation, including a negative case, without relying on generator-authored expected results?
+0163: Do not replace all three questions with one boolean supported=true. Skill references and tool descriptions are knowledge, not proof of working automation. Code existence is not proof native execution passed. Game-playability is irrelevant to a UV unwrap task, an Editor import probe or a shader graph inspection.
+0164: 4.2 Mandatory support-state vocabulary
+0165: State
+0166: Meaning
+0167: User-facing claim
+0168: REFERENCE_ONLY
+0169: Versioned documentation or examples exist; no local executed proof
+0170: “Guidance available; execution unverified”
+0171: VERSION_PROBED
+0172: Installed API/version/context probe executed in controlled environment
+0173: “Relevant API/environment probe passed”
+0174: EXPERIMENTAL
+0175: A bounded workflow executed but lacks transfer, failure coverage or release review
+0176: “Experimental; inspect result”
+0177: VERIFIED_IN_WORKFLOW
+0178: Positive/negative native checks and declared workflow evidence pass
+0179: “Verified for stated task/version/limits”
+0180: INDEPENDENTLY_ACCEPTED
+0181: Evaluator-owned unseen task meets frozen rubric with authentic evidence
+0182: “Independently accepted in measured trial”
+0183: ASSISTED
+0184: Interactive GUI, human artistic judgment or external approval remains necessary
+0185: “Human/host intervention required”
+0186: UNSUPPORTED
+0187: Capability not implemented/qualified, or incompatibility known
+0188: “Not supported; no silent substitution”
+0189: BLOCKED
+0190: Missing installed dependency, permissions, reviewer or unavailable execution
+0191: “Could not verify under current conditions”
+0192: 
+0193: These are competency/support states, distinct from invocation statuses PASS/FAIL/BLOCKED/NOT_RUN/REVIEW, candidate review statuses, and any old game deliverable state. A new competency status must never silently reinterpret previous recorded results.
+0194: 4.3 Canonical record for every competency
+0195: Each domain/tool-family entry should include at least: id, application, domain, subfeature, intent_patterns, version_range_tested, api_symbols_or_editor_features, prerequisites, context_modes, supported_operations, known_unsupported, input_schema, result_schema, references_with_source_date, safe_probe, positive_test_ids, negative_test_ids, unseen_transfer_ids (access-controlled), metrics, human_review_needed, support_state, last_execution, evidence_paths, owner, expiry_or_revalidate_condition and risk_class.
+0196: Knowledge cards must remain lightweight and lazily loaded. A router can choose relevant references; references must not be executable instructions with authority to expand filesystem/network privileges. All recommended operations should be linked to real supported capability IDs or explicitly labeled exploration paths.
+0197: 4.4 Minimum behavior of the task-first router
+0198: •  Preserve the original user request exactly. Classify the deliverable (EXPLAIN, INSPECT, CREATE_ASSET, EDIT_ASSET, ANIMATE, EDIT_SCENE, ADD_COMPONENT, FIX_PROJECT, TEST, EXPORT_IMPORT, BUILD_GAME only when explicitly requested). The presence of the word “robot” or “Unity” never authorizes a game build.
+0199: •  Extract constraints: application versions, project path/ownership, artifact expectations, style/quality, target platform, available time, resource limits, accepted modifications, required visual review and success criteria.
+0200: •  Consult tool version probes and available capability registry. Choose the smallest set of required tools and specialists. Do not run Unity when a Blender-only task is sufficient or generate meshes for an explanation-only request.
+0201: •  Return a structured plan with supported, experimental, assisted and unsupported requirements, plus alternative approaches only if the user approves an amended scope. If a required piece cannot be implemented, remain PARTIAL or BLOCKED rather than substituting the arena fixture.
+0202: •  Run tests appropriate to the specific tool operation. Preserve provenance and actionable errors; ask for approval before protected actions and stop on budget.
+0203: 4.5 Safe unfamiliar-tool discovery
+0204: For unknown Blender operators, node APIs, Unity Editor callbacks, packages or runtime components: (1) inspect official version-matched references; (2) confirm installed version and dependency availability; (3) inspect non-mutating API signatures and known context requirements; (4) build a disposable scratch case; (5) run a positive case, deliberate negative case and different-input transfer case; (6) inspect logs and output with a reviewer; (7) register a new validated capability only after approval and evidence. Keep unverified work EXPERIMENTAL/ASSISTED/BLOCKED. Never execute arbitrary scripts from web pages, prompts or asset metadata.
+0205: This is procedural expertise, not model retraining. A skill can provide just-in-time knowledge and tested tools; it cannot make Codex permanently remember every function or guarantee creative/artistic quality.
+0206: 5. Capability coverage matrix: Blender, Unity and cross-tool
+0207: Coverage is intentionally broad as a long-term catalog, not an obligation to implement every item before a scoped release. For each row, select representative practical operations, native acceptance criteria and versioned documentation. Maintain a backlog with REFERENCE_ONLY and UNSUPPORTED rather than pretending all listed domains are implemented.
+0208: 5.1 Blender competency domains
+0209: Domain
+0210: Practical operations to understand and test
+0211: Distinct evidence / failure cases
+0212: Object/scene/data model
+0213: Object creation, selection, collections, linking, transforms, origin/pivot, parenting, view layer
+0214: Correct world/local transforms, negative scale, missing context, independent reopen
+0215: Mesh/edit modeling
+0216: Extrude, inset, bevel, loop cuts, booleans, modifiers, normals, nonmanifold detection, topology/LOD
+0217: Dimensions, face normals, manifoldness, modifier preservation, unexpected intersections
+0218: Parametric/Geometry Nodes
+0219: Node groups, sockets, fields, dependencies, modifier binding, input variation
+0220: Stable input/output interface, changed-parameter transfer, Blender-version API probe
+0221: Curves/text/architecture
+0222: Curve splines/bevel, text conversion when needed, snapping, modular geometry
+0223: Reopen/editability, bounds, pivots, curve evaluation and export consistency
+0224: Sculpt/retopology/organic
+0225: Sculpt mode setup, symmetry, remesh/retopo, vertex groups
+0226: Declare GUI/manual boundary; shape and topology independent visual review
+0227: UV and textures
+0228: Unwrap, seams, UDIM when supported, atlas, texel density, texture provenance
+0229: UV existence, distortion/overlap analysis, missing images, license/alpha issues
+0230: Materials/shader nodes
+0231: Principled BSDF, nodes, textures, normals, metal/rough, baking
+0232: Inspect node graph, sample renders, absent channels, expected approximations on export
+0233: Rigging/deformation
+0234: Armature, bones, constraints, skin weights, IK/FK, shape keys
+0235: Rig hierarchy, bone binding, deformation under pose and exporter limitations
+0236: Animation/NLA
+0237: Actions/slotted APIs, keyframes, interpolation, constraints, clips, transitions
+0238: Sampled motion traces, frame variation, continuity, state/clip import contracts
+0239: Simulation/physics
+0240: Rigid body, cloth/particles/geometry simulation where supported
+0241: Explicit bake/cache scope, expected event traces, nondeterminism tolerances
+0242: Lighting/cameras/render
+0243: Eevee/Cycles, compositing, cameras, exposure, world lighting, rendering
+0244: Before/after image evidence and human aesthetic judgment where necessary
+0245: Python automation and app state
+0246: bpy data vs operators, context/mode, undo/scratch save/reload, headless execution
+0247: Expected context rejection, safe recovery, version probes and operator polling
+0248: Interchange/export
+0249: FBX/glTF as appropriate, axis, units, material/rig/animation channel limits
+0250: Source → exported file → target import comparison with asymmetric fixtures
+0251: 
+0252: Initial verified nucleus: existing static/advanced modeling, robot animation, sprite/audit and export work. Do not label freeform sculpting, arbitrary advanced rigging or photo-real materials as executable merely because documentation exists.
+0253: 5.2 Unity competency domains
+0254: Domain
+0255: Practical operations to understand and test
+0256: Distinct evidence / failure cases
+0257: Editor/project/asset database
+0258: Package Manager, AssetDatabase, import settings, GUIDs, Editor vs Runtime code
+0259: Forced reimport, stable GUIDs, clean project, original-project isolation
+0260: Scenes/objects/prefabs
+0261: GameObject/Transform, components, parenting, PrefabUtility, scene saving, serialization
+0262: Hierarchy IDs, root/local/world transforms, prefab overrides, no unmanaged YAML edits
+0263: C# scripting lifecycle
+0264: MonoBehaviour, ScriptableObject, compilation, assembly definitions, serialization
+0265: Compile, Editor-domain reload, missing script/component, serialization roundtrip
+0266: Input and control
+0267: Input System, action maps, keyboard/gamepad binding, camera control
+0268: Input-driven behavior in PlayMode, inactive binding negative case
+0269: Physics 2D/3D
+0270: Colliders, triggers, Rigidbody, CharacterController, collision layers, raycasts
+0271: Contact/trigger events, expected failure cases, reproducible timestep tolerances
+0272: Animation/Timeline
+0273: Animator, state machines, clips, rig import, Timeline, root motion
+0274: Clip/state/bone mapping, sampled movement, missing transition mutation
+0275: Materials/rendering
+0276: URP/HDRP target boundaries, material APIs, shaders/Shader Graph, lighting
+0277: Shader mapping expectations, channel limitations, render screenshots
+0278: UI and interaction
+0279: UI Toolkit/uGUI as target permits, buttons, canvases, focus, event systems
+0280: Actual interaction/events in test scene; screenshots do not prove functionality
+0281: Navigation and AI mechanics
+0282: NavMesh, pathing, finite-state behaviors, sensors when used
+0283: Reachability and event traces; no complete enemy AI requirement
+0284: Audio and effects
+0285: AudioSource/mixer, particles/VFX, spatial parameters
+0286: Component setup, playback/property evidence, package/version limitations
+0287: Data/save/testing
+0288: JSON/serialization, save/load as requested, EditMode/PlayMode, performance tools
+0289: Data roundtrip, tests, XML/logs, profiler data, smoke on target
+0290: Builds/platforms
+0291: Player build pipeline, Editor command line, platform defines, package locks
+0292: Build/run smoke for claimed target; do not infer device support from compilation
+0293: Packages/editor automation
+0294: Custom inspectors, menu items, AssetPostprocessor, Editor windows, import hooks
+0295: Main-thread compatibility, isolated project writes, undo/rollback if applicable
+0296: 
+0297: Initial verified nucleus: Unity native imports, URP basic mappings, scene/prefab machinery, robot animation handoff, 2D demo and bounded arena mechanics. An arbitrary third-person controller, inventory, advanced UI, AI or networking remains unverified until a separately accepted operation is demonstrated.
+0298: 5.3 Cross-application and agent-operation domains
+0299: Domain
+0300: Required checks
+0301: Coordinate frames
+0302: Blender Z-up vs Unity Y-up, handedness/mirror, units, parent transforms, negative scale, socket/object local positions
+0303: Materials and images
+0304: Color space, metal/rough to target conventions, normal-map orientation, texture paths, unsupported graph handling
+0305: Rig/animation handoff
+0306: Names/IDs, hierarchy, clip sampling, root motion, import mappings and deformation consistency
+0307: Asset provenance
+0308: Reproducible files, hashes, versioned generated sources, licenses, GUID ownership, explicit approval
+0309: Safe execution and recovery
+0310: Managed workspace, native EditMode/PlayMode/Blender probes, retries, locks, staged repair and verified rollback
+0311: Tool selection and composition
+0312: Use Blender only, Unity only or both as task dictates; no fixed game/robot build graph
+0313: Independent evaluation
+0314: Evaluator-owned requirements, hidden unfamiliar tasks, adversarial faults, human art approval when necessary
+0315: Host compatibility
+0316: Codex/Claude/compatible hosts with existing Agent Skill interface; actual invocation evidence, no fabricated parallelism
+0317: 
+0318: 6. Architecture, data contracts and worker policy
+0319: 6.1 Functional layering
+0320: User request → Host agent → PolyForge skill trigger → TaskIntent/knowledge router → Version probe and support map → Typed operation plan → Existing capability engine or approved scratch experiment → Blender/Unity adapters → Technical and independent review → Artifacts + evidence + truthful limitations.
+0321: The host agent decides task intent and may write project-specific code. The skill provides decisions and references. The engine executes safe registered operations and maintains traceable state; it does not embed a model provider, own model credentials or dynamically execute untrusted code. Complex tasks may use multiple specialist roles, but the coordinator must minimize the graph and record actual execution mode.
+0322: 6.2 Task contract (additive to old manifest)
+0323: Field
+0324: Purpose
+0325: task_id, original_brief, brief_sha256, approved_amendments
+0326: Freeze actual user intent; prevent silent task substitution
+0327: task_class, domains, required_outcomes
+0328: Select tool operation and appropriate acceptance criteria
+0329: target
+0330: Application/version/platform, project path and operating mode
+0331: operation_ids and dependency_graph
+0332: Required capabilities in execution order, not mandatory S0–S5 game graph
+0333: risk, permissions, network_policy, resource_cap, deadline
+0334: Security, safety and budget boundaries
+0335: expected_artifacts and independent_checks
+0336: Outputs and separate evaluation owner
+0337: support_state, unmet_requirements
+0338: Surface unsupported/assisted operations honestly
+0339: provenance, evidence_paths, rollback_id
+0340: Reproducibility, auditability and recovery
+0341: 
+0342: Old game_manifest.json remains only for explicitly game-shaped tasks or existing fixtures. A Blender-only mesh task should never be forced to supply actors, win conditions or a Unity project. A Unity-only C# tool task should never be required to generate an FBX.
+0343: 6.3 Existing CLI contract and additions
+0344: Keep canonical implemented syntax authoritative (polyforge capability list/show/run, knowledge list/route/probe, workforce roles/plan/run/status/review, doctor, build, audit, verify, inspect-project, benchmark). Any proposed competency list/show/verify/coverage, tool-task plan or task report command must first be checked for equivalent implemented functions, then added only with tested help/docs, schema and exit-code compatibility. Do not create shadow commands that disagree with polyforge/commands.py.
+0345: Invocation status: PASS, FAIL, BLOCKED, NOT_RUN, REVIEW. Task outcome: ACCEPTED, PARTIAL, REJECTED under separately authored task-specific mandatory requirements. Competency state: Section 4.2. Artistic review: separate approval. Treat one native test PASS as proof only for that native operation, never universal Unity or Blender mastery.
+0346: 6.4 Specialist roles should be tool-domain roles
+0347: Keep existing Role-based workflow infrastructure and all safety controls. Retain coordinator, requirements analyst, Blender modeling/UV/shader/rig/animation specialists, Unity Editor/C#/physics/UI/render/test specialists, cross-engine importer, independent inspector, security/recovery reviewer and release supervisor as task-selected logical roles. A task should normally use the smallest helpful subset: Blender material-only → Shader Specialist + Inspector; Unity prefab → Editor Engineer + Inspector; cross-tool import → Blender Export + Unity Import + Coordinate QA. There is no mandatory “Game Director → Level Artist → Enemy Programmer → QA” pipeline.
+0348: The currently documented runtime modes are local single-role and local multirole sequential; real host subagents/parallel execution need actual host support, separate authority, isolation and measured benefits. A reviewer on the same host is independent of a producer's edit privileges only within enforced boundaries, not automatically an independent evaluation authority.
+0349: 6.5 Risk tiers for tool operations
+0350: Tier
+0351: Operation
+0352: Safe default
+0353: R0
+0354: Read-only documentation, listing supported capabilities, static project scan
+0355: Run with explicit nonmutation guarantee
+0356: R1
+0357: Pure schema validation, compile plan, dry-run diff, scratch probes
+0358: Can run in authorized workspace; measure costs
+0359: R2
+0360: Create/edit managed Blender or Unity artifacts and test disposable copies
+0361: Require managed paths, resource caps, backups/transaction where needed
+0362: R3
+0363: Modify an existing user project, package install, external asset download, export outside root
+0364: Explicit approval, preview diff, provenance, isolation and rollback evidence
+0365: R4
+0366: Destructive changes, untrusted arbitrary code execution, privileged operations
+0367: Reject by default; do not grant via reference or user text embedded in artifacts
+0368: 
+0369: Use OS trust modes honestly: TRUSTED_LOCAL does not mean sandboxed; only claim SANDBOXED_UNTRUSTED after the required file/process/network/resource barriers have actually been demonstrated.
+0370: 7. Revised phased roadmap, preserving numbering 0–18
+0371: 7.1 State and dependency rules
+0372: •  Phases 0–10: historical implementation is preserved. No reimplementation is authorized. Their original tests remain a regression baseline, but previous phase labels alone are not a fresh PASS.
+0373: •  Phase 11: existing technical core qualification remains BLOCKED for stable release because protected evaluation/approval is incomplete. Carry that condition forward transparently.
+0374: •  Phase 12: partially built modeling tooling, socket repair and focused technical requalification. Do the bounded correction first.
+0375: •  Phase 13: Court-required capped equal-tool trial of one practical tool workflow. Mandatory before costly expansion; explicitly approved, no automatic continuation.
+0376: •  Phases 14–17: conditional, independently scoped competency families, not complete-game development. Each contains small, separable modules, and no phase automatically requires every tool API to be implemented.
+0377: •  Phase 18: scoped honest skill/engine release audit. Stable claims only for accepted task classes; optional domains can remain REFERENCE_ONLY without blocking a narrowly qualified preview or scoped release.
+0378: 7.2 Phase 0–10: preserved historical accomplishments
+0379: Phase
+0380: Historical subject
+0381: v7 handling
+0382: 0
+0383: Repository, CI, baseline and guardrails
+0384: Keep existing code/tests and provenance; no restart
+0385: 1
+0386: Doctor, configuration, CLI, safe paths and process policy
+0387: Reuse for tool-aware planning and discovery
+0388: 2
+0389: Contracts, manifests, DAG and deterministic execution planning
+0390: Extend task contracts additively without breaking game fixtures
+0391: 3
+0392: Blender semantic primitives and asset worker
+0393: Retain as modeling competency cases, not a game restriction
+0394: 4
+0395: Multiview Blender audits and export
+0396: Reuse for visual evidence and cross-engine tests
+0397: 5
+0398: Unity importer, URP mapping and scene construction
+0399: Reuse for Editor/API competencies and native validation
+0400: 6
+0401: Arena demo and real PlayMode tests
+0402: Archive as regression fixture; no new arena features required
+0403: 7
+0404: Workforce foundation, rigging and animation
+0405: Reuse roles and animation compatibility; no forced robot production
+0406: 8
+0407: Asset production, texture handoff and 2D sprite pipeline
+0408: Keep sprite/material fixtures; expose relevant tools individually
+0409: 9
+0410: Review, diagnostics, bounded repair and rollback
+0411: Generalize inspection by tool task without removing old tests
+0412: 10
+0413: Skill, knowledge router, host documentation
+0414: Extend references and domain routing rather than build new skill framework
+0415: 
+0416: Historical task IDs and old phase reports are not deleted. This roadmap changes the meaning of future success and which tests are mandatory for new releases. Old playable-game tests remain necessary regressions for their own existing fixtures, not for every new tool-domain release.
+0417: 7.3 Phase 11: unresolved technical-core release checkpoint
+0418: Status: BLOCKED for stable v1.0; preserve reported passing work. Inspect exact repository state; run permitted regression suites; inventory required human/independent evaluator signoffs, release compatibility, clean install, security and provenance. Do not tag stable merely because pytest passes, because the old game demos play or because an agent report uses the word PASS. New task-specific coverage must not erase open historical release blockers. A separate scoped preview is possible if claims and limitations are accurately labeled.
+0419: Exit evidence: dated reports/phase-11-reconciliation-v7.md with observed vs reported tests, unexecuted external gates and what remains blocked. This is reconciliation, not a mandate to finish all original game-generation acceptance conditions before evaluating a small tool workflow.
+0420: 7.4 Phase 12: defect repair and validation of existing modeling foundations
+0421: Goal: Correct the known asymmetric socket failure and ensure the already implemented modeling/export/import route can be trusted for supported operations, without adding broad new game features.
+0422: Entry: repository SHA + dirty-state inventory, exact versions/probes, old tests and current Phase-12 evidence. New code remains limited to the failing handoff, necessary diagnostics and minimal regression strengthening.
+0423: Implementation tasks:
+0424: 1.  12.1 Freeze existing Blender/Unity modeling inputs, generated FBX, expected sockets and observed native imports. Preserve the original coolant-valve failure as an adversarial fixture.
+0425: 2.  12.2 Instrument transforms at authoring, evaluated Blender source, FBX export settings, Unity model-root and child local/world coordinate levels. Record axes/handedness, unit scaling, matrix determinant and parent transforms.
+0426: 3.  12.3 Reproduce the exact mismatch: outlet intended (0.90,0.77,0.35) versus imported (-0.90,0.77,0.35). Do not rewrite expected signs, raise tolerances or hide the socket to achieve PASS.
+0427: 4.  12.4 Add asymmetric sockets (positive/negative X and nonzero Y/Z), mirrored objects, rotated parent, non-unit scale, nested parent and deliberate reflection mutants. Assert by actual Unity transforms, not only Blender metadata.
+0428: 5.  12.5 Compare main and LOD exports with the same coordinate/semantic binding policies. Preserve source modifier stacks, UVs, material slots, GUID stability and editable .blend originals.
+0429: 6.  12.6 Trace faulty stage; patch the smallest correct axis/parent conversion. Use native Blender export options and Unity import APIs; do not string-edit .meta, .prefab or .unity serialization.
+0430: 7.  12.7 Keep independent technical inspector with read-only source file hashes, topology, manifoldness, winding, normal and socket/LOD checks. Require a real native Unity loop for coolant composite, not just four family fixtures.
+0431: 8.  12.8 Run positive and mutation failures, existing Phase-0–12 tests and both retained game-fixture regressions as compatibility checks. Record disabled/missing native tools as BLOCKED/NOT_RUN instead of PASS.
+0432: 9.  12.9 Reconcile Phase-12 partial work and owner approval. If repair exceeds the preapproved trial allowance, stop without expanding.
+0433: Deliverables: corrected module(s), native Unity asymmetric import test, cross-frame trace, failure-mutant evidence, revised reports/phase-12-v7.md, rollback receipt and current support matrix.
+0434: Hard exit: expected socket location passes within declared numeric tolerance in real Unity, injected sign-flip fails, source/hash/Meta integrity preserved, previous relevant regressions pass or are transparently blocked. Artistic quality is a separate REVIEW. Budget proposal: ≤6 focused hours within Section 3 pilot; explicit owner approval required.
+0435: 7.5 Phase 13: Court-required independent equal-tool pilot
+0436: Goal: Test whether PolyForge improves Codex for one valuable Blender-to-Unity tool workflow versus Codex using equivalent general Blender and Unity tools. This is an initial value test, not a general mastery certificate.
+0437: Entry: Phase 12 verified or unresolved case disclosed, owner-approved charter, evaluator-controlled hidden tasks, ability to run both arms with equivalent tools, same model/effort/hardware/versions/permissions, stop conditions accepted in writing.
+0438: Implementation tasks:
+0439: 1.  13.1 Freeze the precise workflow boundary, intended user and outcome; use task_spec rather than game brief. State exclusions (no full-game generation, photorealism or universal sculpting).
+0440: 2.  13.2 Pre-register the 5 independent tasks, rubric, quality thresholds, tools, runtime configuration, retry budgets, acceptance owner and sample-size limitations. Hold out task specifics from the generating agent until each attempt starts; avoid training against evaluator expected outputs.
+0441: 3.  13.3 Establish arm C = Codex + good prompt + the same generic Blender/Unity CLI/MCP capabilities; arm D = identical setup + PolyForge Skill/engine. Capture the actual tool inventory and versions. Any materially different permission/tool exposure means NON_ATTRIBUTABLE.
+0442: 4.  13.4 Include five task shapes: a changed room modularity case; noncentered independent sockets; a rotated mechanical assembly; a material/LOD variant; a deliberately tricky asymmetric import or repair. Evaluator owns precise unseen instances and should not reuse the public robot/valve data as the only transfer test.
+0443: 5.  13.5 Capture complete outcomes: elapsed task time, accepted/partial/failed, setup, human fixes, retries, model tokens/cost when measurable, resource/time caps, project mutations, output artifacts and hashes, Unity import observed signals, evaluator signoff.
+0444: 6.  13.6 Independently verify task requirements from original frozen briefs. A generated self-test or all-green Python CI is insufficient; include a negative injected-reflection check and human visual review where style matters.
+0445: 7.  13.7 Compute per-arm acceptance counts and category-specific times across all attempted tasks, including timeouts and blocked runs; apply the preapproved 4/5, defect, parity and benefit thresholds without retrospective changes.
+0446: 8.  13.8 Conduct a separately approved clean-workspace reuse check on days 8–14 with a different/reset operator. Record actual setup and reproducibility costs.
+0447: 9.  13.9 Publish CONTINUE, NARROW, STOP or INCONCLUSIVE, with rationale. No later phase may silently treat a negative or blocked result as approval.
+0448: Deliverables: reports/pilot-v7-charter.json, paired result ledger, independent evaluation record, exact environments and comparison report, reports/phase-13-decision.md, follow-up reuse receipt.
+0449: Hard exit: all ten attempts honestly recorded; parity checked; acceptance and value thresholds evaluated; no critical safety breach; reuse check passed for unconditional CONTINUE. Budget proposal: ≤10 focused hours within initial seven-day trial, plus separately preapproved ≤1 hour for reuse. Stop rule: fails or inconclusive → do not expand; retain personal tool and narrow support as appropriate.
+0450: 7.6 Phase 14: version-aware knowledge and task routing
+0451: Status: CONDITIONAL. Goal: Convert the existing knowledge/catalog/Skill into a reliable task-first technical reference and discovery system for Blender and Unity, without inventing an autonomous game generator or generic MCP clone.
+0452: Entry: Phase 13 decision permits one scoped investment; actual use case and a new hour cap approved; existing polyforge/knowledge/ and skill references audited for reuse.
+0453: Implementation tasks:
+0454: 1.  14.1 Inventory actual skill routes, knowledge cards, registered capability IDs, old domain tags, incomplete commands and official-source provenance. Freeze old behavior for existing fixtures.
+0455: 2.  14.2 Define the competency schema of Section 4.3 with knowledge/execution/transfer separation, version applicability, context mode, test links, common failures and evidence expiry. Migration must be additive to existing JSON schemas.
+0456: 3.  14.3 Introduce task-intent-first routing, including EXPLAIN, INSPECT, EDIT_ASSET, EDIT_SCENE, ADD_COMPONENT, TEST, FIX_PROJECT, EXPORT_IMPORT. Keep GAME only for an explicitly requested game and historical fixtures.
+0457: 4.  14.4 Implement version-aware reference selection with pinned Blender and Unity API sources, applicability checks and fallback to REFERENCE_ONLY/EXPERIMENTAL when native proof is absent. Never fabricate a successful unknown API call.
+0458: 5.  14.5 Map common user requests to alternative approaches and risks (e.g. bpy.data vs context-sensitive operators; native Unity Editor API vs asset YAML manipulation). Record rationale and expected preconditions.
+0459: 6.  14.6 Select and route the smallest relevant worker set and capability graph. A Blender-only task must never launch Unity; explanation-only requests must remain side-effect-free.
+0460: 7.  14.7 Preserve safe discovery: read-only inspection → disposable versioned scratch probe → positive/negative/transfer → reviewer approval → capability promotion. Limit unsafe downloads and untrusted code.
+0461: 8.  14.8 Create an operator-facing coverage view listing verified, assisted, reference-only, experimental and unsupported domains, backed by evidence and exact tested versions.
+0462: 9.  14.9 Update SKILL.md triggers and progressive references so prompts emphasize tool competence and honest limitations; remove misleading game-generation defaults and outdated “master all tools” claims.
+0463: 10.  14.10 Evaluate six unfamiliar intent classifications, including Blender-only, Unity-only, read-only, unsupported API, material, editor/physics task and ambiguous cross-tool request. Inspect plans for accidental arena/default-game injection.
+0464: Deliverables: canonical knowledge/competency schema, migration tests, task router and references, user-facing support report, native/test evidence, reports/phase-14.md.
+0465: Exit: task routing is correct, read-only calls remain nonmutating, no unregistered operation becomes executable, old CLI/tests still pass, and sample documentation exactly matches tested functions. Proposed cap: 12 hours, owner approved; stop after selected use case, not arbitrary documentation breadth.
+0466: 7.7 Phase 15: Blender competencies by independently qualified submodule
+0467: Status: CONDITIONAL, BUDGETED SUBMODULES. Goal: Broaden correct Blender tool usage by proving representative operations across prioritized domains, not by producing more named robots or complete games.
+0468: Entry: Phase 14 route and state registry accepted; one priority domain and one target native Blender version selected; independent acceptance and submodule cap approved. Phase 15 can be revisited for several domains in separate approved increments; each increment has a unique versioned capability record.
+0469: Implementation tasks:
+0470: 1.  15.1 Audit known modeling routines and categorize as reusable primitives, operator-context rules, exporter boundaries and source-editability guarantees. Avoid duplicating the Phase-12 modeling compiler.
+0471: 2.  15.2 Establish operator-context probes for Object/Edit/Sculpt/Pose modes, active-object requirements, selection, scene layers, undo/reopen, geometry-node data interfaces and version-specific APIs. Capture expected failures.
+0472: 3.  15.3 For the first chosen domain (recommended geometry/modifiers or UV/material), implement a task-level operation contract with inputs, outputs, reversible writes, version prerequisites, error taxonomy and targeted native tests.
+0473: 4.  15.4 Add positive cases and at least two distinct negative cases (e.g. wrong mode, missing UV data, nonmanifold mesh, unsupported shader graph). Do not count a benign error message as full capability qualification.
+0474: 5.  15.5 Select two unfamiliar variations not hardcoded into old robot/room fixtures. Use changed dimensions, topology, materials, parenting or process context. Require actual Blender file reopen and inspection.
+0475: 6.  15.6 Add independent visual/manual assessment for qualities not decidable from geometric numbers: silhouette, UV aesthetics, texture appearance, rig deformation and render composition. Record REVIEW until complete.
+0476: 7.  15.7 Capture native version, exact API symbols, files, screenshots, Blender console/process logs, time, memory and safe rollback/scratch state.
+0477: 8.  15.8 Compare user value against ordinary Codex using equal Blender tools on at least three variations before promoting an operation from EXPERIMENTAL to independently accepted.
+0478: 9.  15.9 Extend the catalog to reference all remaining Blender domains from Section 5.1 without claiming implemented mastery. Subsequent domains may be scheduled as separate mini-milestones only if approved.
+0479: 10.  15.10 Prove no regression in existing export, rig, sprite and import routes after any Blender adapter changes.
+0480: Deliverables per approved submodule: one versioned domain card, executable example/adapter if needed, positive/negative/transfer tests, independent review, uncovered-feature list and reports/phase-15-<domain>.md.
+0481: Exit per submodule: representative native tool tasks pass with independent evidence, regression clean, claimed coverage confined to tested Blender APIs and versions. Budget proposal: ≤12 hours for first submodule; subsequent domains require separate explicit caps. This phase is not complete simply because the catalog lists all Blender tools.
+0482: 7.8 Phase 16: Unity competencies by independently qualified submodule
+0483: Status: CONDITIONAL, BUDGETED SUBMODULES. Goal: Help Codex use Unity Editor and C# tooling accurately for isolated requested tasks, without requiring a playable complete game.
+0484: Entry: Phase 14 knowledge router, managed Unity project safety, one prioritized Unity domain and accepted independent rubrics. Separate source/runtime assembly boundaries and installed packages must be probed.
+0485: Implementation tasks:
+0486: 1.  16.1 Inventory existing Unity automation, C# Editor scripts, prefab utilities, UI/physics/animation tests, public game fixtures and version-specific workarounds. Reuse them, but do not require arena creation for new requests.
+0487: 2.  16.2 Prioritize one executable submodule (recommended Editor asset/prefab lifecycle or runtime component/physics validation). Define task-specific units with observable Editor/PlayMode evidence.
+0488: 3.  16.3 Maintain correct Editor vs Runtime C# assembly separation, domain reload readiness, package/Unity version checks and safe main-thread Editor API usage.
+0489: 4.  16.4 Validate managed-scoped GameObject/Transform, components, prefabs, import settings, material assignment or chosen feature. Check GUID stability, references, serialization and cleanup.
+0490: 5.  16.5 Use EditMode or PlayMode based on the operation: Editor import requires native Editor/API checks; physics or controller behavior requires actual PlayMode event evidence. A Unity compile alone is never a behavior PASS.
+0491: 6.  16.6 Add negative tests for missing input binding, disabled component, broken reference, wrong physics layer, malformed source/project configuration or scene lifecycle issues relevant to selected domain.
+0492: 7.  16.7 Add two unfamiliar independent task variations that change component hierarchy, input, scenes or platform conditions while preserving fixed acceptance criteria.
+0493: 8.  16.8 Preserve read-only original-project inspection and disposable-copy modification; preview changes before writes, retain GUIDs and verify rollback using Unity APIs.
+0494: 9.  16.9 Compare one admitted tool competency against equal-tool Codex on at least three fresh tasks; record intervention and reproducibility costs.
+0495: 10.  16.10 Create version-specific references for further Unity families (C#, UI, physics, animation, navigation, audio, rendering, profiling, build, packages) without automatically implementing all of them. Each executable family requires its own independent approval and test gate.
+0496: Deliverables per submodule: tested capability or verified reference, Unity native XML/log evidence, bad-case detection, support status/limits, reports/phase-16-<domain>.md.
+0497: Exit: selected Unity operation works in an approved project, under correct C# lifecycle and version assumptions, independent negative tests detect faults, and no existing regression is hidden. Budget proposal: ≤12 hours for first domain; each additional domain separately capped. No complete-game gate.
+0498: 7.9 Phase 17: cross-tool composition, both animation and gameplay knowledge, and agent-workflow evaluation
+0499: Status: CONDITIONAL, MULTIPLE INDEPENDENT LANES. Goal: Prove PolyForge can combine Blender and Unity competencies for unfamiliar tasks and route specialists when useful. Do not force a binary choice between animation and gameplay. Both remain knowledge domains; executable modules are separately prioritized, funded and tested.
+0500: Entry: at least one verified Blender and one verified Unity task family or a documented cross-tool user need; Stage-13 value case, independent evaluator and safety controls intact.
+0501: Implementation tasks:
+0502: 1.  17.1 Define a composition contract that connects task requirements to independently declared source, export, importer and Unity component expectations. Preserve stable asset IDs and coordinate provenance.
+0503: 2.  17.2 Retain and strengthen socket, scale, material, animation and prefab invariants; use the Phase-12 reflected-socket mutant as a permanent cross-engine regression.
+0504: 3.  17.3 Separate optional Animation lane: tool knowledge covers Blender Actions/armature/rigging and Unity Animator/importer; if funded, implement one additional rig/clip handoff with native motion/bone/state checks and unfamiliar variations. A complete character game is not required.
+0505: 4.  17.4 Separate optional Gameplay-systems lane: tool knowledge covers Unity input, physics, UI, navigation and state logic; if funded, implement one reusable isolated mechanic/component (e.g. interaction trigger or third-person movement) and actual PlayMode tests. A complete playable game is not required.
+0506: 5.  17.5 Neither lane implies the other is unsupported as a reference; neither may claim executable mastery without domain-specific evidence. Both can be developed across multiple later approved modules, not mutually exclusive.
+0507: 6.  17.6 Reconfigure workforce selection by task domain and resource budget. Test single role vs sequential multirole on the same tool tasks; do not measure “parallel worker” value unless a real host mode runs.
+0508: 7.  17.7 For each extension, run positive/negative tests and at least three evaluator-owned unseen task variations, with original-brief acceptance independent of generated manifests.
+0509: 8.  17.8 Test cancellation, lock contention, domain reload, partial output, native crashes, rollback integrity and unsupported feature reporting on a managed disposable project.
+0510: 9.  17.9 Compute category-specific accepted-task rate, total task time, time-to-accepted-output, corrections, resource use and operator next-week repeatability against equal-tool baseline. Publish negative results.
+0511: 10.  17.10 Keep whole-project game creation solely as an explicitly requested workload and an optional long-run integration benchmark. It does not gate Blender-only or Unity-only tool competencies.
+0512: Deliverables: cross-tool invariant package, lane-specific competency reports if approved, task-routed worker evidence, independent transfer scores and reports/phase-17.md.
+0513: Exit: at least one new cross-tool task transfers correctly with negative injections, optional animation/gameplay lanes pass only if separately executed, and specialist routing proves actual net benefit or is kept sequential/single. Budget proposal: ≤12 hours for a first cross-domain lane; each additional lane separately scoped and approved.
+0514: 7.10 Phase 18: scope-honest portable skill release and next-investment decision
+0515: Goal: Ship or retain a truthful Blender + Unity tool-competency Skill plus local engine for tested task classes, and decide whether additional competencies justify their costs. Do not require coverage of every API or production of an entire game.
+0516: Entry: Phase 13 decision accepted; selected optional competency modules and evidence ready; historical Phase-11 unresolved gates reconciled or explicitly restrict stable claims.
+0517: Implementation tasks:
+0518: 1.  18.1 Freeze a capability coverage matrix by application, domain, operation, Blender/Unity/OS version and status, distinguishing knowledge, native execution and independent transfer. Public README and SKILL.md must agree exactly with evidence.
+0519: 2.  18.2 Verify fresh installation of skill + engine, doctor, command discovery, dry run, one Blender-only task, one Unity-only task and one cross-tool task only for any of those types advertised; do not claim a type that was not independently executed.
+0520: 3.  18.3 Run lint/type/unit/native selected regression suite, original-game fixture regressions as compatibility checks, packages/lock versions, reproducible hashes, clean-import/reopen and rollback where relevant.
+0521: 4.  18.4 Audit environment and security boundaries: path traversal/symlink escapes, unsafe code/downloads, credential leaks, script authority, process ownership, resource caps, Windows setup, original-project nonmutation and honest sandbox classification.
+0522: 5.  18.5 Audit license and provenance of example assets, scripts, textures, official/third-party references, recorded code and sample models. Do not assume every online asset permits redistribution.
+0523: 6.  18.6 Provide clear “works now”, “assisted”, “experimentally supported” and “not supported” examples. Publish setup, troubleshooting, verified domain registry, developer extension process and task-specific acceptance methodology.
+0524: 7.  18.7 Publish real comparator/evaluator identities, hidden-task governance summary, negatives/blocked attempts, measured model/tool costs where known, next-week reuse, hardware/OS and exact limitations. No global “expert” superiority claim from a tiny pilot.
+0525: 8.  18.8 Choose SCOPED RELEASE / LABELED PREVIEW / KEEP PERSONAL TOOL / STOP INVESTING. A stable tag requires all gates relevant to its advertised scope; unresolved critical audit results block stable release.
+0526: 9.  18.9 If choosing extension, authorize exactly one next domain with user benefit, budget and stop rule; do not create Phase 19 automatically or restart the original game-generation roadmap.
+0527: Deliverables: reports/phase-18-release-audit.md, coverage/qualification matrix, skill package, versioned source and evidence bundle, truthful README, support policy and signed investment decision.
+0528: Hard exit: no advertised capability lacks the applicable validation, no critical security/integrity issue, install/reuse evidence exists for the claimed environment, and release decision recorded. Budget proposal: ≤8 hours excluding separately approved external evaluation; the user must approve before execution.
+0529: 8. Verification design: prove tool use, not game count
+0530: 8.1 Task-specific test pyramid
+0531: Level
+0532: Expected tests
+0533: Passing means
+0534: Never infer
+0535: Pure Python/unit
+0536: JSON contracts, DAG, routing, path guards, hashes, error taxonomy and safe dry runs
+0537: API/parser logic works without native apps
+0538: Blender/Unity command worked
+0539: Blender native
+0540: Installed pinned Blender and real scratch .blend operations/reopen/render
+0541: Specified operation works on that version and context
+0542: Universal modeling/sculpting artistry
+0543: Unity EditMode
+0544: Editor/AssetDatabase/prefab/import/assembly checks in disposable project
+0545: Editor tool operation and reference state meet rubric
+0546: Player gameplay works
+0547: Unity PlayMode
+0548: Actual runtime input/physics/animation/UI state/events when requested
+0549: Specific runtime behavior works in test scene
+0550: Full production game accepted
+0551: Cross-application
+0552: Blender source/FBX/imported Unity transforms and materials under asymmetric and negative cases
+0553: Observed handoff invariants pass
+0554: Arbitrary future exporter/importer roundtrips
+0555: Independent unseen transfer
+0556: Evaluator-owned novel task variants, acceptance from original brief, negative mutations
+0557: Skill helped accomplish new task within declared scope
+0558: All APIs or all domains mastered
+0559: Human visual review
+0560: A qualified reviewer sees renders, scenes, motion or UI
+0561: Appearance meets declared rubric where needed
+0562: Automated geometry test proves good art
+0563: Security/rollback
+0564: Mutation, crash/timeout, workspace isolation, source hashes and reimport
+0565: Unsafe scope prevented/recoverable state observed
+0566: Unverified OS sandbox exists
+0567: 
+0568: 8.2 Release gates replace game-specific gates
+0569: •  G1: Skill and CLI truth. Installable skill, exact help, typed schemas, supported command registry and doctor results agree.
+0570: •  G2: Domain knowledge. Every advertised tool family has versioned references, prerequisites, warnings, support status and a documented fallback.
+0571: •  G3: Native execution. Every VERIFIED_IN_WORKFLOW operation has actual relevant Blender/Unity evidence, a positive and negative case and provenance.
+0572: •  G4: Independent transfer. Every INDEPENDENTLY_ACCEPTED claim has unseen evaluator-owned cases and task-specific acceptance. No universal playable-game loop gate.
+0573: •  G5: Safe change/recovery. Originals never silently modified; necessary actions use approvals, reversible transactions and tests.
+0574: •  G6: Equal-tool benefit. Any claim of advantage over general Codex must have attributable tool-parity data, full denominators and measured resource/quality results.
+0575: •  G7: Reuse and release. Clean setup, truthful support matrix, licensing and security audit, documentation/compatibility and required human approval are complete.
+0576: A Blender-only tool release may omit Unity PlayMode entirely if not claimed. A Unity runtime-physics competency must provide real PlayMode evidence. A Unity game deliverable, if explicitly requested, has its own independent acceptance and may require a playable build, but that does not turn game creation into a cross-product requirement.
+0577: 8.3 Benchmark methodology
+0578: Compare at minimum C (general Codex with maintained Blender + Unity tools) against D (identical tools + PolyForge). Hold model and effort, task, installed versions, hardware, asset permissions, session reset policy, allowed time, retry count and evaluator consistent. Record every attempted task, including failures, timeouts, BLOCKED cases and assisted interventions. Unknown tokens/cost/energy are UNKNOWN, not zero. A baseline may outperform PolyForge; report that result and narrow or retire the weaker capability.
+0579: Metric split: by task class (modeling, UV, rig, animation, Unity Editor, C#/runtime, physics, UI, import, repair), report accepted/attempted, technical defects per task, original-file safety, end-to-end wall time, human interventions, repeated-work reproducibility, resource use, version success and independent visual scores where applicable. Do not average a dozen knowledge cards into one “90% mastery” claim. For exploratory pilots with five cases, report the exact sample and avoid statistical generalization.
+0580: 8.4 Independent evaluator and anti-leak rules
+0581: Evaluator owns withheld tasks, actual reference expectations and final PASS/FAIL decisions independent of the generator's manifest or output. The generating agent may see public requirements but not the hidden target properties or fixture code until evaluation is complete. Freeze task inputs/rubric/hash before executing. Reviewer approvals cannot be simulated by same agent assuming a human identity. Test deliberately misleading self-generated assertions; reject unsupported API behavior and original-project mutations even if output looks plausible.
+0582: 8.5 Test examples replacing complete games
+0583: Domain
+0584: Minimal positive fixture
+0585: Minimal negative / unseen mutation
+0586: Gate
+0587: Blender modeling
+0588: Create editable noncentered mechanical assembly
+0589: Reversed winding, bad modifier target, changed topology
+0590: Blender geometry + reopen
+0591: Blender Geometry Nodes
+0592: Parameterized mounting block with inputs
+0593: Missing node socket or changed Blender version
+0594: Graph validation + observed geometry
+0595: Blender UV/material
+0596: Unwrap unfamiliar mesh; map a supported texture
+0597: Missing UV, wrong normal map direction
+0598: Inspect UV/node/render evidence
+0599: Blender rig/animation
+0600: Rig and animate minimal articulated object
+0601: Missing action slot, incorrect root transform
+0602: Native sampled motion + importer if claimed
+0603: Unity Editor/prefab
+0604: Import one model and preserve prefab GUID
+0605: Forced reimport breaks child binding
+0606: EditMode source-to-prefab evidence
+0607: Unity physics
+0608: Trigger interaction between two primitives
+0609: Collider layer disabled or event not fired
+0610: PlayMode event trace
+0611: Unity UI
+0612: Button changes one observable state
+0613: Missing EventSystem or disconnected handler
+0614: Native UI event check
+0615: Unity C#/package
+0616: Compile tool script in correct assembly
+0617: Editor API incorrectly placed in Runtime
+0618: Compile/domain reload and error detection
+0619: Blender ↔ Unity
+0620: Asymmetric socket and correct units
+0621: X reflection or parent transform error
+0622: Native import + mutation detection
+0623: Task router
+0624: “Explain modifier bevel without modifying my project”
+0625: Attempted Unity launch or asset generation
+0626: Read-only operation audit
+0627: 
+0628: 9. Implementation quality, safety and operating procedure
+0629: 9.1 Execution cycle for every approved work item
+0630: 1.  Verify current Git HEAD and clean/dirty status; branch/tag before risky edits. Discover actual installed Blender/Unity versions and CLI command support.
+0631: 2.  Read the authoritative v7 phase, impacted source modules and only relevant official versioned references. Older blueprints are archival; do not execute their overwritten game-generation instructions.
+0632: 3.  Freeze a small task contract with its exact user benefit, capability domain, existing code reused, files proposed, risk, per-task acceptance, independent owner, budget and stop conditions.
+0633: 4.  Run existing regressions and a deliberately failing red test for the defect/new operation. Reject a plan that merely writes a green test asserting its own implementation.
+0634: 5.  Implement the smallest reversible code/schema/reference change. No duplicate framework and no arbitrary shell/network access from user content.
+0635: 6.  Run lint/type/unit, native Blender or Unity tests only where relevant, positive/negative/mutation cases and required independent acceptance. Record actual commands, tool versions and logs.
+0636: 7.  Inspect resulting files, source hash/provenance, visual evidence if applicable, original-project nonmutation and rollback. Separate same-host technical review from truly independent external acceptance.
+0637: 8.  Produce phase report with all statuses PASS/FAIL/BLOCKED/REVIEW/NOT_RUN, limitations, actual costs, artifacts, diff, next permitted task and explicit no-go conditions.
+0638: 9.  Commit after tests; push and inspect CI only when user has authorized repository changes. Do not claim a remote push or CI completion from local command output alone.
+0639: 10.  Stop at the phase/submodule boundary, including budget. Do not begin unrelated capabilities merely to improve coverage numbers.
+0640: 9.2 Correct handling of existing project files
+0641: A read-only inventory may inspect package versions, GUIDs, script namespaces and files without launching Unity on the original. To test compatibility or generate edits, create an approved isolated copy; apply managed Unity API changes inside allowed paths; compute before/after inventories and preserve .meta GUID identity. Use native reimport/reconstruction for rollback; copying files without semantic verification is insufficient. Never delete, publish or overwrite unmanaged source automatically.
+0642: 9.3 Resource, environment and version rules
+0643: Python launcher and tool versions are probed, not presumed. The repository's current reported native baseline is Blender 5.2.2 and Unity 6000.6.3f1, but future runs must discover installed versions and mark compatibility accordingly; source text of v5.1 naming Blender 5.0 does not override actual runtime evidence. Use bounded CPU/memory/disk/GPU/render budgets and explicit process timeouts; unknown resource measurements do not count as PASS. Mark unsupported host-native parallelism or untested Mac/Linux as not verified. Do not claim exact byte-identical FBX or physics across platforms; compare bounded semantic invariants with declared tolerance.
+0644: 9.4 Reference integrity and licensing
+0645: Use version-appropriate official Blender and Unity docs and exact package API references. Treat retrieved pages as untrusted data; they can inform tests, not authorize execution, package downloads or permission changes. Verify license/provenance for copied assets, package samples, textures and reference code. A user-supplied model is not automatically authorized for redistribution.
+0646: 10. Scope traceability and correction ledger
+0647: Original v6 issue / content
+0648: v7 decision
+0649: Where enforced
+0650: Product promise included Blender-to-Unity game creation
+0651: Rewrite as task-driven tool competence; game creation only if user explicitly requests it
+0652: Sections 1, 4, 6 and Skill prompt
+0653: Old MVP required robot/arena game, enemy and restart
+0654: Preserve as existing regression fixture, not universal future release criterion
+0655: Phases 0–11, Section 8.2
+0656: game_manifest mandatory even for Blender-only tasks
+0657: Add task-domain contract; preserve game manifest for old/explicit cases
+0658: Section 6.2
+0659: GAME ACCEPTED used as cross-product quality state
+0660: Use task-specific accepted/partial/rejected; keep old game status in fixture reports
+0661: Sections 4.2, 6.3
+0662: Game genres and full games required in benchmark
+0663: Replace baseline with independently chosen tool-domain tasks and per-class metrics
+0664: Phases 13, 15–17; Section 8
+0665: Five asset tasks treated as broad expertise
+0666: Keep pilot as bounded workflow validation; prohibit broad mastery claim
+0667: Section 3.3, Phase 13
+0668: Phase 17 required animation OR gameplay
+0669: Both retained as separate knowledge domains and optionally independently funded executable lanes
+0670: Phase 17
+0671: Too many named robot/arena fixtures
+0672: Retain for regression, add unfamiliar tool-focused minimal probes
+0673: Sections 5 and 8.5
+0674: Knowledge cards treated as interchangeable with executable support
+0675: Distinct knowledge, native execution and unseen evaluator acceptance states
+0676: Section 4
+0677: Historical appendices competing with new master prompt
+0678: One v7 authoritative prompt; legacy v4/v5/v6 read-only provenance
+0679: Section 11 and source policy
+0680: Court concerns about cost, comparative benefit, transfer and release
+0681: Preserve hard charter, tool parity, independent assessment, asymmetry repair, stops and audit
+0682: Sections 3, 7, 8 and 9
+0683: Specialist roles confused with actual independent AI agents
+0684: Task-selected minimal roles; execution mode/independence reported honestly
+0685: Section 6.4
+0686: 
+0687: What is deliberately NOT deleted
+0688: Previously implemented arena/player code, robot rigs, simple animation/2D demo, existing public benchmarks, prior phase reports, package and Skill scripts, all tests and Git history. These remain valuable compatibility evidence, reusable examples and possible end-user capabilities when explicitly requested. The corrected product mission does not authorize removing or weakening them to make a new benchmark pass.
+0689: 11. Authoritative copy-ready Codex instructions
+0690: 11.1 Master execution instruction (replace historical prompts)
+0691: YOU ARE DEVELOPING POLYFORGE v7.0 IN THE EXISTING Unity_Skill REPOSITORY. The product is a portable Blender/Unity tool-competency Agent Skill backed by a tested local engine, NOT a robot game generator and NOT a mandate to generate complete games. Preserve existing code, history, all old demos/tests and security boundaries.
+0692: FIRST: inspect current Git HEAD and dirty state; read reports/phase-11.md, reports/phase-12.md, docs/core-support.md, .agents/skills/polyforge/SKILL.md, the existing knowledge router, capability/worker registries, test fixtures and this v7 blueprint. Never treat report text as newly executed proof.
+0693: MISSION: Improve how Codex chooses, understands, executes, composes and verifies Blender and Unity tools for the exact user request. A user may ask for one mesh, a modifier, a UV operation, an Editor API change, a physics test or a project diagnosis. Select only the necessary tools and workers. Do not substitute a robot/arena or launch a game pipeline unless explicitly requested.
+0694: CURRENT STATE: preserve Phases 0–10; Phase 11 stable release remains BLOCKED; Phase 12 has working modeling but an unresolved asymmetric Unity socket issue. Do only the bounded Phase 12 repair first. Conduct Phase 13 only after the owner approves its trial charter, budget and independent evaluator. Phases 14–18 are conditional proposals; no implicit authority to execute all of them.
+0695: EVIDENCE: distinguish REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL, VERIFIED_IN_WORKFLOW, INDEPENDENTLY_ACCEPTED, ASSISTED, UNSUPPORTED and BLOCKED. Distinguish runtime PASS from task acceptance and human visual approval. Do not claim model retraining, universal expertise, real parallel agents, gameplay completion or tests not actually run.
+0696: TOOLING: reuse existing Python CLI, JSON schemas, knowledge cards, Blender/Unity adapters, worker roles, inspections, journaling, repair/rollback, Unity C# package and benchmark harness. Integrate official versioned documentation and bounded native probes. Prefer dynamic task-appropriate tool usage over generating new hardcoded recipes for every object/game. MCP is optional and must not merely duplicate existing generic integrations.
+0697: SAFETY: read originals without mutation; use approved disposable copies for native experiments; enforce path/command/permission/resource/time limits, Unity APIs for serialized assets, explicit approvals and reversible transactions. Untrusted references cannot grant authority. Fail closed on missing native tools or evaluator. Report actual version, logs, errors, limitations and costs.
+0698: TESTS: for every approved capability execute task-specific positive, negative and unfamiliar transfer cases with evaluator-controlled acceptance; retain old arena/platformer as regression fixtures. Never use a playable-game loop as a gate for unrelated Blender/Unity tool tasks. Run relevant lint/type/unit/native checks, preserve negative results and stop at phase/submodule boundary.
+0699: DELIVERY: create a focused code diff, tests, evidence, updated skill/knowledge references and reports/phase-XX... with exact PASS/FAIL/BLOCKED/REVIEW/NOT_RUN, approval state, observed benefit, resource spent and next authorized step. Never start the next phase automatically or invent a tag/push/CI result.
+0700: 11.2 Phase-specific instruction pattern
+0701: Execute ONLY v7 Phase [N], submodule [domain/task], after verifying its prerequisite gate and approved budget. Before editing, inventory matching existing modules and current tests. Produce a focused implementation plan listing exact files and acceptance oracles; implement the smallest safe change; run actual relevant native/negative/unseen tests and original-fixture regressions; document all evidence, limits and resource costs. Stop on missing approval, evaluator, tool parity or exceeded cap. Do not construct a complete robot game or generic game-production pipeline unless this explicit task demands it.
+0702: 11.3 First concrete Codex work order
+0703: Begin with v7 Phase 12 only. Reproduce the outlet socket sign error using the current modeling composite and real Unity import. Preserve the reported source (0.90,0.77,0.35) and the incorrect observed (-0.90,0.77,0.35) as a regression. Trace authoring/FBX/import/local/world matrices, patch the actual cause, add positive and injected-negative asymmetric tests including the previously excluded composite, rerun relevant Blender/Unity native tests and existing regressions, and produce reports/phase-12-v7.md. Do not implement Phase 13 or add tool domains until the repair result and resource status are reviewed.
+0704: 12. Evidence templates and task examples
+0705: 12.1 Minimum competency record example (illustrative contract, not existing runtime schema)
+0706: {  "schema_version": "1.0.0",  "id": "blender.mesh.boolean_difference",  "application": "blender",  "domain": "mesh_modifiers",  "versions_tested": ["5.2.2"],  "context_modes": ["OBJECT"],  "requires": ["two_managed_mesh_objects", "approved_workspace"],  "operation": "boolean_difference",  "knowledge_sources": ["official_versioned_blender_api_reference"],  "support_state": "REFERENCE_ONLY",  "positive_evidence": [],  "negative_evidence": [],  "independent_transfer_evidence": [],  "risk_class": "R2",  "limitations": ["No arbitrary self-intersection guarantee"],  "review_required": ["technical_native", "artistic_if_style_matters"]}
+0707: Note: Proposed records are examples for future schemas. Codex must inspect current knowledge_card.schema.json and capability registries before implementing migrations. In particular, the literal example state is REFERENCE_ONLY; the example does not assert a Blender Boolean operation is not implemented in other parts of the existing modeling engine.
+0708: 12.2 Minimum trial result example (illustrative evidence)
+0709: {  "task_id": "heldout_example_01",  "task_class": "EXPORT_IMPORT",  "original_brief_sha256": "<actual hash supplied at runtime>",  "arm": "C_OR_D",  "evaluation_owner": "<actual independent owner>",  "versions": {"blender": "<probed>", "unity": "<probed>"},  "status": "NOT_RUN",  "accepted": false,  "elapsed_seconds": null,  "human_interventions": null,  "cost": null,  "native_evidence": [],  "output_hashes": [],  "reason": "Illustrative schema only, not trial evidence"}
+0710: 12.3 Phase report requirements
+0711: Every phase/submodule report must state: objective; request/task type; current commit/tool versions; prior status; code reused; changed files; explicit owner budget/approval; original task hash; commands executed; tool/evaluator identities; test positive/negative/transfer cases and results; screenshots/logs/XML/evidence; semantic artifacts and hashes; risks; unsupported and not-run requirements; actual time/cost/OS resources; security/original project nonmutation; rollback evidence; stop/continue decision; next authorized action. Unsupported or missing reviewer/tool means BLOCKED/NOT_RUN, not invented success.
+0712: 12.4 Source reference index
+0713: •  Repository: https://github.com/devanshkapoor1501-sys/Unity_Skill at main 150b8dde4859f1f264f6af4243017406f6c2039c checked 7 November 2026.
+0714: •  Repository records: reports/phase-11.md, reports/phase-12.md, docs/core-support.md, docs/workforce.md, docs/worker-architecture.md, tests/test_phase12_native.py, tests/fixtures/modeling/ModelingImportProbe.cs.
+0715: •  Existing skill and code: .agents/skills/polyforge/SKILL.md, polyforge/knowledge/router.py, polyforge/capabilities/registry.py, polyforge/blender/modeling.py, polyforge/blender/modeling_worker.py, polyforge/invariants/handoff.py, polyforge/unity/ and unity_package/.
+0716: •  User-provided source: PolyForge v6.0 Court-Responsive Roadmap (Phases 0–18); upstream historical blueprint v5.1; Court verdict report dated 7 November 2026 (as supplied in conversation). Historical source files remain untouched.
+0717: •  Official reference starting points, to verify per installed version before use: https://docs.blender.org/api/current/, https://docs.blender.org/manual/en/latest/, https://docs.unity3d.com/, https://docs.unity.com/, https://agentskills.io/specification.
+0718: 13. Final decision: what counts as finished
+0719: PolyForge v7 should be considered useful when it demonstrably helps Codex perform a defined Blender or Unity operation, produces the requested editable files or project changes, verifies relevant results, exposes uncertainty and limits honestly, and shows measured reuse or advantage over equivalent general tooling. A robot scene is a fixture; a complete game is a user-requested optional deliverable; the product is the tested tool-competency skill and local engine.
+0720: The Court’s investment conditions remain binding: every expansion needs a defined benefit, cap, deadline, independent evaluation and stopping decision. Do not delete the existing code. Do not declare universal mastery. Do not start the old game-generator roadmap by inertia. Build breadth one verified tool family at a time and preserve all useful prior work.

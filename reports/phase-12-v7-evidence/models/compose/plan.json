@@ -1,0 +1,198 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "coolant_valve",
+  "workflow": "compose",
+  "seed": 42,
+  "size_m": [
+    3.0,
+    2.0,
+    2.0
+  ],
+  "max_polygons": 50000,
+  "lod_ratio": 0.5,
+  "estimated_polygons": 11402,
+  "objects": [
+    {
+      "id": "foot",
+      "primitive": "grid",
+      "size_m": [
+        3,
+        0.2,
+        2
+      ],
+      "location": [
+        0,
+        0.1,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [],
+      "detail": 3
+    },
+    {
+      "id": "housing",
+      "primitive": "cylinder",
+      "size_m": [
+        1.2,
+        0.8,
+        1
+      ],
+      "location": [
+        0,
+        0.6,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "boolean",
+          "target": "bore",
+          "operation": "DIFFERENCE"
+        }
+      ]
+    },
+    {
+      "id": "bore",
+      "primitive": "cylinder",
+      "size_m": [
+        0.4,
+        1,
+        0.35
+      ],
+      "location": [
+        0,
+        0.6,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "base",
+      "export": false,
+      "modifiers": []
+    },
+    {
+      "id": "pipe",
+      "primitive": "curve",
+      "size_m": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "location": [
+        0.7,
+        0.55,
+        0.15
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [],
+      "points": [
+        [
+          -0.22,
+          -0.15,
+          0
+        ],
+        [
+          0,
+          0.1,
+          0.1
+        ],
+        [
+          0.2,
+          0.22,
+          0.2
+        ]
+      ],
+      "bevel_m": 0.04
+    },
+    {
+      "id": "handle",
+      "primitive": "sphere",
+      "size_m": [
+        0.65,
+        0.5,
+        0.5
+      ],
+      "location": [
+        0,
+        1.2,
+        0
+      ],
+      "rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "subdivision",
+          "levels": 1
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18,
+        0.32,
+        0.48,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.08,
+        0.1,
+        0.13,
+        1.0
+      ]
+    },
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.9,
+        0.42,
+        0.08,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "outlet",
+      "position": [
+        0.9,
+        0.77,
+        0.35
+      ]
+    }
+  ],
+  "overlap_policy": "ASSEMBLY_CONTACTS",
+  "expected_bounds": false,
+  "input_digest": "0ae91a900e91129ddb82628911bd68935b7fff0d8c98e4ec83cfa88e035ab892"
+}

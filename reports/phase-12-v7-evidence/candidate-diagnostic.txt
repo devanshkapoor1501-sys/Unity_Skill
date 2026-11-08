@@ -1,0 +1,20 @@
+E
+=================================== ERRORS ====================================
+_ ERROR at setup of test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled _
+
+self = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/p12c/.tmp/diag')
+mode = 448, parents = False, exist_ok = False
+
+    def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+        """
+        Create a new directory at this given path.
+        """
+        try:
+>           os.mkdir(self, mode)
+E           FileNotFoundError: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Divansh Kapoor\\OneDrive\\Desktop\\skill\\.tmp\\p12c\\.tmp\\diag'
+
+..\..\..\..\..\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\pathlib.py:1311: FileNotFoundError
+=========================== short test summary info ===========================
+ERROR tests/test_assets.py::test_bounded_lock_queue_waits_for_unrelated_work_and_can_be_cancelled
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+1 error in 0.23s

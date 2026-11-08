@@ -1,0 +1,508 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "inspection_gantry",
+  "input_digest": "492f2a5ff197be10535057ee9849aa246b93e8acc74fa4c1a1126d70906f0e2d",
+  "technical_status": "PASS",
+  "artistic_status": "REVIEW",
+  "source_unchanged": true,
+  "source_sha256_before": "c585844ce1f72cb313c496c727b01fc3c84ef5c9ac72e7cbea08846d61d64941",
+  "source_sha256_after": "c585844ce1f72cb313c496c727b01fc3c84ef5c9ac72e7cbea08846d61d64941",
+  "coordinate_basis": {
+    "up": "Z",
+    "forward": "-Y",
+    "meters_per_unit": 1.0
+  },
+  "root": {
+    "semantic_id": "inspection_gantry",
+    "location_unity": [
+      0.0,
+      0.0,
+      -0.0
+    ],
+    "rotation_deg": [
+      0.0,
+      -0.0,
+      0.0
+    ],
+    "scale": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  "materials": [
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.8999999761581421,
+        0.41999998688697815,
+        0.07999999821186066,
+        1.0
+      ]
+    },
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18000000715255737,
+        0.3199999928474426,
+        0.47999998927116394,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.07999999821186066,
+        0.10000000149011612,
+        0.12999999523162842,
+        1.0
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "deck",
+      "primitive": "grid",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        0.0,
+        0.11999999731779099,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "trim"
+      ],
+      "modifiers": [
+        {
+          "type": "geometry_nodes",
+          "detail": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          4.800000190734863,
+          0.23999999463558197,
+          3.200000047683716
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 26,
+      "polygons": 24,
+      "triangles": 48,
+      "material_triangle_counts": {
+        "trim": 48
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 3.686400119018553,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -2.4000000953674316,
+        0.0,
+        -1.600000023841858
+      ],
+      "bounds_max_unity": [
+        2.4000000953674316,
+        0.23999999463558197,
+        1.600000023841858
+      ]
+    },
+    {
+      "id": "post_left",
+      "primitive": "box",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        -1.4800000190734863,
+        1.559999942779541,
+        0.3100000023841858
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          0.4000000059604645,
+          2.640000104904175,
+          0.4000000059604645
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "material_triangle_counts": {
+        "base": 12
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.42240002937316945,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.6800000667572021,
+        0.2399998903274536,
+        0.10999999940395355
+      ],
+      "bounds_max_unity": [
+        -1.2799999713897705,
+        2.880000114440918,
+        0.5099999904632568
+      ]
+    },
+    {
+      "id": "post_right",
+      "primitive": "box",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        1.4800000190734863,
+        1.559999942779541,
+        -0.3100000023841858
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          0.4000000059604645,
+          2.640000104904175,
+          0.4000000059604645
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "material_triangle_counts": {
+        "base": 12
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.42240002937316945,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        1.2799999713897705,
+        0.2399998903274536,
+        -0.5099999904632568
+      ],
+      "bounds_max_unity": [
+        1.6800000667572021,
+        2.880000114440918,
+        -0.10999999940395355
+      ]
+    },
+    {
+      "id": "crossbeam",
+      "primitive": "box",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        0.0,
+        3.0399999618530273,
+        -0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        12.000001187704068,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "base"
+      ],
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.03999999910593033,
+          "segments": 2
+        }
+      ],
+      "source_geometry": {
+        "size_m": [
+          3.7200000286102295,
+          0.3199999928474426,
+          0.46000000834465027
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 56,
+      "polygons": 54,
+      "triangles": 108,
+      "material_triangle_counts": {
+        "base": 108
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.5392884554368825,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.8588578701019287,
+        2.879999876022339,
+        -0.6033732891082764
+      ],
+      "bounds_max_unity": [
+        1.8588578701019287,
+        3.200000047683716,
+        0.6033732891082764
+      ]
+    },
+    {
+      "id": "conduit",
+      "primitive": "curve",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        0.0,
+        3.390000104904175,
+        0.11999999731779099
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [
+        {
+          "type": "weld",
+          "merge_threshold_m": 9.999999974752427e-07
+        }
+      ],
+      "source_geometry": {
+        "points": [
+          [
+            -1.2000000476837158,
+            -0.2199999988079071,
+            0.11999999731779099
+          ],
+          [
+            -0.800000011920929,
+            0.20000000298023224,
+            0.10000000149011612
+          ],
+          [
+            0.800000011920929,
+            0.20000000298023224,
+            -0.10000000149011612
+          ],
+          [
+            1.2000000476837158,
+            -0.2199999988079071,
+            -0.11999999731779099
+          ]
+        ],
+        "bevel_m": 0.03500000014901161,
+        "closed_caps": true,
+        "spline_type": "POLY"
+      },
+      "modifiers_enabled": true,
+      "vertices": 24,
+      "polygons": 26,
+      "triangles": 44,
+      "material_triangle_counts": {
+        "accent": 44
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.008248018496411524,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        -1.222782850265503,
+        3.1484909057617188,
+        -0.03484558314085007
+      ],
+      "bounds_max_unity": [
+        1.2233235836029053,
+        3.6182641983032227,
+        0.2749563455581665
+      ]
+    },
+    {
+      "id": "inspection_head",
+      "primitive": "box",
+      "parent_id": "inspection_gantry",
+      "export": true,
+      "location_unity": [
+        0.3199999928474426,
+        2.7100000381469727,
+        0.019999999552965164
+      ],
+      "rotation_deg": [
+        0.0,
+        -0.0,
+        -15.00000212496032
+      ],
+      "scale": [
+        0.9999999403953552,
+        1.0,
+        0.9999999403953552
+      ],
+      "material_ids": [
+        "accent"
+      ],
+      "modifiers": [],
+      "source_geometry": {
+        "size_m": [
+          0.46000000834465027,
+          0.3799999952316284,
+          0.41999998688697815
+        ]
+      },
+      "modifiers_enabled": true,
+      "vertices": 8,
+      "polygons": 6,
+      "triangles": 12,
+      "material_triangle_counts": {
+        "accent": 12
+      },
+      "nonmanifold_edges": 0,
+      "degenerate_faces": 0,
+      "nonfinite_values": 0,
+      "normal_inconsistencies": 0,
+      "signed_volume": 0.07341599811840054,
+      "uv_layers": 1,
+      "uv_nonfinite_values": 0,
+      "invalid_material_faces": 0,
+      "bounds_min_unity": [
+        0.048661429435014725,
+        2.4669456481933594,
+        -0.1899999976158142
+      ],
+      "bounds_max_unity": [
+        0.591338574886322,
+        2.953054428100586,
+        0.22999998927116394
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "sensor_mount",
+      "parent_id": "inspection_gantry",
+      "position_unity": [
+        0.3199999928474426,
+        2.5199999809265137,
+        0.019999999552965164
+      ]
+    },
+    {
+      "id": "walkway_entry",
+      "parent_id": "inspection_gantry",
+      "position_unity": [
+        -1.899999976158142,
+        0.23999999463558197,
+        1.25
+      ]
+    }
+  ],
+  "aggregate": {
+    "vertices": 130,
+    "polygons": 122,
+    "triangles": 236,
+    "bounds_min_unity": [
+      -2.4000000953674316,
+      0.0,
+      -1.600000023841858
+    ],
+    "bounds_max_unity": [
+      2.4000000953674316,
+      3.6182641983032227,
+      1.600000023841858
+    ]
+  },
+  "lod": {
+    "vertices": 56,
+    "polygons": 46,
+    "triangles": 88,
+    "material_triangle_counts": {
+      "trim": 12,
+      "base": 36,
+      "accent": 40
+    },
+    "nonmanifold_edges": 0,
+    "degenerate_faces": 0,
+    "nonfinite_values": 0,
+    "normal_inconsistencies": 0,
+    "signed_volume": 5.158543956652586,
+    "uv_layers": 1,
+    "uv_nonfinite_values": 0,
+    "invalid_material_faces": 0,
+    "bounds_min_unity": [
+      -2.4000000953674316,
+      0.0,
+      -1.600000023841858
+    ],
+    "bounds_max_unity": [
+      2.4000000953674316,
+      3.6221606731414795,
+      1.600000023841858
+    ],
+    "source_polygons": 122,
+    "ratio": 0.3770491803278688
+  },
+  "issues": []
+}

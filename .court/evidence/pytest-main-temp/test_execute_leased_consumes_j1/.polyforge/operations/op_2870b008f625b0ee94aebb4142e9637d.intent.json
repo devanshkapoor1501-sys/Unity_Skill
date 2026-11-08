@@ -1,0 +1,134 @@
+{
+  "task_id": "budget_task",
+  "job_id": "job_1",
+  "capability_id": "mesh.props.crate.v1",
+  "input_digest": "e812f00bfacd89c5818cb7cecc285f5bdedd4dfe8e800a079cb294eabb712673",
+  "seed": 42,
+  "context_digest": "79afc8f79afc3e0a3567825cf2ae70e3ad6fe27c49ae9d7a9cbc402cee8563f4",
+  "budget_seconds": 7,
+  "resources": {},
+  "resource_admission": {
+    "cpu_count": 16,
+    "disk_free_bytes": 501565886464,
+    "available_ram_bytes": 7801905152,
+    "hardware": {
+      "os": "Windows-11-10.0.26300-SP0",
+      "cpu": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+      "logical_cpus": 16,
+      "physical_memory_bytes": 24841998336,
+      "gpu": {
+        "status": "OBSERVED",
+        "devices": [
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY1",
+            "state_flags": 5
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY2",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY3",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY4",
+            "state_flags": 0
+          },
+          {
+            "name": "AMD Radeon 780M Graphics",
+            "device": "\\\\.\\DISPLAY5",
+            "state_flags": 0
+          },
+          {
+            "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+            "device": "\\\\.\\DISPLAY6",
+            "state_flags": 0
+          }
+        ],
+        "source": "EnumDisplayDevicesW"
+      },
+      "graphics": {
+        "display": {
+          "status": "OBSERVED",
+          "count": 1,
+          "source": "GetSystemMetrics(SM_CMONITORS)"
+        },
+        "gpu": {
+          "status": "OBSERVED",
+          "devices": [
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY1",
+              "state_flags": 5
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY2",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY3",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY4",
+              "state_flags": 0
+            },
+            {
+              "name": "AMD Radeon 780M Graphics",
+              "device": "\\\\.\\DISPLAY5",
+              "state_flags": 0
+            },
+            {
+              "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+              "device": "\\\\.\\DISPLAY6",
+              "state_flags": 0
+            }
+          ],
+          "source": "EnumDisplayDevicesW"
+        },
+        "render": {
+          "status": "NOT_RUN"
+        },
+        "headless_render": {
+          "status": "UNKNOWN"
+        },
+        "qualification": "Metadata does not establish driver, render or headless support"
+      },
+      "graphics_render_probe": "NOT_RUN",
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]"
+    },
+    "gpu_observation": "METADATA_ONLY",
+    "gpu_execution": "UNVERIFIED",
+    "vram_bytes": 8546942976,
+    "adapters": [
+      {
+        "name": "NVIDIA GeForce RTX 5050 Laptop GPU",
+        "vram_bytes": 8546942976,
+        "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+      },
+      {
+        "name": "AMD Radeon 780M Graphics",
+        "vram_bytes": 536870912,
+        "source": "WINDOWS_DISPLAY_CLASS_REGISTRY"
+      }
+    ],
+    "mode": "LOCAL_SEQUENTIAL",
+    "admitted_parallel_workers": 1,
+    "worker_limits": {
+      "blender": 1,
+      "unity": 1,
+      "model": 0,
+      "blender_cpu_threads": 1
+    },
+    "render_policy": "REGISTERED_FIXED_CPU",
+    "degradation_reason": "Measured admission permits one sequential worker; parallel/GPU execution and adaptive render quality are unqualified. Registered CPU quality retained."
+  }
+}

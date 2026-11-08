@@ -1,0 +1,94 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.14, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\Divansh Kapoor\OneDrive\Desktop\skill\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Divansh Kapoor\OneDrive\Desktop\skill
+configfile: pyproject.toml
+plugins: cov-6.3.0
+collecting ... collected 7 items / 6 deselected / 1 selected
+
+tests/test_phase12_native.py::test_unity_imports_modeling_families_and_lods FAILED [100%]
+
+================================== FAILURES ===================================
+________________ test_unity_imports_modeling_families_and_lods ________________
+
+native_models = (WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase12-v7-red/phase12-blender0'), {'compose': {'art...digest': '6f0e022539a54d45c8c5a08e47a08c209a51835f1e0d187611ca08720d047952', ...}, ...}, 'diagnostics': [], ...}, ...})
+tmp_path = WindowsPath('C:/Users/Divansh Kapoor/OneDrive/Desktop/skill/.tmp/phase12-v7-red/test_unity_imports_modeling_fa0')
+
+    @pytest.mark.unity
+    def test_unity_imports_modeling_families_and_lods(native_models, tmp_path):
+        from polyforge.runner.locks import unity_project_lock
+        from polyforge.runner.processes import ProcessPolicy, run_process
+        from polyforge.security.paths import WorkspacePolicy
+        from polyforge.unity.bootstrap import installed_template, prepare_project
+        from polyforge.unity.bridge import configuration, unity_tool
+    
+        root, results = native_models
+        policy = WorkspacePolicy(tmp_path)
+        editor = unity_tool(configuration(policy))
+        project = policy.path("UnityProject")
+        with unity_project_lock(policy, project):
+            prepare_project(policy, installed_template(editor))
+            files = policy.mkdir(project / "Assets/Phase12Models")
+            scripts = policy.mkdir(project / "Assets/Editor")
+            fixture = Path(__file__).parent / "fixtures/modeling/ModelingImportProbe.cs"
+            shutil.copyfile(fixture, scripts / fixture.name)
+            expected = []
+            for kind, result in results.items():
+                data = result["data"]
+                folder = (root / data["source_blend"]).parent
+                for name in ("asset", "lod"):
+                    filename = f"{kind}_{name}.fbx"
+                    shutil.copyfile(folder / (name + ".fbx"), files / filename)
+                    inspected = data["inspection"]["aggregate" if name == "asset" else "lod"]
+                    expected.append(
+                        {
+                            "path": f"Assets/Phase12Models/{filename}",
+                            "lo": inspected["bounds_min_unity"],
+                            "hi": inspected["bounds_max_unity"],
+                            "meshCount": sum(o["export"] for o in data["plan"]["objects"])
+                            if name == "asset"
+                            else 1,
+                            "sockets": [
+                                {"id": s["id"], "position": s["position"]}
+                                for s in data["plan"]["sockets"]
+                            ],
+                        }
+                    )
+            inputs = tmp_path / "unity-input.json"
+            inputs.write_text(json.dumps({"models": expected}), encoding="utf-8")
+            receipt = tmp_path / "unity-result.json"
+            process = run_process(
+                [
+                    str(editor),
+                    "-batchmode",
+                    "-nographics",
+                    "-quit",
+                    "-job-worker-count",
+                    "2",
+                    "-projectPath",
+                    str(project),
+                    "-logFile",
+                    "-",
+                    "-executeMethod",
+                    "ModelingImportProbe.Run",
+                    "-modelingInput",
+                    str(inputs),
+                    "-modelingResult",
+                    str(receipt),
+                ],
+                policy,
+                "editor-process",
+                ProcessPolicy((editor,), 900),
+            )
+>       assert process.returncode == 0 and process.reason == "exit", process
+E       AssertionError: ProcessOutcome(returncode=3758096385, reason='exit', pid=15320, ownership='WINDOWS_JOB', duration_seconds=83.625, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True)
+E       assert (3758096385 == 0)
+E        +  where 3758096385 = ProcessOutcome(returncode=3758096385, reason='exit', pid=15320, ownership='WINDOWS_JOB', duration_seconds=83.625, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True).returncode
+
+tests\test_phase12_native.py:376: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_phase12_native.py::test_unity_imports_modeling_families_and_lods - AssertionError: ProcessOutcome(returncode=3758096385, reason='exit', pid=15320, ownership='WINDOWS_JOB', duration_seconds=83.625, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True)
+assert (3758096385 == 0)
+ +  where 3758096385 = ProcessOutcome(returncode=3758096385, reason='exit', pid=15320, ownership='WINDOWS_JOB', duration_seconds=83.625, stdout_path='editor-process\\stdout.txt', stderr_path='editor-process\\stderr.txt', memory_limit_verified=True).returncode
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+================= 1 failed, 6 deselected in 185.55s (0:03:05) =================

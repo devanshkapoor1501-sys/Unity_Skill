@@ -1,0 +1,542 @@
+{
+  "schema_version": "1.0.0",
+  "id": "arena_demo:main",
+  "manifest_digest": "37d5718b5a81e0fd436b39a40e57b6eeaed2cb7dfa517c879203b171a34f2e34",
+  "input_digest": "da974833b648ac6b86a4043c1ae3b612e25756cce4d5f4b4dc11836f88db700f",
+  "input_fingerprints": {
+    "manifest": "37d5718b5a81e0fd436b39a40e57b6eeaed2cb7dfa517c879203b171a34f2e34",
+    "recipes": {
+      "ground_a": "a204409aca0a3c5782badc5e0fb7d700a6f2126c68373c783349798d5af880ff",
+      "crate_a": "6912da1482542634d28195b6d669e13a106a7fe9d751b458afd645e7c5c6d12d",
+      "robot_a": "dc8413a7d0583bc548541ff7f1878c27084f7d35d74b9241880156a62653e090"
+    },
+    "files": {
+      "supplied/color.png": "b49575fc000ec5c0489594788e93a12e7a5bd22daff4d8948ea0f41fb0bc6498",
+      "supplied/normal.png": "b49575fc000ec5c0489594788e93a12e7a5bd22daff4d8948ea0f41fb0bc6498"
+    },
+    "original_brief": "883f353bbac8261620175fe76fb2a888385d24a5b1fb68a4944f488ec4f450b8"
+  },
+  "coordinate_basis": {
+    "up": "Y",
+    "forward": "Z"
+  },
+  "source_basis": {
+    "up": "Z",
+    "forward": "-Y"
+  },
+  "meters_per_unit": 1,
+  "objects": [
+    {
+      "id": "material:metal_blue",
+      "kind": "material",
+      "parameters": {
+        "id": "metal_blue",
+        "base_color_rgba": [
+          0.14,
+          0.38,
+          0.7,
+          1
+        ],
+        "metallic": 0.4,
+        "roughness": 0.55,
+        "textures": [
+          {
+            "kind": "base_color",
+            "path": "supplied/color.png",
+            "color_space": "srgb"
+          },
+          {
+            "kind": "normal",
+            "path": "supplied/normal.png",
+            "color_space": "linear"
+          }
+        ]
+      },
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:crate_a",
+      "kind": "asset",
+      "source_id": "crate_a",
+      "asset_capability": "mesh.props.crate.v1",
+      "bounds_m": [
+        1,
+        1,
+        1
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "top",
+        "front"
+      ],
+      "animations": [],
+      "collider": "box",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:crate_a:top",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.5,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:crate_a:front",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0,
+        0.5
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:ground_a",
+      "kind": "asset",
+      "source_id": "ground_a",
+      "asset_capability": "mesh.environment.tile.v1",
+      "bounds_m": [
+        20,
+        0.2,
+        20
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "top",
+        "front",
+        "join_left",
+        "join_right"
+      ],
+      "animations": [],
+      "collider": "box",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:ground_a:top",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.1,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:ground_a:front",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0,
+        10.0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:ground_a:join_left",
+      "kind": "socket",
+      "position_m": [
+        -10.0,
+        0,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:ground_a:join_right",
+      "kind": "socket",
+      "position_m": [
+        10.0,
+        0,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "asset:robot_a",
+      "kind": "asset",
+      "source_id": "robot_a",
+      "asset_capability": "mesh.robot.modular.v1",
+      "bounds_m": [
+        1,
+        1.8,
+        0.8
+      ],
+      "material_ids": [
+        "metal_blue"
+      ],
+      "socket_ids": [
+        "neck",
+        "shoulder_l",
+        "elbow_l",
+        "wrist_l",
+        "hand_l",
+        "hip_l",
+        "knee_l",
+        "shoulder_r",
+        "elbow_r",
+        "wrist_r",
+        "hand_r",
+        "hip_r",
+        "knee_r"
+      ],
+      "animations": [],
+      "collider": "capsule",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:neck",
+      "kind": "socket",
+      "position_m": [
+        0,
+        0.315,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:shoulder_l",
+      "kind": "socket",
+      "position_m": [
+        -0.225,
+        0.18000000000000002,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:elbow_l",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.198,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "upper_arm_l",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:wrist_l",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.18000000000000002,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "forearm_l",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:hand_l",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.07200000000000001,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "hand_l",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:hip_l",
+      "kind": "socket",
+      "position_m": [
+        -0.11,
+        -0.09000000000000001,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "hips",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:knee_l",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.216,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "thigh_l",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:shoulder_r",
+      "kind": "socket",
+      "position_m": [
+        0.225,
+        0.18000000000000002,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "body",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:elbow_r",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.198,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "upper_arm_r",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:wrist_r",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.18000000000000002,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "forearm_r",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:hand_r",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.07200000000000001,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "hand_r",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:hip_r",
+      "kind": "socket",
+      "position_m": [
+        0.11,
+        -0.09000000000000001,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "hips",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "socket:robot_a:knee_r",
+      "kind": "socket",
+      "position_m": [
+        0,
+        -0.216,
+        0
+      ],
+      "position_space": "MODULE_LOCAL_UNITY",
+      "module_id": "thigh_r",
+      "binding_status": "NOT_RUN"
+    },
+    {
+      "id": "actor:enemy_01",
+      "kind": "actor",
+      "source_id": "enemy_01",
+      "pose": {
+        "position_m": [
+          3,
+          0,
+          3
+        ]
+      },
+      "controller": "PatrolEnemy",
+      "binding_status": "NOT_RUN"
+    }
+  ],
+  "links": [
+    {
+      "source_id": "asset:crate_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:crate_a",
+      "target_id": "socket:crate_a:top",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:crate_a",
+      "target_id": "socket:crate_a:front",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "socket:ground_a:top",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "socket:ground_a:front",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "socket:ground_a:join_left",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:ground_a",
+      "target_id": "socket:ground_a:join_right",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "material:metal_blue",
+      "relation": "uses_material",
+      "required": true,
+      "invariant_id": "material_exists"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:neck",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:shoulder_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:elbow_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:wrist_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:hand_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:hip_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:knee_l",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:shoulder_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:elbow_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:wrist_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:hand_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:hip_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "asset:robot_a",
+      "target_id": "socket:robot_a:knee_r",
+      "relation": "has_socket",
+      "required": true,
+      "invariant_id": "socket_binding"
+    },
+    {
+      "source_id": "actor:enemy_01",
+      "target_id": "asset:robot_a",
+      "relation": "instance_of",
+      "required": true,
+      "invariant_id": "prefab_binding"
+    }
+  ],
+  "scenarios": [],
+  "spritesheets": [],
+  "game_status": "PARTIAL"
+}

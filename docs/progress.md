@@ -229,3 +229,59 @@ with preserved original v4 tasks and gates where applicable.
 - Exact commands, raw evidence, snapshots and limitations: reports/phase-5.md.
   User authorized publication to Unity_Skill and continuation into Phase 6.
   Game remains PARTIAL; Phase 6 is next.
+
+## v7 documentation reconciliation — 2026-11-08
+
+- This appended entry supersedes future-facing authority/status statements in
+  earlier ledger entries without rewriting their history. v7 governs the
+  tool-competency mission and Phase 12–18 proposals; historical Phase 0–11
+  authority, implementation evidence and open release gates are preserved.
+- Source read: `.tmp/v7-blueprint.txt`; source DOCX SHA256
+  `2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`.
+  Base HEAD was `150b8dde4859f1f264f6af4243017406f6c2039c`; the checkout was
+  already dirty. No commit, push or native artifact edit belongs to this lane.
+- Updated `docs/implementation-plan.md` and `docs/core-support.md`: retain the
+  audited Phase 0–10 work, keep Phase 11 technical checkpoint/stable release
+  BLOCKED, and mark Phase 12 PARTIAL. Reported eight-family-FBX Unity success
+  excludes the coolant composition, whose checkpoint remains Unity NOT_RUN.
+  Today's separate real reproduction is in progress; no repair PASS is claimed.
+- Future phases now follow v7: 13 independent equal-tool pilot; 14 versioned
+  knowledge/task routing; 15 Blender submodules; 16 Unity submodules;
+  17 cross-tool composition and separate optional animation/gameplay lanes;
+  18 scoped release/investment audit. Games are requested tasks or regressions,
+  not the default output or universal competency gate.
+- Phase 13 needs separate owner-approved charter, budget/deadline and independent
+  evaluator. All v7 numerical caps/thresholds are proposals, not approved
+  resource allocations. Phases 14–18 remain conditional, individually scoped.
+- Evidence distinction and open gates are in
+  `reports/phase-11-reconciliation-v7.md`. This documentation lane ran no fresh
+  Python/native/build/install/CI tests and does not recertify prior results.
+
+## v7 Phase 12 bounded repair verification — 2026-11-08
+
+- Reproduced the coolant outlet X reflection in real Unity. The corrected
+  modeling export now preserves `(0.90, 0.77, 0.35)` in main and LOD imports.
+  Evaluated copies also preserve source palettes and LOD face assignments.
+- Fresh checks: 1,438 offline tests; six Phase 12 and nine legacy Blender tests;
+  twelve Unity main/LOD imports, ten applicable rejected reflection mutants and
+  twenty-four transformed-parent cases. Coverage: 94.10% combined, 91.19% branches.
+  Lint, format, strict types and CLI documentation checks passed.
+- Both existing games passed native EditMode/PlayMode/public-oracle regressions
+  in an independent copy. Original project hashes stayed unchanged. Fresh
+  standalone/player/manual checks were not run in this repair.
+- Evidence: [Phase 12 v7 report](../reports/phase-12-v7.md). The bounded repair is
+  verified; overall Phase 12 remains PARTIAL, artistic review REVIEW and stable
+  Phase 11 release BLOCKED. Phase 13 still needs its separate trial decision.
+
+## Phase 12 technical completion and publication — 2026-11-08
+
+- v7 Section 7.4's technical exit is COMPLETE / VERIFIED_IN_WORKFLOW; its
+  separate artistic REVIEW is preserved. Independent equal-tool trials belong
+  to Phase 13 and do not retroactively block the bounded technical repair.
+- The owner requested corrections to the cabin gap and hidden organic details.
+  Cabin/chassis contact and visible crown/ridges passed regenerated native
+  Blender/Unity checks and a separate visual review for the recorded fixtures.
+  Extreme-ratio ridge surface attachment remains unqualified.
+- The owner authorized committing/pushing these changes to Unity_Skill.
+  Publication uses the existing codex branch and a pull request; source/CI
+  identity must be verified from the actual remote result.

@@ -32,7 +32,7 @@ def task(**changes):
 @pytest.mark.parametrize(
     "query,output,candidate",
     [
-        ("Make a crate and sculpt a detailed organic dragon", "ASSET", "mesh.props.crate.v1"),
+        ("Make a crate and sculpt a detailed organic dragon", "ASSET", None),
         (
             "Build a multiplayer survival arena with inventory and save/load",
             "GAME",
@@ -57,7 +57,12 @@ def test_natural_language_candidate_never_proves_complete_requirements(
         WorkspacePolicy(tmp_path), {"schema_version": "1.0.0", "query": query, "output": output}
     )
     assert result["status"] == "REVIEW"
-    assert candidate in result["capability_ids"]
+    if candidate is None:
+        assert result["capability_ids"] == []
+        assert result["roles"] == ["asset_architect"]
+        assert "Assisted modeling" in result["gap"] and "sculpt" in result["gap"]
+    else:
+        assert candidate in result["capability_ids"]
     assert result["requirement_coverage"] == "UNVERIFIED"
     assert result["gap"] and result["discovery"]["execution_status"] == "BLOCKED"
 

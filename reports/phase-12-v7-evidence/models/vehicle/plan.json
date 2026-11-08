@@ -1,0 +1,274 @@
+{
+  "schema_version": "1.0.0",
+  "asset_id": "vehicle",
+  "workflow": "vehicle",
+  "seed": 42,
+  "size_m": [
+    3.0,
+    2.0,
+    6.0
+  ],
+  "max_polygons": 50000,
+  "lod_ratio": 0.5,
+  "estimated_polygons": 544,
+  "objects": [
+    {
+      "id": "chassis",
+      "primitive": "box",
+      "size_m": [
+        3.0,
+        0.48,
+        4.800000000000001
+      ],
+      "location": [
+        0.0,
+        0.76,
+        0.0
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "base",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0288,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "cabin",
+      "primitive": "box",
+      "size_m": [
+        1.7399999999999998,
+        1.0,
+        2.7
+      ],
+      "location": [
+        0.0,
+        1.5,
+        -0.48
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "accent",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.06,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "wheel_left_front",
+      "primitive": "cylinder",
+      "size_m": [
+        0.72,
+        0.36,
+        0.72
+      ],
+      "location": [
+        -1.32,
+        0.36,
+        2.64
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "wheel_left_back",
+      "primitive": "cylinder",
+      "size_m": [
+        0.72,
+        0.36,
+        0.72
+      ],
+      "location": [
+        -1.32,
+        0.36,
+        -2.64
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "wheel_right_front",
+      "primitive": "cylinder",
+      "size_m": [
+        0.72,
+        0.36,
+        0.72
+      ],
+      "location": [
+        1.32,
+        0.36,
+        2.64
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "wheel_right_back",
+      "primitive": "cylinder",
+      "size_m": [
+        0.72,
+        0.36,
+        0.72
+      ],
+      "location": [
+        1.32,
+        0.36,
+        -2.64
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": []
+    },
+    {
+      "id": "hood_vent_0",
+      "primitive": "box",
+      "size_m": [
+        1.6500000000000001,
+        0.06,
+        0.12
+      ],
+      "location": [
+        0.0,
+        1.03,
+        1.08
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    },
+    {
+      "id": "hood_vent_1",
+      "primitive": "box",
+      "size_m": [
+        1.6500000000000001,
+        0.06,
+        0.12
+      ],
+      "location": [
+        0.0,
+        1.03,
+        1.56
+      ],
+      "rotation_deg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material_id": "trim",
+      "export": true,
+      "modifiers": [
+        {
+          "type": "bevel",
+          "width_m": 0.0036,
+          "segments": 2
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "base",
+      "color_rgba": [
+        0.18,
+        0.32,
+        0.48,
+        1.0
+      ]
+    },
+    {
+      "id": "trim",
+      "color_rgba": [
+        0.08,
+        0.1,
+        0.13,
+        1.0
+      ]
+    },
+    {
+      "id": "accent",
+      "color_rgba": [
+        0.9,
+        0.42,
+        0.08,
+        1.0
+      ]
+    }
+  ],
+  "sockets": [
+    {
+      "id": "base",
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "id": "top",
+      "position": [
+        0.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "id": "front",
+      "position": [
+        0.0,
+        0.6,
+        3.0
+      ]
+    }
+  ],
+  "overlap_policy": "ASSEMBLY_CONTACTS",
+  "expected_bounds": true,
+  "input_digest": "56a94175b250c813b4a3a462bb81ede1c1c9e2922cfab5498dab791d37dc8520"
+}

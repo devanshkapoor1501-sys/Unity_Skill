@@ -1,0 +1,467 @@
+{
+  "scope": "PUBLIC_DEVELOPMENT_V7_PHASE12_REPAIR",
+  "status": "VERIFIED_IN_WORKFLOW",
+  "native_blender_tests": 6,
+  "legacy_blender_tests": 9,
+  "offline_tests": 1438,
+  "offline_deselected": 20,
+  "combined_coverage": 94.1,
+  "branch_coverage": 91.19,
+  "unity_version": "6000.6.3f1",
+  "blender_version": "5.2.2",
+  "phase12_overall": "REVIEW",
+  "artistic_status": "REVIEW",
+  "independent_transfer": "BLOCKED",
+  "stable_release": "BLOCKED",
+  "models": {
+    "room_kit": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "base",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "top",
+          "position": [
+            0.0,
+            3.0,
+            0.0
+          ]
+        },
+        {
+          "id": "doorway",
+          "position": [
+            0.0,
+            0.18,
+            2.5
+          ]
+        }
+      ],
+      "files": {
+        "models/room_kit/asset.fbx": "2079abf6f8608b93d1148ab68b3d55a66d3d7fae67d81c757262385edbe001c2",
+        "models/room_kit/front.png": "bef530fc7f4ae5c82c33025f88ff5d7958ce2c3cdcb44ab000cc0368369de169",
+        "models/room_kit/inspection.json": "62c8666acc3eedb99895b6cfd48697f14dee5233ace1dfcd2bc37712bda73d6b",
+        "models/room_kit/iso.png": "480abf900affef9ac5a93874debbdfb740ff3db6a990d5fc193dbdb3e93dcdda",
+        "models/room_kit/lod.fbx": "8156995dbd9ef6f6be855fe428212a3de6b9873ee83e99ecbe66cc7b158b5133",
+        "models/room_kit/plan.json": "7c6555d712730a0eda6e6b279ef8371b79785b2a51d7c1fe9c94ff72b56509bf",
+        "models/room_kit/provenance.json": "9392f9528eb967f6149d549c1e0a42b74fcb7db4b1d69ddbd8f0169671c4da2e",
+        "models/room_kit/side.png": "1f46c39a506b50e53e3bcd2d56d92d866140177f79f5fe2011e16b21bc7fd23c",
+        "models/room_kit/source.blend": "594be74a3592e5d4497de09eac11bf4df5deced29244238b71fcd390550d5b4f",
+        "models/room_kit/top.png": "0484cac13c1fd6ea4b971d640687a0e6ffdfe23f70671b84e9127fe889c38b4e"
+      }
+    },
+    "vehicle": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "base",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "top",
+          "position": [
+            0.0,
+            2.0,
+            0.0
+          ]
+        },
+        {
+          "id": "front",
+          "position": [
+            0.0,
+            0.6,
+            3.0
+          ]
+        }
+      ],
+      "files": {
+        "models/vehicle/asset.fbx": "17b3c2e1fa68151aa3c5f3b9682cc9326d8f8b1fdab7ac6775e51ec9bfa2c28b",
+        "models/vehicle/front.png": "8802eeb6872d5642025a74d9e5f62c02dd811c95b97e9d7dbf5881cbabd62076",
+        "models/vehicle/inspection.json": "69351c0beb0fc1e51bdb10e369c41163e46c3d302d3d0d6ac03cb58dae087298",
+        "models/vehicle/iso.png": "3c30fa5e75e31522d2e3b6799506921e69aa530cd2d86efaa87bcbc07c893648",
+        "models/vehicle/lod.fbx": "bbd1bcb485c6b1629f2b76afda43c9a4f83da3c19736664dcfcb396dc5deee84",
+        "models/vehicle/plan.json": "05098ab68ee831e3fdbfb702de2168634f131a511b06b56c046d27a03a2cdac8",
+        "models/vehicle/provenance.json": "d8f1990e5fa723567e9b0749624516a63b3ec307f85fb81e7f39ab16677f1e31",
+        "models/vehicle/side.png": "c3f39c937f323ad2bc5f25e6442d5d61bff2df7f2924e0d7580a9ae01f8418cb",
+        "models/vehicle/source.blend": "feaae0210c3519222459e015e421d213410cb4e59e5d66d9260f08d352c3ce55",
+        "models/vehicle/top.png": "a27274d58ae334432df6954a79ee3487391d1a023f766e4bb7bfb34578749163"
+      }
+    },
+    "mechanical_prop": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "base",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "top",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "id": "shaft",
+          "position": [
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ],
+      "files": {
+        "models/mechanical_prop/asset.fbx": "4325b9b0a5e4b93401a3bd5fd55578d5a5307d86cb9bd52feec153037e6fc352",
+        "models/mechanical_prop/front.png": "aea406d51db7b30e399f9c07a952584951a5b0a70e1a9e91d3a4eaeeaa85c93a",
+        "models/mechanical_prop/inspection.json": "bb9300f509fa689bc821cd388411fa2b7249d1ca5647d6c75c5bd06b9532143c",
+        "models/mechanical_prop/iso.png": "e1f1e5f696628b648551f3d9f97e0363ddd1ec5c63b703f670650be80b740b24",
+        "models/mechanical_prop/lod.fbx": "fbada43d546a448c7e1a78a8a3b1acc40423534ac5ee30d2348cdd5369e430e2",
+        "models/mechanical_prop/plan.json": "3d2f8305a5764d512e8d4f096563c3f2f0eae6346f0026952b5d7ea3ee2b59b1",
+        "models/mechanical_prop/provenance.json": "296082d99a2a5f6893973436b8addedebbd6a14fd84ce382931a470a94fb739b",
+        "models/mechanical_prop/side.png": "30400ee3ecd2c38d3db93b2a7e144ac2b88f4a765adc4731cae09b257ad9bcec",
+        "models/mechanical_prop/source.blend": "93a54c497947d29b0abd07c9c1053abd69ec48b8d237b3cfc84f25499470c2c3",
+        "models/mechanical_prop/top.png": "d2bbdfce79d983a1442d3020d294bfa1e1f0f39824453706c6892dffe6ab5d5e"
+      }
+    },
+    "organic": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "base",
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "id": "top",
+          "position": [
+            0.0,
+            3.0,
+            0.0
+          ]
+        }
+      ],
+      "files": {
+        "models/organic/asset.fbx": "13e42f685ded87f09e57704c20616e805f993fddc6baf0eb56b5ac568ee55a42",
+        "models/organic/front.png": "5ca36927ae5deeb0172bdc5b74627b828c11c1832ac488bcf9bbd58e84217b66",
+        "models/organic/inspection.json": "b447741ff7e5bb25e8c180ad3402ed994784d0b7b89024e7b64f7153a86a29c4",
+        "models/organic/iso.png": "7f394bc7cb957b6699462f67ccd98f51bc228e171a067b92a651c6ea4fb0da29",
+        "models/organic/lod.fbx": "7cda951fec33c079229e1ea101b59d65d4d828d3728d7aba83dda7286b35198c",
+        "models/organic/plan.json": "6e89209b5fbd6e15359cbbec2fc530bd24c3f4fb08dd9b425081ae002a723893",
+        "models/organic/provenance.json": "1043cbd428617e758a6dcb7e45f3b8c9657a19f775ad5032763dc80a4916c0cd",
+        "models/organic/side.png": "5e519f7d74406ff9ff1ac456024f030156b399281af990d47bda5fd366b0ab4b",
+        "models/organic/source.blend": "5f8d1c3168d2d7f419e33503f59526f1a8831197293b2513edf6f78bf8c07c85",
+        "models/organic/top.png": "18cd3bccb01853efffb5489e07c3005bb14d51d68a2244eb982cfc6e9048b0b2"
+      }
+    },
+    "compose": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "outlet",
+          "position": [
+            0.9,
+            0.77,
+            0.35
+          ]
+        }
+      ],
+      "files": {
+        "models/compose/asset.fbx": "03d0ee5a03471c06c83c9f3f5da4a72b68b0d4e5b67b0db622cc06151cdfea52",
+        "models/compose/front.png": "d50edc7302f343507ec7cdd09a282117e8011f8fefa22153ab0ab45d46898829",
+        "models/compose/inspection.json": "30b66a5a4ae231cd3c1b0afc1341df4e1b5a10ba034777d2c6a6280da09751ce",
+        "models/compose/iso.png": "c3661ca7af76793c095d94437578e3d3fe8f61da0d7895f168c85f71415a3671",
+        "models/compose/lod.fbx": "bfb99f1020ee32e540f3145116560db6eab20e27c7bcce6c762c213a8e495a3e",
+        "models/compose/plan.json": "5619216b51f59a8e97b08e8e7ad8e7e4dd634e959b041f00fa6443738094e74e",
+        "models/compose/provenance.json": "a4d75a98c1dd086bc126852091553aacbfb66e3e172a62695e9addc272a78ed5",
+        "models/compose/side.png": "1fb695da19fdf1f063e63a11f6f77e14a4e2e526dd0ebb9599e41b2247123bfc",
+        "models/compose/source.blend": "eecb983754bb4102c110238088be376ed07995d0ecb619bd70f4a1ec2bd88ff7",
+        "models/compose/top.png": "869a68b45ba736e16b3bcfe9dc26b7a432d1584fc85978dd76dc8b6d2e02177d"
+      }
+    },
+    "inspection_gantry": {
+      "source_unchanged": true,
+      "socket_expectations": [
+        {
+          "id": "sensor_mount",
+          "position": [
+            0.32,
+            2.52,
+            0.02
+          ]
+        },
+        {
+          "id": "walkway_entry",
+          "position": [
+            -1.9,
+            0.24,
+            1.25
+          ]
+        }
+      ],
+      "files": {
+        "models/inspection_gantry/asset.fbx": "bb2c0ae314f1374a5199396f5f91a9c67b84277b04295613e306a1427e543983",
+        "models/inspection_gantry/front.png": "af9176ec7ffdc85754651cae4ccf8b8fd1afca64e6d7579cc059134e1b5e4fc4",
+        "models/inspection_gantry/inspection.json": "087d1efa7f1bebbca2ced6a27ce4fd3936674c871f76a70289d2a24f12fdf505",
+        "models/inspection_gantry/iso.png": "ebfe8596d3b85d9da22b32626e1c860ff685b209b56916d5956a4680192dd564",
+        "models/inspection_gantry/lod.fbx": "05f813bd15cb64451cd1fb3ef29f1490fedb6326ff5bbcad25acc0db70728884",
+        "models/inspection_gantry/plan.json": "f5c2a7e239b50aa359305f0aab2066ebbbe295b76b837dacdfa7180e3fb2935d",
+        "models/inspection_gantry/provenance.json": "66dc3873319012cc11ba969cd4318eec42b78ec47d29d39a68cb0e2d215301e9",
+        "models/inspection_gantry/side.png": "d3d230134e82e0f11fdc1b553d2c763aff054bfb40720e0d8a02805e441a070b",
+        "models/inspection_gantry/source.blend": "c585844ce1f72cb313c496c727b01fc3c84ef5c9ac72e7cbea08846d61d64941",
+        "models/inspection_gantry/top.png": "8d4d287f08246c9a31f3c21e69ecf1f11f61ed987ba549b04514025e01dc6121"
+      }
+    }
+  },
+  "model_cost": "UNKNOWN",
+  "peak_os_resources": "UNKNOWN",
+  "known_failure_original": {
+    "outlet_expected": [
+      0.9,
+      0.77,
+      0.35
+    ],
+    "outlet_observed": [
+      -0.9,
+      0.77,
+      0.35
+    ],
+    "files": {
+      "original-coolant/asset.fbx": "af5e842bfe2db43e3831dab60a36770c4da6a9851b43ba698a492ed9456ba783",
+      "original-coolant/front.png": "7c101027a7f8685d31f495a7285a520695cadeac53e06cd1e0153d980903ef8b",
+      "original-coolant/inspection.json": "a677481e56ab1a623fe33da75903be587bc02e7ae472a387c0932e2cbe2b32e9",
+      "original-coolant/iso.png": "4e505711895671af30f49ddcaaa0c93ea6332b562327ce319344ee8ae9665adf",
+      "original-coolant/lod.fbx": "17e090f62bbb1fe54ce87f3cb18047fb396acc4ec77936800124165f1db670cf",
+      "original-coolant/plan.json": "5619216b51f59a8e97b08e8e7ad8e7e4dd634e959b041f00fa6443738094e74e",
+      "original-coolant/provenance.json": "998dabdbdc79c6f6eda62a48bc1e6d79b1e090c451845efbd40fb762c39f3a89",
+      "original-coolant/side.png": "5a2a7fe04a8d3dbfdcb575332e1db3a4439ce86d9bd5039af61a428c9433d176",
+      "original-coolant/source.blend": "f361f50d4f66fe42400da2a45f89a91d801277886f81ba0c38741737393e6104",
+      "original-coolant/top.png": "5b40d6435750596b5db0ea3d64bc33b507bc994a9dfe16343de9dbb42ce6f2c0"
+    }
+  },
+  "unity_imports": 12,
+  "native_mutants_detected": 10,
+  "nested_parent_cases": 24,
+  "socket_observations": {
+    "Assets/Phase12Models/compose_asset.fbx": [
+      {
+        "id": "outlet",
+        "expected": [
+          0.8999999761581421,
+          0.7699999809265137,
+          0.3499999940395355
+        ],
+        "observed": [
+          0.8999999761581421,
+          0.7699998617172241,
+          0.3500000834465027
+        ],
+        "matchCount": 1
+      }
+    ],
+    "Assets/Phase12Models/compose_lod.fbx": [
+      {
+        "id": "outlet",
+        "expected": [
+          0.8999999761581421,
+          0.7699999809265137,
+          0.3499999940395355
+        ],
+        "observed": [
+          0.8999999761581421,
+          0.7699998617172241,
+          0.3500000834465027
+        ],
+        "matchCount": 1
+      }
+    ]
+  },
+  "code_sha256": {
+    "polyforge/blender/modeling_worker.py": "ddd15641ff53108a2e7a2b292320cf29bf0f0941fa185e7c173894827ffdd0d2",
+    "polyforge/blender/modeling_inspector.py": "564e271765f3cec401715852eac39ce303379bf7d88358eabc1b47f68f8b25a3",
+    "tests/test_phase12_native.py": "5173d2b6d0455e880ceeb4e80321045af0705285d4b320af9f43303532a4152f",
+    "tests/fixtures/modeling/ModelingImportProbe.cs": "043b2629f9a232c427ecc52fae4c869cfd5efd40361fc39ae93b1155b840716e",
+    "tests/fixtures/modeling/export_trace.py": "0eb5d301f869591cdac528a3f1d74172496676558e1f5cd0d4ff302a2da918e1",
+    "polyforge/blender/modeling.py": "1ca51e18bf0a1002a2d1cbc91350ed6f147050e9b8b10072d79139d5c2aba1e1",
+    "tests/test_modeling.py": "d80e53d3fea7cfdacdb4a309221e172d8c290b8cabb51eff188dd9610fe5691d"
+  },
+  "native_scripts_ast_match_final_source": true,
+  "measurement_start_utc": "2026-11-08T08:33:43.087920+00:00",
+  "measurement_end_utc": "2026-11-08T09:36:00.923659+00:00",
+  "elapsed_since_baseline_seconds": 3737.835739,
+  "evidence_files": {
+    "baseline-offline.txt": "c53b40aa9bc5aeaa460a9dc0576c7f48bbbf5d55289bde762281607cab60b999",
+    "baseline.json": "ecfc8d9d399a5a8b63a6d4c6358093d28f9cd3db441abeb0d4624c6b892c974a",
+    "blender-before-face-preservation.txt": "6687071344771194a517e1075120f86906dea4e7a99b30b9a9aa4c0a9f6c28a0",
+    "blender-final.txt": "069ee4efadda66a522fe51eb3533da5e999a1582ca6108e225ec234c81b5dbf8",
+    "candidate-diagnostic.txt": "f2e5c2ab18c283fadfff6eb731dd7784acdacca6897a57a997450bde0d6ee548",
+    "candidate-source-snapshot.json": "7bdef19386ba02a295f04e71181b8789f3ed190b39acd54d08cf8f06794909e7",
+    "cli-docs.txt": "dca290e2f88270d5af6ed1f25400a39293dafbdb554058aff1a81e9ed0cd48e6",
+    "coverage-gate.txt": "8f711af1023a5d5de3521903c2a7840fa847fac248e8853ccfdd8daa168e470f",
+    "format-final.txt": "61c73d9ddf0d2d11b7e1d2d371bc148bffee086b4552a8c0981f2b65e103b513",
+    "game-regressions.json": "4adcdf475f304efb957ce868c80969f998c7d0d863936e6267644492bc583117",
+    "game-regressions.txt": "8874340f2d26d4e93ca054bb84d54bccbb513d07d9495f9387bfe9f557af1cfc",
+    "green-blender.txt": "8806372fd82f8e9797a81cf276c9337f66da1bb731e1a00b51a0189d3a16d7fd",
+    "green-frame-trace.json": "cbe14aba12c8f6f14012a742a0a1eb45959ef6afcf8497e7afb8503c4d83efad",
+    "green-unity.txt": "d5fc5d97172c525b8fa7de0f83bffef64e57ab58b56682c93280e90418484c7f",
+    "legacy-blender.txt": "e88db67ac2e9db1a6d9ed7be8c52bbd0e22e6949449aaf791d4626f474d7812a",
+    "lint-final.txt": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "lint-initial.txt": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "lod-material-red.json": "8cff86c93d9f34b026a772c615179ce3006a3878c0084f7670a789f44cee82ce",
+    "material-node-experiment-stderr.txt": "463037991840aba3b58aff5712f7c2cd7f6381e3e702ef6f6e9cb1b9f768a083",
+    "material-node-experiment.txt": "3ca31ebb7bbfd6aa9546a1d72ff2c81a73e19cebb587867f64a22213bdf57860",
+    "material-red-frame-trace.json": "bf7c4befe7674fcb4d8ca79af1ad97547507f48daa5c53fd2e9f3219530f6580",
+    "material-red-unity.json": "03f542ad8c90ad1bfd7b04a43efb79e811092d9f60dab2c38c61f80fa822d3f8",
+    "material-red-unity.txt": "16dfc95746e0033279b88145b3465acc9a34b0650c1dee5566a92e240fec757c",
+    "offline-final.txt": "f96f76b8e78374abe80a722775221b495d134656425efd7e105a982342858717",
+    "offline.txt": "87a597be8eb3e1c5fe978ae0cfa68aba52d10f8d971e1bc0e037c0d5c2d0312f",
+    "original-import-editor.txt": "0a8b69fd5348fb423195413302224e6c1a325b8de967fbb9254c5dae122228e8",
+    "publication-offline.txt": "1c44bf490aa7f3d0857aa19e2b28591bc4d69893d063de91885634507cff482f",
+    "publish-build-a.txt": "59e86d264d19eac56b087ededea3cdbab92ec6cf715d6f53414d1cb11e1467b8",
+    "publish-build-b.txt": "69318f1965075ef5d192b5af193d4c36552fca364ba452ad0407bf3f76645bc0",
+    "publish-builds.json": "0dfa0801c3ce131008abedcf1390be9fc1c878a842a2ab73011099ea84027e73",
+    "red-coordinate-editor.txt": "9ff27bdf234ad475d9d67ff0b3e0a60d5bd6ddac9bc6eddc445ad2486c1e9e63",
+    "red-coordinate.txt": "611bef6c7a9b2b614a0615916474663ad20c282c1254cb32bd596843ba1f9c23",
+    "red-frame-trace.json": "f66cef0cd69c6faff91940e84317afbbd1840d5f5930751d1d3f593c340e1253",
+    "red-native-unrestricted.txt": "67bf815bf19b06df2ac2ac883920554e1a63e3b654a560657cd978b5df7b15f2",
+    "red-native.txt": "ae8ed3a331f9c0d76a858e89005c71fe65df481118d2e29de5e28e745bf167fc",
+    "red-unity-frames.json": "a9459c5c9866a80c6f085bdeb714063fb91ca93d0823ef7ecddd5c6062c1a594",
+    "reproduce_reflection.py": "8141d9038a81fa63791dd07b5d00c0a782b84e0fba4277e8e2845fbaca5e9d8d",
+    "router-diagnostic.txt": "2d477725b65afa4bca2061cce7859211a8fe0fc18a442daac430bf8ee5d95afa",
+    "router-green.txt": "97b09b2bd6e576d423acef294b7d9bb9ac4fb7f9e37fea19993a01fca3df2ca5",
+    "run_existing_games.py": "0f751dc6e60d505cf71df8d7720f82de90da475f07d3ec52d98af3fc11afb4e1",
+    "run_unity_import.py": "211515408afef9fb7c5a5921a43b21d9bc28a1382f1b0309b3d27bb5b622d7e4",
+    "sandbox-unity-startup.txt": "d424ebb0a983d6775ba3ddb6d8259b7c56e76e05f787ce16584da310cf90e0de",
+    "types-final.txt": "56f35cb4bd122e7e83602508b87e4e21bce355d4b40058e2753a497a3332d094",
+    "types.txt": "56f35cb4bd122e7e83602508b87e4e21bce355d4b40058e2753a497a3332d094",
+    "unity-final-editor.txt": "654bbe526ee45f46491052751b9877b0404b12ac31269925146008ec8da80164",
+    "unity-final.json": "5f544bd055cf9ecad0b153965b501a962dec08adacb5be973882293a837fb652",
+    "unity-final.txt": "ef889eec3519e35dd65528dd4de62c74f9903d17613ee092a2f805f2e42e45aa",
+    "visual-blender-final.txt": "6ad960e4e19120a99c538ed2fbdb2ebcae8915ecb01d48ae94f13524dba2c813",
+    "visual-frame-trace.json": "80f0068f5670f50b129bd7205df79e7fab1d84d5beee0184473d61f3a1de0768",
+    "visual-unit-dependency-failure.txt": "6cc5f0a2f53d5c7296bedf022547a995c6d6288bb24510c7b93d885ba4bf3529",
+    "visual-unit-green.txt": "feba42e6994ff3513d811197902927db3cd9cc2718b6dcac9660448441b5b521",
+    "visual-unit-red.txt": "dfad48ba9edab53a595399fcf79c14a10016099ba6deaf2d9a651212a6ffb07c",
+    "visual-unity-editor.txt": "64d20a407effd3b5473f80ca3f21a42af6e794de263afc17126f995e914f9f67",
+    "visual-unity-final.json": "fcf9d82f5abf451dd508f100ed1e4c494a7288f8e318b8b2b69a09aba98e0b90",
+    "visual-unity-final.txt": "ef889eec3519e35dd65528dd4de62c74f9903d17613ee092a2f805f2e42e45aa",
+    "original-coolant/asset.fbx": "af5e842bfe2db43e3831dab60a36770c4da6a9851b43ba698a492ed9456ba783",
+    "original-coolant/front.png": "7c101027a7f8685d31f495a7285a520695cadeac53e06cd1e0153d980903ef8b",
+    "original-coolant/inspection.json": "a677481e56ab1a623fe33da75903be587bc02e7ae472a387c0932e2cbe2b32e9",
+    "original-coolant/iso.png": "4e505711895671af30f49ddcaaa0c93ea6332b562327ce319344ee8ae9665adf",
+    "original-coolant/lod.fbx": "17e090f62bbb1fe54ce87f3cb18047fb396acc4ec77936800124165f1db670cf",
+    "original-coolant/plan.json": "5619216b51f59a8e97b08e8e7ad8e7e4dd634e959b041f00fa6443738094e74e",
+    "original-coolant/provenance.json": "998dabdbdc79c6f6eda62a48bc1e6d79b1e090c451845efbd40fb762c39f3a89",
+    "original-coolant/side.png": "5a2a7fe04a8d3dbfdcb575332e1db3a4439ce86d9bd5039af61a428c9433d176",
+    "original-coolant/source.blend": "f361f50d4f66fe42400da2a45f89a91d801277886f81ba0c38741737393e6104",
+    "original-coolant/top.png": "5b40d6435750596b5db0ea3d64bc33b507bc994a9dfe16343de9dbb42ce6f2c0",
+    "red-frame-process/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "red-frame-process/stdout.txt": "2fa01b0748e2f6b86f131e018283b65b9995e99d17e9ea9f4520378734212d1e",
+    "before-visual/organic/asset.fbx": "111e453209bcd84d1198b2fc7154bea84ebebfd7af55344782f52c0a8bcb7627",
+    "before-visual/organic/front.png": "d1ea366340222cfdf80794ec96f6cc14e9dc86176e92a838e1258dd0f8fe84da",
+    "before-visual/organic/inspection.json": "dc1c5aebd22827879a73c3973e073622a811dd22bbc3ec1b594d4d35587e6ee5",
+    "before-visual/organic/iso.png": "48a34815df63b92185ef6511993d7d03ada05373676968d4b64830b8dccbff2c",
+    "before-visual/organic/lod.fbx": "ff85ae5e7adcf43856cc95b4d41bc0d33b468965ee41aef29c931ab6a463477f",
+    "before-visual/organic/plan.json": "382a1e322afcbeb7eb5553e6b7aa246a7937064da260dd1d682745678325afa4",
+    "before-visual/organic/provenance.json": "d73ff6ee2f4725a313e1cbd69808e5d19ce4d234d7a20a77987b8d3d5a729659",
+    "before-visual/organic/side.png": "ec8df0e2e287d3e8ad3aca6dd1f8d8a70bb4fc40c637718481b55cfec0e62136",
+    "before-visual/organic/source.blend": "474e6490ace896fae64be83c0d9fdbbfbf327fa3ec118338698a7debd1bf342d",
+    "before-visual/organic/top.png": "297a0c2d14a0c804be767fb9a9312e5fec0261ee8d00578dc197bc41dced459d",
+    "before-visual/vehicle/asset.fbx": "1550835c06b39757959d518889b3f0a5ab1f42aea920e310c87063ac9e7c29b5",
+    "before-visual/vehicle/front.png": "27b0a79943147f1218e5c6cbe483c5b82f0b30f90e4735adaee5c0c0207de5bc",
+    "before-visual/vehicle/inspection.json": "a80892becb2d44cbd3e241897ac183aacab2f68f10c2683bc911aa4e3c59180d",
+    "before-visual/vehicle/iso.png": "2a0562fdf7f2146e0aa358be5f819fcac0322e704a3215ade6a403bb5302e95a",
+    "before-visual/vehicle/lod.fbx": "999a5bbb9cb02133927e7070a449c1364ee39080ae481d03bc280fd50f4f0c96",
+    "before-visual/vehicle/plan.json": "40d53fa03fb2973a6dddd0e16de269410d74b6930251392a6f2c8a4ba119f3ca",
+    "before-visual/vehicle/provenance.json": "3b8fcc0a715f3c3448c724c640bc4a8c53975bcbf84c81ec97c1dd8d7608c9ea",
+    "before-visual/vehicle/side.png": "d09246ef5129a4d38bef5310962d3715924693aac7bcb3e5224c3218bc359bef",
+    "before-visual/vehicle/source.blend": "5c21f6741c976e57a2d1f46b13fbe4f36f8b719c2a8ff562cb9db90de3864f1b",
+    "before-visual/vehicle/top.png": "5ba7a7984458890cf01cfb428b4b6378ecc936db64e3b98d459d901dbeaa947d",
+    "games/arena/editmode.xml": "341e1ccb32d64d4ed8574a85902facc4db7020128d06d482aa9b34664c0955f8",
+    "games/arena/playmode.xml": "d7d6d194da1a2a4db3e32081d2c234108576a668862c164b5d28fb736e3be0a4",
+    "games/arena/public-oracles.json": "c7e1c1bb911b2dba09d75dc8e9d68936acc7f6a39bf7c4b606fa5f370ff7e328",
+    "games/platformer/editmode.xml": "4447a56ac73864fa7b5cf0fa34c66f13ceac6c0ec177c4754fc5e5b2caa7f1cf",
+    "games/platformer/playmode.xml": "c528c12a7dfb0e05e2fd0918806cfb39c984151306f0d3db399a753dc148e0f4",
+    "games/platformer/public-oracles.json": "2cf83428da78844583c430cd7e3efdbc17423282f3f0ed06c7ee82ae3eadf46a",
+    "models/compose/asset.fbx": "03d0ee5a03471c06c83c9f3f5da4a72b68b0d4e5b67b0db622cc06151cdfea52",
+    "models/compose/front.png": "d50edc7302f343507ec7cdd09a282117e8011f8fefa22153ab0ab45d46898829",
+    "models/compose/inspection.json": "30b66a5a4ae231cd3c1b0afc1341df4e1b5a10ba034777d2c6a6280da09751ce",
+    "models/compose/iso.png": "c3661ca7af76793c095d94437578e3d3fe8f61da0d7895f168c85f71415a3671",
+    "models/compose/lod.fbx": "bfb99f1020ee32e540f3145116560db6eab20e27c7bcce6c762c213a8e495a3e",
+    "models/compose/plan.json": "5619216b51f59a8e97b08e8e7ad8e7e4dd634e959b041f00fa6443738094e74e",
+    "models/compose/provenance.json": "a4d75a98c1dd086bc126852091553aacbfb66e3e172a62695e9addc272a78ed5",
+    "models/compose/side.png": "1fb695da19fdf1f063e63a11f6f77e14a4e2e526dd0ebb9599e41b2247123bfc",
+    "models/compose/source.blend": "eecb983754bb4102c110238088be376ed07995d0ecb619bd70f4a1ec2bd88ff7",
+    "models/compose/top.png": "869a68b45ba736e16b3bcfe9dc26b7a432d1584fc85978dd76dc8b6d2e02177d",
+    "models/inspection_gantry/asset.fbx": "bb2c0ae314f1374a5199396f5f91a9c67b84277b04295613e306a1427e543983",
+    "models/inspection_gantry/front.png": "af9176ec7ffdc85754651cae4ccf8b8fd1afca64e6d7579cc059134e1b5e4fc4",
+    "models/inspection_gantry/inspection.json": "087d1efa7f1bebbca2ced6a27ce4fd3936674c871f76a70289d2a24f12fdf505",
+    "models/inspection_gantry/iso.png": "ebfe8596d3b85d9da22b32626e1c860ff685b209b56916d5956a4680192dd564",
+    "models/inspection_gantry/lod.fbx": "05f813bd15cb64451cd1fb3ef29f1490fedb6326ff5bbcad25acc0db70728884",
+    "models/inspection_gantry/plan.json": "f5c2a7e239b50aa359305f0aab2066ebbbe295b76b837dacdfa7180e3fb2935d",
+    "models/inspection_gantry/provenance.json": "66dc3873319012cc11ba969cd4318eec42b78ec47d29d39a68cb0e2d215301e9",
+    "models/inspection_gantry/side.png": "d3d230134e82e0f11fdc1b553d2c763aff054bfb40720e0d8a02805e441a070b",
+    "models/inspection_gantry/source.blend": "c585844ce1f72cb313c496c727b01fc3c84ef5c9ac72e7cbea08846d61d64941",
+    "models/inspection_gantry/top.png": "8d4d287f08246c9a31f3c21e69ecf1f11f61ed987ba549b04514025e01dc6121",
+    "models/mechanical_prop/asset.fbx": "4325b9b0a5e4b93401a3bd5fd55578d5a5307d86cb9bd52feec153037e6fc352",
+    "models/mechanical_prop/front.png": "aea406d51db7b30e399f9c07a952584951a5b0a70e1a9e91d3a4eaeeaa85c93a",
+    "models/mechanical_prop/inspection.json": "bb9300f509fa689bc821cd388411fa2b7249d1ca5647d6c75c5bd06b9532143c",
+    "models/mechanical_prop/iso.png": "e1f1e5f696628b648551f3d9f97e0363ddd1ec5c63b703f670650be80b740b24",
+    "models/mechanical_prop/lod.fbx": "fbada43d546a448c7e1a78a8a3b1acc40423534ac5ee30d2348cdd5369e430e2",
+    "models/mechanical_prop/plan.json": "3d2f8305a5764d512e8d4f096563c3f2f0eae6346f0026952b5d7ea3ee2b59b1",
+    "models/mechanical_prop/provenance.json": "296082d99a2a5f6893973436b8addedebbd6a14fd84ce382931a470a94fb739b",
+    "models/mechanical_prop/side.png": "30400ee3ecd2c38d3db93b2a7e144ac2b88f4a765adc4731cae09b257ad9bcec",
+    "models/mechanical_prop/source.blend": "93a54c497947d29b0abd07c9c1053abd69ec48b8d237b3cfc84f25499470c2c3",
+    "models/mechanical_prop/top.png": "d2bbdfce79d983a1442d3020d294bfa1e1f0f39824453706c6892dffe6ab5d5e",
+    "models/organic/asset.fbx": "13e42f685ded87f09e57704c20616e805f993fddc6baf0eb56b5ac568ee55a42",
+    "models/organic/front.png": "5ca36927ae5deeb0172bdc5b74627b828c11c1832ac488bcf9bbd58e84217b66",
+    "models/organic/inspection.json": "b447741ff7e5bb25e8c180ad3402ed994784d0b7b89024e7b64f7153a86a29c4",
+    "models/organic/iso.png": "7f394bc7cb957b6699462f67ccd98f51bc228e171a067b92a651c6ea4fb0da29",
+    "models/organic/lod.fbx": "7cda951fec33c079229e1ea101b59d65d4d828d3728d7aba83dda7286b35198c",
+    "models/organic/plan.json": "6e89209b5fbd6e15359cbbec2fc530bd24c3f4fb08dd9b425081ae002a723893",
+    "models/organic/provenance.json": "1043cbd428617e758a6dcb7e45f3b8c9657a19f775ad5032763dc80a4916c0cd",
+    "models/organic/side.png": "5e519f7d74406ff9ff1ac456024f030156b399281af990d47bda5fd366b0ab4b",
+    "models/organic/source.blend": "5f8d1c3168d2d7f419e33503f59526f1a8831197293b2513edf6f78bf8c07c85",
+    "models/organic/top.png": "18cd3bccb01853efffb5489e07c3005bb14d51d68a2244eb982cfc6e9048b0b2",
+    "models/room_kit/asset.fbx": "2079abf6f8608b93d1148ab68b3d55a66d3d7fae67d81c757262385edbe001c2",
+    "models/room_kit/front.png": "bef530fc7f4ae5c82c33025f88ff5d7958ce2c3cdcb44ab000cc0368369de169",
+    "models/room_kit/inspection.json": "62c8666acc3eedb99895b6cfd48697f14dee5233ace1dfcd2bc37712bda73d6b",
+    "models/room_kit/iso.png": "480abf900affef9ac5a93874debbdfb740ff3db6a990d5fc193dbdb3e93dcdda",
+    "models/room_kit/lod.fbx": "8156995dbd9ef6f6be855fe428212a3de6b9873ee83e99ecbe66cc7b158b5133",
+    "models/room_kit/plan.json": "7c6555d712730a0eda6e6b279ef8371b79785b2a51d7c1fe9c94ff72b56509bf",
+    "models/room_kit/provenance.json": "9392f9528eb967f6149d549c1e0a42b74fcb7db4b1d69ddbd8f0169671c4da2e",
+    "models/room_kit/side.png": "1f46c39a506b50e53e3bcd2d56d92d866140177f79f5fe2011e16b21bc7fd23c",
+    "models/room_kit/source.blend": "594be74a3592e5d4497de09eac11bf4df5deced29244238b71fcd390550d5b4f",
+    "models/room_kit/top.png": "0484cac13c1fd6ea4b971d640687a0e6ffdfe23f70671b84e9127fe889c38b4e",
+    "models/vehicle/asset.fbx": "17b3c2e1fa68151aa3c5f3b9682cc9326d8f8b1fdab7ac6775e51ec9bfa2c28b",
+    "models/vehicle/front.png": "8802eeb6872d5642025a74d9e5f62c02dd811c95b97e9d7dbf5881cbabd62076",
+    "models/vehicle/inspection.json": "69351c0beb0fc1e51bdb10e369c41163e46c3d302d3d0d6ac03cb58dae087298",
+    "models/vehicle/iso.png": "3c30fa5e75e31522d2e3b6799506921e69aa530cd2d86efaa87bcbc07c893648",
+    "models/vehicle/lod.fbx": "bbd1bcb485c6b1629f2b76afda43c9a4f83da3c19736664dcfcb396dc5deee84",
+    "models/vehicle/plan.json": "05098ab68ee831e3fdbfb702de2168634f131a511b06b56c046d27a03a2cdac8",
+    "models/vehicle/provenance.json": "d8f1990e5fa723567e9b0749624516a63b3ec307f85fb81e7f39ab16677f1e31",
+    "models/vehicle/side.png": "c3f39c937f323ad2bc5f25e6442d5d61bff2df7f2924e0d7580a9ae01f8418cb",
+    "models/vehicle/source.blend": "feaae0210c3519222459e015e421d213410cb4e59e5d66d9260f08d352c3ce55",
+    "models/vehicle/top.png": "a27274d58ae334432df6954a79ee3487391d1a023f766e4bb7bfb34578749163",
+    "red-frame-process/tmp/blender/extensions/.cache/compat.dat": "37bddece44793efc0700ac85b245d19929e99468df745f0ace86ab908bad0da0"
+  },
+  "phase12_technical_exit": "COMPLETE",
+  "phase13_independent_trial": "NOT_RUN",
+  "latest_native_cohort": "USER_REQUESTED_VISUAL_CORRECTIONS"
+}

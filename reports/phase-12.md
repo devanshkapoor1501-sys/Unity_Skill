@@ -70,10 +70,28 @@ capability ID outside the registered set.
 | Requirement | Checkpoint evidence |
 | --- | --- |
 | 12.1–12.5 | Specialty inventory, four Blender workflows, expert routing, editable source, technical audits and eight Unity imports |
-| 12.6, 12.11 | Public coolant valve composition passed. Evaluator-owned unseen transfer remains BLOCKED |
+| 12.6, 12.11 | Public coolant valve and inspection gantry compositions passed Blender checks. Evaluator-owned unseen transfer remains BLOCKED |
 | 12.7–12.10 | Concept guide and typed routing. Scratch API probe passed. Sculpt, retopology, text, Grease Pencil and simulation remain assisted |
-| 12.12 | Positive and negative modeling cases plus one public transfer. Full independent coverage across all required Blender domains remains open |
+| 12.12 | Positive, invalid and transfer evidence for the executable Phase 12 areas is mapped below. Full independent coverage remains open |
 | 12.13–12.14 | Preserved modifier stacks, basis, bounds, budgets, normals, sockets and topology verified. Arbitrary intersection tests and artistic silhouette remain limited or REVIEW |
+
+| Phase 12 area | Working case | Rejection case | Public transfer |
+| --- | --- | --- | --- |
+| Object transforms and attachments | Four family bounds and sockets | Moved pivot and socket in saved copies | Gantry's rotated beam and inspection head, with sensor mount and walkway entry |
+| Mesh topology and editable modifiers | Mechanical bore, mirror and Solidify cavity | Open mesh, reversed mesh, cyclic Boolean, altered modifier parameter | Valve's bored housing and subdivided handle, gantry's editable bevel |
+| Capped polyline geometry | Organic ridges | Collapsed segments and controls outside bounds | Valve pipe and gantry overhead conduit |
+| Geometry Nodes and budgets | Mechanical prop's editable procedural base | Invalid modifier observations and exceeded polygon budget | Valve mounting grid and gantry deck |
+| Export and inspection | Four views, editable source, main and LOD FBX | Mutated export fails recovery, invalid LOD fails validation | Both compositions retain their source, reports and exports |
+| Blender data API and context | Saved scratch probe changes an active Edit Mode mesh | The same selection operator rejects Object Mode | Reload restores the baseline. Broader API transfer remains unverified |
+
+The saved-copy faults have native observations. Other rejection cases above are
+contract tests in [the compiler suite](../tests/test_modeling.py) and
+[the inspection suite](../tests/test_modeling_inspection.py). Routing returns
+assisted review for mixed requests such as a robot with a particle system, with
+no mesh-only candidate. Capped and beveled polyline requests can suggest typed
+composition after requirement review. Sculpt, retopology, text, Grease Pencil,
+decals and simulations have assisted guidance. The public matrix does not
+qualify those techniques, arbitrary curves or evaluator-owned breadth.
 
 The LOD generator can reject a ratio it cannot meet while preserving the shape.
 UV checks establish finite coordinates and valid material indices. UV layout
@@ -121,3 +139,13 @@ authorized main branch. Local tests and the remote CI matrix are separate.
 See the [phase plan](../docs/plans/2026-11-06-phase-12.md) and
 [modeling guide](../docs/modeling.md). The Phase 12 exit gate remains open for
 independent transfer and remaining qualification. Phase 13 is pending.
+
+## Subsequent v7 repair evidence — 2026-11-08
+
+The [v7 repair report](phase-12-v7.md) preserves and reproduces the composition
+reflection, corrects the modeling export boundary and material assignments, and
+records twelve passing family/composition main/LOD Unity imports. Its fresh
+evidence supersedes the coolant Unity NOT_RUN row for the repaired workflow;
+the older checkpoint above remains a historical record. Independent transfer,
+artistic approval and overall Phase 12 qualification remain open. Future work
+follows the v7 roadmap and its gated Phase 13 trial decision.
