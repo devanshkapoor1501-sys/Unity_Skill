@@ -1,4 +1,16 @@
-# Phase 13 equal-tool pilot charter — draft for approval
+# Phase 13 equal-tool pilot charter — v7.0 record and v7.1 amendment
+
+The user supplied v7.1 on 2026-11-09. Its §7.5 governs the current
+[machine-readable charter](../../reports/pilot-v7-charter.json). The v7.0
+approval and evaluator protocol below is historical. V7.1 authorizes
+managed R0–R2 execution within ten focused hours. A separate Codex verifier
+freezes the five cases and scores native receipts. Shared-host custody is
+reported as SAME_HOST_NONBLIND unless a boundary probe proves isolation.
+The ten paired attempts require verified tool parity. A fresh managed
+checkout and reset session provide the immediate reuse test. The day-8–14
+retention check is optional evidence.
+
+## Historical v7.0 charter
 
 **Status: OWNER TERMS RECORDED / NOT RUN.** The
 [machine-readable charter](../../reports/pilot-v7-charter.json) records the

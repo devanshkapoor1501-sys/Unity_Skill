@@ -1,4 +1,4 @@
-# PolyForge implementation sequence and conditional v7 roadmap
+# PolyForge implementation sequence and conditional v7.1 roadmap
 
 Historical Phase 0–11 authority: PolyForge_v5_1_Expert_MultiWorker_Logic_Hardened_Blueprint.docx,
 reviewed at the user's request on 2026-10-28. SHA256:
@@ -7,7 +7,7 @@ Section 12 preserves the approved v4 Phase 0â€“6 work orders unchanged; the
 paragraph comparison is recorded in the Phase 6 evidence. The v4 source remains
 archived byte-for-byte in docs/source and available in Git history. The original research document was not supplied.
 
-Future-facing authority (2026-11-08): the supplied
+Historical v7.0 authority (2026-11-08): the supplied
 PolyForge_v7_0_Tool_Competency_Development_Blueprint_Phases_0-18.docx
 (SHA-256 `a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b`).
 The local text extract, `.tmp/v7-blueprint.txt`, has SHA-256
@@ -17,6 +17,12 @@ Phase 12–18 instructions. Historical Phase 0–11 work orders, evidence and op
 gates remain preserved; older plans are archival rather than competing future
 instructions. Source and actual tests determine implementation status; this
 roadmap is not a test certificate or approval to execute every proposed phase.
+
+The active future-work plan is the
+[v7.1 autonomous verification roadmap](../PolyForge_v7_1_Codex_Autonomous_Verification_Roadmap_Phases_0-18.docx)
+(SHA-256 `a5c81cef5b424bda60acb51dc5160339841ecaa645ac490385bdaf302014c86e`).
+It preserves historical evidence and supersedes v7.0 on Phase 13 evaluator
+custody, immediate reuse, and conditional progression.
 
 ## Global decisions
 
@@ -53,7 +59,7 @@ roadmap is not a test certificate or approval to execute every proposed phase.
 | 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
 | 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
 | 12 | TECHNICAL EXIT COMPLETE: modeling/export/import repair verified in the recorded workflow | Real Unity reproduced and corrected the coolant outlet, rejected injected reflections, and verified main/LOD import, source integrity, rollback and regressions. Artistic review remains REVIEW. |
-| 13 | NOT RUN: separately approved independent equal-tool pilot | Frozen charter, budget/deadline and evaluator; ten attempts across five pairs, tool parity, independent rubric, negatives, reuse and CONTINUE/NARROW/STOP/INCONCLUSIVE decision |
+| 13 | IN SETUP: Codex-run equal-tool pilot | Frozen charter and verifier rubric, ten attempts across five pairs, tool parity, native negatives, immediate clean reuse and CONTINUE/NARROW/STOP/INCONCLUSIVE decision |
 | 14 | CONDITIONAL: version-aware knowledge and task routing | Reuse existing catalog/router; additive competency records, task-first routes, exact version/source provenance, nonmutating read-only paths and honest coverage |
 | 15 | CONDITIONAL: Blender competencies in separately budgeted submodules | One selected domain/version at a time; native positive/negative, unseen transfer, source reopen, independent review and existing-route regressions |
 | 16 | CONDITIONAL: Unity competencies in separately budgeted submodules | One selected Editor/runtime domain; managed-project safety, correct assemblies/lifecycle, native EditMode/PlayMode as relevant, negatives and independent variations |
@@ -78,21 +84,20 @@ review remains REVIEW; extreme-ratio ridge attachment and fresh standalone/playe
 checks remain unqualified or NOT_RUN as stated in the report. This technical
 completion does not close Phase 11's stable-release gates.
 
-Phase 13 requires a separate owner-approved charter, resource budget/deadline,
-independent evaluator and equal-tool arms. The v7 proposal is 16 focused hours
-over seven days (up to six for Phase 12 and ten for Phase 13), five unseen paired
-tasks, and a separately preapproved one-hour reuse check on days 8–14.
-Proposed thresholds are at least 4/5 assisted outputs accepted, zero undetected
-critical coordinate/socket defects, no worse acceptance than equal-tool Codex,
-and at least 20% lower median time or 30% fewer manual corrections without
-quality loss. The current charter records the owner’s go-ahead for the Phase 13
-trial cap and decision rules. The separate reuse allocation is pending.
-Stop on expired authority, budget/deadline overrun, unsafe original-project
-mutation, missing evaluator, tool-parity failure or unrecovered critical
-regression. Failed/inconclusive evidence does not authorize expansion.
+Phase 13 uses a separate Codex verifier and a ten-focused-hour cap for managed
+R0–R2 work. Freeze five task pairs, rubrics, exact environments, and attempt
+limits before production. Record same-host nonblind custody where access
+separation cannot be enforced. Score the native outputs and negatives and
+repeat one task from a fresh managed workspace. The optional day-8–14 repeat
+is separate evidence. The decision thresholds retain at least 4/5 accepted
+assisted outputs, no worse acceptance than the baseline, zero undetected
+critical coordinate or socket defects, and at least 20% lower median time or
+30% fewer manual corrections with quality preserved. Zero baseline manual
+corrections makes that metric inapplicable. A failure or inconclusive result
+stops expansion.
 
-Phases 14–18 are conditional proposals after a permitted Phase 13 decision and
-separate scoped approval. Proposed caps are 12 hours for Phase 14, 12 hours for
+Phases 14–18 advance in bounded modules after a qualifying Phase 13 decision
+and each module's automated evidence gate. Proposed caps are 12 hours for Phase 14, 12 hours for
 the first Phase 15/16 submodule or Phase 17 lane, and eight hours for Phase 18
 excluding separately approved external evaluation. Additional modules need
 their own caps. Animation and gameplay remain knowledge domains together;

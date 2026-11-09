@@ -11,7 +11,7 @@ Historical Phases 0–10 retain their audited implementation evidence. Phase 11
 is a technical checkpoint; stable CORE v1.0 release remains **BLOCKED**.
 Phase 12's v7 technical exit is **COMPLETE**, verified in its declared Blender/Unity
 workflow. Artistic qualification remains REVIEW; independent equal-tool trials
-belong to the separately gated Phase 13. Future Phase 12–18 planning follows v7; see
+belong to the separately gated Phase 13. Future planning follows v7.1; see
 [the implementation sequence](implementation-plan.md) for authority and gates.
 
 Use `polyforge capability list --json` and `capability show ID --json` to inspect
@@ -27,7 +27,7 @@ and roles; it does not prove that every requirement in a prompt is supported.
 | Worlds | Managed prototype scene construction and native bindings | Selected scene, lighting, audio and profiling competencies in conditional Phases 15/16; cross-tool integration in Phase 17 |
 | Generalist orchestration | Task-selected role graph, frozen handoffs, ownership, review, resource admission and sequential execution | Task-first versioned knowledge/routing in conditional Phase 14; cross-tool transfer and actual host delegation qualification in Phase 17 |
 | Existing projects | Bounded static inventory, hashes/mtimes, requested/resolved package versions, GUID diagnostics and source syntax analysis | Compilation/runtime compatibility and safe approved changes require separate native evidence |
-| Measurement | Declared rendered-loop standalone profile and local-mode measurements | Separate owner-approved Phase 13 equal-tool pilot with charter, budget and independent evaluator; no causal specialization claim without actual comparable trials |
+| Measurement | Declared rendered-loop standalone profile and local-mode measurements | Codex-run Phase 13 pilot with a frozen verifier rubric, matched tools and native receipts |
 
 The [Phase 12 checkpoint](../reports/phase-12.md) reports Unity PASS for eight
 main/LOD FBXs from four parameterized families; its coolant-valve composition
@@ -45,9 +45,9 @@ support records; these are planning vocabulary, not a claim that the current
 schemas implement the full competency registry. Invocation results retain
 their separate PASS/FAIL/BLOCKED/NOT_RUN/REVIEW meanings.
 
-Phase 13 preparation has recorded the owner's trial cap and decision rules.
-The independent evaluator, trial dates, and C/D parity remain prerequisites for
-paired execution. Phases 14–18 remain conditional and individually
+Phase 13 preparation has recorded the trial cap and decision rules. V7.1 uses
+a separate Codex verifier for internal trials, and requires frozen cases and
+C/D parity before paired execution. Phases 14–18 remain conditional and individually
 scoped. Phase 18 is a scope-honest release audit, with stable claims restricted
 to accepted task classes. Animation and gameplay may both have reference
 coverage while executable modules are separately qualified.

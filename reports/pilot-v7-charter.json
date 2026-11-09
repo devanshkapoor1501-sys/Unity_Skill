@@ -1,16 +1,22 @@
 {
   "phase": 13,
   "authority": {
-    "section": "v7 §7.5",
-    "blueprint_docx_sha256": "a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b"
+    "section": "v7.1 \u00a7\u00a73.2\u20133.4, 7.5, 8.4, 11.3",
+    "blueprint_docx": "PolyForge_v7_1_Codex_Autonomous_Verification_Roadmap_Phases_0-18.docx",
+    "blueprint_docx_sha256": "a5c81cef5b424bda60acb51dc5160339841ecaa645ac490385bdaf302014c86e",
+    "superseded_v7_0_docx_sha256": "a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b"
   },
-  "charter_status": "OWNER_TERMS_RECORDED",
+  "charter_status": "FROZEN_V7_1",
   "trial_status": "NOT_RUN",
   "scope": {
     "intended_user": "Blender and Unity asset creator",
     "request_format": "task_spec",
     "outcome": "Editable Blender source, technical preview, FBX and LOD where applicable, and verified managed Unity import",
-    "exclusions": ["full games", "photorealism", "general sculpting"]
+    "exclusions": [
+      "full games",
+      "photorealism",
+      "general sculpting"
+    ]
   },
   "phase_12": {
     "technical_exit": "VERIFIED_IN_WORKFLOW",
@@ -22,8 +28,11 @@
     "trial_calendar_days_max": 7,
     "task_pairs": 5,
     "planned_attempts": 10,
-    "reuse_focused_hours_max": 1,
-    "reuse_calendar_days": [8, 14],
+    "reuse_required": "IMMEDIATE_CLEAN_REUSE",
+    "optional_retention_calendar_days": [
+      8,
+      14
+    ],
     "thresholds": {
       "arm_d_accepted_minimum": 4,
       "undetected_critical_coordinate_or_socket_defects_maximum": 0,
@@ -37,23 +46,24 @@
   },
   "approval": {
     "owner": "Project owner in this chat",
-    "charter_approval_reference": "2026-11-09 continuation after presentation of the v7 proposed trial terms",
-    "trial_start": null,
-    "trial_deadline": null,
+    "charter_approval_reference": "2026-11-09 user instruction to continue using the v7.1 roadmap and its standing managed R0\u2013R2 authority",
+    "trial_start": "2026-11-09T09:15:17.047541+00:00",
+    "trial_deadline": "2026-11-09T18:54:03+00:00",
     "trial_focused_hours_max": 10,
     "trial_calendar_days_max": 7,
     "approved_decision_rules": "#/proposal/thresholds",
-    "reuse_approval_reference": null,
-    "reuse_focused_hours_max": null,
+    "reuse_approval_reference": "v7.1 \u00a77.5.13.8, within the trial cap",
     "reuse_disposition": "PENDING"
   },
   "evaluator": {
-    "identity": null,
-    "custody_attestation_reference": null,
-    "protected_execution_path_reference": null,
-    "rubric_sha256": null,
-    "frozen_task_set_sha256": null,
-    "attempt_order_reference": null
+    "identity": "Codex CLI verifier 01a1bf89-2f87-7ce1-a2b7-cf3a79287c91; distinct native verification processes",
+    "external_acceptance": "UNVERIFIED",
+    "assurance": "SAME_HOST_NONBLIND",
+    "custody_attestation_reference": "reports\\phase-13-evidence\\freeze.json",
+    "protected_execution_path_reference": "Fresh read-only Codex workspaces receive only the corresponding public brief. Same-host filesystem custody is not enforced.",
+    "rubric_sha256": "28ebee00a870d7412ee89ea01d7f464c8cc8a42fe8f820acee2b7b281e76b957",
+    "frozen_task_set_sha256": "8c53b86966abb2ee1c4ce4b3bb89fba98b0fe75b33fc6355c66970b3c5c83765",
+    "attempt_order_reference": "reports\\phase-13-evidence\\freeze.json"
   },
   "task_shapes": [
     "changed_room_modularity",
@@ -91,13 +101,17 @@
     "arm_parity_status": "NOT_RUN"
   },
   "freeze_before_execution": {
-    "candidate_commit": null,
-    "candidate_source_sha256": null,
-    "arm_c_environment_reference": null,
-    "arm_d_environment_reference": null,
-    "parity_check_reference": null,
-    "per_attempt_resource_and_retry_limits": null,
-    "stop_conditions_approval_reference": null
+    "candidate_commit": "a77b33b6b8459028197ec8e14b3d0acddb6ef96d",
+    "candidate_source_sha256": "eaab0a002902129b400129e4e68ae00e3486727842e9f7fb9611db8a93ccde9f",
+    "arm_c_environment_reference": "reports\\phase-13-evidence\\freeze.json",
+    "arm_d_environment_reference": "reports\\phase-13-evidence\\freeze.json",
+    "parity_check_reference": "reports\\phase-13-evidence\\freeze.json",
+    "per_attempt_resource_and_retry_limits": {
+      "seconds": 240,
+      "memory_mib": 8192,
+      "retries": 0
+    },
+    "stop_conditions_approval_reference": "v7.1 \u00a7\u00a73.2\u20133.4 and 7.5"
   },
   "exit_evidence": {
     "paired_attempt_ledger": null,
@@ -107,6 +121,6 @@
     "reuse_receipt": null,
     "decision_report_path": "reports/phase-13-decision.md",
     "decision": null,
-    "reuse_pass_required_for_unconditional_continue": true
+    "immediate_clean_reuse_pass_required_for_continue": true
   }
 }
