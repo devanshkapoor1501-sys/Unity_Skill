@@ -85,8 +85,8 @@ tasks, and a separately preapproved one-hour reuse check on days 8–14.
 Proposed thresholds are at least 4/5 assisted outputs accepted, zero undetected
 critical coordinate/socket defects, no worse acceptance than equal-tool Codex,
 and at least 20% lower median time or 30% fewer manual corrections without
-quality loss. **These caps and thresholds are proposals, not approved budgets
-or permission to begin Phase 13.** A small trial cannot certify broad mastery.
+quality loss. The current charter records the owner’s go-ahead for the Phase 13
+trial cap and decision rules. The separate reuse allocation is pending.
 Stop on expired authority, budget/deadline overrun, unsafe original-project
 mutation, missing evaluator, tool-parity failure or unrecovered critical
 regression. Failed/inconclusive evidence does not authorize expansion.
@@ -100,9 +100,9 @@ their executable lanes are optional, independently funded and verified.
 No stable tag, universal expertise claim or automatic continuation follows
 from this documentation update.
 
-The [Phase 13 pilot charter draft](plans/2026-11-09-phase-13-pilot-charter.md)
-turns the proposal into an approval checklist and evaluator protocol. It is
-PREPARED / NOT APPROVED / NOT RUN; no proposed cap or threshold is activated.
+The [Phase 13 pilot charter](plans/2026-11-09-phase-13-pilot-charter.md)
+records the owner terms, candidate preflight, and evaluator protocol. Trial
+execution remains NOT RUN.
 
 Support records must distinguish knowledge, native execution and independent
 transfer: REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL, VERIFIED_IN_WORKFLOW,

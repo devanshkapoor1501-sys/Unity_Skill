@@ -1,6 +1,6 @@
 # Phase 13 equal-tool pilot charter — draft for approval
 
-**Status: PREPARED / NOT APPROVED / NOT RUN.** The
+**Status: OWNER TERMS RECORDED / NOT RUN.** The
 [machine-readable charter](../../reports/pilot-v7-charter.json) records the
 proposal and the approval fields required by v7 §7.5.
 
@@ -22,21 +22,18 @@ sculpting are outside the trial scope.
 
 | Required field | Approval record |
 | --- | --- |
-| Owner who authorizes this charter | **PENDING** |
+| Owner who authorizes this charter | Project owner in this chat |
 | Approved start date and expiry/deadline | **PENDING** |
-| Total focused-hour budget, including setup, failures, analysis and review | **PENDING** |
+| Total focused-hour budget, including setup, failures, analysis and review | Up to 10 focused hours within seven calendar days |
 | Separate reuse-check authorization and time cap, or explicitly declined | **PENDING** |
 | Independent evaluator identity and organization | **PENDING** |
 | Evaluator confirmation of task custody, rubric control and result signing | **PENDING** |
 | Candidate commit and source identity to freeze | **PENDING** |
-| Owner approval date and recorded approval reference | **PENDING** |
+| Owner approval date and recorded approval reference | 2026-11-09 continuation after presentation of the v7 proposed trial terms |
 
-The source blueprint proposed 16 focused hours over seven calendar days, with
-up to ten hours for Phase 13 after up to six hours for Phase 12, plus a separately
-preapproved one-hour reuse check on days 8–14. Those figures are **proposals**;
-they are not the budget or deadline until the owner enters and approves concrete
-values above. Phase 12 is technically complete, but its historical elapsed time
-does not silently authorize any Phase 13 allocation.
+The owner's go-ahead records the proposed Phase 13 cap and decision rules.
+The trial dates are set after evaluator custody and tool parity are established.
+The reuse check has a separate approval field and a proposed one-hour cap.
 
 ## Prerequisites and custody
 
@@ -102,11 +99,16 @@ The v7 source proposed these provisional management thresholds: accept at least
 4/5 Arm D outputs; detect every critical coordinate/socket defect; accept no
 fewer Arm D outputs than Arm C; and show either at least 20% lower median
 end-to-end time or at least 30% fewer manual corrections, without reducing
-quality. They are not approved statistical claims or permission to execute.
-The owner and evaluator must either approve these exact decision rules or enter
-replacement rules and rationale here before task reveal.
+quality. The owner accepted the proposed decision rules. The evaluator must
+confirm the frozen rubric and measurement method before task reveal.
 
 ## Existing tooling readiness and boundary
+
+The local preflight built the wheel and source distribution from a Git archive
+of candidate `a77b33b`. Both package hashes match the build receipt. The
+machine-readable charter records the package hashes and the observed Blender
+5.2.2 and Unity 6000.6.3f1 binaries. The evaluator must still freeze the
+candidate and verify the two trial environments.
 
 The current `polyforge.benchmark` runner is not, by itself, a Phase 13 evaluator
 or a protected-task harness. Its public suite loader accepts only `DEV_FIXTURE`
@@ -133,7 +135,7 @@ evaluator signature here before task reveal.
 | Decision-rule approval | Record |
 | --- | --- |
 | Accepted thresholds/rubric version | **PENDING** |
-| Owner approval | **PENDING** |
+| Owner approval | Proposed rules accepted on 2026-11-09 |
 | Evaluator approval | **PENDING** |
 
 The terminal decision must be one of **CONTINUE**, **NARROW**, **STOP**, or
@@ -187,4 +189,5 @@ owner and evaluator approval.
 - [ ] Reuse check disposition recorded. A PASS supports unconditional CONTINUE.
 - [ ] Signed terminal decision and `reports/phase-13-decision.md` completed.
 
-Until these prerequisites are met, Phase 13 status remains **NOT AUTHORIZED / NOT RUN**.
+Trial execution remains **BLOCKED / NOT RUN** pending the evaluator, frozen
+tasks and rubric, trial dates, and verified arm parity.

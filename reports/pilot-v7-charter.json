@@ -4,7 +4,7 @@
     "section": "v7 §7.5",
     "blueprint_docx_sha256": "a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b"
   },
-  "charter_status": "DRAFT",
+  "charter_status": "OWNER_TERMS_RECORDED",
   "trial_status": "NOT_RUN",
   "scope": {
     "intended_user": "Blender and Unity asset creator",
@@ -36,12 +36,13 @@
     }
   },
   "approval": {
-    "owner": null,
-    "charter_approval_reference": null,
+    "owner": "Project owner in this chat",
+    "charter_approval_reference": "2026-11-09 continuation after presentation of the v7 proposed trial terms",
     "trial_start": null,
     "trial_deadline": null,
-    "trial_focused_hours_max": null,
-    "approved_decision_rules": null,
+    "trial_focused_hours_max": 10,
+    "trial_calendar_days_max": 7,
+    "approved_decision_rules": "#/proposal/thresholds",
     "reuse_approval_reference": null,
     "reuse_focused_hours_max": null,
     "reuse_disposition": "PENDING"
@@ -64,6 +65,30 @@
   "arms": {
     "C": "General Codex with the agreed Blender and Unity tools",
     "D": "Identical Codex setup plus the frozen PolyForge skill and engine"
+  },
+  "candidate_preflight": {
+    "status": "LOCAL_BUILD_VERIFIED",
+    "candidate_commit": "a77b33b6b8459028197ec8e14b3d0acddb6ef96d",
+    "candidate_tree": "0a02d8df2770a20708131dba7b5f1afe76b7035d",
+    "source_archive_sha256": "eaab0a002902129b400129e4e68ae00e3486727842e9f7fb9611db8a93ccde9f",
+    "local_artifact_directory": ".tmp/phase13-preflight-marp_xh3/release",
+    "source_date_epoch": 1793318400,
+    "artifact_sha256": {
+      "polyforge-0.0.1-py3-none-any.whl": "5f8785c5f139d4a2156d1fb859d472868cb446280f10468797f1ed38920eade7",
+      "polyforge-0.0.1.tar.gz": "9495215c34120cad2743fe06c73b4a723815c339821d40ff0c1821705b9b40ff"
+    },
+    "local_host": {
+      "os": "Windows NT 10.0.26300.0",
+      "architecture": "x64",
+      "cpu": "AMD Ryzen 7 260 w/ Radeon 780M",
+      "logical_processors_available": 16,
+      "python": "3.12.14",
+      "blender": "5.2.2 LTS",
+      "blender_executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+      "unity": "6000.6.3f1_45d8eee7de74",
+      "unity_executable_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0"
+    },
+    "arm_parity_status": "NOT_RUN"
   },
   "freeze_before_execution": {
     "candidate_commit": null,

@@ -45,16 +45,16 @@ support records; these are planning vocabulary, not a claim that the current
 schemas implement the full competency registry. Invocation results retain
 their separate PASS/FAIL/BLOCKED/NOT_RUN/REVIEW meanings.
 
-Phase 13 preparation is active at the owner's request, but paired trial
-execution remains gated on an approved budget/deadline, decision thresholds and
-an independent evaluator. Phases 14–18 remain conditional and individually
+Phase 13 preparation has recorded the owner's trial cap and decision rules.
+The independent evaluator, trial dates, and C/D parity remain prerequisites for
+paired execution. Phases 14–18 remain conditional and individually
 scoped. Phase 18 is a scope-honest release audit, with stable claims restricted
 to accepted task classes. Animation and gameplay may both have reference
 coverage while executable modules are separately qualified.
 
-The [Phase 13 charter draft](plans/2026-11-09-phase-13-pilot-charter.md)
-records the approval fields and evaluator-controlled protocol. It is
-PREPARED / NOT APPROVED / NOT RUN and does not authorize trials.
+The [Phase 13 charter](plans/2026-11-09-phase-13-pilot-charter.md)
+records the owner terms, candidate preflight, and evaluator protocol.
+Trial status is NOT RUN.
 
 Networking, multiplayer, production save systems, arbitrary mechanics, broad
 character rigs, unrestricted sculpt artistry and universal package/API
