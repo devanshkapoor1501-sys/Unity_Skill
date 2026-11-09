@@ -293,6 +293,10 @@ with preserved original v4 tasks and gates where applicable.
   [a Phase 13 pilot charter draft](plans/2026-11-09-phase-13-pilot-charter.md)
   with parity controls, evaluator custody, paired measurements, proposed
   decision rules, stop conditions and an approval checklist.
-- Phase 13 remains NOT AUTHORIZED / NOT RUN. The owner has not approved a budget,
-  deadline or thresholds, and no independent evaluator or held-out tasks are
-  available in this workspace. No Phase 11 status was changed and no trials ran.
+- The owner then requested continuation through Phase 13. Trial execution remains
+  BLOCKED pending a separately approved budget/deadline and decision rules, plus
+  an independent evaluator with custody of unseen tasks. Review of the existing
+  harness confirmed it accepts public DEV_FIXTURE tasks and cannot authenticate
+  evaluator identity; the charter records this boundary and requires a protected
+  execution path before task reveal. No Phase 11 status was changed and no trials
+  ran.

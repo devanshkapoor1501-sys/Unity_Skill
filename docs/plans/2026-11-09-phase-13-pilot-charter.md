@@ -66,12 +66,14 @@ attempt from the denominator.
 
 ## Trial arms and measurements
 
-For each of five evaluator-selected task pairs, run two separate attempts:
+For each of five evaluator-selected task pairs, run two separate attempts using
+the v7 arm mapping:
 
-- **Arm A — PolyForge-assisted:** Codex may use the frozen PolyForge skill,
-  engine, and documented workflows.
-- **Arm B — equal-tool Codex:** the same Codex setup uses the same underlying
-  Blender/Unity tools and permissions without PolyForge assistance.
+- **Arm C — equal-tool baseline:** general Codex with maintained Blender and
+  Unity tools, without PolyForge.
+- **Arm D — PolyForge-assisted:** the identical Codex setup with the same model,
+  effort, hardware, installed tools, permissions, and budgets, with PolyForge
+  added as the sole planned difference.
 
 The independent evaluator scores outputs against the frozen rubric. Retain all
 ten attempt records and report each pair plus aggregate counts. Capture, where
@@ -87,12 +89,36 @@ an evaluator decision.
 ## Decision rule
 
 The v7 source proposed these provisional management thresholds: accept at least
-4/5 Arm A outputs; detect every critical coordinate/socket defect; accept no
-fewer Arm A outputs than Arm B; and show either at least 20% lower median
+4/5 Arm D outputs; detect every critical coordinate/socket defect; accept no
+fewer Arm D outputs than Arm C; and show either at least 20% lower median
 end-to-end time or at least 30% fewer manual corrections, without reducing
 quality. They are not approved statistical claims or permission to execute.
 The owner and evaluator must either approve these exact decision rules or enter
 replacement rules and rationale here before task reveal.
+
+## Existing tooling readiness and boundary
+
+The current `polyforge.benchmark` runner is not, by itself, a Phase 13 evaluator
+or a protected-task harness. Its public suite loader accepts only `DEV_FIXTURE`
+tasks, reads briefs from the suite's public `briefs/` directory, and labels
+adapter/evaluator identity as declared rather than authenticated. The
+`BaselineRunner` / `AcceptanceEvaluator` interfaces can structure development
+measurements, but they do not establish task custody or evaluator independence.
+
+Therefore do not put held-out briefs, reference answers, or evaluator secrets in
+this repository or treat public-suite results as Phase 13. Before running, the
+appointed evaluator and owner must choose a custody-compatible execution path:
+the evaluator can operate a separate protected runner and return signed,
+per-attempt decisions plus task/rubric hashes; or an explicitly reviewed,
+access-controlled evaluator integration can be designed after its trust and
+storage boundaries are specified. No code changes to accept protected task data
+are justified until that boundary is agreed. Record the selected path and
+evaluator signature here before task reveal.
+
+| Evaluator execution/custody path | Approval |
+| --- | --- |
+| Selected protected execution path and evidence format | **PENDING** |
+| Evaluator confirms task/rubric custody and independent scoring | **PENDING** |
 
 | Decision-rule approval | Record |
 | --- | --- |
