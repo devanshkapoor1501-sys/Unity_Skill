@@ -69,14 +69,13 @@ user sequencing amendment allowed Phase 12 development without closing those
 release gates. [The v7 reconciliation](../reports/phase-11-reconciliation-v7.md)
 records reported versus newly witnessed evidence.
 
-[Phase 12](../reports/phase-12.md) remains PARTIAL. The reported Unity PASS
-covers eight main/LOD FBXs from four families; its coolant composition Unity
-row is NOT_RUN. Today's real reproduction is in progress in the separate
-repair lane; no repair PASS is inferred here. Native import must pass the
-unaltered expected socket and reject injected reflection. Artistic review
-remains separate. Preserve editable source, modifiers, materials, UVs, GUIDs,
-source hashes and existing arena/platformer regressions. Do not change expected
-signs, relax tolerance or remove the socket to obtain a pass.
+[Phase 12](../reports/phase-12-v7.md) has completed its v7 technical exit as
+VERIFIED_IN_WORKFLOW for the recorded Blender 5.2.2 / Unity 6000.6.3f1 workflow.
+The coolant outlet, main/LOD imports, material assignments, source hashes,
+GUIDs, and arena/platformer regressions passed their recorded checks. Artistic
+review remains REVIEW; extreme-ratio ridge attachment and fresh standalone/player
+checks remain unqualified or NOT_RUN as stated in the report. This technical
+completion does not close Phase 11's stable-release gates.
 
 Phase 13 requires a separate owner-approved charter, resource budget/deadline,
 independent evaluator and equal-tool arms. The v7 proposal is 16 focused hours
@@ -99,6 +98,10 @@ their own caps. Animation and gameplay remain knowledge domains together;
 their executable lanes are optional, independently funded and verified.
 No stable tag, universal expertise claim or automatic continuation follows
 from this documentation update.
+
+The [Phase 13 pilot charter draft](plans/2026-11-09-phase-13-pilot-charter.md)
+turns the proposal into an approval checklist and evaluator protocol. It is
+PREPARED / NOT APPROVED / NOT RUN; no proposed cap or threshold is activated.
 
 Support records must distinguish knowledge, native execution and independent
 transfer: REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL, VERIFIED_IN_WORKFLOW,

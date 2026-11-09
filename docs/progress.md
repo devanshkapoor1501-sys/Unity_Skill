@@ -285,3 +285,14 @@ with preserved original v4 tasks and gates where applicable.
 - The owner authorized committing/pushing these changes to Unity_Skill.
   Publication uses the existing codex branch and a pull request; source/CI
   identity must be verified from the actual remote result.
+
+## Phase 13 pilot preparation — 2026-11-09
+
+- The owner asked to continue to the next phase while leaving Phase 11's release
+  issue unchanged. Prepared
+  [a Phase 13 pilot charter draft](plans/2026-11-09-phase-13-pilot-charter.md)
+  with parity controls, evaluator custody, paired measurements, proposed
+  decision rules, stop conditions and an approval checklist.
+- Phase 13 remains NOT AUTHORIZED / NOT RUN. The owner has not approved a budget,
+  deadline or thresholds, and no independent evaluator or held-out tasks are
+  available in this workspace. No Phase 11 status was changed and no trials ran.
