@@ -1,0 +1,87 @@
+{
+  "phase": 13,
+  "authority": {
+    "section": "v7 §7.5",
+    "blueprint_docx_sha256": "a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b"
+  },
+  "charter_status": "DRAFT",
+  "trial_status": "NOT_RUN",
+  "scope": {
+    "intended_user": "Blender and Unity asset creator",
+    "request_format": "task_spec",
+    "outcome": "Editable Blender source, technical preview, FBX and LOD where applicable, and verified managed Unity import",
+    "exclusions": ["full games", "photorealism", "general sculpting"]
+  },
+  "phase_12": {
+    "technical_exit": "VERIFIED_IN_WORKFLOW",
+    "artistic_status": "REVIEW",
+    "audit_report": "reports/phase-12-v7.md"
+  },
+  "proposal": {
+    "trial_focused_hours_max": 10,
+    "trial_calendar_days_max": 7,
+    "task_pairs": 5,
+    "planned_attempts": 10,
+    "reuse_focused_hours_max": 1,
+    "reuse_calendar_days": [8, 14],
+    "thresholds": {
+      "arm_d_accepted_minimum": 4,
+      "undetected_critical_coordinate_or_socket_defects_maximum": 0,
+      "arm_d_acceptance_at_least_arm_c": true,
+      "benefit_any_of": {
+        "median_time_reduction_percent_minimum": 20,
+        "manual_correction_reduction_percent_minimum": 30
+      },
+      "quality_preserved": true
+    }
+  },
+  "approval": {
+    "owner": null,
+    "charter_approval_reference": null,
+    "trial_start": null,
+    "trial_deadline": null,
+    "trial_focused_hours_max": null,
+    "approved_decision_rules": null,
+    "reuse_approval_reference": null,
+    "reuse_focused_hours_max": null,
+    "reuse_disposition": "PENDING"
+  },
+  "evaluator": {
+    "identity": null,
+    "custody_attestation_reference": null,
+    "protected_execution_path_reference": null,
+    "rubric_sha256": null,
+    "frozen_task_set_sha256": null,
+    "attempt_order_reference": null
+  },
+  "task_shapes": [
+    "changed_room_modularity",
+    "noncentered_independent_sockets",
+    "rotated_mechanical_assembly",
+    "material_lod_variant",
+    "tricky_asymmetric_import_or_repair"
+  ],
+  "arms": {
+    "C": "General Codex with the agreed Blender and Unity tools",
+    "D": "Identical Codex setup plus the frozen PolyForge skill and engine"
+  },
+  "freeze_before_execution": {
+    "candidate_commit": null,
+    "candidate_source_sha256": null,
+    "arm_c_environment_reference": null,
+    "arm_d_environment_reference": null,
+    "parity_check_reference": null,
+    "per_attempt_resource_and_retry_limits": null,
+    "stop_conditions_approval_reference": null
+  },
+  "exit_evidence": {
+    "paired_attempt_ledger": null,
+    "independent_evaluation": null,
+    "exact_environment_comparison": null,
+    "comparison_report": null,
+    "reuse_receipt": null,
+    "decision_report_path": "reports/phase-13-decision.md",
+    "decision": null,
+    "reuse_pass_required_for_unconditional_continue": true
+  }
+}

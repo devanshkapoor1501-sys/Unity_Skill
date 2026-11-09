@@ -8,9 +8,10 @@ paragraph comparison is recorded in the Phase 6 evidence. The v4 source remains
 archived byte-for-byte in docs/source and available in Git history. The original research document was not supplied.
 
 Future-facing authority (2026-11-08): the supplied
-PolyForge_v7_0_Tool_Competency_Development_Blueprint_Phases_0-18.docx,
-read through `.tmp/v7-blueprint.txt` (source DOCX SHA256
-`2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`).
+PolyForge_v7_0_Tool_Competency_Development_Blueprint_Phases_0-18.docx
+(SHA-256 `a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b`).
+The local text extract, `.tmp/v7-blueprint.txt`, has SHA-256
+`2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`.
 v7 supersedes earlier future-facing mission, benchmarks, release proposals and
 Phase 12–18 instructions. Historical Phase 0–11 work orders, evidence and open
 gates remain preserved; older plans are archival rather than competing future
@@ -51,7 +52,7 @@ roadmap is not a test certificate or approval to execute every proposed phase.
 | 9 | Supervision, human review, eight repairs, cross-app rollback, 12 defect fixtures | Twelve faults, six mutants, authority/misleading-test challenges, race/crash/cache recovery |
 | 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
 | 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
-| 12 | PARTIAL: repair and validate existing modeling/export/import foundations | Real Unity coolant-composite reproduction; expected outlet (0.90, 0.77, 0.35), reported faulty (-0.90, 0.77, 0.35); minimal repair, native asymmetric positive/negative and main/LOD evidence, rollback and regressions |
+| 12 | TECHNICAL EXIT COMPLETE: modeling/export/import repair verified in the recorded workflow | Real Unity reproduced and corrected the coolant outlet, rejected injected reflections, and verified main/LOD import, source integrity, rollback and regressions. Artistic review remains REVIEW. |
 | 13 | NOT RUN: separately approved independent equal-tool pilot | Frozen charter, budget/deadline and evaluator; ten attempts across five pairs, tool parity, independent rubric, negatives, reuse and CONTINUE/NARROW/STOP/INCONCLUSIVE decision |
 | 14 | CONDITIONAL: version-aware knowledge and task routing | Reuse existing catalog/router; additive competency records, task-first routes, exact version/source provenance, nonmutating read-only paths and honest coverage |
 | 15 | CONDITIONAL: Blender competencies in separately budgeted submodules | One selected domain/version at a time; native positive/negative, unseen transfer, source reopen, independent review and existing-route regressions |

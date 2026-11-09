@@ -1,9 +1,8 @@
 # Phase 13 equal-tool pilot charter — draft for approval
 
-**Status: PREPARED / NOT APPROVED / NOT RUN.** This document makes the v7
-Phase 13 proposal reviewable. It does not approve its proposed budget or
-thresholds, appoint an evaluator, create held-out tasks, or authorize trial
-execution. Phase 11 remains at its existing status and is outside this charter.
+**Status: PREPARED / NOT APPROVED / NOT RUN.** The
+[machine-readable charter](../../reports/pilot-v7-charter.json) records the
+proposal and the approval fields required by v7 §7.5.
 
 ## Objective and boundary
 
@@ -12,11 +11,12 @@ asset workflow over Codex with equivalent tools and permissions. The result
 applies only to this workflow and tested versions. It cannot establish broad
 Blender/Unity expertise or satisfy Phase 11 release gates.
 
-The workflow under study is: interpret an evaluator-owned brief; create editable
-Blender source; produce a technical preview and FBX/LOD when applicable; import
-into a managed Unity project; and provide geometry, axis, socket, reference, and
-provenance evidence. Use disposable workspaces. Do not inspect or modify an
-original user project.
+The intended user is a Blender/Unity asset creator who needs an editable model
+and a verified Unity import. Freeze the request as a `task_spec`. The workflow
+produces editable Blender source, a technical preview, FBX/LOD where applicable,
+a managed Unity import, and geometry, axis, socket, reference, and provenance
+evidence. Use disposable workspaces. Full games, photorealism, and general
+sculpting are outside the trial scope.
 
 ## Authority record — must be completed before execution
 
@@ -59,10 +59,10 @@ Before the first attempt, freeze and record:
 - Rubric, defect severity, acceptance thresholds, coordinate/socket tolerances,
   and evaluator signature before task content is revealed.
 
-Any material parity break invalidates the affected pair; retain the attempt and
-mark the result INCONCLUSIVE unless the evaluator’s predeclared protocol defines
-a valid recovery. Never discard a failed, blocked, timed-out, or interrupted
-attempt from the denominator.
+Mark materially unequal tool or permission exposure NON_ATTRIBUTABLE. Retain
+the affected attempt and mark the comparison INCONCLUSIVE if the evaluator’s
+predeclared recovery cannot restore parity. Include failed, blocked, timed-out,
+and interrupted attempts in the accounting.
 
 ## Trial arms and measurements
 
@@ -75,12 +75,22 @@ the v7 arm mapping:
   effort, hardware, installed tools, permissions, and budgets, with PolyForge
   added as the sole planned difference.
 
+The evaluator supplies one unseen instance for each of these v7 task shapes.
+
+1. Changed room modularity.
+2. Noncentered independent sockets.
+3. A rotated mechanical assembly.
+4. A material/LOD variant.
+5. A tricky asymmetric import or repair.
+
 The independent evaluator scores outputs against the frozen rubric. Retain all
-ten attempt records and report each pair plus aggregate counts. Capture, where
-available and allowed: acceptance, defect severity, end-to-end elapsed time,
-human interventions/manual corrections, token and monetary cost, native test
-results, source/output hashes, versions, logs, and setup overhead. Unknown cost
-or resource values stay UNKNOWN; do not infer savings from elapsed time alone.
+ten attempt records and report each pair plus aggregate counts. Record
+acceptance, defect severity, elapsed time, setup, human fixes, retries, tokens
+and cost when measurable, resource limits, original-project mutation checks,
+artifact hashes, Unity import observations, and evaluator signoff. Use UNKNOWN
+for unavailable measurements. Check requirements against the frozen brief,
+include an injected-reflection negative, and obtain human visual review where
+style affects acceptance.
 
 The evaluator controls acceptance and critical-defect classification. The
 candidate team may provide evidence but cannot grade its own output or relabel
@@ -131,14 +141,13 @@ The terminal decision must be one of **CONTINUE**, **NARROW**, **STOP**, or
 A positive pilot only supports considering one separately scoped workstream; it
 does not authorize Phases 14–18 automatically.
 
-## Optional fresh-workspace reuse check
+## Fresh-workspace reuse check
 
-On calendar days 8–14 after the paired pilot, a fresh/reset operator may repeat
-one evaluator-approved task in a clean workspace only if the owner separately
-authorizes its budget and date window above. Record install/setup, elapsed time,
-output, manual fixes, and evaluator disposition. If not separately approved or
-not run, report **NOT AUTHORIZED** or **NOT RUN**, respectively; do not fold a
-later unscheduled attempt into the pilot.
+On calendar days 8–14 of the approved schedule, a different or reset operator
+repeats one evaluator-approved task in a clean workspace with separate budget
+approval. Record setup, elapsed time, output, manual fixes, reproducibility
+costs, and evaluator disposition. Missing reuse evidence makes the pilot result
+provisional. A passing reuse check is required for an unconditional CONTINUE.
 
 ## Stop rules
 
@@ -151,8 +160,8 @@ owner and evaluator approval.
 
 ## Work sequence and evidence
 
-1. **Approve charter:** owner fills authority and decision tables; evaluator
-   confirms custody, task/rubric control, parity setup, and reporting method.
+1. **Approve charter.** Record the owner approval and evaluator confirmation in
+   `reports/pilot-v7-charter.json` before any trial starts.
 2. **Freeze trial:** record candidate/environment identities and evaluator-held
    task/rubric hashes; verify disposable workspaces and unchanged originals.
 3. **Run paired attempts:** evaluator schedules five pairs; operators follow the
@@ -162,9 +171,10 @@ owner and evaluator approval.
    measurements, exceptions, and CONTINUE/NARROW/STOP/INCONCLUSIVE decision.
 5. **Reuse check, if authorized:** run the separately approved fresh-workspace
    check on days 8–14 and record its result independently.
-6. **Close Phase 13:** write `reports/phase-13.md`, bind public receipts by
-   hashes, reconcile every authorized attempt, state unknowns, and stop. Any
-   next phase requires its own scoped approval.
+6. **Close Phase 13.** Publish the paired ledger, independent evaluation
+   record, exact environments, comparison report, follow-up reuse receipt, and
+   `reports/phase-13-decision.md`. Bind public receipts by hash and reconcile
+   every authorized attempt.
 
 ## Acceptance checklist
 
@@ -174,7 +184,7 @@ owner and evaluator approval.
 - [ ] Tool/model/OS/version/permission/resource parity verified before attempts.
 - [ ] All ten attempts retained and independently scored, including failures.
 - [ ] Resource use, interventions, defects, unknowns, and exceptions reported.
-- [ ] Optional reuse check separately authorized or explicitly NOT AUTHORIZED.
-- [ ] Signed terminal decision and `reports/phase-13.md` completed.
+- [ ] Reuse check disposition recorded. A PASS supports unconditional CONTINUE.
+- [ ] Signed terminal decision and `reports/phase-13-decision.md` completed.
 
 Until these prerequisites are met, Phase 13 status remains **NOT AUTHORIZED / NOT RUN**.

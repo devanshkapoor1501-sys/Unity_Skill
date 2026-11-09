@@ -236,7 +236,7 @@ with preserved original v4 tasks and gates where applicable.
   earlier ledger entries without rewriting their history. v7 governs the
   tool-competency mission and Phase 12–18 proposals; historical Phase 0–11
   authority, implementation evidence and open release gates are preserved.
-- Source read: `.tmp/v7-blueprint.txt`; source DOCX SHA256
+- Source read: `.tmp/v7-blueprint.txt`; extracted text SHA-256
   `2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`.
   Base HEAD was `150b8dde4859f1f264f6af4243017406f6c2039c`; the checkout was
   already dirty. No commit, push or native artifact edit belongs to this lane.
@@ -300,3 +300,14 @@ with preserved original v4 tasks and gates where applicable.
   evaluator identity; the charter records this boundary and requires a protected
   execution path before task reveal. No Phase 11 status was changed and no trials
   ran.
+
+## Phase 12 exit audit and Phase 13 preflight, 2026-11-09
+
+- The Phase 12 audit matched v7 §7.4 against the native receipts and published
+  artifacts. It confirmed the technical exit, corrected the roadmap and evidence
+  index, and recorded the scope of the original time measurement. See the
+  [audit findings](../reports/phase-12-v7.md#phase-12-exit-audit-2026-11-09).
+- Phase 13 preparation now includes the five task shapes, a
+  [machine-readable charter draft](../reports/pilot-v7-charter.json) and the
+  reuse gate for an unconditional CONTINUE. Trial execution awaits the approved
+  charter and evaluator-controlled task set.

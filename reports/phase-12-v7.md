@@ -8,8 +8,10 @@ release or independently controlled qualification.
 ## Authority and prior progress
 
 The user requested an assessment and continuation against the updated plan,
-using native parallel agents where useful. The supplied v7 blueprint's SHA256
-is `2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`.
+using native parallel agents where useful. The v7 blueprint DOCX SHA-256 is
+`a7dca4b3b534859879e435f82442f2f8667dbcdb5e5367ee125d5a3575fff29b`.
+Its extracted text SHA-256 is
+`2f0d8dcc12a233ddd860bac417109eb0d498680aed018cac20c857ac00704333`.
 Its first work order requires the coolant-valve coordinate repair before
 considering Phase 13. See the [bounded work plan](../docs/plans/2026-11-08-phase-12-v7-repair.md)
 and [Phase 11 reconciliation](phase-11-reconciliation-v7.md).
@@ -176,3 +178,24 @@ Official references consulted: [Blender 5.2 FBX manual](https://docs.blender.org
 and [mesh material-index clearing](https://raw.githubusercontent.com/blender/blender/v5.2.2/source/blender/blenkernel/intern/mesh.cc).
 Installed Blender's RNA probe confirmed space-transform defaults directly;
 documentation alone was not treated as proof of the native mapping.
+
+## Phase 12 exit audit, 2026-11-09
+
+The audit compared v7 §7.4 against retained native receipts, current repository
+bytes and the test code. The technical exit is **VERIFIED_IN_WORKFLOW** on
+Blender 5.2.2 and Unity 6000.6.3f1. The audit used retained runs.
+
+| v7 items | Evidence audited |
+| --- | --- |
+| 12.1–12.3 | The baseline and red Unity receipt preserve the original FBX handoff, expected positive X outlet and measured negative X outlet. The trace records the Blender source, FBX and Unity frames. |
+| 12.4–12.6 | All 12 main/LOD imports passed. Each corrected coolant outlet is within 0.000000149 m of its frozen expectation, against the 0.005 m tolerance. Unity detected all 10 applicable reflection mutations and restored all 24 transformed parent cases. The exporter compensates at the export hierarchy and restores source transforms. |
+| 12.5–12.7 | All 60 indexed model files match. All 12 GUIDs and metadata hashes survived forced reimport. Six export-failure receipts preserve source hashes and frames. The separate inspector checks topology, winding, normals, materials, UVs, sockets and LOD. |
+| 12.8 | Recorded arena and platformer EditMode, PlayMode and public oracles passed. The original 245-file inventory still matches. Fresh standalone and player checks remain NOT_RUN. |
+| 12.9 | The work record documents bounded repair authorization. The 62.3-minute measurement ends before the later visual rerun. The proposed six-hour allocation has no separate approval receipt. Artistic quality remains REVIEW. |
+
+The evidence index now identifies the published failed candidate log by its
+actual digest. That log records 1,459 passing tests and a failed 89.41% coverage
+gate. The separate passing run remains the source of the 94.10% combined and
+91.19% branch coverage figures. The indexed pre-format modeling test matches
+`9a14f55`. Ruff changed its formatting in `ed9f3b0` and the parsed Python AST
+is identical. The index records both identities.
