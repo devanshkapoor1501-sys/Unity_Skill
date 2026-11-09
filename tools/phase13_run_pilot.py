@@ -443,9 +443,10 @@ def main() -> None:
         }
     elif args.reuse_python is not None or args.reuse_skill is not None:
         raise ValueError("Reuse overrides are available only during the immediate reuse test")
-    args.output.mkdir(exist_ok=False)
+    output = args.output.resolve()
+    output.mkdir(exist_ok=False)
     for case, arm in pairs:
-        run_one(manifest, cases[case], arm, args.output / f"{case}_{arm.lower()}")
+        run_one(manifest, cases[case], arm, output / f"{case}_{arm.lower()}")
 
 
 if __name__ == "__main__":

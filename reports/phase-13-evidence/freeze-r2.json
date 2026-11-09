@@ -1,0 +1,202 @@
+{
+  "phase": 13,
+  "version": "7.1",
+  "scope": "INTERNAL_NONBLIND",
+  "assurance": "SAME_HOST_NONBLIND",
+  "status_at_freeze": "ZERO_TRIALS",
+  "candidate_commit": "a77b33b6b8459028197ec8e14b3d0acddb6ef96d",
+  "freeze_utc": "2026-11-09T09:15:17.047541+00:00",
+  "budget_start_utc": "2026-11-09T08:54:03+00:00",
+  "deadline_utc": "2026-11-09T18:54:03+00:00",
+  "attempt_timeout_seconds": 240,
+  "memory_limit_mib": 8192,
+  "max_retries": 0,
+  "order_seed": 104419,
+  "attempt_order": [
+    [
+      "p13_modular_room_alcove",
+      "C"
+    ],
+    [
+      "p13_modular_room_alcove",
+      "D"
+    ],
+    [
+      "p13_off_center_sockets",
+      "D"
+    ],
+    [
+      "p13_off_center_sockets",
+      "C"
+    ],
+    [
+      "p13_material_lod",
+      "C"
+    ],
+    [
+      "p13_material_lod",
+      "D"
+    ],
+    [
+      "p13_rotated_mechanical",
+      "D"
+    ],
+    [
+      "p13_rotated_mechanical",
+      "C"
+    ],
+    [
+      "p13_asymmetric_repair",
+      "C"
+    ],
+    [
+      "p13_asymmetric_repair",
+      "D"
+    ]
+  ],
+  "cases": [
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_modular_room_alcove.md",
+      "brief_sha256": "efe52b73a14b30a14b7d1b32c17493ecfe0f5d892a5fcf17d6be3b1ccd851a2c",
+      "family": "modular_room",
+      "id": "p13_modular_room_alcove",
+      "seed": 7319
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_off_center_sockets.md",
+      "brief_sha256": "32a1ed7b810dc5530f11f0d767e6d4f8f324f6f43db20c29fbd58d8876190359",
+      "family": "off_center_sockets",
+      "id": "p13_off_center_sockets",
+      "seed": 8423
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_rotated_mechanical.md",
+      "brief_sha256": "1c53041e27f70439548ba89ef87be8985626e111e2c8214047dbe4b2b7b5bb54",
+      "family": "rotated_mechanical",
+      "id": "p13_rotated_mechanical",
+      "seed": 9533
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_material_lod.md",
+      "brief_sha256": "ea42898d1e9d5f875e800a63b325aed6b69a8dd11d4d2eacbb536af1358a59bc",
+      "family": "material_lod",
+      "id": "p13_material_lod",
+      "seed": 10657
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_asymmetric_repair.md",
+      "brief_sha256": "34f4dd92aecc08a582f1e869cbaaf624e4a5685a95eb5d9381cd3b26c134b21f",
+      "family": "asymmetric_repair",
+      "id": "p13_asymmetric_repair",
+      "seed": 11777
+    }
+  ],
+  "rubric_path": ".tmp/phase13-v71/evaluator/rubric.json",
+  "rubric_sha256": "28ebee00a870d7412ee89ea01d7f464c8cc8a42fe8f820acee2b7b281e76b957",
+  "preregistration_sha256": "8c53b86966abb2ee1c4ce4b3bb89fba98b0fe75b33fc6355c66970b3c5c83765",
+  "custody_policy": "Only public briefs injected in fresh producer sessions. No OS claim of hidden-file denial on the shared host.",
+  "parity_status": "VERIFIED_FOR_DATA_ONLY_BROKER",
+  "parity": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "low",
+    "cli": "0.154.0",
+    "native_host": {
+      "os": "Windows NT 10.0.26300.0",
+      "architecture": "x64",
+      "cpu": "AMD Ryzen 7 260 w/ Radeon 780M",
+      "logical_processors_available": 16,
+      "python": "3.12.14",
+      "blender": "5.2.2 LTS",
+      "blender_executable_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+      "unity": "6000.6.3f1_45d8eee7de74",
+      "unity_executable_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0"
+    },
+    "permissions": "read-only ephemeral producer; bounded trusted broker managed writes",
+    "common_tools": [
+      "Blender CLI fixed box/cylinder/transform/material/socket/FBX/preview operations",
+      "Unity native import and score of copied artifacts"
+    ],
+    "only_arm_d": "Pinned PolyForge skill and installed compose capability. The common tool is still available.",
+    "seed_policy": "Evaluator seeds define task instances; no model seed flag. Identical fresh sessions. Counterbalanced order.",
+    "configuration": "Ignore user Codex config; no producer shell or MCP execution. Only validated JSON requests reach the broker.",
+    "preflight_sha256": {
+      "arm_c": "1033c45e3c4d5bce96cbc3ee88eeb236cadec80f0a6968d23a4df92027cae095",
+      "arm_d": "40f1a394e7e5b2cf1430a74b503d8d691477a0735fc843258d851af79c604fe4",
+      "unity_native_positive_and_negatives": "83eeb160fdf3c38b7667c981cc00d81ed81875e1939ce9b26273957a65326345",
+      "arm_d_polyforge": "0e05185163812f319e6523512ca35993fbda6cc90c7e5f7d641d3d7f3fe6b304",
+      "skill_discovery": "65956d80549aa6417da256380d716fec2c1a095737719b3a0da4a878ea370c65",
+      "model_access": "5d40af5cdf1f727c1aae1138101e1761d89d2dedbd3814b23467b8bafa7b92d4"
+    }
+  },
+  "thresholds": {
+    "arm_d_accepted_minimum": 4,
+    "undetected_critical_coordinate_or_socket_defects_maximum": 0,
+    "arm_d_acceptance_at_least_arm_c": true,
+    "benefit_any_of": {
+      "median_time_reduction_percent_minimum": 20,
+      "manual_correction_reduction_percent_minimum": 30
+    },
+    "quality_preserved": true
+  },
+  "blender_sha256": "f141a3c5754500e6f84361099a4cd53f0bb7662b6a0d2cfaaa8fbb63e92234a0",
+  "unity_sha256": "d393ece19ffe578cc9b1bec755edb721d6c753b2a503a39e3b44f9ff3a5afae0",
+  "codex_executable_relative_to_appdata": "npm/node_modules/@openai/codex/node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+  "codex_executable_sha256": "be96b992178b1e467c225800da0d65f2c86d5eba1ef0b14632f65db381cbdfde",
+  "arm_d_skill": ".tmp/phase13-preflight-marp_xh3/source/.agents/skills/polyforge",
+  "arm_d_skill_sha256": "87df5b2f270664cefb642b66db0d37ccf25be189bab78fd03654c5dcb55b0061",
+  "arm_d_python": ".tmp/phase13-clean-install-shuzom0b/venv/Scripts/python.exe",
+  "arm_d_wheel_sha256": "5f8785c5f139d4a2156d1fb859d472868cb446280f10468797f1ed38920eade7",
+  "fixed_file_sha256": {
+    "tools/phase13_run_pilot.py": "46528ac640c687fb9beaf3b51b7c2ad438938580b147b3efc07b4fe7ca887284",
+    "tools/phase13_blender_native.py": "fe95ba6ffe6294963417e5cef2d2275e9b85ba1e78c0d1cae6b6f9ded25c1d5f",
+    "tools/phase13_unity_verify.py": "6913d981d746c687e18a1c21e67d8c9f751e5212e9a446bc92047b62e398d861",
+    "tools/phase13_score.py": "861a3f78b5ca413a05382f2336a0092b35f2caaecac3e21663a426b2a20b6713",
+    "tests/fixtures/modeling/Phase13ImportProbe.cs": "07b32fc2c291a0dabaa039252174eeedb53e5015ed6d6cebf9b6cd019fba3799",
+    "reports/pilot-v7-charter.json": "8ccce0930c440ab0d9153e7138f6fb8b5d993abbf35e9aaa6eb3941dbcfb9c5e",
+    "requirements-dev.lock": "449991135d58a9e1406dfe0026196c99c5da941c19edb07257726c25ec6355f2"
+  },
+  "runner_revision": 2,
+  "previous_freeze_sha256": "69c2c5de0516f2e008e3705a44c7fff2ab7e9fe8f11d4d13dc319c59e346c42e",
+  "pre_model_launch_failure": {
+    "status": "INVALID_SETUP_RETAINED",
+    "cause": "Relative output schema path was resolved from the producer scratch directory",
+    "model_turns_started": 0,
+    "records_sha256": {
+      "p13_material_lod_c": {
+        "receipt.json": "af1dce2420c1c3ac411dfe2809f8bc9758b4125ebf10ec669c6510a463d0406e",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "c03b44b1aba6096991495038439defd4c5641971f3fe936333d757e4262fc1a8"
+      },
+      "p13_material_lod_d": {
+        "receipt.json": "7b908dded3ae374bb2c8a89c02dad567186dec4b79dd39769e4bcfe665f8f2ab",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "e117cb89aa64ecb801316fb3557adf34cb98bd9430ade0324e1b65fa638ca84e"
+      },
+      "p13_modular_room_alcove_c": {
+        "receipt.json": "e21173c43cb9bd643918da8d85256ba7488b5d6779b8a1f30e235e06617a3136",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "4091130b56e9458d8c32dfe3405e2e3e4c4972d6fe48d5590e4b782cfa48a103"
+      },
+      "p13_modular_room_alcove_d": {
+        "receipt.json": "72a6425bcf23c8acb20e3e4d518def5624ee7803f988c99112bd1fc57de79b1c",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "104f84f26969794a7938b7d6999984364ed876aae3e344aca5d21a5487686f21"
+      },
+      "p13_off_center_sockets_c": {
+        "receipt.json": "3d4c4128c0ed2219ab955fc7d85bd9f2c2d5f413a3f17e4ade977b8c530b0b40",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "20ed7e617186cbecf7d6c6edd249c625cbc583f01639ef7ed20d5e5375fa95fa"
+      },
+      "p13_off_center_sockets_d": {
+        "receipt.json": "62c7d7f1229f75122ed95ddf6480f7c97f4b923abae6ce45d29c564e650f5730",
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "3606805d9ea533438bd480fa58dfabc4a3c41abe5c8169276be0a2d587cbacd8"
+      },
+      "p13_rotated_mechanical_d": {
+        "session.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "session.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "repair": "Resolve output directory before launching isolated producer"
+  }
+}
