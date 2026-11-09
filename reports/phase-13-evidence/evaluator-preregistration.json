@@ -1,0 +1,54 @@
+{
+  "assurance": "SAME_HOST_NONBLIND",
+  "cases": [
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_modular_room_alcove.md",
+      "brief_sha256": "efe52b73a14b30a14b7d1b32c17493ecfe0f5d892a5fcf17d6be3b1ccd851a2c",
+      "family": "modular_room",
+      "id": "p13_modular_room_alcove",
+      "seed": 7319
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_off_center_sockets.md",
+      "brief_sha256": "32a1ed7b810dc5530f11f0d767e6d4f8f324f6f43db20c29fbd58d8876190359",
+      "family": "off_center_sockets",
+      "id": "p13_off_center_sockets",
+      "seed": 8423
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_rotated_mechanical.md",
+      "brief_sha256": "1c53041e27f70439548ba89ef87be8985626e111e2c8214047dbe4b2b7b5bb54",
+      "family": "rotated_mechanical",
+      "id": "p13_rotated_mechanical",
+      "seed": 9533
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_material_lod.md",
+      "brief_sha256": "ea42898d1e9d5f875e800a63b325aed6b69a8dd11d4d2eacbb536af1358a59bc",
+      "family": "material_lod",
+      "id": "p13_material_lod",
+      "seed": 10657
+    },
+    {
+      "brief_path": ".tmp/phase13-v71/evaluator/briefs/p13_asymmetric_repair.md",
+      "brief_sha256": "34f4dd92aecc08a582f1e869cbaaf624e4a5685a95eb5d9381cd3b26c134b21f",
+      "family": "asymmetric_repair",
+      "id": "p13_asymmetric_repair",
+      "seed": 11777
+    }
+  ],
+  "evaluator_events_sha256": "89c56cc2dc1586f561d2498592bae6106306f9963119dc9bb84524b0a77433eb",
+  "evaluator_model": "gpt-6-astra",
+  "evaluator_session": "01a1bf89-2f87-7ce1-a2b7-cf3a79287c91",
+  "evaluator_source_sha256": "d45921f674f2c7a6e5069f4112ba25cde7ea27fe06c6d04c62e4e3321dc64b77",
+  "normalizations": [
+    {
+      "from": "p13_modular_room_ alcove",
+      "reason": "Identifier whitespace only",
+      "to": "p13_modular_room_alcove"
+    }
+  ],
+  "rubric_sha256": "28ebee00a870d7412ee89ea01d7f464c8cc8a42fe8f820acee2b7b281e76b957",
+  "scope": "V7_1_EVALUATOR_PREREGISTRATION",
+  "status": "PREPARED_BEFORE_TRIALS"
+}

@@ -53,4 +53,6 @@ reports/phase-12-evidence/index.json text eol=lf
 # Preserve indexed v7 native evidence bytes across Windows/Linux checkouts.
 reports/phase-12-v7-evidence/** binary
 reports/phase-12-v7-evidence/index.json text eol=lf diff merge
+# Preserve Phase 13 receipts and native artifacts under their indexed hashes.
+reports/phase-13-evidence/** -text
 reports/phase-12-v7-evidence/*.py text eol=lf diff merge

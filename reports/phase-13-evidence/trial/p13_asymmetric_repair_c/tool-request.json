@@ -1,0 +1,72 @@
+{
+  "backend": "blender",
+  "reflect_export_x": true,
+  "modules": [
+    {
+      "id": "repair_main_block",
+      "primitive": "box",
+      "size": [
+        1.55,
+        1.05,
+        1.35
+      ],
+      "position": [
+        -1.25,
+        0.65,
+        0.675
+      ],
+      "rotation_degrees": 0,
+      "material": "base"
+    },
+    {
+      "id": "repair_displaced_piece",
+      "primitive": "box",
+      "size": [
+        0.55,
+        0.75,
+        0.9
+      ],
+      "position": [
+        1.65,
+        -1.2,
+        0.45
+      ],
+      "rotation_degrees": 0,
+      "material": "accent"
+    },
+    {
+      "id": "repair_short_post",
+      "primitive": "cylinder",
+      "size": [
+        0.8,
+        0.8,
+        0.55
+      ],
+      "position": [
+        -0.35,
+        -1.65,
+        0.275
+      ],
+      "rotation_degrees": 0,
+      "material": "trim"
+    }
+  ],
+  "sockets": [
+    {
+      "id": "repair_socket_left",
+      "position": [
+        -1.85,
+        0.95,
+        1.2
+      ]
+    },
+    {
+      "id": "repair_socket_right",
+      "position": [
+        1.9,
+        -1.45,
+        0.3
+      ]
+    }
+  ]
+}

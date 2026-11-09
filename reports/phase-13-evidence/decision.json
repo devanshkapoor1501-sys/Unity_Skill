@@ -1,0 +1,38 @@
+{
+  "scope": "INTERNAL_NONBLIND",
+  "assurance": "SAME_HOST_NONBLIND",
+  "decision": "NARROW",
+  "freeze_sha256": "d389613ebd5279b11930382d21b831f921a72a1adf8d4a1433c039861d0fb067",
+  "attempts": 10,
+  "arms": {
+    "C": {
+      "attempts": 5,
+      "accepted": 5,
+      "median_total_seconds": 36.933,
+      "manual_corrections": 0
+    },
+    "D": {
+      "attempts": 5,
+      "accepted": 1,
+      "median_total_seconds": 41.482,
+      "manual_corrections": 0
+    }
+  },
+  "median_total_time_improvement_percent": -12.316898166950965,
+  "manual_correction_improvement_percent": null,
+  "manual_correction_metric": "NOT_APPLICABLE",
+  "gates": {
+    "paired_tool_parity": true,
+    "native_ready": true,
+    "artifacts_unchanged": true,
+    "quality_threshold": false,
+    "benefit_threshold": false,
+    "immediate_clean_reuse_accepted": false,
+    "required_negatives_detected": true
+  },
+  "negative_attempts_observed": 40,
+  "negative_attempts_expected": 40,
+  "phase14_authorized_by_decision": false,
+  "external_acceptance": "UNVERIFIED",
+  "finish_utc": "2026-11-09T17:46:38.968304+00:00"
+}

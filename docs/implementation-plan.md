@@ -59,7 +59,7 @@ custody, immediate reuse, and conditional progression.
 | 10 | Expert skill/reference routing, two host guides and optional bounded MCP | Skill/knowledge/permissions tests, actual host evidence, fake MCP identity/cancellation |
 | 11 | Core v1.0, second genre, evaluator, benchmarks, profiling, static inspection | Original release gates plus multi-worker safety, parity and accurate core-only claims |
 | 12 | TECHNICAL EXIT COMPLETE: modeling/export/import repair verified in the recorded workflow | Real Unity reproduced and corrected the coolant outlet, rejected injected reflections, and verified main/LOD import, source integrity, rollback and regressions. Artistic review remains REVIEW. |
-| 13 | IN SETUP: Codex-run equal-tool pilot | Frozen charter and verifier rubric, ten attempts across five pairs, tool parity, native negatives, immediate clean reuse and CONTINUE/NARROW/STOP/INCONCLUSIVE decision |
+| 13 | NARROW after the Codex-run equal-tool pilot | Ten paired attempts, native verification and clean reuse are recorded in the [Phase 13 decision](../reports/phase-13-decision.md). The paired results fell short of the quality and benefit gates. |
 | 14 | CONDITIONAL: version-aware knowledge and task routing | Reuse existing catalog/router; additive competency records, task-first routes, exact version/source provenance, nonmutating read-only paths and honest coverage |
 | 15 | CONDITIONAL: Blender competencies in separately budgeted submodules | One selected domain/version at a time; native positive/negative, unseen transfer, source reopen, independent review and existing-route regressions |
 | 16 | CONDITIONAL: Unity competencies in separately budgeted submodules | One selected Editor/runtime domain; managed-project safety, correct assemblies/lifecycle, native EditMode/PlayMode as relevant, negatives and independent variations |
@@ -106,8 +106,9 @@ No stable tag, universal expertise claim or automatic continuation follows
 from this documentation update.
 
 The [Phase 13 pilot charter](plans/2026-11-09-phase-13-pilot-charter.md)
-records the owner terms, candidate preflight, and evaluator protocol. Trial
-execution remains NOT RUN.
+records the owner terms, candidate preflight, and evaluator protocol. The
+[Phase 13 decision](../reports/phase-13-decision.md) records the completed
+comparison and reuse result. Phase 14 remains gated.
 
 Support records must distinguish knowledge, native execution and independent
 transfer: REFERENCE_ONLY, VERSION_PROBED, EXPERIMENTAL, VERIFIED_IN_WORKFLOW,

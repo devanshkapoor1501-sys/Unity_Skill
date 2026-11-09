@@ -1,0 +1,1430 @@
+{
+  "scope": "V7_1_PHASE_13_NATIVE_VERIFICATION",
+  "assurance": "SAME_HOST_NONBLIND",
+  "input_artifacts_unchanged": true,
+  "unity_native_status": "PASS",
+  "unity_batch_setup_and_import_seconds": 261.046,
+  "time_policy": "Model and build time plus measured per-attempt Blender and Unity checks. Shared Unity startup is reported separately.",
+  "rows": {
+    "p13_asymmetric_repair_c": {
+      "id": "p13_asymmetric_repair_c",
+      "arm": "C",
+      "case_id": "p13_asymmetric_repair",
+      "producer_receipt_sha256": "cf78b2eca0ad9b620837fbd2f2e6719709e79a11f8c8a4ac90c327866b02af18",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 35.672,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 27903,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 250,
+        "reasoning_output_tokens": 27
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 28692,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 3.016,
+        "stdout_path": "p13_asymmetric_repair_c\\stdout.txt",
+        "stderr_path": "p13_asymmetric_repair_c\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "repair_main_block",
+            "bounds_min": [
+              -2.0250000953674316,
+              0.0,
+              -1.1749999523162842
+            ],
+            "bounds_max": [
+              -0.4750000238418579,
+              1.350000023841858,
+              -0.125
+            ]
+          },
+          {
+            "id": "repair_displaced_piece",
+            "bounds_min": [
+              1.375,
+              0.0,
+              0.8250000476837158
+            ],
+            "bounds_max": [
+              1.9249999523162842,
+              0.8999999761581421,
+              1.5750000476837158
+            ]
+          },
+          {
+            "id": "repair_short_post",
+            "bounds_min": [
+              -0.75,
+              0.0,
+              1.25
+            ],
+            "bounds_max": [
+              0.050000011920928955,
+              0.550000011920929,
+              2.049999952316284
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "repair_socket_left",
+            "position": [
+              -1.850000023841858,
+              1.2000000476837158,
+              -0.949999988079071
+            ]
+          },
+          {
+            "id": "repair_socket_right",
+            "position": [
+              1.899999976158142,
+              0.30000001192092896,
+              1.4500000476837158
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.850000023841858,
+            1.1999998092651367,
+            -0.9499996304512024
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.850000023841858,
+            1.1999998092651367,
+            -0.9499996304512024
+          ]
+        }
+      ],
+      "native_seconds": 3.529,
+      "total_seconds": 39.201,
+      "verdict": "ACCEPTED"
+    },
+    "p13_asymmetric_repair_d": {
+      "id": "p13_asymmetric_repair_d",
+      "arm": "D",
+      "case_id": "p13_asymmetric_repair",
+      "producer_receipt_sha256": "7535ddfbef2472e0db4eac0091c2691c4cec0e562459e93310e79f6001289a7f",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 42.188,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 28488,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 249,
+        "reasoning_output_tokens": 26
+      },
+      "backend": "polyforge",
+      "failures": [
+        "Named module bounds, count, or material differs repair_main_block",
+        "Named module bounds, count, or material differs repair_displaced_piece",
+        "Named module bounds, count, or material differs repair_short_post"
+      ],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 3580,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 3.078,
+        "stdout_path": "p13_asymmetric_repair_d\\stdout.txt",
+        "stderr_path": "p13_asymmetric_repair_d\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "repair_main_block",
+            "bounds_min": [
+              -2.0250000953674316,
+              0.0,
+              -1.1749999523162842
+            ],
+            "bounds_max": [
+              -0.4750000238418579,
+              1.350000023841858,
+              -0.125
+            ]
+          },
+          {
+            "id": "repair_displaced_piece",
+            "bounds_min": [
+              1.375,
+              0.0,
+              0.8250000476837158
+            ],
+            "bounds_max": [
+              1.9249999523162842,
+              0.8999999761581421,
+              1.5750000476837158
+            ]
+          },
+          {
+            "id": "repair_short_post",
+            "bounds_min": [
+              -0.75,
+              0.0,
+              1.25
+            ],
+            "bounds_max": [
+              0.050000011920928955,
+              0.550000011920929,
+              2.049999952316284
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "repair_socket_left",
+            "position": [
+              -1.850000023841858,
+              1.2000000476837158,
+              -0.949999988079071
+            ]
+          },
+          {
+            "id": "repair_socket_right",
+            "position": [
+              1.899999976158142,
+              0.30000001192092896,
+              1.4500000476837158
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "FAIL",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.850000023841858,
+            1.1999998092651367,
+            -0.9499996304512024
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "repair_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.850000023841858,
+            1.1999998092651367,
+            -0.9499996304512024
+          ]
+        }
+      ],
+      "native_seconds": 3.485,
+      "total_seconds": 45.673,
+      "verdict": "REJECTED"
+    },
+    "p13_material_lod_c": {
+      "id": "p13_material_lod_c",
+      "arm": "C",
+      "case_id": "p13_material_lod",
+      "producer_receipt_sha256": "1444405620b8098672dbccbb88f71fe00d00c02fafa9764f63bdeb40ffd0af8f",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 33.656,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 27888,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 236,
+        "reasoning_output_tokens": 21
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 19548,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.875,
+        "stdout_path": "p13_material_lod_c\\stdout.txt",
+        "stderr_path": "p13_material_lod_c\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "lod_pedestal",
+            "bounds_min": [
+              -1.399999976158142,
+              0.0,
+              -1.100000023841858
+            ],
+            "bounds_max": [
+              1.399999976158142,
+              0.3499999940395355,
+              1.100000023841858
+            ]
+          },
+          {
+            "id": "lod_drum",
+            "bounds_min": [
+              -1.125,
+              0.34999996423721313,
+              -0.42499998211860657
+            ],
+            "bounds_max": [
+              0.02499997615814209,
+              2.0,
+              0.7250000238418579
+            ]
+          },
+          {
+            "id": "lod_indicator",
+            "bounds_min": [
+              0.625,
+              0.3500000238418579,
+              -0.6749999523162842
+            ],
+            "bounds_max": [
+              1.0750000476837158,
+              1.100000023841858,
+              -0.025000005960464478
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "lod_socket_left",
+            "position": [
+              -0.550000011920929,
+              2.0,
+              0.15000000596046448
+            ]
+          },
+          {
+            "id": "lod_socket_right",
+            "position": [
+              0.8500000238418579,
+              1.100000023841858,
+              -0.3499999940395355
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            0.550000011920929,
+            1.9999996423721313,
+            0.15000033378601074
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            0.550000011920929,
+            1.9999996423721313,
+            0.15000033378601074
+          ]
+        }
+      ],
+      "native_seconds": 3.277,
+      "total_seconds": 36.933,
+      "verdict": "ACCEPTED"
+    },
+    "p13_material_lod_d": {
+      "id": "p13_material_lod_d",
+      "arm": "D",
+      "case_id": "p13_material_lod",
+      "producer_receipt_sha256": "eedd7a6e1289421796ee9b163eb0a8d3cb799c5cc9771f55975860f1eeb4df70",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 40.188,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 28468,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 230,
+        "reasoning_output_tokens": 15
+      },
+      "backend": "polyforge",
+      "failures": [
+        "Named module bounds, count, or material differs lod_pedestal",
+        "Named module bounds, count, or material differs lod_drum",
+        "Named module bounds, count, or material differs lod_indicator"
+      ],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 28412,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.797,
+        "stdout_path": "p13_material_lod_d\\stdout.txt",
+        "stderr_path": "p13_material_lod_d\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "lod_pedestal",
+            "bounds_min": [
+              -1.399999976158142,
+              0.0,
+              -1.100000023841858
+            ],
+            "bounds_max": [
+              1.399999976158142,
+              0.3499999940395355,
+              1.100000023841858
+            ]
+          },
+          {
+            "id": "lod_drum",
+            "bounds_min": [
+              -1.125,
+              0.34999996423721313,
+              -0.42499998211860657
+            ],
+            "bounds_max": [
+              0.02499997615814209,
+              2.0,
+              0.7250000238418579
+            ]
+          },
+          {
+            "id": "lod_indicator",
+            "bounds_min": [
+              0.625,
+              0.3500000238418579,
+              -0.6749999523162842
+            ],
+            "bounds_max": [
+              1.0750000476837158,
+              1.100000023841858,
+              -0.025000005960464478
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "lod_socket_left",
+            "position": [
+              -0.550000011920929,
+              2.0,
+              0.15000000596046448
+            ]
+          },
+          {
+            "id": "lod_socket_right",
+            "position": [
+              0.8500000238418579,
+              1.100000023841858,
+              -0.3499999940395355
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "FAIL",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            0.550000011920929,
+            1.9999996423721313,
+            0.15000033378601074
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "lod_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            0.550000011920929,
+            1.9999996423721313,
+            0.15000033378601074
+          ]
+        }
+      ],
+      "native_seconds": 3.215,
+      "total_seconds": 43.403,
+      "verdict": "REJECTED"
+    },
+    "p13_modular_room_alcove_c": {
+      "id": "p13_modular_room_alcove_c",
+      "arm": "C",
+      "case_id": "p13_modular_room_alcove",
+      "producer_receipt_sha256": "2d344aa3a34275727ab91a5c3768cbc051885a02251b2daa3a19eee8be4c2879",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 30.0,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 28370,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 233,
+        "reasoning_output_tokens": 18
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 11312,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.437,
+        "stdout_path": "p13_modular_room_alcove_c\\stdout.txt",
+        "stderr_path": "p13_modular_room_alcove_c\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "room_floor",
+            "bounds_min": [
+              -1.899999976158142,
+              0.0,
+              -1.7000000476837158
+            ],
+            "bounds_max": [
+              1.899999976158142,
+              0.30000001192092896,
+              1.7000000476837158
+            ]
+          },
+          {
+            "id": "room_rear_panel",
+            "bounds_min": [
+              -1.7000000476837158,
+              0.30000007152557373,
+              1.350000023841858
+            ],
+            "bounds_max": [
+              1.7000000476837158,
+              2.9000000953674316,
+              1.600000023841858
+            ]
+          },
+          {
+            "id": "room_side_pier",
+            "bounds_min": [
+              -1.8000000715255737,
+              0.30000001192092896,
+              -1.2000000476837158
+            ],
+            "bounds_max": [
+              -1.350000023841858,
+              2.200000047683716,
+              -0.5
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "room_socket_left",
+            "position": [
+              -1.350000023841858,
+              1.149999976158142,
+              -1.2000000476837158
+            ]
+          },
+          {
+            "id": "room_socket_right",
+            "position": [
+              1.149999976158142,
+              1.850000023841858,
+              1.350000023841858
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.350000023841858,
+            1.1499996185302734,
+            -1.1999995708465576
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.350000023841858,
+            1.1499996185302734,
+            -1.1999995708465576
+          ]
+        }
+      ],
+      "native_seconds": 2.846,
+      "total_seconds": 32.846,
+      "verdict": "ACCEPTED"
+    },
+    "p13_modular_room_alcove_d": {
+      "id": "p13_modular_room_alcove_d",
+      "arm": "D",
+      "case_id": "p13_modular_room_alcove",
+      "producer_receipt_sha256": "fb5979478602e0b8f0fc24cae7c4bd6d25d2f528611b077226b1a74e95803856",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 34.344,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 28007,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 246,
+        "reasoning_output_tokens": 31
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 19756,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.531,
+        "stdout_path": "p13_modular_room_alcove_d\\stdout.txt",
+        "stderr_path": "p13_modular_room_alcove_d\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "room_floor",
+            "bounds_min": [
+              -1.899999976158142,
+              0.0,
+              -1.7000000476837158
+            ],
+            "bounds_max": [
+              1.899999976158142,
+              0.30000001192092896,
+              1.7000000476837158
+            ]
+          },
+          {
+            "id": "room_rear_panel",
+            "bounds_min": [
+              -1.7000000476837158,
+              0.30000007152557373,
+              1.350000023841858
+            ],
+            "bounds_max": [
+              1.7000000476837158,
+              2.9000000953674316,
+              1.600000023841858
+            ]
+          },
+          {
+            "id": "room_side_pier",
+            "bounds_min": [
+              -1.8000000715255737,
+              0.30000001192092896,
+              -1.2000000476837158
+            ],
+            "bounds_max": [
+              -1.350000023841858,
+              2.200000047683716,
+              -0.5
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "room_socket_left",
+            "position": [
+              -1.350000023841858,
+              1.149999976158142,
+              -1.2000000476837158
+            ]
+          },
+          {
+            "id": "room_socket_right",
+            "position": [
+              1.149999976158142,
+              1.850000023841858,
+              1.350000023841858
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.350000023841858,
+            1.1499996185302734,
+            -1.1999995708465576
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "room_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.350000023841858,
+            1.1499996185302734,
+            -1.1999995708465576
+          ]
+        }
+      ],
+      "native_seconds": 2.924,
+      "total_seconds": 37.268,
+      "verdict": "ACCEPTED"
+    },
+    "p13_off_center_sockets_c": {
+      "id": "p13_off_center_sockets_c",
+      "arm": "C",
+      "case_id": "p13_off_center_sockets",
+      "producer_receipt_sha256": "b351cae09f57249547552bbd10880fe40648b78cba092d57734d93e8b3b12e36",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 33.312,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 27886,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 239,
+        "reasoning_output_tokens": 20
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 23516,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.5,
+        "stdout_path": "p13_off_center_sockets_c\\stdout.txt",
+        "stderr_path": "p13_off_center_sockets_c\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "offset_block",
+            "bounds_min": [
+              -2.299999952316284,
+              0.0,
+              0.32499998807907104
+            ],
+            "bounds_max": [
+              -1.0,
+              1.100000023841858,
+              1.1749999523162842
+            ]
+          },
+          {
+            "id": "offset_column",
+            "bounds_min": [
+              0.5,
+              0.0,
+              -1.600000023841858
+            ],
+            "bounds_max": [
+              1.2000000476837158,
+              1.7999999523162842,
+              -0.8999999761581421
+            ]
+          },
+          {
+            "id": "offset_foot",
+            "bounds_min": [
+              1.7749998569488525,
+              0.0,
+              0.9749999642372131
+            ],
+            "bounds_max": [
+              2.424999952316284,
+              0.4000000059604645,
+              2.125
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "offset_socket_left",
+            "position": [
+              -2.1500000953674316,
+              0.8500000238418579,
+              0.4000000059604645
+            ]
+          },
+          {
+            "id": "offset_socket_right",
+            "position": [
+              1.0499999523162842,
+              1.4500000476837158,
+              -1.350000023841858
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            2.1500000953674316,
+            0.849999725818634,
+            0.40000003576278687
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            2.1500000953674316,
+            0.849999725818634,
+            0.40000003576278687
+          ]
+        }
+      ],
+      "native_seconds": 2.89,
+      "total_seconds": 36.202,
+      "verdict": "ACCEPTED"
+    },
+    "p13_off_center_sockets_d": {
+      "id": "p13_off_center_sockets_d",
+      "arm": "D",
+      "case_id": "p13_off_center_sockets",
+      "producer_receipt_sha256": "f1245b3bb6499ca73b289f6e64e470b0ae6ba10282bab10cba94871db34b17c0",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 38.578,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 27999,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 217,
+        "reasoning_output_tokens": 0
+      },
+      "backend": "polyforge",
+      "failures": [
+        "Named module bounds, count, or material differs offset_block",
+        "Named module bounds, count, or material differs offset_column",
+        "Named module bounds, count, or material differs offset_foot"
+      ],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 3868,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.5,
+        "stdout_path": "p13_off_center_sockets_d\\stdout.txt",
+        "stderr_path": "p13_off_center_sockets_d\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "offset_block",
+            "bounds_min": [
+              -2.299999952316284,
+              0.0,
+              0.32499998807907104
+            ],
+            "bounds_max": [
+              -1.0,
+              1.100000023841858,
+              1.1749999523162842
+            ]
+          },
+          {
+            "id": "offset_column",
+            "bounds_min": [
+              0.5,
+              0.0,
+              -1.600000023841858
+            ],
+            "bounds_max": [
+              1.2000000476837158,
+              1.7999999523162842,
+              -0.8999999761581421
+            ]
+          },
+          {
+            "id": "offset_foot",
+            "bounds_min": [
+              1.7749998569488525,
+              0.0,
+              0.9749999642372131
+            ],
+            "bounds_max": [
+              2.424999952316284,
+              0.4000000059604645,
+              2.125
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "offset_socket_left",
+            "position": [
+              -2.1500000953674316,
+              0.8500000238418579,
+              0.4000000059604645
+            ]
+          },
+          {
+            "id": "offset_socket_right",
+            "position": [
+              1.0499999523162842,
+              1.4500000476837158,
+              -1.350000023841858
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "FAIL",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            2.1500000953674316,
+            0.849999725818634,
+            0.40000003576278687
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "offset_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            2.1500000953674316,
+            0.849999725818634,
+            0.40000003576278687
+          ]
+        }
+      ],
+      "native_seconds": 2.904,
+      "total_seconds": 41.482,
+      "verdict": "REJECTED"
+    },
+    "p13_rotated_mechanical_c": {
+      "id": "p13_rotated_mechanical_c",
+      "arm": "C",
+      "case_id": "p13_rotated_mechanical",
+      "producer_receipt_sha256": "05684e541f8c53dfa2e67d67500d29987f4c5e29729b074e55391658e4140e07",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 36.047,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 27890,
+        "cached_input_tokens": 20352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 293,
+        "reasoning_output_tokens": 71
+      },
+      "backend": "blender",
+      "failures": [],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 16644,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.61,
+        "stdout_path": "p13_rotated_mechanical_c\\stdout.txt",
+        "stderr_path": "p13_rotated_mechanical_c\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "mechanical_plinth",
+            "bounds_min": [
+              -1.7999999523162842,
+              0.0,
+              -1.600000023841858
+            ],
+            "bounds_max": [
+              1.7999999523162842,
+              0.4000000059604645,
+              1.600000023841858
+            ]
+          },
+          {
+            "id": "mechanical_angled_housing",
+            "bounds_min": [
+              -1.4599016904830933,
+              0.4000000059604645,
+              -0.5850953459739685
+            ],
+            "bounds_max": [
+              0.059901729226112366,
+              1.2000000476837158,
+              0.5850953459739685
+            ]
+          },
+          {
+            "id": "mechanical_spindle",
+            "bounds_min": [
+              0.5999999642372131,
+              0.40000003576278687,
+              0.19999998807907104
+            ],
+            "bounds_max": [
+              1.2000000476837158,
+              1.2999999523162842,
+              0.800000011920929
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "mechanical_socket_left",
+            "position": [
+              -1.149999976158142,
+              0.949999988079071,
+              -0.15000000596046448
+            ]
+          },
+          {
+            "id": "mechanical_socket_right",
+            "position": [
+              0.8999999761581421,
+              1.2999999523162842,
+              0.5
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "PASS",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.1499998569488525,
+            0.9499998092651367,
+            -0.14999985694885254
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.1499998569488525,
+            0.9499998092651367,
+            -0.14999985694885254
+          ]
+        }
+      ],
+      "native_seconds": 2.992,
+      "total_seconds": 39.039,
+      "verdict": "ACCEPTED"
+    },
+    "p13_rotated_mechanical_d": {
+      "id": "p13_rotated_mechanical_d",
+      "arm": "D",
+      "case_id": "p13_rotated_mechanical",
+      "producer_receipt_sha256": "b0c8c1d74800093d3fcc82a300d4f3885498639d88df359d15f46d809b5d498c",
+      "producer_status": "PRODUCED",
+      "producer_seconds": 37.688,
+      "manual_corrections": 0,
+      "token_usage": {
+        "input_tokens": 28004,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 220,
+        "reasoning_output_tokens": 0
+      },
+      "backend": "polyforge",
+      "failures": [
+        "Named module bounds, count, or material differs mechanical_plinth",
+        "Named module bounds, count, or material differs mechanical_angled_housing",
+        "Named module bounds, count, or material differs mechanical_spindle"
+      ],
+      "preview_nonblank": true,
+      "blender_process": {
+        "returncode": 0,
+        "reason": "exit",
+        "pid": 21312,
+        "ownership": "WINDOWS_JOB",
+        "duration_seconds": 2.656,
+        "stdout_path": "p13_rotated_mechanical_d\\stdout.txt",
+        "stderr_path": "p13_rotated_mechanical_d\\stderr.txt",
+        "memory_limit_verified": true
+      },
+      "blender": {
+        "passed": true,
+        "failures": [],
+        "modules": [
+          {
+            "id": "mechanical_plinth",
+            "bounds_min": [
+              -1.7999999523162842,
+              0.0,
+              -1.600000023841858
+            ],
+            "bounds_max": [
+              1.7999999523162842,
+              0.4000000059604645,
+              1.600000023841858
+            ]
+          },
+          {
+            "id": "mechanical_angled_housing",
+            "bounds_min": [
+              -1.4599016904830933,
+              0.4000000059604645,
+              -0.5850953459739685
+            ],
+            "bounds_max": [
+              0.059901729226112366,
+              1.2000000476837158,
+              0.5850953459739685
+            ]
+          },
+          {
+            "id": "mechanical_spindle",
+            "bounds_min": [
+              0.5999999642372131,
+              0.40000003576278687,
+              0.19999998807907104
+            ],
+            "bounds_max": [
+              1.2000000476837158,
+              1.2999999523162842,
+              0.800000011920929
+            ]
+          }
+        ],
+        "sockets": [
+          {
+            "id": "mechanical_socket_left",
+            "position": [
+              -1.149999976158142,
+              0.949999988079071,
+              -0.15000000596046448
+            ]
+          },
+          {
+            "id": "mechanical_socket_right",
+            "position": [
+              0.8999999761581421,
+              1.2999999523162842,
+              0.5
+            ]
+          }
+        ],
+        "blender_version": "5.2.2 LTS"
+      },
+      "unity_status": "FAIL",
+      "negative_cases": [
+        {
+          "id": "socket_missing",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.1499998569488525,
+            0.9499998092651367,
+            -0.14999985694885254
+          ]
+        },
+        {
+          "id": "socket_missing",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": []
+        },
+        {
+          "id": "socket_x_reflection",
+          "socketId": "mechanical_socket_left",
+          "applicable": true,
+          "detected": true,
+          "cleanedUp": true,
+          "observed": [
+            1.1499998569488525,
+            0.9499998092651367,
+            -0.14999985694885254
+          ]
+        }
+      ],
+      "native_seconds": 3.048,
+      "total_seconds": 40.736,
+      "verdict": "REJECTED"
+    }
+  },
+  "arms": {
+    "C": {
+      "attempts": 5,
+      "accepted": 5,
+      "median_total_seconds": 36.933,
+      "manual_corrections": 0
+    },
+    "D": {
+      "attempts": 5,
+      "accepted": 1,
+      "median_total_seconds": 41.482,
+      "manual_corrections": 0
+    }
+  }
+}

@@ -10,6 +10,10 @@ The ten paired attempts require verified tool parity. A fresh managed
 checkout and reset session provide the immediate reuse test. The day-8–14
 retention check is optional evidence.
 
+The [Phase 13 decision](../../reports/phase-13-decision.md) records the v7.1
+trial and reuse results. The machine-readable charter remains the frozen
+pre-execution record.
+
 ## Historical v7.0 charter
 
 **Status: OWNER TERMS RECORDED / NOT RUN.** The

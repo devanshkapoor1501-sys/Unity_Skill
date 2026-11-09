@@ -1,0 +1,72 @@
+{
+  "backend": "blender",
+  "reflect_export_x": true,
+  "modules": [
+    {
+      "id": "lod_pedestal",
+      "primitive": "box",
+      "size": [
+        2.8,
+        2.2,
+        0.35
+      ],
+      "position": [
+        0,
+        0,
+        0.175
+      ],
+      "rotation_degrees": 0,
+      "material": "base"
+    },
+    {
+      "id": "lod_drum",
+      "primitive": "cylinder",
+      "size": [
+        1.15,
+        1.15,
+        1.65
+      ],
+      "position": [
+        -0.55,
+        -0.15,
+        1.175
+      ],
+      "rotation_degrees": 0,
+      "material": "trim"
+    },
+    {
+      "id": "lod_indicator",
+      "primitive": "box",
+      "size": [
+        0.45,
+        0.65,
+        0.75
+      ],
+      "position": [
+        0.85,
+        0.35,
+        0.725
+      ],
+      "rotation_degrees": 0,
+      "material": "accent"
+    }
+  ],
+  "sockets": [
+    {
+      "id": "lod_socket_left",
+      "position": [
+        -0.55,
+        -0.15,
+        2
+      ]
+    },
+    {
+      "id": "lod_socket_right",
+      "position": [
+        0.85,
+        0.35,
+        1.1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "backend": "blender",
+  "reflect_export_x": true,
+  "modules": [
+    {
+      "id": "room_floor",
+      "primitive": "box",
+      "size": [
+        3.8,
+        3.4,
+        0.3
+      ],
+      "position": [
+        0,
+        0,
+        0.15
+      ],
+      "rotation_degrees": 0,
+      "material": "base"
+    },
+    {
+      "id": "room_rear_panel",
+      "primitive": "box",
+      "size": [
+        3.4,
+        0.25,
+        2.6
+      ],
+      "position": [
+        0,
+        -1.475,
+        1.6
+      ],
+      "rotation_degrees": 0,
+      "material": "trim"
+    },
+    {
+      "id": "room_side_pier",
+      "primitive": "box",
+      "size": [
+        0.45,
+        0.7,
+        1.9
+      ],
+      "position": [
+        -1.575,
+        0.85,
+        1.25
+      ],
+      "rotation_degrees": 0,
+      "material": "accent"
+    }
+  ],
+  "sockets": [
+    {
+      "id": "room_socket_left",
+      "position": [
+        -1.35,
+        1.2,
+        1.15
+      ]
+    },
+    {
+      "id": "room_socket_right",
+      "position": [
+        1.15,
+        -1.35,
+        1.85
+      ]
+    }
+  ]
+}

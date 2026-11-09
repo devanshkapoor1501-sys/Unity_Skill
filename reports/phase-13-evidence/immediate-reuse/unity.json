@@ -1,0 +1,597 @@
+{
+  "status": "PASS",
+  "source_unchanged": true,
+  "process": {
+    "returncode": 0,
+    "reason": "exit",
+    "pid": 26160,
+    "ownership": "WINDOWS_JOB",
+    "duration_seconds": 377.609,
+    "stdout_path": "unity-process\\stdout.txt",
+    "stderr_path": "unity-process\\stderr.txt",
+    "memory_limit_verified": true
+  },
+  "native": {
+    "unityVersion": "6000.6.3f1",
+    "fatal": "",
+    "observations": [
+      {
+        "attemptId": "p13_off_center_sockets_d",
+        "kind": "asset",
+        "path": "Assets/Phase13/p13_off_center_sockets_d_asset.fbx",
+        "sha256": "af9b0af4eebe7462cbf964d1c2b0789a414bfe94f524a8d634102b7e44aed6d6",
+        "guid": "e19b2df6f009c6a4fac5898145fba9dc",
+        "guidAfterReimport": "e19b2df6f009c6a4fac5898145fba9dc",
+        "metaSha256": "c61f412a4a183a539ba38c908d0e2911fb85cd35b9e41a13fb470a41d4284bc0",
+        "metaSha256AfterReimport": "c61f412a4a183a539ba38c908d0e2911fb85cd35b9e41a13fb470a41d4284bc0",
+        "expectedMaterials": [
+          "accent",
+          "base",
+          "trim"
+        ],
+        "materials": [
+          "accent",
+          "base",
+          "trim"
+        ],
+        "expectedMin": [
+          -2.299999952316284,
+          0.0,
+          -1.600000023841858
+        ],
+        "expectedMax": [
+          2.424999952316284,
+          1.7999999523162842,
+          2.125
+        ],
+        "observedMin": [
+          -2.299999952316284,
+          -2.384185791015625e-07,
+          -1.5999997854232788
+        ],
+        "observedMax": [
+          2.424999713897705,
+          1.8000001907348633,
+          2.124999523162842
+        ],
+        "passed": false,
+        "preserveHierarchy": true,
+        "bakeAxisConversion": false,
+        "useFileScale": true,
+        "globalScale": 1.0,
+        "fileScale": 0.009999999776482582,
+        "elapsedSeconds": 0.2841068,
+        "meshCount": 3,
+        "vertexCount": 240,
+        "uvCount": 240,
+        "triangleCount": 148,
+        "degenerateTriangles": 0,
+        "failures": [
+          "Named module bounds, count, or material differs offset_block",
+          "Named module bounds, count, or material differs offset_column",
+          "Named module bounds, count, or material differs offset_foot"
+        ],
+        "sockets": [
+          {
+            "id": "offset_socket_left",
+            "count": 1,
+            "expected": [
+              -2.1500000953674316,
+              0.8500000238418579,
+              0.4000000059604645
+            ],
+            "observed": [
+              -2.1500000953674316,
+              0.8499999046325684,
+              0.40000009536743164
+            ],
+            "distance": 1.4901161193847656e-07,
+            "passed": true
+          },
+          {
+            "id": "offset_socket_right",
+            "count": 1,
+            "expected": [
+              1.0499999523162842,
+              1.4500000476837158,
+              -1.350000023841858
+            ],
+            "observed": [
+              1.0499999523162842,
+              1.4500001668930054,
+              -1.3499997854232788
+            ],
+            "distance": 2.6656007889869215e-07,
+            "passed": true
+          }
+        ],
+        "modules": [
+          {
+            "id": "offset_block",
+            "expectedMaterial": "base",
+            "count": 0,
+            "materials": [],
+            "expectedMin": [
+              -2.299999952316284,
+              0.0,
+              0.32499998807907104
+            ],
+            "expectedMax": [
+              -1.0,
+              1.100000023841858,
+              1.1749999523162842
+            ],
+            "observedMin": [],
+            "observedMax": [],
+            "passed": false
+          },
+          {
+            "id": "offset_column",
+            "expectedMaterial": "trim",
+            "count": 0,
+            "materials": [],
+            "expectedMin": [
+              0.5,
+              0.0,
+              -1.600000023841858
+            ],
+            "expectedMax": [
+              1.2000000476837158,
+              1.7999999523162842,
+              -0.8999999761581421
+            ],
+            "observedMin": [],
+            "observedMax": [],
+            "passed": false
+          },
+          {
+            "id": "offset_foot",
+            "expectedMaterial": "accent",
+            "count": 0,
+            "materials": [],
+            "expectedMin": [
+              1.774999976158142,
+              0.0,
+              0.9750000238418579
+            ],
+            "expectedMax": [
+              2.424999952316284,
+              0.4000000059604645,
+              2.125
+            ],
+            "observedMin": [],
+            "observedMax": [],
+            "passed": false
+          }
+        ],
+        "negatives": [
+          {
+            "id": "socket_missing",
+            "socketId": "offset_socket_left",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": []
+          },
+          {
+            "id": "socket_x_reflection",
+            "socketId": "offset_socket_left",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": [
+              2.1500000953674316,
+              0.849999725818634,
+              0.40000003576278687
+            ]
+          }
+        ]
+      },
+      {
+        "attemptId": "p13_off_center_sockets_d",
+        "kind": "lod",
+        "path": "Assets/Phase13/p13_off_center_sockets_d_lod.fbx",
+        "sha256": "5fec42c8c6ec419099a33278590ff191041b35703101f144d30bc985138a8d82",
+        "guid": "2a98172731562384d9c1c658d999cf94",
+        "guidAfterReimport": "2a98172731562384d9c1c658d999cf94",
+        "metaSha256": "1eb0a1226ea8f3f9ccc5de22fd2f1546c2a4bffff2a378755d0741217fe3b48c",
+        "metaSha256AfterReimport": "1eb0a1226ea8f3f9ccc5de22fd2f1546c2a4bffff2a378755d0741217fe3b48c",
+        "expectedMaterials": [
+          "accent",
+          "base",
+          "trim"
+        ],
+        "materials": [
+          "accent",
+          "base",
+          "trim"
+        ],
+        "expectedMin": [
+          -2.299999952316284,
+          0.0,
+          -1.600000023841858
+        ],
+        "expectedMax": [
+          2.424999952316284,
+          1.7999999523162842,
+          2.125
+        ],
+        "observedMin": [
+          -2.299999713897705,
+          -2.384185791015625e-07,
+          -1.5999999046325684
+        ],
+        "observedMax": [
+          2.424999952316284,
+          1.8000000715255737,
+          2.124999761581421
+        ],
+        "passed": true,
+        "preserveHierarchy": true,
+        "bakeAxisConversion": false,
+        "useFileScale": true,
+        "globalScale": 1.0,
+        "fileScale": 0.009999999776482582,
+        "elapsedSeconds": 0.1840906,
+        "meshCount": 1,
+        "vertexCount": 144,
+        "uvCount": 144,
+        "triangleCount": 84,
+        "degenerateTriangles": 0,
+        "failures": [],
+        "sockets": [
+          {
+            "id": "offset_socket_left",
+            "count": 1,
+            "expected": [
+              -2.1500000953674316,
+              0.8500000238418579,
+              0.4000000059604645
+            ],
+            "observed": [
+              -2.1500000953674316,
+              0.8499999046325684,
+              0.40000009536743164
+            ],
+            "distance": 1.4901161193847656e-07,
+            "passed": true
+          },
+          {
+            "id": "offset_socket_right",
+            "count": 1,
+            "expected": [
+              1.0499999523162842,
+              1.4500000476837158,
+              -1.350000023841858
+            ],
+            "observed": [
+              1.0499999523162842,
+              1.4500001668930054,
+              -1.3499997854232788
+            ],
+            "distance": 2.6656007889869215e-07,
+            "passed": true
+          }
+        ],
+        "modules": [],
+        "negatives": [
+          {
+            "id": "socket_missing",
+            "socketId": "offset_socket_left",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": []
+          },
+          {
+            "id": "socket_x_reflection",
+            "socketId": "offset_socket_left",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": [
+              2.1500000953674316,
+              0.849999725818634,
+              0.40000003576278687
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "attempts": {
+    "p13_off_center_sockets_d": {
+      "case_id": "p13_off_center_sockets",
+      "status": "FAIL",
+      "failures": [
+        "Named module bounds, count, or material differs offset_block",
+        "Named module bounds, count, or material differs offset_column",
+        "Named module bounds, count, or material differs offset_foot"
+      ],
+      "observations": [
+        {
+          "attemptId": "p13_off_center_sockets_d",
+          "kind": "asset",
+          "path": "Assets/Phase13/p13_off_center_sockets_d_asset.fbx",
+          "sha256": "af9b0af4eebe7462cbf964d1c2b0789a414bfe94f524a8d634102b7e44aed6d6",
+          "guid": "e19b2df6f009c6a4fac5898145fba9dc",
+          "guidAfterReimport": "e19b2df6f009c6a4fac5898145fba9dc",
+          "metaSha256": "c61f412a4a183a539ba38c908d0e2911fb85cd35b9e41a13fb470a41d4284bc0",
+          "metaSha256AfterReimport": "c61f412a4a183a539ba38c908d0e2911fb85cd35b9e41a13fb470a41d4284bc0",
+          "expectedMaterials": [
+            "accent",
+            "base",
+            "trim"
+          ],
+          "materials": [
+            "accent",
+            "base",
+            "trim"
+          ],
+          "expectedMin": [
+            -2.299999952316284,
+            0.0,
+            -1.600000023841858
+          ],
+          "expectedMax": [
+            2.424999952316284,
+            1.7999999523162842,
+            2.125
+          ],
+          "observedMin": [
+            -2.299999952316284,
+            -2.384185791015625e-07,
+            -1.5999997854232788
+          ],
+          "observedMax": [
+            2.424999713897705,
+            1.8000001907348633,
+            2.124999523162842
+          ],
+          "passed": false,
+          "preserveHierarchy": true,
+          "bakeAxisConversion": false,
+          "useFileScale": true,
+          "globalScale": 1.0,
+          "fileScale": 0.009999999776482582,
+          "elapsedSeconds": 0.2841068,
+          "meshCount": 3,
+          "vertexCount": 240,
+          "uvCount": 240,
+          "triangleCount": 148,
+          "degenerateTriangles": 0,
+          "failures": [
+            "Named module bounds, count, or material differs offset_block",
+            "Named module bounds, count, or material differs offset_column",
+            "Named module bounds, count, or material differs offset_foot"
+          ],
+          "sockets": [
+            {
+              "id": "offset_socket_left",
+              "count": 1,
+              "expected": [
+                -2.1500000953674316,
+                0.8500000238418579,
+                0.4000000059604645
+              ],
+              "observed": [
+                -2.1500000953674316,
+                0.8499999046325684,
+                0.40000009536743164
+              ],
+              "distance": 1.4901161193847656e-07,
+              "passed": true
+            },
+            {
+              "id": "offset_socket_right",
+              "count": 1,
+              "expected": [
+                1.0499999523162842,
+                1.4500000476837158,
+                -1.350000023841858
+              ],
+              "observed": [
+                1.0499999523162842,
+                1.4500001668930054,
+                -1.3499997854232788
+              ],
+              "distance": 2.6656007889869215e-07,
+              "passed": true
+            }
+          ],
+          "modules": [
+            {
+              "id": "offset_block",
+              "expectedMaterial": "base",
+              "count": 0,
+              "materials": [],
+              "expectedMin": [
+                -2.299999952316284,
+                0.0,
+                0.32499998807907104
+              ],
+              "expectedMax": [
+                -1.0,
+                1.100000023841858,
+                1.1749999523162842
+              ],
+              "observedMin": [],
+              "observedMax": [],
+              "passed": false
+            },
+            {
+              "id": "offset_column",
+              "expectedMaterial": "trim",
+              "count": 0,
+              "materials": [],
+              "expectedMin": [
+                0.5,
+                0.0,
+                -1.600000023841858
+              ],
+              "expectedMax": [
+                1.2000000476837158,
+                1.7999999523162842,
+                -0.8999999761581421
+              ],
+              "observedMin": [],
+              "observedMax": [],
+              "passed": false
+            },
+            {
+              "id": "offset_foot",
+              "expectedMaterial": "accent",
+              "count": 0,
+              "materials": [],
+              "expectedMin": [
+                1.774999976158142,
+                0.0,
+                0.9750000238418579
+              ],
+              "expectedMax": [
+                2.424999952316284,
+                0.4000000059604645,
+                2.125
+              ],
+              "observedMin": [],
+              "observedMax": [],
+              "passed": false
+            }
+          ],
+          "negatives": [
+            {
+              "id": "socket_missing",
+              "socketId": "offset_socket_left",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": []
+            },
+            {
+              "id": "socket_x_reflection",
+              "socketId": "offset_socket_left",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": [
+                2.1500000953674316,
+                0.849999725818634,
+                0.40000003576278687
+              ]
+            }
+          ]
+        },
+        {
+          "attemptId": "p13_off_center_sockets_d",
+          "kind": "lod",
+          "path": "Assets/Phase13/p13_off_center_sockets_d_lod.fbx",
+          "sha256": "5fec42c8c6ec419099a33278590ff191041b35703101f144d30bc985138a8d82",
+          "guid": "2a98172731562384d9c1c658d999cf94",
+          "guidAfterReimport": "2a98172731562384d9c1c658d999cf94",
+          "metaSha256": "1eb0a1226ea8f3f9ccc5de22fd2f1546c2a4bffff2a378755d0741217fe3b48c",
+          "metaSha256AfterReimport": "1eb0a1226ea8f3f9ccc5de22fd2f1546c2a4bffff2a378755d0741217fe3b48c",
+          "expectedMaterials": [
+            "accent",
+            "base",
+            "trim"
+          ],
+          "materials": [
+            "accent",
+            "base",
+            "trim"
+          ],
+          "expectedMin": [
+            -2.299999952316284,
+            0.0,
+            -1.600000023841858
+          ],
+          "expectedMax": [
+            2.424999952316284,
+            1.7999999523162842,
+            2.125
+          ],
+          "observedMin": [
+            -2.299999713897705,
+            -2.384185791015625e-07,
+            -1.5999999046325684
+          ],
+          "observedMax": [
+            2.424999952316284,
+            1.8000000715255737,
+            2.124999761581421
+          ],
+          "passed": true,
+          "preserveHierarchy": true,
+          "bakeAxisConversion": false,
+          "useFileScale": true,
+          "globalScale": 1.0,
+          "fileScale": 0.009999999776482582,
+          "elapsedSeconds": 0.1840906,
+          "meshCount": 1,
+          "vertexCount": 144,
+          "uvCount": 144,
+          "triangleCount": 84,
+          "degenerateTriangles": 0,
+          "failures": [],
+          "sockets": [
+            {
+              "id": "offset_socket_left",
+              "count": 1,
+              "expected": [
+                -2.1500000953674316,
+                0.8500000238418579,
+                0.4000000059604645
+              ],
+              "observed": [
+                -2.1500000953674316,
+                0.8499999046325684,
+                0.40000009536743164
+              ],
+              "distance": 1.4901161193847656e-07,
+              "passed": true
+            },
+            {
+              "id": "offset_socket_right",
+              "count": 1,
+              "expected": [
+                1.0499999523162842,
+                1.4500000476837158,
+                -1.350000023841858
+              ],
+              "observed": [
+                1.0499999523162842,
+                1.4500001668930054,
+                -1.3499997854232788
+              ],
+              "distance": 2.6656007889869215e-07,
+              "passed": true
+            }
+          ],
+          "modules": [],
+          "negatives": [
+            {
+              "id": "socket_missing",
+              "socketId": "offset_socket_left",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": []
+            },
+            {
+              "id": "socket_x_reflection",
+              "socketId": "offset_socket_left",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": [
+                2.1500000953674316,
+                0.849999725818634,
+                0.40000003576278687
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

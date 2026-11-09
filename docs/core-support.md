@@ -10,8 +10,8 @@ regressions; they do not establish general tool mastery.
 Historical Phases 0–10 retain their audited implementation evidence. Phase 11
 is a technical checkpoint; stable CORE v1.0 release remains **BLOCKED**.
 Phase 12's v7 technical exit is **COMPLETE**, verified in its declared Blender/Unity
-workflow. Artistic qualification remains REVIEW; independent equal-tool trials
-belong to the separately gated Phase 13. Future planning follows v7.1; see
+workflow. Artistic qualification remains REVIEW. The equal-tool pilot is
+recorded separately in Phase 13. Future planning follows v7.1. See
 [the implementation sequence](implementation-plan.md) for authority and gates.
 
 Use `polyforge capability list --json` and `capability show ID --json` to inspect
@@ -27,7 +27,7 @@ and roles; it does not prove that every requirement in a prompt is supported.
 | Worlds | Managed prototype scene construction and native bindings | Selected scene, lighting, audio and profiling competencies in conditional Phases 15/16; cross-tool integration in Phase 17 |
 | Generalist orchestration | Task-selected role graph, frozen handoffs, ownership, review, resource admission and sequential execution | Task-first versioned knowledge/routing in conditional Phase 14; cross-tool transfer and actual host delegation qualification in Phase 17 |
 | Existing projects | Bounded static inventory, hashes/mtimes, requested/resolved package versions, GUID diagnostics and source syntax analysis | Compilation/runtime compatibility and safe approved changes require separate native evidence |
-| Measurement | Declared rendered-loop standalone profile and local-mode measurements | Codex-run Phase 13 pilot with a frozen verifier rubric, matched tools and native receipts |
+| Measurement | Declared rendered-loop standalone profile, local-mode measurements and a bounded Phase 13 pilot | Qualifying paired evidence for any further Phase 14 investment |
 
 The [Phase 12 checkpoint](../reports/phase-12.md) reports Unity PASS for eight
 main/LOD FBXs from four parameterized families; its coolant-valve composition
@@ -45,16 +45,14 @@ support records; these are planning vocabulary, not a claim that the current
 schemas implement the full competency registry. Invocation results retain
 their separate PASS/FAIL/BLOCKED/NOT_RUN/REVIEW meanings.
 
-Phase 13 preparation has recorded the trial cap and decision rules. V7.1 uses
-a separate Codex verifier for internal trials, and requires frozen cases and
-C/D parity before paired execution. Phases 14–18 remain conditional and individually
-scoped. Phase 18 is a scope-honest release audit, with stable claims restricted
-to accepted task classes. Animation and gameplay may both have reference
-coverage while executable modules are separately qualified.
-
-The [Phase 13 charter](plans/2026-11-09-phase-13-pilot-charter.md)
-records the owner terms, candidate preflight, and evaluator protocol.
-Trial status is NOT RUN.
+Phase 13 used a separate Codex verifier and a fixed data-only broker on a
+shared host. The baseline passed five of five cases and the assisted arm
+passed one of five. The assisted arm missed both the quality and benefit gates.
+The [Phase 13 decision](../reports/phase-13-decision.md) records the scope and
+native evidence. Phases 14–18 remain conditional and individually scoped.
+Phase 18 restricts stable claims to accepted task classes. Animation and
+gameplay can have reference coverage while executable modules are separately
+qualified.
 
 Networking, multiplayer, production save systems, arbitrary mechanics, broad
 character rigs, unrestricted sculpt artistry and universal package/API

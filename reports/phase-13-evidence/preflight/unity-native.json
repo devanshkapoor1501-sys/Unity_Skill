@@ -1,0 +1,449 @@
+{
+  "status": "PASS",
+  "source_unchanged": true,
+  "process": {
+    "returncode": 0,
+    "reason": "exit",
+    "pid": 21480,
+    "ownership": "WINDOWS_JOB",
+    "duration_seconds": 253.641,
+    "stdout_path": "unity-process\\stdout.txt",
+    "stderr_path": "unity-process\\stderr.txt",
+    "memory_limit_verified": true
+  },
+  "native": {
+    "unityVersion": "6000.6.3f1",
+    "fatal": "",
+    "observations": [
+      {
+        "attemptId": "public_preflight",
+        "kind": "asset",
+        "path": "Assets/Phase13/public_preflight_asset.fbx",
+        "sha256": "c176108b8b3318b1fe1f8977fbc6a8a9c9c511bc5c788acd07ab40788d459dd8",
+        "guid": "d3c88ffffbe79ae4eb6c79208152e780",
+        "guidAfterReimport": "d3c88ffffbe79ae4eb6c79208152e780",
+        "metaSha256": "7e7ec98456c075c0517ebce50fa058972eb3fbfe70063635c96e30bd5c43d2aa",
+        "metaSha256AfterReimport": "7e7ec98456c075c0517ebce50fa058972eb3fbfe70063635c96e30bd5c43d2aa",
+        "expectedMaterials": [
+          "base"
+        ],
+        "materials": [
+          "base"
+        ],
+        "expectedMin": [
+          -1.0,
+          0.0,
+          -0.5
+        ],
+        "expectedMax": [
+          1.0,
+          1.0,
+          0.5
+        ],
+        "observedMin": [
+          -1.0,
+          -5.960464477539063e-08,
+          -0.4999999701976776
+        ],
+        "observedMax": [
+          1.0,
+          1.0,
+          0.5000001192092896
+        ],
+        "passed": true,
+        "preserveHierarchy": true,
+        "bakeAxisConversion": false,
+        "useFileScale": true,
+        "globalScale": 1.0,
+        "fileScale": 0.009999999776482582,
+        "elapsedSeconds": 0.2759472,
+        "meshCount": 1,
+        "vertexCount": 24,
+        "uvCount": 24,
+        "triangleCount": 12,
+        "degenerateTriangles": 0,
+        "failures": [],
+        "sockets": [
+          {
+            "id": "test",
+            "count": 1,
+            "expected": [
+              0.75,
+              0.550000011920929,
+              0.30000001192092896
+            ],
+            "observed": [
+              0.75,
+              0.5499999523162842,
+              0.30000001192092896
+            ],
+            "distance": 5.960464477539063e-08,
+            "passed": true
+          }
+        ],
+        "modules": [
+          {
+            "id": "block",
+            "expectedMaterial": "base",
+            "count": 1,
+            "materials": [
+              "base"
+            ],
+            "expectedMin": [
+              -1.0,
+              0.0,
+              -0.5
+            ],
+            "expectedMax": [
+              1.0,
+              1.0,
+              0.5
+            ],
+            "observedMin": [
+              -1.0,
+              -5.960464477539063e-08,
+              -0.4999999701976776
+            ],
+            "observedMax": [
+              1.0,
+              1.0,
+              0.5000001192092896
+            ],
+            "passed": true
+          }
+        ],
+        "negatives": [
+          {
+            "id": "socket_missing",
+            "socketId": "test",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": []
+          },
+          {
+            "id": "socket_x_reflection",
+            "socketId": "test",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": [
+              -0.75,
+              0.5499997138977051,
+              0.2999999523162842
+            ]
+          }
+        ]
+      },
+      {
+        "attemptId": "public_preflight",
+        "kind": "lod",
+        "path": "Assets/Phase13/public_preflight_lod.fbx",
+        "sha256": "9dd01a5d3800fec96cfc46920445934eb55954308f30f565a2ade6b2da68af56",
+        "guid": "8aa9dc0ca5553fa4890e8e08626102e4",
+        "guidAfterReimport": "8aa9dc0ca5553fa4890e8e08626102e4",
+        "metaSha256": "00559dfa278c13d92c4bba091f50ef26ac0c44750cb4f3968563e7a23ba8c4b3",
+        "metaSha256AfterReimport": "00559dfa278c13d92c4bba091f50ef26ac0c44750cb4f3968563e7a23ba8c4b3",
+        "expectedMaterials": [
+          "base"
+        ],
+        "materials": [
+          "base"
+        ],
+        "expectedMin": [
+          -1.0,
+          0.0,
+          -0.5
+        ],
+        "expectedMax": [
+          1.0,
+          1.0,
+          0.5
+        ],
+        "observedMin": [
+          -1.0,
+          -5.960464477539063e-08,
+          -0.4999999701976776
+        ],
+        "observedMax": [
+          1.0,
+          1.0,
+          0.5000001192092896
+        ],
+        "passed": true,
+        "preserveHierarchy": true,
+        "bakeAxisConversion": false,
+        "useFileScale": true,
+        "globalScale": 1.0,
+        "fileScale": 0.009999999776482582,
+        "elapsedSeconds": 0.1807113,
+        "meshCount": 1,
+        "vertexCount": 24,
+        "uvCount": 24,
+        "triangleCount": 12,
+        "degenerateTriangles": 0,
+        "failures": [],
+        "sockets": [
+          {
+            "id": "test",
+            "count": 1,
+            "expected": [
+              0.75,
+              0.550000011920929,
+              0.30000001192092896
+            ],
+            "observed": [
+              0.75,
+              0.5499999523162842,
+              0.30000001192092896
+            ],
+            "distance": 5.960464477539063e-08,
+            "passed": true
+          }
+        ],
+        "modules": [],
+        "negatives": [
+          {
+            "id": "socket_missing",
+            "socketId": "test",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": []
+          },
+          {
+            "id": "socket_x_reflection",
+            "socketId": "test",
+            "applicable": true,
+            "detected": true,
+            "cleanedUp": true,
+            "observed": [
+              -0.75,
+              0.5499997138977051,
+              0.2999999523162842
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "attempts": {
+    "public_preflight": {
+      "case_id": "public_probe",
+      "status": "PASS",
+      "failures": [],
+      "observations": [
+        {
+          "attemptId": "public_preflight",
+          "kind": "asset",
+          "path": "Assets/Phase13/public_preflight_asset.fbx",
+          "sha256": "c176108b8b3318b1fe1f8977fbc6a8a9c9c511bc5c788acd07ab40788d459dd8",
+          "guid": "d3c88ffffbe79ae4eb6c79208152e780",
+          "guidAfterReimport": "d3c88ffffbe79ae4eb6c79208152e780",
+          "metaSha256": "7e7ec98456c075c0517ebce50fa058972eb3fbfe70063635c96e30bd5c43d2aa",
+          "metaSha256AfterReimport": "7e7ec98456c075c0517ebce50fa058972eb3fbfe70063635c96e30bd5c43d2aa",
+          "expectedMaterials": [
+            "base"
+          ],
+          "materials": [
+            "base"
+          ],
+          "expectedMin": [
+            -1.0,
+            0.0,
+            -0.5
+          ],
+          "expectedMax": [
+            1.0,
+            1.0,
+            0.5
+          ],
+          "observedMin": [
+            -1.0,
+            -5.960464477539063e-08,
+            -0.4999999701976776
+          ],
+          "observedMax": [
+            1.0,
+            1.0,
+            0.5000001192092896
+          ],
+          "passed": true,
+          "preserveHierarchy": true,
+          "bakeAxisConversion": false,
+          "useFileScale": true,
+          "globalScale": 1.0,
+          "fileScale": 0.009999999776482582,
+          "elapsedSeconds": 0.2759472,
+          "meshCount": 1,
+          "vertexCount": 24,
+          "uvCount": 24,
+          "triangleCount": 12,
+          "degenerateTriangles": 0,
+          "failures": [],
+          "sockets": [
+            {
+              "id": "test",
+              "count": 1,
+              "expected": [
+                0.75,
+                0.550000011920929,
+                0.30000001192092896
+              ],
+              "observed": [
+                0.75,
+                0.5499999523162842,
+                0.30000001192092896
+              ],
+              "distance": 5.960464477539063e-08,
+              "passed": true
+            }
+          ],
+          "modules": [
+            {
+              "id": "block",
+              "expectedMaterial": "base",
+              "count": 1,
+              "materials": [
+                "base"
+              ],
+              "expectedMin": [
+                -1.0,
+                0.0,
+                -0.5
+              ],
+              "expectedMax": [
+                1.0,
+                1.0,
+                0.5
+              ],
+              "observedMin": [
+                -1.0,
+                -5.960464477539063e-08,
+                -0.4999999701976776
+              ],
+              "observedMax": [
+                1.0,
+                1.0,
+                0.5000001192092896
+              ],
+              "passed": true
+            }
+          ],
+          "negatives": [
+            {
+              "id": "socket_missing",
+              "socketId": "test",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": []
+            },
+            {
+              "id": "socket_x_reflection",
+              "socketId": "test",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": [
+                -0.75,
+                0.5499997138977051,
+                0.2999999523162842
+              ]
+            }
+          ]
+        },
+        {
+          "attemptId": "public_preflight",
+          "kind": "lod",
+          "path": "Assets/Phase13/public_preflight_lod.fbx",
+          "sha256": "9dd01a5d3800fec96cfc46920445934eb55954308f30f565a2ade6b2da68af56",
+          "guid": "8aa9dc0ca5553fa4890e8e08626102e4",
+          "guidAfterReimport": "8aa9dc0ca5553fa4890e8e08626102e4",
+          "metaSha256": "00559dfa278c13d92c4bba091f50ef26ac0c44750cb4f3968563e7a23ba8c4b3",
+          "metaSha256AfterReimport": "00559dfa278c13d92c4bba091f50ef26ac0c44750cb4f3968563e7a23ba8c4b3",
+          "expectedMaterials": [
+            "base"
+          ],
+          "materials": [
+            "base"
+          ],
+          "expectedMin": [
+            -1.0,
+            0.0,
+            -0.5
+          ],
+          "expectedMax": [
+            1.0,
+            1.0,
+            0.5
+          ],
+          "observedMin": [
+            -1.0,
+            -5.960464477539063e-08,
+            -0.4999999701976776
+          ],
+          "observedMax": [
+            1.0,
+            1.0,
+            0.5000001192092896
+          ],
+          "passed": true,
+          "preserveHierarchy": true,
+          "bakeAxisConversion": false,
+          "useFileScale": true,
+          "globalScale": 1.0,
+          "fileScale": 0.009999999776482582,
+          "elapsedSeconds": 0.1807113,
+          "meshCount": 1,
+          "vertexCount": 24,
+          "uvCount": 24,
+          "triangleCount": 12,
+          "degenerateTriangles": 0,
+          "failures": [],
+          "sockets": [
+            {
+              "id": "test",
+              "count": 1,
+              "expected": [
+                0.75,
+                0.550000011920929,
+                0.30000001192092896
+              ],
+              "observed": [
+                0.75,
+                0.5499999523162842,
+                0.30000001192092896
+              ],
+              "distance": 5.960464477539063e-08,
+              "passed": true
+            }
+          ],
+          "modules": [],
+          "negatives": [
+            {
+              "id": "socket_missing",
+              "socketId": "test",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": []
+            },
+            {
+              "id": "socket_x_reflection",
+              "socketId": "test",
+              "applicable": true,
+              "detected": true,
+              "cleanedUp": true,
+              "observed": [
+                -0.75,
+                0.5499997138977051,
+                0.2999999523162842
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

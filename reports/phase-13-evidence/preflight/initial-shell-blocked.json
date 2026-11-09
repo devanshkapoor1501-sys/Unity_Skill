@@ -1,0 +1,43 @@
+{
+  "scope": "LOCAL_PUBLIC_PAIRED_GENERIC_TOOL_PREFLIGHT",
+  "status": "BLOCKED",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "low",
+  "sandbox": "read-only",
+  "arm_d_skill_sha256": "87df5b2f270664cefb642b66db0d37ccf25be189bab78fd03654c5dcb55b0061",
+  "prompt_sha256": "996c3dba111c00142e823452e7ea907846e7da08587380548cbdce726af96e1e",
+  "arms": {
+    "C": {
+      "status": "BLOCKED",
+      "exit_code": 0,
+      "completed_shell_calls": 0,
+      "observed": [],
+      "event_types": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "item.completed",
+        "item.completed",
+        "turn.completed"
+      ],
+      "stdout_sha256": "1d79f53e880c8464798b1b8982d3691e94fa08fd7a756dd53e98ab8c13362636"
+    },
+    "D": {
+      "status": "BLOCKED",
+      "exit_code": 0,
+      "completed_shell_calls": 0,
+      "observed": [],
+      "event_types": [
+        "thread.started",
+        "turn.started",
+        "item.completed",
+        "item.completed",
+        "item.completed",
+        "turn.completed"
+      ],
+      "stdout_sha256": "9e7a040e805b43bdeb3a46bee96b8f63bf8276f3f03f319e536394d5a9266cd9"
+    }
+  },
+  "trial_attempts": 0,
+  "receipt_directory": ".tmp/phase13-paired-tool-6_yhd32f"
+}
