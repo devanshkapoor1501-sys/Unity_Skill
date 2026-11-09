@@ -19,6 +19,7 @@ from polyforge.security.paths import WorkspacePolicy
 from polyforge.unity.bootstrap import installed_template, prepare_project
 
 PROBE = Path(__file__).resolve().parents[1] / "tests/fixtures/modeling/Phase13ImportProbe.cs"
+WINDOWS_REPARSE_POINT = 0x400
 
 
 def digest(path: Path) -> str:
@@ -30,10 +31,7 @@ def cache_copy(source: Path, destination: Path) -> None:
     """Refuse links or reparse points before copying only the selected cache subtree."""
     for item in (source, *source.rglob("*")):
         info = item.lstat()
-        if (
-            item.is_symlink()
-            or getattr(info, "st_file_attributes", 0) & stat.FILE_ATTRIBUTE_REPARSE_POINT
-        ):
+        if item.is_symlink() or getattr(info, "st_file_attributes", 0) & WINDOWS_REPARSE_POINT:
             raise ValueError("Reparse point in managed Unity cache")
         if not (stat.S_ISDIR(info.st_mode) or stat.S_ISREG(info.st_mode)):
             raise ValueError("Unexpected entry in managed Unity cache")

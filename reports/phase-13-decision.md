@@ -98,3 +98,9 @@ checks, and mypy passed across 123 source files.
 
 All three foundation jobs passed on the historical `0c22b18` checkpoint
 cited in the roadmap. [GitHub Actions run 42584209969](https://github.com/devanshkapoor1501-sys/Unity_Skill/actions/runs/42584209969)
+
+The evidence closeout commit `b1173871000134fe566ba1161b2f30baee9d67ce`
+contains the exact frozen verifier source. A later compatibility fix made the
+same Windows reparse-point check type-check on Linux. The frozen trial and
+its verdict remain tied to the closeout commit.
+[Closeout commit](https://github.com/devanshkapoor1501-sys/Unity_Skill/commit/b1173871000134fe566ba1161b2f30baee9d67ce)
